@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Menu, X, ChevronDown, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
-import TopBar from "./TopBar";
+
 
 const modelCategories = [
   "Motos & Scooters Elétricas",
@@ -37,7 +37,6 @@ const Header = () => {
 
   return (
     <div className="fixed top-0 left-0 right-0 z-50">
-      <TopBar />
       <div className="container mx-auto px-4 py-2">
         <header
           className={`transition-all duration-500 rounded-2xl ${
