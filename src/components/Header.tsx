@@ -67,7 +67,7 @@ const Header = () => {
 
         {/* Desktop CTA */}
         <div className="hidden lg:flex items-center gap-3">
-          <Button className="rounded-lg gap-2" asChild>
+          <Button className="rounded-lg gap-2 hover:scale-105 hover:shadow-lg hover:shadow-primary/30 active:scale-95 transition-all duration-300" asChild>
             <a
               href="https://wa.me/5500000000000"
               target="_blank"
