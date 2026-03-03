@@ -3,6 +3,7 @@ import { Menu, X, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
 import msLogo from "@/assets/ms-eletric-logo.png";
+import msLogoDark from "@/assets/ms-eletric-logo-dark.png";
 
 
 const modelCategories = [
@@ -39,14 +40,14 @@ const Header = () => {
         <header
           className={`transition-all duration-500 rounded-2xl ${
             scrolled
-              ? "bg-card/80 backdrop-blur-xl border border-border/50 shadow-lg"
+              ? "bg-white/90 backdrop-blur-xl border border-border/50 shadow-lg"
               : "bg-primary-foreground/5 backdrop-blur-md border border-primary-foreground/10"
           }`}
         >
       <div className="container mx-auto px-4 flex items-center justify-between h-16 md:h-20">
         {/* Logo */}
         <a href="#inicio" className="flex items-center group">
-          <img src={msLogo} alt="MS Eletric" className="h-[2.8rem] md:h-[3.2rem] w-auto" />
+          <img src={scrolled ? msLogoDark : msLogo} alt="MS Eletric" className="h-[2.8rem] md:h-[3.2rem] w-auto transition-all duration-300" />
         </a>
 
         {/* Desktop Nav */}
