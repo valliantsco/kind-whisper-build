@@ -1,5 +1,6 @@
 import { Instagram, Facebook, Youtube } from "lucide-react";
 import { motion } from "framer-motion";
+import msLogo from "@/assets/ms-eletric-logo.svg";
 
 const modelLinks = [
   "Motos & Scooters", "Bike Elétrica", "Triciclos", "Autopropelidos",
@@ -16,9 +17,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
           {/* Brand */}
           <div>
-            <div className="font-display font-black text-2xl mb-4">
-              MS <span className="text-primary">Eletric</span>
-            </div>
+            <img src={msLogo} alt="MS Eletric" className="h-12 w-auto mb-4" />
             <p className="text-primary-foreground/60 text-sm leading-relaxed">
               Mobilidade 100% elétrica com atendimento consultivo, portfólio completo e suporte do início ao pós-venda.
             </p>
