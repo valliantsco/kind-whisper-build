@@ -108,19 +108,41 @@ const Header = () => {
 
   // Swipe down to close drawer
   const touchStartY = useRef<number | null>(null);
+  const touchDeltaY = useRef(0);
 
-  const onTouchStart = useCallback((e: React.TouchEvent) => {
+  const handleTouchStart = useCallback((e: TouchEvent) => {
     touchStartY.current = e.touches[0].clientY;
+    touchDeltaY.current = 0;
   }, []);
 
-  const onTouchEnd = useCallback((e: React.TouchEvent) => {
+  const handleTouchMove = useCallback((e: TouchEvent) => {
     if (touchStartY.current === null) return;
-    const deltaY = e.changedTouches[0].clientY - touchStartY.current;
-    if (deltaY > 60) {
+    touchDeltaY.current = e.touches[0].clientY - touchStartY.current;
+  }, []);
+
+  const handleTouchEnd = useCallback(() => {
+    if (touchDeltaY.current > 80) {
       setMobileOpen(false);
     }
     touchStartY.current = null;
+    touchDeltaY.current = 0;
   }, []);
+
+  // Attach native touch listeners to the drawer
+  const drawerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = drawerRef.current;
+    if (!el || !mobileOpen) return;
+    el.addEventListener("touchstart", handleTouchStart, { passive: true });
+    el.addEventListener("touchmove", handleTouchMove, { passive: true });
+    el.addEventListener("touchend", handleTouchEnd);
+    return () => {
+      el.removeEventListener("touchstart", handleTouchStart);
+      el.removeEventListener("touchmove", handleTouchMove);
+      el.removeEventListener("touchend", handleTouchEnd);
+    };
+  }, [mobileOpen, handleTouchStart, handleTouchMove, handleTouchEnd]);
 
   return (
     <div className="fixed top-0 left-0 right-0 z-50">
@@ -234,6 +256,7 @@ const Header = () => {
           <AnimatePresence>
             {mobileOpen && (
               <motion.div
+                ref={drawerRef}
                 initial={{ opacity: 0, height: 0 }}
                 animate={{ opacity: 1, height: "calc(100dvh - 5rem)" }}
                 exit={{ opacity: 0, height: 0 }}
@@ -243,8 +266,6 @@ const Header = () => {
                     ? "bg-white/95 backdrop-blur-2xl"
                     : "bg-foreground/90 backdrop-blur-2xl"
                 }`}
-                onTouchStart={onTouchStart}
-                onTouchEnd={onTouchEnd}
               >
                 <motion.div
                   className="flex flex-col justify-between h-full px-6 py-8"
