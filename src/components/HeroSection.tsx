@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { ArrowDown, ArrowRight } from "lucide-react";
 import heroBg from "@/assets/hero-bg.jpg";
 
-const YOUTUBE_EMBED = `https://www.youtube.com/embed/XbCwe0FPLj0?autoplay=1&mute=1&loop=1&playlist=XbCwe0FPLj0&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&disablekb=1&fs=0&iv_load_policy=3&origin=${encodeURIComponent(window.location.origin)}`;
+const YOUTUBE_EMBED = `https://www.youtube.com/embed/ml6ODnWanys?autoplay=1&mute=1&loop=1&playlist=ml6ODnWanys&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&disablekb=1&fs=0&iv_load_policy=3`;
 
 const HeroSection = () => {
   return (
