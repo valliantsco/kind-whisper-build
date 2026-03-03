@@ -18,7 +18,7 @@ const HeroSection = () => {
       <div className="absolute inset-0">
         <iframe
           src={YOUTUBE_EMBED}
-          className="absolute pointer-events-none top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300%] h-[300%] md:w-[300%] md:h-[300%] max-md:w-[180%] max-md:h-[180%]"
+          className="absolute pointer-events-none top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[180%] h-[180%] max-md:w-[400%] max-md:h-[400%]"
           style={{ border: 0, aspectRatio: '16/9' }}
           allow="autoplay; encrypted-media"
           title="Hero video"
