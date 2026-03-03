@@ -156,29 +156,26 @@ const Header = () => {
         >
           {/* Orbiting orange glow — only visible on transparent state */}
           <motion.div
-            className={`pointer-events-none absolute inset-0 z-0 transition-opacity duration-[800ms] ease-in-out ${
+            className={`pointer-events-none absolute inset-0 z-0 overflow-hidden transition-opacity duration-[800ms] ease-in-out ${
               scrolled ? "opacity-0" : "opacity-100"
             }`}
             aria-hidden="true"
           >
             <motion.div
-              className="absolute w-[120px] h-[40px] md:w-[200px] md:h-[50px] rounded-full"
+              className="absolute w-[180px] h-[60px] md:w-[280px] md:h-[70px] rounded-full"
               style={{
-                background: "radial-gradient(ellipse, hsl(11 81% 57% / 0.25) 0%, hsl(11 90% 65% / 0.1) 50%, transparent 80%)",
-                filter: "blur(20px)",
+                background: "radial-gradient(ellipse, hsl(11 81% 57% / 0.2) 0%, hsl(11 90% 65% / 0.08) 50%, transparent 80%)",
+                filter: "blur(25px)",
                 top: "50%",
-                left: "50%",
-                x: "-50%",
                 y: "-50%",
               }}
               animate={{
-                x: ["-50%", "120%", "120%", "-220%", "-220%", "-50%"],
-                y: ["-50%", "-80%", "-20%", "-20%", "-80%", "-50%"],
+                left: ["-15%", "100%", "-15%"],
               }}
               transition={{
-                duration: 12,
+                duration: 8,
                 repeat: Infinity,
-                ease: "linear",
+                ease: "easeInOut",
               }}
             />
           </motion.div>
