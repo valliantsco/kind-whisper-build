@@ -1,16 +1,34 @@
+import { useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { ArrowDown, ArrowRight } from "lucide-react";
-import heroBg from "@/assets/hero-bg.jpg";
+
+const HERO_VIDEO = "https://motochefebrasil.com.br/wp-content/uploads/2025/10/COMERCIAL-MOTOCHEFE-v3b.mp4";
 
 const HeroSection = () => {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+    video.play().catch(() => {
+      video.muted = true;
+      video.play().catch(() => {});
+    });
+  }, []);
+
   return (
     <section id="inicio" className="relative min-h-screen flex items-center overflow-hidden">
-      {/* Real image background */}
+      {/* Video background */}
       <div className="absolute inset-0">
-        <img
-          src={heroBg}
-          alt="Scooter elétrica em ambiente urbano noturno"
+        <video
+          ref={videoRef}
+          src={HERO_VIDEO}
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="auto"
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-foreground/95 via-foreground/80 to-foreground/30" />
@@ -43,49 +61,23 @@ const HeroSection = () => {
             <span className="text-xs font-semibold text-primary-foreground uppercase tracking-[0.2em]">Mobilidade elétrica</span>
           </motion.div>
 
-          {/* Bold condensed headline inspired by MotoChefe */}
           <h1 className="font-display font-black text-5xl md:text-7xl lg:text-8xl text-primary-foreground leading-[0.95] mb-8 uppercase tracking-tight">
-            <motion.span
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-              className="block"
-            >
+            <motion.span initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="block">
               Líder em
             </motion.span>
-            <motion.span
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.35 }}
-              className="block"
-            >
+            <motion.span initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.35 }} className="block">
               mobilidade
             </motion.span>
-            <motion.span
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5 }}
-              className="block gradient-text"
-            >
+            <motion.span initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 }} className="block gradient-text">
               elétrica.
             </motion.span>
           </h1>
 
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.7 }}
-            className="text-lg md:text-xl text-primary-foreground/60 mb-10 max-w-2xl leading-relaxed"
-          >
+          <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.7 }} className="text-lg md:text-xl text-primary-foreground/60 mb-10 max-w-2xl leading-relaxed">
             A MS Eletric reúne soluções 100% elétricas para quem busca praticidade, economia e uma experiência completa — do atendimento ao pós-venda.
           </motion.p>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.9 }}
-            className="flex flex-wrap items-center gap-4"
-          >
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.9 }} className="flex flex-wrap items-center gap-4">
             <Button size="lg" className="text-base px-10 py-7 font-bold rounded-2xl glow-primary hover:scale-105 transition-transform gap-2" asChild>
               <a href="#modelos">
                 Conheça nossos modelos
@@ -99,7 +91,7 @@ const HeroSection = () => {
         </motion.div>
       </div>
 
-      {/* Scroll indicator — vertical text on right side like MotoChefe */}
+      {/* Scroll indicator */}
       <motion.div
         className="absolute right-6 top-1/2 -translate-y-1/2 z-10 hidden md:flex flex-col items-center gap-3"
         animate={{ opacity: [0.4, 0.8, 0.4] }}
@@ -107,15 +99,11 @@ const HeroSection = () => {
       >
         <span className="text-xs text-primary-foreground/40 uppercase tracking-[0.3em] writing-vertical">scroll</span>
         <div className="w-px h-16 bg-gradient-to-b from-primary/60 to-transparent" />
-        <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 2, repeat: Infinity }}
-        >
+        <motion.div animate={{ y: [0, 8, 0] }} transition={{ duration: 2, repeat: Infinity }}>
           <ArrowDown className="w-4 h-4 text-primary-foreground/40" />
         </motion.div>
       </motion.div>
 
-      {/* Bottom gradient fade */}
       <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent z-[5]" />
     </section>
   );
