@@ -49,7 +49,7 @@ const Header = () => {
       <div className="container mx-auto px-4 flex items-center justify-between h-16 md:h-20">
         {/* Logo */}
         <a href="#inicio" className="flex items-center group">
-          <img src={msLogo} alt="MS Eletric" className="h-10 md:h-12 w-auto" />
+          <img src={msLogo} alt="MS Eletric" className="h-14 md:h-16 w-auto" />
         </a>
 
         {/* Desktop Nav */}

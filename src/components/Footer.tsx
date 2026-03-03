@@ -17,7 +17,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
           {/* Brand */}
           <div>
-            <img src={msLogo} alt="MS Eletric" className="h-12 w-auto mb-4" />
+            <img src={msLogo} alt="MS Eletric" className="h-16 w-auto mb-4" />
             <p className="text-primary-foreground/60 text-sm leading-relaxed">
               Mobilidade 100% elétrica com atendimento consultivo, portfólio completo e suporte do início ao pós-venda.
             </p>
