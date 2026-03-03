@@ -154,29 +154,92 @@ const Header = () => {
               : "bg-primary-foreground/5 backdrop-blur-xl border border-primary-foreground/10"
           }`}
         >
-          {/* Orbiting orange glow — only visible on transparent state */}
+          {/* Abstract art glow composition — only visible on transparent state */}
           <motion.div
             className={`pointer-events-none absolute inset-0 z-0 overflow-hidden transition-opacity duration-[800ms] ease-in-out ${
               scrolled ? "opacity-0" : "opacity-100"
             }`}
             aria-hidden="true"
           >
+            {/* Main large glow — slow drift right */}
             <motion.div
-              className="absolute w-[180px] h-[60px] md:w-[280px] md:h-[70px] rounded-full"
+              className="absolute w-[220px] h-[50px] md:w-[320px] md:h-[60px] rounded-full"
               style={{
-                background: "radial-gradient(ellipse, hsl(11 81% 57% / 0.2) 0%, hsl(11 90% 65% / 0.08) 50%, transparent 80%)",
-                filter: "blur(25px)",
+                background: "radial-gradient(ellipse, hsl(11 81% 57% / 0.15) 0%, hsl(11 90% 65% / 0.06) 50%, transparent 80%)",
+                filter: "blur(30px)",
                 top: "50%",
                 y: "-50%",
               }}
-              animate={{
-                left: ["-15%", "100%", "-15%"],
+              animate={{ left: ["-10%", "90%", "-10%"] }}
+              transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
+            />
+            {/* Secondary glow — counter direction, offset */}
+            <motion.div
+              className="absolute w-[140px] h-[35px] md:w-[200px] md:h-[45px] rounded-full"
+              style={{
+                background: "radial-gradient(ellipse, hsl(11 90% 65% / 0.12) 0%, hsl(20 80% 60% / 0.05) 50%, transparent 80%)",
+                filter: "blur(22px)",
+                top: "40%",
+                y: "-50%",
               }}
-              transition={{
-                duration: 8,
-                repeat: Infinity,
-                ease: "easeInOut",
+              animate={{ left: ["95%", "-5%", "95%"] }}
+              transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
+            />
+            {/* Small accent dot 1 */}
+            <motion.div
+              className="absolute w-[8px] h-[8px] md:w-[10px] md:h-[10px] rounded-full"
+              style={{
+                background: "hsl(11 81% 57% / 0.3)",
+                filter: "blur(4px)",
+                top: "30%",
               }}
+              animate={{ left: ["10%", "80%", "10%"], opacity: [0.2, 0.5, 0.2] }}
+              transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
+            />
+            {/* Small accent dot 2 */}
+            <motion.div
+              className="absolute w-[6px] h-[6px] md:w-[8px] md:h-[8px] rounded-full"
+              style={{
+                background: "hsl(11 90% 65% / 0.25)",
+                filter: "blur(3px)",
+                top: "65%",
+              }}
+              animate={{ left: ["75%", "15%", "75%"], opacity: [0.15, 0.4, 0.15] }}
+              transition={{ duration: 22, repeat: Infinity, ease: "easeInOut" }}
+            />
+            {/* Small accent dot 3 */}
+            <motion.div
+              className="absolute w-[5px] h-[5px] md:w-[7px] md:h-[7px] rounded-full"
+              style={{
+                background: "hsl(15 85% 60% / 0.2)",
+                filter: "blur(3px)",
+                top: "50%",
+              }}
+              animate={{ left: ["40%", "70%", "25%", "40%"], opacity: [0.1, 0.35, 0.2, 0.1] }}
+              transition={{ duration: 28, repeat: Infinity, ease: "easeInOut" }}
+            />
+            {/* Tiny particle 4 */}
+            <motion.div
+              className="absolute w-[4px] h-[4px] rounded-full"
+              style={{
+                background: "hsl(11 81% 57% / 0.35)",
+                filter: "blur(2px)",
+                top: "25%",
+              }}
+              animate={{ left: ["60%", "20%", "85%", "60%"], opacity: [0.2, 0.45, 0.15, 0.2] }}
+              transition={{ duration: 30, repeat: Infinity, ease: "easeInOut" }}
+            />
+            {/* Soft wide ambient glow — very slow */}
+            <motion.div
+              className="absolute w-[300px] h-[40px] md:w-[500px] md:h-[50px] rounded-full"
+              style={{
+                background: "radial-gradient(ellipse, hsl(11 81% 57% / 0.06) 0%, transparent 70%)",
+                filter: "blur(35px)",
+                top: "50%",
+                y: "-50%",
+              }}
+              animate={{ left: ["20%", "60%", "20%"] }}
+              transition={{ duration: 30, repeat: Infinity, ease: "easeInOut" }}
             />
           </motion.div>
 
