@@ -45,9 +45,10 @@ const Header = () => {
           }`}
         >
       <div className="container mx-auto px-4 flex items-center justify-between h-16 md:h-20">
-        {/* Logo */}
-        <a href="#inicio" className="flex items-center group">
-          <img src={scrolled ? msLogoDark : msLogo} alt="MS Eletric" className="h-[2.8rem] md:h-[3.2rem] w-auto transition-all duration-300" />
+        {/* Logo with crossfade */}
+        <a href="#inicio" className="flex items-center group relative h-[2.8rem] md:h-[3.2rem]">
+          <img src={msLogo} alt="MS Eletric" className={`h-[2.8rem] md:h-[3.2rem] w-auto absolute top-0 left-0 transition-opacity duration-[800ms] ease-in-out ${scrolled ? "opacity-0" : "opacity-100"}`} />
+          <img src={msLogoDark} alt="MS Eletric" className={`h-[2.8rem] md:h-[3.2rem] w-auto transition-opacity duration-[800ms] ease-in-out ${scrolled ? "opacity-100" : "opacity-0"}`} />
         </a>
 
         {/* Desktop Nav */}
