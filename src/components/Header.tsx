@@ -59,7 +59,7 @@ const Header = () => {
                 className={`px-4 py-2 text-sm font-medium transition-colors rounded-md relative group ${scrolled ? "text-foreground hover:text-primary" : "text-primary-foreground/90 hover:text-primary-foreground"}`}
               >
                 {item.label}
-                <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-primary group-hover:w-1/2 transition-all duration-300 rounded-full" />
+                <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[3px] bg-primary group-hover:w-1/2 transition-all duration-300 rounded-full" />
               </a>
             )
           )}
