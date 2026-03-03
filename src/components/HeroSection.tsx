@@ -29,7 +29,7 @@ const HeroSection = () => {
         transition={{ duration: 6, repeat: Infinity }}
       />
 
-      <div className="relative z-10 container mx-auto px-4 py-20 md:py-32">
+      <div className="relative z-10 container mx-auto px-4 pt-28 pb-20 md:py-32">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
