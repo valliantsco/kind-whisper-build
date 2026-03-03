@@ -38,13 +38,14 @@ const Header = () => {
   return (
     <div className="fixed top-0 left-0 right-0 z-50">
       <TopBar />
-      <header
-        className={`transition-all duration-500 ${
-          scrolled
-            ? "bg-card/95 backdrop-blur-md border-b border-border shadow-sm"
-            : "bg-foreground/80 backdrop-blur-sm border-b border-transparent"
-        }`}
-      >
+      <div className="container mx-auto px-4 py-2">
+        <header
+          className={`transition-all duration-500 rounded-2xl ${
+            scrolled
+              ? "bg-card/80 backdrop-blur-xl border border-border/50 shadow-lg"
+              : "bg-primary-foreground/5 backdrop-blur-md border border-primary-foreground/10"
+          }`}
+        >
       <div className="container mx-auto px-4 flex items-center justify-between h-16 md:h-20">
         {/* Logo */}
         <a href="#inicio" className="flex items-center gap-2 group">
@@ -203,7 +204,8 @@ const Header = () => {
           </motion.div>
         )}
       </AnimatePresence>
-      </header>
+        </header>
+      </div>
     </div>
   );
 };
