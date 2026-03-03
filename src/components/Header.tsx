@@ -83,10 +83,10 @@ const Header = () => {
         <div className="flex lg:hidden items-center gap-3">
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className={`p-2 ${scrolled ? "text-foreground" : "text-primary-foreground"}`}
+            className="p-2.5 rounded-lg bg-primary text-primary-foreground hover:scale-105 hover:shadow-lg hover:shadow-primary/30 active:scale-95 transition-all duration-300"
             aria-label="Menu"
           >
-            {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
         </div>
       </div>
