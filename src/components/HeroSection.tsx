@@ -1,35 +1,21 @@
-import { useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { ArrowDown, ArrowRight } from "lucide-react";
 
-const HERO_VIDEO = "https://motochefebrasil.com.br/wp-content/uploads/2025/10/COMERCIAL-MOTOCHEFE-v3b.mp4";
+const YOUTUBE_EMBED = "https://www.youtube.com/embed/ml6ODnWanys?autoplay=1&mute=1&loop=1&playlist=ml6ODnWanys&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&disablekb=1&fs=0&iv_load_policy=3";
 
 const HeroSection = () => {
-  const videoRef = useRef<HTMLVideoElement>(null);
-
-  useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
-    video.play().catch(() => {
-      video.muted = true;
-      video.play().catch(() => {});
-    });
-  }, []);
 
   return (
     <section id="inicio" className="relative min-h-screen flex items-center overflow-hidden">
       {/* Video background */}
       <div className="absolute inset-0">
-        <video
-          ref={videoRef}
-          src={HERO_VIDEO}
-          autoPlay
-          loop
-          muted
-          playsInline
-          preload="auto"
-          className="w-full h-full object-cover"
+        <iframe
+          src={YOUTUBE_EMBED}
+          className="absolute inset-0 w-[300%] h-[300%] -top-[100%] -left-[100%] pointer-events-none"
+          style={{ border: 0 }}
+          allow="autoplay; encrypted-media"
+          title="Hero video"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-foreground/95 via-foreground/80 to-foreground/30" />
         <div className="absolute inset-0 bg-gradient-to-t from-foreground/70 via-transparent to-foreground/20" />
