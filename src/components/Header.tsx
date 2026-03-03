@@ -336,17 +336,17 @@ const Header = () => {
               <motion.div
                 ref={drawerRef}
                 initial={{ opacity: 0, height: 0 }}
-                animate={{ opacity: 1, height: "calc(100dvh - 5rem)" }}
+                animate={{ opacity: 1, height: "auto" }}
                 exit={{ opacity: 0, height: 0 }}
                 transition={{ duration: 0.5, ease: [0.25, 0.8, 0.25, 1] as const }}
-                className={`lg:hidden overflow-hidden origin-top ${
+                className={`lg:hidden overflow-hidden origin-top rounded-b-[0.9rem] ${
                   scrolled
-                    ? "bg-white/95 backdrop-blur-2xl"
-                    : "bg-foreground/90 backdrop-blur-2xl"
+                    ? "bg-white/80 backdrop-blur-2xl"
+                    : "bg-foreground/70 backdrop-blur-2xl"
                 }`}
               >
                 <motion.div
-                  className="flex flex-col justify-between h-full px-6 py-8"
+                  className="flex flex-col justify-between px-5 py-6"
                   variants={drawerVariants}
                   initial="hidden"
                   animate="visible"
@@ -356,9 +356,9 @@ const Header = () => {
                   <div className="space-y-1">
                     {navItems.map((item, i) => (
                       <motion.div key={item.label} variants={itemVariants}>
-                        <a
+                         <a
                           href={item.href}
-                          className={`block px-4 py-4 text-lg font-semibold uppercase tracking-[0.12em] rounded-xl transition-all duration-200 ${
+                          className={`block px-3 py-3 text-sm font-semibold uppercase tracking-[0.12em] rounded-lg transition-all duration-200 ${
                             scrolled
                               ? "text-foreground hover:text-primary hover:bg-primary/5"
                               : "text-primary-foreground/80 hover:text-primary-foreground hover:bg-primary-foreground/5"
@@ -392,12 +392,12 @@ const Header = () => {
                   </div>
 
                   {/* Floating CTA with glow */}
-                  <motion.div variants={itemVariants} className="pt-6">
+                  <motion.div variants={itemVariants} className="pt-4">
                     <motion.a
                       href="https://wa.me/5500000000000"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center justify-center gap-3 w-full py-4 rounded-xl bg-primary text-primary-foreground text-sm font-semibold uppercase tracking-wider"
+                      className="flex items-center justify-center gap-3 w-full py-3 rounded-lg bg-primary text-primary-foreground text-xs font-semibold uppercase tracking-wider"
                       onClick={() => setMobileOpen(false)}
                       whileHover={{
                         scale: 1.02,
