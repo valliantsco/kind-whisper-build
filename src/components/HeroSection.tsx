@@ -15,7 +15,7 @@ const HeroSection = () => {
       />
 
       {/* Video background - desktop only (overlays image when loaded) */}
-      <div className="absolute inset-0 hidden md:block">
+      <div className="absolute inset-0">
         <iframe
           src={YOUTUBE_EMBED}
           className="absolute w-[300%] h-[300%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none"
