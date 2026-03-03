@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Menu, X, ChevronDown, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
+import msLogo from "@/assets/ms-eletric-logo.svg";
 
 
 const modelCategories = [
@@ -47,11 +48,8 @@ const Header = () => {
         >
       <div className="container mx-auto px-4 flex items-center justify-between h-16 md:h-20">
         {/* Logo */}
-        <a href="#inicio" className="flex items-center gap-2 group">
-          <div className="font-display font-black text-xl md:text-2xl tracking-tight">
-            <span className={scrolled ? "text-foreground" : "text-primary-foreground"}>MS</span>
-            <span className="text-primary group-hover:brightness-110 transition-all"> Eletric</span>
-          </div>
+        <a href="#inicio" className="flex items-center group">
+          <img src={msLogo} alt="MS Eletric" className="h-10 md:h-12 w-auto" />
         </a>
 
         {/* Desktop Nav */}
