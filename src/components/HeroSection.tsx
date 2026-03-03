@@ -7,7 +7,7 @@ const YOUTUBE_EMBED = "https://www.youtube.com/embed/ml6ODnWanys?autoplay=1&mute
 const HeroSection = () => {
 
   return (
-    <section id="inicio" className="relative min-h-screen flex items-center overflow-hidden">
+    <section id="inicio" className="relative min-h-screen flex items-start overflow-hidden">
       {/* Video background */}
       <div className="absolute inset-0">
         <iframe
@@ -29,7 +29,7 @@ const HeroSection = () => {
         transition={{ duration: 6, repeat: Infinity }}
       />
 
-      <div className="relative z-10 container mx-auto px-4 py-20 md:py-32">
+      <div className="relative z-10 container mx-auto px-4 pt-24 md:pt-40 pb-20">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
