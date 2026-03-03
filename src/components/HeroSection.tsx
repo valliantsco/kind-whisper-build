@@ -21,7 +21,6 @@ const HeroSection = () => {
           className="absolute pointer-events-none top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[180%] h-[180%] max-md:w-[400%] max-md:h-[400%]"
           style={{ border: 0, aspectRatio: '16/9' }}
           allow="autoplay; encrypted-media"
-          loading="lazy"
           title="Hero video"
         />
       </div>
