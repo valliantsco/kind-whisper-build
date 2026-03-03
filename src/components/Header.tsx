@@ -38,7 +38,7 @@ const Header = () => {
     <div className="fixed top-0 left-0 right-0 z-50">
       <div className="container mx-auto px-4 py-2">
         <header
-          className={`transition-all duration-500 rounded-2xl ${
+          className={`transition-all duration-500 rounded-[0.9rem] ${
             scrolled
               ? "bg-white/90 backdrop-blur-xl border border-border/50 shadow-lg"
               : "bg-primary-foreground/5 backdrop-blur-md border border-primary-foreground/10"
