@@ -100,7 +100,11 @@ const Header = () => {
             animate={{ opacity: 1, height: "auto", scale: 1 }}
             exit={{ opacity: 0, height: 0, scale: 0.98 }}
             transition={{ duration: 0.4, ease: [0.25, 0.8, 0.25, 1] }}
-            className="lg:hidden overflow-hidden border-t border-primary-foreground/10 bg-foreground/70 backdrop-blur-xl origin-top"
+            className={`lg:hidden overflow-hidden border-t origin-top backdrop-blur-xl ${
+              scrolled
+                ? "bg-white/95 border-border/30"
+                : "bg-foreground/70 border-primary-foreground/10"
+            }`}
           >
             <div className="px-5 py-5 space-y-1">
               {navItems.map((item, i) => (
@@ -110,7 +114,11 @@ const Header = () => {
                   initial={{ opacity: 0, x: -10 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.15 + i * 0.06, duration: 0.3 }}
-                  className="block px-4 py-3 text-sm font-medium text-primary-foreground/80 hover:text-primary hover:bg-primary-foreground/5 rounded-lg transition-all duration-200"
+                  className={`block px-4 py-3 text-sm font-medium rounded-lg transition-all duration-200 ${
+                    scrolled
+                      ? "text-[#434343] hover:text-primary hover:bg-primary/5"
+                      : "text-primary-foreground/80 hover:text-primary hover:bg-primary-foreground/5"
+                  }`}
                   onClick={() => setMobileOpen(false)}
                 >
                   {item.label}
