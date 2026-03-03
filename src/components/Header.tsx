@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Menu, X, ChevronDown, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
+import TopBar from "./TopBar";
 
 const modelCategories = [
   "Motos & Scooters Elétricas",
@@ -35,13 +36,15 @@ const Header = () => {
   }, []);
 
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled
-          ? "bg-card/95 backdrop-blur-md border-b border-border shadow-sm"
-          : "bg-transparent border-b border-transparent"
-      }`}
-    >
+    <div className="fixed top-0 left-0 right-0 z-50">
+      <TopBar />
+      <header
+        className={`transition-all duration-500 ${
+          scrolled
+            ? "bg-card/95 backdrop-blur-md border-b border-border shadow-sm"
+            : "bg-foreground/80 backdrop-blur-sm border-b border-transparent"
+        }`}
+      >
       <div className="container mx-auto px-4 flex items-center justify-between h-16 md:h-20">
         {/* Logo */}
         <a href="#inicio" className="flex items-center gap-2 group">
@@ -200,7 +203,8 @@ const Header = () => {
           </motion.div>
         )}
       </AnimatePresence>
-    </header>
+      </header>
+    </div>
   );
 };
 

@@ -1,4 +1,3 @@
-import TopBar from "@/components/TopBar";
 import Header from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
 import MarqueeText from "@/components/MarqueeText";
@@ -15,7 +14,6 @@ import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
-      <TopBar />
       <Header />
       <main>
         <HeroSection />
