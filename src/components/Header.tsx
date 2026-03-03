@@ -99,7 +99,7 @@ const Header = () => {
             animate={{ opacity: 1, height: "auto", scale: 1 }}
             exit={{ opacity: 0, height: 0, scale: 0.98 }}
             transition={{ duration: 0.4, ease: [0.25, 0.8, 0.25, 1] }}
-            className="lg:hidden overflow-hidden mt-1 rounded-[0.9rem] bg-foreground/95 backdrop-blur-xl border border-primary-foreground/10 shadow-2xl origin-top"
+            className="lg:hidden overflow-hidden mt-1 rounded-[0.9rem] backdrop-blur-xl border border-primary-foreground/10 shadow-2xl origin-top"
           >
             <div className="px-5 py-5 space-y-1">
               {navItems.map((item, i) => (
