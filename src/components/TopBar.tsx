@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const messages = [
   { text: "Financiamento | Consórcio | Cartão de crédito — até 48x", link: "#modelos" },
@@ -17,13 +18,20 @@ const TopBar = () => {
   }, []);
 
   return (
-    <div className="bg-foreground text-primary-foreground py-2 text-center text-xs md:text-sm overflow-hidden">
-      <a
-        href={messages[currentIndex].link}
-        className="hover:text-primary transition-colors duration-300 inline-block"
-      >
-        {messages[currentIndex].text}
-      </a>
+    <div className="bg-foreground text-primary-foreground py-2 text-center text-xs md:text-sm overflow-hidden relative">
+      <AnimatePresence mode="wait">
+        <motion.a
+          key={currentIndex}
+          href={messages[currentIndex].link}
+          className="hover:text-primary transition-colors duration-300 inline-block"
+          initial={{ y: 20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          exit={{ y: -20, opacity: 0 }}
+          transition={{ duration: 0.3 }}
+        >
+          {messages[currentIndex].text}
+        </motion.a>
+      </AnimatePresence>
     </div>
   );
 };

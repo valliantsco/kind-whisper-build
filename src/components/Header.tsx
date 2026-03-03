@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Menu, X, ChevronDown, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
@@ -26,15 +26,28 @@ const Header = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [modelsOpen, setModelsOpen] = useState(false);
   const [desktopDropdown, setDesktopDropdown] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 50);
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
-    <header className="sticky top-0 z-50 bg-card/95 backdrop-blur-md border-b border-border shadow-sm">
+    <header
+      className={`sticky top-0 z-50 transition-all duration-300 ${
+        scrolled
+          ? "bg-card/95 backdrop-blur-md border-b border-border shadow-sm"
+          : "bg-card/80 backdrop-blur-sm border-b border-transparent"
+      }`}
+    >
       <div className="container mx-auto px-4 flex items-center justify-between h-16 md:h-20">
         {/* Logo */}
-        <a href="#inicio" className="flex items-center gap-2">
+        <a href="#inicio" className="flex items-center gap-2 group">
           <div className="font-display font-black text-xl md:text-2xl tracking-tight">
             <span className="text-foreground">MS</span>
-            <span className="text-primary"> Eletric</span>
+            <span className="text-primary group-hover:brightness-110 transition-all"> Eletric</span>
           </div>
         </a>
 
@@ -50,22 +63,22 @@ const Header = () => {
               >
                 <button className="flex items-center gap-1 px-4 py-2 text-sm font-medium text-foreground hover:text-primary transition-colors rounded-md">
                   {item.label}
-                  <ChevronDown className="w-4 h-4" />
+                  <ChevronDown className={`w-4 h-4 transition-transform ${desktopDropdown ? "rotate-180" : ""}`} />
                 </button>
                 <AnimatePresence>
                   {desktopDropdown && (
                     <motion.div
-                      initial={{ opacity: 0, y: 8 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: 8 }}
+                      initial={{ opacity: 0, y: 8, scale: 0.95 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      exit={{ opacity: 0, y: 8, scale: 0.95 }}
                       transition={{ duration: 0.15 }}
-                      className="absolute top-full left-0 mt-1 w-60 bg-card rounded-xl border border-border shadow-lg p-2"
+                      className="absolute top-full left-0 mt-1 w-60 bg-card rounded-2xl border border-border shadow-xl p-2"
                     >
                       {modelCategories.map((cat) => (
                         <a
                           key={cat}
                           href="#modelos"
-                          className="block px-4 py-2.5 text-sm text-foreground hover:bg-muted hover:text-primary rounded-lg transition-colors"
+                          className="block px-4 py-2.5 text-sm text-foreground hover:bg-primary/10 hover:text-primary rounded-xl transition-colors"
                         >
                           {cat}
                         </a>
@@ -78,26 +91,27 @@ const Header = () => {
               <a
                 key={item.label}
                 href={item.href}
-                className="px-4 py-2 text-sm font-medium text-foreground hover:text-primary transition-colors rounded-md"
+                className="px-4 py-2 text-sm font-medium text-foreground hover:text-primary transition-colors rounded-md relative group"
               >
                 {item.label}
+                <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-primary group-hover:w-1/2 transition-all duration-300 rounded-full" />
               </a>
             )
           )}
         </nav>
 
-        {/* Desktop CTA + WhatsApp icon */}
+        {/* Desktop CTA */}
         <div className="hidden lg:flex items-center gap-3">
           <a
             href="https://wa.me/5500000000000"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-muted-foreground hover:text-primary transition-colors"
+            className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary hover:bg-primary hover:text-primary-foreground transition-all"
             aria-label="WhatsApp"
           >
             <MessageCircle className="w-5 h-5" />
           </a>
-          <Button asChild>
+          <Button className="rounded-xl" asChild>
             <a href="#modelos">Conhecer modelos</a>
           </Button>
         </div>
@@ -108,10 +122,10 @@ const Header = () => {
             href="https://wa.me/5500000000000"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-muted-foreground hover:text-primary transition-colors"
+            className="w-9 h-9 rounded-xl bg-primary/10 flex items-center justify-center text-primary"
             aria-label="WhatsApp"
           >
-            <MessageCircle className="w-5 h-5" />
+            <MessageCircle className="w-4 h-4" />
           </a>
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
@@ -178,7 +192,7 @@ const Header = () => {
                 )
               )}
               <div className="pt-3">
-                <Button className="w-full" asChild>
+                <Button className="w-full rounded-xl" asChild>
                   <a href="#modelos" onClick={() => setMobileOpen(false)}>Conhecer modelos</a>
                 </Button>
               </div>

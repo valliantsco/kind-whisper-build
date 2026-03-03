@@ -7,6 +7,7 @@ import QuizSection from "@/components/QuizSection";
 import InfluencersSection from "@/components/InfluencersSection";
 import WhyChooseSection from "@/components/WhyChooseSection";
 import Footer from "@/components/Footer";
+import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 
 const Index = () => {
   return (
@@ -22,6 +23,7 @@ const Index = () => {
         <WhyChooseSection />
       </main>
       <Footer />
+      <FloatingWhatsApp />
     </div>
   );
 };

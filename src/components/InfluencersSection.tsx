@@ -1,14 +1,14 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Play, ChevronLeft, ChevronRight } from "lucide-react";
+import { Play, ChevronLeft, ChevronRight, Star } from "lucide-react";
 import { useRef } from "react";
 
 const influencers = [
-  { name: "Lucas Moreira", use: "Uso urbano diário", placeholder: true },
-  { name: "Ana Costa", use: "Entregas sustentáveis", placeholder: true },
-  { name: "Roberto Lima", use: "Lazer e trilhas", placeholder: true },
-  { name: "Carla Santos", use: "Mobilidade no trabalho", placeholder: true },
-  { name: "Pedro Alves", use: "Uso familiar", placeholder: true },
+  { name: "Lucas Moreira", use: "Uso urbano diário", stars: 5, quote: "Economizo mais de R$ 300/mês com a scooter elétrica." },
+  { name: "Ana Costa", use: "Entregas sustentáveis", stars: 5, quote: "Atendimento consultivo que realmente faz diferença." },
+  { name: "Roberto Lima", use: "Lazer e trilhas", stars: 4, quote: "Motocross elétrico é uma experiência única." },
+  { name: "Carla Santos", use: "Mobilidade no trabalho", stars: 5, quote: "Praticidade e economia no dia a dia." },
+  { name: "Pedro Alves", use: "Uso familiar", stars: 5, quote: "Triciclo seguro e confortável para toda família." },
 ];
 
 const InfluencersSection = () => {
@@ -28,6 +28,14 @@ const InfluencersSection = () => {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
+          <motion.span
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="inline-block text-xs font-bold uppercase tracking-widest text-primary bg-primary/10 px-4 py-1.5 rounded-full mb-4"
+          >
+            Depoimentos
+          </motion.span>
           <h2 className="font-display font-black text-3xl md:text-4xl mb-3">
             Avaliações de quem <span className="text-primary">testou na prática.</span>
           </h2>
@@ -36,14 +44,14 @@ const InfluencersSection = () => {
         <div className="relative">
           <button
             onClick={() => scroll("left")}
-            className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-card/90 backdrop-blur-sm rounded-full p-2 border border-border shadow-md"
+            className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-card/90 backdrop-blur-sm rounded-full p-2.5 border border-border shadow-lg hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all"
             aria-label="Anterior"
           >
             <ChevronLeft className="w-5 h-5" />
           </button>
           <button
             onClick={() => scroll("right")}
-            className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-card/90 backdrop-blur-sm rounded-full p-2 border border-border shadow-md"
+            className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-card/90 backdrop-blur-sm rounded-full p-2.5 border border-border shadow-lg hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all"
             aria-label="Próximo"
           >
             <ChevronRight className="w-5 h-5" />
@@ -61,20 +69,41 @@ const InfluencersSection = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.08 }}
-                className="min-w-[300px] snap-start bg-background rounded-2xl border border-border overflow-hidden shadow-sm"
+                whileHover={{ y: -4 }}
+                className="min-w-[320px] snap-start bg-background rounded-2xl border border-border overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300"
               >
                 {/* Video placeholder */}
-                <div className="relative aspect-video bg-muted flex items-center justify-center">
-                  <div className="w-14 h-14 bg-foreground/80 rounded-full flex items-center justify-center cursor-pointer hover:bg-foreground transition-colors">
-                    <Play className="w-6 h-6 text-primary-foreground ml-1" />
-                  </div>
+                <div className="relative aspect-video bg-gradient-to-br from-foreground/90 to-foreground/70 flex items-center justify-center group cursor-pointer overflow-hidden">
+                  <div className="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <motion.div
+                    whileHover={{ scale: 1.1 }}
+                    className="w-16 h-16 bg-primary rounded-full flex items-center justify-center shadow-lg glow-primary"
+                  >
+                    <Play className="w-7 h-7 text-primary-foreground ml-1" />
+                  </motion.div>
                 </div>
-                <div className="p-5">
-                  <p className="font-display font-bold text-base">{inf.name}</p>
-                  <p className="text-sm text-muted-foreground mb-3">{inf.use}</p>
-                  <Button variant="outline" size="sm" className="rounded-xl text-xs">
-                    Ver modelos citados
-                  </Button>
+                <div className="p-6">
+                  {/* Stars */}
+                  <div className="flex gap-0.5 mb-3">
+                    {Array.from({ length: 5 }).map((_, s) => (
+                      <Star
+                        key={s}
+                        className={`w-4 h-4 ${s < inf.stars ? "text-primary fill-primary" : "text-muted"}`}
+                      />
+                    ))}
+                  </div>
+                  <p className="text-sm text-foreground italic mb-4">"{inf.quote}"</p>
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center">
+                      <span className="font-display font-bold text-primary text-sm">
+                        {inf.name.split(" ").map(n => n[0]).join("")}
+                      </span>
+                    </div>
+                    <div>
+                      <p className="font-display font-bold text-sm">{inf.name}</p>
+                      <p className="text-xs text-muted-foreground">{inf.use}</p>
+                    </div>
+                  </div>
                 </div>
               </motion.div>
             ))}

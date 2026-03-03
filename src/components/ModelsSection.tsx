@@ -1,7 +1,12 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Bike, Zap, Shield, Package, Mountain, ChevronLeft, ChevronRight } from "lucide-react";
+import { Bike, Zap, Shield, Package, Mountain, ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
 import { useRef, useState, useEffect } from "react";
+import categoryScooter from "@/assets/category-scooter.jpg";
+import categoryBike from "@/assets/category-bike.jpg";
+import categoryTricycle from "@/assets/category-tricycle.jpg";
+import categoryAutopropelido from "@/assets/category-autopropelido.jpg";
+import categoryMotocross from "@/assets/category-motocross.jpg";
 
 const categories = [
   {
@@ -11,7 +16,7 @@ const categories = [
     ideal: "Rotina urbana e deslocamentos diários",
     benefit: "Praticidade + economia",
     cta: "Ver modelos urbanos",
-    color: "bg-primary/10",
+    image: categoryScooter,
   },
   {
     icon: Bike,
@@ -20,7 +25,7 @@ const categories = [
     ideal: "Trajetos curtos e lazer",
     benefit: "Leveza e flexibilidade",
     cta: "Ver bikes elétricas",
-    color: "bg-blue-500/10",
+    image: categoryBike,
   },
   {
     icon: Shield,
@@ -29,7 +34,7 @@ const categories = [
     ideal: "Mais estabilidade e conforto",
     benefit: "Segurança e condução firme",
     cta: "Ver triciclos",
-    color: "bg-emerald-500/10",
+    image: categoryTricycle,
   },
   {
     icon: Package,
@@ -38,7 +43,7 @@ const categories = [
     ideal: "Deslocamentos pontuais",
     benefit: "Simples e funcional",
     cta: "Ver autopropelidos",
-    color: "bg-amber-500/10",
+    image: categoryAutopropelido,
   },
   {
     icon: Mountain,
@@ -47,7 +52,7 @@ const categories = [
     ideal: "Diversão e trilha",
     benefit: "Experiência recreativa elétrica",
     cta: "Ver motocross",
-    color: "bg-violet-500/10",
+    image: categoryMotocross,
   },
 ];
 
@@ -82,6 +87,14 @@ const ModelsSection = () => {
           viewport={{ once: true }}
           className="text-center max-w-2xl mx-auto mb-14"
         >
+          <motion.span
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="inline-block text-xs font-bold uppercase tracking-widest text-primary bg-primary/10 px-4 py-1.5 rounded-full mb-4"
+          >
+            Catálogo
+          </motion.span>
           <h2 className="font-display font-black text-3xl md:text-4xl lg:text-5xl mb-4">
             Escolha pelo seu uso.{" "}
             <span className="text-primary">A gente te mostra o caminho.</span>
@@ -91,9 +104,7 @@ const ModelsSection = () => {
           </p>
         </motion.div>
 
-        {/* Mobile: horizontal scroll | Desktop: grid */}
         <div className="relative">
-          {/* Scroll buttons (mobile) */}
           <button
             onClick={() => scroll("left")}
             className={`absolute left-0 top-1/2 -translate-y-1/2 z-10 md:hidden bg-card/90 backdrop-blur-sm rounded-full p-2 border border-border shadow-md transition-opacity ${canScrollLeft ? "opacity-100" : "opacity-0 pointer-events-none"}`}
@@ -118,28 +129,42 @@ const ModelsSection = () => {
             {categories.map((cat, i) => (
               <motion.div
                 key={cat.title}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.08 }}
-                className="min-w-[280px] md:min-w-0 snap-start bg-card rounded-2xl border border-border shadow-sm hover:shadow-lg transition-all p-6 flex flex-col group cursor-pointer"
+                transition={{ delay: i * 0.1, duration: 0.5 }}
+                whileHover={{ y: -8 }}
+                className="min-w-[280px] md:min-w-0 snap-start bg-card rounded-2xl border border-border shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col group cursor-pointer"
               >
-                {/* Image placeholder */}
-                <div className={`w-full aspect-[4/3] ${cat.color} rounded-xl mb-5 flex items-center justify-center`}>
-                  <cat.icon className="w-12 h-12 text-foreground/30" />
+                {/* Real image */}
+                <div className="w-full aspect-[4/3] overflow-hidden relative">
+                  <img
+                    src={cat.image}
+                    alt={cat.title}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-foreground/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="absolute top-3 left-3">
+                    <div className="w-9 h-9 bg-card/90 backdrop-blur-sm rounded-xl flex items-center justify-center">
+                      <cat.icon className="w-4 h-4 text-primary" />
+                    </div>
+                  </div>
                 </div>
-                <h3 className="font-display font-bold text-lg mb-1">{cat.title}</h3>
-                <p className="text-sm text-primary font-semibold mb-3">{cat.subtitle}</p>
-                <p className="text-sm text-muted-foreground mb-1">
-                  <span className="font-medium text-foreground">Ideal para:</span> {cat.ideal}
-                </p>
-                <p className="text-sm text-muted-foreground mb-5">
-                  <span className="font-medium text-foreground">Benefício:</span> {cat.benefit}
-                </p>
-                <div className="mt-auto">
-                  <Button variant="outline" size="sm" className="w-full rounded-xl group-hover:bg-primary group-hover:text-primary-foreground group-hover:border-primary transition-colors">
-                    {cat.cta}
-                  </Button>
+                <div className="p-5 flex flex-col flex-1">
+                  <h3 className="font-display font-bold text-lg mb-1">{cat.title}</h3>
+                  <p className="text-sm text-primary font-semibold mb-3">{cat.subtitle}</p>
+                  <p className="text-sm text-muted-foreground mb-1">
+                    <span className="font-medium text-foreground">Ideal para:</span> {cat.ideal}
+                  </p>
+                  <p className="text-sm text-muted-foreground mb-5">
+                    <span className="font-medium text-foreground">Benefício:</span> {cat.benefit}
+                  </p>
+                  <div className="mt-auto">
+                    <Button variant="outline" size="sm" className="w-full rounded-xl group-hover:bg-primary group-hover:text-primary-foreground group-hover:border-primary transition-colors gap-2">
+                      {cat.cta}
+                      <ArrowRight className="w-3 h-3 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
+                    </Button>
+                  </div>
                 </div>
               </motion.div>
             ))}
