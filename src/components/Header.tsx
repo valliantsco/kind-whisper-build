@@ -46,10 +46,10 @@ const Header = () => {
               : "bg-primary-foreground/5 backdrop-blur-md border border-primary-foreground/10"
           }`}
         >
-      <div className="container mx-auto px-4 flex items-center justify-between h-16 md:h-20">
+      <div className="container mx-auto px-4 flex items-center justify-between h-14 md:h-16">
         {/* Logo */}
         <a href="#inicio" className="flex items-center group">
-          <img src={msLogo} alt="MS Eletric" className="h-14 md:h-16 w-auto" />
+          <img src={msLogo} alt="MS Eletric" className="h-11 md:h-13 w-auto" />
         </a>
 
         {/* Desktop Nav */}
