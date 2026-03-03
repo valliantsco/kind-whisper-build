@@ -14,8 +14,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ['Product Sans', 'Montserrat', 'system-ui', 'sans-serif'],
-        display: ['Product Sans', 'Montserrat', 'system-ui', 'sans-serif'],
+        sans: ['Google Sans', 'system-ui', 'sans-serif'],
+        display: ['Google Sans', 'system-ui', 'sans-serif'],
       },
       colors: {
         border: "hsl(var(--border))",
