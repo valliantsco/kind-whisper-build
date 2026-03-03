@@ -148,15 +148,44 @@ const Header = () => {
     <div className="fixed top-0 left-0 right-0 z-50">
       <div className="container mx-auto px-4 pt-4 pb-2">
         <header
-          className={`transition-all duration-[800ms] ease-in-out rounded-[0.9rem] overflow-hidden ${
+          className={`transition-all duration-[800ms] ease-in-out rounded-[0.9rem] overflow-hidden relative ${
             scrolled
               ? "bg-white/90 backdrop-blur-2xl border border-border/50 shadow-[0_4px_30px_rgba(0,0,0,0.08)]"
               : "bg-primary-foreground/5 backdrop-blur-xl border border-primary-foreground/10"
           }`}
         >
+          {/* Orbiting orange glow — only visible on transparent state */}
+          <motion.div
+            className={`pointer-events-none absolute inset-0 z-0 transition-opacity duration-[800ms] ease-in-out ${
+              scrolled ? "opacity-0" : "opacity-100"
+            }`}
+            aria-hidden="true"
+          >
+            <motion.div
+              className="absolute w-[120px] h-[40px] md:w-[200px] md:h-[50px] rounded-full"
+              style={{
+                background: "radial-gradient(ellipse, hsl(11 81% 57% / 0.25) 0%, hsl(11 90% 65% / 0.1) 50%, transparent 80%)",
+                filter: "blur(20px)",
+                top: "50%",
+                left: "50%",
+                x: "-50%",
+                y: "-50%",
+              }}
+              animate={{
+                x: ["-50%", "120%", "120%", "-220%", "-220%", "-50%"],
+                y: ["-50%", "-80%", "-20%", "-20%", "-80%", "-50%"],
+              }}
+              transition={{
+                duration: 12,
+                repeat: Infinity,
+                ease: "linear",
+              }}
+            />
+          </motion.div>
+
           {/* Light strip at bottom */}
           <div
-            className={`absolute bottom-0 left-0 right-0 h-[1px] transition-opacity duration-[800ms] ease-in-out ${
+            className={`absolute bottom-0 left-0 right-0 h-[1px] transition-opacity duration-[800ms] ease-in-out z-10 ${
               scrolled ? "opacity-100" : "opacity-0"
             }`}
             style={{
