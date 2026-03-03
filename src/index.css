@@ -171,3 +171,9 @@ html {
 .animate-pulse-glow {
   animation: pulse-glow 2s ease-in-out infinite;
 }
+
+/* Vertical writing mode */
+.writing-vertical {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+}
