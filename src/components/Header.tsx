@@ -95,11 +95,11 @@ const Header = () => {
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.25, ease: "easeOut" }}
-            className="lg:hidden overflow-hidden mt-1 rounded-[0.9rem] bg-foreground/95 backdrop-blur-xl border border-primary-foreground/10 shadow-2xl"
+            initial={{ opacity: 0, height: 0, scale: 0.98 }}
+            animate={{ opacity: 1, height: "auto", scale: 1 }}
+            exit={{ opacity: 0, height: 0, scale: 0.98 }}
+            transition={{ duration: 0.4, ease: [0.25, 0.8, 0.25, 1] }}
+            className="lg:hidden overflow-hidden mt-1 rounded-[0.9rem] bg-foreground/95 backdrop-blur-xl border border-primary-foreground/10 shadow-2xl origin-top"
           >
             <div className="px-5 py-5 space-y-1">
               {navItems.map((item, i) => (
@@ -108,7 +108,7 @@ const Header = () => {
                   href={item.href}
                   initial={{ opacity: 0, x: -10 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: i * 0.05 }}
+                  transition={{ delay: 0.15 + i * 0.06, duration: 0.3 }}
                   className="block px-4 py-3 text-sm font-medium text-primary-foreground/80 hover:text-primary hover:bg-primary-foreground/5 rounded-lg transition-all duration-200"
                   onClick={() => setMobileOpen(false)}
                 >
