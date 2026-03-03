@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Menu, X, ChevronDown, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
-import msLogo from "@/assets/ms-eletric-logo.svg";
+import msLogo from "@/assets/ms-eletric-logo.png";
 
 
 const modelCategories = [
