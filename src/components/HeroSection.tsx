@@ -1,25 +1,33 @@
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { ArrowDown, ArrowRight } from "lucide-react";
+import heroBg from "@/assets/hero-bg.jpg";
 
-const YOUTUBE_EMBED = "https://www.youtube.com/embed/ml6ODnWanys?autoplay=1&mute=1&loop=1&playlist=ml6ODnWanys&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&disablekb=1&fs=0&iv_load_policy=3";
+const YOUTUBE_EMBED = `https://www.youtube.com/embed/ml6ODnWanys?autoplay=1&mute=1&loop=1&playlist=ml6ODnWanys&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&disablekb=1&fs=0&iv_load_policy=3&origin=${encodeURIComponent(window.location.origin)}`;
 
 const HeroSection = () => {
-
   return (
     <section id="inicio" className="relative min-h-screen flex items-start overflow-hidden">
-      {/* Video background */}
-      <div className="absolute inset-0">
+      {/* Background image fallback (always visible) */}
+      <div
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: `url(${heroBg})` }}
+      />
+
+      {/* Video background - desktop only (overlays image when loaded) */}
+      <div className="absolute inset-0 hidden md:block">
         <iframe
           src={YOUTUBE_EMBED}
-          className="absolute inset-0 w-[300%] h-[300%] -top-[100%] -left-[100%] pointer-events-none"
+          className="absolute w-[300%] h-[300%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none"
           style={{ border: 0 }}
           allow="autoplay; encrypted-media"
           title="Hero video"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-foreground/95 via-foreground/80 to-foreground/30" />
-        <div className="absolute inset-0 bg-gradient-to-t from-foreground/70 via-transparent to-foreground/20" />
       </div>
+
+      {/* Gradient overlays */}
+      <div className="absolute inset-0 bg-gradient-to-r from-foreground/95 via-foreground/80 to-foreground/30" />
+      <div className="absolute inset-0 bg-gradient-to-t from-foreground/70 via-transparent to-foreground/20" />
 
       {/* Animated ambient shapes */}
       <motion.div
@@ -36,7 +44,6 @@ const HeroSection = () => {
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="max-w-4xl"
         >
-
           <h1 className="font-display font-black text-5xl md:text-7xl lg:text-8xl text-primary-foreground leading-[0.95] mb-8 uppercase tracking-tight">
             <motion.span initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="block">
               Líder em
