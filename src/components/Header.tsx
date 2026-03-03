@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import msLogo from "@/assets/ms-eletric-logo.png";
 import msLogoDark from "@/assets/ms-eletric-logo-dark.png";
@@ -105,6 +105,22 @@ const Header = () => {
     document.body.style.overflow = mobileOpen ? "hidden" : "";
     return () => { document.body.style.overflow = ""; };
   }, [mobileOpen]);
+
+  // Swipe down to close drawer
+  const touchStartY = useRef<number | null>(null);
+
+  const onTouchStart = useCallback((e: React.TouchEvent) => {
+    touchStartY.current = e.touches[0].clientY;
+  }, []);
+
+  const onTouchEnd = useCallback((e: React.TouchEvent) => {
+    if (touchStartY.current === null) return;
+    const deltaY = e.changedTouches[0].clientY - touchStartY.current;
+    if (deltaY > 60) {
+      setMobileOpen(false);
+    }
+    touchStartY.current = null;
+  }, []);
 
   return (
     <div className="fixed top-0 left-0 right-0 z-50">
@@ -221,12 +237,14 @@ const Header = () => {
                 initial={{ opacity: 0, height: 0 }}
                 animate={{ opacity: 1, height: "calc(100dvh - 5rem)" }}
                 exit={{ opacity: 0, height: 0 }}
-                transition={{ duration: 0.5, ease: [0.25, 0.8, 0.25, 1] }}
+                transition={{ duration: 0.5, ease: [0.25, 0.8, 0.25, 1] as const }}
                 className={`lg:hidden overflow-hidden origin-top ${
                   scrolled
                     ? "bg-white/95 backdrop-blur-2xl"
                     : "bg-foreground/90 backdrop-blur-2xl"
                 }`}
+                onTouchStart={onTouchStart}
+                onTouchEnd={onTouchEnd}
               >
                 <motion.div
                   className="flex flex-col justify-between h-full px-6 py-8"
