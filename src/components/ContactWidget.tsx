@@ -442,71 +442,123 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
 
                 {/* Optional details with mic */}
                 <div>
-                  <div className="flex items-center justify-between mb-1.5">
-                    <label className="flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-[0.1em] text-white/50">
-                      <MessageSquare className="w-3 h-3" />
-                      Detalhes
-                      <span className="font-normal normal-case tracking-normal text-white/30">(opcional)</span>
-                    </label>
+                  <label className="flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-[0.1em] text-white/50 mb-1.5">
+                    <MessageSquare className="w-3 h-3" />
+                    Detalhes
+                    <span className="font-normal normal-case tracking-normal text-white/30">(opcional)</span>
+                  </label>
+
+                  <div className="relative">
+                    <textarea
+                      value={details}
+                      onChange={(e) => setDetails(e.target.value)}
+                      placeholder={isTranscribing ? "Transcrevendo seu áudio..." : "Digite ou grave um áudio com seus detalhes..."}
+                      rows={3}
+                      maxLength={500}
+                      disabled={isTranscribing}
+                      className="w-full px-3 py-2.5 pr-12 rounded-lg text-sm text-white placeholder:text-white/25 focus:outline-none transition-all resize-none disabled:opacity-50"
+                      style={{
+                        background: "hsl(0 0% 100% / 0.06)",
+                        border: "1px solid hsl(0 0% 100% / 0.08)",
+                      }}
+                      onFocus={(e) => {
+                        e.currentTarget.style.borderColor = "hsl(11 81% 57% / 0.5)";
+                        e.currentTarget.style.boxShadow = "0 0 0 2px hsl(11 81% 57% / 0.15)";
+                      }}
+                      onBlur={(e) => {
+                        e.currentTarget.style.borderColor = "hsl(0 0% 100% / 0.08)";
+                        e.currentTarget.style.boxShadow = "none";
+                      }}
+                    />
+
+                    {/* Mic button inside textarea */}
                     <motion.button
                       type="button"
                       onClick={isRecording ? stopRecording : startRecording}
                       disabled={isTranscribing}
-                      className="flex items-center gap-1 px-2 py-1 rounded-md text-[10px] font-medium transition-colors disabled:opacity-50"
+                      className="absolute right-2 bottom-2 flex items-center justify-center rounded-full disabled:opacity-40 cursor-pointer"
                       style={{
-                        background: isRecording ? "hsl(0 84% 60% / 0.2)" : "hsl(0 0% 100% / 0.08)",
-                        color: isRecording ? "hsl(0 84% 70%)" : "hsl(0 0% 100% / 0.5)",
-                        border: `1px solid ${isRecording ? "hsl(0 84% 60% / 0.3)" : "hsl(0 0% 100% / 0.1)"}`,
+                        width: 36,
+                        height: 36,
+                        background: isRecording
+                          ? "linear-gradient(135deg, hsl(0 84% 55%), hsl(0 84% 45%))"
+                          : isTranscribing
+                          ? "hsl(0 0% 100% / 0.08)"
+                          : "linear-gradient(135deg, hsl(11 81% 57%), hsl(11 90% 50%))",
+                        boxShadow: isRecording
+                          ? "0 0 16px hsl(0 84% 55% / 0.5), 0 0 32px hsl(0 84% 55% / 0.2)"
+                          : isTranscribing
+                          ? "none"
+                          : "0 0 12px hsl(11 81% 57% / 0.3), 0 0 24px hsl(11 81% 57% / 0.1)",
                       }}
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
+                      whileHover={isTranscribing ? {} : { scale: 1.12, boxShadow: isRecording
+                        ? "0 0 24px hsl(0 84% 55% / 0.6), 0 0 48px hsl(0 84% 55% / 0.25)"
+                        : "0 0 20px hsl(11 81% 57% / 0.5), 0 0 40px hsl(11 81% 57% / 0.15)"
+                      }}
+                      whileTap={isTranscribing ? {} : { scale: 0.9 }}
+                      animate={isRecording ? {
+                        boxShadow: [
+                          "0 0 16px hsl(0 84% 55% / 0.5), 0 0 32px hsl(0 84% 55% / 0.2)",
+                          "0 0 24px hsl(0 84% 55% / 0.7), 0 0 48px hsl(0 84% 55% / 0.3)",
+                          "0 0 16px hsl(0 84% 55% / 0.5), 0 0 32px hsl(0 84% 55% / 0.2)",
+                        ],
+                      } : {}}
+                      transition={isRecording ? { duration: 1.5, repeat: Infinity, ease: "easeInOut" } : {}}
                     >
                       {isTranscribing ? (
-                        <Loader2 className="w-3 h-3 animate-spin" />
+                        <Loader2 className="w-4 h-4 text-white/70 animate-spin" />
                       ) : isRecording ? (
-                        <Square className="w-3 h-3" />
+                        <motion.div
+                          className="w-3.5 h-3.5 rounded-sm"
+                          style={{ background: "white" }}
+                          animate={{ scale: [1, 0.85, 1] }}
+                          transition={{ duration: 0.8, repeat: Infinity }}
+                        />
                       ) : (
-                        <Mic className="w-3 h-3" />
+                        <Mic className="w-4 h-4 text-white" />
                       )}
-                      {isTranscribing ? "Transcrevendo..." : isRecording ? "Parar" : "Áudio"}
                     </motion.button>
                   </div>
-                  {isRecording && (
-                    <motion.div
-                      className="flex items-center gap-2 mb-2 px-3 py-1.5 rounded-lg text-[10px] text-white/50"
-                      style={{ background: "hsl(0 84% 60% / 0.1)", border: "1px solid hsl(0 84% 60% / 0.2)" }}
-                      initial={{ opacity: 0, height: 0 }}
-                      animate={{ opacity: 1, height: "auto" }}
-                      exit={{ opacity: 0, height: 0 }}
-                    >
-                      <span className="relative flex h-2 w-2">
-                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75" style={{ background: "hsl(0 84% 60%)" }} />
-                        <span className="relative inline-flex rounded-full h-2 w-2" style={{ background: "hsl(0 84% 60%)" }} />
-                      </span>
-                      Gravando... clique em "Parar" quando terminar
-                    </motion.div>
-                  )}
-                  <textarea
-                    value={details}
-                    onChange={(e) => setDetails(e.target.value)}
-                    placeholder={isTranscribing ? "Transcrevendo seu áudio..." : "Ex: tenho interesse em uma moto para delivery"}
-                    rows={2}
-                    maxLength={500}
-                    disabled={isTranscribing}
-                    className="w-full px-3 py-2.5 rounded-lg text-sm text-white placeholder:text-white/25 focus:outline-none transition-all resize-none disabled:opacity-50"
-                    style={{
-                      background: "hsl(0 0% 100% / 0.06)",
-                      border: "1px solid hsl(0 0% 100% / 0.08)",
-                    }}
-                    onFocus={(e) => {
-                      e.currentTarget.style.borderColor = "hsl(11 81% 57% / 0.5)";
-                      e.currentTarget.style.boxShadow = "0 0 0 2px hsl(11 81% 57% / 0.15)";
-                    }}
-                    onBlur={(e) => {
-                      e.currentTarget.style.borderColor = "hsl(0 0% 100% / 0.08)";
-                      e.currentTarget.style.boxShadow = "none";
-                    }}
-                  />
+
+                  {/* Recording indicator */}
+                  <AnimatePresence>
+                    {isRecording && (
+                      <motion.div
+                        className="flex items-center gap-2 mt-2 px-3 py-2 rounded-lg"
+                        style={{
+                          background: "hsl(0 84% 60% / 0.08)",
+                          border: "1px solid hsl(0 84% 60% / 0.15)",
+                        }}
+                        initial={{ opacity: 0, y: -8 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -8 }}
+                        transition={{ duration: 0.2 }}
+                      >
+                        <span className="relative flex h-2 w-2 shrink-0">
+                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75" style={{ background: "hsl(0 84% 60%)" }} />
+                          <span className="relative inline-flex rounded-full h-2 w-2" style={{ background: "hsl(0 84% 60%)" }} />
+                        </span>
+                        <span className="text-[10px] text-white/50">
+                          Gravando... toque no <span className="inline-flex align-middle mx-0.5 w-3.5 h-3.5 rounded-sm items-center justify-center" style={{ background: "hsl(0 84% 55% / 0.3)" }}><Square className="w-2 h-2 text-white/70" /></span> para parar
+                        </span>
+                      </motion.div>
+                    )}
+                    {isTranscribing && (
+                      <motion.div
+                        className="flex items-center gap-2 mt-2 px-3 py-2 rounded-lg"
+                        style={{
+                          background: "hsl(11 81% 57% / 0.08)",
+                          border: "1px solid hsl(11 81% 57% / 0.15)",
+                        }}
+                        initial={{ opacity: 0, y: -8 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -8 }}
+                      >
+                        <Loader2 className="w-3 h-3 text-white/40 animate-spin shrink-0" />
+                        <span className="text-[10px] text-white/50">Transcrevendo seu áudio com IA...</span>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </div>
 
                 {/* Submit */}
