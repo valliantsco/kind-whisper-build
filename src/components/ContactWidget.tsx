@@ -296,7 +296,7 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
               />
 
               {/* Header */}
-              <div className="flex items-start justify-between px-5 pb-3 -mt-1">
+              <div className="flex items-start justify-between px-5 pt-4 pb-3">
                 <div>
                   <h3 className="text-base font-bold text-white tracking-tight">
                     Fale com um especialista da MS Eletric
