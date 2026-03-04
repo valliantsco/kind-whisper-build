@@ -1,6 +1,6 @@
 import { Instagram, Facebook, Youtube } from "lucide-react";
 import { motion } from "framer-motion";
-import msLogo from "@/assets/ms-eletric-logo.png";
+import msLogo from "@/assets/ms-eletric-logo-white.png";
 
 const modelLinks = [
   "Motos & Scooters", "Bike Elétrica", "Triciclos", "Autopropelidos",
