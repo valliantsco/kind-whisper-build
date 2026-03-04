@@ -335,7 +335,7 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                     {businessHoursInfo.map((item) => (
                       <span key={item.day} className="text-[10px] text-white/40">
                         <span className="font-medium text-white/60">{item.day}:</span>{" "}
-                        {item.hours}
+                        <span style={{ color: "hsl(11 81% 57% / 0.7)" }}>{item.hours}</span>
                       </span>
                     ))}
                   </div>
