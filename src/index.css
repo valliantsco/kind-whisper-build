@@ -110,26 +110,13 @@ html {
   border-radius: 3px;
 }
 
-/* Contact widget scrollbar — hidden by default, visible on scroll via JS class */
+/* Contact widget scrollbar — completely hidden, scroll still works */
 .cw-scroll {
-  scrollbar-width: none; /* Firefox: hide by default */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 .cw-scroll::-webkit-scrollbar {
-  width: 3px;
-}
-.cw-scroll::-webkit-scrollbar-track {
-  background: transparent;
-}
-.cw-scroll::-webkit-scrollbar-thumb {
-  background: transparent;
-  border-radius: 3px;
-}
-.cw-scroll-active {
-  scrollbar-width: thin; /* Firefox: show */
-  scrollbar-color: hsl(0 0% 100% / 0.15) transparent;
-}
-.cw-scroll-active::-webkit-scrollbar-thumb {
-  background: hsl(11 81% 57% / 0.25);
+  display: none;
 }
 
 /* Glass morphism utility */
