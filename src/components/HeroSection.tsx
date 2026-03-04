@@ -141,7 +141,7 @@ const HeroSection = () => {
               }}
             >
               <Zap className="w-3 h-3 text-primary" />
-              Mobilidade Elétrica
+              Energia que Move
             </span>
           </motion.div>
 
