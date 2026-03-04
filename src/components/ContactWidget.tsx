@@ -291,15 +291,13 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
 
             {/* Scrollable content with fade indicators */}
             <div
-              className={`overflow-y-auto flex-1 relative cw-scroll ${isScrolling ? "cw-scroll-active" : ""}`}
-              dir="rtl"
+              className="overflow-y-auto flex-1 relative cw-scroll"
               onScroll={() => {
                 setIsScrolling(true);
                 if (scrollTimeoutRef.current) clearTimeout(scrollTimeoutRef.current);
                 scrollTimeoutRef.current = setTimeout(() => setIsScrolling(false), 1200);
               }}
             >
-              <div dir="ltr">
               {/* Top scroll fade */}
               <div
                 className="sticky top-0 left-0 right-0 h-3 pointer-events-none z-10"
@@ -647,7 +645,6 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                 className="sticky bottom-0 left-0 right-0 h-3 pointer-events-none"
                 style={{ background: "linear-gradient(to top, hsl(0 0% 14% / 0.92), transparent)" }}
               />
-              </div>
             </div>
 
             {/* Bottom light strip */}
