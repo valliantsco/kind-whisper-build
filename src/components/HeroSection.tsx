@@ -58,7 +58,9 @@ const buildEmbedUrl = (videoId: string, start?: number) =>
 const HeroSection = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+  const [progress, setProgress] = useState(0);
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const progressRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   const nextSlide = useCallback(() => {
     setCurrentSlide((prev) => (prev + 1) % SLIDES.length);
@@ -67,14 +69,28 @@ const HeroSection = () => {
   useEffect(() => {
     if (isPaused) {
       if (timerRef.current) clearInterval(timerRef.current);
+      if (progressRef.current) clearInterval(progressRef.current);
       timerRef.current = null;
+      progressRef.current = null;
       return;
     }
-    timerRef.current = setInterval(nextSlide, SLIDE_DURATION);
+    setProgress(0);
+    const PROGRESS_INTERVAL = 50;
+    progressRef.current = setInterval(() => {
+      setProgress((prev) => {
+        const next = prev + (PROGRESS_INTERVAL / SLIDE_DURATION) * 100;
+        return next >= 100 ? 100 : next;
+      });
+    }, PROGRESS_INTERVAL);
+    timerRef.current = setInterval(() => {
+      nextSlide();
+      setProgress(0);
+    }, SLIDE_DURATION);
     return () => {
       if (timerRef.current) clearInterval(timerRef.current);
+      if (progressRef.current) clearInterval(progressRef.current);
     };
-  }, [nextSlide, isPaused]);
+  }, [nextSlide, isPaused, currentSlide]);
 
   return (
     <section id="inicio" className="relative min-h-[75vh] flex items-center overflow-hidden">
@@ -281,24 +297,34 @@ const HeroSection = () => {
       {/* Slide indicators + pause/play */}
       <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 flex items-center gap-3">
         {SLIDES.map((_, i) => (
-          <motion.button
+          <button
             key={i}
-            onClick={() => setCurrentSlide(i)}
-            className="relative h-1.5 rounded-full transition-all duration-500"
+            onClick={() => { setCurrentSlide(i); setProgress(0); }}
+            className="relative h-1.5 rounded-full overflow-hidden transition-all duration-500"
             style={{
-              width: i === currentSlide ? 32 : 12,
-              background: i === currentSlide
-                ? "linear-gradient(90deg, hsl(11 81% 57%), hsl(11 90% 65%))"
-                : "hsl(0 0% 100% / 0.2)",
-              boxShadow: i === currentSlide ? "0 0 12px hsl(11 81% 57% / 0.5)" : "none",
-            }}
-            whileHover={{
-              background: i === currentSlide
-                ? "linear-gradient(90deg, hsl(11 81% 57%), hsl(11 90% 65%))"
-                : "hsl(0 0% 100% / 0.4)",
+              width: i === currentSlide ? 40 : 12,
+              background: "hsl(0 0% 100% / 0.15)",
             }}
             aria-label={`Slide ${i + 1}`}
-          />
+          >
+            {i === currentSlide && (
+              <span
+                className="absolute inset-y-0 left-0 rounded-full"
+                style={{
+                  width: `${progress}%`,
+                  background: "linear-gradient(90deg, hsl(11 81% 57%), hsl(11 90% 65%))",
+                  boxShadow: "0 0 8px hsl(11 81% 57% / 0.5)",
+                  transition: "width 50ms linear",
+                }}
+              />
+            )}
+            {i !== currentSlide && (
+              <span
+                className="absolute inset-0 rounded-full"
+                style={{ background: "hsl(0 0% 100% / 0.25)" }}
+              />
+            )}
+          </button>
         ))}
         <motion.button
           onClick={() => setIsPaused((p) => !p)}
