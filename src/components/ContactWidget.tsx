@@ -197,7 +197,7 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
               {/* Status chip */}
               <div className="px-5 pb-4">
                 <div
-                  className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-[10px] font-semibold uppercase tracking-[0.1em] border"
+                  className="flex items-center gap-2 px-3 py-1.5 rounded-full text-[10px] font-semibold uppercase tracking-[0.1em] border w-full"
                   style={{
                     background: isOnline ? "hsl(142 76% 36% / 0.12)" : "hsl(0 84% 60% / 0.12)",
                     borderColor: isOnline ? "hsl(142 76% 36% / 0.25)" : "hsl(0 84% 60% / 0.25)",
