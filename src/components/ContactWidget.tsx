@@ -35,10 +35,22 @@ function detectSpam(field: "name" | "city" | "details", value: string): string |
 
   // Field-specific checks
   if (field === "name") {
-    // Duplicate words like "teste teste"
+    // Must have at least 2 words (first + last name)
+    if (!trimmed.includes(" ")) {
+      return "Inclua seu sobrenome também";
+    }
+    // Each word must have at least 2 chars
     const words = trimmed.split(/\s+/);
+    if (words.some((w) => w.length < 2)) {
+      return "Nome inválido";
+    }
+    // Duplicate words like "teste teste"
     if (words.length >= 2 && new Set(words.map((w) => w.toLowerCase())).size === 1) {
       return "Informe seu nome verdadeiro";
+    }
+    // Only letters/accents/spaces
+    if (!/^[A-Za-zÀ-ÿ\s'-]+$/.test(trimmed)) {
+      return "Use apenas letras no nome";
     }
   }
 
