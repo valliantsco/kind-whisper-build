@@ -80,29 +80,23 @@ const formatPhone = (digits: string): string => {
   return `(${digits}`;
 };
 
-const getDigitIndexAtCursor = (formatted: string, cursorPos: number): number => {
-  let digitIndex = 0;
-  for (let i = 0; i < cursorPos && i < formatted.length; i++) {
-    if (/\d/.test(formatted[i])) digitIndex++;
-  }
-  return digitIndex;
-};
 
-const getCursorPosForDigitIndex = (formatted: string, digitIndex: number): number => {
-  let count = 0;
-  for (let i = 0; i < formatted.length; i++) {
-    if (count === digitIndex) return i;
-    if (/\d/.test(formatted[i])) count++;
-  }
-  return formatted.length;
+const STORAGE_KEY = "ms-contact-draft";
+
+const loadDraft = () => {
+  try {
+    const saved = sessionStorage.getItem(STORAGE_KEY);
+    return saved ? JSON.parse(saved) : null;
+  } catch { return null; }
 };
 
 const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
   const isOnline = useBusinessHours();
-  const [name, setName] = useState("");
-  const [phone, setPhone] = useState("");
-  const [selectedTopic, setSelectedTopic] = useState("");
-  const [details, setDetails] = useState("");
+  const draft = useRef(loadDraft());
+  const [name, setName] = useState(draft.current?.name || "");
+  const [phone, setPhone] = useState(draft.current?.phone || "");
+  const [selectedTopic, setSelectedTopic] = useState(draft.current?.topic || "");
+  const [details, setDetails] = useState(draft.current?.details || "");
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isLoading, setIsLoading] = useState(false);
   const [isRecording, setIsRecording] = useState(false);
@@ -110,6 +104,14 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
   const [isDetailsFocused, setIsDetailsFocused] = useState(false);
   const mediaRecorderRef = useRef<MediaRecorder | null>(null);
   const chunksRef = useRef<Blob[]>([]);
+
+  // Persist draft to sessionStorage
+  useEffect(() => {
+    const data = { name, phone, topic: selectedTopic, details };
+    if (name || phone || selectedTopic || details) {
+      sessionStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+    }
+  }, [name, phone, selectedTopic, details]);
 
   useEffect(() => {
     if (isOpen) {
@@ -203,13 +205,12 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
       if (error || !data?.message) throw new Error("AI error");
       message = data.message;
     } catch {
-      // Fallback message if AI fails
       message = [
-        `⚠️ *Por favor, para que seu atendimento prossiga, não apague esta mensagem antes de enviar!*`,
+        `*Por favor, para que seu atendimento prossiga, não apague esta mensagem antes de enviar!*`,
         ``,
-        `➡️ *Nome:* ${name.trim()}`,
+        `*Nome:* ${name.trim()}`,
         ``,
-        `➡️ *Assunto:* ${selectedTopic}`,
+        `*Assunto:* ${selectedTopic}`,
         ``,
         details.trim(),
       ].join("\n");
@@ -226,6 +227,7 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
     setSelectedTopic("");
     setDetails("");
     setErrors({});
+    sessionStorage.removeItem(STORAGE_KEY);
     setIsLoading(false);
     onClose();
   }, [name, phone, selectedTopic, details, validate, onClose]);
@@ -366,6 +368,7 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                         .toLowerCase()
                         .replace(/(?:^|\s)\S/g, (char) => char.toUpperCase());
                       setName(formatted);
+                      if (errors.name) setErrors((prev) => { const { name, ...rest } = prev; return rest; });
                     }}
                     placeholder="Seu nome e sobrenome"
                     maxLength={100}
@@ -400,6 +403,7 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                     onChange={(e) => {
                       const raw = e.target.value.replace(/\D/g, "").slice(0, 11);
                       setPhone(formatPhone(raw));
+                      if (errors.phone) setErrors((prev) => { const { phone, ...rest } = prev; return rest; });
                     }}
                     placeholder="(00) 00000-0000"
                     maxLength={20}
@@ -426,7 +430,7 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                     <HelpCircle className="w-3 h-3" />
                     Como podemos te ajudar?
                   </label>
-                  <Select value={selectedTopic} onValueChange={setSelectedTopic}>
+                  <Select value={selectedTopic} onValueChange={(v) => { setSelectedTopic(v); if (errors.topic) setErrors((prev) => { const { topic, ...rest } = prev; return rest; }); }}>
                     <SelectTrigger
                       className={`w-full rounded-lg text-sm border-0 focus:ring-0 ${
                         !selectedTopic ? "text-white/25" : "text-white"
@@ -475,7 +479,7 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                   <div className="relative">
                     <textarea
                       value={details}
-                      onChange={(e) => setDetails(e.target.value)}
+                      onChange={(e) => { setDetails(e.target.value); if (errors.details) setErrors((prev) => { const { details, ...rest } = prev; return rest; }); }}
                       placeholder={isTranscribing ? "Transcrevendo seu áudio..." : "Digite ou grave um áudio com seus detalhes..."}
                       rows={3}
                       maxLength={500}
