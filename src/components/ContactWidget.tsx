@@ -109,9 +109,10 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
     else if (!/^[\d\s()+-]{8,20}$/.test(phone.trim()))
       errs.phone = "Número inválido";
     if (!selectedTopic) errs.topic = "Selecione um tópico";
+    if (!details.trim()) errs.details = "Informe os detalhes da sua solicitação";
     setErrors(errs);
     return Object.keys(errs).length === 0;
-  }, [name, phone, selectedTopic]);
+  }, [name, phone, selectedTopic, details]);
 
   const startRecording = useCallback(async () => {
     try {
@@ -446,7 +447,6 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                   <label className="flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-[0.1em] text-white/50 mb-1.5">
                     <MessageSquare className="w-3 h-3" />
                     Detalhes
-                    <span className="font-normal normal-case tracking-normal text-white/30">(opcional)</span>
                   </label>
 
                   <div className="relative">
@@ -460,7 +460,7 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                       className="w-full px-3 py-2.5 pr-12 rounded-lg text-sm text-white placeholder:text-white/25 focus:outline-none transition-all resize-none disabled:opacity-50"
                       style={{
                         background: "hsl(0 0% 100% / 0.06)",
-                        border: "1px solid hsl(0 0% 100% / 0.08)",
+                        border: `1px solid ${errors.details ? "hsl(0 84% 60% / 0.5)" : "hsl(0 0% 100% / 0.08)"}`,
                       }}
                       onFocus={(e) => {
                         setIsDetailsFocused(true);
@@ -579,6 +579,7 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                       </motion.div>
                     )}
                   </AnimatePresence>
+                  {errors.details && <p className="text-[10px] mt-1" style={{ color: "hsl(0 84% 65%)" }}>{errors.details}</p>}
                 </div>
 
                 {/* Submit */}
