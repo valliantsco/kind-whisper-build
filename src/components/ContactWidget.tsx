@@ -1,6 +1,7 @@
 import { useState, useCallback, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Clock, User, Phone, HelpCircle, MessageSquare } from "lucide-react";
+import { X, Clock, User, Phone, HelpCircle, MessageSquare, Loader2 } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
 import {
   Select,
   SelectContent,
@@ -79,6 +80,7 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
   const [selectedTopic, setSelectedTopic] = useState("");
   const [details, setDetails] = useState("");
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     if (isOpen) {
@@ -105,18 +107,31 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
     return Object.keys(errs).length === 0;
   }, [name, phone, selectedTopic]);
 
-  const handleSubmit = useCallback(() => {
+  const handleSubmit = useCallback(async () => {
     if (!validate()) return;
+    setIsLoading(true);
 
-    const parts = [
-      `⚠️ *Por favor, não apague esta mensagem antes de enviar!*`,
-      ``,
-      `Oi, tudo bem? 😊`,
-      `Me chamo *${name.trim()}* e gostaria de falar sobre *${selectedTopic.toLowerCase()}*.`,
-    ];
-    if (details.trim()) parts.push(``, `${details.trim()}`);
-    parts.push(``, `Meu contato: ${phone.trim()}`, ``, `Fico no aguardo, obrigado! 🙏`);
-    const message = parts.join("\n");
+    let message: string;
+
+    try {
+      const { data, error } = await supabase.functions.invoke("generate-whatsapp-message", {
+        body: { name: name.trim(), topic: selectedTopic, details: details.trim() || undefined },
+      });
+
+      if (error || !data?.message) throw new Error("AI error");
+      message = data.message;
+    } catch {
+      // Fallback message if AI fails
+      const parts = [
+        `⚠️ *Por favor, não apague esta mensagem antes de enviar!*`,
+        ``,
+        `Oi, tudo bem? 😊`,
+        `Me chamo *${name.trim()}* e gostaria de falar sobre *${selectedTopic.toLowerCase()}*.`,
+      ];
+      if (details.trim()) parts.push(``, `${details.trim()}`);
+      parts.push(``, `Fico no aguardo, obrigado! 🙏`);
+      message = parts.join("\n");
+    }
 
     window.open(
       `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`,
@@ -129,6 +144,7 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
     setSelectedTopic("");
     setDetails("");
     setErrors({});
+    setIsLoading(false);
     onClose();
   }, [name, phone, selectedTopic, details, validate, onClose]);
 
@@ -395,19 +411,24 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                 {/* Submit */}
                 <motion.button
                   onClick={handleSubmit}
-                  className="w-full flex items-center justify-center gap-2.5 py-3.5 rounded-lg font-semibold text-sm tracking-wide text-white cursor-pointer relative overflow-hidden"
+                  disabled={isLoading}
+                  className="w-full flex items-center justify-center gap-2.5 py-3.5 rounded-lg font-semibold text-sm tracking-wide text-white cursor-pointer relative overflow-hidden disabled:opacity-70 disabled:cursor-not-allowed"
                   style={{
                     background: "linear-gradient(135deg, #25D366, #128C7E)",
                     boxShadow: "0 4px 20px rgba(37,211,102,0.25)",
                   }}
-                  whileHover={{
+                  whileHover={isLoading ? {} : {
                     scale: 1.02,
                     boxShadow: "0 0 25px rgba(37,211,102,0.5), 0 0 50px rgba(37,211,102,0.15)",
                   }}
-                  whileTap={{ scale: 0.98 }}
+                  whileTap={isLoading ? {} : { scale: 0.98 }}
                 >
-                  <WhatsAppIcon className="w-5 h-5" />
-                  Falar com especialista no WhatsApp
+                  {isLoading ? (
+                    <Loader2 className="w-5 h-5 animate-spin" />
+                  ) : (
+                    <WhatsAppIcon className="w-5 h-5" />
+                  )}
+                  {isLoading ? "Preparando mensagem..." : "Falar com especialista no WhatsApp"}
                   
                 </motion.button>
 
