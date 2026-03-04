@@ -351,7 +351,7 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                     Fale com um especialista da MS Eletric
                   </h3>
                   <p className="text-xs text-white/50 mt-1 leading-relaxed">
-                    Preencha os campos abaixo e te atendemos pelo WhatsApp.
+                    Preencha os campos abaixo para melhor lhe atender pelo WhatsApp.
                   </p>
                 </div>
                 <motion.button
@@ -738,7 +738,7 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                   ) : (
                     <WhatsAppIcon className="w-5 h-5" />
                   )}
-                  {isLoading ? "Gerando sua mensagem..." : "Continuar no WhatsApp"}
+                  {isLoading ? "Redirecionando..." : "Continuar no WhatsApp"}
                   
                 </motion.button>
 
