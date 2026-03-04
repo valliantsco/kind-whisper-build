@@ -76,7 +76,7 @@ const HeroSection = () => {
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="max-w-4xl"
         >
-          <h1 className="font-display font-black text-5xl md:text-7xl lg:text-8xl text-primary-foreground leading-[0.95] mb-8 uppercase tracking-tight">
+          <h1 className="font-display font-black text-3xl sm:text-4xl md:text-6xl lg:text-7xl text-primary-foreground leading-[0.95] mb-4 md:mb-8 uppercase tracking-tight">
             <motion.span initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="block">
               Líder em
             </motion.span>
@@ -88,18 +88,18 @@ const HeroSection = () => {
             </motion.span>
           </h1>
 
-          <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.7 }} className="text-lg md:text-xl text-primary-foreground/60 mb-10 max-w-2xl leading-relaxed">
+          <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.7 }} className="text-sm sm:text-base md:text-lg lg:text-xl text-primary-foreground/60 mb-6 md:mb-10 max-w-2xl leading-relaxed">
             A MS Eletric reúne soluções 100% elétricas para quem busca praticidade, economia e uma experiência completa — do atendimento ao pós-venda.
           </motion.p>
 
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.9 }} className="flex flex-wrap items-center gap-4">
-            <Button size="lg" className="text-base px-10 py-7 font-bold rounded-2xl glow-primary hover:scale-105 transition-transform gap-2" asChild>
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.9 }} className="flex flex-wrap items-center gap-3 md:gap-4">
+            <Button size="lg" className="text-sm md:text-base px-6 md:px-10 py-5 md:py-7 font-bold rounded-2xl glow-primary hover:scale-105 transition-transform gap-2" asChild>
               <a href="#modelos">
                 Conheça nossos modelos
-                <ArrowRight className="w-5 h-5" />
+                <ArrowRight className="w-4 h-4 md:w-5 md:h-5" />
               </a>
             </Button>
-            <Button variant="outline" size="lg" className="text-base px-8 py-7 font-bold rounded-2xl border-primary-foreground/20 text-primary-foreground hover:bg-primary-foreground/10 hover:border-primary-foreground/40" asChild>
+            <Button variant="outline" size="lg" className="text-sm md:text-base px-5 md:px-8 py-5 md:py-7 font-bold rounded-2xl border-primary-foreground/20 text-primary-foreground hover:bg-primary-foreground/10 hover:border-primary-foreground/40" asChild>
               <a href="#sobre">Sobre a marca</a>
             </Button>
           </motion.div>
