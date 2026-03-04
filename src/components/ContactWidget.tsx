@@ -107,7 +107,7 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
     <AnimatePresence>
       {isOpen && (
         <motion.div
-          className="fixed inset-0 z-[100] flex items-end sm:items-center justify-center px-0 sm:px-4"
+          className="fixed inset-0 z-[100] flex items-center justify-center px-4"
           variants={overlayVariants}
           initial="hidden"
           animate="visible"
@@ -122,7 +122,7 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
           {/* Panel — glassmorphism dark style matching header */}
           <motion.div
             variants={panelVariants}
-            className="relative w-full sm:max-w-md rounded-t-[0.9rem] sm:rounded-[0.9rem] overflow-hidden max-h-[92vh] flex flex-col"
+            className="relative w-full max-w-md rounded-[0.9rem] overflow-hidden max-h-[90vh] flex flex-col"
             style={{
               background: "hsl(0 0% 14% / 0.92)",
               backdropFilter: "blur(24px)",
