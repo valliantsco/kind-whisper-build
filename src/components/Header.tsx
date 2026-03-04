@@ -493,6 +493,21 @@ const Header = ({ contactOpen, setContactOpen }: HeaderProps) => {
           </AnimatePresence>
         </header>
       </div>
+
+      {/* Backdrop overlay to close mobile menu on outside click */}
+      <AnimatePresence>
+        {mobileOpen && (
+          <motion.div
+            className="fixed inset-0 z-[-1] lg:hidden"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            onClick={() => setMobileOpen(false)}
+            aria-hidden="true"
+          />
+        )}
+      </AnimatePresence>
       <ContactWidget isOpen={contactOpen} onClose={() => setContactOpen(false)} />
     </div>
   );
