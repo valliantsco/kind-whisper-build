@@ -64,15 +64,30 @@ function isGibberish(text: string): boolean {
   // 5. Word doesn't end with valid Portuguese ending
   if (lower.length >= 5 && !VALID_ENDS.test(lower)) return true;
 
-  // 6. Bigram frequency check — real Portuguese words have common bigrams
+  // 6. Bigram frequency check
   if (lower.length >= 4) {
     let commonCount = 0;
     const totalBigrams = lower.length - 1;
     for (let i = 0; i < totalBigrams; i++) {
       if (COMMON_BIGRAMS.has(lower.slice(i, i + 2))) commonCount++;
     }
-    // Real words typically have >30% common bigrams; gibberish has very few
-    if (totalBigrams >= 3 && commonCount / totalBigrams < 0.2) return true;
+    if (totalBigrams >= 3 && commonCount / totalBigrams < 0.35) return true;
+  }
+
+  // 7. Check for scrambled/anagram patterns — high unique bigram ratio with few repeats
+  if (lower.length >= 5) {
+    const bigrams = new Set<string>();
+    for (let i = 0; i < lower.length - 1; i++) bigrams.add(lower.slice(i, i + 2));
+    // Scrambled text like "adasdsa" has almost all unique bigrams relative to length
+    // Real words have more repetition in structure
+    const uniqueRatio = bigrams.size / (lower.length - 1);
+    // Also check if reversing pairs appear (ad/da, as/sa) — sign of keyboard mashing
+    let reversePairs = 0;
+    for (const bg of bigrams) {
+      const rev = bg[1] + bg[0];
+      if (bg !== rev && bigrams.has(rev)) reversePairs++;
+    }
+    if (uniqueRatio > 0.85 && reversePairs >= 2 && lower.length >= 5) return true;
   }
 
   return false;
@@ -152,11 +167,11 @@ function detectSpam(field: "name" | "city" | "details", value: string): string |
     if (Object.values(wordCount).some((c) => c >= 3)) {
       return "Mensagem parece ser spam";
     }
-    // Check if most words are gibberish
+    // Check if ANY word (4+ chars) is gibberish — even a single one
     const meaningfulWords = words.filter((w) => w.length >= 4);
-    if (meaningfulWords.length >= 2) {
+    if (meaningfulWords.length >= 1) {
       const gibberishCount = meaningfulWords.filter((w) => isGibberish(w)).length;
-      if (gibberishCount / meaningfulWords.length > 0.5) {
+      if (gibberishCount > 0 && (meaningfulWords.length === 1 || gibberishCount / meaningfulWords.length > 0.4)) {
         return "*Escreva uma mensagem coerente com o que precisa";
       }
     }
