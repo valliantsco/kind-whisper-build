@@ -22,14 +22,14 @@ const VALID_STARTS = new Set([
 ]);
 
 // Valid Portuguese word-end patterns
-const VALID_ENDS = /[aeiouáéíóúâêîôûãõàèìòùlmnrsxz]$/i;
+const VALID_ENDS = /[aeioulmnrsxz]$/i;
 
 // Common Portuguese bigrams that appear in real words
 const COMMON_BIGRAMS = new Set([
   "de","da","do","os","as","em","um","qu","co","ca","re","pa","se","ra","te",
   "en","es","ta","al","an","ar","ma","no","na","or","er","on","in","ri","la",
   "me","io","to","le","ia","ti","mo","ni","li","ro","el","lo","po","so","sa",
-  "ve","ol","si","is","pe","il","ic","ce","ci","ão","nh","lh","ch","tr","pr",
+  "ve","ol","si","is","pe","il","ic","ce","ci","ao","nh","lh","ch","tr","pr",
   "br","cr","gr","fr","pl","bl","cl","fl","dr","gl","gu","am","om","im","um",
   // Common in international names used in Brazil
   "th","rt","hu","ur","ph","sh","ck","wn","ew","ws","nd","ng","ld","rd","rn",
@@ -37,22 +37,22 @@ const COMMON_BIGRAMS = new Set([
 ]);
 
 function isGibberish(text: string): boolean {
-  const lower = text.toLowerCase().replace(/[^a-záéíóúâêîôûãõàèìòù]/g, "");
+  const lower = text.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z]/g, "");
   if (lower.length < 4) return false;
 
   // 1. Check word start: extract leading consonants
-  const startMatch = lower.match(/^([^aeiouáéíóúâêîôûãõàèìòù]*)/i);
+  const startMatch = lower.match(/^([^aeiou]*)/i);
   if (startMatch && startMatch[1].length >= 2) {
     if (!VALID_STARTS.has(startMatch[1])) return true;
   }
 
   // 2. Check consonant clusters: 3+ consonants in a row (non-standard)
-  const clusters = lower.match(/[^aeiouáéíóúâêîôûãõàèìòù]{3,}/gi) || [];
-  const allowedClusters = ["str","ntr","nst","ndr","mbr","mpr","scr","spr","nsp","nsc","xtr","xpr","xpl","rth","sch","ght","phr","chr","thr","rst","rns","ldr","ngl","ngr","rpr"];
+  const clusters = lower.match(/[^aeiou]{3,}/gi) || [];
+  const allowedClusters = ["str","ntr","nst","ndr","mbr","mpr","scr","spr","nsp","nsc","xtr","xpr","xpl","rth","sch","ght","phr","chr","thr","rst","rns","ldr","ngl","ngr","rpr","schm","ndt","lph","mph","nth","nch","lth","rch","rgh","sth","tch","dth"];
   if (clusters.some((c) => !allowedClusters.some((a) => c.includes(a)))) return true;
 
   // 3. Check vowel ratio
-  const vowelCount = [...lower].filter((c) => VOWELS.has(c)).length;
+  const vowelCount = [...lower].filter((c) => "aeiou".includes(c)).length;
   const vowelRatio = vowelCount / lower.length;
   if (lower.length >= 5 && (vowelRatio < 0.25 || vowelRatio > 0.8)) return true;
 
@@ -147,8 +147,9 @@ function detectSpam(field: "name" | "city" | "details", value: string): string |
     if (!/^[A-Za-zÀ-ÿ\s'-]+$/.test(trimmed)) {
       return "Use apenas letras no nome";
     }
-    // Check each word for gibberish
-    if (words.some((w) => w.length >= 4 && isGibberish(w))) {
+    // Light gibberish check for names: only flag if BOTH words are gibberish (tolerant of foreign names)
+    const nameWords = words.filter((w) => w.length >= 4);
+    if (nameWords.length >= 2 && nameWords.every((w) => isGibberish(w))) {
       return "*Informe seu nome verdadeiro";
     }
   }
