@@ -77,26 +77,27 @@ const HeroSection = () => {
         style={{ backgroundImage: `url(${heroBg})` }}
       />
 
-      {/* Video slideshow background */}
+      {/* Video slideshow background — all iframes preloaded, toggle visibility */}
       <div className="absolute inset-0">
-        <AnimatePresence mode="wait">
+        {SLIDES.map((slide, i) => (
           <motion.div
-            key={currentSlide}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
+            key={i}
+            initial={false}
+            animate={{ opacity: i === currentSlide ? 1 : 0 }}
             transition={{ duration: 1.2, ease: "easeInOut" }}
             className="absolute inset-0"
+            style={{ pointerEvents: i === currentSlide ? "auto" : "none" }}
           >
             <iframe
-              src={buildEmbedUrl(SLIDES[currentSlide].videoId, SLIDES[currentSlide].videoStart)}
+              src={buildEmbedUrl(slide.videoId, slide.videoStart)}
               className="absolute pointer-events-none top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[180%] h-[180%] max-md:w-[400%] max-md:h-[400%]"
               style={{ border: 0, aspectRatio: '16/9' }}
               allow="autoplay; encrypted-media"
-              title={SLIDES[currentSlide].tag}
+              loading="eager"
+              title={slide.tag}
             />
           </motion.div>
-        </AnimatePresence>
+        ))}
       </div>
 
       {/* Gradient overlays */}
