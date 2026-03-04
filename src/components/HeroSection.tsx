@@ -302,7 +302,7 @@ const HeroSection = () => {
         ))}
         <motion.button
           onClick={() => setIsPaused((p) => !p)}
-          className="ml-1 flex items-center justify-center w-7 h-7 rounded-full border border-primary-foreground/15 backdrop-blur-sm"
+          className="ml-1 flex items-center justify-center w-7 h-7 rounded-full border-2 border-primary backdrop-blur-sm"
           style={{ background: "hsl(0 0% 100% / 0.06)" }}
           whileHover={{ scale: 1.15, borderColor: "hsl(0 0% 100% / 0.3)" }}
           whileTap={{ scale: 0.9 }}
