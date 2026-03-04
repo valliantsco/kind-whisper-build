@@ -123,8 +123,6 @@ const HeroSection = () => {
         ))}
       </div>
 
-      {/* Color grading — teal/green tint over video */}
-      <div className="absolute inset-0 z-[2]" style={{ background: "hsl(190 40% 35% / 0.35)", mixBlendMode: "multiply" }} />
       {/* Gradient overlays */}
       <div className="absolute inset-0 bg-gradient-to-r from-foreground/95 via-foreground/85 to-foreground/40 z-[3]" />
       <div className="absolute inset-0 bg-gradient-to-t from-foreground/80 via-transparent to-foreground/30 z-[3]" />
