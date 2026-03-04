@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Clock, User, Phone, HelpCircle, MessageSquare } from "lucide-react";
 import {
@@ -71,6 +71,11 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
   const [selectedTopic, setSelectedTopic] = useState("");
   const [details, setDetails] = useState("");
   const [errors, setErrors] = useState<Record<string, string>>({});
+
+  useEffect(() => {
+    document.body.style.overflow = isOpen ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [isOpen]);
 
   const validate = useCallback(() => {
     const errs: Record<string, string> = {};
