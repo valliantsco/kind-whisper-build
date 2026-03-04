@@ -169,10 +169,10 @@ const Header = () => {
       />
       <div className="container mx-auto px-4 pt-4 pb-2 relative z-10">
         <header
-          className={`transition-all duration-[800ms] ease-in-out rounded-[0.9rem] relative ${
+          className={`transition-all duration-[800ms] ease-in-out rounded-[0.9rem] overflow-hidden relative ${
             scrolled
-              ? "bg-white/75 backdrop-blur-2xl border border-black/[0.08] shadow-[0_1px_20px_rgba(0,0,0,0.10),0_0.5px_2px_rgba(0,0,0,0.04)]"
-              : "bg-primary-foreground/5 backdrop-blur-xl border border-primary-foreground/10 overflow-hidden"
+              ? "bg-white/80 backdrop-blur-2xl border border-black/[0.06] shadow-[0_2px_20px_rgba(0,0,0,0.08)]"
+              : "bg-[hsl(220_30%_12%/0.65)] backdrop-blur-xl border border-white/[0.08]"
           }`}
         >
           {/* Orbiting orange glow — only visible on transparent state */}
@@ -360,10 +360,10 @@ const Header = () => {
                 animate={{ opacity: 1, height: "auto" }}
                 exit={{ opacity: 0, height: 0 }}
                 transition={{ duration: 0.5, ease: [0.25, 0.8, 0.25, 1] as const }}
-                className={`lg:hidden overflow-hidden origin-top ${
+                className={`lg:hidden overflow-hidden origin-top border-t ${
                   scrolled
-                    ? "bg-white/75 backdrop-blur-2xl"
-                    : "bg-primary-foreground/5 backdrop-blur-xl"
+                    ? "bg-white/80 backdrop-blur-2xl border-black/[0.04]"
+                    : "bg-[hsl(220_30%_12%/0.65)] backdrop-blur-xl border-white/[0.06]"
                 }`}
               >
                 <motion.div
