@@ -183,7 +183,7 @@ const HeroSection = () => {
             transition={{ delay: 0.6 }}
             className="text-sm sm:text-base md:text-lg text-primary-foreground/50 mb-8 md:mb-10 max-w-xl leading-relaxed tracking-wide"
           >
-            A MS Eletric reúne soluções em motos elétricas para quem busca economia, praticidade e uma experiência completa — do atendimento ao pós-venda.
+            A MS Eletric reúne soluções em motos elétricas para quem busca economia, praticidade e uma experiência completa do atendimento ao pós-venda.
           </motion.p>
 
           {/* CTAs */}
