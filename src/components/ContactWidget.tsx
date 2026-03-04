@@ -110,10 +110,6 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
   const [isRecording, setIsRecording] = useState(false);
   const [isTranscribing, setIsTranscribing] = useState(false);
   const [isDetailsFocused, setIsDetailsFocused] = useState(false);
-  const [isScrolling, setIsScrolling] = useState(false);
-  const [scrollProgress, setScrollProgress] = useState(0);
-  const scrollTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const scrollContainerRef = useRef<HTMLDivElement | null>(null);
   const mediaRecorderRef = useRef<MediaRecorder | null>(null);
   const chunksRef = useRef<Blob[]>([]);
 
@@ -261,35 +257,9 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
           />
 
           {/* Panel — glassmorphism dark style matching header */}
-          <div className="relative w-full max-w-md flex items-stretch" style={{ gap: 5 }}>
-            {/* External scrollbar track */}
-            <AnimatePresence>
-              {isScrolling && (
-                <motion.div
-                  className="relative w-[3px] rounded-full my-4 shrink-0 overflow-hidden"
-                  style={{ background: "hsl(0 0% 100% / 0.06)" }}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.4 }}
-                >
-                  <motion.div
-                    className="absolute top-0 left-0 w-full rounded-full"
-                    style={{
-                      background: "linear-gradient(180deg, hsl(11 81% 57% / 0.6), hsl(11 90% 65% / 0.4))",
-                      height: "30%",
-                      top: `${scrollProgress * 70}%`,
-                    }}
-                    transition={{ type: "spring", damping: 30, stiffness: 300 }}
-                  />
-                </motion.div>
-              )}
-            </AnimatePresence>
-
-            {/* Panel */}
-            <motion.div
-              variants={panelVariants}
-              className="relative flex-1 rounded-[0.9rem] overflow-hidden max-h-[90vh] flex flex-col"
+          <motion.div
+            variants={panelVariants}
+            className="relative w-full max-w-md rounded-[0.9rem] overflow-hidden max-h-[90vh] flex flex-col"
             style={{
               background: "hsl(0 0% 14% / 0.92)",
               backdropFilter: "blur(24px)",
@@ -318,18 +288,7 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
             />
 
             {/* Scrollable content with fade indicators */}
-            <div
-              ref={scrollContainerRef}
-              className="overflow-y-auto flex-1 relative cw-scroll"
-              onScroll={(e) => {
-                const el = e.currentTarget;
-                const progress = el.scrollTop / (el.scrollHeight - el.clientHeight || 1);
-                setScrollProgress(Math.min(1, Math.max(0, progress)));
-                setIsScrolling(true);
-                if (scrollTimeoutRef.current) clearTimeout(scrollTimeoutRef.current);
-                scrollTimeoutRef.current = setTimeout(() => setIsScrolling(false), 1200);
-              }}
-            >
+            <div className="overflow-y-auto flex-1 relative cw-scroll">
               {/* Top scroll fade */}
               <div
                 className="sticky top-0 left-0 right-0 h-3 pointer-events-none z-10"
@@ -522,7 +481,7 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
 
                     {/* Mic button inside textarea */}
                     <AnimatePresence>
-                      {(!isDetailsFocused || isRecording || isTranscribing) && !isScrolling && (
+                      {(!isDetailsFocused || isRecording || isTranscribing) && (
                         <motion.div
                           key="mic-group"
                           className="absolute"
@@ -687,7 +646,6 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
               }}
             />
           </motion.div>
-          </div>
         </motion.div>
       )}
     </AnimatePresence>

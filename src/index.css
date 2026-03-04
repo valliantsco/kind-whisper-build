@@ -110,13 +110,24 @@ html {
   border-radius: 3px;
 }
 
-/* Contact widget scrollbar — completely hidden, scroll still works */
-.cw-scroll {
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-}
+/* Contact widget scrollbar — thin, embedded, matches dark glass */
 .cw-scroll::-webkit-scrollbar {
-  display: none;
+  width: 4px;
+}
+.cw-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+.cw-scroll::-webkit-scrollbar-thumb {
+  background: hsl(0 0% 100% / 0.12);
+  border-radius: 4px;
+}
+.cw-scroll::-webkit-scrollbar-thumb:hover {
+  background: hsl(0 0% 100% / 0.25);
+}
+/* Firefox */
+.cw-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: hsl(0 0% 100% / 0.12) transparent;
 }
 
 /* Glass morphism utility */
