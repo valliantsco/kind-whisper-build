@@ -38,9 +38,17 @@ const WhatsAppIcon = ({ className = "w-5 h-5" }: { className?: string }) => (
 );
 
 const overlayVariants = {
-  hidden: { opacity: 0 },
-  visible: { opacity: 1 },
-  exit: { opacity: 0 },
+  hidden: { opacity: 0, backdropFilter: "blur(0px)" },
+  visible: { 
+    opacity: 1, 
+    backdropFilter: "blur(12px)",
+    transition: { duration: 0.4, ease: "easeOut" as const }
+  },
+  exit: { 
+    opacity: 0, 
+    backdropFilter: "blur(0px)",
+    transition: { duration: 0.3, ease: "easeIn" as const }
+  },
 };
 
 const panelVariants = {
@@ -129,7 +137,7 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
         >
           {/* Backdrop */}
           <motion.div
-            className="absolute inset-0 bg-foreground/70 backdrop-blur-md"
+            className="absolute inset-0 bg-foreground/60"
             onClick={onClose}
           />
 
