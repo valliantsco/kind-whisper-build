@@ -1,6 +1,6 @@
 import { useState, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Clock, Send, User, Phone, HelpCircle } from "lucide-react";
+import { X, Clock, Send, User, Phone, HelpCircle, ChevronDown } from "lucide-react";
 import { useBusinessHours } from "@/hooks/useBusinessHours";
 
 const WHATSAPP_NUMBER = "5500000000000";
@@ -222,27 +222,26 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                   {errors.phone && <p className="text-xs text-destructive mt-1">{errors.phone}</p>}
                 </div>
 
-                {/* Topic selection */}
+                {/* Topic selection - dropdown */}
                 <div>
-                  <label className="flex items-center gap-1.5 text-xs font-medium text-card-foreground mb-2">
+                  <label className="flex items-center gap-1.5 text-xs font-medium text-card-foreground mb-1.5">
                     <HelpCircle className="w-3.5 h-3.5 text-muted-foreground" />
                     Como podemos te ajudar? *
                   </label>
-                  <div className="flex flex-wrap gap-2">
-                    {TOPIC_OPTIONS.map((topic) => (
-                      <button
-                        key={topic}
-                        type="button"
-                        onClick={() => setSelectedTopic(topic)}
-                        className={`px-3 py-1.5 rounded-full text-xs font-medium border transition-all ${
-                          selectedTopic === topic
-                            ? "bg-primary text-primary-foreground border-primary shadow-sm"
-                            : "bg-muted/50 text-muted-foreground border-border hover:bg-muted hover:text-card-foreground"
-                        }`}
-                      >
-                        {topic}
-                      </button>
-                    ))}
+                  <div className="relative">
+                    <select
+                      value={selectedTopic}
+                      onChange={(e) => setSelectedTopic(e.target.value)}
+                      className={`w-full px-3 py-2.5 rounded-lg border bg-background text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-all appearance-none pr-9 ${
+                        !selectedTopic ? "text-muted-foreground" : ""
+                      } ${errors.topic ? "border-destructive" : "border-input"}`}
+                    >
+                      <option value="" disabled>Selecione um assunto</option>
+                      {TOPIC_OPTIONS.map((topic) => (
+                        <option key={topic} value={topic}>{topic}</option>
+                      ))}
+                    </select>
+                    <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground pointer-events-none" />
                   </div>
                   {errors.topic && <p className="text-xs text-destructive mt-1.5">{errors.topic}</p>}
                 </div>
