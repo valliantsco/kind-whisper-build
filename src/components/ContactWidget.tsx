@@ -675,11 +675,16 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                       ref={textareaRef}
                       value={details}
                       onChange={(e) => {
-                        setDetails(e.target.value);
+                        const val = e.target.value;
+                        setDetails(val);
                         if (errors.details) setErrors((prev) => { const { details, ...rest } = prev; return rest; });
                         // Auto-grow
                         e.target.style.height = 'auto';
                         e.target.style.height = e.target.scrollHeight + 'px';
+                        // Trigger background spam check
+                        if (name.trim() && city.trim() && val.trim().length >= 10) {
+                          triggerSpamCheck();
+                        }
                       }}
                       placeholder={isTranscribing ? "Processando áudio..." : "Descreva brevemente ou grave um áudio..."}
                       rows={3}
@@ -688,8 +693,9 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                       className={`${inputBaseStyle} pr-14 resize-none disabled:opacity-50 cw-input ${errors.details ? "cw-input-error" : ""}`}
                       style={{ ...getInputBorderStyle(!!errors.details), maxHeight: '40vh', overflowY: 'auto' }}
                       onFocus={() => setIsDetailsFocused(true)}
-                      onBlur={() => setIsDetailsFocused(false)}
-                      onKeyUp={() => {
+                      onBlur={() => {
+                        setIsDetailsFocused(false);
+                        // Also trigger on blur as fallback (paste, etc.)
                         if (name.trim() && city.trim() && details.trim().length >= 10) {
                           triggerSpamCheck();
                         }
