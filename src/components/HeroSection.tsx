@@ -33,19 +33,6 @@ const SLIDES: SlideContent[] = [
     videoId: "ml6ODnWanys",
   },
   {
-    tag: "Sustentabilidade",
-    tagIcon: "leaf",
-    headlineLines: [
-      { text: "Zero Emissões.", highlight: true },
-      { text: "Máxima" },
-      { text: "Performance." },
-    ],
-    subheadline: "Nossas motos elétricas combinam potência e responsabilidade ambiental, oferecendo uma alternativa inteligente para a mobilidade urbana.",
-    primaryCta: { text: "Ver Modelos", href: "#modelos" },
-    secondaryCta: { text: "Saiba Mais", href: "#sobre" },
-    videoId: "ml6ODnWanys",
-  },
-  {
     tag: "Garantia & Suporte",
     tagIcon: "shield",
     headlineLines: [
