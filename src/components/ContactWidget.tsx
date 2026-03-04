@@ -480,7 +480,7 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                         <motion.div
                           key="mic-group"
                           className="absolute"
-                          style={{ width: 30, height: 30, right: 8, bottom: 28 }}
+                          style={{ width: 30, height: 30, right: 8, bottom: 18 }}
                           initial={{ opacity: 0, scale: 0.8 }}
                           animate={{ opacity: 1, scale: 1 }}
                           exit={{ opacity: 0, scale: 0.8 }}
