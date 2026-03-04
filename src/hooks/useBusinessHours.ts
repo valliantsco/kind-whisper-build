@@ -32,10 +32,7 @@ function getStatus(): BusinessStatus {
   // Offline — compute next opening
   // If today still has hours ahead (before opening), return today
   if (hours && h < hours[0]) {
-    if (hours[0] === 8) {
-      return { isOnline: false, offlineMessage: "Voltamos hoje às 08:00" };
-    }
-    return { isOnline: false, offlineMessage: `Voltamos hoje às ${String(hours[0]).padStart(2, "0")}:00` };
+    return { isOnline: false, offlineMessage: `Nosso atendimento retorna hoje às ${String(hours[0]).padStart(2, "0")}h` };
   }
 
   // Otherwise look ahead up to 7 days
@@ -43,17 +40,16 @@ function getStatus(): BusinessStatus {
     const nextDay = (day + offset) % 7;
     const nextHours = BUSINESS_HOURS[nextDay];
     if (nextHours) {
-      const openTime = `${String(nextHours[0]).padStart(2, "0")}:00`;
+      const openTime = `${String(nextHours[0]).padStart(2, "0")}h`;
       if (offset === 1) {
-        return { isOnline: false, offlineMessage: `Voltamos amanhã às ${openTime}` };
+        return { isOnline: false, offlineMessage: `Nosso atendimento retorna amanhã às ${openTime}` };
       }
-      // Use day name for 2+ days ahead
       const dayName = DAY_NAMES[nextDay];
-      return { isOnline: false, offlineMessage: `Voltamos na ${dayName} às ${openTime}` };
+      return { isOnline: false, offlineMessage: `Nosso atendimento retorna ${dayName} às ${openTime}` };
     }
   }
 
-  return { isOnline: false, offlineMessage: "Estamos fechados no momento" };
+  return { isOnline: false, offlineMessage: "Nosso atendimento está fechado no momento" };
 }
 
 export const useBusinessHours = (): boolean => {
