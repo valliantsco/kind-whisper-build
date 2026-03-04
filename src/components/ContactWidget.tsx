@@ -4,6 +4,66 @@ import { X, Clock, User, MessageSquare, Loader2, Mic, Square, MapPin } from "luc
 import { supabase } from "@/integrations/supabase/client";
 import { useBusinessHours } from "@/hooks/useBusinessHours";
 
+// ── Native spam detection (instant, no API) ──────────────────────────
+const PROFANITY_LIST = [
+  "merda", "porra", "caralho", "puta", "fdp", "foda", "buceta", "cacete",
+  "viado", "arrombado", "cuzão", "bosta", "desgraça", "piranha",
+];
+
+function detectSpam(field: "name" | "city" | "details", value: string): string | null {
+  const trimmed = value.trim();
+  if (!trimmed) return null; // empty handled by required validation
+
+  const lower = trimmed.toLowerCase();
+  const nospaces = lower.replace(/\s/g, "");
+
+  // Profanity check (all fields)
+  if (PROFANITY_LIST.some((w) => lower.includes(w))) {
+    return "Conteúdo inadequado detectado";
+  }
+
+  // Excessive repeated chars (e.g. "aaaa", "dddddd") — 4+ consecutive
+  if (/(.)\1{3,}/i.test(nospaces)) {
+    return field === "name" ? "Informe seu nome verdadeiro" : field === "city" ? "Informe uma cidade válida" : "Mensagem inválida";
+  }
+
+  // Keyboard mashing patterns (common qwerty/sequential)
+  const mashPatterns = ["asdf", "qwer", "zxcv", "hjkl", "abcd", "1234", "wasd"];
+  if (mashPatterns.some((p) => nospaces.includes(p)) && nospaces.length < 20) {
+    return field === "name" ? "Informe seu nome verdadeiro" : field === "city" ? "Informe uma cidade válida" : "Mensagem sem sentido detectada";
+  }
+
+  // Field-specific checks
+  if (field === "name") {
+    // Duplicate words like "teste teste"
+    const words = trimmed.split(/\s+/);
+    if (words.length >= 2 && new Set(words.map((w) => w.toLowerCase())).size === 1) {
+      return "Informe seu nome verdadeiro";
+    }
+  }
+
+  if (field === "details") {
+    // High char frequency — single char is >50% of text
+    if (nospaces.length > 5) {
+      const freq: Record<string, number> = {};
+      for (const c of nospaces) freq[c] = (freq[c] || 0) + 1;
+      const maxFreq = Math.max(...Object.values(freq));
+      if (maxFreq / nospaces.length > 0.5) {
+        return "Mensagem inválida";
+      }
+    }
+    // Same word repeated 3+ times
+    const words = lower.split(/\s+/);
+    const wordCount: Record<string, number> = {};
+    for (const w of words) wordCount[w] = (wordCount[w] || 0) + 1;
+    if (Object.values(wordCount).some((c) => c >= 3)) {
+      return "Mensagem parece ser spam";
+    }
+  }
+
+  return null; // clean
+}
+
 const WHATSAPP_NUMBER = "551151996628";
 
 const businessHoursInfo = [
@@ -121,9 +181,6 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
   const [details, setDetails] = useState(draft.current?.details || "");
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isLoading, setIsLoading] = useState(false);
-  const [spamChecked, setSpamChecked] = useState(false);
-  const spamCheckRef = useRef<AbortController | null>(null);
-  const spamDebounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const [isRecording, setIsRecording] = useState(false);
   const [isTranscribing, setIsTranscribing] = useState(false);
   const [recordingSeconds, setRecordingSeconds] = useState(0);
@@ -212,52 +269,6 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
     return Object.keys(errs).length === 0;
   }, [name, phone, city, details]);
 
-  // AI spam check — runs silently in background, non-blocking
-  const runSpamCheck = useCallback(async () => {
-    const trimmedName = name.trim();
-    const trimmedDetails = details.trim();
-    const trimmedCity = city.trim();
-
-    if (!trimmedName || !trimmedDetails || trimmedDetails.length < 10 || !trimmedCity) return;
-
-    // Cancel any previous in-flight check
-    spamCheckRef.current?.abort();
-    const controller = new AbortController();
-    spamCheckRef.current = controller;
-
-    try {
-      const { data } = await supabase.functions.invoke("check-spam", {
-        body: { name: trimmedName, city: trimmedCity, details: trimmedDetails },
-      });
-
-      if (controller.signal.aborted) return;
-
-      if (data && !data.valid && data.fieldErrors) {
-        setErrors((prev) => ({ ...prev, ...data.fieldErrors }));
-        setSpamChecked(true);
-      } else if (data?.valid) {
-        setSpamChecked(true);
-        setErrors((prev) => {
-          const cleaned = { ...prev };
-          if (cleaned.name === "Informe seu nome verdadeiro") delete cleaned.name;
-          if (cleaned.city === "Informe uma cidade válida") delete cleaned.city;
-          if (cleaned.details === "Descreva sua real necessidade sobre veículos elétricos") delete cleaned.details;
-          return cleaned;
-        });
-      }
-    } catch {
-      if (!controller.signal.aborted) setSpamChecked(true);
-    }
-  }, [name, city, details]);
-
-  // Debounced spam check — triggers automatically as user types
-  const triggerSpamCheck = useCallback(() => {
-    if (spamDebounceRef.current) clearTimeout(spamDebounceRef.current);
-    setSpamChecked(false);
-    spamDebounceRef.current = setTimeout(() => {
-      runSpamCheck();
-    }, 1500);
-  }, [runSpamCheck]);
 
   const startRecording = useCallback(async () => {
     try {
@@ -337,10 +348,8 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
 
   const handleSubmit = useCallback(async () => {
     if (!validate()) return;
-    // If there are AI-flagged errors from background check, block
-    if (Object.keys(errors).length > 0) {
-      return;
-    }
+    // Block if native spam errors are present
+    if (Object.keys(errors).length > 0) return;
     setIsLoading(true);
 
     let message: string;
@@ -383,7 +392,7 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
     sessionStorage.removeItem(STORAGE_KEY);
     setIsLoading(false);
     onClose();
-  }, [name, phone, city, details, errors, spamChecked, validate, onClose]);
+  }, [name, phone, city, details, errors, validate, onClose]);
 
   return (
     <AnimatePresence>
@@ -527,7 +536,13 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                         .toLowerCase()
                         .replace(/(?:^|\s)\S/g, (char) => char.toUpperCase());
                       setName(formatted);
-                      if (errors.name) setErrors((prev) => { const { name, ...rest } = prev; return rest; });
+                      const spamErr = detectSpam("name", formatted);
+                      setErrors((prev) => {
+                        const next = { ...prev };
+                        if (spamErr) next.name = spamErr;
+                        else delete next.name;
+                        return next;
+                      });
                     }}
                     placeholder="João Silva"
                     maxLength={100}
@@ -574,7 +589,13 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                     onChange={(e) => {
                       const val = e.target.value;
                       setCity(val);
-                      if (errors.city) setErrors((prev) => { const { city: _, ...rest } = prev; return rest; });
+                      const spamErr = detectSpam("city", val);
+                      setErrors((prev) => {
+                        const next = { ...prev };
+                        if (spamErr) next.city = spamErr;
+                        else delete next.city;
+                        return next;
+                      });
                       if (val.trim().length >= 2) {
                         const normalise = (s: string) => s.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
                         const q = normalise(val.trim());
@@ -677,14 +698,17 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                       onChange={(e) => {
                         const val = e.target.value;
                         setDetails(val);
-                        if (errors.details) setErrors((prev) => { const { details, ...rest } = prev; return rest; });
+                        // Native instant spam check
+                        const spamErr = detectSpam("details", val);
+                        setErrors((prev) => {
+                          const next = { ...prev };
+                          if (spamErr) next.details = spamErr;
+                          else delete next.details;
+                          return next;
+                        });
                         // Auto-grow
                         e.target.style.height = 'auto';
                         e.target.style.height = e.target.scrollHeight + 'px';
-                        // Trigger background spam check
-                        if (name.trim() && city.trim() && val.trim().length >= 10) {
-                          triggerSpamCheck();
-                        }
                       }}
                       placeholder={isTranscribing ? "Processando áudio..." : "Descreva brevemente ou grave um áudio..."}
                       rows={3}
@@ -693,13 +717,7 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                       className={`${inputBaseStyle} pr-14 resize-none disabled:opacity-50 cw-input ${errors.details ? "cw-input-error" : ""}`}
                       style={{ ...getInputBorderStyle(!!errors.details), maxHeight: '40vh', overflowY: 'auto' }}
                       onFocus={() => setIsDetailsFocused(true)}
-                      onBlur={() => {
-                        setIsDetailsFocused(false);
-                        // Also trigger on blur as fallback (paste, etc.)
-                        if (name.trim() && city.trim() && details.trim().length >= 10) {
-                          triggerSpamCheck();
-                        }
-                      }}
+                      onBlur={() => setIsDetailsFocused(false)}
                     />
 
                     {/* Mic button inside textarea */}
