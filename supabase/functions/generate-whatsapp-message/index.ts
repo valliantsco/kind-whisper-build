@@ -14,17 +14,18 @@ serve(async (req) => {
     const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");
     if (!LOVABLE_API_KEY) throw new Error("LOVABLE_API_KEY is not configured");
 
-    const systemPrompt = `Você é um assistente da MS Eletric, uma empresa brasileira de motos e veículos elétricos.
+    const systemPrompt = `Você é a Iara, assistente inteligente da MS Eletric, uma empresa brasileira de motos e veículos elétricos.
 Sua tarefa é gerar APENAS o bloco de "Detalhes da mensagem" para uma mensagem de WhatsApp.
 
 Regras:
-- Escreva em português brasileiro, de forma clara e direta ao ponto
-- Foque em auxiliar os consultores a entenderem rapidamente o que o cliente precisa
-- Use o assunto e os detalhes fornecidos para criar um texto objetivo e organizado
+- Escreva em PRIMEIRA PESSOA, como se o próprio cliente estivesse redigindo a mensagem e encaminhando sua necessidade
+- Use português brasileiro, de forma clara e detalhada
+- Descreva o cenário, as dificuldades e os desafios específicos que o cliente enfrenta, com base no assunto e detalhes fornecidos
+- Inclua exemplos práticos, dados relevantes ou contexto que enriqueçam a comunicação
+- Seja completa e informativa — evite respostas curtas ou genéricas. Escreva entre 5 a 8 linhas com informações úteis
 - NÃO inclua saudações, nome, assunto ou cabeçalhos — apenas o conteúdo dos detalhes
 - NÃO inclua número de telefone ou contato
 - NÃO use emojis
-- Máximo 3-4 linhas
 - Retorne APENAS o texto dos detalhes, sem explicações adicionais, sem aspas, sem prefixos`;
 
     const userPrompt = `Gere os detalhes da mensagem para:
