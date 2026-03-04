@@ -109,12 +109,13 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
     if (!validate()) return;
 
     const parts = [
-      `Olá! Meu nome é *${name.trim()}*.`,
-      `📱 WhatsApp: ${phone.trim()}`,
-      `📋 Assunto: ${selectedTopic}`,
+      `⚠️ *Por favor, não apague esta mensagem antes de enviar!*`,
+      ``,
+      `Oi, tudo bem? 😊`,
+      `Me chamo *${name.trim()}* e gostaria de falar sobre *${selectedTopic.toLowerCase()}*.`,
     ];
-    if (details.trim()) parts.push(`💬 Detalhes: ${details.trim()}`);
-    parts.push("", "Aguardo retorno. Obrigado!");
+    if (details.trim()) parts.push(``, `${details.trim()}`);
+    parts.push(``, `Meu contato: ${phone.trim()}`, ``, `Fico no aguardo, obrigado! 🙏`);
     const message = parts.join("\n");
 
     window.open(
