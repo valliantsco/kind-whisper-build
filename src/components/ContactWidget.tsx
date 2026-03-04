@@ -1,6 +1,6 @@
 import { useState, useCallback, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Clock, User, HelpCircle, MessageSquare, Loader2, Mic, Square, ChevronDown, MapPin } from "lucide-react";
+import { X, Clock, User, MessageSquare, Loader2, Mic, Square, MapPin } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useBusinessHours } from "@/hooks/useBusinessHours";
 
@@ -12,17 +12,13 @@ const businessHoursInfo = [
   { day: "Domingo", hours: "Fechado" },
 ];
 
-const TOPIC_OPTIONS = [
-  "Ver modelos disponíveis",
-  "Saber preços ou promoções",
-  "Formas de pagamento ou financiamento",
-  "Autonomia e especificações",
-  "Comparar modelos",
-  "Garantia ou assistência",
-  "Suporte técnico",
-  "Peças ou manutenção",
-  "Acompanhar pedido",
-  "Outra dúvida",
+const SUGGESTION_CHIPS = [
+  "Quero saber preços",
+  "Modelos disponíveis",
+  "Autonomia e bateria",
+  "Financiamento",
+  "Garantia e assistência",
+  "Peças e manutenção",
 ];
 
 const WhatsAppIcon = ({ className = "w-5 h-5" }: { className?: string }) => (
@@ -124,7 +120,6 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
     const digits = saved.replace(/\D/g, "").slice(0, 11);
     return digits ? formatPhone(digits) : "";
   });
-  const [selectedTopic, setSelectedTopic] = useState(draft.current?.topic || "");
   const [city, setCity] = useState(draft.current?.city || "");
   const [citySuggestions, setCitySuggestions] = useState<string[]>([]);
   const [isCityDropdownOpen, setIsCityDropdownOpen] = useState(false);
@@ -138,23 +133,20 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
   const [isTranscribing, setIsTranscribing] = useState(false);
   const [recordingSeconds, setRecordingSeconds] = useState(0);
   const [isDetailsFocused, setIsDetailsFocused] = useState(false);
-  const [isSelectOpen, setIsSelectOpen] = useState(false);
   const mediaRecorderRef = useRef<MediaRecorder | null>(null);
   const chunksRef = useRef<Blob[]>([]);
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);
-  const topicMenuRef = useRef<HTMLDivElement | null>(null);
-  const [focusedTopicIndex, setFocusedTopicIndex] = useState(-1);
   const recordingTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const recordingIntervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const MAX_RECORDING_SECONDS = 15;
 
   // Persist draft to sessionStorage
   useEffect(() => {
-    const data = { name, phone, topic: selectedTopic, city, details };
-    if (name || phone || selectedTopic || city || details) {
+    const data = { name, phone, city, details };
+    if (name || phone || city || details) {
       sessionStorage.setItem(STORAGE_KEY, JSON.stringify(data));
     }
-  }, [name, phone, selectedTopic, city, details]);
+  }, [name, phone, city, details]);
 
   useEffect(() => {
     if (isOpen) {
@@ -163,24 +155,12 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
     } else {
       document.body.style.overflow = "";
       document.documentElement.style.overflow = "";
-      // Bug #5: reset picker state when widget closes
-      setIsSelectOpen(false);
-      setFocusedTopicIndex(-1);
     }
     return () => {
       document.body.style.overflow = "";
       document.documentElement.style.overflow = "";
     };
   }, [isOpen]);
-
-  // Auto-focus topic menu when opened
-  useEffect(() => {
-    if (isSelectOpen && topicMenuRef.current) {
-      topicMenuRef.current.focus();
-      const currentIndex = TOPIC_OPTIONS.indexOf(selectedTopic);
-      setFocusedTopicIndex(currentIndex >= 0 ? currentIndex : 0);
-    }
-  }, [isSelectOpen, selectedTopic]);
 
   const validate = useCallback(() => {
     const errs: Record<string, string> = {};
@@ -190,11 +170,10 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
     else if (!/^[\d\s()+-]{8,20}$/.test(phone.trim()))
       errs.phone = "Verifique o número digitado";
     if (!city.trim()) errs.city = "Informe sua cidade";
-    if (!selectedTopic) errs.topic = "Escolha um assunto acima";
     if (!details.trim()) errs.details = "Conte um pouco mais sobre o que precisa";
     setErrors(errs);
     return Object.keys(errs).length === 0;
-  }, [name, phone, city, selectedTopic, details]);
+  }, [name, phone, city, details]);
 
   const startRecording = useCallback(async () => {
     try {
@@ -280,7 +259,7 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
 
     try {
       const { data, error } = await supabase.functions.invoke("generate-whatsapp-message", {
-        body: { name: name.trim(), topic: selectedTopic, city: city.trim(), details: details.trim() || undefined },
+        body: { name: name.trim(), city: city.trim(), details: details.trim() || undefined },
       });
 
       if (error || !data?.message) throw new Error("AI error");
@@ -293,9 +272,7 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
         ``,
         `*Cidade:* ${city.trim()}`,
         ``,
-        `*Assunto:* ${selectedTopic}`,
-        ``,
-        details.trim(),
+        `*Detalhes:* ${details.trim()}`,
       ].join("\n");
     }
 
@@ -309,7 +286,6 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
     setPhone("");
     setCity("");
     setCitySuggestions([]);
-    setSelectedTopic("");
     setDetails("");
     setErrors({});
     // Bug #1: reset textarea height
@@ -319,7 +295,7 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
     sessionStorage.removeItem(STORAGE_KEY);
     setIsLoading(false);
     onClose();
-  }, [name, phone, selectedTopic, details, validate, onClose]);
+  }, [name, phone, city, details, validate, onClose]);
 
   return (
     <AnimatePresence>
@@ -598,110 +574,45 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                   {errors.city && <p className="text-[10px] mt-1" style={{ color: "hsl(0 84% 65%)" }}>{errors.city}</p>}
                 </div>
 
-                {/* Topic */}
-                <div>
-                  <label className="flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-[0.1em] text-white/50 mb-1.5">
-                    <HelpCircle className="w-3 h-3" />
-                    Qual o assunto? <span className="text-primary/70">*</span>
-                  </label>
-                  {/* Custom centered topic picker */}
-                  <button
-                    type="button"
-                    onClick={() => setIsSelectOpen(true)}
-                    className={`w-full rounded-lg text-sm border-0 ring-0 cw-input text-left h-10 px-3 flex items-center justify-between ${errors.topic ? "cw-input-error" : ""} ${
-                      !selectedTopic ? "text-white/35" : "text-white"
-                    }`}
-                    style={getInputBorderStyle(!!errors.topic)}
-                  >
-                    <span>{selectedTopic || "Toque para escolher"}</span>
-                    <ChevronDown className="h-4 w-4 opacity-50" />
-                  </button>
-
-                  {/* Centered modal picker */}
-                  <AnimatePresence>
-                    {isSelectOpen && (
-                      <>
-                        <motion.div
-                          key="select-backdrop"
-                          initial={{ opacity: 0, backdropFilter: "blur(0px)" }}
-                          animate={{ opacity: 1, backdropFilter: "blur(6px)" }}
-                          exit={{ opacity: 0, backdropFilter: "blur(0px)" }}
-                          transition={{ duration: 0.35, ease: [0.4, 0, 0.2, 1] }}
-                          className="fixed inset-0 z-[200] bg-black/15"
-                          onClick={() => setIsSelectOpen(false)}
-                        />
-                        <div className="fixed z-[201] inset-0 flex items-center justify-center pointer-events-none">
-                          <motion.div
-                            ref={topicMenuRef}
-                            key="select-menu"
-                            initial={{ opacity: 0, scale: 0.95 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            exit={{ opacity: 0, scale: 0.95 }}
-                            transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
-                            className="rounded-lg p-1 overflow-hidden pointer-events-auto"
-                            style={{
-                              background: "hsl(0 0% 14% / 0.95)",
-                              backdropFilter: "blur(20px)",
-                              border: "1px solid hsl(0 0% 100% / 0.1)",
-                              boxShadow: "0 20px 50px rgba(0,0,0,0.5)",
-                              width: "min(22rem, 90vw)",
-                            }}
-                            role="listbox"
-                            tabIndex={0}
-                            onKeyDown={(e) => {
-                              if (e.key === "Escape") {
-                                setIsSelectOpen(false);
-                                setFocusedTopicIndex(-1);
-                              } else if (e.key === "ArrowDown") {
-                                e.preventDefault();
-                                setFocusedTopicIndex((prev) => (prev + 1) % TOPIC_OPTIONS.length);
-                              } else if (e.key === "ArrowUp") {
-                                e.preventDefault();
-                                setFocusedTopicIndex((prev) => (prev - 1 + TOPIC_OPTIONS.length) % TOPIC_OPTIONS.length);
-                              } else if (e.key === "Enter" && focusedTopicIndex >= 0) {
-                                e.preventDefault();
-                                setSelectedTopic(TOPIC_OPTIONS[focusedTopicIndex]);
-                                setIsSelectOpen(false);
-                                setFocusedTopicIndex(-1);
-                                if (errors.topic) setErrors((prev) => { const { topic: _, ...rest } = prev; return rest; });
-                              }
-                            }}
-                          >
-                            {TOPIC_OPTIONS.map((topic, index) => (
-                              <button
-                                key={topic}
-                                type="button"
-                                role="option"
-                                aria-selected={selectedTopic === topic}
-                                onClick={() => {
-                                  setSelectedTopic(topic);
-                                  setIsSelectOpen(false);
-                                  setFocusedTopicIndex(-1);
-                                  if (errors.topic) setErrors((prev) => { const { topic: _, ...rest } = prev; return rest; });
-                                }}
-                                className={`w-full text-left px-3 py-2.5 text-sm rounded-md transition-colors ${
-                                  selectedTopic === topic ? "text-white bg-white/10" 
-                                  : focusedTopicIndex === index ? "text-white bg-white/10" 
-                                  : "text-white/70 hover:bg-white/10 hover:text-white"
-                                }`}
-                              >
-                                {topic}
-                              </button>
-                            ))}
-                          </motion.div>
-                        </div>
-                      </>
-                    )}
-                  </AnimatePresence>
-                  {errors.topic && <p className="text-[10px] mt-1" style={{ color: "hsl(0 84% 65%)" }}>{errors.topic}</p>}
-                </div>
-
-                {/* Optional details with mic */}
+                {/* Details with suggestion chips + mic */}
                 <div>
                   <label className="flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-[0.1em] text-white/50 mb-1.5">
                     <MessageSquare className="w-3 h-3" />
-                    Conte mais sobre o que precisa <span className="text-primary/70">*</span>
+                    Como podemos te ajudar? <span className="text-primary/70">*</span>
                   </label>
+
+                  {/* Suggestion chips */}
+                  <div className="flex flex-wrap gap-1.5 mb-2">
+                    {SUGGESTION_CHIPS.map((chip) => (
+                      <motion.button
+                        key={chip}
+                        type="button"
+                        onClick={() => {
+                          setDetails((prev) => prev ? `${prev} ${chip}.` : `${chip}.`);
+                          if (errors.details) setErrors((prev) => { const { details: _, ...rest } = prev; return rest; });
+                          // Auto-grow textarea after chip insert
+                          setTimeout(() => {
+                            if (textareaRef.current) {
+                              textareaRef.current.style.height = 'auto';
+                              textareaRef.current.style.height = textareaRef.current.scrollHeight + 'px';
+                            }
+                          }, 0);
+                        }}
+                        className="px-2.5 py-1 rounded-full text-[11px] text-white/60 hover:text-white transition-colors cursor-pointer"
+                        style={{
+                          background: "hsl(0 0% 100% / 0.06)",
+                          border: "1px solid hsl(0 0% 100% / 0.1)",
+                        }}
+                        whileHover={{
+                          background: "hsl(11 81% 57% / 0.15)",
+                          borderColor: "hsl(11 81% 57% / 0.3)",
+                        }}
+                        whileTap={{ scale: 0.95 }}
+                      >
+                        {chip}
+                      </motion.button>
+                    ))}
+                  </div>
 
                   <div className="relative">
                     <textarea
