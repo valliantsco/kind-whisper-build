@@ -208,14 +208,9 @@ const Header = ({ contactOpen, setContactOpen }: HeaderProps) => {
         <header
           className={`transition-all duration-[800ms] ease-in-out rounded-[0.9rem] overflow-hidden relative ${
             scrolled
-              ? "bg-white/90 backdrop-blur-2xl border border-border/50"
+              ? "bg-white/90 backdrop-blur-2xl border border-border/50 shadow-[0_4px_30px_rgba(0,0,0,0.08)]"
               : "bg-primary-foreground/5 backdrop-blur-xl border border-primary-foreground/10"
           }`}
-          style={{
-            boxShadow: scrolled
-              ? "0 8px 28px rgba(66,66,66,0.28), 0 3px 10px rgba(66,66,66,0.18), 0 1px 4px rgba(66,66,66,0.12)"
-              : "0 8px 32px rgba(66,66,66,0.45), 0 3px 12px rgba(66,66,66,0.25)",
-          }}
         >
           {/* Orbiting orange glow — only visible on transparent state */}
           <motion.div
@@ -404,16 +399,9 @@ const Header = ({ contactOpen, setContactOpen }: HeaderProps) => {
                 transition={{ duration: 0.5, ease: [0.25, 0.8, 0.25, 1] as const }}
                 className={`lg:hidden overflow-hidden origin-top rounded-b-[0.9rem] ${
                   scrolled
-                    ? "bg-white/92 backdrop-blur-2xl border-t border-border/30 shadow-[0_8px_30px_rgba(0,0,0,0.08)]"
-                    : ""
+                    ? "bg-white/80 backdrop-blur-2xl"
+                    : "bg-foreground/70 backdrop-blur-2xl"
                 }`}
-                style={!scrolled ? {
-                  background: "hsl(0 0% 8% / 0.85)",
-                  backdropFilter: "blur(28px) saturate(1.6)",
-                  WebkitBackdropFilter: "blur(28px) saturate(1.6)",
-                  boxShadow: "0 12px 40px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.05)",
-                  borderTop: "1px solid hsl(0 0% 100% / 0.08)",
-                } : undefined}
               >
                 <div
                   className="mx-4 h-[1px]"
