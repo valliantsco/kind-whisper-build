@@ -153,15 +153,6 @@ const HeroSection = () => {
               transition={{ delay: 0.2 }}
               className="block"
             >
-              Liderando a Nova Era
-            </motion.span>
-            <motion.span
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4 }}
-              className="block"
-            >
-              Da{" "}
               <span
                 style={{
                   background: "linear-gradient(135deg, hsl(11 81% 57%), hsl(11 90% 65%), hsl(20 85% 60%))",
@@ -171,8 +162,17 @@ const HeroSection = () => {
                   filter: "drop-shadow(0 0 20px hsl(11 81% 57% / 0.4))",
                 }}
               >
-                Mobilidade.
-              </span>
+                Liderando
+              </span>{" "}
+              a Nova Era
+            </motion.span>
+            <motion.span
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4 }}
+              className="block"
+            >
+              Da Mobilidade.
             </motion.span>
           </h1>
 
