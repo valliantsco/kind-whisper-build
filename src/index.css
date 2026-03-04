@@ -172,6 +172,11 @@ html {
   animation: pulse-glow 2s ease-in-out infinite;
 }
 
+/* Hide scrollbar */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
 /* Vertical writing mode */
 .writing-vertical {
   writing-mode: vertical-rl;
