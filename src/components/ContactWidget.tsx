@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/select";
 import { useBusinessHours } from "@/hooks/useBusinessHours";
 
-const WHATSAPP_NUMBER = "5500000000000";
+const WHATSAPP_NUMBER = "551151996628";
 
 const businessHoursInfo = [
   { day: "Seg - Sex", hours: "08:00 – 18:00" },
