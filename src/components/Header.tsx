@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import msLogo from "@/assets/ms-eletric-logo-white.png";
-import msLogoDark from "@/assets/ms-eletric-logo-dark.png";
+import msLogoDark from "@/assets/ms-eletric-logo-dark-new.png";
 
 const navItems = [
   { label: "Inicio", href: "#inicio" },
