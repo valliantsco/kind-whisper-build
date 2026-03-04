@@ -121,6 +121,8 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
   const [details, setDetails] = useState(draft.current?.details || "");
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isLoading, setIsLoading] = useState(false);
+  const [isCheckingSpam, setIsCheckingSpam] = useState(false);
+  const [spamChecked, setSpamChecked] = useState(false);
   const [isRecording, setIsRecording] = useState(false);
   const [isTranscribing, setIsTranscribing] = useState(false);
   const [recordingSeconds, setRecordingSeconds] = useState(0);
@@ -209,6 +211,40 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
     return Object.keys(errs).length === 0;
   }, [name, phone, city, details]);
 
+  // AI spam check — runs when details field loses focus
+  const runSpamCheck = useCallback(async () => {
+    const trimmedName = name.trim();
+    const trimmedDetails = details.trim();
+    const trimmedCity = city.trim();
+
+    if (!trimmedName || !trimmedDetails || trimmedDetails.length < 10 || !trimmedCity) return;
+
+    setIsCheckingSpam(true);
+    try {
+      const { data } = await supabase.functions.invoke("check-spam", {
+        body: { name: trimmedName, city: trimmedCity, details: trimmedDetails },
+      });
+
+      if (data && !data.valid && data.fieldErrors) {
+        setErrors((prev) => ({ ...prev, ...data.fieldErrors }));
+        setSpamChecked(true);
+      } else if (data?.valid) {
+        setSpamChecked(true);
+        setErrors((prev) => {
+          const cleaned = { ...prev };
+          if (cleaned.name === "Informe seu nome verdadeiro") delete cleaned.name;
+          if (cleaned.city === "Informe uma cidade válida") delete cleaned.city;
+          if (cleaned.details === "Descreva sua real necessidade sobre veículos elétricos") delete cleaned.details;
+          return cleaned;
+        });
+      }
+    } catch {
+      setSpamChecked(true);
+    } finally {
+      setIsCheckingSpam(false);
+    }
+  }, [name, city, details]);
+
   const startRecording = useCallback(async () => {
     try {
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
@@ -287,6 +323,27 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
 
   const handleSubmit = useCallback(async () => {
     if (!validate()) return;
+    // If spam check hasn't run yet, run it now and block
+    if (!spamChecked && name.trim() && details.trim().length >= 10 && city.trim()) {
+      setIsLoading(true);
+      try {
+        const { data } = await supabase.functions.invoke("check-spam", {
+          body: { name: name.trim(), city: city.trim(), details: details.trim() },
+        });
+        if (data && !data.valid && data.fieldErrors) {
+          setErrors((prev) => ({ ...prev, ...data.fieldErrors }));
+          setIsLoading(false);
+          return;
+        }
+      } catch {
+        // If check fails, proceed
+      }
+    }
+    // If there are still AI-flagged errors, block
+    if (Object.keys(errors).length > 0) {
+      setIsLoading(false);
+      return;
+    }
     setIsLoading(true);
 
     let message: string;
@@ -296,16 +353,7 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
         body: { name: name.trim(), city: city.trim(), details: details.trim() || undefined },
       });
 
-      // Handle spam rejection with per-field errors
-      if (error) {
-        if (data?.error === "spam" && data?.fieldErrors) {
-          setErrors(data.fieldErrors);
-          setIsLoading(false);
-          return;
-        }
-        throw new Error("AI error");
-      }
-      if (!data?.message) throw new Error("AI error");
+      if (error || !data?.message) throw new Error("AI error");
       message = data.message;
     } catch {
       message = [
@@ -338,7 +386,7 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
     sessionStorage.removeItem(STORAGE_KEY);
     setIsLoading(false);
     onClose();
-  }, [name, phone, city, details, validate, onClose]);
+  }, [name, phone, city, details, errors, spamChecked, validate, onClose]);
 
   return (
     <AnimatePresence>
@@ -643,7 +691,14 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                       className={`${inputBaseStyle} pr-14 resize-none disabled:opacity-50 cw-input ${errors.details ? "cw-input-error" : ""}`}
                       style={{ ...getInputBorderStyle(!!errors.details), maxHeight: '40vh', overflowY: 'auto' }}
                       onFocus={() => setIsDetailsFocused(true)}
-                      onBlur={() => setIsDetailsFocused(false)}
+                      onBlur={() => {
+                        setIsDetailsFocused(false);
+                        // Trigger AI spam check when leaving details field
+                        if (details.trim().length >= 10) {
+                          setSpamChecked(false);
+                          runSpamCheck();
+                        }
+                      }}
                     />
 
                     {/* Mic button inside textarea */}
@@ -772,24 +827,24 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                 {/* Submit */}
                 <motion.button
                   onClick={handleSubmit}
-                  disabled={isLoading}
+                  disabled={isLoading || isCheckingSpam}
                   className="w-full flex items-center justify-center gap-2.5 py-3.5 rounded-lg font-semibold text-sm tracking-wide text-white cursor-pointer relative overflow-hidden disabled:opacity-70 disabled:cursor-not-allowed"
                   style={{
                     background: "linear-gradient(135deg, #25D366, #128C7E)",
                     boxShadow: "0 4px 20px rgba(37,211,102,0.25)",
                   }}
-                  whileHover={isLoading ? {} : {
+                  whileHover={(isLoading || isCheckingSpam) ? {} : {
                     scale: 1.02,
                     boxShadow: "0 0 25px rgba(37,211,102,0.5), 0 0 50px rgba(37,211,102,0.15)",
                   }}
-                  whileTap={isLoading ? {} : { scale: 0.98 }}
+                  whileTap={(isLoading || isCheckingSpam) ? {} : { scale: 0.98 }}
                 >
-                  {isLoading ? (
+                  {(isLoading || isCheckingSpam) ? (
                     <Loader2 className="w-5 h-5 animate-spin" />
                   ) : (
                     <WhatsAppIcon className="w-5 h-5" />
                   )}
-                  {isLoading ? "Redirecionando..." : "Continuar no WhatsApp"}
+                  {isCheckingSpam ? "Verificando..." : isLoading ? "Redirecionando..." : "Continuar no WhatsApp"}
                   
                 </motion.button>
 
