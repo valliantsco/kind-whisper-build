@@ -296,12 +296,10 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
         body: { name: name.trim(), city: city.trim(), details: details.trim() || undefined },
       });
 
-      // Handle spam rejection
+      // Handle spam rejection with per-field errors
       if (error) {
-        // supabase.functions.invoke wraps non-2xx as error
-        // Check if the response body has spam indicator
-        if (data?.error === "spam") {
-          setErrors({ details: data.userMessage || "Não foi possível processar sua solicitação." });
+        if (data?.error === "spam" && data?.fieldErrors) {
+          setErrors(data.fieldErrors);
           setIsLoading(false);
           return;
         }
