@@ -11,7 +11,7 @@ interface SlideContent {
   headlineLines: { text: string; highlight?: boolean; mobileOnly?: boolean; desktopOnly?: boolean }[];
   subheadline: string;
   primaryCta: { text: string; href: string };
-  secondaryCta: { text: string; href: string };
+  secondaryCta?: { text: string; href: string };
   videoId: string;
   videoStart?: number;
 }
@@ -29,7 +29,6 @@ const SLIDES: SlideContent[] = [
     ],
     subheadline: "A MS Eletric reúne soluções em motos elétricas para quem busca economia, praticidade e uma experiência completa do atendimento ao pós-venda.",
     primaryCta: { text: "Conheça os Modelos", href: "#modelos" },
-    secondaryCta: { text: "Sobre Nós", href: "#sobre" },
     videoId: "ml6ODnWanys",
   },
   {
@@ -251,25 +250,27 @@ const HeroSection = () => {
                       {slide.primaryCta.text}
                     </motion.a>
 
-                    <motion.a
-                      href={slide.secondaryCta.href}
-                      className="relative inline-flex items-center justify-center text-xs sm:text-sm md:text-base font-semibold uppercase tracking-[0.12em] px-6 md:px-9 py-3.5 md:py-4 rounded-xl text-primary-foreground/70 border border-primary-foreground/12 backdrop-blur-sm overflow-hidden"
-                      style={{ background: "hsl(0 0% 100% / 0.04)" }}
-                      whileHover={{
-                        scale: 1.05,
-                        borderColor: "hsl(0 0% 100% / 0.25)",
-                        color: "hsl(0 0% 100% / 0.9)",
-                      }}
-                      whileTap={{ scale: 0.97 }}
-                    >
-                      <span
-                        className="absolute bottom-0 left-0 right-0 h-[1px]"
-                        style={{
-                          background: "linear-gradient(90deg, transparent, hsl(0 0% 100% / 0.15), transparent)",
+                    {slide.secondaryCta && (
+                      <motion.a
+                        href={slide.secondaryCta.href}
+                        className="relative inline-flex items-center justify-center text-xs sm:text-sm md:text-base font-semibold uppercase tracking-[0.12em] px-6 md:px-9 py-3.5 md:py-4 rounded-xl text-primary-foreground/70 border border-primary-foreground/12 backdrop-blur-sm overflow-hidden"
+                        style={{ background: "hsl(0 0% 100% / 0.04)" }}
+                        whileHover={{
+                          scale: 1.05,
+                          borderColor: "hsl(0 0% 100% / 0.25)",
+                          color: "hsl(0 0% 100% / 0.9)",
                         }}
-                      />
-                      {slide.secondaryCta.text}
-                    </motion.a>
+                        whileTap={{ scale: 0.97 }}
+                      >
+                        <span
+                          className="absolute bottom-0 left-0 right-0 h-[1px]"
+                          style={{
+                            background: "linear-gradient(90deg, transparent, hsl(0 0% 100% / 0.15), transparent)",
+                          }}
+                        />
+                        {slide.secondaryCta.text}
+                      </motion.a>
+                    )}
                   </div>
                 </>
               );
