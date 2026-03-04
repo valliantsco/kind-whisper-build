@@ -13,26 +13,46 @@ const PROFANITY_LIST = [
 // Common Portuguese bigrams (natural language patterns)
 const VOWELS = new Set("aeiouáéíóúâêîôûãõàèìòù");
 
+// Valid Portuguese word-start consonant clusters
+const VALID_STARTS = new Set([
+  "b","c","d","f","g","h","j","k","l","m","n","p","q","r","s","t","v","w","x","z",
+  "bl","br","cl","cr","ch","dl","dr","fl","fr","gl","gr","gn","lh","nh",
+  "pl","pr","ps","qu","sc","sk","sl","sm","sn","sp","st","sw","tr","tl","vr",
+]);
+
+// Valid Portuguese word-end patterns
+const VALID_ENDS = /[aeiouáéíóúâêîôûãõàèìòùlmnrsxz]$/i;
+
 function isGibberish(text: string): boolean {
   const lower = text.toLowerCase().replace(/[^a-záéíóúâêîôûãõàèìòù]/g, "");
   if (lower.length < 4) return false;
 
-  // Check consonant clusters: 4+ consonants in a row = likely gibberish
-  if (/[^aeiouáéíóúâêîôûãõàèìòù]{4,}/i.test(lower)) return true;
+  // 1. Check word start: extract leading consonants
+  const startMatch = lower.match(/^([^aeiouáéíóúâêîôûãõàèìòù]*)/i);
+  if (startMatch && startMatch[1].length >= 2) {
+    if (!VALID_STARTS.has(startMatch[1])) return true;
+  }
 
-  // Check vowel ratio: Portuguese words typically have 35-55% vowels
+  // 2. Check consonant clusters: 3+ consonants in a row (non-standard)
+  const clusters = lower.match(/[^aeiouáéíóúâêîôûãõàèìòù]{3,}/gi) || [];
+  const allowedClusters = ["str","ntr","nst","ndr","mbr","mpr","scr","spr","nsp","nsc","xtr","xpr","xpl"];
+  if (clusters.some((c) => !allowedClusters.some((a) => c.includes(a)))) return true;
+
+  // 3. Check vowel ratio
   const vowelCount = [...lower].filter((c) => VOWELS.has(c)).length;
   const vowelRatio = vowelCount / lower.length;
-  if (lower.length >= 5 && (vowelRatio < 0.2 || vowelRatio > 0.75)) return true;
+  if (lower.length >= 5 && (vowelRatio < 0.25 || vowelRatio > 0.8)) return true;
 
-  // Check for alternating gibberish patterns like "dadadsd", "sasasa"
-  // If removing duplicate consecutive bigrams leaves very little variety
+  // 4. Repetitive syllable pattern: "dsa dsa", "ada ada"
   if (lower.length >= 6) {
-    const bigrams = new Set<string>();
-    for (let i = 0; i < lower.length - 1; i++) bigrams.add(lower.slice(i, i + 2));
-    // Very few unique bigrams relative to length = repetitive gibberish
-    if (bigrams.size < lower.length * 0.3) return true;
+    const half = Math.floor(lower.length / 2);
+    const first = lower.slice(0, half);
+    const second = lower.slice(half, half + first.length);
+    if (first === second && first.length >= 3) return true;
   }
+
+  // 5. Word doesn't end with valid Portuguese ending
+  if (lower.length >= 5 && !VALID_ENDS.test(lower)) return true;
 
   return false;
 }
