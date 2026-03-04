@@ -169,10 +169,10 @@ const Header = () => {
       />
       <div className="container mx-auto px-4 pt-4 pb-2 relative z-10">
         <header
-          className={`transition-all duration-[800ms] ease-in-out rounded-[0.9rem] overflow-hidden relative ${
+          className={`transition-all duration-[800ms] ease-in-out rounded-[0.9rem] relative ${
             scrolled
-              ? "bg-white/70 backdrop-blur-3xl border border-border/40 shadow-[0_4px_30px_rgba(0,0,0,0.08)]"
-              : "bg-primary-foreground/5 backdrop-blur-xl border border-primary-foreground/10"
+              ? "bg-white/60 backdrop-blur-2xl border border-black/[0.06] shadow-[0_2px_24px_rgba(0,0,0,0.12),0_1px_3px_rgba(0,0,0,0.06)]"
+              : "bg-primary-foreground/5 backdrop-blur-xl border border-primary-foreground/10 overflow-hidden"
           }`}
         >
           {/* Orbiting orange glow — only visible on transparent state */}
