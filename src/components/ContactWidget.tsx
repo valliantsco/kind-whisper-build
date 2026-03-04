@@ -644,8 +644,11 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                   
                 </motion.button>
 
-                <p className="text-[10px] text-white/30 text-center pt-0.5 pb-1">
+                <p className="text-[10px] text-white/30 text-center pt-0.5">
                   Você será direcionado para o WhatsApp para continuar o atendimento.
+                </p>
+                <p className="text-[8px] text-white/25 text-center leading-relaxed pb-1">
+                  Ao preencher este formulário e entrar em contato, você concorda com nossas políticas de proteção de dados, em conformidade com a Lei Geral de Proteção de Dados (LGPD – Lei nº 13.709/2018). Suas informações serão utilizadas exclusivamente para fins de atendimento.
                 </p>
               </div>
             </div>
