@@ -362,7 +362,7 @@ const Header = () => {
                 {/* Modern availability indicator */}
                 <StatusDot online={isOnline} />
                 <WhatsAppIcon />
-                Falar com Especialista
+                Falar com um especialista
               </motion.a>
             </div>
 
@@ -480,7 +480,7 @@ const Header = () => {
                       {/* Modern availability indicator */}
                       <StatusDot online={isOnline} />
                       <WhatsAppIcon />
-                      Falar com Especialista
+                      Falar com um especialista
                     </motion.a>
                   </motion.div>
                 </motion.div>
