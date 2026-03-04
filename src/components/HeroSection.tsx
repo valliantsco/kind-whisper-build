@@ -120,19 +120,6 @@ const HeroSection = () => {
         ))}
       </div>
 
-      {/* Scroll indicator */}
-      <motion.div
-        className="absolute right-6 top-1/2 -translate-y-1/2 z-10 hidden md:flex flex-col items-center gap-3"
-        animate={{ opacity: [0.4, 0.8, 0.4] }}
-        transition={{ duration: 3, repeat: Infinity }}
-      >
-        <span className="text-xs text-primary-foreground/40 uppercase tracking-[0.3em] writing-vertical">role para baixo</span>
-        <div className="w-px h-16 bg-gradient-to-b from-primary/60 to-transparent" />
-        <motion.div animate={{ y: [0, 8, 0] }} transition={{ duration: 2, repeat: Infinity }}>
-          <ArrowDown className="w-4 h-4 text-primary-foreground/40" />
-        </motion.div>
-      </motion.div>
-
       
     </section>
   );
