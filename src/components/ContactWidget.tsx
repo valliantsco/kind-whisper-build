@@ -372,10 +372,12 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                     type="tel"
                     value={phone}
                     onChange={(e) => {
-                      let v = e.target.value.replace(/\D/g, "").slice(0, 11);
+                      const raw = e.target.value.replace(/\D/g, "").slice(0, 11);
+                      if (raw.length === 0) { setPhone(""); return; }
+                      let v = raw;
                       if (v.length > 6) v = `(${v.slice(0,2)}) ${v.slice(2,7)}-${v.slice(7)}`;
                       else if (v.length > 2) v = `(${v.slice(0,2)}) ${v.slice(2)}`;
-                      else if (v.length > 0) v = `(${v}`;
+                      else v = `(${v}`;
                       setPhone(v);
                     }}
                     placeholder="(00) 00000-0000"
