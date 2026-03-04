@@ -161,18 +161,21 @@ function detectSpam(field: "name" | "city" | "details", value: string): string |
         return "Mensagem inválida";
       }
     }
-    // Same word repeated 3+ times
+    // Same word repeated 3+ times — exclude common Portuguese stop words
+    const stopWords = new Set(["a","o","e","é","de","da","do","das","dos","em","no","na","nos","nas","um","uma","uns","umas","para","por","com","como","que","se","os","as","eu","ele","ela","ao","à","mas","mais","ou","nem","já","lá","aqui","essa","esse","este","esta","essas","esses","meu","minha","seu","sua","não","sim","ter","ser","ir","ver","fazer","queria","saber","muito","bem","também"]);
     const words = lower.split(/\s+/);
     const wordCount: Record<string, number> = {};
-    for (const w of words) wordCount[w] = (wordCount[w] || 0) + 1;
-    if (Object.values(wordCount).some((c) => c >= 3)) {
+    for (const w of words) {
+      if (!stopWords.has(w) && w.length >= 3) wordCount[w] = (wordCount[w] || 0) + 1;
+    }
+    if (Object.values(wordCount).some((c) => c >= 4)) {
       return "Mensagem parece ser spam";
     }
-    // Check if ANY word (4+ chars) is gibberish — even a single one
-    const meaningfulWords = words.filter((w) => w.length >= 4);
-    if (meaningfulWords.length >= 1) {
+    // Check gibberish — only flag if MAJORITY of meaningful words are gibberish
+    const meaningfulWords = words.filter((w) => w.length >= 5 && !stopWords.has(w));
+    if (meaningfulWords.length >= 2) {
       const gibberishCount = meaningfulWords.filter((w) => isGibberish(w)).length;
-      if (gibberishCount > 0 && (meaningfulWords.length === 1 || gibberishCount / meaningfulWords.length > 0.4)) {
+      if (gibberishCount / meaningfulWords.length > 0.6) {
         return "*Escreva uma mensagem coerente com o que precisa";
       }
     }
