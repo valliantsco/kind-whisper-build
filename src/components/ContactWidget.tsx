@@ -2,7 +2,7 @@ import { useState, useCallback, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Clock, User, MessageSquare, Loader2, Mic, Square, MapPin } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
-import { useBusinessHours } from "@/hooks/useBusinessHours";
+import { useBusinessStatus } from "@/hooks/useBusinessHours";
 import { BRAZILIAN_CITIES } from "@/data/brazilian-cities";
 
 // ── Native spam detection (instant, no API) ──────────────────────────
@@ -263,7 +263,7 @@ const getInputBorderStyle = (hasError: boolean) => ({
 });
 
 const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
-  const isOnline = useBusinessHours();
+  const { isOnline, offlineMessage } = useBusinessStatus();
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [city, setCity] = useState("");
@@ -627,7 +627,7 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                       style={{ background: isOnline ? "hsl(142 76% 50%)" : "hsl(38 92% 50%)" }}
                     />
                   </span>
-                  {isOnline ? "Online agora" : "Offline · Voltamos às 08:00"}
+                  {isOnline ? "Online agora" : `Offline · ${offlineMessage}`}
                 </div>
 
                 {/* Business hours */}
