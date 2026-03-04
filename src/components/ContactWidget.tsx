@@ -288,7 +288,7 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
             />
 
             {/* Scrollable content with fade indicators */}
-            <div className="overflow-y-auto flex-1 relative">
+            <div className="overflow-y-auto flex-1 relative cw-scroll">
               {/* Top scroll fade */}
               <div
                 className="sticky top-0 left-0 right-0 h-3 pointer-events-none z-10"
