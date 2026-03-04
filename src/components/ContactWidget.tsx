@@ -45,7 +45,7 @@ function isGibberish(text: string): boolean {
 
   // 2. Check consonant clusters: 3+ consonants in a row (non-standard)
   const clusters = lower.match(/[^aeiouáéíóúâêîôûãõàèìòù]{3,}/gi) || [];
-  const allowedClusters = ["str","ntr","nst","ndr","mbr","mpr","scr","spr","nsp","nsc","xtr","xpr","xpl"];
+  const allowedClusters = ["str","ntr","nst","ndr","mbr","mpr","scr","spr","nsp","nsc","xtr","xpr","xpl","rth","sch","ght","phr","chr","thr","rst","rns","ldr","ngl","ngr","rpr"];
   if (clusters.some((c) => !allowedClusters.some((a) => c.includes(a)))) return true;
 
   // 3. Check vowel ratio
