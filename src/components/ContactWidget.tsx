@@ -110,6 +110,8 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
   const [isRecording, setIsRecording] = useState(false);
   const [isTranscribing, setIsTranscribing] = useState(false);
   const [isDetailsFocused, setIsDetailsFocused] = useState(false);
+  const [isScrolling, setIsScrolling] = useState(false);
+  const scrollTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const mediaRecorderRef = useRef<MediaRecorder | null>(null);
   const chunksRef = useRef<Blob[]>([]);
 
@@ -288,7 +290,15 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
             />
 
             {/* Scrollable content with fade indicators */}
-            <div className="overflow-y-auto flex-1 relative cw-scroll" dir="rtl">
+            <div
+              className={`overflow-y-auto flex-1 relative cw-scroll ${isScrolling ? "cw-scroll-active" : ""}`}
+              dir="rtl"
+              onScroll={() => {
+                setIsScrolling(true);
+                if (scrollTimeoutRef.current) clearTimeout(scrollTimeoutRef.current);
+                scrollTimeoutRef.current = setTimeout(() => setIsScrolling(false), 1200);
+              }}
+            >
               <div dir="ltr">
               {/* Top scroll fade */}
               <div
@@ -482,7 +492,7 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
 
                     {/* Mic button inside textarea */}
                     <AnimatePresence>
-                      {(!isDetailsFocused || isRecording || isTranscribing) && (
+                      {(!isDetailsFocused || isRecording || isTranscribing) && !isScrolling && (
                         <motion.div
                           key="mic-group"
                           className="absolute"
