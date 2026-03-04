@@ -1,14 +1,7 @@
 import { useState, useCallback, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Clock, User, HelpCircle, MessageSquare, Loader2, Mic, Square } from "lucide-react";
+import { X, Clock, User, HelpCircle, MessageSquare, Loader2, Mic, Square, ChevronDown } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import { useBusinessHours } from "@/hooks/useBusinessHours";
 
 const WHATSAPP_NUMBER = "551151996628";
@@ -423,57 +416,68 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                     <HelpCircle className="w-3 h-3" />
                     Qual o assunto? <span className="text-primary/70">*</span>
                   </label>
-                  {/* Backdrop blur when select is open */}
+                  {/* Custom centered topic picker */}
+                  <button
+                    type="button"
+                    onClick={() => setIsSelectOpen(true)}
+                    className={`w-full rounded-lg text-sm border-0 ring-0 cw-input text-left h-10 px-3 flex items-center justify-between ${errors.topic ? "cw-input-error" : ""} ${
+                      !selectedTopic ? "text-white/35" : "text-white"
+                    }`}
+                    style={getInputBorderStyle(!!errors.topic)}
+                  >
+                    <span>{selectedTopic || "Toque para escolher"}</span>
+                    <ChevronDown className="h-4 w-4 opacity-50" />
+                  </button>
+
+                  {/* Centered modal picker */}
                   <AnimatePresence>
                     {isSelectOpen && (
-                      <motion.div
-                        key="select-backdrop"
-                        initial={{ opacity: 0, backdropFilter: "blur(0px)" }}
-                        animate={{ opacity: 1, backdropFilter: "blur(6px)" }}
-                        exit={{ opacity: 0, backdropFilter: "blur(0px)" }}
-                        transition={{ duration: 0.35, ease: [0.4, 0, 0.2, 1] }}
-                        className="fixed inset-0 z-[150] bg-black/15 pointer-events-none"
-                      />
+                      <>
+                        <motion.div
+                          key="select-backdrop"
+                          initial={{ opacity: 0, backdropFilter: "blur(0px)" }}
+                          animate={{ opacity: 1, backdropFilter: "blur(6px)" }}
+                          exit={{ opacity: 0, backdropFilter: "blur(0px)" }}
+                          transition={{ duration: 0.35, ease: [0.4, 0, 0.2, 1] }}
+                          className="fixed inset-0 z-[200] bg-black/15"
+                          onClick={() => setIsSelectOpen(false)}
+                        />
+                        <motion.div
+                          key="select-menu"
+                          initial={{ opacity: 0, scale: 0.95 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          exit={{ opacity: 0, scale: 0.95 }}
+                          transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
+                          className="fixed z-[201] top-1/2 left-1/2 rounded-lg p-1 overflow-hidden"
+                          style={{
+                            transform: "translate(-50%, -50%)",
+                            background: "hsl(0 0% 14% / 0.95)",
+                            backdropFilter: "blur(20px)",
+                            border: "1px solid hsl(0 0% 100% / 0.1)",
+                            boxShadow: "0 20px 50px rgba(0,0,0,0.5)",
+                            width: "min(22rem, 90vw)",
+                          }}
+                        >
+                          {TOPIC_OPTIONS.map((topic) => (
+                            <button
+                              key={topic}
+                              type="button"
+                              onClick={() => {
+                                setSelectedTopic(topic);
+                                setIsSelectOpen(false);
+                                if (errors.topic) setErrors((prev) => { const { topic: _, ...rest } = prev; return rest; });
+                              }}
+                              className={`w-full text-left px-3 py-2.5 text-sm rounded-md transition-colors ${
+                                selectedTopic === topic ? "text-white bg-white/10" : "text-white/70 hover:bg-white/10 hover:text-white"
+                              }`}
+                            >
+                              {topic}
+                            </button>
+                          ))}
+                        </motion.div>
+                      </>
                     )}
                   </AnimatePresence>
-                  <Select open={isSelectOpen} onOpenChange={setIsSelectOpen} value={selectedTopic} onValueChange={(v) => { setSelectedTopic(v); if (errors.topic) setErrors((prev) => { const { topic, ...rest } = prev; return rest; }); }}>
-                    <SelectTrigger
-                      className={`w-full rounded-lg text-sm border-0 ring-0 cw-input ${errors.topic ? "cw-input-error" : ""} ${
-                        !selectedTopic ? "text-white/35" : "text-white"
-                      } focus:ring-2 focus:ring-[hsl(11_81%_57%_/_0.35)] focus:border-[hsl(11_81%_57%_/_0.5)]`}
-                      style={getInputBorderStyle(!!errors.topic)}
-                    >
-                      <SelectValue placeholder="Toque para escolher" />
-                    </SelectTrigger>
-                    <SelectContent
-                      className="rounded-lg border-0 z-[200] fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 max-w-[calc(100vw-3rem)]"
-                      position="popper"
-                      side="bottom"
-                      sideOffset={0}
-                      align="center"
-                      style={{
-                        background: "hsl(0 0% 14% / 0.95)",
-                        backdropFilter: "blur(20px)",
-                        border: "1px solid hsl(0 0% 100% / 0.1)",
-                        boxShadow: "0 20px 50px rgba(0,0,0,0.5)",
-                        width: "min(22rem, 90vw)",
-                        position: "fixed",
-                        top: "50%",
-                        left: "50%",
-                        transform: "translate(-50%, -50%)",
-                      }}
-                    >
-                      {TOPIC_OPTIONS.map((topic) => (
-                        <SelectItem
-                          key={topic}
-                          value={topic}
-                          className="text-sm text-white/70 cursor-pointer focus:bg-white/10 focus:text-white data-[highlighted]:bg-white/10 data-[highlighted]:text-white"
-                        >
-                          {topic}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
                   {errors.topic && <p className="text-[10px] mt-1" style={{ color: "hsl(0 84% 65%)" }}>{errors.topic}</p>}
                 </div>
 
