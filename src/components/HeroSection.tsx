@@ -1,10 +1,10 @@
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowDown, ArrowRight } from "lucide-react";
+import { ArrowRight, Zap } from "lucide-react";
 import { useState, useEffect, useCallback } from "react";
 import heroBg from "@/assets/hero-bg.jpg";
 
-const SLIDE_DURATION = 20000; // 20 seconds per video
+const SLIDE_DURATION = 20000;
 
 const VIDEOS = [
   { id: "ml6ODnWanys", title: "Video 1" },
@@ -29,7 +29,7 @@ const HeroSection = () => {
 
   return (
     <section id="inicio" className="relative min-h-[75vh] flex items-center overflow-hidden">
-      {/* Background image fallback (always visible) */}
+      {/* Background image fallback */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: `url(${heroBg})` }}
@@ -58,17 +58,68 @@ const HeroSection = () => {
       </div>
 
       {/* Gradient overlays */}
-      <div className="absolute inset-0 bg-gradient-to-r from-foreground/95 via-foreground/80 to-foreground/30 z-[3]" />
-      <div className="absolute inset-0 bg-gradient-to-t from-foreground/70 via-transparent to-foreground/20 z-[3]" />
+      <div className="absolute inset-0 bg-gradient-to-r from-foreground/95 via-foreground/85 to-foreground/40 z-[3]" />
+      <div className="absolute inset-0 bg-gradient-to-t from-foreground/80 via-transparent to-foreground/30 z-[3]" />
 
-      {/* Animated ambient shapes */}
-      <motion.div
-        className="absolute top-20 right-20 w-96 h-96 rounded-full opacity-[0.06]"
-        style={{ background: "radial-gradient(circle, hsl(11 81% 57%) 0%, transparent 70%)" }}
-        animate={{ scale: [1, 1.3, 1], opacity: [0.06, 0.1, 0.06] }}
-        transition={{ duration: 6, repeat: Infinity }}
-      />
+      {/* Futuristic ambient effects — matching header orbiting glows */}
+      <div className="absolute inset-0 z-[4] pointer-events-none overflow-hidden">
+        {/* Primary orbiting glow */}
+        <motion.div
+          className="absolute w-[400px] h-[400px] md:w-[600px] md:h-[600px] rounded-full"
+          style={{
+            background: "radial-gradient(circle, hsl(11 81% 57% / 0.12) 0%, hsl(11 90% 65% / 0.04) 50%, transparent 70%)",
+            filter: "blur(60px)",
+            top: "10%",
+          }}
+          animate={{ left: ["-20%", "80%", "-20%"] }}
+          transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
+        />
+        {/* Secondary glow — opposite */}
+        <motion.div
+          className="absolute w-[250px] h-[250px] md:w-[400px] md:h-[400px] rounded-full"
+          style={{
+            background: "radial-gradient(circle, hsl(11 90% 65% / 0.08) 0%, transparent 70%)",
+            filter: "blur(40px)",
+            bottom: "15%",
+          }}
+          animate={{ right: ["-15%", "70%", "-15%"] }}
+          transition={{ duration: 30, repeat: Infinity, ease: "easeInOut" }}
+        />
+        {/* Floating dot cluster */}
+        {[
+          { size: 6, top: "20%", duration: 22, delay: 0 },
+          { size: 4, top: "50%", duration: 18, delay: 4 },
+          { size: 5, top: "70%", duration: 20, delay: 8 },
+          { size: 3, top: "35%", duration: 16, delay: 2 },
+        ].map((dot, i) => (
+          <motion.div
+            key={i}
+            className="absolute rounded-full"
+            style={{
+              width: dot.size,
+              height: dot.size,
+              background: `hsl(11 81% 57% / ${0.2 + i * 0.05})`,
+              filter: "blur(1px)",
+              top: dot.top,
+            }}
+            animate={{
+              left: [i % 2 === 0 ? "5%" : "90%", i % 2 === 0 ? "85%" : "10%", i % 2 === 0 ? "5%" : "90%"],
+              opacity: [0.15, 0.5, 0.15],
+            }}
+            transition={{ duration: dot.duration, repeat: Infinity, ease: "easeInOut", delay: dot.delay }}
+          />
+        ))}
 
+        {/* Horizontal light strip at bottom — same as header */}
+        <div
+          className="absolute bottom-0 left-0 right-0 h-[1px] z-10"
+          style={{
+            background: "linear-gradient(90deg, transparent, hsl(11 81% 57% / 0.5), hsl(11 90% 65% / 0.5), transparent)",
+          }}
+        />
+      </div>
+
+      {/* Main content */}
       <div className="relative z-10 container mx-auto px-4 pt-28 sm:pt-32 md:pt-36 lg:pt-40 pb-16 md:pb-20">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -76,51 +127,144 @@ const HeroSection = () => {
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="max-w-4xl"
         >
-          <h1 className="font-display font-black text-3xl sm:text-4xl md:text-6xl lg:text-7xl text-primary-foreground leading-[0.95] mb-4 md:mb-8 uppercase tracking-tight">
-            <motion.span initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="block">
+          {/* Tag badge — futuristic micro-label */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8, y: 10 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ delay: 0.1, duration: 0.5 }}
+            className="mb-6 md:mb-8"
+          >
+            <span
+              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-[10px] sm:text-xs font-semibold uppercase tracking-[0.2em] text-primary-foreground/90 border border-primary-foreground/15 backdrop-blur-sm"
+              style={{
+                background: "hsl(0 0% 100% / 0.05)",
+                boxShadow: "0 0 20px hsl(11 81% 57% / 0.1), inset 0 0 20px hsl(11 81% 57% / 0.03)",
+              }}
+            >
+              <Zap className="w-3 h-3 text-primary" />
+              Mobilidade 100% elétrica
+            </span>
+          </motion.div>
+
+          {/* Headline — uppercase, wide tracking, neon accent */}
+          <h1 className="font-display font-black text-3xl sm:text-4xl md:text-6xl lg:text-7xl text-primary-foreground leading-[0.95] mb-5 md:mb-8 uppercase tracking-tight">
+            <motion.span
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+              className="block"
+            >
               Líder em
             </motion.span>
-            <motion.span initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.35 }} className="block">
+            <motion.span
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.35 }}
+              className="block"
+            >
               mobilidade
             </motion.span>
-            <motion.span initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 }} className="block gradient-text">
+            <motion.span
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5 }}
+              className="block"
+              style={{
+                background: "linear-gradient(135deg, hsl(11 81% 57%), hsl(11 90% 65%), hsl(20 85% 60%))",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
+                filter: "drop-shadow(0 0 20px hsl(11 81% 57% / 0.4))",
+              }}
+            >
               elétrica.
             </motion.span>
           </h1>
 
-          <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.7 }} className="text-sm sm:text-base md:text-lg lg:text-xl text-primary-foreground/60 mb-6 md:mb-10 max-w-2xl leading-relaxed">
+          {/* Subheadline */}
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.7 }}
+            className="text-sm sm:text-base md:text-lg lg:text-xl text-primary-foreground/55 mb-8 md:mb-12 max-w-2xl leading-relaxed tracking-wide"
+          >
             A MS Eletric reúne soluções 100% elétricas para quem busca praticidade, economia e uma experiência completa — do atendimento ao pós-venda.
           </motion.p>
 
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.9 }} className="flex flex-wrap items-center gap-3 md:gap-4">
-            <Button size="lg" className="text-sm md:text-base px-6 md:px-10 py-5 md:py-7 font-bold rounded-2xl glow-primary hover:scale-105 transition-transform gap-2" asChild>
-              <a href="#modelos">
-                Conheça nossos modelos
-                <ArrowRight className="w-4 h-4 md:w-5 md:h-5" />
-              </a>
-            </Button>
-            <Button variant="outline" size="lg" className="text-sm md:text-base px-5 md:px-8 py-5 md:py-7 font-bold rounded-2xl border-primary-foreground/20 text-primary-foreground hover:bg-primary-foreground/10 hover:border-primary-foreground/40" asChild>
-              <a href="#sobre">Sobre a marca</a>
-            </Button>
+          {/* CTAs — futuristic with glow, gradient border, matching header button style */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.9 }}
+            className="flex flex-wrap items-center gap-3 md:gap-4"
+          >
+            {/* Primary CTA — neon glow like header CTA */}
+            <motion.a
+              href="#modelos"
+              className="relative inline-flex items-center justify-center gap-2.5 text-sm md:text-base font-semibold uppercase tracking-[0.12em] px-7 md:px-10 py-4 md:py-5 rounded-xl bg-primary text-primary-foreground overflow-visible"
+              whileHover={{
+                scale: 1.05,
+                boxShadow: "0 0 25px hsl(11 81% 57% / 0.5), 0 0 50px hsl(11 81% 57% / 0.2)",
+              }}
+              whileTap={{ scale: 0.97 }}
+              style={{
+                boxShadow: "0 0 20px hsl(11 81% 57% / 0.3), 0 0 40px hsl(11 81% 57% / 0.1)",
+              }}
+            >
+              Conheça os modelos
+              <ArrowRight className="w-4 h-4 md:w-5 md:h-5" />
+            </motion.a>
+
+            {/* Secondary CTA — glassmorphism border with gradient light strip */}
+            <motion.a
+              href="#sobre"
+              className="relative inline-flex items-center justify-center text-sm md:text-base font-semibold uppercase tracking-[0.12em] px-7 md:px-10 py-4 md:py-5 rounded-xl text-primary-foreground/90 border border-primary-foreground/15 backdrop-blur-sm overflow-hidden"
+              style={{
+                background: "hsl(0 0% 100% / 0.05)",
+              }}
+              whileHover={{
+                scale: 1.05,
+                borderColor: "hsl(11 81% 57% / 0.4)",
+                boxShadow: "0 0 16px hsl(11 81% 57% / 0.15)",
+              }}
+              whileTap={{ scale: 0.97 }}
+            >
+              {/* Bottom gradient light strip */}
+              <span
+                className="absolute bottom-0 left-0 right-0 h-[1px]"
+                style={{
+                  background: "linear-gradient(90deg, transparent, hsl(11 81% 57% / 0.5), transparent)",
+                }}
+              />
+              Sobre a marca
+            </motion.a>
           </motion.div>
         </motion.div>
       </div>
 
-      {/* Slide indicators */}
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 flex gap-2">
+      {/* Slide indicators — futuristic style */}
+      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 flex gap-2.5">
         {VIDEOS.map((_, i) => (
-          <button
+          <motion.button
             key={i}
             onClick={() => setCurrentSlide(i)}
-            className={`h-1.5 rounded-full transition-all duration-500 ${
-              i === currentSlide ? "w-8 bg-primary" : "w-3 bg-primary-foreground/30 hover:bg-primary-foreground/50"
-            }`}
+            className="relative h-1.5 rounded-full transition-all duration-500"
+            style={{
+              width: i === currentSlide ? 32 : 12,
+              background: i === currentSlide
+                ? "linear-gradient(90deg, hsl(11 81% 57%), hsl(11 90% 65%))"
+                : "hsl(0 0% 100% / 0.2)",
+              boxShadow: i === currentSlide ? "0 0 12px hsl(11 81% 57% / 0.5)" : "none",
+            }}
+            whileHover={{
+              background: i === currentSlide
+                ? "linear-gradient(90deg, hsl(11 81% 57%), hsl(11 90% 65%))"
+                : "hsl(0 0% 100% / 0.4)",
+            }}
             aria-label={`Slide ${i + 1}`}
           />
         ))}
       </div>
-
-      
     </section>
   );
 };
