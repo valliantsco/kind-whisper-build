@@ -127,89 +127,76 @@ const HeroSection = () => {
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="max-w-4xl"
         >
-          {/* Tag badge — futuristic micro-label */}
+          {/* Tag badge — pill eyebrow */}
           <motion.div
             initial={{ opacity: 0, scale: 0.8, y: 10 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             transition={{ delay: 0.1, duration: 0.5 }}
-            className="mb-6 md:mb-8"
+            className="mb-5 md:mb-6"
           >
             <span
-              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-[10px] sm:text-xs font-semibold uppercase tracking-[0.2em] text-primary-foreground/90 border border-primary-foreground/15 backdrop-blur-sm"
+              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-[10px] sm:text-xs font-semibold uppercase tracking-[0.2em] text-primary-foreground/80 border border-primary-foreground/10 backdrop-blur-sm"
               style={{
-                background: "hsl(0 0% 100% / 0.05)",
-                boxShadow: "0 0 20px hsl(11 81% 57% / 0.1), inset 0 0 20px hsl(11 81% 57% / 0.03)",
+                background: "hsl(0 0% 100% / 0.04)",
               }}
             >
               <Zap className="w-3 h-3 text-primary" />
-              Mobilidade 100% Elétrica
+              Mobilidade Elétrica
             </span>
           </motion.div>
 
-          {/* Headline — uppercase, wide tracking, neon accent */}
-          <h1 className="font-display font-black text-3xl sm:text-4xl md:text-6xl lg:text-7xl text-primary-foreground leading-[0.95] mb-5 md:mb-8 uppercase tracking-tight">
+          {/* Headline — 2 lines, automotive premium */}
+          <h1 className="font-display font-black text-3xl sm:text-4xl md:text-6xl lg:text-7xl text-primary-foreground leading-[0.95] mb-5 md:mb-7 uppercase tracking-tight">
             <motion.span
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
               className="block"
             >
-              Liderando o
+              Líder em Mobilidade
             </motion.span>
             <motion.span
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.35 }}
+              transition={{ delay: 0.4 }}
               className="block"
             >
-              Futuro da
-            </motion.span>
-            <motion.span
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5 }}
-              className="block"
-            >
-              Mobilidade
-            </motion.span>
-            <motion.span
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.65 }}
-              className="block"
-              style={{
-                background: "linear-gradient(135deg, hsl(11 81% 57%), hsl(11 90% 65%), hsl(20 85% 60%))",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                backgroundClip: "text",
-                filter: "drop-shadow(0 0 20px hsl(11 81% 57% / 0.4))",
-              }}
-            >
-              Elétrica.
+              Sobre{" "}
+              <span
+                style={{
+                  background: "linear-gradient(135deg, hsl(11 81% 57%), hsl(11 90% 65%), hsl(20 85% 60%))",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
+                  filter: "drop-shadow(0 0 20px hsl(11 81% 57% / 0.4))",
+                }}
+              >
+                Duas Rodas.
+              </span>
             </motion.span>
           </h1>
 
-          {/* Subheadline */}
+          {/* Subheadline — short, scannable */}
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0.7 }}
-            className="text-sm sm:text-base md:text-lg lg:text-xl text-primary-foreground/55 mb-8 md:mb-12 max-w-2xl leading-relaxed tracking-wide"
+            transition={{ delay: 0.6 }}
+            className="text-sm sm:text-base md:text-lg text-primary-foreground/50 mb-8 md:mb-10 max-w-xl leading-relaxed tracking-wide"
           >
-            A MS Eletric se destaca no mercado de motos elétricas, oferecendo soluções inovadoras que priorizam tecnologia de ponta, eficiência energética e sustentabilidade. Nossas motos são projetadas para transformar seu dia a dia, contribuindo para um futuro mais verde.
+            A MS Eletric reúne soluções em motos elétricas para quem busca economia, praticidade e uma experiência completa — do atendimento ao pós-venda.
           </motion.p>
 
-          {/* CTAs — futuristic with glow, gradient border, matching header button style */}
+          {/* CTAs */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.9 }}
+            transition={{ delay: 0.8 }}
             className="flex flex-wrap items-center gap-3 md:gap-4"
           >
-            {/* Primary CTA — neon glow like header CTA */}
+            {/* Primary CTA */}
             <motion.a
               href="#modelos"
-              className="relative inline-flex items-center justify-center gap-2.5 text-sm md:text-base font-semibold uppercase tracking-[0.12em] px-7 md:px-10 py-4 md:py-5 rounded-xl bg-primary text-primary-foreground overflow-visible"
+              className="relative inline-flex items-center justify-center gap-2.5 text-xs sm:text-sm md:text-base font-semibold uppercase tracking-[0.12em] px-6 md:px-9 py-3.5 md:py-4 rounded-xl bg-primary text-primary-foreground overflow-visible"
               whileHover={{
                 scale: 1.05,
                 boxShadow: "0 0 25px hsl(11 81% 57% / 0.5), 0 0 50px hsl(11 81% 57% / 0.2)",
@@ -219,32 +206,31 @@ const HeroSection = () => {
                 boxShadow: "0 0 20px hsl(11 81% 57% / 0.3), 0 0 40px hsl(11 81% 57% / 0.1)",
               }}
             >
-              Conheça Nossos Modelos
+              Conheça os Modelos
               <ArrowRight className="w-4 h-4 md:w-5 md:h-5" />
             </motion.a>
 
-            {/* Secondary CTA — glassmorphism border with gradient light strip */}
+            {/* Secondary CTA — outline/neutral */}
             <motion.a
               href="#sobre"
-              className="relative inline-flex items-center justify-center text-sm md:text-base font-semibold uppercase tracking-[0.12em] px-7 md:px-10 py-4 md:py-5 rounded-xl text-primary-foreground/90 border border-primary-foreground/15 backdrop-blur-sm overflow-hidden"
+              className="relative inline-flex items-center justify-center text-xs sm:text-sm md:text-base font-semibold uppercase tracking-[0.12em] px-6 md:px-9 py-3.5 md:py-4 rounded-xl text-primary-foreground/70 border border-primary-foreground/12 backdrop-blur-sm overflow-hidden"
               style={{
-                background: "hsl(0 0% 100% / 0.05)",
+                background: "hsl(0 0% 100% / 0.04)",
               }}
               whileHover={{
                 scale: 1.05,
-                borderColor: "hsl(11 81% 57% / 0.4)",
-                boxShadow: "0 0 16px hsl(11 81% 57% / 0.15)",
+                borderColor: "hsl(0 0% 100% / 0.25)",
+                color: "hsl(0 0% 100% / 0.9)",
               }}
               whileTap={{ scale: 0.97 }}
             >
-              {/* Bottom gradient light strip */}
               <span
                 className="absolute bottom-0 left-0 right-0 h-[1px]"
                 style={{
-                  background: "linear-gradient(90deg, transparent, hsl(11 81% 57% / 0.5), transparent)",
+                  background: "linear-gradient(90deg, transparent, hsl(0 0% 100% / 0.15), transparent)",
                 }}
               />
-              Saiba Mais Sobre a Marca
+              Sobre a MS Eletric
             </motion.a>
           </motion.div>
         </motion.div>
