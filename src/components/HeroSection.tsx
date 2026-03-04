@@ -1,11 +1,32 @@
 import { Button } from "@/components/ui/button";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { ArrowDown, ArrowRight } from "lucide-react";
+import { useState, useEffect, useCallback } from "react";
 import heroBg from "@/assets/hero-bg.jpg";
 
-const YOUTUBE_EMBED = `https://www.youtube.com/embed/ml6ODnWanys?autoplay=1&mute=1&loop=1&playlist=ml6ODnWanys&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&disablekb=1&fs=0&iv_load_policy=3`;
+const SLIDE_DURATION = 20000; // 20 seconds per video
+
+const VIDEOS = [
+  { id: "ml6ODnWanys", title: "Video 1" },
+  { id: "ml6ODnWanys", title: "Video 2" },
+  { id: "ml6ODnWanys", title: "Video 3" },
+];
+
+const buildEmbedUrl = (videoId: string) =>
+  `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&loop=1&playlist=${videoId}&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&disablekb=1&fs=0&iv_load_policy=3`;
 
 const HeroSection = () => {
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  const nextSlide = useCallback(() => {
+    setCurrentSlide((prev) => (prev + 1) % VIDEOS.length);
+  }, []);
+
+  useEffect(() => {
+    const timer = setInterval(nextSlide, SLIDE_DURATION);
+    return () => clearInterval(timer);
+  }, [nextSlide]);
+
   return (
     <section id="inicio" className="relative min-h-screen flex items-start overflow-hidden">
       {/* Background image fallback (always visible) */}
@@ -14,17 +35,27 @@ const HeroSection = () => {
         style={{ backgroundImage: `url(${heroBg})` }}
       />
 
-      {/* Video background - desktop only (overlays image when loaded) */}
+      {/* Video slideshow background */}
       <div className="absolute inset-0">
-        <iframe
-          src={YOUTUBE_EMBED}
-          className="absolute pointer-events-none top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[180%] h-[180%] max-md:w-[400%] max-md:h-[400%]"
-          style={{ border: 0, aspectRatio: '16/9' }}
-          allow="autoplay; encrypted-media"
-          title="Hero video"
-        />
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={currentSlide}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 1.2, ease: "easeInOut" }}
+            className="absolute inset-0"
+          >
+            <iframe
+              src={buildEmbedUrl(VIDEOS[currentSlide].id)}
+              className="absolute pointer-events-none top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[180%] h-[180%] max-md:w-[400%] max-md:h-[400%]"
+              style={{ border: 0, aspectRatio: '16/9' }}
+              allow="autoplay; encrypted-media"
+              title={VIDEOS[currentSlide].title}
+            />
+          </motion.div>
+        </AnimatePresence>
       </div>
-
 
       {/* Gradient overlays */}
       <div className="absolute inset-0 bg-gradient-to-r from-foreground/95 via-foreground/80 to-foreground/30 z-[3]" />
@@ -73,6 +104,20 @@ const HeroSection = () => {
             </Button>
           </motion.div>
         </motion.div>
+      </div>
+
+      {/* Slide indicators */}
+      <div className="absolute bottom-36 left-1/2 -translate-x-1/2 z-10 flex gap-2">
+        {VIDEOS.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => setCurrentSlide(i)}
+            className={`h-1.5 rounded-full transition-all duration-500 ${
+              i === currentSlide ? "w-8 bg-primary" : "w-3 bg-primary-foreground/30 hover:bg-primary-foreground/50"
+            }`}
+            aria-label={`Slide ${i + 1}`}
+          />
+        ))}
       </div>
 
       {/* Scroll indicator */}
