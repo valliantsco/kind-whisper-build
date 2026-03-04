@@ -146,7 +146,28 @@ const Header = () => {
 
   return (
     <div className="fixed top-0 left-0 right-0 z-50">
-      <div className="container mx-auto px-4 pt-4 pb-2">
+      {/* Ocean blur ambient — fades on scroll */}
+      <div
+        className="pointer-events-none absolute inset-x-0 top-0 h-[140px] md:h-[160px] z-0 transition-opacity duration-[1200ms] ease-in-out"
+        style={{
+          opacity: scrolled ? 0 : 1,
+          background:
+            "radial-gradient(ellipse 120% 100% at 50% 0%, hsl(220 40% 13% / 0.7) 0%, hsl(220 35% 10% / 0.4) 40%, transparent 80%)",
+          filter: "blur(20px)",
+        }}
+        aria-hidden="true"
+      />
+      <div
+        className="pointer-events-none absolute inset-x-0 top-0 h-[120px] md:h-[140px] z-0 transition-opacity duration-[1200ms] ease-in-out"
+        style={{
+          opacity: scrolled ? 0 : 0.6,
+          background:
+            "radial-gradient(ellipse 90% 80% at 50% 0%, hsl(11 81% 57% / 0.06) 0%, transparent 70%)",
+          filter: "blur(30px)",
+        }}
+        aria-hidden="true"
+      />
+      <div className="container mx-auto px-4 pt-4 pb-2 relative z-10">
         <header
           className={`transition-all duration-[800ms] ease-in-out rounded-[0.9rem] overflow-hidden relative ${
             scrolled
