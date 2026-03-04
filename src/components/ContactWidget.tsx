@@ -607,24 +607,29 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                 </motion.button>
               </div>
 
-              {/* Status chip — amber when offline (#5) */}
-              <div className="px-5 pb-4">
+              {/* Status + Hours block */}
+              <div className="px-5 pb-4 space-y-2.5">
+                {/* Status chip */}
                 <div
-                  className="flex items-center justify-center gap-2 px-3 py-1.5 rounded-full text-[10px] font-semibold uppercase tracking-[0.1em] border w-full"
+                  className="flex items-center justify-center gap-2.5 px-4 py-2 rounded-xl text-[11px] font-semibold tracking-wide border w-full"
                   style={{
-                    background: isOnline ? "hsl(142 76% 36% / 0.12)" : "hsl(38 92% 50% / 0.12)",
-                    borderColor: isOnline ? "hsl(142 76% 36% / 0.25)" : "hsl(38 92% 50% / 0.25)",
-                    color: isOnline ? "hsl(142 70% 65%)" : "hsl(38 92% 70%)",
+                    background: isOnline
+                      ? "linear-gradient(135deg, hsl(142 76% 36% / 0.15), hsl(142 76% 36% / 0.05))"
+                      : "linear-gradient(135deg, hsl(11 81% 57% / 0.12), hsl(38 92% 50% / 0.06))",
+                    borderColor: isOnline
+                      ? "hsl(142 76% 36% / 0.3)"
+                      : "hsl(11 81% 57% / 0.25)",
+                    color: isOnline ? "hsl(142 70% 70%)" : "hsl(30 90% 75%)",
                   }}
                 >
-                  <span className="relative flex h-2.5 w-2.5">
+                  <span className="relative flex h-2 w-2 shrink-0">
                     <span
-                      className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75"
-                      style={{ background: isOnline ? "hsl(142 76% 50%)" : "hsl(38 92% 50%)" }}
+                      className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-60"
+                      style={{ background: isOnline ? "hsl(142 76% 50%)" : "hsl(11 81% 57%)" }}
                     />
                     <span
-                      className="relative inline-flex rounded-full h-2.5 w-2.5"
-                      style={{ background: isOnline ? "hsl(142 76% 50%)" : "hsl(38 92% 50%)" }}
+                      className="relative inline-flex rounded-full h-2 w-2"
+                      style={{ background: isOnline ? "hsl(142 76% 50%)" : "hsl(11 81% 57%)" }}
                     />
                   </span>
                   {isOnline ? "Online agora" : offlineMessage}
@@ -632,18 +637,18 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
 
                 {/* Business hours */}
                 <div
-                  className="mt-3 flex items-center justify-center gap-2 p-3 rounded-lg"
+                  className="flex items-center gap-2.5 p-2.5 rounded-xl"
                   style={{
-                    background: "hsl(0 0% 100% / 0.04)",
+                    background: "hsl(0 0% 100% / 0.03)",
                     border: "1px solid hsl(0 0% 100% / 0.06)",
                   }}
                 >
-                  <Clock className="w-3.5 h-3.5 text-white/30 shrink-0" />
-                  <div className="flex flex-wrap justify-center gap-x-4 gap-y-0.5">
+                  <Clock className="w-3.5 h-3.5 shrink-0" style={{ color: "hsl(11 81% 57% / 0.5)" }} />
+                  <div className="flex flex-wrap gap-x-3 gap-y-0.5">
                     {businessHoursInfo.map((item) => (
-                      <span key={item.day} className="text-[10px] text-white/40">
-                        <span className="font-medium text-white/60">{item.day}:</span>{" "}
-                        <span style={{ color: "hsl(11 81% 57% / 0.7)" }}>{item.hours}</span>
+                      <span key={item.day} className="text-[10px] text-white/40 leading-relaxed">
+                        <span className="font-medium text-white/55">{item.day}</span>{" "}
+                        <span style={{ color: "hsl(11 81% 57% / 0.6)" }}>{item.hours}</span>
                       </span>
                     ))}
                   </div>
