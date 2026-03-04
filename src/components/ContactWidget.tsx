@@ -214,14 +214,6 @@ function filterCities(query: string): string[] {
 }
 
 
-const STORAGE_KEY = "ms-contact-draft";
-
-const loadDraft = () => {
-  try {
-    const saved = sessionStorage.getItem(STORAGE_KEY);
-    return saved ? JSON.parse(saved) : null;
-  } catch { return null; }
-};
 
 // Shared input style helper — replaces inline onFocus/onBlur handlers
 const inputBaseStyle = "w-full px-3 py-2.5 rounded-lg text-sm text-white placeholder:text-white/35 focus:outline-none transition-[border-color,box-shadow] duration-200";
@@ -233,22 +225,16 @@ const getInputBorderStyle = (hasError: boolean) => ({
 
 const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
   const isOnline = useBusinessHours();
-  const draft = useRef(loadDraft());
-  const [name, setName] = useState(draft.current?.name || "");
-  const [phone, setPhone] = useState(() => {
-    const saved = draft.current?.phone || "";
-    // Strip formatting from saved draft, then re-format
-    const digits = saved.replace(/\D/g, "").slice(0, 11);
-    return digits ? formatPhone(digits) : "";
-  });
-  const [city, setCity] = useState(draft.current?.city || "");
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [city, setCity] = useState("");
   const [cityValidated, setCityValidated] = useState(false);
   const [citySuggestions, setCitySuggestions] = useState<string[]>([]);
   const [isCityDropdownOpen, setIsCityDropdownOpen] = useState(false);
   const [focusedCityIndex, setFocusedCityIndex] = useState(-1);
   const cityInputRef = useRef<HTMLInputElement | null>(null);
   const cityDropdownRef = useRef<HTMLDivElement | null>(null);
-  const [details, setDetails] = useState(draft.current?.details || "");
+  const [details, setDetails] = useState("");
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isLoading, setIsLoading] = useState(false);
   const [isRecording, setIsRecording] = useState(false);
@@ -262,13 +248,6 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
   const recordingIntervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const MAX_RECORDING_SECONDS = 15;
 
-  // Persist draft to sessionStorage
-  useEffect(() => {
-    const data = { name, phone, city, details };
-    if (name || phone || city || details) {
-      sessionStorage.setItem(STORAGE_KEY, JSON.stringify(data));
-    }
-  }, [name, phone, city, details]);
 
   useEffect(() => {
     if (isOpen) {
@@ -464,7 +443,7 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
     if (textareaRef.current) {
       textareaRef.current.style.height = 'auto';
     }
-    sessionStorage.removeItem(STORAGE_KEY);
+    
     setIsLoading(false);
     onClose();
   }, [name, phone, city, details, errors, validate, onClose]);
