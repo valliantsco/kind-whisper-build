@@ -205,12 +205,10 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                   }}
                 >
                   <span className="relative flex h-2.5 w-2.5">
-                    {isOnline && (
-                      <span
-                        className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75"
-                        style={{ background: "hsl(142 76% 50%)" }}
-                      />
-                    )}
+                    <span
+                      className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75"
+                      style={{ background: isOnline ? "hsl(142 76% 50%)" : "hsl(0 84% 60%)" }}
+                    />
                     <span
                       className="relative inline-flex rounded-full h-2.5 w-2.5"
                       style={{ background: isOnline ? "hsl(142 76% 50%)" : "hsl(0 84% 60%)" }}
