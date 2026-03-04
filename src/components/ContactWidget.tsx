@@ -1,6 +1,6 @@
 import { useState, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Clock, Send, User, Phone, HelpCircle, ChevronDown, MessageSquare } from "lucide-react";
+import { X, Clock, Send, User, Phone, HelpCircle, ChevronDown } from "lucide-react";
 import { useBusinessHours } from "@/hooks/useBusinessHours";
 
 const WHATSAPP_NUMBER = "5500000000000";
@@ -37,12 +37,12 @@ const overlayVariants = {
 };
 
 const panelVariants = {
-  hidden: { opacity: 0, scale: 0.92, y: 40 },
+  hidden: { opacity: 0, scale: 0.9, y: 30 },
   visible: {
     opacity: 1,
     scale: 1,
     y: 0,
-    transition: { type: "spring" as const, damping: 28, stiffness: 320 },
+    transition: { type: "spring" as const, damping: 25, stiffness: 300 },
   },
   exit: {
     opacity: 0,
@@ -96,9 +96,6 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
     onClose();
   }, [name, phone, selectedTopic, details, validate, onClose]);
 
-  const inputBase =
-    "w-full px-4 py-3 rounded-xl border bg-background text-sm text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary/50 transition-all duration-200";
-
   return (
     <AnimatePresence>
       {isOpen && (
@@ -109,96 +106,75 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
           animate="visible"
           exit="exit"
         >
-          {/* Backdrop with blur */}
           <motion.div
-            className="absolute inset-0 bg-foreground/50 backdrop-blur-md"
+            className="absolute inset-0 bg-foreground/60 backdrop-blur-sm"
             onClick={onClose}
           />
 
-          {/* Panel */}
           <motion.div
             variants={panelVariants}
-            className="relative w-full sm:max-w-[420px] bg-card rounded-t-3xl sm:rounded-3xl overflow-hidden max-h-[94vh] flex flex-col"
-            style={{
-              boxShadow:
-                "0 25px 60px -12px rgba(0,0,0,0.25), 0 0 0 1px hsl(var(--border) / 0.5), 0 0 80px -20px hsl(var(--primary) / 0.1)",
-            }}
+            className="relative w-full sm:max-w-md bg-card rounded-t-2xl sm:rounded-2xl shadow-2xl overflow-hidden border border-border/50 max-h-[92vh] flex flex-col"
           >
-            {/* Animated top gradient bar */}
-            <motion.div
+            {/* Top gradient bar */}
+            <div
               className="h-1 shrink-0"
               style={{
                 background:
                   "linear-gradient(90deg, hsl(var(--primary)), hsl(11 90% 65%), hsl(var(--primary)))",
-                backgroundSize: "200% 100%",
               }}
-              animate={{ backgroundPosition: ["0% 0%", "200% 0%"] }}
-              transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
             />
 
             {/* Scrollable content */}
-            <div className="overflow-y-auto flex-1 overscroll-contain">
+            <div className="overflow-y-auto flex-1">
               {/* Header */}
-              <div className="relative px-6 pt-6 pb-4">
-                {/* Subtle corner glow */}
-                <div
-                  className="absolute top-0 right-0 w-40 h-40 pointer-events-none opacity-40"
-                  style={{
-                    background:
-                      "radial-gradient(circle at top right, hsl(var(--primary) / 0.08), transparent 70%)",
-                  }}
-                />
+              <div className="flex items-start justify-between p-5 pb-3">
+                <div>
+                  <h3 className="text-lg font-bold text-card-foreground">
+                    Fale com um especialista da MS Eletric
+                  </h3>
+                  <p className="text-sm text-muted-foreground mt-0.5">
+                    Preencha rapidamente e continue o atendimento pelo WhatsApp.
+                  </p>
+                </div>
+                <motion.button
+                  onClick={onClose}
+                  className="p-1.5 rounded-lg text-muted-foreground hover:text-card-foreground hover:bg-muted transition-colors"
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                >
+                  <X className="w-5 h-5" />
+                </motion.button>
+              </div>
 
-                <div className="flex items-start justify-between">
-                  <div className="flex-1 pr-4">
-                    <h3 className="text-xl font-bold text-card-foreground leading-tight tracking-tight">
-                      Fale com um especialista da MS Eletric
-                    </h3>
-                    <p className="text-sm text-muted-foreground mt-1.5 leading-relaxed">
-                      Preencha rapidamente e continue o atendimento pelo WhatsApp.
-                    </p>
-                  </div>
-                  <motion.button
-                    onClick={onClose}
-                    className="p-2 rounded-xl text-muted-foreground hover:text-card-foreground hover:bg-muted/80 transition-all duration-200"
-                    whileHover={{ scale: 1.1, rotate: 90 }}
-                    whileTap={{ scale: 0.9 }}
-                  >
-                    <X className="w-5 h-5" />
-                  </motion.button>
+              {/* Status chip */}
+              <div className="px-5 pb-4">
+                <div
+                  className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium border ${
+                    isOnline
+                      ? "bg-green-50 text-green-700 border-green-200"
+                      : "bg-red-50 text-red-700 border-red-200"
+                  }`}
+                >
+                  <span className="relative flex h-2 w-2">
+                    {isOnline && (
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
+                    )}
+                    <span
+                      className={`relative inline-flex rounded-full h-2 w-2 ${
+                        isOnline ? "bg-green-500" : "bg-red-500"
+                      }`}
+                    />
+                  </span>
+                  {isOnline ? "Estamos online agora!" : "Voltamos às 08:00"}
                 </div>
 
-                {/* Status + hours combined card */}
-                <div className="mt-4 p-3.5 rounded-2xl bg-muted/40 border border-border/40">
-                  <div className="flex items-center justify-between">
-                    <div
-                      className={`inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold ${
-                        isOnline
-                          ? "bg-green-500/10 text-green-600"
-                          : "bg-red-500/10 text-red-600"
-                      }`}
-                    >
-                      <span className="relative flex h-2 w-2">
-                        {isOnline && (
-                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
-                        )}
-                        <span
-                          className={`relative inline-flex rounded-full h-2 w-2 ${
-                            isOnline ? "bg-green-500" : "bg-red-500"
-                          }`}
-                        />
-                      </span>
-                      {isOnline ? "Online agora" : "Voltamos às 08:00"}
-                    </div>
-                    <Clock className="w-3.5 h-3.5 text-muted-foreground/60" />
-                  </div>
-
-                  <div className="mt-2.5 flex flex-wrap gap-x-4 gap-y-1">
+                {/* Business hours */}
+                <div className="mt-3 flex items-start gap-2 p-3 rounded-xl bg-muted/50 border border-border/50">
+                  <Clock className="w-4 h-4 text-muted-foreground mt-0.5 shrink-0" />
+                  <div className="flex flex-wrap gap-x-4 gap-y-0.5">
                     {businessHoursInfo.map((item) => (
-                      <span key={item.day} className="text-[11px] text-muted-foreground">
-                        <span className="font-medium text-card-foreground/70">
-                          {item.day}:
-                        </span>{" "}
+                      <span key={item.day} className="text-xs text-muted-foreground">
+                        <span className="font-medium text-card-foreground">{item.day}:</span>{" "}
                         {item.hours}
                       </span>
                     ))}
@@ -206,24 +182,13 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                 </div>
               </div>
 
-              {/* Divider */}
-              <div className="mx-6">
-                <div
-                  className="h-px"
-                  style={{
-                    background:
-                      "linear-gradient(90deg, transparent, hsl(var(--border) / 0.6), transparent)",
-                  }}
-                />
-              </div>
-
               {/* Form */}
-              <div className="px-6 py-5 space-y-4">
+              <div className="px-5 pb-5 space-y-4">
                 {/* Name */}
                 <div>
-                  <label className="flex items-center gap-1.5 text-xs font-semibold text-card-foreground/80 mb-2 uppercase tracking-wider">
-                    <User className="w-3.5 h-3.5 text-primary/60" />
-                    Nome
+                  <label className="flex items-center gap-1.5 text-xs font-medium text-card-foreground mb-1.5">
+                    <User className="w-3.5 h-3.5 text-muted-foreground" />
+                    Nome *
                   </label>
                   <input
                     type="text"
@@ -231,26 +196,18 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                     onChange={(e) => setName(e.target.value)}
                     placeholder="Seu nome"
                     maxLength={100}
-                    className={`${inputBase} ${
-                      errors.name ? "border-destructive ring-1 ring-destructive/20" : "border-input"
+                    className={`w-full px-3 py-2.5 rounded-lg border bg-background text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-all ${
+                      errors.name ? "border-destructive" : "border-input"
                     }`}
                   />
-                  {errors.name && (
-                    <motion.p
-                      initial={{ opacity: 0, y: -4 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      className="text-xs text-destructive mt-1.5 font-medium"
-                    >
-                      {errors.name}
-                    </motion.p>
-                  )}
+                  {errors.name && <p className="text-xs text-destructive mt-1">{errors.name}</p>}
                 </div>
 
                 {/* WhatsApp */}
                 <div>
-                  <label className="flex items-center gap-1.5 text-xs font-semibold text-card-foreground/80 mb-2 uppercase tracking-wider">
-                    <Phone className="w-3.5 h-3.5 text-primary/60" />
-                    WhatsApp
+                  <label className="flex items-center gap-1.5 text-xs font-medium text-card-foreground mb-1.5">
+                    <Phone className="w-3.5 h-3.5 text-muted-foreground" />
+                    WhatsApp *
                   </label>
                   <input
                     type="tel"
@@ -258,65 +215,42 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                     onChange={(e) => setPhone(e.target.value)}
                     placeholder="(00) 00000-0000"
                     maxLength={20}
-                    className={`${inputBase} ${
-                      errors.phone ? "border-destructive ring-1 ring-destructive/20" : "border-input"
+                    className={`w-full px-3 py-2.5 rounded-lg border bg-background text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-all ${
+                      errors.phone ? "border-destructive" : "border-input"
                     }`}
                   />
-                  {errors.phone && (
-                    <motion.p
-                      initial={{ opacity: 0, y: -4 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      className="text-xs text-destructive mt-1.5 font-medium"
-                    >
-                      {errors.phone}
-                    </motion.p>
-                  )}
+                  {errors.phone && <p className="text-xs text-destructive mt-1">{errors.phone}</p>}
                 </div>
 
-                {/* Topic dropdown */}
+                {/* Topic selection - dropdown */}
                 <div>
-                  <label className="flex items-center gap-1.5 text-xs font-semibold text-card-foreground/80 mb-2 uppercase tracking-wider">
-                    <HelpCircle className="w-3.5 h-3.5 text-primary/60" />
-                    Como podemos te ajudar?
+                  <label className="flex items-center gap-1.5 text-xs font-medium text-card-foreground mb-1.5">
+                    <HelpCircle className="w-3.5 h-3.5 text-muted-foreground" />
+                    Como podemos te ajudar? *
                   </label>
                   <div className="relative">
                     <select
                       value={selectedTopic}
                       onChange={(e) => setSelectedTopic(e.target.value)}
-                      className={`${inputBase} appearance-none pr-10 cursor-pointer ${
-                        !selectedTopic ? "text-muted-foreground/60" : ""
-                      } ${errors.topic ? "border-destructive ring-1 ring-destructive/20" : "border-input"}`}
+                      className={`w-full px-3 py-2.5 rounded-lg border bg-background text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-all appearance-none pr-9 ${
+                        !selectedTopic ? "text-muted-foreground" : ""
+                      } ${errors.topic ? "border-destructive" : "border-input"}`}
                     >
-                      <option value="" disabled>
-                        Selecione um assunto
-                      </option>
+                      <option value="" disabled>Selecione um assunto</option>
                       {TOPIC_OPTIONS.map((topic) => (
-                        <option key={topic} value={topic}>
-                          {topic}
-                        </option>
+                        <option key={topic} value={topic}>{topic}</option>
                       ))}
                     </select>
-                    <ChevronDown className="absolute right-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground/50 pointer-events-none" />
+                    <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground pointer-events-none" />
                   </div>
-                  {errors.topic && (
-                    <motion.p
-                      initial={{ opacity: 0, y: -4 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      className="text-xs text-destructive mt-1.5 font-medium"
-                    >
-                      {errors.topic}
-                    </motion.p>
-                  )}
+                  {errors.topic && <p className="text-xs text-destructive mt-1.5">{errors.topic}</p>}
                 </div>
 
                 {/* Optional details */}
                 <div>
-                  <label className="flex items-center gap-1.5 text-xs font-semibold text-card-foreground/80 mb-2 uppercase tracking-wider">
-                    <MessageSquare className="w-3.5 h-3.5 text-primary/60" />
-                    Detalhes
-                    <span className="text-muted-foreground/50 font-normal normal-case tracking-normal text-[10px]">
-                      (opcional)
-                    </span>
+                  <label className="flex items-center gap-1.5 text-xs font-medium text-card-foreground mb-1.5">
+                    Quer nos contar mais detalhes?{" "}
+                    <span className="text-muted-foreground font-normal">(opcional)</span>
                   </label>
                   <textarea
                     value={details}
@@ -324,48 +258,30 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                     placeholder="Ex: tenho interesse em uma moto para delivery"
                     rows={2}
                     maxLength={500}
-                    className={`${inputBase} resize-none`}
+                    className="w-full px-3 py-2.5 rounded-lg border border-input bg-background text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-all resize-none"
                   />
                 </div>
-              </div>
-            </div>
 
-            {/* Sticky footer with CTA */}
-            <div className="shrink-0 px-6 pb-6 pt-3 bg-gradient-to-t from-card via-card to-card/0">
-              <motion.button
-                onClick={handleSubmit}
-                className="w-full flex items-center justify-center gap-2.5 py-4 rounded-2xl font-bold text-sm tracking-wide text-primary-foreground relative overflow-hidden"
-                style={{
-                  background: "linear-gradient(135deg, #25D366 0%, #128C7E 100%)",
-                  boxShadow:
-                    "0 8px 32px rgba(37,211,102,0.3), 0 2px 8px rgba(37,211,102,0.2)",
-                }}
-                whileHover={{
-                  scale: 1.02,
-                  boxShadow:
-                    "0 12px 40px rgba(37,211,102,0.4), 0 4px 12px rgba(37,211,102,0.3)",
-                }}
-                whileTap={{ scale: 0.98 }}
-              >
-                {/* Shimmer effect */}
-                <motion.div
-                  className="absolute inset-0 pointer-events-none"
-                  style={{
-                    background:
-                      "linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.15) 50%, transparent 60%)",
-                    backgroundSize: "200% 100%",
+                {/* Submit */}
+                <motion.button
+                  onClick={handleSubmit}
+                  className="w-full flex items-center justify-center gap-2.5 py-3.5 rounded-xl bg-[#25D366] text-white font-semibold text-sm tracking-wide shadow-lg"
+                  whileHover={{
+                    scale: 1.02,
+                    boxShadow:
+                      "0 0 20px rgba(37,211,102,0.4), 0 0 40px rgba(37,211,102,0.15)",
                   }}
-                  animate={{ backgroundPosition: ["-100% 0%", "200% 0%"] }}
-                  transition={{ duration: 3, repeat: Infinity, ease: "linear", repeatDelay: 2 }}
-                />
-                <WhatsAppIcon className="w-5 h-5" />
-                Falar com especialista no WhatsApp
-                <Send className="w-4 h-4" />
-              </motion.button>
+                  whileTap={{ scale: 0.98 }}
+                >
+                  <WhatsAppIcon className="w-5 h-5" />
+                  Falar com especialista no WhatsApp
+                  <Send className="w-4 h-4" />
+                </motion.button>
 
-              <p className="text-[10px] text-muted-foreground/60 text-center mt-3">
-                Você será direcionado para o WhatsApp para continuar o atendimento.
-              </p>
+                <p className="text-[10px] text-muted-foreground text-center pt-1">
+                  Você será direcionado para o WhatsApp para continuar o atendimento.
+                </p>
+              </div>
             </div>
           </motion.div>
         </motion.div>
