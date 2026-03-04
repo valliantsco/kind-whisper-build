@@ -263,43 +263,68 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
     };
   }, [isOpen]);
 
+  // Cleanup MediaRecorder on unmount
+  useEffect(() => {
+    return () => {
+      if (recordingTimerRef.current) clearTimeout(recordingTimerRef.current);
+      if (recordingIntervalRef.current) clearInterval(recordingIntervalRef.current);
+      if (mediaRecorderRef.current?.state === "recording") {
+        mediaRecorderRef.current.stop();
+      }
+    };
+  }, []);
+
   const validate = useCallback(() => {
     const errs: Record<string, string> = {};
 
-    // Name: min 2 words, only letters/spaces/accents, no repeated chars like "aaaa bbbb"
+    // Name — also run detectSpam for consistency
     const trimmedName = name.trim();
     if (!trimmedName) {
       errs.name = "Precisamos do seu nome completo";
-    } else if (!trimmedName.includes(" ")) {
-      errs.name = "Inclua seu sobrenome também";
-    } else if (!/^[A-Za-zÀ-ÿ\s'-]+$/.test(trimmedName)) {
-      errs.name = "Use apenas letras no nome";
-    } else if (/(.)\1{3,}/i.test(trimmedName.replace(/\s/g, ""))) {
-      errs.name = "Nome inválido";
-    } else if (trimmedName.split(/\s+/).some((w) => w.length < 2)) {
-      errs.name = "Nome inválido";
+    } else {
+      const nameSpam = detectSpam("name", trimmedName);
+      if (nameSpam) {
+        errs.name = nameSpam;
+      } else if (!trimmedName.includes(" ")) {
+        errs.name = "Inclua seu sobrenome também";
+      } else if (!/^[A-Za-zÀ-ÿ\s'-]+$/.test(trimmedName)) {
+        errs.name = "Use apenas letras no nome";
+      }
     }
 
-    // Phone: exactly 11 digits, no obvious patterns
+    // Phone: 11 digits, valid DDD (11-99), 3rd digit must be 9
     const phoneDigits = phone.replace(/\D/g, "");
     if (!phone.trim()) {
       errs.phone = "Qual seu número de WhatsApp?";
     } else if (phoneDigits.length !== 11) {
       errs.phone = "O número deve ter DDD + 9 dígitos";
-    } else if (/^(\d)\1{10}$/.test(phoneDigits)) {
-      errs.phone = "*Insira um número válido";
-    } else if (/^(01234567890|12345678901|00000000000)$/.test(phoneDigits)) {
-      errs.phone = "*Insira um número válido";
+    } else {
+      const ddd = parseInt(phoneDigits.slice(0, 2), 10);
+      if (ddd < 11 || ddd > 99) {
+        errs.phone = "*DDD inválido";
+      } else if (phoneDigits[2] !== "9") {
+        errs.phone = "*Celular deve começar com 9 após o DDD";
+      } else {
+        // Entropy check
+        const body = phoneDigits.slice(2);
+        const uniqueDigits = new Set(body).size;
+        const digitFreq: Record<string, number> = {};
+        for (const d of body) digitFreq[d] = (digitFreq[d] || 0) + 1;
+        const maxFreq = Math.max(...Object.values(digitFreq));
+        if (/^(\d)\1{10}$/.test(phoneDigits) || uniqueDigits <= 2 || maxFreq >= 7) {
+          errs.phone = "*Insira um número válido";
+        }
+      }
     }
 
-    // City — must be selected from IBGE suggestions
+    // City — must be selected from list
     if (!city.trim()) {
       errs.city = "Informe sua cidade e estado";
     } else if (!cityValidated) {
       errs.city = "*Selecione uma localidade válida da lista";
     }
 
-    // Details: min 10 chars, min 2 words, no gibberish (>60% same char)
+    // Details — also run detectSpam
     const trimmedDetails = details.trim();
     if (!trimmedDetails) {
       errs.details = "Informe o motivo do contato";
@@ -308,13 +333,9 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
     } else if (trimmedDetails.split(/\s+/).length < 2) {
       errs.details = "Escreva pelo menos duas palavras";
     } else {
-      // Check for gibberish: if any single char is >60% of text
-      const chars = trimmedDetails.toLowerCase().replace(/\s/g, "");
-      const freq: Record<string, number> = {};
-      for (const c of chars) freq[c] = (freq[c] || 0) + 1;
-      const maxFreq = Math.max(...Object.values(freq));
-      if (chars.length > 5 && maxFreq / chars.length > 0.6) {
-        errs.details = "Mensagem inválida";
+      const detailsSpam = detectSpam("details", trimmedDetails);
+      if (detailsSpam) {
+        errs.details = detailsSpam;
       }
     }
 
@@ -401,8 +422,6 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
 
   const handleSubmit = useCallback(async () => {
     if (!validate()) return;
-    // Block if native spam errors are present
-    if (Object.keys(errors).length > 0) return;
     setIsLoading(true);
 
     let message: string;
@@ -419,6 +438,8 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
         `*Por favor, para que seu atendimento prossiga, não apague esta mensagem antes de enviar!*`,
         ``,
         `*Nome:* ${name.trim()}`,
+        ``,
+        `*WhatsApp:* ${phone}`,
         ``,
         `*Cidade:* ${city.trim()}`,
         ``,
@@ -446,7 +467,7 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
     
     setIsLoading(false);
     onClose();
-  }, [name, phone, city, details, errors, validate, onClose]);
+  }, [name, phone, city, details, validate, onClose]);
 
   return (
     <AnimatePresence>
@@ -586,9 +607,15 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                     type="text"
                     value={name}
                     onChange={(e) => {
+                      const PREPOSITIONS = new Set(["da","de","do","dos","das","e"]);
                       const formatted = e.target.value
                         .toLowerCase()
-                        .replace(/(?:^|\s)\S/g, (char) => char.toUpperCase());
+                        .split(/\s+/)
+                        .map((w, i) => {
+                          if (i > 0 && PREPOSITIONS.has(w)) return w;
+                          return w.charAt(0).toUpperCase() + w.slice(1);
+                        })
+                        .join(" ");
                       setName(formatted);
                       const spamErr = detectSpam("name", formatted);
                       setErrors((prev) => {
@@ -620,28 +647,25 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                     onChange={(e) => {
                       const raw = e.target.value.replace(/\D/g, "").slice(0, 11);
                       setPhone(formatPhone(raw));
-                      // Instant phone spam detection
+                      // Instant phone validation
                       if (raw.length === 11) {
-                        const body = raw.slice(2); // 9-digit body (without DDD)
-                        const uniqueDigits = new Set(body).size;
-                        const digitFreq: Record<string, number> = {};
-                        for (const d of body) digitFreq[d] = (digitFreq[d] || 0) + 1;
-                        const maxFreq = Math.max(...Object.values(digitFreq));
-
-                        const isFake =
-                          // All same digit: 11111111111
-                          /^(\d)\1{10}$/.test(raw) ||
-                          // Body has ≤2 unique digits (e.g. 15151515115)
-                          uniqueDigits <= 2 ||
-                          // One digit dominates 7+ of 9 in body
-                          maxFreq >= 7 ||
-                          // Sequential
-                          /^(01234567890|12345678901)$/.test(raw);
-
-                        if (isFake) {
-                          setErrors((prev) => ({ ...prev, phone: "*Insira um número válido" }));
+                        const ddd = parseInt(raw.slice(0, 2), 10);
+                        if (ddd < 11 || ddd > 99) {
+                          setErrors((prev) => ({ ...prev, phone: "*DDD inválido" }));
+                        } else if (raw[2] !== "9") {
+                          setErrors((prev) => ({ ...prev, phone: "*Celular deve começar com 9 após o DDD" }));
                         } else {
-                          setErrors((prev) => { const { phone, ...rest } = prev; return rest; });
+                          const body = raw.slice(2);
+                          const uniqueDigits = new Set(body).size;
+                          const digitFreq: Record<string, number> = {};
+                          for (const d of body) digitFreq[d] = (digitFreq[d] || 0) + 1;
+                          const maxFreq = Math.max(...Object.values(digitFreq));
+                          const isFake = /^(\d)\1{10}$/.test(raw) || uniqueDigits <= 2 || maxFreq >= 7;
+                          if (isFake) {
+                            setErrors((prev) => ({ ...prev, phone: "*Insira um número válido" }));
+                          } else {
+                            setErrors((prev) => { const { phone, ...rest } = prev; return rest; });
+                          }
                         }
                       } else if (raw.length > 0 && raw.length < 11) {
                         setErrors((prev) => { const { phone, ...rest } = prev; return rest; });
@@ -690,9 +714,6 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                     onBlur={() => {
                       setTimeout(() => {
                         setIsCityDropdownOpen(false);
-                        if (city.trim() && !cityValidated) {
-                          setErrors((prev) => ({ ...prev, city: "*Selecione uma localidade válida da lista" }));
-                        }
                       }, 200);
                     }}
                     onKeyDown={(e) => {
