@@ -627,7 +627,7 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                       style={{ background: isOnline ? "hsl(142 76% 50%)" : "hsl(38 92% 50%)" }}
                     />
                   </span>
-                  {isOnline ? "Online agora" : `Offline · ${offlineMessage}`}
+                  {isOnline ? "Online agora" : offlineMessage}
                 </div>
 
                 {/* Business hours */}
