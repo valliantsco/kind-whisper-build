@@ -10,21 +10,70 @@ const BUSINESS_HOURS: Record<number, [number, number] | null> = {
   6: [8, 12],     // Sábado
 };
 
-const checkOnline = (): boolean => {
-  const now = new Date();
-  const hours = BUSINESS_HOURS[now.getDay()];
-  if (!hours) return false;
-  const h = now.getHours();
-  return h >= hours[0] && h < hours[1];
-};
+const DAY_NAMES = ["domingo", "segunda", "terça", "quarta", "quinta", "sexta", "sábado"];
 
-export const useBusinessHours = () => {
-  const [isOnline, setIsOnline] = useState(checkOnline);
+interface BusinessStatus {
+  isOnline: boolean;
+  offlineMessage: string;
+}
+
+function getStatus(): BusinessStatus {
+  const now = new Date();
+  const day = now.getDay();
+  const h = now.getHours();
+  const m = now.getMinutes();
+  const hours = BUSINESS_HOURS[day];
+
+  // Check if currently online
+  if (hours && h >= hours[0] && h < hours[1]) {
+    return { isOnline: true, offlineMessage: "" };
+  }
+
+  // Offline — compute next opening
+  // If today still has hours ahead (before opening), return today
+  if (hours && h < hours[0]) {
+    if (hours[0] === 8) {
+      return { isOnline: false, offlineMessage: "Voltamos hoje às 08:00" };
+    }
+    return { isOnline: false, offlineMessage: `Voltamos hoje às ${String(hours[0]).padStart(2, "0")}:00` };
+  }
+
+  // Otherwise look ahead up to 7 days
+  for (let offset = 1; offset <= 7; offset++) {
+    const nextDay = (day + offset) % 7;
+    const nextHours = BUSINESS_HOURS[nextDay];
+    if (nextHours) {
+      const openTime = `${String(nextHours[0]).padStart(2, "0")}:00`;
+      if (offset === 1) {
+        return { isOnline: false, offlineMessage: `Voltamos amanhã às ${openTime}` };
+      }
+      // Use day name for 2+ days ahead
+      const dayName = DAY_NAMES[nextDay];
+      return { isOnline: false, offlineMessage: `Voltamos na ${dayName} às ${openTime}` };
+    }
+  }
+
+  return { isOnline: false, offlineMessage: "Estamos fechados no momento" };
+}
+
+export const useBusinessHours = (): boolean => {
+  const [isOnline, setIsOnline] = useState(() => getStatus().isOnline);
 
   useEffect(() => {
-    const interval = setInterval(() => setIsOnline(checkOnline()), 60000);
+    const interval = setInterval(() => setIsOnline(getStatus().isOnline), 60000);
     return () => clearInterval(interval);
   }, []);
 
   return isOnline;
+};
+
+export const useBusinessStatus = (): BusinessStatus => {
+  const [status, setStatus] = useState(getStatus);
+
+  useEffect(() => {
+    const interval = setInterval(() => setStatus(getStatus()), 60000);
+    return () => clearInterval(interval);
+  }, []);
+
+  return status;
 };
