@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { X, Clock, User, MessageSquare, Loader2, Mic, Square, MapPin } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useBusinessHours } from "@/hooks/useBusinessHours";
+import { BRAZILIAN_CITIES } from "@/data/brazilian-cities";
 
 // ── Native spam detection (instant, no API) ──────────────────────────
 const PROFANITY_LIST = [
@@ -201,51 +202,14 @@ const formatPhone = (digits: string): string => {
   return `(${digits}`;
 };
 
-// UF abbreviation map
-const UF_MAP: Record<number, string> = {
-  11:"RO",12:"AC",13:"AM",14:"RR",15:"PA",16:"AP",17:"TO",
-  21:"MA",22:"PI",23:"CE",24:"RN",25:"PB",26:"PE",27:"AL",28:"SE",29:"BA",
-  31:"MG",32:"ES",33:"RJ",35:"SP",
-  41:"PR",42:"SC",43:"RS",
-  50:"MS",51:"MT",52:"GO",53:"DF",
-};
+// Synchronous city filter against static list
+const normaliseStr = (s: string) => s.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
 
-// Full city list cache (loaded once)
-let allBrazilianCities: string[] | null = null;
-let citiesFetchPromise: Promise<string[]> | null = null;
-
-async function loadAllCities(): Promise<string[]> {
-  if (allBrazilianCities) return allBrazilianCities;
-  if (citiesFetchPromise) return citiesFetchPromise;
-
-  citiesFetchPromise = (async () => {
-    try {
-      const res = await fetch(
-        `https://servicodados.ibge.gov.br/api/v1/localidades/municipios?orderBy=nome`
-      );
-      if (!res.ok) return [];
-      const data: Array<{ nome: string; microrregiao: { mesorregiao: { UF: { id: number } } } }> = await res.json();
-      allBrazilianCities = data.map((m) => {
-        const ufId = m.microrregiao.mesorregiao.UF.id;
-        const uf = UF_MAP[ufId] || "";
-        return `${m.nome}, ${uf}`;
-      });
-      return allBrazilianCities;
-    } catch {
-      return [];
-    }
-  })();
-
-  return citiesFetchPromise;
-}
-
-async function fetchIBGECities(query: string): Promise<string[]> {
-  const normalised = query.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().trim();
-  if (normalised.length < 2) return [];
-
-  const cities = await loadAllCities();
-  return cities
-    .filter((c) => c.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().includes(normalised))
+function filterCities(query: string): string[] {
+  const q = normaliseStr(query.trim());
+  if (q.length < 2) return [];
+  return BRAZILIAN_CITIES
+    .filter((c) => normaliseStr(c).includes(q))
     .slice(0, 8);
 }
 
@@ -281,11 +245,9 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
   const [cityValidated, setCityValidated] = useState(false);
   const [citySuggestions, setCitySuggestions] = useState<string[]>([]);
   const [isCityDropdownOpen, setIsCityDropdownOpen] = useState(false);
-  const [isCityLoading, setIsCityLoading] = useState(false);
   const [focusedCityIndex, setFocusedCityIndex] = useState(-1);
   const cityInputRef = useRef<HTMLInputElement | null>(null);
   const cityDropdownRef = useRef<HTMLDivElement | null>(null);
-  const cityDebounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const [details, setDetails] = useState(draft.current?.details || "");
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isLoading, setIsLoading] = useState(false);
@@ -716,29 +678,15 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                       setCityValidated(false);
                       setErrors((prev) => { const { city: _, ...rest } = prev; return rest; });
 
-                      // Debounced IBGE fetch
-                      if (cityDebounceRef.current) clearTimeout(cityDebounceRef.current);
+                      // Instant local filter
                       if (val.trim().length >= 2) {
-                        setIsCityLoading(true);
-                        setIsCityDropdownOpen(true);
-                        cityDebounceRef.current = setTimeout(() => {
-                          fetchIBGECities(val.trim())
-                            .then((results) => {
-                              setCitySuggestions(results);
-                              setIsCityDropdownOpen(results.length > 0);
-                              setFocusedCityIndex(-1);
-                            })
-                            .catch((err) => {
-                              console.error("IBGE fetch error:", err);
-                              setCitySuggestions([]);
-                              setIsCityDropdownOpen(false);
-                            })
-                            .finally(() => setIsCityLoading(false));
-                        }, 300);
+                        const results = filterCities(val.trim());
+                        setCitySuggestions(results);
+                        setIsCityDropdownOpen(results.length > 0);
+                        setFocusedCityIndex(-1);
                       } else {
                         setCitySuggestions([]);
                         setIsCityDropdownOpen(false);
-                        setIsCityLoading(false);
                       }
                     }}
                     onFocus={() => {
@@ -781,7 +729,7 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                   />
                   {/* Suggestions dropdown */}
                   <AnimatePresence>
-                    {isCityDropdownOpen && (citySuggestions.length > 0 || isCityLoading) && (
+                    {isCityDropdownOpen && citySuggestions.length > 0 && (
                       <motion.div
                         ref={cityDropdownRef}
                         initial={{ opacity: 0, y: -4 }}
@@ -796,34 +744,27 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                           boxShadow: "0 10px 30px rgba(0,0,0,0.4)",
                         }}
                       >
-                        {isCityLoading ? (
-                          <div className="flex items-center gap-2 px-3 py-2.5 text-sm text-white/50">
-                            <Loader2 className="w-3.5 h-3.5 animate-spin" />
-                            Buscando cidades...
-                          </div>
-                        ) : (
-                          citySuggestions.map((suggestion, index) => (
-                            <button
-                              key={suggestion}
-                              type="button"
-                              onMouseDown={(e) => {
-                                e.preventDefault();
-                                setCity(suggestion);
-                                setCityValidated(true);
-                                setIsCityDropdownOpen(false);
-                                setCitySuggestions([]);
-                                setErrors((prev) => { const { city: _, ...rest } = prev; return rest; });
-                              }}
-                              className={`w-full text-left px-3 py-2 text-sm transition-colors ${
-                                focusedCityIndex === index
-                                  ? "text-white bg-white/10"
-                                  : "text-white/70 hover:bg-white/10 hover:text-white"
-                              }`}
-                            >
-                              {suggestion}
-                            </button>
-                          ))
-                        )}
+                        {citySuggestions.map((suggestion, index) => (
+                          <button
+                            key={suggestion}
+                            type="button"
+                            onMouseDown={(e) => {
+                              e.preventDefault();
+                              setCity(suggestion);
+                              setCityValidated(true);
+                              setIsCityDropdownOpen(false);
+                              setCitySuggestions([]);
+                              setErrors((prev) => { const { city: _, ...rest } = prev; return rest; });
+                            }}
+                            className={`w-full text-left px-3 py-2 text-sm transition-colors ${
+                              focusedCityIndex === index
+                                ? "text-white bg-white/10"
+                                : "text-white/70 hover:bg-white/10 hover:text-white"
+                            }`}
+                          >
+                            {suggestion}
+                          </button>
+                        ))}
                       </motion.div>
                     )}
                   </AnimatePresence>
