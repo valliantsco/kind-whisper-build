@@ -595,7 +595,9 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                     Fale com um especialista da MS Eletric
                   </h3>
                   <p className="text-xs text-white/50 mt-1 leading-relaxed">
-                    Preencha os campos abaixo para melhor lhe atender pelo WhatsApp.
+                    {isOnline
+                      ? "Estamos online! Preencha os campos e fale agora com um especialista."
+                      : "Preencha os campos abaixo e responderemos assim que nosso atendimento retornar."}
                   </p>
                 </div>
                 <motion.button
@@ -639,44 +641,58 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                     <Clock className="w-3 h-3 ml-auto opacity-50" />
                   </button>
 
+                  {/* Response time indicator (online only) */}
+                  {isOnline && (
+                    <div className="flex items-center justify-center gap-1.5 mt-1.5">
+                      <span className="text-[10px] text-white/35 italic">Tempo médio de resposta: ~5 min</span>
+                    </div>
+                  )}
+
                   {/* Hours popup */}
                   <AnimatePresence>
                     {showHoursPopup && (
-                      <motion.div
-                        initial={{ opacity: 0, y: -6, scale: 0.95 }}
-                        animate={{ opacity: 1, y: 0, scale: 1 }}
-                        exit={{ opacity: 0, y: -6, scale: 0.95 }}
-                        transition={{ duration: 0.2 }}
-                        className="absolute left-0 right-0 top-full mt-2 z-50 rounded-xl p-3.5 space-y-2"
-                        style={{
-                          background: "linear-gradient(135deg, hsl(0 0% 15% / 0.95), hsl(0 0% 10% / 0.95))",
-                          backdropFilter: "blur(20px)",
-                          border: "1px solid hsl(11 81% 57% / 0.2)",
-                          boxShadow: "0 12px 40px hsl(0 0% 0% / 0.5), 0 0 20px hsl(11 81% 57% / 0.08)",
-                        }}
-                      >
-                        <div className="flex items-center gap-2 mb-2">
-                          <Clock className="w-3.5 h-3.5" style={{ color: "hsl(11 81% 57% / 0.7)" }} />
-                          <span className="text-[10px] font-semibold uppercase tracking-[0.12em] text-white/60">
-                            Horário de atendimento
-                          </span>
-                        </div>
-                        {businessHoursInfo.map((item) => (
-                          <div
-                            key={item.day}
-                            className="flex items-center justify-between py-1.5 px-2 rounded-lg"
-                            style={{ background: "hsl(0 0% 100% / 0.03)" }}
-                          >
-                            <span className="text-[11px] font-medium text-white/60">{item.day}</span>
-                            <span
-                              className="text-[11px] font-semibold"
-                              style={{ color: item.hours === "Fechado" ? "hsl(0 70% 60%)" : "hsl(11 81% 57% / 0.85)" }}
-                            >
-                              {item.hours}
+                      <>
+                        {/* Backdrop to close on outside click */}
+                        <div
+                          className="fixed inset-0 z-40"
+                          onClick={() => setShowHoursPopup(false)}
+                        />
+                        <motion.div
+                          initial={{ opacity: 0, y: -6, scale: 0.95 }}
+                          animate={{ opacity: 1, y: 0, scale: 1 }}
+                          exit={{ opacity: 0, y: -6, scale: 0.95 }}
+                          transition={{ duration: 0.2 }}
+                          className="absolute left-0 right-0 top-full mt-2 z-50 rounded-xl p-3.5 space-y-2"
+                          style={{
+                            background: "linear-gradient(135deg, hsl(0 0% 15% / 0.95), hsl(0 0% 10% / 0.95))",
+                            backdropFilter: "blur(20px)",
+                            border: "1px solid hsl(11 81% 57% / 0.2)",
+                            boxShadow: "0 12px 40px hsl(0 0% 0% / 0.5), 0 0 20px hsl(11 81% 57% / 0.08)",
+                          }}
+                        >
+                          <div className="flex items-center gap-2 mb-2">
+                            <Clock className="w-3.5 h-3.5" style={{ color: "hsl(11 81% 57% / 0.7)" }} />
+                            <span className="text-[10px] font-semibold uppercase tracking-[0.12em] text-white/60">
+                              Horário de atendimento
                             </span>
                           </div>
-                        ))}
-                      </motion.div>
+                          {businessHoursInfo.map((item) => (
+                            <div
+                              key={item.day}
+                              className="flex items-center justify-between py-1.5 px-2 rounded-lg"
+                              style={{ background: "hsl(0 0% 100% / 0.03)" }}
+                            >
+                              <span className="text-[11px] font-medium text-white/60">{item.day}</span>
+                              <span
+                                className="text-[11px] font-semibold"
+                                style={{ color: item.hours === "Fechado" ? "hsl(0 70% 60%)" : "hsl(11 81% 57% / 0.85)" }}
+                              >
+                                {item.hours}
+                              </span>
+                            </div>
+                          ))}
+                        </motion.div>
+                      </>
                     )}
                   </AnimatePresence>
                 </div>
