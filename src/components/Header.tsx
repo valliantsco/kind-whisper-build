@@ -498,11 +498,12 @@ const Header = ({ contactOpen, setContactOpen }: HeaderProps) => {
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
-            className="fixed inset-0 z-[-1] lg:hidden"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
+            className="fixed inset-0 z-[-1] lg:hidden bg-foreground/20"
+            initial={{ opacity: 0, backdropFilter: "blur(0px)" }}
+            animate={{ opacity: 1, backdropFilter: "blur(6px)" }}
+            exit={{ opacity: 0, backdropFilter: "blur(0px)" }}
+            transition={{ duration: 0.5, ease: "easeInOut" }}
+            style={{ WebkitBackdropFilter: "blur(6px)" }}
             onClick={() => setMobileOpen(false)}
             aria-hidden="true"
           />
