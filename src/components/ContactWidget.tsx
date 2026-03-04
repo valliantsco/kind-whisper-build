@@ -462,12 +462,26 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
     let message: string;
 
     try {
-      const { data, error } = await supabase.functions.invoke("generate-whatsapp-message", {
-        body: { name: name.trim(), city: city.trim(), details: details.trim() || undefined },
-      });
+      // Run classification and message generation in parallel
+      const [classifyResult, messageResult] = await Promise.all([
+        supabase.functions.invoke("classify-subject", {
+          body: { details: details.trim() },
+        }),
+        supabase.functions.invoke("generate-whatsapp-message", {
+          body: { name: name.trim(), city: city.trim(), phone: phone, details: details.trim() || undefined },
+        }),
+      ]);
 
-      if (error || !data?.message) throw new Error("AI error");
-      message = data.message;
+      const subject = classifyResult.data?.subject || "Outros Assuntos";
+
+      if (messageResult.error || !messageResult.data?.message) throw new Error("AI error");
+      
+      // Insert the classified subject into the message
+      const aiMessage = messageResult.data.message as string;
+      message = aiMessage.replace(
+        /(\*Cidade:\*[^\n]*)/,
+        `$1\n\n*Assunto:* ${subject}`
+      );
     } catch {
       message = [
         `*Por favor, para que seu atendimento prossiga, não apague esta mensagem antes de enviar!*`,
@@ -477,6 +491,8 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
         `*WhatsApp:* ${phone}`,
         ``,
         `*Cidade:* ${city.trim()}`,
+        ``,
+        `*Assunto:* Outros Assuntos`,
         ``,
         `*Detalhes:* ${details.trim()}`,
       ].join("\n");
