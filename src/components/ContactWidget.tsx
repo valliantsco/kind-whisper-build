@@ -324,12 +324,16 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                       <SelectValue placeholder="Selecione um assunto" />
                     </SelectTrigger>
                     <SelectContent
-                      className="rounded-lg border-0"
+                      className="rounded-lg border-0 z-[200]"
+                      position="popper"
+                      sideOffset={4}
+                      align="start"
                       style={{
                         background: "hsl(0 0% 16% / 0.98)",
                         backdropFilter: "blur(20px)",
                         border: "1px solid hsl(0 0% 100% / 0.1)",
                         boxShadow: "0 20px 50px rgba(0,0,0,0.5)",
+                        width: "var(--radix-select-trigger-width)",
                       }}
                     >
                       {TOPIC_OPTIONS.map((topic) => (
