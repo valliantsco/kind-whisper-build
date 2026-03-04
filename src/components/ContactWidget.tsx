@@ -259,7 +259,7 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
           {/* Panel — glassmorphism dark style matching header */}
           <motion.div
             variants={panelVariants}
-            className="relative w-full max-w-[22rem] rounded-[0.9rem] overflow-hidden max-h-[90vh] flex flex-col"
+            className="relative w-full max-w-md rounded-[0.9rem] overflow-hidden max-h-[90vh] flex flex-col"
             style={{
               background: "hsl(0 0% 14% / 0.92)",
               backdropFilter: "blur(24px)",
@@ -288,7 +288,7 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
             />
 
             {/* Scrollable content with fade indicators */}
-            <div className="overflow-y-auto flex-1 relative cw-scroll pr-1">
+            <div className="overflow-y-auto flex-1 relative cw-scroll">
               {/* Top scroll fade */}
               <div
                 className="sticky top-0 left-0 right-0 h-3 pointer-events-none z-10"
