@@ -201,28 +201,53 @@ const formatPhone = (digits: string): string => {
   return `(${digits}`;
 };
 
-const BRAZILIAN_CITIES = [
-  "São Paulo, SP", "Rio de Janeiro, RJ", "Belo Horizonte, MG", "Brasília, DF",
-  "Salvador, BA", "Fortaleza, CE", "Curitiba, PR", "Manaus, AM",
-  "Recife, PE", "Porto Alegre, RS", "Belém, PA", "Goiânia, GO",
-  "Guarulhos, SP", "Campinas, SP", "São Luís, MA", "São Gonçalo, RJ",
-  "Maceió, AL", "Duque de Caxias, RJ", "Campo Grande, MS", "Natal, RN",
-  "Teresina, PI", "São Bernardo do Campo, SP", "Nova Iguaçu, RJ", "João Pessoa, PB",
-  "Santo André, SP", "São José dos Campos, SP", "Osasco, SP",
-  "Ribeirão Preto, SP", "Uberlândia, MG", "Sorocaba, SP", "Contagem, MG",
-  "Aracaju, SE", "Feira de Santana, BA", "Juiz de Fora, MG", "Cuiabá, MT",
-  "Joinville, SC", "Londrina, PR", "Niterói, RJ", "Florianópolis, SC",
-  "Vila Velha, ES", "Caxias do Sul, RS", "Santos, SP", "Vitória, ES",
-  "Maringá, PR", "Jundiaí, SP", "Piracicaba, SP", "Bauru, SP",
-  "São José do Rio Preto, SP", "Anápolis, GO", "Blumenau, SC", "Franca, SP",
-  "Ponta Grossa, PR", "Praia Grande, SP", "Limeira, SP", "Taubaté, SP",
-  "Santa Maria, RS", "Indaiatuba, SP", "Americana, SP", "Itu, SP",
-  "Marília, SP", "Araraquara, SP", "São Carlos, SP", "Rio Claro, SP",
-  "Araçatuba, SP", "Botucatu, SP", "Sumaré, SP", "Hortolândia, SP",
-  "Presidente Prudente, SP", "Atibaia, SP", "Bragança Paulista, SP",
-  "Valinhos, SP", "Vinhedo, SP", "Catanduva, SP", "Ourinhos, SP",
-  "Itapetininga, SP", "Mogi Guaçu, SP", "Pelotas, RS", "Canoas, RS",
-];
+// UF abbreviation map
+const UF_MAP: Record<number, string> = {
+  11:"RO",12:"AC",13:"AM",14:"RR",15:"PA",16:"AP",17:"TO",
+  21:"MA",22:"PI",23:"CE",24:"RN",25:"PB",26:"PE",27:"AL",28:"SE",29:"BA",
+  31:"MG",32:"ES",33:"RJ",35:"SP",
+  41:"PR",42:"SC",43:"RS",
+  50:"MS",51:"MT",52:"GO",53:"DF",
+};
+
+// Full city list cache (loaded once)
+let allBrazilianCities: string[] | null = null;
+let citiesFetchPromise: Promise<string[]> | null = null;
+
+async function loadAllCities(): Promise<string[]> {
+  if (allBrazilianCities) return allBrazilianCities;
+  if (citiesFetchPromise) return citiesFetchPromise;
+
+  citiesFetchPromise = (async () => {
+    try {
+      const res = await fetch(
+        `https://servicodados.ibge.gov.br/api/v1/localidades/municipios?orderBy=nome`
+      );
+      if (!res.ok) return [];
+      const data: Array<{ nome: string; microrregiao: { mesorregiao: { UF: { id: number } } } }> = await res.json();
+      allBrazilianCities = data.map((m) => {
+        const ufId = m.microrregiao.mesorregiao.UF.id;
+        const uf = UF_MAP[ufId] || "";
+        return `${m.nome}, ${uf}`;
+      });
+      return allBrazilianCities;
+    } catch {
+      return [];
+    }
+  })();
+
+  return citiesFetchPromise;
+}
+
+async function fetchIBGECities(query: string): Promise<string[]> {
+  const normalised = query.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().trim();
+  if (normalised.length < 2) return [];
+
+  const cities = await loadAllCities();
+  return cities
+    .filter((c) => c.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().includes(normalised))
+    .slice(0, 8);
+}
 
 
 const STORAGE_KEY = "ms-contact-draft";
@@ -253,11 +278,14 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
     return digits ? formatPhone(digits) : "";
   });
   const [city, setCity] = useState(draft.current?.city || "");
+  const [cityValidated, setCityValidated] = useState(false);
   const [citySuggestions, setCitySuggestions] = useState<string[]>([]);
   const [isCityDropdownOpen, setIsCityDropdownOpen] = useState(false);
+  const [isCityLoading, setIsCityLoading] = useState(false);
   const [focusedCityIndex, setFocusedCityIndex] = useState(-1);
   const cityInputRef = useRef<HTMLInputElement | null>(null);
   const cityDropdownRef = useRef<HTMLDivElement | null>(null);
+  const cityDebounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const [details, setDetails] = useState(draft.current?.details || "");
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isLoading, setIsLoading] = useState(false);
@@ -323,8 +351,12 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
       errs.phone = "Número inválido";
     }
 
-    // City
-    if (!city.trim()) errs.city = "Informe sua cidade e estado";
+    // City — must be selected from IBGE suggestions
+    if (!city.trim()) {
+      errs.city = "Informe sua cidade e estado";
+    } else if (!cityValidated) {
+      errs.city = "Selecione uma cidade válida da lista";
+    }
 
     // Details: min 10 chars, min 2 words, no gibberish (>60% same char)
     const trimmedDetails = details.trim();
@@ -347,7 +379,7 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
 
     setErrors(errs);
     return Object.keys(errs).length === 0;
-  }, [name, phone, city, details]);
+  }, [name, phone, city, cityValidated, details]);
 
 
   const startRecording = useCallback(async () => {
@@ -462,6 +494,7 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
     setName("");
     setPhone("");
     setCity("");
+    setCityValidated(false);
     setCitySuggestions([]);
     setDetails("");
     setErrors({});
@@ -680,23 +713,24 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                     onChange={(e) => {
                       const val = e.target.value;
                       setCity(val);
-                      const spamErr = detectSpam("city", val);
-                      setErrors((prev) => {
-                        const next = { ...prev };
-                        if (spamErr) next.city = spamErr;
-                        else delete next.city;
-                        return next;
-                      });
+                      setCityValidated(false);
+                      setErrors((prev) => { const { city: _, ...rest } = prev; return rest; });
+
+                      // Debounced IBGE fetch
+                      if (cityDebounceRef.current) clearTimeout(cityDebounceRef.current);
                       if (val.trim().length >= 2) {
-                        const normalise = (s: string) => s.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
-                        const q = normalise(val.trim());
-                        const filtered = BRAZILIAN_CITIES.filter((c) => normalise(c).includes(q)).slice(0, 6);
-                        setCitySuggestions(filtered);
-                        setIsCityDropdownOpen(filtered.length > 0);
-                        setFocusedCityIndex(-1);
+                        setIsCityLoading(true);
+                        cityDebounceRef.current = setTimeout(async () => {
+                          const results = await fetchIBGECities(val.trim());
+                          setCitySuggestions(results);
+                          setIsCityDropdownOpen(results.length > 0);
+                          setFocusedCityIndex(-1);
+                          setIsCityLoading(false);
+                        }, 300);
                       } else {
                         setCitySuggestions([]);
                         setIsCityDropdownOpen(false);
+                        setIsCityLoading(false);
                       }
                     }}
                     onFocus={() => {
@@ -705,8 +739,12 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                       }
                     }}
                     onBlur={() => {
-                      // Delay to allow click on suggestion
-                      setTimeout(() => setIsCityDropdownOpen(false), 150);
+                      setTimeout(() => {
+                        setIsCityDropdownOpen(false);
+                        if (city.trim() && !cityValidated) {
+                          setErrors((prev) => ({ ...prev, city: "Selecione uma cidade válida da lista" }));
+                        }
+                      }, 200);
                     }}
                     onKeyDown={(e) => {
                       if (!isCityDropdownOpen) return;
@@ -719,8 +757,10 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                       } else if (e.key === "Enter" && focusedCityIndex >= 0) {
                         e.preventDefault();
                         setCity(citySuggestions[focusedCityIndex]);
+                        setCityValidated(true);
                         setIsCityDropdownOpen(false);
                         setCitySuggestions([]);
+                        setErrors((prev) => { const { city: _, ...rest } = prev; return rest; });
                       } else if (e.key === "Escape") {
                         setIsCityDropdownOpen(false);
                       }
@@ -733,7 +773,7 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                   />
                   {/* Suggestions dropdown */}
                   <AnimatePresence>
-                    {isCityDropdownOpen && citySuggestions.length > 0 && (
+                    {isCityDropdownOpen && (citySuggestions.length > 0 || isCityLoading) && (
                       <motion.div
                         ref={cityDropdownRef}
                         initial={{ opacity: 0, y: -4 }}
@@ -748,26 +788,34 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                           boxShadow: "0 10px 30px rgba(0,0,0,0.4)",
                         }}
                       >
-                        {citySuggestions.map((suggestion, index) => (
-                          <button
-                            key={suggestion}
-                            type="button"
-                            onMouseDown={(e) => {
-                              e.preventDefault();
-                              setCity(suggestion);
-                              setIsCityDropdownOpen(false);
-                              setCitySuggestions([]);
-                              if (errors.city) setErrors((prev) => { const { city: _, ...rest } = prev; return rest; });
-                            }}
-                            className={`w-full text-left px-3 py-2 text-sm transition-colors ${
-                              focusedCityIndex === index
-                                ? "text-white bg-white/10"
-                                : "text-white/70 hover:bg-white/10 hover:text-white"
-                            }`}
-                          >
-                            {suggestion}
-                          </button>
-                        ))}
+                        {isCityLoading ? (
+                          <div className="flex items-center gap-2 px-3 py-2.5 text-sm text-white/50">
+                            <Loader2 className="w-3.5 h-3.5 animate-spin" />
+                            Buscando cidades...
+                          </div>
+                        ) : (
+                          citySuggestions.map((suggestion, index) => (
+                            <button
+                              key={suggestion}
+                              type="button"
+                              onMouseDown={(e) => {
+                                e.preventDefault();
+                                setCity(suggestion);
+                                setCityValidated(true);
+                                setIsCityDropdownOpen(false);
+                                setCitySuggestions([]);
+                                setErrors((prev) => { const { city: _, ...rest } = prev; return rest; });
+                              }}
+                              className={`w-full text-left px-3 py-2 text-sm transition-colors ${
+                                focusedCityIndex === index
+                                  ? "text-white bg-white/10"
+                                  : "text-white/70 hover:bg-white/10 hover:text-white"
+                              }`}
+                            >
+                              {suggestion}
+                            </button>
+                          ))
+                        )}
                       </motion.div>
                     )}
                   </AnimatePresence>
