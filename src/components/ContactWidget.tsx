@@ -479,8 +479,8 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                       {(!isDetailsFocused || isRecording || isTranscribing) && (
                         <motion.div
                           key="mic-group"
-                          className="absolute right-2 bottom-2"
-                          style={{ width: 30, height: 30 }}
+                          className="absolute"
+                          style={{ width: 30, height: 30, right: 8, bottom: 8 }}
                           initial={{ opacity: 0, scale: 0.8 }}
                           animate={{ opacity: 1, scale: 1 }}
                           exit={{ opacity: 0, scale: 0.8 }}
