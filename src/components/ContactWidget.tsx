@@ -1,6 +1,6 @@
 import { useState, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Clock, Send, User, Phone, HelpCircle, MessageSquare } from "lucide-react";
+import { X, Clock, User, Phone, HelpCircle, MessageSquare } from "lucide-react";
 import {
   Select,
   SelectContent,
@@ -371,7 +371,7 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                 >
                   <WhatsAppIcon className="w-5 h-5" />
                   Falar com especialista no WhatsApp
-                  <Send className="w-4 h-4" />
+                  
                 </motion.button>
 
                 <p className="text-[10px] text-white/30 text-center pt-0.5 pb-1">
