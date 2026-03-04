@@ -129,13 +129,13 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
 
   const validate = useCallback(() => {
     const errs: Record<string, string> = {};
-    if (!name.trim()) errs.name = "Informe seu nome e sobrenome";
-    else if (!name.trim().includes(" ")) errs.name = "Informe também seu sobrenome";
-    if (!phone.trim()) errs.phone = "Informe seu WhatsApp";
+    if (!name.trim()) errs.name = "Precisamos do seu nome completo";
+    else if (!name.trim().includes(" ")) errs.name = "Inclua seu sobrenome também";
+    if (!phone.trim()) errs.phone = "Qual seu número de WhatsApp?";
     else if (!/^[\d\s()+-]{8,20}$/.test(phone.trim()))
-      errs.phone = "Número inválido";
-    if (!selectedTopic) errs.topic = "Selecione um tópico";
-    if (!details.trim()) errs.details = "Informe os detalhes da sua solicitação";
+      errs.phone = "Verifique o número digitado";
+    if (!selectedTopic) errs.topic = "Escolha um assunto acima";
+    if (!details.trim()) errs.details = "Conte um pouco mais sobre o que precisa";
     setErrors(errs);
     return Object.keys(errs).length === 0;
   }, [name, phone, selectedTopic, details]);
@@ -288,7 +288,7 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                     Fale com um especialista da MS Eletric
                   </h3>
                   <p className="text-xs text-white/50 mt-1 leading-relaxed">
-                    Preencha rapidamente e continue o atendimento pelo WhatsApp.
+                    Responda 3 perguntas rápidas e te atendemos pelo WhatsApp.
                   </p>
                 </div>
                 <motion.button
@@ -321,7 +321,7 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                       style={{ background: isOnline ? "hsl(142 76% 50%)" : "hsl(0 84% 60%)" }}
                     />
                   </span>
-                  {isOnline ? "Online agora" : "Voltamos às 08:00"}
+                  {isOnline ? "Online agora" : "Offline · Voltamos às 08:00"}
                 </div>
 
                 {/* Business hours */}
@@ -358,7 +358,7 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                 <div>
                   <label className="flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-[0.1em] text-white/50 mb-1.5">
                     <User className="w-3 h-3" />
-                    Nome e Sobrenome
+                    Como podemos te chamar?
                   </label>
                   <input
                     type="text"
@@ -370,7 +370,7 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                       setName(formatted);
                       if (errors.name) setErrors((prev) => { const { name, ...rest } = prev; return rest; });
                     }}
-                    placeholder="Seu nome e sobrenome"
+                    placeholder="Ex: João Silva"
                     maxLength={100}
                     className="w-full px-3 py-2.5 rounded-lg text-sm text-white placeholder:text-white/25 focus:outline-none transition-all"
                     style={{
@@ -393,7 +393,7 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                 <div>
                   <label className="flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-[0.1em] text-white/50 mb-1.5">
                     <WhatsAppIcon className="w-3 h-3" />
-                    WhatsApp
+                    Seu WhatsApp
                   </label>
                   <input
                     type="tel"
@@ -428,7 +428,7 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                 <div>
                   <label className="flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-[0.1em] text-white/50 mb-1.5">
                     <HelpCircle className="w-3 h-3" />
-                    Como podemos te ajudar?
+                    Qual o assunto?
                   </label>
                   <Select value={selectedTopic} onValueChange={(v) => { setSelectedTopic(v); if (errors.topic) setErrors((prev) => { const { topic, ...rest } = prev; return rest; }); }}>
                     <SelectTrigger
@@ -440,7 +440,7 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                         border: `1px solid ${errors.topic ? "hsl(0 84% 60% / 0.5)" : "hsl(0 0% 100% / 0.08)"}`,
                       }}
                     >
-                      <SelectValue placeholder="Selecione um assunto" />
+                      <SelectValue placeholder="Toque para escolher" />
                     </SelectTrigger>
                     <SelectContent
                       className="rounded-lg border-0 z-[200]"
@@ -473,14 +473,14 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                 <div>
                   <label className="flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-[0.1em] text-white/50 mb-1.5">
                     <MessageSquare className="w-3 h-3" />
-                    Detalhes
+                    Conte mais sobre o que precisa
                   </label>
 
                   <div className="relative">
                     <textarea
                       value={details}
                       onChange={(e) => { setDetails(e.target.value); if (errors.details) setErrors((prev) => { const { details, ...rest } = prev; return rest; }); }}
-                      placeholder={isTranscribing ? "Transcrevendo seu áudio..." : "Digite ou grave um áudio com seus detalhes..."}
+                      placeholder={isTranscribing ? "Processando áudio..." : "Descreva brevemente ou grave um áudio..."}
                       rows={3}
                       maxLength={500}
                       disabled={isTranscribing}
@@ -601,7 +601,7 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                           <span className="relative inline-flex rounded-full h-2 w-2" style={{ background: "hsl(0 84% 60%)" }} />
                         </span>
                         <span className="text-[10px] text-white/50 leading-relaxed">
-                          Gravando... toque no botão ■ para parar
+                          Gravando... toque para parar
                         </span>
                       </motion.div>
                     )}
@@ -617,7 +617,7 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                         exit={{ opacity: 0, y: -8 }}
                       >
                         <Loader2 className="w-3 h-3 text-white/40 animate-spin shrink-0" />
-                        <span className="text-[10px] text-white/50">Transcrevendo seu áudio com IA...</span>
+                        <span className="text-[10px] text-white/50">Processando áudio...</span>
                       </motion.div>
                     )}
                   </AnimatePresence>
@@ -644,12 +644,12 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                   ) : (
                     <WhatsAppIcon className="w-5 h-5" />
                   )}
-                  {isLoading ? "Preparando mensagem..." : "Falar com especialista no WhatsApp"}
+                  {isLoading ? "Gerando sua mensagem..." : "Continuar no WhatsApp"}
                   
                 </motion.button>
 
                 <p className="text-[8px] text-white/25 text-center leading-relaxed pt-0.5 pb-1">
-                  Ao enviar, você concorda com o uso dos seus dados para atendimento, conforme a LGPD (Lei nº 13.709/2018).
+                  Ao enviar, seus dados serão usados apenas para atendimento. Saiba mais.
                 </p>
               </div>
             </div>
