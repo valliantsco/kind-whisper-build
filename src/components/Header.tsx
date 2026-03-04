@@ -397,11 +397,15 @@ const Header = ({ contactOpen, setContactOpen }: HeaderProps) => {
                 animate={{ opacity: 1, height: "auto" }}
                 exit={{ opacity: 0, height: 0 }}
                 transition={{ duration: 0.5, ease: [0.25, 0.8, 0.25, 1] as const }}
-                className={`lg:hidden overflow-hidden origin-top rounded-b-[0.9rem] ${
+                className={`lg:hidden overflow-hidden origin-top rounded-b-[0.9rem] backdrop-blur-2xl ${
                   scrolled
-                    ? "bg-white/80 backdrop-blur-2xl"
-                    : "bg-foreground/70 backdrop-blur-2xl"
+                    ? "bg-white/75 border-t border-white/20"
+                    : "bg-white/10 border-t border-white/10"
                 }`}
+                style={{
+                  backdropFilter: "blur(24px) saturate(1.4)",
+                  WebkitBackdropFilter: "blur(24px) saturate(1.4)",
+                }}
               >
                 <div
                   className="mx-4 h-[1px]"
