@@ -302,16 +302,16 @@ const HeroSection = () => {
         ))}
         <motion.button
           onClick={() => setIsPaused((p) => !p)}
-          className="ml-1 flex items-center justify-center w-7 h-7 rounded-full border-2 border-primary backdrop-blur-sm"
+          className="ml-2 flex items-center justify-center w-8 h-8 rounded-full border-2 border-primary backdrop-blur-sm"
           style={{ background: "hsl(0 0% 100% / 0.06)" }}
           whileHover={{ scale: 1.15, borderColor: "hsl(0 0% 100% / 0.3)" }}
           whileTap={{ scale: 0.9 }}
           aria-label={isPaused ? "Retomar apresentação" : "Pausar apresentação"}
         >
           {isPaused ? (
-            <Play className="w-3.5 h-3.5 text-primary-foreground/70" />
+            <Play className="w-3.5 h-3.5 text-primary ml-[1px]" />
           ) : (
-            <Pause className="w-3.5 h-3.5 text-primary-foreground/70" />
+            <Pause className="w-3.5 h-3.5 text-primary" />
           )}
         </motion.button>
       </div>
