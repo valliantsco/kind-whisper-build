@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight, Zap, Leaf, Shield } from "lucide-react";
-import { useState, useEffect, useCallback } from "react";
+import { Zap, Leaf, Shield, Pause, Play } from "lucide-react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import heroBg from "@/assets/hero-bg.jpg";
 
 const SLIDE_DURATION = 20000;
@@ -59,15 +59,24 @@ const buildEmbedUrl = (videoId: string, start?: number) =>
 
 const HeroSection = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   const nextSlide = useCallback(() => {
     setCurrentSlide((prev) => (prev + 1) % SLIDES.length);
   }, []);
 
   useEffect(() => {
-    const timer = setInterval(nextSlide, SLIDE_DURATION);
-    return () => clearInterval(timer);
-  }, [nextSlide]);
+    if (isPaused) {
+      if (timerRef.current) clearInterval(timerRef.current);
+      timerRef.current = null;
+      return;
+    }
+    timerRef.current = setInterval(nextSlide, SLIDE_DURATION);
+    return () => {
+      if (timerRef.current) clearInterval(timerRef.current);
+    };
+  }, [nextSlide, isPaused]);
 
   return (
     <section id="inicio" className="relative min-h-[75vh] flex items-center overflow-hidden">
@@ -269,8 +278,8 @@ const HeroSection = () => {
         </AnimatePresence>
       </div>
 
-      {/* Slide indicators — futuristic style */}
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 flex gap-2.5">
+      {/* Slide indicators + pause/play */}
+      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 flex items-center gap-3">
         {SLIDES.map((_, i) => (
           <motion.button
             key={i}
@@ -291,6 +300,20 @@ const HeroSection = () => {
             aria-label={`Slide ${i + 1}`}
           />
         ))}
+        <motion.button
+          onClick={() => setIsPaused((p) => !p)}
+          className="ml-1 flex items-center justify-center w-7 h-7 rounded-full border border-primary-foreground/15 backdrop-blur-sm"
+          style={{ background: "hsl(0 0% 100% / 0.06)" }}
+          whileHover={{ scale: 1.15, borderColor: "hsl(0 0% 100% / 0.3)" }}
+          whileTap={{ scale: 0.9 }}
+          aria-label={isPaused ? "Retomar apresentação" : "Pausar apresentação"}
+        >
+          {isPaused ? (
+            <Play className="w-3.5 h-3.5 text-primary-foreground/70" />
+          ) : (
+            <Pause className="w-3.5 h-3.5 text-primary-foreground/70" />
+          )}
+        </motion.button>
       </div>
     </section>
   );
