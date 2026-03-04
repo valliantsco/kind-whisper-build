@@ -24,6 +24,15 @@ const VALID_STARTS = new Set([
 // Valid Portuguese word-end patterns
 const VALID_ENDS = /[aeiouáéíóúâêîôûãõàèìòùlmnrsxz]$/i;
 
+// Common Portuguese bigrams that appear in real words
+const COMMON_BIGRAMS = new Set([
+  "de","da","do","os","as","em","um","qu","co","ca","re","pa","se","ra","te",
+  "en","es","ta","al","an","ar","ma","no","na","or","er","on","in","ri","la",
+  "me","io","to","le","ia","ti","mo","ni","li","ro","el","lo","po","so","sa",
+  "ve","ol","si","is","pe","il","ic","ce","ci","ão","nh","lh","ch","tr","pr",
+  "br","cr","gr","fr","pl","bl","cl","fl","dr","gl","gu","am","om","im","um",
+]);
+
 function isGibberish(text: string): boolean {
   const lower = text.toLowerCase().replace(/[^a-záéíóúâêîôûãõàèìòù]/g, "");
   if (lower.length < 4) return false;
@@ -54,6 +63,17 @@ function isGibberish(text: string): boolean {
 
   // 5. Word doesn't end with valid Portuguese ending
   if (lower.length >= 5 && !VALID_ENDS.test(lower)) return true;
+
+  // 6. Bigram frequency check — real Portuguese words have common bigrams
+  if (lower.length >= 4) {
+    let commonCount = 0;
+    const totalBigrams = lower.length - 1;
+    for (let i = 0; i < totalBigrams; i++) {
+      if (COMMON_BIGRAMS.has(lower.slice(i, i + 2))) commonCount++;
+    }
+    // Real words typically have >30% common bigrams; gibberish has very few
+    if (totalBigrams >= 3 && commonCount / totalBigrams < 0.2) return true;
+  }
 
   return false;
 }
