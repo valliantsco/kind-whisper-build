@@ -626,7 +626,18 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                     onChange={(e) => {
                       const raw = e.target.value.replace(/\D/g, "").slice(0, 11);
                       setPhone(formatPhone(raw));
-                      if (errors.phone) setErrors((prev) => { const { phone, ...rest } = prev; return rest; });
+                      // Instant phone spam detection
+                      if (raw.length === 11) {
+                        const isRepeated = /^(\d)\1{10}$/.test(raw);
+                        const isSequential = /^(01234567890|12345678901|00000000000|11111111111|22222222222|33333333333|44444444444|55555555555|66666666666|77777777777|88888888888|99999999999)$/.test(raw);
+                        if (isRepeated || isSequential) {
+                          setErrors((prev) => ({ ...prev, phone: "Número inválido" }));
+                        } else {
+                          setErrors((prev) => { const { phone, ...rest } = prev; return rest; });
+                        }
+                      } else if (raw.length > 0 && raw.length < 11) {
+                        setErrors((prev) => { const { phone, ...rest } = prev; return rest; });
+                      }
                     }}
                     placeholder="(00) 00000-0000"
                     maxLength={20}
