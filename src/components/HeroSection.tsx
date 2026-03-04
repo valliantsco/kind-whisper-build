@@ -231,7 +231,6 @@ const HeroSection = () => {
               }}
             >
               Conheça os Modelos
-              <ArrowRight className="w-4 h-4 md:w-5 md:h-5" />
             </motion.a>
 
             {/* Secondary CTA — outline/neutral */}
@@ -254,7 +253,7 @@ const HeroSection = () => {
                   background: "linear-gradient(90deg, transparent, hsl(0 0% 100% / 0.15), transparent)",
                 }}
               />
-              Sobre a MS Eletric
+              Sobre Nós
             </motion.a>
           </motion.div>
         </motion.div>
