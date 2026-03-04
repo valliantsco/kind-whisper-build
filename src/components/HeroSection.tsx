@@ -28,7 +28,7 @@ const HeroSection = () => {
   }, [nextSlide]);
 
   return (
-    <section id="inicio" className="relative min-h-[75vh] flex items-center justify-center overflow-hidden">
+    <section id="inicio" className="relative h-screen flex items-center justify-center overflow-hidden">
       {/* Background image fallback (always visible) */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
