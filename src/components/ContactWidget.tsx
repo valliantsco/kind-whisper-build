@@ -643,8 +643,8 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
 
                   {/* Response time indicator (online only) */}
                   {isOnline && (
-                    <div className="flex items-center justify-center gap-1.5 mt-1.5">
-                      <span className="text-[11px] text-white/35 italic">Tempo médio de resposta: ~5 min</span>
+                    <div className="flex items-center justify-center gap-1.5 mt-0.5">
+                      <span className="text-[9px] text-white/35 italic">Tempo médio de resposta: ~5 min</span>
                     </div>
                   )}
 
