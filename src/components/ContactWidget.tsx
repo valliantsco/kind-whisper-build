@@ -285,7 +285,13 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                   <input
                     type="tel"
                     value={phone}
-                    onChange={(e) => setPhone(e.target.value)}
+                    onChange={(e) => {
+                      let v = e.target.value.replace(/\D/g, "").slice(0, 11);
+                      if (v.length > 6) v = `(${v.slice(0,2)}) ${v.slice(2,7)}-${v.slice(7)}`;
+                      else if (v.length > 2) v = `(${v.slice(0,2)}) ${v.slice(2)}`;
+                      else if (v.length > 0) v = `(${v}`;
+                      setPhone(v);
+                    }}
                     placeholder="(00) 00000-0000"
                     maxLength={20}
                     className="w-full px-3 py-2.5 rounded-lg text-sm text-white placeholder:text-white/25 focus:outline-none transition-all"
