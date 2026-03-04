@@ -555,7 +555,7 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                       maxLength={500}
                       disabled={isTranscribing}
                       className={`${inputBaseStyle} pr-14 resize-none disabled:opacity-50 cw-input ${errors.details ? "cw-input-error" : ""}`}
-                      style={{ ...getInputBorderStyle(!!errors.details), overflow: 'hidden' }}
+                      style={{ ...getInputBorderStyle(!!errors.details), maxHeight: '40vh', overflowY: 'auto' }}
                       onFocus={() => setIsDetailsFocused(true)}
                       onBlur={() => setIsDetailsFocused(false)}
                     />
