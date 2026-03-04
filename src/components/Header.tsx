@@ -171,7 +171,7 @@ const Header = () => {
         <header
           className={`transition-all duration-[800ms] ease-in-out rounded-[0.9rem] relative ${
             scrolled
-              ? "bg-white/60 backdrop-blur-2xl border border-black/[0.06] shadow-[0_2px_24px_rgba(0,0,0,0.12),0_1px_3px_rgba(0,0,0,0.06)]"
+              ? "bg-white/75 backdrop-blur-2xl border border-black/[0.08] shadow-[0_1px_20px_rgba(0,0,0,0.10),0_0.5px_2px_rgba(0,0,0,0.04)]"
               : "bg-primary-foreground/5 backdrop-blur-xl border border-primary-foreground/10 overflow-hidden"
           }`}
         >
