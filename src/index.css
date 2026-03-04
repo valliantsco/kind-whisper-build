@@ -173,10 +173,15 @@ html {
 }
 
 /* Hide scrollbar */
-.scrollbar-hide::-webkit-scrollbar {
-  display: none;
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
-
+.scrollbar-hide::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
 /* Vertical writing mode */
 .writing-vertical {
   writing-mode: vertical-rl;
