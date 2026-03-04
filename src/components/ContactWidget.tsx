@@ -383,7 +383,7 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                     Fale com um especialista da MS Eletric
                   </h3>
                   <p className="text-xs text-white/50 mt-1 leading-relaxed">
-                    Responda 3 perguntas rápidas e te atendemos pelo WhatsApp.
+                    Preencha os campos abaixo e te atendemos pelo WhatsApp.
                   </p>
                 </div>
                 <motion.button
@@ -453,7 +453,7 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                 <div>
                   <label className="flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-[0.1em] text-white/50 mb-1.5">
                     <User className="w-3 h-3" />
-                    Como podemos te chamar? <span className="text-primary/70">*</span>
+                    Nome e sobrenome <span className="text-primary/70">*</span>
                   </label>
                   <input
                     type="text"
