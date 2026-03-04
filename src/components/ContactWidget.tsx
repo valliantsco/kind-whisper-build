@@ -98,7 +98,8 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
 
   const validate = useCallback(() => {
     const errs: Record<string, string> = {};
-    if (!name.trim()) errs.name = "Informe seu nome";
+    if (!name.trim()) errs.name = "Informe seu nome e sobrenome";
+    else if (!name.trim().includes(" ")) errs.name = "Informe também seu sobrenome";
     if (!phone.trim()) errs.phone = "Informe seu WhatsApp";
     else if (!/^[\d\s()+-]{8,20}$/.test(phone.trim()))
       errs.phone = "Número inválido";
@@ -274,13 +275,18 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                 <div>
                   <label className="flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-[0.1em] text-white/50 mb-1.5">
                     <User className="w-3 h-3" />
-                    Nome
+                    Nome e Sobrenome
                   </label>
                   <input
                     type="text"
                     value={name}
-                    onChange={(e) => setName(e.target.value)}
-                    placeholder="Seu nome"
+                    onChange={(e) => {
+                      const formatted = e.target.value
+                        .toLowerCase()
+                        .replace(/(?:^|\s)\S/g, (char) => char.toUpperCase());
+                      setName(formatted);
+                    }}
+                    placeholder="Seu nome e sobrenome"
                     maxLength={100}
                     className="w-full px-3 py-2.5 rounded-lg text-sm text-white placeholder:text-white/25 focus:outline-none transition-all"
                     style={{
