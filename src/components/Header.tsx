@@ -208,9 +208,12 @@ const Header = ({ contactOpen, setContactOpen }: HeaderProps) => {
         <header
           className={`transition-all duration-[800ms] ease-in-out rounded-[0.9rem] overflow-hidden relative ${
             scrolled
-              ? "bg-white/90 backdrop-blur-2xl border border-border/50 shadow-[0_4px_30px_rgba(0,0,0,0.08)]"
+              ? "bg-white/90 backdrop-blur-2xl border border-border/50"
               : "bg-primary-foreground/5 backdrop-blur-xl border border-primary-foreground/10"
           }`}
+          style={{
+            boxShadow: "0 6px 24px rgba(66,66,66,0.35), 0 2px 8px rgba(66,66,66,0.18)",
+          }}
         >
           {/* Orbiting orange glow — only visible on transparent state */}
           <motion.div
