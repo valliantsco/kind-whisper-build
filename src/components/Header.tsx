@@ -213,7 +213,7 @@ const Header = ({ contactOpen, setContactOpen }: HeaderProps) => {
           }`}
           style={{
             boxShadow: scrolled
-              ? "0 4px 16px rgba(66,66,66,0.12), 0 1px 4px rgba(66,66,66,0.08)"
+              ? "0 8px 28px rgba(66,66,66,0.28), 0 3px 10px rgba(66,66,66,0.18), 0 1px 4px rgba(66,66,66,0.12)"
               : "0 8px 32px rgba(66,66,66,0.45), 0 3px 12px rgba(66,66,66,0.25)",
           }}
         >
