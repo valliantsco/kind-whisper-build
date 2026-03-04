@@ -301,6 +301,14 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
     };
   }, [isOpen]);
 
+  // Auto-resize textarea whenever details changes (covers transcription, autofill, etc.)
+  useEffect(() => {
+    if (textareaRef.current) {
+      textareaRef.current.style.height = 'auto';
+      textareaRef.current.style.height = textareaRef.current.scrollHeight + 'px';
+    }
+  }, [details]);
+
   // Cleanup MediaRecorder on unmount
   useEffect(() => {
     return () => {
