@@ -77,20 +77,17 @@ function isGibberish(text: string): boolean {
     if (totalBigrams >= 3 && commonCount / totalBigrams < 0.35) return true;
   }
 
-  // 7. Check for scrambled/anagram patterns — high unique bigram ratio with few repeats
-  if (lower.length >= 5) {
+  // 7. Check for scrambled/anagram patterns — only for very short words with extreme mashing
+  if (lower.length >= 6 && lower.length <= 8) {
     const bigrams = new Set<string>();
     for (let i = 0; i < lower.length - 1; i++) bigrams.add(lower.slice(i, i + 2));
-    // Scrambled text like "adasdsa" has almost all unique bigrams relative to length
-    // Real words have more repetition in structure
-    const uniqueRatio = bigrams.size / (lower.length - 1);
-    // Also check if reversing pairs appear (ad/da, as/sa) — sign of keyboard mashing
     let reversePairs = 0;
     for (const bg of bigrams) {
       const rev = bg[1] + bg[0];
       if (bg !== rev && bigrams.has(rev)) reversePairs++;
     }
-    if (uniqueRatio > 0.85 && reversePairs >= 2 && lower.length >= 5) return true;
+    // Only flag if almost all bigrams are reverse pairs (true keyboard mashing like "adasdsa")
+    if (reversePairs >= 4) return true;
   }
 
   return false;
