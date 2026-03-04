@@ -363,7 +363,7 @@ const Header = () => {
                 className={`lg:hidden overflow-hidden origin-top ${
                   scrolled
                     ? "bg-white/75 backdrop-blur-2xl"
-                    : "bg-foreground/70 backdrop-blur-2xl"
+                    : "bg-primary-foreground/5 backdrop-blur-xl"
                 }`}
               >
                 <motion.div
