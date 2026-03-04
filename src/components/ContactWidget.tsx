@@ -442,39 +442,40 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                           className="fixed inset-0 z-[200] bg-black/15"
                           onClick={() => setIsSelectOpen(false)}
                         />
-                        <motion.div
-                          key="select-menu"
-                          initial={{ opacity: 0, scale: 0.95 }}
-                          animate={{ opacity: 1, scale: 1 }}
-                          exit={{ opacity: 0, scale: 0.95 }}
-                          transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
-                          className="fixed z-[201] top-1/2 left-1/2 rounded-lg p-1 overflow-hidden"
-                          style={{
-                            transform: "translate(-50%, -50%)",
-                            background: "hsl(0 0% 14% / 0.95)",
-                            backdropFilter: "blur(20px)",
-                            border: "1px solid hsl(0 0% 100% / 0.1)",
-                            boxShadow: "0 20px 50px rgba(0,0,0,0.5)",
-                            width: "min(22rem, 90vw)",
-                          }}
-                        >
-                          {TOPIC_OPTIONS.map((topic) => (
-                            <button
-                              key={topic}
-                              type="button"
-                              onClick={() => {
-                                setSelectedTopic(topic);
-                                setIsSelectOpen(false);
-                                if (errors.topic) setErrors((prev) => { const { topic: _, ...rest } = prev; return rest; });
-                              }}
-                              className={`w-full text-left px-3 py-2.5 text-sm rounded-md transition-colors ${
-                                selectedTopic === topic ? "text-white bg-white/10" : "text-white/70 hover:bg-white/10 hover:text-white"
-                              }`}
-                            >
-                              {topic}
-                            </button>
-                          ))}
-                        </motion.div>
+                        <div className="fixed z-[201] inset-0 flex items-center justify-center pointer-events-none">
+                          <motion.div
+                            key="select-menu"
+                            initial={{ opacity: 0, scale: 0.95 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            exit={{ opacity: 0, scale: 0.95 }}
+                            transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
+                            className="rounded-lg p-1 overflow-hidden pointer-events-auto"
+                            style={{
+                              background: "hsl(0 0% 14% / 0.95)",
+                              backdropFilter: "blur(20px)",
+                              border: "1px solid hsl(0 0% 100% / 0.1)",
+                              boxShadow: "0 20px 50px rgba(0,0,0,0.5)",
+                              width: "min(22rem, 90vw)",
+                            }}
+                          >
+                            {TOPIC_OPTIONS.map((topic) => (
+                              <button
+                                key={topic}
+                                type="button"
+                                onClick={() => {
+                                  setSelectedTopic(topic);
+                                  setIsSelectOpen(false);
+                                  if (errors.topic) setErrors((prev) => { const { topic: _, ...rest } = prev; return rest; });
+                                }}
+                                className={`w-full text-left px-3 py-2.5 text-sm rounded-md transition-colors ${
+                                  selectedTopic === topic ? "text-white bg-white/10" : "text-white/70 hover:bg-white/10 hover:text-white"
+                                }`}
+                              >
+                                {topic}
+                              </button>
+                            ))}
+                          </motion.div>
+                        </div>
                       </>
                     )}
                   </AnimatePresence>
