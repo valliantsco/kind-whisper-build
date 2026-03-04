@@ -1,6 +1,6 @@
 import { useState, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Clock, Send, User, Phone, HelpCircle } from "lucide-react";
+import { X, Clock, Send, User, Phone, HelpCircle, MessageSquare } from "lucide-react";
 import {
   Select,
   SelectContent,
@@ -44,12 +44,12 @@ const overlayVariants = {
 };
 
 const panelVariants = {
-  hidden: { opacity: 0, scale: 0.9, y: 30 },
+  hidden: { opacity: 0, scale: 0.92, y: 40 },
   visible: {
     opacity: 1,
     scale: 1,
     y: 0,
-    transition: { type: "spring" as const, damping: 25, stiffness: 300 },
+    transition: { type: "spring" as const, damping: 28, stiffness: 320 },
   },
   exit: {
     opacity: 0,
@@ -113,22 +113,41 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
           animate="visible"
           exit="exit"
         >
+          {/* Backdrop */}
           <motion.div
-            className="absolute inset-0 bg-foreground/60 backdrop-blur-sm"
+            className="absolute inset-0 bg-foreground/70 backdrop-blur-md"
             onClick={onClose}
           />
 
+          {/* Panel — glassmorphism dark style matching header */}
           <motion.div
             variants={panelVariants}
-            className="relative w-full sm:max-w-md bg-card rounded-t-2xl sm:rounded-2xl shadow-2xl overflow-hidden border border-border/50 max-h-[92vh] flex flex-col"
+            className="relative w-full sm:max-w-md rounded-t-[0.9rem] sm:rounded-[0.9rem] overflow-hidden max-h-[92vh] flex flex-col"
+            style={{
+              background: "hsl(0 0% 14% / 0.92)",
+              backdropFilter: "blur(24px)",
+              WebkitBackdropFilter: "blur(24px)",
+              border: "1px solid hsl(0 0% 100% / 0.08)",
+              boxShadow: "0 25px 60px rgba(0,0,0,0.5), 0 0 40px hsl(11 81% 57% / 0.08)",
+            }}
           >
-            {/* Top gradient bar */}
+            {/* Top gradient light strip */}
             <div
-              className="h-1 shrink-0"
+              className="h-[2px] shrink-0"
               style={{
-                background:
-                  "linear-gradient(90deg, hsl(var(--primary)), hsl(11 90% 65%), hsl(var(--primary)))",
+                background: "linear-gradient(90deg, transparent, hsl(11 81% 57% / 0.8), hsl(11 90% 65% / 0.8), transparent)",
               }}
+            />
+
+            {/* Ambient glow */}
+            <motion.div
+              className="absolute -top-20 -right-20 w-60 h-60 rounded-full pointer-events-none"
+              style={{
+                background: "radial-gradient(circle, hsl(11 81% 57% / 0.08) 0%, transparent 70%)",
+                filter: "blur(40px)",
+              }}
+              animate={{ opacity: [0.5, 0.8, 0.5] }}
+              transition={{ duration: 4, repeat: Infinity }}
             />
 
             {/* Scrollable content */}
@@ -136,16 +155,16 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
               {/* Header */}
               <div className="flex items-start justify-between p-5 pb-3">
                 <div>
-                  <h3 className="text-lg font-bold text-card-foreground">
+                  <h3 className="text-base font-bold text-white tracking-tight">
                     Fale com um especialista da MS Eletric
                   </h3>
-                  <p className="text-sm text-muted-foreground mt-0.5">
+                  <p className="text-xs text-white/50 mt-1 leading-relaxed">
                     Preencha rapidamente e continue o atendimento pelo WhatsApp.
                   </p>
                 </div>
                 <motion.button
                   onClick={onClose}
-                  className="p-1.5 rounded-lg text-muted-foreground hover:text-card-foreground hover:bg-muted transition-colors"
+                  className="p-1.5 rounded-lg text-white/40 hover:text-white hover:bg-white/10 transition-colors"
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
                 >
@@ -156,32 +175,41 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
               {/* Status chip */}
               <div className="px-5 pb-4">
                 <div
-                  className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium border ${
-                    isOnline
-                      ? "bg-green-50 text-green-700 border-green-200"
-                      : "bg-red-50 text-red-700 border-red-200"
-                  }`}
+                  className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-[10px] font-semibold uppercase tracking-[0.1em] border"
+                  style={{
+                    background: isOnline ? "hsl(142 76% 36% / 0.12)" : "hsl(0 84% 60% / 0.12)",
+                    borderColor: isOnline ? "hsl(142 76% 36% / 0.25)" : "hsl(0 84% 60% / 0.25)",
+                    color: isOnline ? "hsl(142 70% 65%)" : "hsl(0 84% 70%)",
+                  }}
                 >
                   <span className="relative flex h-2 w-2">
                     {isOnline && (
-                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
+                      <span
+                        className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75"
+                        style={{ background: "hsl(142 76% 50%)" }}
+                      />
                     )}
                     <span
-                      className={`relative inline-flex rounded-full h-2 w-2 ${
-                        isOnline ? "bg-green-500" : "bg-red-500"
-                      }`}
+                      className="relative inline-flex rounded-full h-2 w-2"
+                      style={{ background: isOnline ? "hsl(142 76% 50%)" : "hsl(0 84% 60%)" }}
                     />
                   </span>
-                  {isOnline ? "Estamos online agora!" : "Voltamos às 08:00"}
+                  {isOnline ? "Online agora" : "Voltamos às 08:00"}
                 </div>
 
                 {/* Business hours */}
-                <div className="mt-3 flex items-start gap-2 p-3 rounded-xl bg-muted/50 border border-border/50">
-                  <Clock className="w-4 h-4 text-muted-foreground mt-0.5 shrink-0" />
+                <div
+                  className="mt-3 flex items-start gap-2 p-3 rounded-lg"
+                  style={{
+                    background: "hsl(0 0% 100% / 0.04)",
+                    border: "1px solid hsl(0 0% 100% / 0.06)",
+                  }}
+                >
+                  <Clock className="w-3.5 h-3.5 text-white/30 mt-0.5 shrink-0" />
                   <div className="flex flex-wrap gap-x-4 gap-y-0.5">
                     {businessHoursInfo.map((item) => (
-                      <span key={item.day} className="text-xs text-muted-foreground">
-                        <span className="font-medium text-card-foreground">{item.day}:</span>{" "}
+                      <span key={item.day} className="text-[10px] text-white/40">
+                        <span className="font-medium text-white/60">{item.day}:</span>{" "}
                         {item.hours}
                       </span>
                     ))}
@@ -189,13 +217,21 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                 </div>
               </div>
 
+              {/* Divider */}
+              <div
+                className="mx-5 h-[1px]"
+                style={{
+                  background: "linear-gradient(90deg, transparent, hsl(11 81% 57% / 0.3), transparent)",
+                }}
+              />
+
               {/* Form */}
-              <div className="px-5 pb-5 space-y-4">
+              <div className="px-5 py-4 space-y-3.5">
                 {/* Name */}
                 <div>
-                  <label className="flex items-center gap-1.5 text-xs font-medium text-card-foreground mb-1.5">
-                    <User className="w-3.5 h-3.5 text-muted-foreground" />
-                    Nome *
+                  <label className="flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-[0.1em] text-white/50 mb-1.5">
+                    <User className="w-3 h-3" />
+                    Nome
                   </label>
                   <input
                     type="text"
@@ -203,18 +239,28 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                     onChange={(e) => setName(e.target.value)}
                     placeholder="Seu nome"
                     maxLength={100}
-                    className={`w-full px-3 py-2.5 rounded-lg border bg-background text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-all ${
-                      errors.name ? "border-destructive" : "border-input"
-                    }`}
+                    className="w-full px-3 py-2.5 rounded-lg text-sm text-white placeholder:text-white/25 focus:outline-none transition-all"
+                    style={{
+                      background: "hsl(0 0% 100% / 0.06)",
+                      border: `1px solid ${errors.name ? "hsl(0 84% 60% / 0.5)" : "hsl(0 0% 100% / 0.08)"}`,
+                    }}
+                    onFocus={(e) => {
+                      if (!errors.name) e.currentTarget.style.borderColor = "hsl(11 81% 57% / 0.5)";
+                      e.currentTarget.style.boxShadow = "0 0 0 2px hsl(11 81% 57% / 0.15)";
+                    }}
+                    onBlur={(e) => {
+                      if (!errors.name) e.currentTarget.style.borderColor = "hsl(0 0% 100% / 0.08)";
+                      e.currentTarget.style.boxShadow = "none";
+                    }}
                   />
-                  {errors.name && <p className="text-xs text-destructive mt-1">{errors.name}</p>}
+                  {errors.name && <p className="text-[10px] mt-1" style={{ color: "hsl(0 84% 65%)" }}>{errors.name}</p>}
                 </div>
 
                 {/* WhatsApp */}
                 <div>
-                  <label className="flex items-center gap-1.5 text-xs font-medium text-card-foreground mb-1.5">
-                    <Phone className="w-3.5 h-3.5 text-muted-foreground" />
-                    WhatsApp *
+                  <label className="flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-[0.1em] text-white/50 mb-1.5">
+                    <Phone className="w-3 h-3" />
+                    WhatsApp
                   </label>
                   <input
                     type="tel"
@@ -222,43 +268,70 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                     onChange={(e) => setPhone(e.target.value)}
                     placeholder="(00) 00000-0000"
                     maxLength={20}
-                    className={`w-full px-3 py-2.5 rounded-lg border bg-background text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-all ${
-                      errors.phone ? "border-destructive" : "border-input"
-                    }`}
+                    className="w-full px-3 py-2.5 rounded-lg text-sm text-white placeholder:text-white/25 focus:outline-none transition-all"
+                    style={{
+                      background: "hsl(0 0% 100% / 0.06)",
+                      border: `1px solid ${errors.phone ? "hsl(0 84% 60% / 0.5)" : "hsl(0 0% 100% / 0.08)"}`,
+                    }}
+                    onFocus={(e) => {
+                      if (!errors.phone) e.currentTarget.style.borderColor = "hsl(11 81% 57% / 0.5)";
+                      e.currentTarget.style.boxShadow = "0 0 0 2px hsl(11 81% 57% / 0.15)";
+                    }}
+                    onBlur={(e) => {
+                      if (!errors.phone) e.currentTarget.style.borderColor = "hsl(0 0% 100% / 0.08)";
+                      e.currentTarget.style.boxShadow = "none";
+                    }}
                   />
-                  {errors.phone && <p className="text-xs text-destructive mt-1">{errors.phone}</p>}
+                  {errors.phone && <p className="text-[10px] mt-1" style={{ color: "hsl(0 84% 65%)" }}>{errors.phone}</p>}
                 </div>
 
-                {/* Topic selection - dropdown */}
+                {/* Topic */}
                 <div>
-                  <label className="flex items-center gap-1.5 text-xs font-medium text-card-foreground mb-1.5">
-                    <HelpCircle className="w-3.5 h-3.5 text-muted-foreground" />
-                    Como podemos te ajudar? *
+                  <label className="flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-[0.1em] text-white/50 mb-1.5">
+                    <HelpCircle className="w-3 h-3" />
+                    Como podemos te ajudar?
                   </label>
                   <Select value={selectedTopic} onValueChange={setSelectedTopic}>
                     <SelectTrigger
-                      className={`w-full rounded-lg bg-background text-sm ${
-                        !selectedTopic ? "text-muted-foreground" : "text-foreground"
-                      } ${errors.topic ? "border-destructive" : "border-input"} focus:ring-2 focus:ring-primary/30 focus:border-primary`}
+                      className={`w-full rounded-lg text-sm border-0 focus:ring-0 ${
+                        !selectedTopic ? "text-white/25" : "text-white"
+                      }`}
+                      style={{
+                        background: "hsl(0 0% 100% / 0.06)",
+                        border: `1px solid ${errors.topic ? "hsl(0 84% 60% / 0.5)" : "hsl(0 0% 100% / 0.08)"}`,
+                      }}
                     >
                       <SelectValue placeholder="Selecione um assunto" />
                     </SelectTrigger>
-                    <SelectContent className="rounded-lg">
+                    <SelectContent
+                      className="rounded-lg border-0"
+                      style={{
+                        background: "hsl(0 0% 16% / 0.98)",
+                        backdropFilter: "blur(20px)",
+                        border: "1px solid hsl(0 0% 100% / 0.1)",
+                        boxShadow: "0 20px 50px rgba(0,0,0,0.5)",
+                      }}
+                    >
                       {TOPIC_OPTIONS.map((topic) => (
-                        <SelectItem key={topic} value={topic} className="text-sm cursor-pointer">
+                        <SelectItem
+                          key={topic}
+                          value={topic}
+                          className="text-sm text-white/70 cursor-pointer focus:bg-white/10 focus:text-white data-[highlighted]:bg-white/10 data-[highlighted]:text-white"
+                        >
                           {topic}
                         </SelectItem>
                       ))}
                     </SelectContent>
                   </Select>
-                  {errors.topic && <p className="text-xs text-destructive mt-1.5">{errors.topic}</p>}
+                  {errors.topic && <p className="text-[10px] mt-1" style={{ color: "hsl(0 84% 65%)" }}>{errors.topic}</p>}
                 </div>
 
                 {/* Optional details */}
                 <div>
-                  <label className="flex items-center gap-1.5 text-xs font-medium text-card-foreground mb-1.5">
-                    Quer nos contar mais detalhes?{" "}
-                    <span className="text-muted-foreground font-normal">(opcional)</span>
+                  <label className="flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-[0.1em] text-white/50 mb-1.5">
+                    <MessageSquare className="w-3 h-3" />
+                    Detalhes
+                    <span className="font-normal normal-case tracking-normal text-white/30">(opcional)</span>
                   </label>
                   <textarea
                     value={details}
@@ -266,18 +339,33 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                     placeholder="Ex: tenho interesse em uma moto para delivery"
                     rows={2}
                     maxLength={500}
-                    className="w-full px-3 py-2.5 rounded-lg border border-input bg-background text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-all resize-none"
+                    className="w-full px-3 py-2.5 rounded-lg text-sm text-white placeholder:text-white/25 focus:outline-none transition-all resize-none"
+                    style={{
+                      background: "hsl(0 0% 100% / 0.06)",
+                      border: "1px solid hsl(0 0% 100% / 0.08)",
+                    }}
+                    onFocus={(e) => {
+                      e.currentTarget.style.borderColor = "hsl(11 81% 57% / 0.5)";
+                      e.currentTarget.style.boxShadow = "0 0 0 2px hsl(11 81% 57% / 0.15)";
+                    }}
+                    onBlur={(e) => {
+                      e.currentTarget.style.borderColor = "hsl(0 0% 100% / 0.08)";
+                      e.currentTarget.style.boxShadow = "none";
+                    }}
                   />
                 </div>
 
                 {/* Submit */}
                 <motion.button
                   onClick={handleSubmit}
-                  className="w-full flex items-center justify-center gap-2.5 py-3.5 rounded-xl bg-[#25D366] text-white font-semibold text-sm tracking-wide shadow-lg"
+                  className="w-full flex items-center justify-center gap-2.5 py-3.5 rounded-lg font-semibold text-sm tracking-wide text-white cursor-pointer relative overflow-hidden"
+                  style={{
+                    background: "linear-gradient(135deg, #25D366, #128C7E)",
+                    boxShadow: "0 4px 20px rgba(37,211,102,0.25)",
+                  }}
                   whileHover={{
                     scale: 1.02,
-                    boxShadow:
-                      "0 0 20px rgba(37,211,102,0.4), 0 0 40px rgba(37,211,102,0.15)",
+                    boxShadow: "0 0 25px rgba(37,211,102,0.5), 0 0 50px rgba(37,211,102,0.15)",
                   }}
                   whileTap={{ scale: 0.98 }}
                 >
@@ -286,11 +374,19 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                   <Send className="w-4 h-4" />
                 </motion.button>
 
-                <p className="text-[10px] text-muted-foreground text-center pt-1">
+                <p className="text-[10px] text-white/30 text-center pt-0.5 pb-1">
                   Você será direcionado para o WhatsApp para continuar o atendimento.
                 </p>
               </div>
             </div>
+
+            {/* Bottom light strip */}
+            <div
+              className="h-[1px] shrink-0"
+              style={{
+                background: "linear-gradient(90deg, transparent, hsl(11 81% 57% / 0.4), transparent)",
+              }}
+            />
           </motion.div>
         </motion.div>
       )}
