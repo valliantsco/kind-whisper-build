@@ -476,7 +476,7 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                       type="button"
                       onClick={isRecording ? stopRecording : startRecording}
                       disabled={isTranscribing}
-                      className="absolute right-2 bottom-2 flex items-center justify-center rounded-full disabled:opacity-40 cursor-pointer"
+                      className="absolute right-2.5 top-1/2 -translate-y-1/2 flex items-center justify-center rounded-full disabled:opacity-40 cursor-pointer"
                       style={{
                         width: 30,
                         height: 30,
