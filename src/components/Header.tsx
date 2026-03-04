@@ -301,7 +301,7 @@ const Header = () => {
                 href="https://wa.me/5500000000000"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="relative inline-flex items-center justify-center gap-2 h-10 px-5 text-xs font-semibold uppercase tracking-wider rounded-lg bg-primary text-primary-foreground"
+                className="relative inline-flex items-center justify-center gap-2 h-10 px-5 text-xs font-semibold uppercase tracking-wider rounded-lg bg-primary text-primary-foreground overflow-visible"
                 whileHover={{
                   scale: 1.05,
                   boxShadow: "0 0 20px hsl(11 81% 57% / 0.5), 0 0 40px hsl(11 81% 57% / 0.2)",
@@ -309,14 +309,19 @@ const Header = () => {
                 whileTap={{ scale: 0.95 }}
                 transition={{ duration: 0.3 }}
               >
-                {/* Availability indicator */}
-                <span className="relative flex items-center gap-1.5">
-                  <span className="relative flex h-2.5 w-2.5">
-                    {isOnline && (
+                {/* Protruding availability dot */}
+                <span className="absolute -top-1.5 -right-1.5 flex h-4 w-4">
+                  {isOnline ? (
+                    <>
                       <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
-                    )}
-                    <span className={`relative inline-flex rounded-full h-2.5 w-2.5 ${isOnline ? "bg-green-500" : "bg-red-500"}`} />
-                  </span>
+                      <span className="relative inline-flex rounded-full h-4 w-4 bg-green-500 border-2 border-white shadow-[0_0_8px_rgba(34,197,94,0.6)]" />
+                    </>
+                  ) : (
+                    <>
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-60" />
+                      <span className="relative inline-flex rounded-full h-4 w-4 bg-red-500 border-2 border-white shadow-[0_0_8px_rgba(239,68,68,0.6)]" />
+                    </>
+                  )}
                 </span>
                 <WhatsAppIcon />
                 {isOnline ? "Atendimento Online" : "Atendimento Offline"}
@@ -416,7 +421,7 @@ const Header = () => {
                       href="https://wa.me/5500000000000"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center justify-center gap-3 w-full py-3 rounded-lg bg-primary text-primary-foreground text-xs font-semibold uppercase tracking-wider"
+                      className="relative flex items-center justify-center gap-3 w-full py-3 rounded-lg bg-primary text-primary-foreground text-xs font-semibold uppercase tracking-wider overflow-visible"
                       onClick={() => setMobileOpen(false)}
                       whileHover={{
                         scale: 1.02,
@@ -434,11 +439,19 @@ const Header = () => {
                         boxShadow: { duration: 2, repeat: Infinity, ease: "easeInOut" },
                       }}
                     >
-                      <span className="relative flex h-2.5 w-2.5">
-                        {isOnline && (
-                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
+                      {/* Protruding availability dot */}
+                      <span className="absolute -top-2 -right-2 flex h-4 w-4">
+                        {isOnline ? (
+                          <>
+                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
+                            <span className="relative inline-flex rounded-full h-4 w-4 bg-green-500 border-2 border-white shadow-[0_0_8px_rgba(34,197,94,0.6)]" />
+                          </>
+                        ) : (
+                          <>
+                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-60" />
+                            <span className="relative inline-flex rounded-full h-4 w-4 bg-red-500 border-2 border-white shadow-[0_0_8px_rgba(239,68,68,0.6)]" />
+                          </>
                         )}
-                        <span className={`relative inline-flex rounded-full h-2.5 w-2.5 ${isOnline ? "bg-green-500" : "bg-red-500"}`} />
                       </span>
                       <WhatsAppIcon />
                       {isOnline ? "Atendimento Online" : "Atendimento Offline"}
