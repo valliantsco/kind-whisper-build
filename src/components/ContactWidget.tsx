@@ -720,12 +720,20 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                       if (cityDebounceRef.current) clearTimeout(cityDebounceRef.current);
                       if (val.trim().length >= 2) {
                         setIsCityLoading(true);
-                        cityDebounceRef.current = setTimeout(async () => {
-                          const results = await fetchIBGECities(val.trim());
-                          setCitySuggestions(results);
-                          setIsCityDropdownOpen(results.length > 0);
-                          setFocusedCityIndex(-1);
-                          setIsCityLoading(false);
+                        setIsCityDropdownOpen(true);
+                        cityDebounceRef.current = setTimeout(() => {
+                          fetchIBGECities(val.trim())
+                            .then((results) => {
+                              setCitySuggestions(results);
+                              setIsCityDropdownOpen(results.length > 0);
+                              setFocusedCityIndex(-1);
+                            })
+                            .catch((err) => {
+                              console.error("IBGE fetch error:", err);
+                              setCitySuggestions([]);
+                              setIsCityDropdownOpen(false);
+                            })
+                            .finally(() => setIsCityLoading(false));
                         }, 300);
                       } else {
                         setCitySuggestions([]);
