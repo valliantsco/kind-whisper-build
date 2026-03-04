@@ -480,20 +480,28 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                         <motion.div
                           key="mic-group"
                           className="absolute right-2.5 top-1/2 -translate-y-1/2"
-                          style={{ width: 30, height: 30 }}
+                          style={{ width: 34, height: 34 }}
                           initial={{ opacity: 0, scale: 0.8 }}
                           animate={{ opacity: 1, scale: 1 }}
                           exit={{ opacity: 0, scale: 0.8 }}
                           transition={{ duration: 0.25, ease: "easeInOut" }}
                         >
-                          {/* Pulse ring */}
+                          {/* Double pulse rings */}
                           {!isRecording && !isTranscribing && (
-                            <motion.div
-                              className="absolute inset-0 rounded-full pointer-events-none"
-                              style={{ border: "1px solid hsl(11 81% 57% / 0.15)" }}
-                              animate={{ scale: [1, 1.35, 1], opacity: [0.6, 0, 0.6] }}
-                              transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
-                            />
+                            <>
+                              <motion.div
+                                className="absolute inset-0 rounded-full pointer-events-none"
+                                style={{ border: "1.5px solid hsl(11 81% 57% / 0.25)" }}
+                                animate={{ scale: [1, 1.6], opacity: [0.5, 0] }}
+                                transition={{ duration: 2, repeat: Infinity, ease: "easeOut" }}
+                              />
+                              <motion.div
+                                className="absolute inset-0 rounded-full pointer-events-none"
+                                style={{ border: "1px solid hsl(11 81% 57% / 0.15)" }}
+                                animate={{ scale: [1, 1.4], opacity: [0.4, 0] }}
+                                transition={{ duration: 2, repeat: Infinity, ease: "easeOut", delay: 0.6 }}
+                              />
+                            </>
                           )}
                           <motion.button
                             type="button"
@@ -505,34 +513,41 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                                 ? "hsl(0 84% 55% / 0.25)"
                                 : isTranscribing
                                 ? "hsl(0 0% 100% / 0.06)"
-                                : "hsl(0 0% 100% / 0.1)",
+                                : "hsl(0 0% 100% / 0.08)",
                               backdropFilter: "blur(8px)",
-                              border: `1px solid ${isRecording ? "hsl(0 84% 60% / 0.35)" : "hsl(0 0% 100% / 0.12)"}`,
-                              boxShadow: isRecording ? "0 0 10px hsl(0 84% 55% / 0.2)" : "none",
+                              border: `1px solid ${isRecording ? "hsl(0 84% 60% / 0.35)" : "hsl(0 0% 100% / 0.15)"}`,
+                              boxShadow: isRecording
+                                ? "0 0 14px hsl(0 84% 55% / 0.3)"
+                                : "0 0 8px hsl(11 81% 57% / 0.08)",
                             }}
                             whileHover={isTranscribing ? {} : {
-                              background: isRecording ? "hsl(0 84% 55% / 0.3)" : "hsl(0 0% 100% / 0.18)",
-                              borderColor: isRecording ? "hsl(0 84% 60% / 0.5)" : "hsl(11 81% 57% / 0.4)",
-                              boxShadow: "0 0 12px hsl(11 81% 57% / 0.2)",
-                              scale: 1.08,
+                              background: isRecording ? "hsl(0 84% 55% / 0.35)" : "hsl(11 81% 57% / 0.15)",
+                              borderColor: isRecording ? "hsl(0 84% 60% / 0.5)" : "hsl(11 81% 57% / 0.5)",
+                              boxShadow: "0 0 18px hsl(11 81% 57% / 0.3), 0 0 36px hsl(11 81% 57% / 0.1)",
+                              scale: 1.15,
                             }}
-                            whileTap={isTranscribing ? {} : { scale: 0.9 }}
+                            whileTap={isTranscribing ? {} : { scale: 0.88 }}
                             animate={isRecording ? {
-                              borderColor: ["hsl(0 84% 60% / 0.35)", "hsl(0 84% 60% / 0.6)", "hsl(0 84% 60% / 0.35)"],
+                              borderColor: ["hsl(0 84% 60% / 0.35)", "hsl(0 84% 60% / 0.7)", "hsl(0 84% 60% / 0.35)"],
+                              boxShadow: [
+                                "0 0 14px hsl(0 84% 55% / 0.3)",
+                                "0 0 22px hsl(0 84% 55% / 0.5)",
+                                "0 0 14px hsl(0 84% 55% / 0.3)",
+                              ],
                             } : {}}
-                            transition={isRecording ? { duration: 1.5, repeat: Infinity, ease: "easeInOut" } : { type: "spring", stiffness: 400, damping: 20 }}
+                            transition={isRecording ? { duration: 1.2, repeat: Infinity, ease: "easeInOut" } : { type: "spring", stiffness: 350, damping: 18 }}
                           >
                             {isTranscribing ? (
-                              <Loader2 className="w-3.5 h-3.5 text-white/50 animate-spin" />
+                              <Loader2 className="w-4 h-4 text-white/60 animate-spin" />
                             ) : isRecording ? (
                               <motion.div
                                 className="w-2.5 h-2.5 rounded-[2px]"
                                 style={{ background: "hsl(0 84% 65%)" }}
-                                animate={{ scale: [1, 0.85, 1] }}
-                                transition={{ duration: 0.8, repeat: Infinity }}
+                                animate={{ scale: [1, 0.8, 1] }}
+                                transition={{ duration: 0.7, repeat: Infinity }}
                               />
                             ) : (
-                              <Mic className="w-3.5 h-3.5 text-white/50" />
+                              <Mic className="w-4 h-4 text-white/60" />
                             )}
                           </motion.button>
                         </motion.div>
