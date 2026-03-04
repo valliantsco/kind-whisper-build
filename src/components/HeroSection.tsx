@@ -142,7 +142,7 @@ const HeroSection = () => {
               }}
             >
               <Zap className="w-3 h-3 text-primary" />
-              Mobilidade 100% elétrica
+              Mobilidade 100% Elétrica
             </span>
           </motion.div>
 
@@ -154,7 +154,7 @@ const HeroSection = () => {
               transition={{ delay: 0.2 }}
               className="block"
             >
-              Líder em
+              Liderando o
             </motion.span>
             <motion.span
               initial={{ opacity: 0, y: 20 }}
@@ -162,12 +162,20 @@ const HeroSection = () => {
               transition={{ delay: 0.35 }}
               className="block"
             >
-              mobilidade
+              Futuro da
             </motion.span>
             <motion.span
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5 }}
+              className="block"
+            >
+              Mobilidade
+            </motion.span>
+            <motion.span
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.65 }}
               className="block"
               style={{
                 background: "linear-gradient(135deg, hsl(11 81% 57%), hsl(11 90% 65%), hsl(20 85% 60%))",
@@ -177,7 +185,7 @@ const HeroSection = () => {
                 filter: "drop-shadow(0 0 20px hsl(11 81% 57% / 0.4))",
               }}
             >
-              elétrica.
+              Elétrica.
             </motion.span>
           </h1>
 
@@ -188,7 +196,7 @@ const HeroSection = () => {
             transition={{ delay: 0.7 }}
             className="text-sm sm:text-base md:text-lg lg:text-xl text-primary-foreground/55 mb-8 md:mb-12 max-w-2xl leading-relaxed tracking-wide"
           >
-            A MS Eletric reúne soluções 100% elétricas para quem busca praticidade, economia e uma experiência completa — do atendimento ao pós-venda.
+            A MS Eletric se destaca no mercado de motos elétricas, oferecendo soluções inovadoras que priorizam tecnologia de ponta, eficiência energética e sustentabilidade. Nossas motos são projetadas para transformar seu dia a dia, contribuindo para um futuro mais verde.
           </motion.p>
 
           {/* CTAs — futuristic with glow, gradient border, matching header button style */}
@@ -211,7 +219,7 @@ const HeroSection = () => {
                 boxShadow: "0 0 20px hsl(11 81% 57% / 0.3), 0 0 40px hsl(11 81% 57% / 0.1)",
               }}
             >
-              Conheça os modelos
+              Conheça Nossos Modelos
               <ArrowRight className="w-4 h-4 md:w-5 md:h-5" />
             </motion.a>
 
@@ -236,7 +244,7 @@ const HeroSection = () => {
                   background: "linear-gradient(90deg, transparent, hsl(11 81% 57% / 0.5), transparent)",
                 }}
               />
-              Sobre a marca
+              Saiba Mais Sobre a Marca
             </motion.a>
           </motion.div>
         </motion.div>
