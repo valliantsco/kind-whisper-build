@@ -457,7 +457,7 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                       rows={3}
                       maxLength={500}
                       disabled={isTranscribing}
-                      className="w-full px-3 py-2.5 pr-12 rounded-lg text-sm text-white placeholder:text-white/25 focus:outline-none transition-all resize-none disabled:opacity-50"
+                      className="w-full px-3 py-2.5 pr-14 rounded-lg text-sm text-white placeholder:text-white/25 focus:outline-none transition-all resize-none disabled:opacity-50"
                       style={{
                         background: "hsl(0 0% 100% / 0.06)",
                         border: `1px solid ${errors.details ? "hsl(0 84% 60% / 0.5)" : "hsl(0 0% 100% / 0.08)"}`,
@@ -573,8 +573,8 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                           <span className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75" style={{ background: "hsl(0 84% 60%)" }} />
                           <span className="relative inline-flex rounded-full h-2 w-2" style={{ background: "hsl(0 84% 60%)" }} />
                         </span>
-                        <span className="text-[10px] text-white/50">
-                          Gravando... toque no <span className="inline-flex align-middle mx-0.5 w-3.5 h-3.5 rounded-sm items-center justify-center" style={{ background: "hsl(0 84% 55% / 0.3)" }}><Square className="w-2 h-2 text-white/70" /></span> para parar
+                        <span className="text-[10px] text-white/50 leading-relaxed">
+                          Gravando... toque no botão ■ para parar
                         </span>
                       </motion.div>
                     )}
