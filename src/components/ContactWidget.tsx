@@ -643,13 +643,23 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                       setPhone(formatPhone(raw));
                       // Instant phone spam detection
                       if (raw.length === 11) {
-                        const isRepeated = /^(\d)\1{10}$/.test(raw);
-                        // Repeating 2-digit pattern: 15151515151, 12121212121, etc.
-                        const isRepeating2 = /^(\d{2})\1+\d?$/.test(raw);
-                        // Repeating 3-digit pattern: 12312312312, etc.
-                        const isRepeating3 = /^(\d{3})\1+\d{0,2}$/.test(raw);
-                        const isSequential = /^(01234567890|12345678901|00000000000|11111111111|22222222222|33333333333|44444444444|55555555555|66666666666|77777777777|88888888888|99999999999)$/.test(raw);
-                        if (isRepeated || isRepeating2 || isRepeating3 || isSequential) {
+                        const body = raw.slice(2); // 9-digit body (without DDD)
+                        const uniqueDigits = new Set(body).size;
+                        const digitFreq: Record<string, number> = {};
+                        for (const d of body) digitFreq[d] = (digitFreq[d] || 0) + 1;
+                        const maxFreq = Math.max(...Object.values(digitFreq));
+
+                        const isFake =
+                          // All same digit: 11111111111
+                          /^(\d)\1{10}$/.test(raw) ||
+                          // Body has ≤2 unique digits (e.g. 15151515115)
+                          uniqueDigits <= 2 ||
+                          // One digit dominates 7+ of 9 in body
+                          maxFreq >= 7 ||
+                          // Sequential
+                          /^(01234567890|12345678901)$/.test(raw);
+
+                        if (isFake) {
                           setErrors((prev) => ({ ...prev, phone: "Número inválido" }));
                         } else {
                           setErrors((prev) => { const { phone, ...rest } = prev; return rest; });
