@@ -28,7 +28,7 @@ const HeroSection = () => {
   }, [nextSlide]);
 
   return (
-    <section id="inicio" className="relative h-screen flex items-center justify-center overflow-hidden">
+    <section id="inicio" className="relative min-h-[75vh] flex items-start overflow-hidden">
       {/* Background image fallback (always visible) */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -58,7 +58,7 @@ const HeroSection = () => {
       </div>
 
       {/* Gradient overlays */}
-      <div className="absolute inset-0 bg-foreground/70 z-[3]" />
+      <div className="absolute inset-0 bg-gradient-to-r from-foreground/95 via-foreground/80 to-foreground/30 z-[3]" />
       <div className="absolute inset-0 bg-gradient-to-t from-foreground/70 via-transparent to-foreground/20 z-[3]" />
 
       {/* Animated ambient shapes */}
@@ -69,12 +69,12 @@ const HeroSection = () => {
         transition={{ duration: 6, repeat: Infinity }}
       />
 
-      <div className="relative z-10 container mx-auto px-4 py-20 text-center">
+      <div className="relative z-10 container mx-auto px-4 pt-24 md:pt-40 pb-20">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="max-w-4xl mx-auto"
+          className="max-w-4xl"
         >
           <h1 className="font-display font-black text-3xl sm:text-4xl md:text-6xl lg:text-7xl text-primary-foreground leading-[0.95] mb-4 md:mb-8 uppercase tracking-tight">
             <motion.span initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="block">
@@ -92,7 +92,7 @@ const HeroSection = () => {
             A MS Eletric reúne soluções 100% elétricas para quem busca praticidade, economia e uma experiência completa — do atendimento ao pós-venda.
           </motion.p>
 
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.9 }} className="flex flex-wrap items-center justify-center gap-3 md:gap-4">
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.9 }} className="flex flex-wrap items-center gap-3 md:gap-4">
             <Button size="lg" className="text-sm md:text-base px-6 md:px-10 py-5 md:py-7 font-bold rounded-2xl glow-primary hover:scale-105 transition-transform gap-2" asChild>
               <a href="#modelos">
                 Conheça nossos modelos
