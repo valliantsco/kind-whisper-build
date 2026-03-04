@@ -478,44 +478,44 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                       disabled={isTranscribing}
                       className="absolute right-2 bottom-2 flex items-center justify-center rounded-full disabled:opacity-40 cursor-pointer"
                       style={{
-                        width: 36,
-                        height: 36,
+                        width: 30,
+                        height: 30,
                         background: isRecording
-                          ? "linear-gradient(135deg, hsl(0 84% 55%), hsl(0 84% 45%))"
+                          ? "hsl(0 84% 55% / 0.25)"
                           : isTranscribing
-                          ? "hsl(0 0% 100% / 0.08)"
-                          : "linear-gradient(135deg, hsl(11 81% 57%), hsl(11 90% 50%))",
+                          ? "hsl(0 0% 100% / 0.06)"
+                          : "hsl(0 0% 100% / 0.1)",
+                        backdropFilter: "blur(8px)",
+                        border: `1px solid ${isRecording ? "hsl(0 84% 60% / 0.35)" : "hsl(0 0% 100% / 0.12)"}`,
                         boxShadow: isRecording
-                          ? "0 0 16px hsl(0 84% 55% / 0.5), 0 0 32px hsl(0 84% 55% / 0.2)"
-                          : isTranscribing
-                          ? "none"
-                          : "0 0 12px hsl(11 81% 57% / 0.3), 0 0 24px hsl(11 81% 57% / 0.1)",
+                          ? "0 0 10px hsl(0 84% 55% / 0.2)"
+                          : "none",
                       }}
-                      whileHover={isTranscribing ? {} : { scale: 1.12, boxShadow: isRecording
-                        ? "0 0 24px hsl(0 84% 55% / 0.6), 0 0 48px hsl(0 84% 55% / 0.25)"
-                        : "0 0 20px hsl(11 81% 57% / 0.5), 0 0 40px hsl(11 81% 57% / 0.15)"
+                      whileHover={isTranscribing ? {} : {
+                        background: isRecording ? "hsl(0 84% 55% / 0.3)" : "hsl(0 0% 100% / 0.15)",
+                        borderColor: isRecording ? "hsl(0 84% 60% / 0.5)" : "hsl(11 81% 57% / 0.4)",
                       }}
                       whileTap={isTranscribing ? {} : { scale: 0.9 }}
                       animate={isRecording ? {
-                        boxShadow: [
-                          "0 0 16px hsl(0 84% 55% / 0.5), 0 0 32px hsl(0 84% 55% / 0.2)",
-                          "0 0 24px hsl(0 84% 55% / 0.7), 0 0 48px hsl(0 84% 55% / 0.3)",
-                          "0 0 16px hsl(0 84% 55% / 0.5), 0 0 32px hsl(0 84% 55% / 0.2)",
+                        borderColor: [
+                          "hsl(0 84% 60% / 0.35)",
+                          "hsl(0 84% 60% / 0.6)",
+                          "hsl(0 84% 60% / 0.35)",
                         ],
                       } : {}}
                       transition={isRecording ? { duration: 1.5, repeat: Infinity, ease: "easeInOut" } : {}}
                     >
                       {isTranscribing ? (
-                        <Loader2 className="w-4 h-4 text-white/70 animate-spin" />
+                        <Loader2 className="w-3.5 h-3.5 text-white/50 animate-spin" />
                       ) : isRecording ? (
                         <motion.div
-                          className="w-3.5 h-3.5 rounded-sm"
-                          style={{ background: "white" }}
+                          className="w-2.5 h-2.5 rounded-[2px]"
+                          style={{ background: "hsl(0 84% 65%)" }}
                           animate={{ scale: [1, 0.85, 1] }}
                           transition={{ duration: 0.8, repeat: Infinity }}
                         />
                       ) : (
-                        <Mic className="w-4 h-4 text-white" />
+                        <Mic className="w-3.5 h-3.5 text-white/50" />
                       )}
                     </motion.button>
                   </div>
