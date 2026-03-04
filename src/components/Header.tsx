@@ -359,11 +359,11 @@ const Header = () => {
                 initial={{ opacity: 0, height: 0 }}
                 animate={{ opacity: 1, height: "auto" }}
                 exit={{ opacity: 0, height: 0 }}
-                transition={{ duration: 0.5, ease: [0.25, 0.8, 0.25, 1] as const }}
-                className={`lg:hidden overflow-hidden origin-top border-t ${
+                transition={{ duration: 0.45, ease: [0.25, 0.8, 0.25, 1] as const }}
+                className={`lg:hidden overflow-hidden origin-top transition-colors duration-[800ms] ease-in-out ${
                   scrolled
-                    ? "bg-white/80 backdrop-blur-2xl border-black/[0.04]"
-                    : "bg-[hsl(220_30%_12%/0.65)] backdrop-blur-xl border-white/[0.06]"
+                    ? "bg-white/80 backdrop-blur-2xl"
+                    : "bg-[hsl(220_30%_12%/0.65)] backdrop-blur-xl"
                 }`}
               >
                 <motion.div
