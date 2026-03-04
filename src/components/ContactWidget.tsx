@@ -424,9 +424,18 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                     Qual o assunto? <span className="text-primary/70">*</span>
                   </label>
                   {/* Backdrop blur when select is open */}
-                  {isSelectOpen && (
-                    <div className="fixed inset-0 z-[150] backdrop-blur-sm bg-black/20 pointer-events-none" />
-                  )}
+                  <AnimatePresence>
+                    {isSelectOpen && (
+                      <motion.div
+                        key="select-backdrop"
+                        initial={{ opacity: 0, backdropFilter: "blur(0px)" }}
+                        animate={{ opacity: 1, backdropFilter: "blur(6px)" }}
+                        exit={{ opacity: 0, backdropFilter: "blur(0px)" }}
+                        transition={{ duration: 0.35, ease: [0.4, 0, 0.2, 1] }}
+                        className="fixed inset-0 z-[150] bg-black/15 pointer-events-none"
+                      />
+                    )}
+                  </AnimatePresence>
                   <Select open={isSelectOpen} onOpenChange={setIsSelectOpen} value={selectedTopic} onValueChange={(v) => { setSelectedTopic(v); if (errors.topic) setErrors((prev) => { const { topic, ...rest } = prev; return rest; }); }}>
                     <SelectTrigger
                       className={`w-full rounded-lg text-sm border-0 ring-0 cw-input ${errors.topic ? "cw-input-error" : ""} ${
