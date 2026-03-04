@@ -1,35 +1,9 @@
 import { motion } from "framer-motion";
 import { MessageCircle } from "lucide-react";
-import { useState, useEffect } from "react";
-
-const BUSINESS_HOURS: Record<number, [number, number] | null> = {
-  0: null,            // Domingo - Fechado
-  1: [8, 18],         // Segunda
-  2: [8, 18],         // Terça
-  3: [8, 18],         // Quarta
-  4: [8, 18],         // Quinta
-  5: [8, 18],         // Sexta
-  6: [8, 12],         // Sábado
-};
-
-const isWithinBusinessHours = (): boolean => {
-  const now = new Date();
-  const day = now.getDay();
-  const hours = BUSINESS_HOURS[day];
-  if (!hours) return false;
-  const currentHour = now.getHours();
-  return currentHour >= hours[0] && currentHour < hours[1];
-};
+import { useBusinessHours } from "@/hooks/useBusinessHours";
 
 const FloatingWhatsApp = () => {
-  const [isOnline, setIsOnline] = useState(isWithinBusinessHours);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setIsOnline(isWithinBusinessHours());
-    }, 60000);
-    return () => clearInterval(interval);
-  }, []);
+  const isOnline = useBusinessHours();
 
   return (
     <motion.a
