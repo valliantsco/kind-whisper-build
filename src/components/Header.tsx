@@ -397,20 +397,18 @@ const Header = ({ contactOpen, setContactOpen }: HeaderProps) => {
                 animate={{ opacity: 1, height: "auto" }}
                 exit={{ opacity: 0, height: 0 }}
                 transition={{ duration: 0.5, ease: [0.25, 0.8, 0.25, 1] as const }}
-                className="lg:hidden overflow-hidden origin-top rounded-b-[0.9rem]"
-                style={{
-                  background: scrolled
-                    ? "hsl(0 0% 100% / 0.88)"
-                    : "hsl(0 0% 8% / 0.85)",
+                className={`lg:hidden overflow-hidden origin-top rounded-b-[0.9rem] ${
+                  scrolled
+                    ? "bg-white/92 backdrop-blur-2xl border-t border-border/30 shadow-[0_8px_30px_rgba(0,0,0,0.08)]"
+                    : ""
+                }`}
+                style={!scrolled ? {
+                  background: "hsl(0 0% 8% / 0.85)",
                   backdropFilter: "blur(28px) saturate(1.6)",
                   WebkitBackdropFilter: "blur(28px) saturate(1.6)",
-                  boxShadow: scrolled
-                    ? "0 12px 40px rgba(0,0,0,0.12), 0 4px 12px rgba(0,0,0,0.06), inset 0 1px 0 rgba(255,255,255,0.6)"
-                    : "0 12px 40px rgba(0,0,0,0.4), 0 4px 12px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.05)",
-                  borderTop: scrolled
-                    ? "1px solid hsl(0 0% 90%)"
-                    : "1px solid hsl(0 0% 100% / 0.08)",
-                }}
+                  boxShadow: "0 12px 40px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.05)",
+                  borderTop: "1px solid hsl(0 0% 100% / 0.08)",
+                } : undefined}
               >
                 <div
                   className="mx-4 h-[1px]"
