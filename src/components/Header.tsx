@@ -212,7 +212,9 @@ const Header = ({ contactOpen, setContactOpen }: HeaderProps) => {
               : "bg-primary-foreground/5 backdrop-blur-xl border border-primary-foreground/10"
           }`}
           style={{
-            boxShadow: "0 6px 24px rgba(66,66,66,0.35), 0 2px 8px rgba(66,66,66,0.18)",
+            boxShadow: scrolled
+              ? "0 4px 16px rgba(66,66,66,0.12), 0 1px 4px rgba(66,66,66,0.08)"
+              : "0 8px 32px rgba(66,66,66,0.45), 0 3px 12px rgba(66,66,66,0.25)",
           }}
         >
           {/* Orbiting orange glow — only visible on transparent state */}
