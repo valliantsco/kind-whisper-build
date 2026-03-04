@@ -14,7 +14,7 @@ serve(async (req) => {
     const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");
     if (!LOVABLE_API_KEY) throw new Error("LOVABLE_API_KEY is not configured");
 
-    // ── Step 1: AI Spam Pre-filter ──
+    // ── Step 1: AI Spam Pre-filter with per-field analysis ──
     const spamCheckResponse = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
       method: "POST",
       headers: {
@@ -28,49 +28,83 @@ serve(async (req) => {
             role: "system",
             content: `Você é um filtro anti-spam para um formulário de contato de uma empresa de veículos elétricos (motos, bikes, scooters, triciclos).
 
-Analise os dados do lead e classifique como "legit" ou "spam".
-
-Critérios de SPAM:
-- Nome sem sentido (ex: "asdasd fghfgh", "teste teste", "aaaa bbbb")
-- Detalhes com texto sem sentido, palavrões, ofensas ou conteúdo irrelevante
-- Detalhes que são apenas letras/números aleatórios (ex: "asdkjhasd", "123456", "kkkkkkk")
-- Conteúdo que claramente não é uma consulta real sobre veículos elétricos
-
-Critérios de LEGÍTIMO:
-- Nome que parece real (pode ser incomum mas plausível)
-- Detalhes que expressam interesse real, mesmo que curtos ou informais
-- Perguntas sobre preço, modelos, autonomia, financiamento etc.
-
-Responda APENAS com a palavra "legit" ou "spam", sem nenhuma outra palavra ou explicação.`,
+Analise CADA campo individualmente e classifique como válido ou inválido.`,
           },
           {
             role: "user",
-            content: `Nome: ${name}\nCidade: ${city || "não informada"}\nDetalhes: ${details || "nenhum"}`,
+            content: `Analise os seguintes dados de um lead:
+- Nome: ${name}
+- Cidade: ${city || "não informada"}
+- Detalhes: ${details || "nenhum"}`,
           },
         ],
+        tools: [
+          {
+            type: "function",
+            function: {
+              name: "classify_lead",
+              description: "Classifica cada campo do lead como válido ou inválido",
+              parameters: {
+                type: "object",
+                properties: {
+                  name_valid: {
+                    type: "boolean",
+                    description: "true se o nome parece real e plausível, false se é claramente falso, sem sentido ou ofensivo (ex: 'asdasd fghfgh', 'teste teste')",
+                  },
+                  city_valid: {
+                    type: "boolean",
+                    description: "true se a cidade parece real ou plausível, false se é claramente inventada ou sem sentido",
+                  },
+                  details_valid: {
+                    type: "boolean",
+                    description: "true se os detalhes expressam interesse real sobre veículos elétricos mesmo que informal, false se é texto sem sentido, ofensivo, spam ou completamente irrelevante",
+                  },
+                },
+                required: ["name_valid", "city_valid", "details_valid"],
+                additionalProperties: false,
+              },
+            },
+          },
+        ],
+        tool_choice: { type: "function", function: { name: "classify_lead" } },
         stream: false,
-        max_tokens: 10,
       }),
     });
 
     if (spamCheckResponse.ok) {
       const spamData = await spamCheckResponse.json();
-      const verdict = (spamData.choices?.[0]?.message?.content || "").trim().toLowerCase();
-      
-      if (verdict === "spam") {
-        return new Response(
-          JSON.stringify({ 
-            error: "spam",
-            userMessage: "Não foi possível processar sua solicitação. Verifique os dados e tente novamente." 
-          }),
-          {
-            status: 422,
-            headers: { ...corsHeaders, "Content-Type": "application/json" },
+      const toolCall = spamData.choices?.[0]?.message?.tool_calls?.[0];
+
+      if (toolCall?.function?.arguments) {
+        try {
+          const result = JSON.parse(toolCall.function.arguments);
+          const fieldErrors: Record<string, string> = {};
+
+          if (result.name_valid === false) {
+            fieldErrors.name = "Informe seu nome verdadeiro";
           }
-        );
+          if (result.city_valid === false) {
+            fieldErrors.city = "Informe uma cidade válida";
+          }
+          if (result.details_valid === false) {
+            fieldErrors.details = "Descreva sua real necessidade sobre veículos elétricos";
+          }
+
+          if (Object.keys(fieldErrors).length > 0) {
+            return new Response(
+              JSON.stringify({ error: "spam", fieldErrors }),
+              {
+                status: 422,
+                headers: { ...corsHeaders, "Content-Type": "application/json" },
+              }
+            );
+          }
+        } catch {
+          // JSON parse failed, proceed anyway
+        }
       }
     }
-    // If spam check fails (network/rate limit), proceed anyway — don't block legitimate users
+    // If spam check fails, proceed — don't block legitimate users
 
     // ── Step 2: Generate WhatsApp message ──
     const systemPrompt = `Você é a Iara, assistente inteligente da MS Eletric, uma empresa brasileira de motos e veículos elétricos.
