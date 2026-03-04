@@ -117,7 +117,7 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
   const [focusedTopicIndex, setFocusedTopicIndex] = useState(-1);
   const recordingTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const recordingIntervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
-  const MAX_RECORDING_SECONDS = 20;
+  const MAX_RECORDING_SECONDS = 15;
 
   // Persist draft to sessionStorage
   useEffect(() => {
