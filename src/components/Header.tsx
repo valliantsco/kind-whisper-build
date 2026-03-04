@@ -412,7 +412,7 @@ const Header = ({ contactOpen, setContactOpen }: HeaderProps) => {
                   }}
                 />
                 <motion.div
-                  className="flex flex-col justify-between px-5 py-6"
+                  className="flex flex-col justify-between px-5 pt-3 pb-6"
                   variants={drawerVariants}
                   initial="hidden"
                   animate="visible"
