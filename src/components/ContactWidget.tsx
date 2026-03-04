@@ -547,7 +547,7 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                                 transition={{ duration: 0.7, repeat: Infinity }}
                               />
                             ) : (
-                              <Mic className="w-4 h-4 text-white/60" />
+                              <Mic className="text-white/60" style={{ width: 14, height: 14 }} strokeWidth={2.2} />
                             )}
                           </motion.button>
                         </motion.div>
