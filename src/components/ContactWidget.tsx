@@ -396,33 +396,8 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                     type="tel"
                     value={phone}
                     onChange={(e) => {
-                      const input = e.target;
-                      const cursorPos = input.selectionStart ?? 0;
-                      const prevRaw = phone.replace(/\D/g, "");
-                      let newRaw = input.value.replace(/\D/g, "").slice(0, 11);
-
-                      // If digits didn't change, user deleted a formatting char — remove digit before cursor
-                      if (newRaw === prevRaw && newRaw.length > 0) {
-                        const digitIdx = getDigitIndexAtCursor(phone, cursorPos);
-                        if (digitIdx > 0) {
-                          newRaw = newRaw.slice(0, digitIdx - 1) + newRaw.slice(digitIdx);
-                        }
-                      }
-
-                      const formatted = formatPhone(newRaw);
-                      setPhone(formatted);
-
-                      // Restore cursor position
-                      const newDigitCount = newRaw.length;
-                      const targetDigitIdx = getDigitIndexAtCursor(phone, cursorPos);
-                      const adjustedIdx = Math.min(targetDigitIdx, newDigitCount);
-                      const newCursor = newRaw === prevRaw
-                        ? getCursorPosForDigitIndex(formatted, Math.max(0, adjustedIdx - 1))
-                        : getCursorPosForDigitIndex(formatted, adjustedIdx);
-
-                      requestAnimationFrame(() => {
-                        input.setSelectionRange(newCursor, newCursor);
-                      });
+                      const raw = e.target.value.replace(/\D/g, "").slice(0, 11);
+                      setPhone(formatPhone(raw));
                     }}
                     placeholder="(00) 00000-0000"
                     maxLength={20}
