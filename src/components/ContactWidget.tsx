@@ -107,6 +107,7 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
   const [isLoading, setIsLoading] = useState(false);
   const [isRecording, setIsRecording] = useState(false);
   const [isTranscribing, setIsTranscribing] = useState(false);
+  const [recordingSeconds, setRecordingSeconds] = useState(0);
   const [isDetailsFocused, setIsDetailsFocused] = useState(false);
   const [isSelectOpen, setIsSelectOpen] = useState(false);
   const mediaRecorderRef = useRef<MediaRecorder | null>(null);
@@ -114,6 +115,9 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);
   const topicMenuRef = useRef<HTMLDivElement | null>(null);
   const [focusedTopicIndex, setFocusedTopicIndex] = useState(-1);
+  const recordingTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const recordingIntervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const MAX_RECORDING_SECONDS = 20;
 
   // Persist draft to sessionStorage
   useEffect(() => {
@@ -203,14 +207,39 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
       mediaRecorderRef.current = recorder;
       recorder.start();
       setIsRecording(true);
+      setRecordingSeconds(0);
+      recordingIntervalRef.current = setInterval(() => {
+        setRecordingSeconds((prev) => prev + 1);
+      }, 1000);
+      // Auto-stop after 20 seconds
+      recordingTimerRef.current = setTimeout(() => {
+        if (recordingIntervalRef.current) {
+          clearInterval(recordingIntervalRef.current);
+          recordingIntervalRef.current = null;
+        }
+        if (mediaRecorderRef.current?.state === "recording") {
+          mediaRecorderRef.current.stop();
+          setIsRecording(false);
+          setRecordingSeconds(0);
+        }
+      }, MAX_RECORDING_SECONDS * 1000);
     } catch {
       console.error("Microphone access denied");
     }
   }, []);
 
   const stopRecording = useCallback(() => {
+    if (recordingTimerRef.current) {
+      clearTimeout(recordingTimerRef.current);
+      recordingTimerRef.current = null;
+    }
+    if (recordingIntervalRef.current) {
+      clearInterval(recordingIntervalRef.current);
+      recordingIntervalRef.current = null;
+    }
     mediaRecorderRef.current?.stop();
     setIsRecording(false);
+    setRecordingSeconds(0);
   }, []);
 
   const handleSubmit = useCallback(async () => {
@@ -660,7 +689,7 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                           <span className="relative inline-flex rounded-full h-2 w-2" style={{ background: "hsl(0 84% 60%)" }} />
                         </span>
                         <span className="text-[10px] text-white/50 leading-relaxed">
-                          Gravando... toque para parar
+                          Gravando ({MAX_RECORDING_SECONDS - recordingSeconds}s)... toque para parar
                         </span>
                       </motion.div>
                     )}
