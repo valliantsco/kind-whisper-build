@@ -83,6 +83,7 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
   const [isLoading, setIsLoading] = useState(false);
   const [isRecording, setIsRecording] = useState(false);
   const [isTranscribing, setIsTranscribing] = useState(false);
+  const [isDetailsFocused, setIsDetailsFocused] = useState(false);
   const mediaRecorderRef = useRef<MediaRecorder | null>(null);
   const chunksRef = useRef<Blob[]>([]);
 
@@ -462,80 +463,81 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                         border: "1px solid hsl(0 0% 100% / 0.08)",
                       }}
                       onFocus={(e) => {
+                        setIsDetailsFocused(true);
                         e.currentTarget.style.borderColor = "hsl(11 81% 57% / 0.5)";
                         e.currentTarget.style.boxShadow = "0 0 0 2px hsl(11 81% 57% / 0.15)";
                       }}
                       onBlur={(e) => {
+                        setIsDetailsFocused(false);
                         e.currentTarget.style.borderColor = "hsl(0 0% 100% / 0.08)";
                         e.currentTarget.style.boxShadow = "none";
                       }}
                     />
 
                     {/* Mic button inside textarea */}
-                    {/* Pulse ring behind mic button */}
-                    {!isRecording && !isTranscribing && (
-                      <motion.div
-                        className="absolute right-2.5 top-1/2 -translate-y-1/2 rounded-full pointer-events-none"
-                        style={{
-                          width: 30,
-                          height: 30,
-                          border: "1px solid hsl(11 81% 57% / 0.15)",
-                        }}
-                        animate={{
-                          scale: [1, 1.35, 1],
-                          opacity: [0.6, 0, 0.6],
-                        }}
-                        transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
-                      />
-                    )}
-                    <motion.button
-                      type="button"
-                      onClick={isRecording ? stopRecording : startRecording}
-                      disabled={isTranscribing}
-                      className="absolute right-2.5 top-1/2 -translate-y-1/2 flex items-center justify-center rounded-full disabled:opacity-40 cursor-pointer"
-                      style={{
-                        width: 30,
-                        height: 30,
-                        background: isRecording
-                          ? "hsl(0 84% 55% / 0.25)"
-                          : isTranscribing
-                          ? "hsl(0 0% 100% / 0.06)"
-                          : "hsl(0 0% 100% / 0.1)",
-                        backdropFilter: "blur(8px)",
-                        border: `1px solid ${isRecording ? "hsl(0 84% 60% / 0.35)" : "hsl(0 0% 100% / 0.12)"}`,
-                        boxShadow: isRecording
-                          ? "0 0 10px hsl(0 84% 55% / 0.2)"
-                          : "none",
-                      }}
-                      whileHover={isTranscribing ? {} : {
-                        background: isRecording ? "hsl(0 84% 55% / 0.3)" : "hsl(0 0% 100% / 0.18)",
-                        borderColor: isRecording ? "hsl(0 84% 60% / 0.5)" : "hsl(11 81% 57% / 0.4)",
-                        boxShadow: "0 0 12px hsl(11 81% 57% / 0.2)",
-                        scale: 1.08,
-                      }}
-                      whileTap={isTranscribing ? {} : { scale: 0.9 }}
-                      animate={isRecording ? {
-                        borderColor: [
-                          "hsl(0 84% 60% / 0.35)",
-                          "hsl(0 84% 60% / 0.6)",
-                          "hsl(0 84% 60% / 0.35)",
-                        ],
-                      } : {}}
-                      transition={isRecording ? { duration: 1.5, repeat: Infinity, ease: "easeInOut" } : { type: "spring", stiffness: 400, damping: 20 }}
-                    >
-                      {isTranscribing ? (
-                        <Loader2 className="w-3.5 h-3.5 text-white/50 animate-spin" />
-                      ) : isRecording ? (
+                    <AnimatePresence>
+                      {(!isDetailsFocused || isRecording || isTranscribing) && (
                         <motion.div
-                          className="w-2.5 h-2.5 rounded-[2px]"
-                          style={{ background: "hsl(0 84% 65%)" }}
-                          animate={{ scale: [1, 0.85, 1] }}
-                          transition={{ duration: 0.8, repeat: Infinity }}
-                        />
-                      ) : (
-                        <Mic className="w-3.5 h-3.5 text-white/50" />
+                          key="mic-group"
+                          className="absolute right-2.5 top-1/2 -translate-y-1/2"
+                          style={{ width: 30, height: 30 }}
+                          initial={{ opacity: 0, scale: 0.8 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          exit={{ opacity: 0, scale: 0.8 }}
+                          transition={{ duration: 0.25, ease: "easeInOut" }}
+                        >
+                          {/* Pulse ring */}
+                          {!isRecording && !isTranscribing && (
+                            <motion.div
+                              className="absolute inset-0 rounded-full pointer-events-none"
+                              style={{ border: "1px solid hsl(11 81% 57% / 0.15)" }}
+                              animate={{ scale: [1, 1.35, 1], opacity: [0.6, 0, 0.6] }}
+                              transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+                            />
+                          )}
+                          <motion.button
+                            type="button"
+                            onClick={isRecording ? stopRecording : startRecording}
+                            disabled={isTranscribing}
+                            className="w-full h-full flex items-center justify-center rounded-full disabled:opacity-40 cursor-pointer"
+                            style={{
+                              background: isRecording
+                                ? "hsl(0 84% 55% / 0.25)"
+                                : isTranscribing
+                                ? "hsl(0 0% 100% / 0.06)"
+                                : "hsl(0 0% 100% / 0.1)",
+                              backdropFilter: "blur(8px)",
+                              border: `1px solid ${isRecording ? "hsl(0 84% 60% / 0.35)" : "hsl(0 0% 100% / 0.12)"}`,
+                              boxShadow: isRecording ? "0 0 10px hsl(0 84% 55% / 0.2)" : "none",
+                            }}
+                            whileHover={isTranscribing ? {} : {
+                              background: isRecording ? "hsl(0 84% 55% / 0.3)" : "hsl(0 0% 100% / 0.18)",
+                              borderColor: isRecording ? "hsl(0 84% 60% / 0.5)" : "hsl(11 81% 57% / 0.4)",
+                              boxShadow: "0 0 12px hsl(11 81% 57% / 0.2)",
+                              scale: 1.08,
+                            }}
+                            whileTap={isTranscribing ? {} : { scale: 0.9 }}
+                            animate={isRecording ? {
+                              borderColor: ["hsl(0 84% 60% / 0.35)", "hsl(0 84% 60% / 0.6)", "hsl(0 84% 60% / 0.35)"],
+                            } : {}}
+                            transition={isRecording ? { duration: 1.5, repeat: Infinity, ease: "easeInOut" } : { type: "spring", stiffness: 400, damping: 20 }}
+                          >
+                            {isTranscribing ? (
+                              <Loader2 className="w-3.5 h-3.5 text-white/50 animate-spin" />
+                            ) : isRecording ? (
+                              <motion.div
+                                className="w-2.5 h-2.5 rounded-[2px]"
+                                style={{ background: "hsl(0 84% 65%)" }}
+                                animate={{ scale: [1, 0.85, 1] }}
+                                transition={{ duration: 0.8, repeat: Infinity }}
+                              />
+                            ) : (
+                              <Mic className="w-3.5 h-3.5 text-white/50" />
+                            )}
+                          </motion.button>
+                        </motion.div>
                       )}
-                    </motion.button>
+                    </AnimatePresence>
                   </div>
 
                   {/* Recording indicator */}
