@@ -421,7 +421,7 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                 <div>
                   <label className="flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-[0.1em] text-white/50 mb-1.5">
                     <User className="w-3 h-3" />
-                    Nome e sobrenome <span className="text-primary/70">*</span>
+                    Seu nome e sobrenome <span className="text-primary/70">*</span>
                   </label>
                   <input
                     type="text"
@@ -433,7 +433,7 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                       setName(formatted);
                       if (errors.name) setErrors((prev) => { const { name, ...rest } = prev; return rest; });
                     }}
-                    placeholder="Ex: João Silva"
+                    placeholder="João Silva"
                     maxLength={100}
                     className={`${inputBaseStyle} cw-input ${errors.name ? "cw-input-error" : ""}`}
                     style={getInputBorderStyle(!!errors.name)}
@@ -469,7 +469,7 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                 <div className="relative">
                   <label className="flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-[0.1em] text-white/50 mb-1.5">
                     <MapPin className="w-3 h-3" />
-                    Sua cidade <span className="text-primary/70">*</span>
+                    Sua cidade e estado <span className="text-primary/70">*</span>
                   </label>
                   <input
                     ref={cityInputRef}
@@ -517,7 +517,7 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                         setIsCityDropdownOpen(false);
                       }
                     }}
-                    placeholder="Ex: São Paulo - SP"
+                    placeholder="São Paulo, SP"
                     maxLength={100}
                     className={`${inputBaseStyle} cw-input ${errors.city ? "cw-input-error" : ""}`}
                     style={getInputBorderStyle(!!errors.city)}
