@@ -1,6 +1,6 @@
-import { useState, useCallback, useEffect } from "react";
+import { useState, useCallback, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Clock, User, Phone, HelpCircle, MessageSquare, Loader2 } from "lucide-react";
+import { X, Clock, User, HelpCircle, MessageSquare, Loader2, Mic, Square } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import {
   Select,
@@ -81,6 +81,10 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
   const [details, setDetails] = useState("");
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isLoading, setIsLoading] = useState(false);
+  const [isRecording, setIsRecording] = useState(false);
+  const [isTranscribing, setIsTranscribing] = useState(false);
+  const mediaRecorderRef = useRef<MediaRecorder | null>(null);
+  const chunksRef = useRef<Blob[]>([]);
 
   useEffect(() => {
     if (isOpen) {
@@ -107,6 +111,57 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
     setErrors(errs);
     return Object.keys(errs).length === 0;
   }, [name, phone, selectedTopic]);
+
+  const startRecording = useCallback(async () => {
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      const recorder = new MediaRecorder(stream, {
+        mimeType: MediaRecorder.isTypeSupported("audio/webm") ? "audio/webm" : "audio/mp4",
+      });
+      chunksRef.current = [];
+      recorder.ondataavailable = (e) => {
+        if (e.data.size > 0) chunksRef.current.push(e.data);
+      };
+      recorder.onstop = async () => {
+        stream.getTracks().forEach((t) => t.stop());
+        const blob = new Blob(chunksRef.current, { type: recorder.mimeType });
+        chunksRef.current = [];
+        setIsTranscribing(true);
+        try {
+          const arrayBuffer = await blob.arrayBuffer();
+          const uint8 = new Uint8Array(arrayBuffer);
+          let binary = "";
+          const chunkSize = 8192;
+          for (let i = 0; i < uint8.length; i += chunkSize) {
+            binary += String.fromCharCode(...uint8.slice(i, i + chunkSize));
+          }
+          const base64 = btoa(binary);
+          const { data, error } = await supabase.functions.invoke("transcribe-audio", {
+            body: { audioBase64: base64 },
+          });
+          if (error || !data?.transcription) throw new Error("Transcription failed");
+          const text = data.transcription;
+          if (text && text !== "[áudio inaudível]") {
+            setDetails((prev) => (prev ? `${prev} ${text}` : text));
+          }
+        } catch (err) {
+          console.error("Transcription error:", err);
+        } finally {
+          setIsTranscribing(false);
+        }
+      };
+      mediaRecorderRef.current = recorder;
+      recorder.start();
+      setIsRecording(true);
+    } catch {
+      console.error("Microphone access denied");
+    }
+  }, []);
+
+  const stopRecording = useCallback(() => {
+    mediaRecorderRef.current?.stop();
+    setIsRecording(false);
+  }, []);
 
   const handleSubmit = useCallback(async () => {
     if (!validate()) return;
@@ -385,20 +440,60 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                   {errors.topic && <p className="text-[10px] mt-1" style={{ color: "hsl(0 84% 65%)" }}>{errors.topic}</p>}
                 </div>
 
-                {/* Optional details */}
+                {/* Optional details with mic */}
                 <div>
-                  <label className="flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-[0.1em] text-white/50 mb-1.5">
-                    <MessageSquare className="w-3 h-3" />
-                    Detalhes
-                    <span className="font-normal normal-case tracking-normal text-white/30">(opcional)</span>
-                  </label>
+                  <div className="flex items-center justify-between mb-1.5">
+                    <label className="flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-[0.1em] text-white/50">
+                      <MessageSquare className="w-3 h-3" />
+                      Detalhes
+                      <span className="font-normal normal-case tracking-normal text-white/30">(opcional)</span>
+                    </label>
+                    <motion.button
+                      type="button"
+                      onClick={isRecording ? stopRecording : startRecording}
+                      disabled={isTranscribing}
+                      className="flex items-center gap-1 px-2 py-1 rounded-md text-[10px] font-medium transition-colors disabled:opacity-50"
+                      style={{
+                        background: isRecording ? "hsl(0 84% 60% / 0.2)" : "hsl(0 0% 100% / 0.08)",
+                        color: isRecording ? "hsl(0 84% 70%)" : "hsl(0 0% 100% / 0.5)",
+                        border: `1px solid ${isRecording ? "hsl(0 84% 60% / 0.3)" : "hsl(0 0% 100% / 0.1)"}`,
+                      }}
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      {isTranscribing ? (
+                        <Loader2 className="w-3 h-3 animate-spin" />
+                      ) : isRecording ? (
+                        <Square className="w-3 h-3" />
+                      ) : (
+                        <Mic className="w-3 h-3" />
+                      )}
+                      {isTranscribing ? "Transcrevendo..." : isRecording ? "Parar" : "Áudio"}
+                    </motion.button>
+                  </div>
+                  {isRecording && (
+                    <motion.div
+                      className="flex items-center gap-2 mb-2 px-3 py-1.5 rounded-lg text-[10px] text-white/50"
+                      style={{ background: "hsl(0 84% 60% / 0.1)", border: "1px solid hsl(0 84% 60% / 0.2)" }}
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: "auto" }}
+                      exit={{ opacity: 0, height: 0 }}
+                    >
+                      <span className="relative flex h-2 w-2">
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75" style={{ background: "hsl(0 84% 60%)" }} />
+                        <span className="relative inline-flex rounded-full h-2 w-2" style={{ background: "hsl(0 84% 60%)" }} />
+                      </span>
+                      Gravando... clique em "Parar" quando terminar
+                    </motion.div>
+                  )}
                   <textarea
                     value={details}
                     onChange={(e) => setDetails(e.target.value)}
-                    placeholder="Ex: tenho interesse em uma moto para delivery"
+                    placeholder={isTranscribing ? "Transcrevendo seu áudio..." : "Ex: tenho interesse em uma moto para delivery"}
                     rows={2}
                     maxLength={500}
-                    className="w-full px-3 py-2.5 rounded-lg text-sm text-white placeholder:text-white/25 focus:outline-none transition-all resize-none"
+                    disabled={isTranscribing}
+                    className="w-full px-3 py-2.5 rounded-lg text-sm text-white placeholder:text-white/25 focus:outline-none transition-all resize-none disabled:opacity-50"
                     style={{
                       background: "hsl(0 0% 100% / 0.06)",
                       border: "1px solid hsl(0 0% 100% / 0.08)",
