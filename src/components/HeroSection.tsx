@@ -163,14 +163,38 @@ const HeroSection = () => {
                 }}
               >
                 Liderando
-              </span>{" "}
+              </span>
+            </motion.span>
+            <motion.span
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3 }}
+              className="block sm:hidden"
+            >
               a Nova Era
             </motion.span>
             <motion.span
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
-              className="block"
+              className="block sm:hidden"
+            >
+              Da Mobilidade.
+            </motion.span>
+            {/* Desktop: single line for "a Nova Era" + "Da Mobilidade." */}
+            <motion.span
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3 }}
+              className="hidden sm:block"
+            >
+              a Nova Era
+            </motion.span>
+            <motion.span
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4 }}
+              className="hidden sm:block"
             >
               Da Mobilidade.
             </motion.span>
