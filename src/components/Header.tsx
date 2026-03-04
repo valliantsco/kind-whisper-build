@@ -345,6 +345,14 @@ const Header = () => {
                     : "bg-foreground/70 backdrop-blur-2xl"
                 }`}
               >
+                <div
+                  className="mx-4 h-[1px]"
+                  style={{
+                    background: scrolled
+                      ? "linear-gradient(90deg, transparent, hsl(0 0% 70% / 0.3), transparent)"
+                      : "linear-gradient(90deg, transparent, hsl(11 81% 57% / 0.4), transparent)",
+                  }}
+                />
                 <motion.div
                   className="flex flex-col justify-between px-5 py-6"
                   variants={drawerVariants}
