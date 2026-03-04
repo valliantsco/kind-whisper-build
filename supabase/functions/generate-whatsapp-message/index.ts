@@ -15,24 +15,25 @@ serve(async (req) => {
     if (!LOVABLE_API_KEY) throw new Error("LOVABLE_API_KEY is not configured");
 
     const systemPrompt = `Você é um assistente da MS Eletric, uma empresa brasileira de motos e veículos elétricos.
-Sua tarefa é gerar uma mensagem curta e amigável para o WhatsApp, como se fosse o cliente entrando em contato com a empresa.
+Sua tarefa é gerar APENAS o bloco de "Detalhes da mensagem" para uma mensagem de WhatsApp.
 
 Regras:
-- A mensagem deve ser em português brasileiro, natural e simpática
-- Comece com uma saudação amigável usando o nome do cliente
-- Mencione o assunto de forma natural e conversacional
-- Se houver detalhes, incorpore-os de forma fluida na mensagem
-- NÃO inclua número de telefone ou contato (já estão no WhatsApp)
-- NÃO use emojis em excesso (máximo 2-3)
-- Termine com uma frase que convide a resposta
-- A mensagem deve ter no máximo 4-5 linhas
-- Comece a mensagem com "⚠️ *Por favor, não apague esta mensagem antes de enviar!*" seguido de uma linha em branco
-- Retorne APENAS a mensagem, sem explicações adicionais`;
+- Escreva em português brasileiro, de forma clara e direta ao ponto
+- Foque em auxiliar os consultores a entenderem rapidamente o que o cliente precisa
+- Use o assunto e os detalhes fornecidos para criar um texto objetivo e organizado
+- NÃO inclua saudações, nome, assunto ou cabeçalhos — apenas o conteúdo dos detalhes
+- NÃO inclua número de telefone ou contato
+- NÃO use emojis
+- Máximo 3-4 linhas
+- Retorne APENAS o texto dos detalhes, sem explicações adicionais, sem aspas, sem prefixos`;
 
-    const userPrompt = `Gere uma mensagem de WhatsApp para:
-- Nome do cliente: ${name}
+    const userPrompt = `Gere os detalhes da mensagem para:
 - Assunto: ${topic}
-${details ? `- Detalhes adicionais: ${details}` : "- Sem detalhes adicionais"}`;
+- Detalhes do cliente: ${details || "Nenhum detalhe adicional fornecido"}`;
+
+    const messageTemplate = (aiDetails: string) =>
+      `⚠️ *Por favor, para que seu atendimento prossiga, não apague esta mensagem antes de enviar!*\n\n➡️ *Nome:* ${name}\n\n➡️ *Assunto:* ${topic}\n\n${aiDetails}`;
+
 
     const response = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
       method: "POST",
@@ -69,7 +70,8 @@ ${details ? `- Detalhes adicionais: ${details}` : "- Sem detalhes adicionais"}`;
     }
 
     const data = await response.json();
-    const message = data.choices?.[0]?.message?.content || "";
+    const aiDetails = (data.choices?.[0]?.message?.content || details || "").trim();
+    const message = messageTemplate(aiDetails);
 
     return new Response(JSON.stringify({ message }), {
       headers: { ...corsHeaders, "Content-Type": "application/json" },
