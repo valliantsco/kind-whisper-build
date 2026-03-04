@@ -204,18 +204,18 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                     color: isOnline ? "hsl(142 70% 65%)" : "hsl(0 84% 70%)",
                   }}
                 >
-                  <motion.span
-                    className="relative inline-flex rounded-full h-2.5 w-2.5"
-                    animate={{
-                      background: ["hsl(217 91% 60%)", "hsl(142 76% 50%)", "hsl(217 91% 60%)"],
-                      boxShadow: [
-                        "0 0 6px hsl(217 91% 60% / 0.6)",
-                        "0 0 6px hsl(142 76% 50% / 0.6)",
-                        "0 0 6px hsl(217 91% 60% / 0.6)",
-                      ],
-                    }}
-                    transition={{ duration: 1, repeat: Infinity, ease: "easeInOut" }}
-                  />
+                  <span className="relative flex h-2.5 w-2.5">
+                    {isOnline && (
+                      <span
+                        className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75"
+                        style={{ background: "hsl(142 76% 50%)" }}
+                      />
+                    )}
+                    <span
+                      className="relative inline-flex rounded-full h-2.5 w-2.5"
+                      style={{ background: isOnline ? "hsl(142 76% 50%)" : "hsl(0 84% 60%)" }}
+                    />
+                  </span>
                   {isOnline ? "Online agora" : "Voltamos às 08:00"}
                 </div>
 
