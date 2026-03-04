@@ -130,11 +130,11 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
             {/* Header */}
             <div className="flex items-start justify-between p-5 pb-3">
               <div>
-                <h3 className="text-lg font-bold text-card-foreground">
-                  Fale com um especialista
+              <h3 className="text-lg font-bold text-card-foreground">
+                  Fale com especialista em MS Eletric
                 </h3>
                 <p className="text-sm text-muted-foreground mt-0.5">
-                  Preencha seus dados para iniciar a conversa
+                  Preencha seus dados e fale com especialista pelo WhatsApp
                 </p>
               </div>
               <motion.button
