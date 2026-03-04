@@ -12,14 +12,6 @@ const businessHoursInfo = [
   { day: "Domingo", hours: "Fechado" },
 ];
 
-const SUGGESTION_CHIPS = [
-  "Quero saber preços",
-  "Modelos disponíveis",
-  "Autonomia e bateria",
-  "Financiamento",
-  "Garantia e assistência",
-  "Peças e manutenção",
-];
 
 const WhatsAppIcon = ({ className = "w-5 h-5" }: { className?: string }) => (
   <svg viewBox="0 0 24 24" fill="currentColor" className={className}>
@@ -581,38 +573,6 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                     Como podemos te ajudar? <span className="text-primary/70">*</span>
                   </label>
 
-                  {/* Suggestion chips */}
-                  <div className="flex flex-wrap gap-1.5 mb-2">
-                    {SUGGESTION_CHIPS.map((chip) => (
-                      <motion.button
-                        key={chip}
-                        type="button"
-                        onClick={() => {
-                          setDetails((prev) => prev ? `${prev} ${chip}.` : `${chip}.`);
-                          if (errors.details) setErrors((prev) => { const { details: _, ...rest } = prev; return rest; });
-                          // Auto-grow textarea after chip insert
-                          setTimeout(() => {
-                            if (textareaRef.current) {
-                              textareaRef.current.style.height = 'auto';
-                              textareaRef.current.style.height = textareaRef.current.scrollHeight + 'px';
-                            }
-                          }, 0);
-                        }}
-                        className="px-2.5 py-1 rounded-full text-[11px] text-white/60 hover:text-white transition-colors cursor-pointer"
-                        style={{
-                          background: "hsl(0 0% 100% / 0.06)",
-                          border: "1px solid hsl(0 0% 100% / 0.1)",
-                        }}
-                        whileHover={{
-                          background: "hsl(11 81% 57% / 0.15)",
-                          borderColor: "hsl(11 81% 57% / 0.3)",
-                        }}
-                        whileTap={{ scale: 0.95 }}
-                      >
-                        {chip}
-                      </motion.button>
-                    ))}
-                  </div>
 
                   <div className="relative">
                     <textarea
