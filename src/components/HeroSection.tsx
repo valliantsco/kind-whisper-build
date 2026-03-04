@@ -1,16 +1,69 @@
-import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight, Zap } from "lucide-react";
+import { ArrowRight, Zap, Leaf, Shield } from "lucide-react";
 import { useState, useEffect, useCallback } from "react";
 import heroBg from "@/assets/hero-bg.jpg";
 
 const SLIDE_DURATION = 20000;
 
-const VIDEOS = [
-  { id: "ml6ODnWanys", title: "Video 1" },
-  { id: "ml6ODnWanys", title: "Video 2" },
-  { id: "ml6ODnWanys", title: "Video 3" },
+interface SlideContent {
+  tag: string;
+  tagIcon: "zap" | "leaf" | "shield";
+  headlineLines: { text: string; highlight?: boolean; mobileOnly?: boolean; desktopOnly?: boolean }[];
+  subheadline: string;
+  primaryCta: { text: string; href: string };
+  secondaryCta: { text: string; href: string };
+  videoId: string;
+}
+
+const SLIDES: SlideContent[] = [
+  {
+    tag: "Energia que Move",
+    tagIcon: "zap",
+    headlineLines: [
+      { text: "Liderando", highlight: true },
+      { text: "a Nova Era", mobileOnly: true },
+      { text: "Da Mobilidade.", mobileOnly: true },
+      { text: "a Nova Era", desktopOnly: true },
+      { text: "Da Mobilidade.", desktopOnly: true },
+    ],
+    subheadline: "A MS Eletric reúne soluções em motos elétricas para quem busca economia, praticidade e uma experiência completa do atendimento ao pós-venda.",
+    primaryCta: { text: "Conheça os Modelos", href: "#modelos" },
+    secondaryCta: { text: "Sobre Nós", href: "#sobre" },
+    videoId: "ml6ODnWanys",
+  },
+  {
+    tag: "Sustentabilidade",
+    tagIcon: "leaf",
+    headlineLines: [
+      { text: "Zero Emissões.", highlight: true },
+      { text: "Máxima" },
+      { text: "Performance." },
+    ],
+    subheadline: "Nossas motos elétricas combinam potência e responsabilidade ambiental, oferecendo uma alternativa inteligente para a mobilidade urbana.",
+    primaryCta: { text: "Ver Modelos", href: "#modelos" },
+    secondaryCta: { text: "Saiba Mais", href: "#sobre" },
+    videoId: "ml6ODnWanys",
+  },
+  {
+    tag: "Garantia & Suporte",
+    tagIcon: "shield",
+    headlineLines: [
+      { text: "Experiência" },
+      { text: "Completa", highlight: true },
+      { text: "do Início ao Fim." },
+    ],
+    subheadline: "Do primeiro contato ao pós-venda, a MS Eletric oferece atendimento especializado e suporte técnico para você rodar com tranquilidade.",
+    primaryCta: { text: "Fale Conosco", href: "#contato" },
+    secondaryCta: { text: "Nossa História", href: "#sobre" },
+    videoId: "ml6ODnWanys",
+  },
 ];
+
+const TAG_ICONS = {
+  zap: Zap,
+  leaf: Leaf,
+  shield: Shield,
+};
 
 const buildEmbedUrl = (videoId: string) =>
   `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&loop=1&playlist=${videoId}&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&disablekb=1&fs=0&iv_load_policy=3`;
@@ -19,7 +72,7 @@ const HeroSection = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const nextSlide = useCallback(() => {
-    setCurrentSlide((prev) => (prev + 1) % VIDEOS.length);
+    setCurrentSlide((prev) => (prev + 1) % SLIDES.length);
   }, []);
 
   useEffect(() => {
@@ -47,11 +100,11 @@ const HeroSection = () => {
             className="absolute inset-0"
           >
             <iframe
-              src={buildEmbedUrl(VIDEOS[currentSlide].id)}
+              src={buildEmbedUrl(SLIDES[currentSlide].videoId)}
               className="absolute pointer-events-none top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[180%] h-[180%] max-md:w-[400%] max-md:h-[400%]"
               style={{ border: 0, aspectRatio: '16/9' }}
               allow="autoplay; encrypted-media"
-              title={VIDEOS[currentSlide].title}
+              title={SLIDES[currentSlide].tag}
             />
           </motion.div>
         </AnimatePresence>
@@ -119,149 +172,116 @@ const HeroSection = () => {
         />
       </div>
 
-      {/* Main content */}
+      {/* Main content — dynamic per slide */}
       <div className="relative z-10 container mx-auto px-4 pt-28 sm:pt-32 md:pt-36 lg:pt-40 pb-16 md:pb-20">
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="max-w-4xl"
-        >
-          {/* Tag badge — pill eyebrow */}
+        <AnimatePresence mode="wait">
           <motion.div
-            initial={{ opacity: 0, scale: 0.8, y: 10 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            transition={{ delay: 0.1, duration: 0.5 }}
-            className="mb-5 md:mb-6"
-          >
-            <span
-              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-[10px] sm:text-xs font-semibold uppercase tracking-[0.2em] text-primary-foreground/80 border border-primary-foreground/10 backdrop-blur-sm"
-              style={{
-                background: "hsl(0 0% 100% / 0.04)",
-              }}
-            >
-              <Zap className="w-3 h-3 text-primary" />
-              Energia que Move
-            </span>
-          </motion.div>
-
-          {/* Headline — 2 lines, automotive premium */}
-          <h1 className="font-display font-black text-3xl sm:text-4xl md:text-6xl lg:text-7xl text-primary-foreground leading-[0.95] mb-5 md:mb-7 uppercase tracking-tight">
-            <motion.span
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-              className="block"
-            >
-              <span
-                style={{
-                  background: "linear-gradient(135deg, hsl(11 81% 57%), hsl(11 90% 65%), hsl(20 85% 60%))",
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                  backgroundClip: "text",
-                  filter: "drop-shadow(0 0 20px hsl(11 81% 57% / 0.4))",
-                }}
-              >
-                Liderando
-              </span>
-            </motion.span>
-            <motion.span
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 }}
-              className="block sm:hidden"
-            >
-              a Nova Era
-            </motion.span>
-            <motion.span
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4 }}
-              className="block sm:hidden"
-            >
-              Da Mobilidade.
-            </motion.span>
-            {/* Desktop: single line for "a Nova Era" + "Da Mobilidade." */}
-            <motion.span
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 }}
-              className="hidden sm:block"
-            >
-              a Nova Era
-            </motion.span>
-            <motion.span
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4 }}
-              className="hidden sm:block"
-            >
-              Da Mobilidade.
-            </motion.span>
-          </h1>
-
-          {/* Subheadline — short, scannable */}
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.6 }}
-            className="text-sm sm:text-base md:text-lg text-primary-foreground/50 mb-8 md:mb-10 max-w-xl leading-relaxed tracking-wide"
-          >
-            A MS Eletric reúne soluções em motos elétricas para quem busca economia, praticidade e uma experiência completa do atendimento ao pós-venda.
-          </motion.p>
-
-          {/* CTAs */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            key={currentSlide}
+            initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.8 }}
-            className="flex flex-wrap items-center gap-3 md:gap-4"
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="max-w-4xl"
           >
-            {/* Primary CTA */}
-            <motion.a
-              href="#modelos"
-              className="relative inline-flex items-center justify-center gap-2.5 text-xs sm:text-sm md:text-base font-semibold uppercase tracking-[0.12em] px-6 md:px-9 py-3.5 md:py-4 rounded-xl bg-primary text-primary-foreground overflow-visible"
-              whileHover={{
-                scale: 1.05,
-                boxShadow: "0 0 25px hsl(11 81% 57% / 0.5), 0 0 50px hsl(11 81% 57% / 0.2)",
-              }}
-              whileTap={{ scale: 0.97 }}
-              style={{
-                boxShadow: "0 0 20px hsl(11 81% 57% / 0.3), 0 0 40px hsl(11 81% 57% / 0.1)",
-              }}
-            >
-              Conheça os Modelos
-            </motion.a>
+            {/* Tag badge */}
+            {(() => {
+              const slide = SLIDES[currentSlide];
+              const TagIcon = TAG_ICONS[slide.tagIcon];
+              return (
+                <>
+                  <div className="mb-5 md:mb-6">
+                    <span
+                      className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-[10px] sm:text-xs font-semibold uppercase tracking-[0.2em] text-primary-foreground/80 border border-primary-foreground/10 backdrop-blur-sm"
+                      style={{ background: "hsl(0 0% 100% / 0.04)" }}
+                    >
+                      <TagIcon className="w-3 h-3 text-primary" />
+                      {slide.tag}
+                    </span>
+                  </div>
 
-            {/* Secondary CTA — outline/neutral */}
-            <motion.a
-              href="#sobre"
-              className="relative inline-flex items-center justify-center text-xs sm:text-sm md:text-base font-semibold uppercase tracking-[0.12em] px-6 md:px-9 py-3.5 md:py-4 rounded-xl text-primary-foreground/70 border border-primary-foreground/12 backdrop-blur-sm overflow-hidden"
-              style={{
-                background: "hsl(0 0% 100% / 0.04)",
-              }}
-              whileHover={{
-                scale: 1.05,
-                borderColor: "hsl(0 0% 100% / 0.25)",
-                color: "hsl(0 0% 100% / 0.9)",
-              }}
-              whileTap={{ scale: 0.97 }}
-            >
-              <span
-                className="absolute bottom-0 left-0 right-0 h-[1px]"
-                style={{
-                  background: "linear-gradient(90deg, transparent, hsl(0 0% 100% / 0.15), transparent)",
-                }}
-              />
-              Sobre Nós
-            </motion.a>
+                  {/* Headline */}
+                  <h1 className="font-display font-black text-3xl sm:text-4xl md:text-6xl lg:text-7xl text-primary-foreground leading-[0.95] mb-5 md:mb-7 uppercase tracking-tight">
+                    {slide.headlineLines.map((line, idx) => {
+                      const visibilityClass = line.mobileOnly
+                        ? "block sm:hidden"
+                        : line.desktopOnly
+                        ? "hidden sm:block"
+                        : "block";
+
+                      return (
+                        <span key={idx} className={visibilityClass}>
+                          {line.highlight ? (
+                            <span
+                              style={{
+                                background: "linear-gradient(135deg, hsl(11 81% 57%), hsl(11 90% 65%), hsl(20 85% 60%))",
+                                WebkitBackgroundClip: "text",
+                                WebkitTextFillColor: "transparent",
+                                backgroundClip: "text",
+                                filter: "drop-shadow(0 0 20px hsl(11 81% 57% / 0.4))",
+                              }}
+                            >
+                              {line.text}
+                            </span>
+                          ) : (
+                            line.text
+                          )}
+                        </span>
+                      );
+                    })}
+                  </h1>
+
+                  {/* Subheadline */}
+                  <p className="text-sm sm:text-base md:text-lg text-primary-foreground/50 mb-8 md:mb-10 max-w-xl leading-relaxed tracking-wide">
+                    {slide.subheadline}
+                  </p>
+
+                  {/* CTAs */}
+                  <div className="flex flex-wrap items-center gap-3 md:gap-4">
+                    <motion.a
+                      href={slide.primaryCta.href}
+                      className="relative inline-flex items-center justify-center gap-2.5 text-xs sm:text-sm md:text-base font-semibold uppercase tracking-[0.12em] px-6 md:px-9 py-3.5 md:py-4 rounded-xl bg-primary text-primary-foreground overflow-visible"
+                      whileHover={{
+                        scale: 1.05,
+                        boxShadow: "0 0 25px hsl(11 81% 57% / 0.5), 0 0 50px hsl(11 81% 57% / 0.2)",
+                      }}
+                      whileTap={{ scale: 0.97 }}
+                      style={{
+                        boxShadow: "0 0 20px hsl(11 81% 57% / 0.3), 0 0 40px hsl(11 81% 57% / 0.1)",
+                      }}
+                    >
+                      {slide.primaryCta.text}
+                    </motion.a>
+
+                    <motion.a
+                      href={slide.secondaryCta.href}
+                      className="relative inline-flex items-center justify-center text-xs sm:text-sm md:text-base font-semibold uppercase tracking-[0.12em] px-6 md:px-9 py-3.5 md:py-4 rounded-xl text-primary-foreground/70 border border-primary-foreground/12 backdrop-blur-sm overflow-hidden"
+                      style={{ background: "hsl(0 0% 100% / 0.04)" }}
+                      whileHover={{
+                        scale: 1.05,
+                        borderColor: "hsl(0 0% 100% / 0.25)",
+                        color: "hsl(0 0% 100% / 0.9)",
+                      }}
+                      whileTap={{ scale: 0.97 }}
+                    >
+                      <span
+                        className="absolute bottom-0 left-0 right-0 h-[1px]"
+                        style={{
+                          background: "linear-gradient(90deg, transparent, hsl(0 0% 100% / 0.15), transparent)",
+                        }}
+                      />
+                      {slide.secondaryCta.text}
+                    </motion.a>
+                  </div>
+                </>
+              );
+            })()}
           </motion.div>
-        </motion.div>
+        </AnimatePresence>
       </div>
 
       {/* Slide indicators — futuristic style */}
       <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 flex gap-2.5">
-        {VIDEOS.map((_, i) => (
+        {SLIDES.map((_, i) => (
           <motion.button
             key={i}
             onClick={() => setCurrentSlide(i)}
