@@ -302,7 +302,7 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                 {/* WhatsApp */}
                 <div>
                   <label className="flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-[0.1em] text-white/50 mb-1.5">
-                    <Phone className="w-3 h-3" />
+                    <WhatsAppIcon className="w-3 h-3" />
                     WhatsApp
                   </label>
                   <input
