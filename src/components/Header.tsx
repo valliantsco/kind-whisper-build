@@ -146,33 +146,12 @@ const Header = () => {
 
   return (
     <div className="fixed top-0 left-0 right-0 z-50">
-      {/* Ocean blur ambient — fades on scroll */}
-      <div
-        className="pointer-events-none absolute inset-x-0 top-0 h-[140px] md:h-[160px] z-0 transition-opacity duration-[1200ms] ease-in-out"
-        style={{
-          opacity: scrolled ? 0 : 1,
-          background:
-            "radial-gradient(ellipse 120% 100% at 50% 0%, hsl(220 40% 13% / 0.7) 0%, hsl(220 35% 10% / 0.4) 40%, transparent 80%)",
-          filter: "blur(20px)",
-        }}
-        aria-hidden="true"
-      />
-      <div
-        className="pointer-events-none absolute inset-x-0 top-0 h-[120px] md:h-[140px] z-0 transition-opacity duration-[1200ms] ease-in-out"
-        style={{
-          opacity: scrolled ? 0 : 0.6,
-          background:
-            "radial-gradient(ellipse 90% 80% at 50% 0%, hsl(11 81% 57% / 0.06) 0%, transparent 70%)",
-          filter: "blur(30px)",
-        }}
-        aria-hidden="true"
-      />
-      <div className="container mx-auto px-4 pt-4 pb-2 relative z-10">
+      <div className="container mx-auto px-4 pt-4 pb-2">
         <header
           className={`transition-all duration-[800ms] ease-in-out rounded-[0.9rem] overflow-hidden relative ${
             scrolled
-              ? "bg-white/80 backdrop-blur-2xl border border-black/[0.06] shadow-[0_2px_20px_rgba(0,0,0,0.08)]"
-              : "bg-[hsl(220_30%_12%/0.65)] backdrop-blur-xl border border-white/[0.08]"
+              ? "bg-white/90 backdrop-blur-2xl border border-border/50 shadow-[0_4px_30px_rgba(0,0,0,0.08)]"
+              : "bg-primary-foreground/5 backdrop-blur-xl border border-primary-foreground/10"
           }`}
         >
           {/* Orbiting orange glow — only visible on transparent state */}
@@ -359,11 +338,11 @@ const Header = () => {
                 initial={{ opacity: 0, height: 0 }}
                 animate={{ opacity: 1, height: "auto" }}
                 exit={{ opacity: 0, height: 0 }}
-                transition={{ duration: 0.45, ease: [0.25, 0.8, 0.25, 1] as const }}
-                className={`lg:hidden overflow-hidden origin-top transition-colors duration-[800ms] ease-in-out ${
+                transition={{ duration: 0.5, ease: [0.25, 0.8, 0.25, 1] as const }}
+                className={`lg:hidden overflow-hidden origin-top rounded-b-[0.9rem] ${
                   scrolled
                     ? "bg-white/80 backdrop-blur-2xl"
-                    : "bg-[hsl(220_30%_12%/0.65)] backdrop-blur-xl"
+                    : "bg-foreground/70 backdrop-blur-2xl"
                 }`}
               >
                 <motion.div
