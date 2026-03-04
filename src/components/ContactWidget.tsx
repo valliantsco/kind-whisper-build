@@ -180,15 +180,15 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
       message = data.message;
     } catch {
       // Fallback message if AI fails
-      const parts = [
-        `⚠️ *Por favor, não apague esta mensagem antes de enviar!*`,
+      message = [
+        `⚠️ *Por favor, para que seu atendimento prossiga, não apague esta mensagem antes de enviar!*`,
         ``,
-        `Oi, tudo bem? 😊`,
-        `Me chamo *${name.trim()}* e gostaria de falar sobre *${selectedTopic.toLowerCase()}*.`,
-      ];
-      if (details.trim()) parts.push(``, `${details.trim()}`);
-      parts.push(``, `Fico no aguardo, obrigado! 🙏`);
-      message = parts.join("\n");
+        `➡️ *Nome:* ${name.trim()}`,
+        ``,
+        `➡️ *Assunto:* ${selectedTopic}`,
+        ``,
+        details.trim(),
+      ].join("\n");
     }
 
     window.open(
