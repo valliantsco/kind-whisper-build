@@ -10,17 +10,76 @@ serve(async (req) => {
   if (req.method === "OPTIONS") return new Response(null, { headers: corsHeaders });
 
   try {
-    const { name, topic, details } = await req.json();
+    const { name, city, details } = await req.json();
     const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");
     if (!LOVABLE_API_KEY) throw new Error("LOVABLE_API_KEY is not configured");
 
+    // ── Step 1: AI Spam Pre-filter ──
+    const spamCheckResponse = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${LOVABLE_API_KEY}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        model: "google/gemini-2.5-flash-lite",
+        messages: [
+          {
+            role: "system",
+            content: `Você é um filtro anti-spam para um formulário de contato de uma empresa de veículos elétricos (motos, bikes, scooters, triciclos).
+
+Analise os dados do lead e classifique como "legit" ou "spam".
+
+Critérios de SPAM:
+- Nome sem sentido (ex: "asdasd fghfgh", "teste teste", "aaaa bbbb")
+- Detalhes com texto sem sentido, palavrões, ofensas ou conteúdo irrelevante
+- Detalhes que são apenas letras/números aleatórios (ex: "asdkjhasd", "123456", "kkkkkkk")
+- Conteúdo que claramente não é uma consulta real sobre veículos elétricos
+
+Critérios de LEGÍTIMO:
+- Nome que parece real (pode ser incomum mas plausível)
+- Detalhes que expressam interesse real, mesmo que curtos ou informais
+- Perguntas sobre preço, modelos, autonomia, financiamento etc.
+
+Responda APENAS com a palavra "legit" ou "spam", sem nenhuma outra palavra ou explicação.`,
+          },
+          {
+            role: "user",
+            content: `Nome: ${name}\nCidade: ${city || "não informada"}\nDetalhes: ${details || "nenhum"}`,
+          },
+        ],
+        stream: false,
+        max_tokens: 10,
+      }),
+    });
+
+    if (spamCheckResponse.ok) {
+      const spamData = await spamCheckResponse.json();
+      const verdict = (spamData.choices?.[0]?.message?.content || "").trim().toLowerCase();
+      
+      if (verdict === "spam") {
+        return new Response(
+          JSON.stringify({ 
+            error: "spam",
+            userMessage: "Não foi possível processar sua solicitação. Verifique os dados e tente novamente." 
+          }),
+          {
+            status: 422,
+            headers: { ...corsHeaders, "Content-Type": "application/json" },
+          }
+        );
+      }
+    }
+    // If spam check fails (network/rate limit), proceed anyway — don't block legitimate users
+
+    // ── Step 2: Generate WhatsApp message ──
     const systemPrompt = `Você é a Iara, assistente inteligente da MS Eletric, uma empresa brasileira de motos e veículos elétricos.
 Sua tarefa é gerar APENAS o bloco de "Detalhes da mensagem" para uma mensagem de WhatsApp.
 
 Regras:
 - Escreva em PRIMEIRA PESSOA, como se o próprio cliente estivesse redigindo a mensagem e encaminhando sua necessidade
 - Use português brasileiro, de forma clara e detalhada
-- Descreva o cenário, as dificuldades e os desafios específicos que o cliente enfrenta, com base no assunto e detalhes fornecidos
+- Descreva o cenário, as dificuldades e os desafios específicos que o cliente enfrenta, com base nos detalhes fornecidos
 - Inclua exemplos práticos, dados relevantes ou contexto que enriqueçam a comunicação
 - Seja completa e informativa — evite respostas curtas ou genéricas. Escreva entre 5 a 8 linhas com informações úteis
 - NÃO inclua saudações, nome, assunto ou cabeçalhos — apenas o conteúdo dos detalhes
@@ -29,12 +88,11 @@ Regras:
 - Retorne APENAS o texto dos detalhes, sem explicações adicionais, sem aspas, sem prefixos`;
 
     const userPrompt = `Gere os detalhes da mensagem para:
-- Assunto: ${topic}
-- Detalhes do cliente: ${details || "Nenhum detalhe adicional fornecido"}`;
+- Detalhes do cliente: ${details || "Nenhum detalhe adicional fornecido"}
+- Cidade: ${city || "não informada"}`;
 
     const messageTemplate = (aiDetails: string) =>
-      `*Por favor, para que seu atendimento prossiga, não apague esta mensagem antes de enviar!*\n\n*Nome:* ${name}\n\n*Assunto:* ${topic}\n\n${aiDetails}`;
-
+      `*Por favor, para que seu atendimento prossiga, não apague esta mensagem antes de enviar!*\n\n*Nome:* ${name}\n\n*Cidade:* ${city || "não informada"}\n\n${aiDetails}`;
 
     const response = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
       method: "POST",

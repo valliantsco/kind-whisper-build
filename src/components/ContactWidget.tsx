@@ -156,13 +156,55 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
 
   const validate = useCallback(() => {
     const errs: Record<string, string> = {};
-    if (!name.trim()) errs.name = "Precisamos do seu nome completo";
-    else if (!name.trim().includes(" ")) errs.name = "Inclua seu sobrenome também";
-    if (!phone.trim()) errs.phone = "Qual seu número de WhatsApp?";
-    else if (!/^[\d\s()+-]{8,20}$/.test(phone.trim()))
-      errs.phone = "Verifique o número digitado";
-    if (!city.trim()) errs.city = "Informe sua cidade";
-    if (!details.trim()) errs.details = "Conte um pouco mais sobre o que precisa";
+
+    // Name: min 2 words, only letters/spaces/accents, no repeated chars like "aaaa bbbb"
+    const trimmedName = name.trim();
+    if (!trimmedName) {
+      errs.name = "Precisamos do seu nome completo";
+    } else if (!trimmedName.includes(" ")) {
+      errs.name = "Inclua seu sobrenome também";
+    } else if (!/^[A-Za-zÀ-ÿ\s'-]+$/.test(trimmedName)) {
+      errs.name = "Use apenas letras no nome";
+    } else if (/(.)\1{3,}/i.test(trimmedName.replace(/\s/g, ""))) {
+      errs.name = "Nome inválido";
+    } else if (trimmedName.split(/\s+/).some((w) => w.length < 2)) {
+      errs.name = "Nome inválido";
+    }
+
+    // Phone: exactly 11 digits, no obvious patterns
+    const phoneDigits = phone.replace(/\D/g, "");
+    if (!phone.trim()) {
+      errs.phone = "Qual seu número de WhatsApp?";
+    } else if (phoneDigits.length !== 11) {
+      errs.phone = "O número deve ter DDD + 9 dígitos";
+    } else if (/^(\d)\1{10}$/.test(phoneDigits)) {
+      errs.phone = "Número inválido";
+    } else if (/^(01234567890|12345678901|00000000000)$/.test(phoneDigits)) {
+      errs.phone = "Número inválido";
+    }
+
+    // City
+    if (!city.trim()) errs.city = "Informe sua cidade e estado";
+
+    // Details: min 10 chars, min 2 words, no gibberish (>60% same char)
+    const trimmedDetails = details.trim();
+    if (!trimmedDetails) {
+      errs.details = "Informe o motivo do contato";
+    } else if (trimmedDetails.length < 10) {
+      errs.details = "Descreva com mais detalhes (mínimo 10 caracteres)";
+    } else if (trimmedDetails.split(/\s+/).length < 2) {
+      errs.details = "Escreva pelo menos duas palavras";
+    } else {
+      // Check for gibberish: if any single char is >60% of text
+      const chars = trimmedDetails.toLowerCase().replace(/\s/g, "");
+      const freq: Record<string, number> = {};
+      for (const c of chars) freq[c] = (freq[c] || 0) + 1;
+      const maxFreq = Math.max(...Object.values(freq));
+      if (chars.length > 5 && maxFreq / chars.length > 0.6) {
+        errs.details = "Mensagem inválida";
+      }
+    }
+
     setErrors(errs);
     return Object.keys(errs).length === 0;
   }, [name, phone, city, details]);
@@ -254,7 +296,18 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
         body: { name: name.trim(), city: city.trim(), details: details.trim() || undefined },
       });
 
-      if (error || !data?.message) throw new Error("AI error");
+      // Handle spam rejection
+      if (error) {
+        // supabase.functions.invoke wraps non-2xx as error
+        // Check if the response body has spam indicator
+        if (data?.error === "spam") {
+          setErrors({ details: data.userMessage || "Não foi possível processar sua solicitação." });
+          setIsLoading(false);
+          return;
+        }
+        throw new Error("AI error");
+      }
+      if (!data?.message) throw new Error("AI error");
       message = data.message;
     } catch {
       message = [
