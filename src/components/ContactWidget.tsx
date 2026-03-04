@@ -72,13 +72,13 @@ function detectSpam(field: "name" | "city" | "details", value: string): string |
 
   // Excessive repeated chars (e.g. "aaaa", "dddddd") — 4+ consecutive
   if (/(.)\1{3,}/i.test(nospaces)) {
-    return field === "name" ? "Informe seu nome verdadeiro" : field === "city" ? "Informe uma cidade válida" : "Mensagem inválida";
+    return field === "name" ? "*Informe seu nome verdadeiro" : field === "city" ? "Informe uma cidade válida" : "Mensagem inválida";
   }
 
   // Keyboard mashing patterns (common qwerty/sequential)
   const mashPatterns = ["asdf", "qwer", "zxcv", "hjkl", "abcd", "1234", "wasd"];
   if (mashPatterns.some((p) => nospaces.includes(p)) && nospaces.length < 20) {
-    return field === "name" ? "Informe seu nome verdadeiro" : field === "city" ? "Informe uma cidade válida" : "Mensagem sem sentido detectada";
+    return field === "name" ? "*Informe seu nome verdadeiro" : field === "city" ? "Informe uma cidade válida" : "*Escreva uma mensagem coerente com o que precisa";
   }
 
   // Gibberish detection for all fields
@@ -103,7 +103,7 @@ function detectSpam(field: "name" | "city" | "details", value: string): string |
     }
     // Duplicate words like "teste teste"
     if (words.length >= 2 && new Set(words.map((w) => w.toLowerCase())).size === 1) {
-      return "Informe seu nome verdadeiro";
+      return "*Informe seu nome verdadeiro";
     }
     // Only letters/accents/spaces
     if (!/^[A-Za-zÀ-ÿ\s'-]+$/.test(trimmed)) {
@@ -111,7 +111,7 @@ function detectSpam(field: "name" | "city" | "details", value: string): string |
     }
     // Check each word for gibberish
     if (words.some((w) => w.length >= 4 && isGibberish(w))) {
-      return "Informe seu nome verdadeiro";
+      return "*Informe seu nome verdadeiro";
     }
   }
 
@@ -137,7 +137,7 @@ function detectSpam(field: "name" | "city" | "details", value: string): string |
     if (meaningfulWords.length >= 2) {
       const gibberishCount = meaningfulWords.filter((w) => isGibberish(w)).length;
       if (gibberishCount / meaningfulWords.length > 0.5) {
-        return "Mensagem sem sentido detectada";
+        return "*Escreva uma mensagem coerente com o que precisa";
       }
     }
   }
@@ -287,16 +287,16 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
     } else if (phoneDigits.length !== 11) {
       errs.phone = "O número deve ter DDD + 9 dígitos";
     } else if (/^(\d)\1{10}$/.test(phoneDigits)) {
-      errs.phone = "Número inválido";
+      errs.phone = "*Insira um número válido";
     } else if (/^(01234567890|12345678901|00000000000)$/.test(phoneDigits)) {
-      errs.phone = "Número inválido";
+      errs.phone = "*Insira um número válido";
     }
 
     // City — must be selected from IBGE suggestions
     if (!city.trim()) {
       errs.city = "Informe sua cidade e estado";
     } else if (!cityValidated) {
-      errs.city = "Selecione uma cidade válida da lista";
+      errs.city = "*Selecione uma localidade válida da lista";
     }
 
     // Details: min 10 chars, min 2 words, no gibberish (>60% same char)
@@ -639,7 +639,7 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                           /^(01234567890|12345678901)$/.test(raw);
 
                         if (isFake) {
-                          setErrors((prev) => ({ ...prev, phone: "Número inválido" }));
+                          setErrors((prev) => ({ ...prev, phone: "*Insira um número válido" }));
                         } else {
                           setErrors((prev) => { const { phone, ...rest } = prev; return rest; });
                         }
@@ -691,7 +691,7 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                       setTimeout(() => {
                         setIsCityDropdownOpen(false);
                         if (city.trim() && !cityValidated) {
-                          setErrors((prev) => ({ ...prev, city: "Selecione uma cidade válida da lista" }));
+                          setErrors((prev) => ({ ...prev, city: "*Selecione uma localidade válida da lista" }));
                         }
                       }, 200);
                     }}
