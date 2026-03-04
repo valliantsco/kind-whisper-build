@@ -108,8 +108,14 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
   const handleSubmit = useCallback(() => {
     if (!validate()) return;
 
-    let message = `Olá! Meu nome é ${name.trim()}.\nWhatsApp: ${phone.trim()}\nAssunto: ${selectedTopic}`;
-    if (details.trim()) message += `\n\nDetalhes: ${details.trim()}`;
+    const parts = [
+      `Olá! Meu nome é *${name.trim()}*.`,
+      `📱 WhatsApp: ${phone.trim()}`,
+      `📋 Assunto: ${selectedTopic}`,
+    ];
+    if (details.trim()) parts.push(`💬 Detalhes: ${details.trim()}`);
+    parts.push("", "Aguardo retorno. Obrigado!");
+    const message = parts.join("\n");
 
     window.open(
       `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`,
