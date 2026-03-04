@@ -472,6 +472,22 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                     />
 
                     {/* Mic button inside textarea */}
+                    {/* Pulse ring behind mic button */}
+                    {!isRecording && !isTranscribing && (
+                      <motion.div
+                        className="absolute right-2.5 top-1/2 -translate-y-1/2 rounded-full pointer-events-none"
+                        style={{
+                          width: 30,
+                          height: 30,
+                          border: "1px solid hsl(11 81% 57% / 0.15)",
+                        }}
+                        animate={{
+                          scale: [1, 1.35, 1],
+                          opacity: [0.6, 0, 0.6],
+                        }}
+                        transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+                      />
+                    )}
                     <motion.button
                       type="button"
                       onClick={isRecording ? stopRecording : startRecording}
@@ -492,8 +508,10 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                           : "none",
                       }}
                       whileHover={isTranscribing ? {} : {
-                        background: isRecording ? "hsl(0 84% 55% / 0.3)" : "hsl(0 0% 100% / 0.15)",
+                        background: isRecording ? "hsl(0 84% 55% / 0.3)" : "hsl(0 0% 100% / 0.18)",
                         borderColor: isRecording ? "hsl(0 84% 60% / 0.5)" : "hsl(11 81% 57% / 0.4)",
+                        boxShadow: "0 0 12px hsl(11 81% 57% / 0.2)",
+                        scale: 1.08,
                       }}
                       whileTap={isTranscribing ? {} : { scale: 0.9 }}
                       animate={isRecording ? {
@@ -503,7 +521,7 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                           "hsl(0 84% 60% / 0.35)",
                         ],
                       } : {}}
-                      transition={isRecording ? { duration: 1.5, repeat: Infinity, ease: "easeInOut" } : {}}
+                      transition={isRecording ? { duration: 1.5, repeat: Infinity, ease: "easeInOut" } : { type: "spring", stiffness: 400, damping: 20 }}
                     >
                       {isTranscribing ? (
                         <Loader2 className="w-3.5 h-3.5 text-white/50 animate-spin" />
