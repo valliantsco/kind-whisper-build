@@ -13,6 +13,7 @@ interface SlideContent {
   primaryCta: { text: string; href: string };
   secondaryCta: { text: string; href: string };
   videoId: string;
+  videoStart?: number;
 }
 
 const SLIDES: SlideContent[] = [
@@ -55,7 +56,8 @@ const SLIDES: SlideContent[] = [
     subheadline: "Do primeiro contato ao pós-venda, a MS Eletric oferece atendimento especializado e suporte técnico para você rodar com tranquilidade.",
     primaryCta: { text: "Fale Conosco", href: "#contato" },
     secondaryCta: { text: "Nossa História", href: "#sobre" },
-    videoId: "ml6ODnWanys",
+    videoId: "iK7r59HhPjM",
+    videoStart: 26,
   },
 ];
 
@@ -65,8 +67,8 @@ const TAG_ICONS = {
   shield: Shield,
 };
 
-const buildEmbedUrl = (videoId: string) =>
-  `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&loop=1&playlist=${videoId}&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&disablekb=1&fs=0&iv_load_policy=3`;
+const buildEmbedUrl = (videoId: string, start?: number) =>
+  `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&loop=1&playlist=${videoId}&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&disablekb=1&fs=0&iv_load_policy=3${start ? `&start=${start}` : ''}`;
 
 const HeroSection = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -100,7 +102,7 @@ const HeroSection = () => {
             className="absolute inset-0"
           >
             <iframe
-              src={buildEmbedUrl(SLIDES[currentSlide].videoId)}
+              src={buildEmbedUrl(SLIDES[currentSlide].videoId, SLIDES[currentSlide].videoStart)}
               className="absolute pointer-events-none top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[180%] h-[180%] max-md:w-[400%] max-md:h-[400%]"
               style={{ border: 0, aspectRatio: '16/9' }}
               allow="autoplay; encrypted-media"
