@@ -73,6 +73,30 @@ interface ContactWidgetProps {
   onClose: () => void;
 }
 
+const formatPhone = (digits: string): string => {
+  if (digits.length === 0) return "";
+  if (digits.length > 6) return `(${digits.slice(0,2)}) ${digits.slice(2,7)}-${digits.slice(7)}`;
+  if (digits.length > 2) return `(${digits.slice(0,2)}) ${digits.slice(2)}`;
+  return `(${digits}`;
+};
+
+const getDigitIndexAtCursor = (formatted: string, cursorPos: number): number => {
+  let digitIndex = 0;
+  for (let i = 0; i < cursorPos && i < formatted.length; i++) {
+    if (/\d/.test(formatted[i])) digitIndex++;
+  }
+  return digitIndex;
+};
+
+const getCursorPosForDigitIndex = (formatted: string, digitIndex: number): number => {
+  let count = 0;
+  for (let i = 0; i < formatted.length; i++) {
+    if (count === digitIndex) return i;
+    if (/\d/.test(formatted[i])) count++;
+  }
+  return formatted.length;
+};
+
 const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
   const isOnline = useBusinessHours();
   const [name, setName] = useState("");
@@ -372,13 +396,33 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                     type="tel"
                     value={phone}
                     onChange={(e) => {
-                      const raw = e.target.value.replace(/\D/g, "").slice(0, 11);
-                      if (raw.length === 0) { setPhone(""); return; }
-                      let v = raw;
-                      if (v.length > 6) v = `(${v.slice(0,2)}) ${v.slice(2,7)}-${v.slice(7)}`;
-                      else if (v.length > 2) v = `(${v.slice(0,2)}) ${v.slice(2)}`;
-                      else v = `(${v}`;
-                      setPhone(v);
+                      const input = e.target;
+                      const cursorPos = input.selectionStart ?? 0;
+                      const prevRaw = phone.replace(/\D/g, "");
+                      let newRaw = input.value.replace(/\D/g, "").slice(0, 11);
+
+                      // If digits didn't change, user deleted a formatting char — remove digit before cursor
+                      if (newRaw === prevRaw && newRaw.length > 0) {
+                        const digitIdx = getDigitIndexAtCursor(phone, cursorPos);
+                        if (digitIdx > 0) {
+                          newRaw = newRaw.slice(0, digitIdx - 1) + newRaw.slice(digitIdx);
+                        }
+                      }
+
+                      const formatted = formatPhone(newRaw);
+                      setPhone(formatted);
+
+                      // Restore cursor position
+                      const newDigitCount = newRaw.length;
+                      const targetDigitIdx = getDigitIndexAtCursor(phone, cursorPos);
+                      const adjustedIdx = Math.min(targetDigitIdx, newDigitCount);
+                      const newCursor = newRaw === prevRaw
+                        ? getCursorPosForDigitIndex(formatted, Math.max(0, adjustedIdx - 1))
+                        : getCursorPosForDigitIndex(formatted, adjustedIdx);
+
+                      requestAnimationFrame(() => {
+                        input.setSelectionRange(newCursor, newCursor);
+                      });
                     }}
                     placeholder="(00) 00000-0000"
                     maxLength={20}
