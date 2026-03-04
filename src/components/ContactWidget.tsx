@@ -468,13 +468,19 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                   <div className="relative">
                     <textarea
                       value={details}
-                      onChange={(e) => { setDetails(e.target.value); if (errors.details) setErrors((prev) => { const { details, ...rest } = prev; return rest; }); }}
+                      onChange={(e) => {
+                        setDetails(e.target.value);
+                        if (errors.details) setErrors((prev) => { const { details, ...rest } = prev; return rest; });
+                        // Auto-grow
+                        e.target.style.height = 'auto';
+                        e.target.style.height = e.target.scrollHeight + 'px';
+                      }}
                       placeholder={isTranscribing ? "Processando áudio..." : "Descreva brevemente ou grave um áudio..."}
                       rows={3}
                       maxLength={500}
                       disabled={isTranscribing}
                       className={`${inputBaseStyle} pr-14 resize-none disabled:opacity-50 cw-input ${errors.details ? "cw-input-error" : ""}`}
-                      style={getInputBorderStyle(!!errors.details)}
+                      style={{ ...getInputBorderStyle(!!errors.details), overflow: 'hidden' }}
                       onFocus={() => setIsDetailsFocused(true)}
                       onBlur={() => setIsDetailsFocused(false)}
                     />
