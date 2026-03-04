@@ -110,6 +110,7 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
   const [isRecording, setIsRecording] = useState(false);
   const [isTranscribing, setIsTranscribing] = useState(false);
   const [isDetailsFocused, setIsDetailsFocused] = useState(false);
+  const [isSelectOpen, setIsSelectOpen] = useState(false);
   const mediaRecorderRef = useRef<MediaRecorder | null>(null);
   const chunksRef = useRef<Blob[]>([]);
 
@@ -422,7 +423,11 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                     <HelpCircle className="w-3 h-3" />
                     Qual o assunto? <span className="text-primary/70">*</span>
                   </label>
-                  <Select value={selectedTopic} onValueChange={(v) => { setSelectedTopic(v); if (errors.topic) setErrors((prev) => { const { topic, ...rest } = prev; return rest; }); }}>
+                  {/* Backdrop blur when select is open */}
+                  {isSelectOpen && (
+                    <div className="fixed inset-0 z-[150] backdrop-blur-sm bg-black/20 pointer-events-none" />
+                  )}
+                  <Select open={isSelectOpen} onOpenChange={setIsSelectOpen} value={selectedTopic} onValueChange={(v) => { setSelectedTopic(v); if (errors.topic) setErrors((prev) => { const { topic, ...rest } = prev; return rest; }); }}>
                     <SelectTrigger
                       className={`w-full rounded-lg text-sm border-0 ring-0 cw-input ${errors.topic ? "cw-input-error" : ""} ${
                         !selectedTopic ? "text-white/35" : "text-white"
@@ -434,10 +439,8 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                     <SelectContent
                       className="rounded-lg border-0 z-[200]"
                       position="popper"
-                      sideOffset={4}
-                      align="start"
                       style={{
-                        background: "hsl(0 0% 16% / 0.98)",
+                        background: "hsl(0 0% 14% / 0.95)",
                         backdropFilter: "blur(20px)",
                         border: "1px solid hsl(0 0% 100% / 0.1)",
                         boxShadow: "0 20px 50px rgba(0,0,0,0.5)",
