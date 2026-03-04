@@ -1,6 +1,6 @@
 import { useState, useCallback, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Clock, User, HelpCircle, MessageSquare, Loader2, Mic, Square, ChevronDown } from "lucide-react";
+import { X, Clock, User, HelpCircle, MessageSquare, Loader2, Mic, Square, ChevronDown, MapPin } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useBusinessHours } from "@/hooks/useBusinessHours";
 
@@ -73,6 +73,29 @@ const formatPhone = (digits: string): string => {
   return `(${digits}`;
 };
 
+const BRAZILIAN_CITIES = [
+  "São Paulo - SP", "Rio de Janeiro - RJ", "Belo Horizonte - MG", "Brasília - DF",
+  "Salvador - BA", "Fortaleza - CE", "Curitiba - PR", "Manaus - AM",
+  "Recife - PE", "Porto Alegre - RS", "Belém - PA", "Goiânia - GO",
+  "Guarulhos - SP", "Campinas - SP", "São Luís - MA", "São Gonçalo - RJ",
+  "Maceió - AL", "Duque de Caxias - RJ", "Campo Grande - MS", "Natal - RN",
+  "Teresina - PI", "São Bernardo do Campo - SP", "Nova Iguaçu - RJ", "João Pessoa - PB",
+  "Santo André - SP", "São José dos Campos - SP", "Osasco - SP",
+  "Ribeirão Preto - SP", "Uberlândia - MG", "Sorocaba - SP", "Contagem - MG",
+  "Aracaju - SE", "Feira de Santana - BA", "Juiz de Fora - MG", "Cuiabá - MT",
+  "Joinville - SC", "Londrina - PR", "Niterói - RJ", "Florianópolis - SC",
+  "Vila Velha - ES", "Caxias do Sul - RS", "Santos - SP", "Vitória - ES",
+  "Maringá - PR", "Jundiaí - SP", "Piracicaba - SP", "Bauru - SP",
+  "São José do Rio Preto - SP", "Anápolis - GO", "Blumenau - SC", "Franca - SP",
+  "Ponta Grossa - PR", "Praia Grande - SP", "Limeira - SP", "Taubaté - SP",
+  "Santa Maria - RS", "Indaiatuba - SP", "Americana - SP", "Itu - SP",
+  "Marília - SP", "Araraquara - SP", "São Carlos - SP", "Rio Claro - SP",
+  "Araçatuba - SP", "Botucatu - SP", "Sumaré - SP", "Hortolândia - SP",
+  "Presidente Prudente - SP", "Atibaia - SP", "Bragança Paulista - SP",
+  "Valinhos - SP", "Vinhedo - SP", "Catanduva - SP", "Ourinhos - SP",
+  "Itapetininga - SP", "Mogi Guaçu - SP", "Pelotas - RS", "Canoas - RS",
+];
+
 
 const STORAGE_KEY = "ms-contact-draft";
 
@@ -102,6 +125,12 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
     return digits ? formatPhone(digits) : "";
   });
   const [selectedTopic, setSelectedTopic] = useState(draft.current?.topic || "");
+  const [city, setCity] = useState(draft.current?.city || "");
+  const [citySuggestions, setCitySuggestions] = useState<string[]>([]);
+  const [isCityDropdownOpen, setIsCityDropdownOpen] = useState(false);
+  const [focusedCityIndex, setFocusedCityIndex] = useState(-1);
+  const cityInputRef = useRef<HTMLInputElement | null>(null);
+  const cityDropdownRef = useRef<HTMLDivElement | null>(null);
   const [details, setDetails] = useState(draft.current?.details || "");
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isLoading, setIsLoading] = useState(false);
@@ -121,11 +150,11 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
 
   // Persist draft to sessionStorage
   useEffect(() => {
-    const data = { name, phone, topic: selectedTopic, details };
-    if (name || phone || selectedTopic || details) {
+    const data = { name, phone, topic: selectedTopic, city, details };
+    if (name || phone || selectedTopic || city || details) {
       sessionStorage.setItem(STORAGE_KEY, JSON.stringify(data));
     }
-  }, [name, phone, selectedTopic, details]);
+  }, [name, phone, selectedTopic, city, details]);
 
   useEffect(() => {
     if (isOpen) {
@@ -160,11 +189,12 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
     if (!phone.trim()) errs.phone = "Qual seu número de WhatsApp?";
     else if (!/^[\d\s()+-]{8,20}$/.test(phone.trim()))
       errs.phone = "Verifique o número digitado";
+    if (!city.trim()) errs.city = "Informe sua cidade";
     if (!selectedTopic) errs.topic = "Escolha um assunto acima";
     if (!details.trim()) errs.details = "Conte um pouco mais sobre o que precisa";
     setErrors(errs);
     return Object.keys(errs).length === 0;
-  }, [name, phone, selectedTopic, details]);
+  }, [name, phone, city, selectedTopic, details]);
 
   const startRecording = useCallback(async () => {
     try {
@@ -250,7 +280,7 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
 
     try {
       const { data, error } = await supabase.functions.invoke("generate-whatsapp-message", {
-        body: { name: name.trim(), topic: selectedTopic, details: details.trim() || undefined },
+        body: { name: name.trim(), topic: selectedTopic, city: city.trim(), details: details.trim() || undefined },
       });
 
       if (error || !data?.message) throw new Error("AI error");
@@ -260,6 +290,8 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
         `*Por favor, para que seu atendimento prossiga, não apague esta mensagem antes de enviar!*`,
         ``,
         `*Nome:* ${name.trim()}`,
+        ``,
+        `*Cidade:* ${city.trim()}`,
         ``,
         `*Assunto:* ${selectedTopic}`,
         ``,
@@ -275,6 +307,8 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
 
     setName("");
     setPhone("");
+    setCity("");
+    setCitySuggestions([]);
     setSelectedTopic("");
     setDetails("");
     setErrors({});
@@ -461,6 +495,107 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                     style={getInputBorderStyle(!!errors.phone)}
                   />
                   {errors.phone && <p className="text-[10px] mt-1" style={{ color: "hsl(0 84% 65%)" }}>{errors.phone}</p>}
+                </div>
+
+                {/* City autocomplete */}
+                <div className="relative">
+                  <label className="flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-[0.1em] text-white/50 mb-1.5">
+                    <MapPin className="w-3 h-3" />
+                    Sua cidade <span className="text-primary/70">*</span>
+                  </label>
+                  <input
+                    ref={cityInputRef}
+                    type="text"
+                    value={city}
+                    onChange={(e) => {
+                      const val = e.target.value;
+                      setCity(val);
+                      if (errors.city) setErrors((prev) => { const { city: _, ...rest } = prev; return rest; });
+                      if (val.trim().length >= 2) {
+                        const normalise = (s: string) => s.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+                        const q = normalise(val.trim());
+                        const filtered = BRAZILIAN_CITIES.filter((c) => normalise(c).includes(q)).slice(0, 6);
+                        setCitySuggestions(filtered);
+                        setIsCityDropdownOpen(filtered.length > 0);
+                        setFocusedCityIndex(-1);
+                      } else {
+                        setCitySuggestions([]);
+                        setIsCityDropdownOpen(false);
+                      }
+                    }}
+                    onFocus={() => {
+                      if (city.trim().length >= 2 && citySuggestions.length > 0) {
+                        setIsCityDropdownOpen(true);
+                      }
+                    }}
+                    onBlur={() => {
+                      // Delay to allow click on suggestion
+                      setTimeout(() => setIsCityDropdownOpen(false), 150);
+                    }}
+                    onKeyDown={(e) => {
+                      if (!isCityDropdownOpen) return;
+                      if (e.key === "ArrowDown") {
+                        e.preventDefault();
+                        setFocusedCityIndex((prev) => Math.min(prev + 1, citySuggestions.length - 1));
+                      } else if (e.key === "ArrowUp") {
+                        e.preventDefault();
+                        setFocusedCityIndex((prev) => Math.max(prev - 1, 0));
+                      } else if (e.key === "Enter" && focusedCityIndex >= 0) {
+                        e.preventDefault();
+                        setCity(citySuggestions[focusedCityIndex]);
+                        setIsCityDropdownOpen(false);
+                        setCitySuggestions([]);
+                      } else if (e.key === "Escape") {
+                        setIsCityDropdownOpen(false);
+                      }
+                    }}
+                    placeholder="Ex: São Paulo - SP"
+                    maxLength={100}
+                    className={`${inputBaseStyle} cw-input ${errors.city ? "cw-input-error" : ""}`}
+                    style={getInputBorderStyle(!!errors.city)}
+                    autoComplete="off"
+                  />
+                  {/* Suggestions dropdown */}
+                  <AnimatePresence>
+                    {isCityDropdownOpen && citySuggestions.length > 0 && (
+                      <motion.div
+                        ref={cityDropdownRef}
+                        initial={{ opacity: 0, y: -4 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -4 }}
+                        transition={{ duration: 0.15 }}
+                        className="absolute left-0 right-0 z-50 mt-1 rounded-lg overflow-hidden"
+                        style={{
+                          background: "hsl(0 0% 14% / 0.95)",
+                          backdropFilter: "blur(20px)",
+                          border: "1px solid hsl(0 0% 100% / 0.1)",
+                          boxShadow: "0 10px 30px rgba(0,0,0,0.4)",
+                        }}
+                      >
+                        {citySuggestions.map((suggestion, index) => (
+                          <button
+                            key={suggestion}
+                            type="button"
+                            onMouseDown={(e) => {
+                              e.preventDefault();
+                              setCity(suggestion);
+                              setIsCityDropdownOpen(false);
+                              setCitySuggestions([]);
+                              if (errors.city) setErrors((prev) => { const { city: _, ...rest } = prev; return rest; });
+                            }}
+                            className={`w-full text-left px-3 py-2 text-sm transition-colors ${
+                              focusedCityIndex === index
+                                ? "text-white bg-white/10"
+                                : "text-white/70 hover:bg-white/10 hover:text-white"
+                            }`}
+                          >
+                            {suggestion}
+                          </button>
+                        ))}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                  {errors.city && <p className="text-[10px] mt-1" style={{ color: "hsl(0 84% 65%)" }}>{errors.city}</p>}
                 </div>
 
                 {/* Topic */}
