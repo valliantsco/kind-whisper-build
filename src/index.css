@@ -177,3 +177,28 @@ html {
   writing-mode: vertical-rl;
   text-orientation: mixed;
 }
+
+/* Contact Widget input styles — unified focus/blur/error (#1 #2 #3 #8) */
+.cw-input {
+  transition: border-color 200ms ease, box-shadow 200ms ease;
+}
+.cw-input:focus,
+.cw-input:focus-within {
+  border-color: hsl(11 81% 57% / 0.5) !important;
+  box-shadow: 0 0 0 2px hsl(11 81% 57% / 0.15);
+}
+.cw-input-error {
+  border-color: hsl(0 84% 60% / 0.5) !important;
+}
+.cw-input-error:focus,
+.cw-input-error:focus-within {
+  border-color: hsl(0 84% 60% / 0.7) !important;
+  box-shadow: 0 0 0 2px hsl(0 84% 60% / 0.15);
+}
+
+/* Reduced motion: disable decorative animations (#10) */
+@media (prefers-reduced-motion: reduce) {
+  .motion-reduce\:hidden {
+    display: none !important;
+  }
+}

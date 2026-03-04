@@ -90,6 +90,14 @@ const loadDraft = () => {
   } catch { return null; }
 };
 
+// Shared input style helper — replaces inline onFocus/onBlur handlers
+const inputBaseStyle = "w-full px-3 py-2.5 rounded-lg text-sm text-white placeholder:text-white/35 focus:outline-none transition-[border-color,box-shadow] duration-200";
+
+const getInputBorderStyle = (hasError: boolean) => ({
+  background: "hsl(0 0% 100% / 0.06)",
+  border: `1px solid ${hasError ? "hsl(0 84% 60% / 0.5)" : "hsl(0 0% 100% / 0.08)"}`,
+});
+
 const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
   const isOnline = useBusinessHours();
   const draft = useRef(loadDraft());
@@ -268,9 +276,9 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
               }}
             />
 
-            {/* Ambient glow */}
+            {/* Ambient glow — respects reduced motion */}
             <motion.div
-              className="absolute -top-20 -right-20 w-60 h-60 rounded-full pointer-events-none"
+              className="absolute -top-20 -right-20 w-60 h-60 rounded-full pointer-events-none motion-reduce:hidden"
               style={{
                 background: "radial-gradient(circle, hsl(11 81% 57% / 0.08) 0%, transparent 70%)",
                 filter: "blur(40px)",
@@ -279,10 +287,16 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
               transition={{ duration: 4, repeat: Infinity }}
             />
 
-            {/* Scrollable content */}
-            <div className="overflow-y-auto flex-1">
+            {/* Scrollable content with fade indicators */}
+            <div className="overflow-y-auto flex-1 relative">
+              {/* Top scroll fade */}
+              <div
+                className="sticky top-0 left-0 right-0 h-3 pointer-events-none z-10"
+                style={{ background: "linear-gradient(to bottom, hsl(0 0% 14% / 0.92), transparent)" }}
+              />
+
               {/* Header */}
-              <div className="flex items-start justify-between p-5 pb-3">
+              <div className="flex items-start justify-between px-5 pb-3 -mt-1">
                 <div>
                   <h3 className="text-base font-bold text-white tracking-tight">
                     Fale com um especialista da MS Eletric
@@ -293,7 +307,7 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                 </div>
                 <motion.button
                   onClick={onClose}
-                  className="p-1.5 rounded-lg text-white/40 hover:text-white hover:bg-white/10 transition-colors"
+                  className="p-1.5 rounded-lg text-white/40 hover:text-white hover:bg-white/10 transition-all duration-200"
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
                 >
@@ -301,24 +315,24 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                 </motion.button>
               </div>
 
-              {/* Status chip */}
+              {/* Status chip — amber when offline (#5) */}
               <div className="px-5 pb-4">
                 <div
                   className="flex items-center justify-center gap-2 px-3 py-1.5 rounded-full text-[10px] font-semibold uppercase tracking-[0.1em] border w-full"
                   style={{
-                    background: isOnline ? "hsl(142 76% 36% / 0.12)" : "hsl(0 84% 60% / 0.12)",
-                    borderColor: isOnline ? "hsl(142 76% 36% / 0.25)" : "hsl(0 84% 60% / 0.25)",
-                    color: isOnline ? "hsl(142 70% 65%)" : "hsl(0 84% 70%)",
+                    background: isOnline ? "hsl(142 76% 36% / 0.12)" : "hsl(38 92% 50% / 0.12)",
+                    borderColor: isOnline ? "hsl(142 76% 36% / 0.25)" : "hsl(38 92% 50% / 0.25)",
+                    color: isOnline ? "hsl(142 70% 65%)" : "hsl(38 92% 70%)",
                   }}
                 >
                   <span className="relative flex h-2.5 w-2.5">
                     <span
                       className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75"
-                      style={{ background: isOnline ? "hsl(142 76% 50%)" : "hsl(0 84% 60%)" }}
+                      style={{ background: isOnline ? "hsl(142 76% 50%)" : "hsl(38 92% 50%)" }}
                     />
                     <span
                       className="relative inline-flex rounded-full h-2.5 w-2.5"
-                      style={{ background: isOnline ? "hsl(142 76% 50%)" : "hsl(0 84% 60%)" }}
+                      style={{ background: isOnline ? "hsl(142 76% 50%)" : "hsl(38 92% 50%)" }}
                     />
                   </span>
                   {isOnline ? "Online agora" : "Offline · Voltamos às 08:00"}
@@ -358,7 +372,7 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                 <div>
                   <label className="flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-[0.1em] text-white/50 mb-1.5">
                     <User className="w-3 h-3" />
-                    Como podemos te chamar?
+                    Como podemos te chamar? <span className="text-primary/70">*</span>
                   </label>
                   <input
                     type="text"
@@ -372,19 +386,8 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                     }}
                     placeholder="Ex: João Silva"
                     maxLength={100}
-                    className="w-full px-3 py-2.5 rounded-lg text-sm text-white placeholder:text-white/25 focus:outline-none transition-all"
-                    style={{
-                      background: "hsl(0 0% 100% / 0.06)",
-                      border: `1px solid ${errors.name ? "hsl(0 84% 60% / 0.5)" : "hsl(0 0% 100% / 0.08)"}`,
-                    }}
-                    onFocus={(e) => {
-                      if (!errors.name) e.currentTarget.style.borderColor = "hsl(11 81% 57% / 0.5)";
-                      e.currentTarget.style.boxShadow = "0 0 0 2px hsl(11 81% 57% / 0.15)";
-                    }}
-                    onBlur={(e) => {
-                      if (!errors.name) e.currentTarget.style.borderColor = "hsl(0 0% 100% / 0.08)";
-                      e.currentTarget.style.boxShadow = "none";
-                    }}
+                    className={`${inputBaseStyle} cw-input ${errors.name ? "cw-input-error" : ""}`}
+                    style={getInputBorderStyle(!!errors.name)}
                   />
                   {errors.name && <p className="text-[10px] mt-1" style={{ color: "hsl(0 84% 65%)" }}>{errors.name}</p>}
                 </div>
@@ -393,7 +396,7 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                 <div>
                   <label className="flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-[0.1em] text-white/50 mb-1.5">
                     <WhatsAppIcon className="w-3 h-3" />
-                    Seu WhatsApp
+                    Seu WhatsApp <span className="text-primary/70">*</span>
                   </label>
                   <input
                     type="tel"
@@ -407,19 +410,8 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                     }}
                     placeholder="(00) 00000-0000"
                     maxLength={20}
-                    className="w-full px-3 py-2.5 rounded-lg text-sm text-white placeholder:text-white/25 focus:outline-none transition-all"
-                    style={{
-                      background: "hsl(0 0% 100% / 0.06)",
-                      border: `1px solid ${errors.phone ? "hsl(0 84% 60% / 0.5)" : "hsl(0 0% 100% / 0.08)"}`,
-                    }}
-                    onFocus={(e) => {
-                      if (!errors.phone) e.currentTarget.style.borderColor = "hsl(11 81% 57% / 0.5)";
-                      e.currentTarget.style.boxShadow = "0 0 0 2px hsl(11 81% 57% / 0.15)";
-                    }}
-                    onBlur={(e) => {
-                      if (!errors.phone) e.currentTarget.style.borderColor = "hsl(0 0% 100% / 0.08)";
-                      e.currentTarget.style.boxShadow = "none";
-                    }}
+                    className={`${inputBaseStyle} cw-input ${errors.phone ? "cw-input-error" : ""}`}
+                    style={getInputBorderStyle(!!errors.phone)}
                   />
                   {errors.phone && <p className="text-[10px] mt-1" style={{ color: "hsl(0 84% 65%)" }}>{errors.phone}</p>}
                 </div>
@@ -428,17 +420,14 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                 <div>
                   <label className="flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-[0.1em] text-white/50 mb-1.5">
                     <HelpCircle className="w-3 h-3" />
-                    Qual o assunto?
+                    Qual o assunto? <span className="text-primary/70">*</span>
                   </label>
                   <Select value={selectedTopic} onValueChange={(v) => { setSelectedTopic(v); if (errors.topic) setErrors((prev) => { const { topic, ...rest } = prev; return rest; }); }}>
                     <SelectTrigger
-                      className={`w-full rounded-lg text-sm border-0 focus:ring-0 ${
-                        !selectedTopic ? "text-white/25" : "text-white"
-                      }`}
-                      style={{
-                        background: "hsl(0 0% 100% / 0.06)",
-                        border: `1px solid ${errors.topic ? "hsl(0 84% 60% / 0.5)" : "hsl(0 0% 100% / 0.08)"}`,
-                      }}
+                      className={`w-full rounded-lg text-sm border-0 ring-0 cw-input ${errors.topic ? "cw-input-error" : ""} ${
+                        !selectedTopic ? "text-white/35" : "text-white"
+                      } focus:ring-2 focus:ring-[hsl(11_81%_57%_/_0.35)] focus:border-[hsl(11_81%_57%_/_0.5)]`}
+                      style={getInputBorderStyle(!!errors.topic)}
                     >
                       <SelectValue placeholder="Toque para escolher" />
                     </SelectTrigger>
@@ -473,7 +462,7 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                 <div>
                   <label className="flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-[0.1em] text-white/50 mb-1.5">
                     <MessageSquare className="w-3 h-3" />
-                    Conte mais sobre o que precisa
+                    Conte mais sobre o que precisa <span className="text-primary/70">*</span>
                   </label>
 
                   <div className="relative">
@@ -484,21 +473,10 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                       rows={3}
                       maxLength={500}
                       disabled={isTranscribing}
-                      className="w-full px-3 py-2.5 pr-14 rounded-lg text-sm text-white placeholder:text-white/25 focus:outline-none transition-all resize-none disabled:opacity-50"
-                      style={{
-                        background: "hsl(0 0% 100% / 0.06)",
-                        border: `1px solid ${errors.details ? "hsl(0 84% 60% / 0.5)" : "hsl(0 0% 100% / 0.08)"}`,
-                      }}
-                      onFocus={(e) => {
-                        setIsDetailsFocused(true);
-                        e.currentTarget.style.borderColor = "hsl(11 81% 57% / 0.5)";
-                        e.currentTarget.style.boxShadow = "0 0 0 2px hsl(11 81% 57% / 0.15)";
-                      }}
-                      onBlur={(e) => {
-                        setIsDetailsFocused(false);
-                        e.currentTarget.style.borderColor = "hsl(0 0% 100% / 0.08)";
-                        e.currentTarget.style.boxShadow = "none";
-                      }}
+                      className={`${inputBaseStyle} pr-14 resize-none disabled:opacity-50 cw-input ${errors.details ? "cw-input-error" : ""}`}
+                      style={getInputBorderStyle(!!errors.details)}
+                      onFocus={() => setIsDetailsFocused(true)}
+                      onBlur={() => setIsDetailsFocused(false)}
                     />
 
                     {/* Mic button inside textarea */}
@@ -517,13 +495,13 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                           {!isRecording && !isTranscribing && (
                             <>
                               <motion.div
-                                className="absolute inset-0 rounded-full pointer-events-none"
+                                className="absolute inset-0 rounded-full pointer-events-none motion-reduce:hidden"
                                 style={{ border: "1.5px solid hsl(11 81% 57% / 0.25)" }}
                                 animate={{ scale: [1, 1.6], opacity: [0.5, 0] }}
                                 transition={{ duration: 2, repeat: Infinity, ease: "easeOut" }}
                               />
                               <motion.div
-                                className="absolute inset-0 rounded-full pointer-events-none"
+                                className="absolute inset-0 rounded-full pointer-events-none motion-reduce:hidden"
                                 style={{ border: "1px solid hsl(11 81% 57% / 0.15)" }}
                                 animate={{ scale: [1, 1.4], opacity: [0.4, 0] }}
                                 transition={{ duration: 2, repeat: Infinity, ease: "easeOut", delay: 0.6 }}
@@ -648,10 +626,16 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                   
                 </motion.button>
 
-                <p className="text-[8px] text-white/25 text-center leading-relaxed pt-0.5 pb-1">
+                <p className="text-[9px] text-white/30 text-center leading-relaxed pt-2 pb-1">
                   Ao enviar, seus dados serão usados apenas para atendimento, conforme a LGPD (Lei nº 13.709/2018).
                 </p>
               </div>
+
+              {/* Bottom scroll fade */}
+              <div
+                className="sticky bottom-0 left-0 right-0 h-3 pointer-events-none"
+                style={{ background: "linear-gradient(to top, hsl(0 0% 14% / 0.92), transparent)" }}
+              />
             </div>
 
             {/* Bottom light strip */}
