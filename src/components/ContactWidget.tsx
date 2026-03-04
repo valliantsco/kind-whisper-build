@@ -31,6 +31,9 @@ const COMMON_BIGRAMS = new Set([
   "me","io","to","le","ia","ti","mo","ni","li","ro","el","lo","po","so","sa",
   "ve","ol","si","is","pe","il","ic","ce","ci","ão","nh","lh","ch","tr","pr",
   "br","cr","gr","fr","pl","bl","cl","fl","dr","gl","gu","am","om","im","um",
+  // Common in international names used in Brazil
+  "th","rt","hu","ur","ph","sh","ck","wn","ew","ws","nd","ng","ld","rd","rn",
+  "tt","ff","ll","ss","nn","mm","pp","rr","ks","nk","nt","ns","rs","ls","ts",
 ]);
 
 function isGibberish(text: string): boolean {
