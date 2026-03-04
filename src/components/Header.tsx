@@ -208,8 +208,8 @@ const Header = ({ contactOpen, setContactOpen }: HeaderProps) => {
         <header
           className={`transition-all duration-[800ms] ease-in-out rounded-[0.9rem] overflow-hidden relative ${
             scrolled
-              ? "bg-white/90 backdrop-blur-2xl border border-border/50 shadow-[0_4px_30px_rgba(0,0,0,0.08)]"
-              : "bg-primary-foreground/5 backdrop-blur-xl border border-primary-foreground/10"
+              ? "bg-white/90 backdrop-blur-2xl border border-border/50 shadow-[0_8px_32px_-4px_rgba(66,66,66,0.35),0_4px_16px_-2px_rgba(66,66,66,0.2)]"
+              : "bg-primary-foreground/5 backdrop-blur-xl border border-primary-foreground/10 shadow-[0_8px_32px_-4px_rgba(66,66,66,0.25),0_4px_16px_-2px_rgba(66,66,66,0.15)]"
           }`}
         >
           {/* Orbiting orange glow — only visible on transparent state */}
