@@ -743,7 +743,7 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                 </motion.button>
 
                 <p className="text-[9px] text-white/30 text-center leading-relaxed pt-2 pb-1">
-                  Ao enviar, seus dados serão usados apenas para atendimento, conforme a LGPD (Lei nº 13.709/2018).
+                  *Ao enviar, seus dados serão usados apenas para atendimento, conforme a LGPD (Lei nº 13.709/2018).
                 </p>
               </div>
 
