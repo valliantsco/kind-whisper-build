@@ -394,6 +394,8 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                   </label>
                   <input
                     type="tel"
+                    inputMode="numeric"
+                    pattern="[0-9]*"
                     value={phone}
                     onChange={(e) => {
                       const raw = e.target.value.replace(/\D/g, "").slice(0, 11);
