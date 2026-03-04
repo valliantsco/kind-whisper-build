@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import msLogo from "@/assets/ms-eletric-logo-white.png";
 import msLogoDark from "@/assets/ms-eletric-logo-dark-new.png";
 import { useBusinessHours } from "@/hooks/useBusinessHours";
+import ContactWidget from "@/components/ContactWidget";
 
 /* Modern pulsing status indicator */
 const StatusDot = ({ online }: { online: boolean }) => (
@@ -143,6 +144,7 @@ const itemVariants = {
 
 const Header = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [contactOpen, setContactOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const isOnline = useBusinessHours();
 
@@ -347,11 +349,9 @@ const Header = () => {
 
             {/* Desktop CTA with glow */}
             <div className="hidden lg:flex items-center gap-3">
-              <motion.a
-                href="https://wa.me/5500000000000"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="relative inline-flex items-center justify-center gap-2 h-10 px-5 text-xs font-semibold uppercase tracking-wider rounded-lg bg-primary text-primary-foreground overflow-visible"
+              <motion.button
+                onClick={() => setContactOpen(true)}
+                className="relative inline-flex items-center justify-center gap-2 h-10 px-5 text-xs font-semibold uppercase tracking-wider rounded-lg bg-primary text-primary-foreground overflow-visible cursor-pointer"
                 whileHover={{
                   scale: 1.05,
                   boxShadow: "0 0 20px hsl(11 81% 57% / 0.5), 0 0 40px hsl(11 81% 57% / 0.2)",
@@ -363,7 +363,7 @@ const Header = () => {
                 <StatusDot online={isOnline} />
                 <WhatsAppIcon />
                 Falar com um especialista
-              </motion.a>
+              </motion.button>
             </div>
 
             {/* Mobile toggle — animated icon */}
@@ -455,12 +455,12 @@ const Header = () => {
 
                   {/* Floating CTA with glow */}
                   <motion.div variants={itemVariants} className="pt-4">
-                    <motion.a
-                      href="https://wa.me/5500000000000"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="relative flex items-center justify-center gap-3 w-full py-3 rounded-lg bg-primary text-primary-foreground text-xs font-semibold uppercase tracking-wider overflow-visible"
-                      onClick={() => setMobileOpen(false)}
+                    <motion.button
+                      onClick={() => {
+                        setMobileOpen(false);
+                        setContactOpen(true);
+                      }}
+                      className="relative flex items-center justify-center gap-3 w-full py-3 rounded-lg bg-primary text-primary-foreground text-xs font-semibold uppercase tracking-wider overflow-visible cursor-pointer"
                       whileHover={{
                         scale: 1.02,
                         boxShadow: "0 0 25px hsl(11 81% 57% / 0.6), 0 0 50px hsl(11 81% 57% / 0.2)",
@@ -481,7 +481,7 @@ const Header = () => {
                       <StatusDot online={isOnline} />
                       <WhatsAppIcon />
                       Falar com um especialista
-                    </motion.a>
+                    </motion.button>
                   </motion.div>
                 </motion.div>
               </motion.div>
@@ -489,6 +489,7 @@ const Header = () => {
           </AnimatePresence>
         </header>
       </div>
+      <ContactWidget isOpen={contactOpen} onClose={() => setContactOpen(false)} />
     </div>
   );
 };
