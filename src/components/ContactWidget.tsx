@@ -10,6 +10,33 @@ const PROFANITY_LIST = [
   "viado", "arrombado", "cuzão", "bosta", "desgraça", "piranha",
 ];
 
+// Common Portuguese bigrams (natural language patterns)
+const VOWELS = new Set("aeiouáéíóúâêîôûãõàèìòù");
+
+function isGibberish(text: string): boolean {
+  const lower = text.toLowerCase().replace(/[^a-záéíóúâêîôûãõàèìòù]/g, "");
+  if (lower.length < 4) return false;
+
+  // Check consonant clusters: 4+ consonants in a row = likely gibberish
+  if (/[^aeiouáéíóúâêîôûãõàèìòù]{4,}/i.test(lower)) return true;
+
+  // Check vowel ratio: Portuguese words typically have 35-55% vowels
+  const vowelCount = [...lower].filter((c) => VOWELS.has(c)).length;
+  const vowelRatio = vowelCount / lower.length;
+  if (lower.length >= 5 && (vowelRatio < 0.2 || vowelRatio > 0.75)) return true;
+
+  // Check for alternating gibberish patterns like "dadadsd", "sasasa"
+  // If removing duplicate consecutive bigrams leaves very little variety
+  if (lower.length >= 6) {
+    const bigrams = new Set<string>();
+    for (let i = 0; i < lower.length - 1; i++) bigrams.add(lower.slice(i, i + 2));
+    // Very few unique bigrams relative to length = repetitive gibberish
+    if (bigrams.size < lower.length * 0.3) return true;
+  }
+
+  return false;
+}
+
 function detectSpam(field: "name" | "city" | "details", value: string): string | null {
   const trimmed = value.trim();
   if (!trimmed) return null; // empty handled by required validation
@@ -33,6 +60,15 @@ function detectSpam(field: "name" | "city" | "details", value: string): string |
     return field === "name" ? "Informe seu nome verdadeiro" : field === "city" ? "Informe uma cidade válida" : "Mensagem sem sentido detectada";
   }
 
+  // Gibberish detection for all fields
+  if (field === "city") {
+    // Check each word in city for gibberish
+    const words = trimmed.split(/[\s,]+/).filter(Boolean);
+    if (words.some((w) => w.length >= 4 && isGibberish(w))) {
+      return "Informe uma cidade válida";
+    }
+  }
+
   // Field-specific checks
   if (field === "name") {
     // Must have at least 2 words (first + last name)
@@ -52,6 +88,10 @@ function detectSpam(field: "name" | "city" | "details", value: string): string |
     if (!/^[A-Za-zÀ-ÿ\s'-]+$/.test(trimmed)) {
       return "Use apenas letras no nome";
     }
+    // Check each word for gibberish
+    if (words.some((w) => w.length >= 4 && isGibberish(w))) {
+      return "Informe seu nome verdadeiro";
+    }
   }
 
   if (field === "details") {
@@ -70,6 +110,14 @@ function detectSpam(field: "name" | "city" | "details", value: string): string |
     for (const w of words) wordCount[w] = (wordCount[w] || 0) + 1;
     if (Object.values(wordCount).some((c) => c >= 3)) {
       return "Mensagem parece ser spam";
+    }
+    // Check if most words are gibberish
+    const meaningfulWords = words.filter((w) => w.length >= 4);
+    if (meaningfulWords.length >= 2) {
+      const gibberishCount = meaningfulWords.filter((w) => isGibberish(w)).length;
+      if (gibberishCount / meaningfulWords.length > 0.5) {
+        return "Mensagem sem sentido detectada";
+      }
     }
   }
 
