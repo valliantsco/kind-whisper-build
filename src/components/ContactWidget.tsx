@@ -607,9 +607,8 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                 </motion.button>
               </div>
 
-              {/* Status + Hours block */}
-              <div className="px-5 pb-4 space-y-2.5">
-                {/* Status chip */}
+              {/* Status chip */}
+              <div className="px-5 pb-4">
                 <div
                   className="flex items-center justify-center gap-2.5 px-4 py-2 rounded-xl text-[11px] font-semibold tracking-wide border w-full"
                   style={{
@@ -633,25 +632,6 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                     />
                   </span>
                   {isOnline ? "Online agora" : offlineMessage}
-                </div>
-
-                {/* Business hours */}
-                <div
-                  className="flex items-center gap-2.5 p-2.5 rounded-xl"
-                  style={{
-                    background: "hsl(0 0% 100% / 0.03)",
-                    border: "1px solid hsl(0 0% 100% / 0.06)",
-                  }}
-                >
-                  <Clock className="w-3.5 h-3.5 shrink-0" style={{ color: "hsl(11 81% 57% / 0.5)" }} />
-                  <div className="flex flex-wrap gap-x-3 gap-y-0.5">
-                    {businessHoursInfo.map((item) => (
-                      <span key={item.day} className="text-[10px] text-white/40 leading-relaxed">
-                        <span className="font-medium text-white/55">{item.day}</span>{" "}
-                        <span style={{ color: "hsl(11 81% 57% / 0.6)" }}>{item.hours}</span>
-                      </span>
-                    ))}
-                  </div>
                 </div>
               </div>
 
