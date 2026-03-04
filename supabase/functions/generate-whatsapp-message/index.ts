@@ -32,8 +32,10 @@ Regras:
 - Assunto: ${topic}
 - Detalhes do cliente: ${details || "Nenhum detalhe adicional fornecido"}`;
 
+    const WARNING = "\u26A0\uFE0F";
+    const ARROW = "\u27A1\uFE0F";
     const messageTemplate = (aiDetails: string) =>
-      `⚠️ *Por favor, para que seu atendimento prossiga, não apague esta mensagem antes de enviar!*\n\n➡️ *Nome:* ${name}\n\n➡️ *Assunto:* ${topic}\n\n${aiDetails}`;
+      `${WARNING} *Por favor, para que seu atendimento prossiga, não apague esta mensagem antes de enviar!*\n\n${ARROW} *Nome:* ${name}\n\n${ARROW} *Assunto:* ${topic}\n\n${aiDetails}`;
 
 
     const response = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
