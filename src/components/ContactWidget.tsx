@@ -95,7 +95,12 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
   const isOnline = useBusinessHours();
   const draft = useRef(loadDraft());
   const [name, setName] = useState(draft.current?.name || "");
-  const [phone, setPhone] = useState(draft.current?.phone || "");
+  const [phone, setPhone] = useState(() => {
+    const saved = draft.current?.phone || "";
+    // Strip formatting from saved draft, then re-format
+    const digits = saved.replace(/\D/g, "").slice(0, 11);
+    return digits ? formatPhone(digits) : "";
+  });
   const [selectedTopic, setSelectedTopic] = useState(draft.current?.topic || "");
   const [details, setDetails] = useState(draft.current?.details || "");
   const [errors, setErrors] = useState<Record<string, string>>({});
@@ -106,6 +111,9 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
   const [isSelectOpen, setIsSelectOpen] = useState(false);
   const mediaRecorderRef = useRef<MediaRecorder | null>(null);
   const chunksRef = useRef<Blob[]>([]);
+  const textareaRef = useRef<HTMLTextAreaElement | null>(null);
+  const topicMenuRef = useRef<HTMLDivElement | null>(null);
+  const [focusedTopicIndex, setFocusedTopicIndex] = useState(-1);
 
   // Persist draft to sessionStorage
   useEffect(() => {
@@ -122,12 +130,24 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
     } else {
       document.body.style.overflow = "";
       document.documentElement.style.overflow = "";
+      // Bug #5: reset picker state when widget closes
+      setIsSelectOpen(false);
+      setFocusedTopicIndex(-1);
     }
     return () => {
       document.body.style.overflow = "";
       document.documentElement.style.overflow = "";
     };
   }, [isOpen]);
+
+  // Auto-focus topic menu when opened
+  useEffect(() => {
+    if (isSelectOpen && topicMenuRef.current) {
+      topicMenuRef.current.focus();
+      const currentIndex = TOPIC_OPTIONS.indexOf(selectedTopic);
+      setFocusedTopicIndex(currentIndex >= 0 ? currentIndex : 0);
+    }
+  }, [isSelectOpen, selectedTopic]);
 
   const validate = useCallback(() => {
     const errs: Record<string, string> = {};
@@ -229,6 +249,10 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
     setSelectedTopic("");
     setDetails("");
     setErrors({});
+    // Bug #1: reset textarea height
+    if (textareaRef.current) {
+      textareaRef.current.style.height = 'auto';
+    }
     sessionStorage.removeItem(STORAGE_KEY);
     setIsLoading(false);
     onClose();
@@ -444,6 +468,7 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                         />
                         <div className="fixed z-[201] inset-0 flex items-center justify-center pointer-events-none">
                           <motion.div
+                            ref={topicMenuRef}
                             key="select-menu"
                             initial={{ opacity: 0, scale: 0.95 }}
                             animate={{ opacity: 1, scale: 1 }}
@@ -457,18 +482,43 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                               boxShadow: "0 20px 50px rgba(0,0,0,0.5)",
                               width: "min(22rem, 90vw)",
                             }}
+                            role="listbox"
+                            tabIndex={0}
+                            onKeyDown={(e) => {
+                              if (e.key === "Escape") {
+                                setIsSelectOpen(false);
+                                setFocusedTopicIndex(-1);
+                              } else if (e.key === "ArrowDown") {
+                                e.preventDefault();
+                                setFocusedTopicIndex((prev) => (prev + 1) % TOPIC_OPTIONS.length);
+                              } else if (e.key === "ArrowUp") {
+                                e.preventDefault();
+                                setFocusedTopicIndex((prev) => (prev - 1 + TOPIC_OPTIONS.length) % TOPIC_OPTIONS.length);
+                              } else if (e.key === "Enter" && focusedTopicIndex >= 0) {
+                                e.preventDefault();
+                                setSelectedTopic(TOPIC_OPTIONS[focusedTopicIndex]);
+                                setIsSelectOpen(false);
+                                setFocusedTopicIndex(-1);
+                                if (errors.topic) setErrors((prev) => { const { topic: _, ...rest } = prev; return rest; });
+                              }
+                            }}
                           >
-                            {TOPIC_OPTIONS.map((topic) => (
+                            {TOPIC_OPTIONS.map((topic, index) => (
                               <button
                                 key={topic}
                                 type="button"
+                                role="option"
+                                aria-selected={selectedTopic === topic}
                                 onClick={() => {
                                   setSelectedTopic(topic);
                                   setIsSelectOpen(false);
+                                  setFocusedTopicIndex(-1);
                                   if (errors.topic) setErrors((prev) => { const { topic: _, ...rest } = prev; return rest; });
                                 }}
                                 className={`w-full text-left px-3 py-2.5 text-sm rounded-md transition-colors ${
-                                  selectedTopic === topic ? "text-white bg-white/10" : "text-white/70 hover:bg-white/10 hover:text-white"
+                                  selectedTopic === topic ? "text-white bg-white/10" 
+                                  : focusedTopicIndex === index ? "text-white bg-white/10" 
+                                  : "text-white/70 hover:bg-white/10 hover:text-white"
                                 }`}
                               >
                                 {topic}
@@ -491,6 +541,7 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
 
                   <div className="relative">
                     <textarea
+                      ref={textareaRef}
                       value={details}
                       onChange={(e) => {
                         setDetails(e.target.value);
