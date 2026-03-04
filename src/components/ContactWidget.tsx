@@ -446,14 +446,21 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                       <SelectValue placeholder="Toque para escolher" />
                     </SelectTrigger>
                     <SelectContent
-                      className="rounded-lg border-0 z-[200]"
+                      className="rounded-lg border-0 z-[200] fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 max-w-[calc(100vw-3rem)]"
                       position="popper"
+                      side="bottom"
+                      sideOffset={0}
+                      align="center"
                       style={{
                         background: "hsl(0 0% 14% / 0.95)",
                         backdropFilter: "blur(20px)",
                         border: "1px solid hsl(0 0% 100% / 0.1)",
                         boxShadow: "0 20px 50px rgba(0,0,0,0.5)",
-                        width: "var(--radix-select-trigger-width)",
+                        width: "min(22rem, 90vw)",
+                        position: "fixed",
+                        top: "50%",
+                        left: "50%",
+                        transform: "translate(-50%, -50%)",
                       }}
                     >
                       {TOPIC_OPTIONS.map((topic) => (
