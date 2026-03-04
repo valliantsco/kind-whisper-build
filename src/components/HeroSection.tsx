@@ -40,7 +40,7 @@ const SLIDES: SlideContent[] = [
       { text: "do Início ao Fim." },
     ],
     subheadline: "Do primeiro contato ao pós-venda, a MS Eletric oferece atendimento especializado e suporte técnico para você rodar com tranquilidade.",
-    primaryCta: { text: "Saiba mais sobre nosso suporte técnico", href: "#contato" },
+    primaryCta: { text: "Saiba mais sobre nosso suporte", href: "#contato" },
     videoId: "iK7r59HhPjM",
     videoStart: 26,
   },
