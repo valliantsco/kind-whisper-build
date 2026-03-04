@@ -199,14 +199,14 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
 
                 {/* Business hours */}
                 <div
-                  className="mt-3 flex items-start gap-2 p-3 rounded-lg"
+                  className="mt-3 flex items-center justify-center gap-2 p-3 rounded-lg"
                   style={{
                     background: "hsl(0 0% 100% / 0.04)",
                     border: "1px solid hsl(0 0% 100% / 0.06)",
                   }}
                 >
-                  <Clock className="w-3.5 h-3.5 text-white/30 mt-0.5 shrink-0" />
-                  <div className="flex flex-wrap gap-x-4 gap-y-0.5">
+                  <Clock className="w-3.5 h-3.5 text-white/30 shrink-0" />
+                  <div className="flex flex-wrap justify-center gap-x-4 gap-y-0.5">
                     {businessHoursInfo.map((item) => (
                       <span key={item.day} className="text-[10px] text-white/40">
                         <span className="font-medium text-white/60">{item.day}:</span>{" "}
