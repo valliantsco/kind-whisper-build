@@ -142,9 +142,13 @@ const itemVariants = {
   },
 };
 
-const Header = () => {
+interface HeaderProps {
+  contactOpen: boolean;
+  setContactOpen: (open: boolean) => void;
+}
+
+const Header = ({ contactOpen, setContactOpen }: HeaderProps) => {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [contactOpen, setContactOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const isOnline = useBusinessHours();
 

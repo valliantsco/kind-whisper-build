@@ -2,8 +2,14 @@ import { motion } from "framer-motion";
 import { MessageCircle } from "lucide-react";
 import { useBusinessHours } from "@/hooks/useBusinessHours";
 
-const FloatingWhatsApp = () => {
+interface FloatingWhatsAppProps {
+  hidden?: boolean;
+}
+
+const FloatingWhatsApp = ({ hidden }: FloatingWhatsAppProps) => {
   const isOnline = useBusinessHours();
+
+  if (hidden) return null;
 
   return (
     <motion.a

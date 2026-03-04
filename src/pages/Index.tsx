@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Header from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
 import MarqueeText from "@/components/MarqueeText";
@@ -12,9 +13,11 @@ import Footer from "@/components/Footer";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 
 const Index = () => {
+  const [contactOpen, setContactOpen] = useState(false);
+
   return (
     <div className="min-h-screen bg-background">
-      <Header />
+      <Header contactOpen={contactOpen} setContactOpen={setContactOpen} />
       <main>
         <HeroSection />
         <MarqueeText />
@@ -27,7 +30,7 @@ const Index = () => {
         <WhyChooseSection />
       </main>
       <Footer />
-      <FloatingWhatsApp />
+      <FloatingWhatsApp hidden={contactOpen} />
     </div>
   );
 };
