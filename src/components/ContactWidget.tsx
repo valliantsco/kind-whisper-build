@@ -73,8 +73,17 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
   const [errors, setErrors] = useState<Record<string, string>>({});
 
   useEffect(() => {
-    document.body.style.overflow = isOpen ? "hidden" : "";
-    return () => { document.body.style.overflow = ""; };
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+      document.documentElement.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+      document.documentElement.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+      document.documentElement.style.overflow = "";
+    };
   }, [isOpen]);
 
   const validate = useCallback(() => {
