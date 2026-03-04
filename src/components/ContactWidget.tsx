@@ -261,7 +261,7 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
           />
 
           {/* Panel — glassmorphism dark style matching header */}
-          <div className="relative w-full max-w-md flex items-stretch gap-2">
+          <div className="relative w-full max-w-md flex items-stretch" style={{ gap: 5 }}>
             {/* External scrollbar track */}
             <AnimatePresence>
               {isScrolling && (
