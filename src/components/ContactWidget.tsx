@@ -263,7 +263,8 @@ const getInputBorderStyle = (hasError: boolean) => ({
 });
 
 const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
-  const { isOnline, offlineMessage } = useBusinessStatus();
+  const { isOnline: _isOnline, offlineMessage } = useBusinessStatus();
+  const isOnline = true; // TEMP: simular online
   const [name, setName] = useState("");
   const [showHoursPopup, setShowHoursPopup] = useState(false);
   const [phone, setPhone] = useState("");
