@@ -301,11 +301,13 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
           <input
             type="text"
             value={name}
-            onChange={(e) => setName(e.target.value)}
+            onChange={(e) => handleNameChange(e.target.value)}
+            onBlur={handleNameBlur}
             placeholder="João Silva"
             maxLength={100}
-            className={inputStyle}
+            className={getInputClasses(!!nameError)}
           />
+          {nameError && <p className="text-[10px] mt-1 text-destructive">{nameError}</p>}
         </div>
 
         {/* WhatsApp */}
@@ -317,11 +319,13 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
           <input
             type="tel"
             value={phone}
-            onChange={(e) => setPhone(formatPhone(e.target.value))}
+            onChange={(e) => handlePhoneChange(e.target.value)}
+            onBlur={handlePhoneBlur}
             placeholder="(00) 00000-0000"
             maxLength={15}
-            className={inputStyle}
+            className={getInputClasses(!!phoneError)}
           />
+          {phoneError && <p className="text-[10px] mt-1 text-destructive">{phoneError}</p>}
         </div>
 
         {/* City */}
@@ -334,20 +338,7 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
             ref={cityInputRef}
             type="text"
             value={city}
-            onChange={(e) => {
-              const val = e.target.value;
-              setCity(val);
-              setCityValidated(false);
-              if (val.trim().length >= 2) {
-                const results = filterCities(val.trim());
-                setCitySuggestions(results);
-                setCityDropdownOpen(results.length > 0);
-                setFocusedCityIndex(-1);
-              } else {
-                setCitySuggestions([]);
-                setCityDropdownOpen(false);
-              }
-            }}
+            onChange={(e) => handleCityChange(e.target.value)}
             onFocus={() => {
               if (city.trim().length >= 2 && citySuggestions.length > 0) setCityDropdownOpen(true);
             }}
@@ -361,9 +352,10 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
             }}
             placeholder="São Paulo, SP"
             maxLength={100}
-            className={inputStyle}
+            className={getInputClasses(!!cityError)}
             autoComplete="off"
           />
+          {cityError && <p className="text-[10px] mt-1 text-destructive">{cityError}</p>}
           <AnimatePresence>
             {cityDropdownOpen && citySuggestions.length > 0 && (
               <motion.div
