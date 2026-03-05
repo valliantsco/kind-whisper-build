@@ -36,7 +36,7 @@ const StatusChip = ({ isOnline, offlineMessage }: StatusChipProps) => {
             background: isOnline
               ? `linear-gradient(135deg, ${onlineColor} / 0.15, ${onlineColor} / 0.05)`
               : "linear-gradient(135deg, hsl(15 30% 14%), hsl(20 20% 11%))",
-            borderColor: `${accentColor} / 0.3`,
+            borderColor: isOnline ? "hsl(142 76% 36% / 0.3)" : "hsl(11 81% 57% / 0.3)",
             color: textColor,
           }}
         >
@@ -98,23 +98,23 @@ const StatusChip = ({ isOnline, offlineMessage }: StatusChipProps) => {
                     ? `linear-gradient(135deg, ${onlineColor} / 0.15, ${onlineColor} / 0.05)`
                     : "linear-gradient(135deg, hsl(15 30% 14%), hsl(20 20% 11%))",
                   backdropFilter: "blur(24px)",
-                  border: `1px solid ${accentColor} / 0.25`,
-                  boxShadow: `0 12px 40px hsl(0 0% 0% / 0.3), 0 0 20px ${accentColor} / 0.05`,
+                  border: isOnline ? "1px solid hsl(142 76% 36% / 0.25)" : "1px solid hsl(11 81% 57% / 0.25)",
+                  boxShadow: `0 12px 40px hsl(0 0% 0% / 0.3), 0 0 20px ${isOnline ? "hsl(142 76% 36% / 0.05)" : "hsl(11 81% 57% / 0.05)"}`,
                 }}
               >
                 <div
                   className="flex items-center gap-2 mb-2.5 pb-2"
-                  style={{ borderBottom: `1px solid ${isOnline ? `${onlineColor} / 0.15` : "hsl(0 0% 100% / 0.06)"}` }}
+                  style={{ borderBottom: isOnline ? "1px solid hsl(142 76% 36% / 0.15)" : "1px solid hsl(0 0% 100% / 0.06)" }}
                 >
-                  <Clock className="w-2.5 h-2.5" style={{ color: isOnline ? textColor : `${offlineColor} / 0.8` }} />
+                  <Clock className="w-2.5 h-2.5" style={{ color: isOnline ? textColor : "hsl(11 81% 57% / 0.8)" }} />
                   <span className="text-[11px] font-semibold tracking-wide" style={{ color: textColor }}>
                     Horário de atendimento
                   </span>
                 </div>
                 {BUSINESS_HOURS_INFO.map((item) => {
                   const isToday = TODAY === getDayMatch(item.day);
-                  const todayBg = `${accentColor} / 0.08`;
-                  const todayBorder = `2px solid ${accentColor} / 0.6`;
+                  const todayBg = isOnline ? "hsl(142 76% 36% / 0.08)" : "hsl(11 81% 57% / 0.08)";
+                  const todayBorder = isOnline ? "2px solid hsl(142 76% 36% / 0.6)" : "2px solid hsl(11 81% 57% / 0.6)";
                   return (
                     <div
                       key={item.day}
@@ -133,7 +133,7 @@ const StatusChip = ({ isOnline, offlineMessage }: StatusChipProps) => {
                         {isToday && (
                           <span
                             className="ml-1.5 text-[8px] uppercase tracking-wider font-bold"
-                            style={{ color: isOnline ? textColor : `${offlineColor} / 0.8` }}
+                            style={{ color: isOnline ? textColor : "hsl(11 81% 57% / 0.8)" }}
                           >
                             Hoje
                           </span>
@@ -147,7 +147,7 @@ const StatusChip = ({ isOnline, offlineMessage }: StatusChipProps) => {
                               ? "hsl(0 60% 55% / 0.7)"
                               : isToday
                                 ? (isOnline ? textColor : offlineColor)
-                                : (isOnline ? `${textColor} / 0.75` : `${offlineColor} / 0.75`),
+                                : (isOnline ? "hsl(142 70% 70% / 0.75)" : "hsl(11 81% 57% / 0.75)"),
                         }}
                       >
                         {item.hours}
