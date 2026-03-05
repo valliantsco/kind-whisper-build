@@ -36,15 +36,33 @@ ${businessContext || "Não fornecido"}
 Com base nas respostas do quiz, você DEVE retornar um JSON com exatamente esta estrutura (sem markdown, sem backticks, apenas o JSON puro):
 {
   "category": "Nome da categoria recomendada",
-  "justification": "Explicação detalhada de 2-3 frases sobre POR QUE esta categoria é ideal para o perfil do usuário, conectando cada resposta à recomendação",
-  "suggestions": ["Modelo/Produto sugerido 1", "Modelo/Produto sugerido 2", "Modelo/Produto sugerido 3"],
-  "whatsappMessage": "Mensagem em primeira pessoa, tom natural e direto, sem emojis. Deve resumir o perfil do usuário e a recomendação recebida, solicitando mais informações sobre os modelos sugeridos."
+  "justification": "Explicação curta de 1 frase sobre POR QUE esta categoria é ideal",
+  "models": [
+    {
+      "name": "MODELO PRINCIPAL",
+      "headline": "Frase curta e impactante sobre por que é o ideal (1 linha)",
+      "specs": "Motor: XW | Vel: Xkm/h | Autonomia: Xkm | Bateria: tipo | Preço: R$X",
+      "whyFits": "Explicação de 2-3 frases personalizada conectando o perfil do usuário às características do modelo"
+    },
+    {
+      "name": "SEGUNDO MODELO",
+      "headline": "Frase curta sobre por que é uma boa alternativa"
+    },
+    {
+      "name": "TERCEIRO MODELO (se aplicável)",
+      "headline": "Frase curta sobre por que pode ser interessante"
+    }
+  ],
+  "suggestions": [],
+  "whatsappMessage": "Mensagem em primeira pessoa, tom natural e direto, sem emojis. Deve citar os modelos recomendados e solicitar mais informações."
 }
 
 REGRAS:
-- A justificativa deve ser personalizada, citando as respostas específicas do usuário
+- Recomende 2-3 modelos ranqueados do mais adequado ao menos
+- O primeiro modelo deve ter TODOS os campos (name, headline, specs, whyFits)
+- O segundo e terceiro modelos devem ter apenas name e headline (sem specs/whyFits)
+- A justificativa deve ser curta (1 frase)
 - A mensagem WhatsApp deve soar natural, como se a pessoa estivesse escrevendo
-- Sugira 2-3 produtos/modelos que façam sentido para o perfil
 - Responda APENAS com o JSON, sem texto adicional`;
 
     const response = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {

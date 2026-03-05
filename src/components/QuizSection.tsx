@@ -7,8 +7,16 @@ import type { QuizConfig, QuizResult } from "@/components/quiz/types";
 const childDirectResult: QuizResult = {
   category: "Moto Cross Infantil",
   justification:
-    "Para crianças e adolescentes, a Moto Cross Infantil é a escolha ideal. Possui seletor de velocidade com controle por chave, permitindo que os pais ajustem a velocidade máxima conforme a idade e experiência. Motor 800W, autonomia de até 35km e ângulo de escalada de 18° para diversão segura.",
-  suggestions: ["Moto Cross Infantil — R$ 5.990"],
+    "Para crianças e adolescentes, a Moto Cross Infantil é a escolha perfeita com controle de velocidade por chave.",
+  models: [
+    {
+      name: "Moto Cross Infantil",
+      headline: "Diversão segura com controle parental de velocidade",
+      specs: "Motor: 800W | Vel: 32km/h | Autonomia: 35km | Recarga: 6h | Preço: R$ 5.990",
+      whyFits: "Possui seletor de velocidade com controle por chave, permitindo que os pais ajustem a velocidade máxima conforme a idade e experiência. Ideal para diversão segura com ângulo de escalada de 18°.",
+    },
+  ],
+  suggestions: [],
   whatsappMessage:
     "Olá, fiz o quiz no site e tenho interesse na Moto Cross Infantil para presentear. Gostaria de saber mais sobre disponibilidade, formas de pagamento e se posso fazer um test ride.",
 };

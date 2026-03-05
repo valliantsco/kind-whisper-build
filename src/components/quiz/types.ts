@@ -35,9 +35,17 @@ export interface QuizConfig {
   teaserSubheading?: string;
 }
 
+export interface RecommendedModel {
+  name: string;
+  headline: string;
+  specs?: string;
+  whyFits?: string;
+}
+
 export interface QuizResult {
   category: string;
   justification: string;
   suggestions: string[];
+  models: RecommendedModel[];
   whatsappMessage: string;
 }
