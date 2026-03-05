@@ -110,7 +110,21 @@ REGRAS:
     let parsed;
     try {
       // Remove potential markdown code fences
-      const cleaned = content.replace(/```json\n?/g, "").replace(/```\n?/g, "").trim();
+      let cleaned = content.replace(/```json\n?/g, "").replace(/```\n?/g, "").trim();
+      
+      // Find JSON boundaries
+      const jsonStart = cleaned.search(/[\{\[]/);
+      const jsonEnd = cleaned.lastIndexOf(jsonStart !== -1 && cleaned[jsonStart] === '[' ? ']' : '}');
+      if (jsonStart !== -1 && jsonEnd !== -1) {
+        cleaned = cleaned.substring(jsonStart, jsonEnd + 1);
+      }
+      
+      // Fix common issues
+      cleaned = cleaned
+        .replace(/,\s*}/g, "}")
+        .replace(/,\s*]/g, "]")
+        .replace(/[\x00-\x1F\x7F]/g, "");
+
       parsed = JSON.parse(cleaned);
     } catch {
       console.error("Failed to parse AI response:", content);
@@ -118,11 +132,20 @@ REGRAS:
         JSON.stringify({
           category: "Consulta personalizada",
           justification: content,
+          models: [],
           suggestions: [],
           whatsappMessage: `Olá! Fiz o quiz e gostaria de uma recomendação personalizada. Minhas respostas foram: ${answers.map((a: any) => `${a.question}: ${a.answer}`).join("; ")}`,
         }),
         { status: 200, headers: { ...corsHeaders, "Content-Type": "application/json" } }
       );
+    }
+
+    // Ensure models array exists
+    if (!parsed.models || !Array.isArray(parsed.models)) {
+      parsed.models = [];
+    }
+    if (!parsed.suggestions) {
+      parsed.suggestions = [];
     }
 
     return new Response(JSON.stringify(parsed), {
