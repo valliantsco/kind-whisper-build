@@ -321,12 +321,12 @@ const Header = ({ contactOpen, setContactOpen }: HeaderProps) => {
                 onClick={() => setContactOpen(true)}
                 className="relative inline-flex items-center justify-center gap-2.5 h-10 px-6 text-[11px] font-bold uppercase tracking-[0.14em] rounded-xl text-white overflow-visible cursor-pointer"
                 style={{
-                  background: "linear-gradient(135deg, #25D366, #128C7E)",
-                  boxShadow: "0 4px 20px rgba(37,211,102,0.2)",
+                  background: "linear-gradient(135deg, hsl(11 81% 57%), hsl(11 90% 65%))",
+                  boxShadow: "0 4px 20px hsl(11 81% 57% / 0.25)",
                 }}
                 whileHover={{
                   scale: 1.05,
-                  boxShadow: "0 0 25px rgba(37,211,102,0.5), 0 0 50px rgba(37,211,102,0.15)",
+                  boxShadow: "0 0 25px hsl(11 81% 57% / 0.5), 0 0 50px hsl(11 81% 57% / 0.2)",
                 }}
                 whileTap={{ scale: 0.95 }}
                 transition={{ duration: 0.3 }}
@@ -437,12 +437,12 @@ const Header = ({ contactOpen, setContactOpen }: HeaderProps) => {
                       }}
                       className="relative flex items-center justify-center gap-3 w-full py-3.5 rounded-xl text-white text-[11px] font-bold uppercase tracking-[0.14em] overflow-visible cursor-pointer"
                       style={{
-                        background: "linear-gradient(135deg, #25D366, #128C7E)",
-                        boxShadow: "0 4px 20px rgba(37,211,102,0.25)",
+                        background: "linear-gradient(135deg, hsl(11 81% 57%), hsl(11 90% 65%))",
+                        boxShadow: "0 4px 20px hsl(11 81% 57% / 0.25)",
                       }}
                       whileHover={{
                         scale: 1.02,
-                        boxShadow: "0 0 25px rgba(37,211,102,0.5), 0 0 50px rgba(37,211,102,0.15)",
+                        boxShadow: "0 0 25px hsl(11 81% 57% / 0.5), 0 0 50px hsl(11 81% 57% / 0.2)",
                       }}
                       whileTap={{ scale: 0.98 }}
                     >
