@@ -173,15 +173,6 @@ const HeroSection = () => {
               const TagIcon = TAG_ICONS[slide.tagIcon];
               return (
                 <>
-                  <div className="mb-5 md:mb-6">
-                    <span
-                      className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-[10px] sm:text-xs font-semibold uppercase tracking-[0.2em] text-primary-foreground/80 border border-primary-foreground/10 backdrop-blur-sm"
-                      style={{ background: "hsl(0 0% 100% / 0.04)" }}
-                    >
-                      <TagIcon className="w-3 h-3 text-primary" />
-                      {slide.tag}
-                    </span>
-                  </div>
 
                   {/* Headline */}
                   <h1 className="font-display font-black text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-primary-foreground leading-[0.95] mb-5 md:mb-7 uppercase tracking-tight">
