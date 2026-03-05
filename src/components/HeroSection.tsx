@@ -265,53 +265,6 @@ const HeroSection = () => {
         </AnimatePresence>
       </div>
 
-      {/* Slide indicators + pause/play */}
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 flex items-center gap-3">
-        {SLIDES.map((_, i) => (
-          <button
-            key={i}
-            onClick={() => { setCurrentSlide(i); setProgress(0); }}
-            className="relative h-1.5 rounded-full overflow-hidden transition-all duration-500"
-            style={{
-              width: i === currentSlide ? 40 : 12,
-              background: "hsl(0 0% 100% / 0.15)",
-            }}
-            aria-label={`Slide ${i + 1}`}
-          >
-            {i === currentSlide && (
-              <span
-                className="absolute inset-y-0 left-0 rounded-full"
-                style={{
-                  width: `${progress}%`,
-                  background: "linear-gradient(90deg, hsl(11 81% 57%), hsl(11 90% 65%))",
-                  boxShadow: "0 0 8px hsl(11 81% 57% / 0.5)",
-                  transition: "width 50ms linear",
-                }}
-              />
-            )}
-            {i !== currentSlide && (
-              <span
-                className="absolute inset-0 rounded-full"
-                style={{ background: "hsl(0 0% 100% / 0.25)" }}
-              />
-            )}
-          </button>
-        ))}
-        <motion.button
-          onClick={() => setIsPaused((p) => !p)}
-          className="ml-2 flex items-center justify-center w-8 h-8 rounded-full border-2 border-primary backdrop-blur-sm"
-          style={{ background: "hsl(0 0% 100% / 0.06)" }}
-          whileHover={{ scale: 1.15, borderColor: "hsl(0 0% 100% / 0.3)" }}
-          whileTap={{ scale: 0.9 }}
-          aria-label={isPaused ? "Retomar apresentação" : "Pausar apresentação"}
-        >
-          {isPaused ? (
-            <Play className="w-3.5 h-3.5 text-primary ml-[1px]" />
-          ) : (
-            <Pause className="w-3.5 h-3.5 text-primary" />
-          )}
-        </motion.button>
-      </div>
     </section>
   );
 };
