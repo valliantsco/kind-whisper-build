@@ -659,7 +659,7 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                       className="text-[9px] text-white/50 px-2 py-1 rounded-md"
                       style={{ background: "hsl(0 0% 10% / 0.8)", border: "1px solid hsl(0 0% 100% / 0.08)" }}>
                       
-                          Toque para ver os horários
+                          Toque para ver o horário de atendimento
                         </span>
                       </motion.div>
                   }
