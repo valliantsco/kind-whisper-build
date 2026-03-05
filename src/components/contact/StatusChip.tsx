@@ -17,10 +17,6 @@ const getDayMatch = (dayLabel: string): number => {
   return -1;
 };
 
-const brandColor = "hsl(11 81% 57%)";
-const brandColorLight = "hsl(11 90% 65%)";
-const textColor = "hsl(30 90% 75%)";
-
 const StatusChip = ({ isOnline, offlineMessage }: StatusChipProps) => {
   const [showHoursPopup, setShowHoursPopup] = useState(false);
 
@@ -30,25 +26,25 @@ const StatusChip = ({ isOnline, offlineMessage }: StatusChipProps) => {
         <button
           type="button"
           onClick={() => setShowHoursPopup((v) => !v)}
-          className="group flex items-center gap-2.5 px-4 py-2 rounded-xl text-[11px] font-semibold tracking-wide border w-full cursor-pointer transition-all duration-200 hover:brightness-125"
+          className="group flex items-center gap-2.5 px-4 py-2.5 rounded-xl text-[11px] font-bold uppercase tracking-[0.12em] w-full cursor-pointer transition-all duration-200 hover:brightness-110"
           style={{
-            background: `linear-gradient(135deg, ${brandColor} / 0.15, ${brandColor} / 0.05)`,
-            borderColor: `${brandColor} / 0.3`,
-            color: textColor,
+            background: "linear-gradient(135deg, hsl(11 81% 57%), hsl(11 90% 65%))",
+            color: "white",
+            boxShadow: "0 4px 16px hsl(11 81% 57% / 0.3)",
           }}
         >
           <span className="relative flex h-2.5 w-2.5 shrink-0">
             <span
               className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-60"
-              style={{ background: isOnline ? "hsl(142 76% 50%)" : brandColor }}
+              style={{ background: isOnline ? "hsl(142 76% 90%)" : "hsl(0 0% 100%)" }}
             />
             <span
-              className="relative inline-flex rounded-full h-2.5 w-2.5"
-              style={{ background: isOnline ? "hsl(142 76% 50%)" : brandColor }}
+              className="relative inline-flex rounded-full h-2.5 w-2.5 border border-white/30"
+              style={{ background: isOnline ? "hsl(142 76% 50%)" : "hsl(0 0% 100% / 0.7)" }}
             />
           </span>
           {isOnline ? "Atendimento Online" : offlineMessage}
-          <span className="ml-auto flex items-center gap-1 text-[9px] opacity-50 group-hover:opacity-80 transition-opacity duration-200">
+          <span className="ml-auto flex items-center gap-1 text-[9px] opacity-70 group-hover:opacity-100 transition-opacity duration-200">
             Ver horários{" "}
             <span
               className="inline-block transition-transform duration-200"
@@ -71,18 +67,16 @@ const StatusChip = ({ isOnline, offlineMessage }: StatusChipProps) => {
                 transition={{ type: "spring", stiffness: 400, damping: 25 }}
                 className="absolute left-0 right-0 top-full mt-2 z-50 rounded-xl p-4 space-y-1"
                 style={{
-                  background: `linear-gradient(135deg, ${brandColor} / 0.15, ${brandColor} / 0.05)`,
-                  backdropFilter: "blur(24px)",
-                  border: `1px solid ${brandColor} / 0.25`,
-                  boxShadow: `0 12px 40px hsl(0 0% 0% / 0.3), 0 0 20px ${brandColor} / 0.05`,
+                  background: "linear-gradient(135deg, hsl(11 81% 57%), hsl(11 90% 65%))",
+                  boxShadow: "0 12px 40px hsl(0 0% 0% / 0.3), 0 0 20px hsl(11 81% 57% / 0.15)",
                 }}
               >
                 <div
                   className="flex items-center gap-2 mb-2.5 pb-2"
-                  style={{ borderBottom: `1px solid ${brandColor} / 0.15` }}
+                  style={{ borderBottom: "1px solid hsl(0 0% 100% / 0.2)" }}
                 >
-                  <Clock className="w-2.5 h-2.5" style={{ color: `${brandColor} / 0.8` }} />
-                  <span className="text-[11px] font-semibold tracking-wide" style={{ color: textColor }}>
+                  <Clock className="w-2.5 h-2.5 text-white/80" />
+                  <span className="text-[11px] font-bold uppercase tracking-[0.1em] text-white">
                     Horário de atendimento
                   </span>
                 </div>
@@ -94,20 +88,17 @@ const StatusChip = ({ isOnline, offlineMessage }: StatusChipProps) => {
                       className="grid items-center py-2 px-2.5 rounded-lg transition-colors duration-150"
                       style={{
                         gridTemplateColumns: "1fr auto",
-                        background: isToday ? `${brandColor} / 0.08` : "transparent",
-                        borderLeft: isToday ? `2px solid ${brandColor} / 0.6` : "2px solid transparent",
+                        background: isToday ? "hsl(0 0% 100% / 0.15)" : "transparent",
+                        borderLeft: isToday ? "2px solid hsl(0 0% 100% / 0.7)" : "2px solid transparent",
                       }}
                     >
                       <span
                         className="text-[11px] font-medium"
-                        style={{ color: isToday ? "hsl(0 0% 100% / 0.85)" : "hsl(0 0% 100% / 0.50)" }}
+                        style={{ color: isToday ? "hsl(0 0% 100%)" : "hsl(0 0% 100% / 0.65)" }}
                       >
                         {item.day}
                         {isToday && (
-                          <span
-                            className="ml-1.5 text-[8px] uppercase tracking-wider font-bold"
-                            style={{ color: `${brandColor} / 0.8` }}
-                          >
+                          <span className="ml-1.5 text-[8px] uppercase tracking-wider font-bold text-white">
                             Hoje
                           </span>
                         )}
@@ -117,10 +108,10 @@ const StatusChip = ({ isOnline, offlineMessage }: StatusChipProps) => {
                         style={{
                           color:
                             item.hours === "Fechado"
-                              ? "hsl(0 60% 55% / 0.7)"
+                              ? "hsl(0 0% 100% / 0.4)"
                               : isToday
-                                ? brandColor
-                                : `${brandColor} / 0.75`,
+                                ? "hsl(0 0% 100%)"
+                                : "hsl(0 0% 100% / 0.75)",
                         }}
                       >
                         {item.hours}
