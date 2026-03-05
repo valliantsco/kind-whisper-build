@@ -688,7 +688,7 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                       
                           <div className="flex items-center gap-2 mb-2.5 pb-2" style={{ borderBottom: "1px solid hsl(0 0% 100% / 0.06)" }}>
                             <Clock className="w-3.5 h-3.5" style={{ color: "hsl(11 81% 57% / 0.8)" }} />
-                            <span className="text-[10px] font-semibold uppercase tracking-[0.12em] text-white/50">
+                            <span className="text-[10px] font-semibold uppercase tracking-[0.12em]" style={{ color: "hsl(30 90% 75%)" }}>
                               Horário de atendimento
                             </span>
                           </div>
