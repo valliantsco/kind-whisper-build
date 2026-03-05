@@ -104,13 +104,22 @@ const QuizSection = () => {
             <p className="text-primary-foreground/70 text-lg mb-8 max-w-xl mx-auto">
               Responda algumas perguntas e receba uma recomendação baseada no seu uso.
             </p>
-            <Button
-              size="lg"
-              className="text-base px-8 py-6 font-bold rounded-xl"
+            <motion.button
+              className="inline-flex items-center justify-center gap-2.5 text-[11px] sm:text-sm font-bold uppercase tracking-[0.14em] px-8 md:px-10 py-3.5 md:py-4 rounded-xl text-white overflow-visible cursor-pointer"
+              style={{
+                background: "linear-gradient(135deg, hsl(11 81% 57%), hsl(11 90% 65%))",
+                boxShadow: "0 4px 20px hsl(11 81% 57% / 0.25)",
+              }}
+              whileHover={{
+                scale: 1.05,
+                boxShadow: "0 0 25px hsl(11 81% 57% / 0.5), 0 0 50px hsl(11 81% 57% / 0.2)",
+              }}
+              whileTap={{ scale: 0.97 }}
               onClick={() => { reset(); setOpen(true); }}
             >
+              <Sparkles className="w-4 h-4" />
               Descobrir meu modelo (Quiz)
-            </Button>
+            </motion.button>
           </motion.div>
         </div>
       </section>
