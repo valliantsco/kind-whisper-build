@@ -204,7 +204,7 @@ const QuizEngine = ({ config, open, onOpenChange }: QuizEngineProps) => {
 
           {/* Result */}
           {result && !loading && (
-            <QuizResultView result={result} whatsappUrl={whatsappUrl} onReset={reset} />
+            <QuizResultView result={result} whatsappNumber={config.whatsappNumber} onReset={reset} />
           )}
 
           {/* Details step (after all questions, before submit) */}
