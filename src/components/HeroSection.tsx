@@ -157,7 +157,7 @@ const HeroSection = () => {
       </div>
 
       {/* Main content — dynamic per slide */}
-      <div className="relative z-10 container mx-auto px-4 flex items-end min-h-[75vh] pb-2 md:pb-3">
+      <div className="relative z-10 container mx-auto px-4 flex items-end min-h-[75vh]">
         <AnimatePresence mode="wait">
           <motion.div
             key={currentSlide}
