@@ -617,7 +617,7 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                   <button
                   type="button"
                   onClick={() => setShowHoursPopup((v) => !v)}
-                  className="group flex items-center justify-center gap-2.5 px-4 py-2 rounded-xl text-[11px] font-semibold tracking-wide border w-full cursor-pointer transition-all duration-200 hover:brightness-125"
+                  className="group flex items-center gap-2.5 px-4 py-2 rounded-xl text-[11px] font-semibold tracking-wide border w-full cursor-pointer transition-all duration-200 hover:brightness-125"
                   style={{
                     background: isOnline ?
                     "linear-gradient(135deg, hsl(142 76% 36% / 0.15), hsl(142 76% 36% / 0.05))" :
