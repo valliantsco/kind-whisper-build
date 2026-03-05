@@ -1,9 +1,11 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { ChevronDown } from "lucide-react";
 import msLogo from "@/assets/ms-eletric-logo-white.png";
 import msLogoDark from "@/assets/ms-eletric-logo-dark-new.png";
 import { useBusinessHours } from "@/hooks/useBusinessHours";
 import ContactWidget from "@/components/PopUpContato01";
+import MegaMenu, { categories } from "@/components/MegaMenu";
 
 /* Simple pulsing status dot — matches popup StatusChip style */
 const StatusDot = ({ online }: { online: boolean }) => (
@@ -117,6 +119,9 @@ interface HeaderProps {
 const Header = ({ contactOpen, setContactOpen }: HeaderProps) => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [megaMenuOpen, setMegaMenuOpen] = useState(false);
+  const [mobileCatsOpen, setMobileCatsOpen] = useState(false);
+  const megaMenuTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
   const isOnline = useBusinessHours();
 
   useEffect(() => {
