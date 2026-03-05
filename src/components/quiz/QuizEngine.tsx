@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight, ArrowLeft, Sparkles, MessageCircle, Loader2, RotateCcw } from "lucide-react";
+import { ArrowRight, ArrowLeft, Sparkles, Loader2, RotateCcw } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import type { QuizConfig, QuizResult } from "./types";
 import QuizStepView from "./QuizStepView";
 import QuizResultView from "./QuizResultView";
+import QuizDetailsStep from "./QuizDetailsStep";
 
 interface QuizEngineProps {
   config: QuizConfig;
@@ -19,9 +20,14 @@ const QuizEngine = ({ config, open, onOpenChange }: QuizEngineProps) => {
   const [result, setResult] = useState<QuizResult | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [showDetailsStep, setShowDetailsStep] = useState(false);
+  const [extraDetails, setExtraDetails] = useState("");
 
   const totalSteps = config.steps.length;
-  const progress = ((step + 1) / totalSteps) * 100;
+  // Progress: questions + optional details step
+  const progressTotal = totalSteps + 1;
+  const progressCurrent = showDetailsStep ? totalSteps + 1 : step + 1;
+  const progress = (progressCurrent / progressTotal) * 100;
 
   const reset = () => {
     setStep(0);
@@ -29,6 +35,8 @@ const QuizEngine = ({ config, open, onOpenChange }: QuizEngineProps) => {
     setResult(null);
     setLoading(false);
     setError(null);
+    setShowDetailsStep(false);
+    setExtraDetails("");
   };
 
   const handleAnswer = (answer: string) => {
@@ -37,7 +45,7 @@ const QuizEngine = ({ config, open, onOpenChange }: QuizEngineProps) => {
     setAnswers(newAnswers);
   };
 
-  const submitToAI = async (finalAnswers: string[]) => {
+  const submitToAI = async (finalAnswers: string[], details?: string) => {
     setLoading(true);
     setError(null);
     try {
@@ -45,6 +53,14 @@ const QuizEngine = ({ config, open, onOpenChange }: QuizEngineProps) => {
         question: s.question,
         answer: finalAnswers[i] || "",
       }));
+
+      // Add extra details as an additional "answer"
+      if (details?.trim()) {
+        questionsWithAnswers.push({
+          question: "Detalhes adicionais fornecidos pelo usuário",
+          answer: details.trim(),
+        });
+      }
 
       const { data, error: fnError } = await supabase.functions.invoke("quiz-recommend", {
         body: {
@@ -77,7 +93,7 @@ const QuizEngine = ({ config, open, onOpenChange }: QuizEngineProps) => {
   const nextStep = async () => {
     const currentStep = config.steps[step];
 
-    // Check for conditional skip (e.g., child → direct result)
+    // Check for conditional skip
     if (currentStep.skipToResultIf) {
       const selectedOption = answers[step];
       const skipOption = currentStep.options[currentStep.skipToResultIf.optionIndex];
@@ -90,15 +106,25 @@ const QuizEngine = ({ config, open, onOpenChange }: QuizEngineProps) => {
     if (step < totalSteps - 1) {
       setStep(step + 1);
     } else {
-      await submitToAI(answers);
+      // Show the details step instead of submitting immediately
+      setShowDetailsStep(true);
     }
   };
 
+  const handleSubmitFromDetails = async () => {
+    await submitToAI(answers, extraDetails);
+  };
+
   const prevStep = () => {
+    if (showDetailsStep) {
+      setShowDetailsStep(false);
+      return;
+    }
     if (step > 0) setStep(step - 1);
   };
 
   const canProceed = !!answers[step];
+  const isOnDetailsStep = showDetailsStep && !result && !loading && !error;
 
   const whatsappUrl = result
     ? `https://wa.me/${config.whatsappNumber}?text=${encodeURIComponent(result.whatsappMessage)}`
@@ -116,6 +142,8 @@ const QuizEngine = ({ config, open, onOpenChange }: QuizEngineProps) => {
               ? "Baseado nas suas respostas"
               : loading
               ? "A IA está processando suas respostas"
+              : showDetailsStep
+              ? "Quase lá! Mais algum detalhe?"
               : "Responda para receber sua recomendação"}
           </DialogDescription>
         </DialogHeader>
@@ -163,7 +191,7 @@ const QuizEngine = ({ config, open, onOpenChange }: QuizEngineProps) => {
             >
               <p className="text-destructive text-sm">{error}</p>
               <motion.button
-                onClick={() => { setError(null); submitToAI(answers); }}
+                onClick={() => { setError(null); submitToAI(answers, extraDetails); }}
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-white text-sm font-bold uppercase tracking-wide cursor-pointer bg-primary"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -179,8 +207,17 @@ const QuizEngine = ({ config, open, onOpenChange }: QuizEngineProps) => {
             <QuizResultView result={result} whatsappUrl={whatsappUrl} onReset={reset} />
           )}
 
+          {/* Details step (after all questions, before submit) */}
+          {isOnDetailsStep && (
+            <QuizDetailsStep
+              key="details-step"
+              details={extraDetails}
+              onDetailsChange={setExtraDetails}
+            />
+          )}
+
           {/* Question steps */}
-          {!result && !loading && !error && (
+          {!result && !loading && !error && !showDetailsStep && (
             <QuizStepView
               key={`step-${step}`}
               stepConfig={config.steps[step]}
@@ -191,7 +228,7 @@ const QuizEngine = ({ config, open, onOpenChange }: QuizEngineProps) => {
         </AnimatePresence>
 
         {/* Navigation */}
-        {!result && !loading && !error && (
+        {!result && !loading && !error && !showDetailsStep && (
           <div className="flex gap-3 mt-4">
             {step > 0 && (
               <motion.button
@@ -209,7 +246,28 @@ const QuizEngine = ({ config, open, onOpenChange }: QuizEngineProps) => {
               whileHover={canProceed ? { scale: 1.02 } : {}}
               whileTap={canProceed ? { scale: 0.98 } : {}}
             >
-              {step === totalSteps - 1 ? "Ver resultado" : "Próximo"} <ArrowRight className="w-4 h-4" />
+              Próximo <ArrowRight className="w-4 h-4" />
+            </motion.button>
+          </div>
+        )}
+
+        {/* Details step navigation */}
+        {isOnDetailsStep && (
+          <div className="flex gap-3 mt-4">
+            <motion.button
+              onClick={prevStep}
+              className="inline-flex items-center gap-1 px-5 py-2.5 rounded-xl border border-border text-sm font-medium hover:bg-muted transition-colors"
+              whileTap={{ scale: 0.95 }}
+            >
+              <ArrowLeft className="w-4 h-4" /> Voltar
+            </motion.button>
+            <motion.button
+              onClick={handleSubmitFromDetails}
+              className="flex-1 inline-flex items-center justify-center gap-1 py-2.5 rounded-xl text-white text-sm font-bold uppercase tracking-wide bg-primary"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              {extraDetails.trim() ? "Ver resultado" : "Pular e ver resultado"} <ArrowRight className="w-4 h-4" />
             </motion.button>
           </div>
         )}
