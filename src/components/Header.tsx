@@ -1,9 +1,11 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { ChevronDown } from "lucide-react";
 import msLogo from "@/assets/ms-eletric-logo-white.png";
 import msLogoDark from "@/assets/ms-eletric-logo-dark-new.png";
 import { useBusinessHours } from "@/hooks/useBusinessHours";
 import ContactWidget from "@/components/PopUpContato01";
+import MegaMenu, { categories } from "@/components/MegaMenu";
 
 /* Simple pulsing status dot — matches popup StatusChip style */
 const StatusDot = ({ online }: { online: boolean }) => (
@@ -117,6 +119,9 @@ interface HeaderProps {
 const Header = ({ contactOpen, setContactOpen }: HeaderProps) => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [megaMenuOpen, setMegaMenuOpen] = useState(false);
+  const [mobileCatsOpen, setMobileCatsOpen] = useState(false);
+  const megaMenuTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
   const isOnline = useBusinessHours();
 
   useEffect(() => {
@@ -295,27 +300,59 @@ const Header = ({ contactOpen, setContactOpen }: HeaderProps) => {
 
             {/* Desktop Nav */}
             <nav className="hidden lg:flex items-center gap-1">
-              {navItems.map((item) => (
-                <a
-                  key={item.label}
-                  href={item.href}
-                  className={`group relative px-4 py-2 text-xs font-semibold uppercase tracking-[0.15em] transition-all duration-[800ms] ease-in-out rounded-md ${
-                    scrolled
-                      ? "text-foreground hover:text-primary"
-                      : "text-primary-foreground/90 hover:text-primary-foreground"
-                  }`}
-                >
-                  {item.label}
-                  {/* Neon gradient underline */}
-                  <span
-                    className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[2px] group-hover:w-3/4 transition-all duration-300 ease-out rounded-full"
-                    style={{
-                      background: "linear-gradient(90deg, hsl(11 81% 57%), hsl(11 90% 65%))",
-                      boxShadow: "0 0 8px hsl(11 81% 57% / 0.5)",
+              {navItems.map((item) => {
+                const hasMega = item.label === "Dolor Sit";
+                return (
+                  <div
+                    key={item.label}
+                    className="relative"
+                    onMouseEnter={() => {
+                      if (hasMega) {
+                        if (megaMenuTimeout.current) clearTimeout(megaMenuTimeout.current);
+                        setMegaMenuOpen(true);
+                      }
                     }}
-                  />
-                </a>
-              ))}
+                    onMouseLeave={() => {
+                      if (hasMega) {
+                        megaMenuTimeout.current = setTimeout(() => setMegaMenuOpen(false), 150);
+                      }
+                    }}
+                  >
+                    <a
+                      href={item.href}
+                      className={`group relative px-4 py-2 text-xs font-semibold uppercase tracking-[0.15em] transition-all duration-[800ms] ease-in-out rounded-md inline-flex items-center gap-1 ${
+                        scrolled
+                          ? "text-foreground hover:text-primary"
+                          : "text-primary-foreground/90 hover:text-primary-foreground"
+                      }`}
+                      onClick={(e) => {
+                        if (hasMega) {
+                          e.preventDefault();
+                          setMegaMenuOpen(!megaMenuOpen);
+                        }
+                      }}
+                    >
+                      {item.label}
+                      {hasMega && (
+                        <motion.span
+                          animate={{ rotate: megaMenuOpen ? 180 : 0 }}
+                          transition={{ duration: 0.25 }}
+                        >
+                          <ChevronDown className="w-3 h-3" />
+                        </motion.span>
+                      )}
+                      {/* Neon gradient underline */}
+                      <span
+                        className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[2px] group-hover:w-3/4 transition-all duration-300 ease-out rounded-full"
+                        style={{
+                          background: "linear-gradient(90deg, hsl(11 81% 57%), hsl(11 90% 65%))",
+                          boxShadow: "0 0 8px hsl(11 81% 57% / 0.5)",
+                        }}
+                      />
+                    </a>
+                  </div>
+                );
+              })}
             </nav>
 
             {/* Desktop CTA — WhatsApp gradient matching popup */}
@@ -393,41 +430,101 @@ const Header = ({ contactOpen, setContactOpen }: HeaderProps) => {
                 >
                   {/* Nav items */}
                   <div className="space-y-1">
-                    {navItems.map((item, i) => (
-                      <motion.div key={item.label} variants={itemVariants}>
-                         <a
-                          href={item.href}
-                           className={`block px-3 py-3 text-sm font-semibold uppercase tracking-[0.12em] rounded-lg transition-all duration-200 ${
-                            scrolled
-                              ? "text-foreground hover:text-primary hover:bg-primary/5"
-                              : "text-white/80 hover:text-white hover:bg-white/5"
-                          }`}
-                          onClick={() => setMobileOpen(false)}
-                        >
-                          <span className="flex items-center gap-3">
-                            <span
-                              className="w-1.5 h-1.5 rounded-full"
+                    {navItems.map((item, i) => {
+                      const hasMega = item.label === "Dolor Sit";
+                      return (
+                        <motion.div key={item.label} variants={itemVariants}>
+                          <button
+                            className={`block w-full text-left px-3 py-3 text-sm font-semibold uppercase tracking-[0.12em] rounded-lg transition-all duration-200 ${
+                              scrolled
+                                ? "text-foreground hover:text-primary hover:bg-primary/5"
+                                : "text-white/80 hover:text-white hover:bg-white/5"
+                            }`}
+                            onClick={() => {
+                              if (hasMega) {
+                                setMobileCatsOpen(!mobileCatsOpen);
+                              } else {
+                                setMobileOpen(false);
+                                const el = document.querySelector(item.href);
+                                el?.scrollIntoView({ behavior: "smooth" });
+                              }
+                            }}
+                          >
+                            <span className="flex items-center gap-3">
+                              <span
+                                className="w-1.5 h-1.5 rounded-full"
+                                style={{
+                                  background: "linear-gradient(135deg, hsl(11 81% 57%), hsl(11 90% 65%))",
+                                  boxShadow: "0 0 6px hsl(11 81% 57% / 0.6)",
+                                }}
+                              />
+                              {item.label}
+                              {hasMega && (
+                                <motion.span
+                                  animate={{ rotate: mobileCatsOpen ? 180 : 0 }}
+                                  transition={{ duration: 0.25 }}
+                                  className="ml-auto"
+                                >
+                                  <ChevronDown className="w-4 h-4" />
+                                </motion.span>
+                              )}
+                            </span>
+                          </button>
+
+                          {/* Mobile categories sub-menu */}
+                          {hasMega && (
+                            <AnimatePresence>
+                              {mobileCatsOpen && (
+                                <motion.div
+                                  initial={{ height: 0, opacity: 0 }}
+                                  animate={{ height: "auto", opacity: 1 }}
+                                  exit={{ height: 0, opacity: 0 }}
+                                  transition={{ duration: 0.3 }}
+                                  className="overflow-hidden"
+                                >
+                                  <div className="pl-6 pr-2 py-2 space-y-1">
+                                    {categories.map((cat) => (
+                                      <a
+                                        key={cat.label}
+                                        href={cat.href}
+                                        onClick={() => setMobileOpen(false)}
+                                        className={`flex items-center gap-3 px-3 py-2.5 rounded-lg transition-all duration-200 ${
+                                          scrolled
+                                            ? "text-foreground/80 hover:text-primary hover:bg-primary/5"
+                                            : "text-white/60 hover:text-white hover:bg-white/5"
+                                        }`}
+                                      >
+                                        <img
+                                          src={cat.image}
+                                          alt={cat.label}
+                                          className="w-10 h-10 rounded-lg object-cover"
+                                        />
+                                        <div>
+                                          <p className="text-xs font-semibold uppercase tracking-wide">{cat.label}</p>
+                                          <p className={`text-[10px] ${scrolled ? "text-muted-foreground" : "text-white/40"}`}>{cat.desc}</p>
+                                        </div>
+                                      </a>
+                                    ))}
+                                  </div>
+                                </motion.div>
+                              )}
+                            </AnimatePresence>
+                          )}
+
+                          {/* Gradient separator */}
+                          {i < navItems.length - 1 && (
+                            <div
+                              className="mx-4 h-[1px]"
                               style={{
-                                background: "linear-gradient(135deg, hsl(11 81% 57%), hsl(11 90% 65%))",
-                                boxShadow: "0 0 6px hsl(11 81% 57% / 0.6)",
+                                background: scrolled
+                                  ? "linear-gradient(90deg, transparent, hsl(0 0% 88% / 0.5), transparent)"
+                                  : "linear-gradient(90deg, transparent, hsl(0 0% 100% / 0.08), transparent)",
                               }}
                             />
-                            {item.label}
-                          </span>
-                        </a>
-                        {/* Gradient separator */}
-                        {i < navItems.length - 1 && (
-                          <div
-                            className="mx-4 h-[1px]"
-                            style={{
-                              background: scrolled
-                                ? "linear-gradient(90deg, transparent, hsl(0 0% 88% / 0.5), transparent)"
-                                : "linear-gradient(90deg, transparent, hsl(0 0% 100% / 0.08), transparent)",
-                            }}
-                          />
-                        )}
-                      </motion.div>
-                    ))}
+                          )}
+                        </motion.div>
+                      );
+                    })}
                   </div>
 
                   {/* Floating CTA — WhatsApp gradient matching popup */}
@@ -458,6 +555,20 @@ const Header = ({ contactOpen, setContactOpen }: HeaderProps) => {
             )}
           </AnimatePresence>
         </header>
+
+        {/* Desktop Mega Menu — outside header overflow-hidden */}
+        <div
+          className="hidden lg:block relative"
+          onMouseEnter={() => {
+            if (megaMenuTimeout.current) clearTimeout(megaMenuTimeout.current);
+            setMegaMenuOpen(true);
+          }}
+          onMouseLeave={() => {
+            megaMenuTimeout.current = setTimeout(() => setMegaMenuOpen(false), 150);
+          }}
+        >
+          <MegaMenu open={megaMenuOpen} scrolled={scrolled} onClose={() => setMegaMenuOpen(false)} />
+        </div>
       </div>
 
       {/* Backdrop overlay to close mobile menu on outside click */}
