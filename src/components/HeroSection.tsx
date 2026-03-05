@@ -215,7 +215,7 @@ const HeroSection = () => {
                   </h1>
 
                   {/* Subheadline */}
-                  <p className="text-sm sm:text-base md:text-lg text-primary-foreground/50 mb-8 md:mb-10 max-w-xl leading-relaxed tracking-wide">
+                  <p className="text-xs sm:text-sm md:text-base text-primary-foreground/50 mb-8 md:mb-10 max-w-xl leading-relaxed tracking-wide">
                     {slide.subheadline}
                   </p>
 
