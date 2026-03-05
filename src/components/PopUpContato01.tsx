@@ -277,8 +277,7 @@ const PopUpContato01 = ({ isOpen, onClose }: PopUpContato01Props) => {
               </div>
 
               {/* Status chip */}
-              {/* TODO: Remove forced online after preview */}
-              <StatusChip isOnline={true} offlineMessage={offlineMessage} />
+              <StatusChip isOnline={isOnline} offlineMessage={offlineMessage} />
 
               {/* Divider */}
               <div
