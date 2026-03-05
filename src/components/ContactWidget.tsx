@@ -693,9 +693,9 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                           : "0 12px 40px hsl(0 0% 0% / 0.3), 0 0 20px hsl(11 81% 57% / 0.05)"
                       }}>
                       
-                          <div className="flex items-center gap-2 mb-2.5 pb-2" style={{ borderBottom: "1px solid hsl(0 0% 100% / 0.06)" }}>
-                            <Clock className="w-3.5 h-3.5" style={{ color: "hsl(11 81% 57% / 0.8)" }} />
-                            <span className="text-[10px] font-semibold uppercase tracking-[0.12em]" style={{ color: "hsl(30 90% 75%)" }}>
+                          <div className="flex items-center gap-2 mb-2.5 pb-2" style={{ borderBottom: `1px solid ${isOnline ? "hsl(142 76% 36% / 0.15)" : "hsl(0 0% 100% / 0.06)"}` }}>
+                            <Clock className="w-3.5 h-3.5" style={{ color: isOnline ? "hsl(142 70% 70%)" : "hsl(11 81% 57% / 0.8)" }} />
+                            <span className="text-[10px] font-semibold uppercase tracking-[0.12em]" style={{ color: isOnline ? "hsl(142 70% 70%)" : "hsl(30 90% 75%)" }}>
                               Horário de atendimento
                             </span>
                           </div>
@@ -705,22 +705,24 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                           item.day === "Sábado" ? 6 :
                           item.day === "Domingo" ? 0 : -1
                         );
+                        const todayBg = isOnline ? "hsl(142 76% 36% / 0.08)" : "hsl(11 81% 57% / 0.08)";
+                        const todayBorder = isOnline ? "2px solid hsl(142 76% 36% / 0.6)" : "2px solid hsl(11 81% 57% / 0.6)";
                         return (
                       <div
                         key={item.day}
                         className="flex items-center justify-between py-2 px-2.5 rounded-lg transition-colors duration-150"
                         style={{
-                          background: isToday ? "hsl(11 81% 57% / 0.08)" : "transparent",
-                          borderLeft: isToday ? "2px solid hsl(11 81% 57% / 0.6)" : "2px solid transparent"
+                          background: isToday ? todayBg : "transparent",
+                          borderLeft: isToday ? todayBorder : "2px solid transparent"
                         }}>
                         
                               <span className="text-[11px] font-medium" style={{ color: isToday ? "hsl(0 0% 100% / 0.85)" : "hsl(0 0% 100% / 0.50)" }}>
                                 {item.day}
-                                {isToday && <span className="ml-1.5 text-[8px] uppercase tracking-wider font-bold" style={{ color: "hsl(11 81% 57% / 0.8)" }}>Hoje</span>}
+                                {isToday && <span className="ml-1.5 text-[8px] uppercase tracking-wider font-bold" style={{ color: isOnline ? "hsl(142 70% 70%)" : "hsl(11 81% 57% / 0.8)" }}>Hoje</span>}
                               </span>
                               <span
                           className="text-[11px] font-semibold"
-                          style={{ color: item.hours === "Fechado" ? "hsl(0 60% 55% / 0.7)" : isToday ? "hsl(11 81% 57%)" : "hsl(11 81% 57% / 0.75)" }}>
+                          style={{ color: item.hours === "Fechado" ? "hsl(0 60% 55% / 0.7)" : isToday ? (isOnline ? "hsl(142 70% 70%)" : "hsl(11 81% 57%)") : (isOnline ? "hsl(142 70% 70% / 0.75)" : "hsl(11 81% 57% / 0.75)") }}>
                           
                                 {item.hours}
                               </span>
