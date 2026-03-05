@@ -219,45 +219,6 @@ const HeroSection = () => {
                     {slide.subheadline}
                   </p>
 
-                  {/* CTAs */}
-                  <div className="flex flex-wrap items-center gap-3 md:gap-4">
-                    <motion.a
-                      href={slide.primaryCta.href}
-                      className="relative inline-flex items-center justify-center gap-2.5 text-xs sm:text-sm md:text-base font-semibold uppercase tracking-[0.12em] px-6 md:px-9 py-3.5 md:py-4 rounded-xl bg-primary text-primary-foreground overflow-visible"
-                      whileHover={{
-                        scale: 1.05,
-                        boxShadow: "0 0 25px hsl(11 81% 57% / 0.5), 0 0 50px hsl(11 81% 57% / 0.2)",
-                      }}
-                      whileTap={{ scale: 0.97 }}
-                      style={{
-                        boxShadow: "0 0 20px hsl(11 81% 57% / 0.3), 0 0 40px hsl(11 81% 57% / 0.1)",
-                      }}
-                    >
-                      {slide.primaryCta.text}
-                    </motion.a>
-
-                    {slide.secondaryCta && (
-                      <motion.a
-                        href={slide.secondaryCta.href}
-                        className="relative inline-flex items-center justify-center text-xs sm:text-sm md:text-base font-semibold uppercase tracking-[0.12em] px-6 md:px-9 py-3.5 md:py-4 rounded-xl text-primary-foreground/70 border border-primary-foreground/12 backdrop-blur-sm overflow-hidden"
-                        style={{ background: "hsl(0 0% 100% / 0.04)" }}
-                        whileHover={{
-                          scale: 1.05,
-                          borderColor: "hsl(0 0% 100% / 0.25)",
-                          color: "hsl(0 0% 100% / 0.9)",
-                        }}
-                        whileTap={{ scale: 0.97 }}
-                      >
-                        <span
-                          className="absolute bottom-0 left-0 right-0 h-[1px]"
-                          style={{
-                            background: "linear-gradient(90deg, transparent, hsl(0 0% 100% / 0.15), transparent)",
-                          }}
-                        />
-                        {slide.secondaryCta.text}
-                      </motion.a>
-                    )}
-                  </div>
                 </>
               );
             })()}
