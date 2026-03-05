@@ -618,8 +618,7 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
             
 
               {/* Header */}
-              <motion.div variants={contentStaggerVariants} initial="hidden" animate="visible" exit="exit">
-              <motion.div variants={contentItemVariants} className="flex items-start justify-between px-5 pt-4 pb-3">
+              <div className="flex items-start justify-between px-5 pt-4 pb-3">
                 <div>
                   <h3 className="text-base font-bold text-white tracking-tight">
                     Fale com um especialista da MS Eletric
@@ -638,10 +637,10 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                 
                   <X className="w-5 h-5" />
                 </motion.button>
-              </motion.div>
+              </div>
 
               {/* Status chip + hours popup */}
-              <motion.div variants={contentItemVariants} className="px-[21px] py-[16px] pb-[16px] pt-px">
+              <div className="px-[21px] py-[16px] pb-[16px] pt-px">
                 <div className="relative">
                   <button
                   type="button"
@@ -763,20 +762,18 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                   }
                   </AnimatePresence>
                 </div>
-              </motion.div>
+              </div>
 
               {/* Divider */}
-              <motion.div variants={contentItemVariants}>
               <div
               className="mx-5 h-[1px]"
               style={{
                 background: "linear-gradient(90deg, transparent, hsl(11 81% 57% / 0.3), transparent)"
               }} />
-              </motion.div>
             
 
               {/* Form */}
-              <motion.div variants={contentItemVariants} className="px-5 py-4 space-y-3.5">
+              <div className="px-5 py-4 space-y-3.5">
                 {/* Name */}
                 <div>
                   <label className="flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-[0.1em] text-white/50 mb-1.5">
@@ -1152,8 +1149,7 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                 <p className="text-[9px] text-white/30 text-center leading-relaxed pt-2 pb-1">
                   *Ao enviar, seus dados serão usados apenas para atendimento, conforme a LGPD (<span style={{ color: "hsl(11 81% 57%)" }}>Lei nº 13.709/2018</span>).
                 </p>
-              </motion.div>
-              </motion.div>
+              </div>
 
               {/* Bottom scroll fade */}
               <div
