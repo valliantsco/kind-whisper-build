@@ -430,41 +430,101 @@ const Header = ({ contactOpen, setContactOpen }: HeaderProps) => {
                 >
                   {/* Nav items */}
                   <div className="space-y-1">
-                    {navItems.map((item, i) => (
-                      <motion.div key={item.label} variants={itemVariants}>
-                         <a
-                          href={item.href}
-                           className={`block px-3 py-3 text-sm font-semibold uppercase tracking-[0.12em] rounded-lg transition-all duration-200 ${
-                            scrolled
-                              ? "text-foreground hover:text-primary hover:bg-primary/5"
-                              : "text-white/80 hover:text-white hover:bg-white/5"
-                          }`}
-                          onClick={() => setMobileOpen(false)}
-                        >
-                          <span className="flex items-center gap-3">
-                            <span
-                              className="w-1.5 h-1.5 rounded-full"
+                    {navItems.map((item, i) => {
+                      const hasMega = item.label === "Dolor Sit";
+                      return (
+                        <motion.div key={item.label} variants={itemVariants}>
+                          <button
+                            className={`block w-full text-left px-3 py-3 text-sm font-semibold uppercase tracking-[0.12em] rounded-lg transition-all duration-200 ${
+                              scrolled
+                                ? "text-foreground hover:text-primary hover:bg-primary/5"
+                                : "text-white/80 hover:text-white hover:bg-white/5"
+                            }`}
+                            onClick={() => {
+                              if (hasMega) {
+                                setMobileCatsOpen(!mobileCatsOpen);
+                              } else {
+                                setMobileOpen(false);
+                                const el = document.querySelector(item.href);
+                                el?.scrollIntoView({ behavior: "smooth" });
+                              }
+                            }}
+                          >
+                            <span className="flex items-center gap-3">
+                              <span
+                                className="w-1.5 h-1.5 rounded-full"
+                                style={{
+                                  background: "linear-gradient(135deg, hsl(11 81% 57%), hsl(11 90% 65%))",
+                                  boxShadow: "0 0 6px hsl(11 81% 57% / 0.6)",
+                                }}
+                              />
+                              {item.label}
+                              {hasMega && (
+                                <motion.span
+                                  animate={{ rotate: mobileCatsOpen ? 180 : 0 }}
+                                  transition={{ duration: 0.25 }}
+                                  className="ml-auto"
+                                >
+                                  <ChevronDown className="w-4 h-4" />
+                                </motion.span>
+                              )}
+                            </span>
+                          </button>
+
+                          {/* Mobile categories sub-menu */}
+                          {hasMega && (
+                            <AnimatePresence>
+                              {mobileCatsOpen && (
+                                <motion.div
+                                  initial={{ height: 0, opacity: 0 }}
+                                  animate={{ height: "auto", opacity: 1 }}
+                                  exit={{ height: 0, opacity: 0 }}
+                                  transition={{ duration: 0.3 }}
+                                  className="overflow-hidden"
+                                >
+                                  <div className="pl-6 pr-2 py-2 space-y-1">
+                                    {categories.map((cat) => (
+                                      <a
+                                        key={cat.label}
+                                        href={cat.href}
+                                        onClick={() => setMobileOpen(false)}
+                                        className={`flex items-center gap-3 px-3 py-2.5 rounded-lg transition-all duration-200 ${
+                                          scrolled
+                                            ? "text-foreground/80 hover:text-primary hover:bg-primary/5"
+                                            : "text-white/60 hover:text-white hover:bg-white/5"
+                                        }`}
+                                      >
+                                        <img
+                                          src={cat.image}
+                                          alt={cat.label}
+                                          className="w-10 h-10 rounded-lg object-cover"
+                                        />
+                                        <div>
+                                          <p className="text-xs font-semibold uppercase tracking-wide">{cat.label}</p>
+                                          <p className={`text-[10px] ${scrolled ? "text-muted-foreground" : "text-white/40"}`}>{cat.desc}</p>
+                                        </div>
+                                      </a>
+                                    ))}
+                                  </div>
+                                </motion.div>
+                              )}
+                            </AnimatePresence>
+                          )}
+
+                          {/* Gradient separator */}
+                          {i < navItems.length - 1 && (
+                            <div
+                              className="mx-4 h-[1px]"
                               style={{
-                                background: "linear-gradient(135deg, hsl(11 81% 57%), hsl(11 90% 65%))",
-                                boxShadow: "0 0 6px hsl(11 81% 57% / 0.6)",
+                                background: scrolled
+                                  ? "linear-gradient(90deg, transparent, hsl(0 0% 88% / 0.5), transparent)"
+                                  : "linear-gradient(90deg, transparent, hsl(0 0% 100% / 0.08), transparent)",
                               }}
                             />
-                            {item.label}
-                          </span>
-                        </a>
-                        {/* Gradient separator */}
-                        {i < navItems.length - 1 && (
-                          <div
-                            className="mx-4 h-[1px]"
-                            style={{
-                              background: scrolled
-                                ? "linear-gradient(90deg, transparent, hsl(0 0% 88% / 0.5), transparent)"
-                                : "linear-gradient(90deg, transparent, hsl(0 0% 100% / 0.08), transparent)",
-                            }}
-                          />
-                        )}
-                      </motion.div>
-                    ))}
+                          )}
+                        </motion.div>
+                      );
+                    })}
                   </div>
 
                   {/* Floating CTA — WhatsApp gradient matching popup */}
@@ -495,6 +555,20 @@ const Header = ({ contactOpen, setContactOpen }: HeaderProps) => {
             )}
           </AnimatePresence>
         </header>
+
+        {/* Desktop Mega Menu — outside header overflow-hidden */}
+        <div
+          className="hidden lg:block relative"
+          onMouseEnter={() => {
+            if (megaMenuTimeout.current) clearTimeout(megaMenuTimeout.current);
+            setMegaMenuOpen(true);
+          }}
+          onMouseLeave={() => {
+            megaMenuTimeout.current = setTimeout(() => setMegaMenuOpen(false), 150);
+          }}
+        >
+          <MegaMenu open={megaMenuOpen} scrolled={scrolled} onClose={() => setMegaMenuOpen(false)} />
+        </div>
       </div>
 
       {/* Backdrop overlay to close mobile menu on outside click */}
