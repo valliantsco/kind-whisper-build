@@ -628,15 +628,14 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                     color: isOnline ? "hsl(142 70% 70%)" : "hsl(30 90% 75%)"
                   }}>
                   
-                    <span className="relative flex h-3.5 w-3.5 shrink-0">
+                    <span className="relative flex h-2.5 w-2.5 shrink-0">
                       <span
                       className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-60"
                       style={{ background: isOnline ? "hsl(142 76% 50%)" : "hsl(11 81% 57%)" }} />
                     
                       <span
-                      className="relative inline-flex rounded-full h-3.5 w-3.5"
+                      className="relative inline-flex rounded-full h-2.5 w-2.5"
                       style={{ background: isOnline ? "hsl(142 76% 50%)" : "hsl(11 81% 57%)" }} />
-                    
                     </span>
                     {isOnline ? "Online agora" : offlineMessage}
                     <span className="ml-auto flex items-center gap-1 text-[9px] opacity-50 group-hover:opacity-80 transition-opacity duration-200">
