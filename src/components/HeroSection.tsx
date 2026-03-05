@@ -16,28 +16,28 @@ interface SlideContent {
 
 const SLIDES: SlideContent[] = [
   {
-    tag: "Energia que Move",
+    tag: "Lorem Ipsum",
     tagIcon: "zap",
     headlineLines: [
-      { text: "Liderando", highlight: true },
-      { text: "a Nova Era", mobileOnly: true },
-      { text: "Da Mobilidade.", mobileOnly: true },
-      { text: "a Nova Era", desktopOnly: true },
-      { text: "Da Mobilidade.", desktopOnly: true },
+      { text: "Consectetur", highlight: true },
+      { text: "Adipiscing Elit", mobileOnly: true },
+      { text: "Sed Eiusmod.", mobileOnly: true },
+      { text: "Adipiscing Elit", desktopOnly: true },
+      { text: "Sed Eiusmod.", desktopOnly: true },
     ],
-    subheadline: "A MS Eletric reúne soluções em motos elétricas para quem busca economia, praticidade e uma experiência completa do atendimento ao pós-venda.",
-    primaryCta: { text: "Conheça os Modelos", href: "#modelos" },
+    subheadline: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    primaryCta: { text: "Dolor Sit Amet", href: "#modelos" },
   },
   {
-    tag: "Garantia & Suporte",
+    tag: "Tempor Incididunt",
     tagIcon: "shield",
     headlineLines: [
-      { text: "Experiência" },
-      { text: "Completa", highlight: true },
-      { text: "do Início ao Fim." },
+      { text: "Ut Labore" },
+      { text: "Et Dolore", highlight: true },
+      { text: "Magna Aliqua." },
     ],
-    subheadline: "Do primeiro contato ao pós-venda, a MS Eletric oferece atendimento especializado e suporte técnico para você rodar com tranquilidade.",
-    primaryCta: { text: "Saiba mais sobre nosso suporte", href: "#contato" },
+    subheadline: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    primaryCta: { text: "Duis Aute Irure", href: "#contato" },
   },
 ];
 
