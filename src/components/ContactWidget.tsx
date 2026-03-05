@@ -1017,10 +1017,10 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                           "0 0 8px hsl(11 81% 57% / 0.08)"
                         }}
                         whileHover={isTranscribing ? {} : {
-                          background: isRecording ? "hsl(0 84% 55% / 0.35)" : "hsl(11 81% 57% / 0.15)",
-                          borderColor: isRecording ? "hsl(0 84% 60% / 0.5)" : "hsl(11 81% 57% / 0.5)",
-                          boxShadow: "0 0 18px hsl(11 81% 57% / 0.3), 0 0 36px hsl(11 81% 57% / 0.1)",
-                          scale: 1.15
+                          background: isRecording ? "hsl(0 84% 55% / 0.35)" : "hsl(0 0% 100% / 0.14)",
+                          borderColor: isRecording ? "hsl(0 84% 60% / 0.5)" : "hsl(0 0% 100% / 0.25)",
+                          boxShadow: isRecording ? "0 0 18px hsl(0 84% 55% / 0.3)" : "0 0 12px hsl(0 0% 100% / 0.08)",
+                          scale: 1.1
                         }}
                         whileTap={isTranscribing ? {} : { scale: 0.88 }}
                         animate={isRecording ? {
