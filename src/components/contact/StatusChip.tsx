@@ -62,25 +62,6 @@ const StatusChip = ({ isOnline, offlineMessage }: StatusChipProps) => {
           </span>
         </button>
 
-        {/* Tooltip hint */}
-        <AnimatePresence>
-          {!showHoursPopup && (
-            <motion.div
-              key="hours-tooltip"
-              initial={{ opacity: 0, y: 4 }}
-              animate={{ opacity: [0, 1, 1, 0], y: [4, 0, 0, -2] }}
-              transition={{ duration: 3, times: [0, 0.15, 0.7, 1], delay: 1.5 }}
-              className="absolute left-1/2 -translate-x-1/2 top-full mt-1.5 pointer-events-none whitespace-nowrap"
-            >
-              <span
-                className="text-[9px] text-white/50 px-2 py-1 rounded-md"
-                style={{ background: "hsl(0 0% 10% / 0.8)", border: "1px solid hsl(0 0% 100% / 0.08)" }}
-              >
-                Toque para ver o horário de atendimento
-              </span>
-            </motion.div>
-          )}
-        </AnimatePresence>
 
         {/* Hours popup */}
         <AnimatePresence>
