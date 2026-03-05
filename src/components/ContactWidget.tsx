@@ -658,7 +658,7 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                     </span>
                   </button>
 
-                  {/* Tooltip hint — shows briefly on first open */}
+                  {/* Tooltip hint — shows briefly, absolutely positioned */}
                   <AnimatePresence>
                     {!showHoursPopup && (
                       <motion.div
@@ -666,11 +666,9 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                         initial={{ opacity: 0, y: 4, scale: 0.95 }}
                         animate={{ opacity: [0, 1, 1, 0], y: [4, 0, 0, -2], scale: [0.95, 1, 1, 0.98] }}
                         transition={{ duration: 3.5, times: [0, 0.12, 0.75, 1], delay: 2 }}
-                        className="flex justify-end pr-2 mt-1 pointer-events-none"
+                        className="absolute right-2 top-full mt-0.5 pointer-events-none"
                       >
-                        <span
-                          className="text-[9px] text-white/40 flex items-center gap-1"
-                        >
+                        <span className="text-[9px] text-white/40 flex items-center gap-1">
                           ↑ toque para ver horários
                         </span>
                       </motion.div>
@@ -729,7 +727,7 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
 
               {/* Divider */}
               <div
-                className="mx-5 h-[1px] mt-1"
+                className="mx-5 h-[1px]"
                 style={{
                   background: "linear-gradient(90deg, transparent, hsl(11 81% 57% / 0.3), transparent)",
                 }}
