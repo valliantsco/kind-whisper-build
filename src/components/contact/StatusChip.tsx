@@ -26,7 +26,7 @@ const StatusChip = ({ isOnline, offlineMessage }: StatusChipProps) => {
         <button
           type="button"
           onClick={() => setShowHoursPopup((v) => !v)}
-          className="group flex items-center gap-2.5 px-4 py-2.5 rounded-xl text-[11px] font-bold uppercase tracking-[0.12em] w-full cursor-pointer transition-all duration-200 hover:brightness-110"
+          className="group flex items-center gap-2.5 px-4 py-2.5 rounded-xl text-[11px] font-semibold tracking-wide w-full cursor-pointer transition-all duration-200 hover:brightness-110"
           style={{
             background: "linear-gradient(135deg, hsl(11 81% 57%), hsl(11 90% 65%))",
             color: "white",
@@ -76,7 +76,7 @@ const StatusChip = ({ isOnline, offlineMessage }: StatusChipProps) => {
                   style={{ borderBottom: "1px solid hsl(0 0% 100% / 0.2)" }}
                 >
                   <Clock className="w-2.5 h-2.5 text-white/80" />
-                  <span className="text-[11px] font-bold uppercase tracking-[0.1em] text-white">
+                  <span className="text-[11px] font-semibold tracking-wide text-white">
                     Horário de atendimento
                   </span>
                 </div>
