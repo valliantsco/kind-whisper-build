@@ -17,13 +17,12 @@ const getDayMatch = (dayLabel: string): number => {
   return -1;
 };
 
+const brandColor = "hsl(11 81% 57%)";
+const brandColorLight = "hsl(11 90% 65%)";
+const textColor = "hsl(30 90% 75%)";
+
 const StatusChip = ({ isOnline, offlineMessage }: StatusChipProps) => {
   const [showHoursPopup, setShowHoursPopup] = useState(false);
-
-  const onlineColor = "hsl(142 76% 36%)";
-  const offlineColor = "hsl(11 81% 57%)";
-  const accentColor = isOnline ? onlineColor : offlineColor;
-  const textColor = isOnline ? "hsl(142 70% 70%)" : "hsl(30 90% 75%)";
 
   return (
     <div className="px-[21px] py-4 pt-px">
@@ -33,21 +32,19 @@ const StatusChip = ({ isOnline, offlineMessage }: StatusChipProps) => {
           onClick={() => setShowHoursPopup((v) => !v)}
           className="group flex items-center gap-2.5 px-4 py-2 rounded-xl text-[11px] font-semibold tracking-wide border w-full cursor-pointer transition-all duration-200 hover:brightness-125"
           style={{
-            background: isOnline
-              ? `linear-gradient(135deg, ${onlineColor} / 0.15, ${onlineColor} / 0.05)`
-              : "linear-gradient(135deg, hsl(15 30% 14%), hsl(20 20% 11%))",
-            borderColor: isOnline ? "hsl(142 76% 36% / 0.3)" : "hsl(11 81% 57% / 0.3)",
+            background: `linear-gradient(135deg, ${brandColor} / 0.15, ${brandColor} / 0.05)`,
+            borderColor: `${brandColor} / 0.3`,
             color: textColor,
           }}
         >
           <span className="relative flex h-2.5 w-2.5 shrink-0">
             <span
               className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-60"
-              style={{ background: isOnline ? "hsl(142 76% 50%)" : offlineColor }}
+              style={{ background: isOnline ? "hsl(142 76% 50%)" : brandColor }}
             />
             <span
               className="relative inline-flex rounded-full h-2.5 w-2.5"
-              style={{ background: isOnline ? "hsl(142 76% 50%)" : offlineColor }}
+              style={{ background: isOnline ? "hsl(142 76% 50%)" : brandColor }}
             />
           </span>
           {isOnline ? "Atendimento Online" : offlineMessage}
@@ -62,7 +59,6 @@ const StatusChip = ({ isOnline, offlineMessage }: StatusChipProps) => {
           </span>
         </button>
 
-
         {/* Hours popup */}
         <AnimatePresence>
           {showHoursPopup && (
@@ -75,35 +71,31 @@ const StatusChip = ({ isOnline, offlineMessage }: StatusChipProps) => {
                 transition={{ type: "spring", stiffness: 400, damping: 25 }}
                 className="absolute left-0 right-0 top-full mt-2 z-50 rounded-xl p-4 space-y-1"
                 style={{
-                  background: isOnline
-                    ? `linear-gradient(135deg, ${onlineColor} / 0.15, ${onlineColor} / 0.05)`
-                    : "linear-gradient(135deg, hsl(15 30% 14%), hsl(20 20% 11%))",
+                  background: `linear-gradient(135deg, ${brandColor} / 0.15, ${brandColor} / 0.05)`,
                   backdropFilter: "blur(24px)",
-                  border: isOnline ? "1px solid hsl(142 76% 36% / 0.25)" : "1px solid hsl(11 81% 57% / 0.25)",
-                  boxShadow: `0 12px 40px hsl(0 0% 0% / 0.3), 0 0 20px ${isOnline ? "hsl(142 76% 36% / 0.05)" : "hsl(11 81% 57% / 0.05)"}`,
+                  border: `1px solid ${brandColor} / 0.25`,
+                  boxShadow: `0 12px 40px hsl(0 0% 0% / 0.3), 0 0 20px ${brandColor} / 0.05`,
                 }}
               >
                 <div
                   className="flex items-center gap-2 mb-2.5 pb-2"
-                  style={{ borderBottom: isOnline ? "1px solid hsl(142 76% 36% / 0.15)" : "1px solid hsl(0 0% 100% / 0.06)" }}
+                  style={{ borderBottom: `1px solid ${brandColor} / 0.15` }}
                 >
-                  <Clock className="w-2.5 h-2.5" style={{ color: isOnline ? textColor : "hsl(11 81% 57% / 0.8)" }} />
+                  <Clock className="w-2.5 h-2.5" style={{ color: `${brandColor} / 0.8` }} />
                   <span className="text-[11px] font-semibold tracking-wide" style={{ color: textColor }}>
                     Horário de atendimento
                   </span>
                 </div>
                 {BUSINESS_HOURS_INFO.map((item) => {
                   const isToday = TODAY === getDayMatch(item.day);
-                  const todayBg = isOnline ? "hsl(142 76% 36% / 0.08)" : "hsl(11 81% 57% / 0.08)";
-                  const todayBorder = isOnline ? "2px solid hsl(142 76% 36% / 0.6)" : "2px solid hsl(11 81% 57% / 0.6)";
                   return (
                     <div
                       key={item.day}
                       className="grid items-center py-2 px-2.5 rounded-lg transition-colors duration-150"
                       style={{
                         gridTemplateColumns: "1fr auto",
-                        background: isToday ? todayBg : "transparent",
-                        borderLeft: isToday ? todayBorder : "2px solid transparent",
+                        background: isToday ? `${brandColor} / 0.08` : "transparent",
+                        borderLeft: isToday ? `2px solid ${brandColor} / 0.6` : "2px solid transparent",
                       }}
                     >
                       <span
@@ -114,7 +106,7 @@ const StatusChip = ({ isOnline, offlineMessage }: StatusChipProps) => {
                         {isToday && (
                           <span
                             className="ml-1.5 text-[8px] uppercase tracking-wider font-bold"
-                            style={{ color: isOnline ? textColor : "hsl(11 81% 57% / 0.8)" }}
+                            style={{ color: `${brandColor} / 0.8` }}
                           >
                             Hoje
                           </span>
@@ -127,8 +119,8 @@ const StatusChip = ({ isOnline, offlineMessage }: StatusChipProps) => {
                             item.hours === "Fechado"
                               ? "hsl(0 60% 55% / 0.7)"
                               : isToday
-                                ? (isOnline ? textColor : offlineColor)
-                                : (isOnline ? "hsl(142 70% 70% / 0.75)" : "hsl(11 81% 57% / 0.75)"),
+                                ? brandColor
+                                : `${brandColor} / 0.75`,
                         }}
                       >
                         {item.hours}
