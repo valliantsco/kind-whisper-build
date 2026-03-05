@@ -116,7 +116,7 @@ const QuizEngine = ({ config, open, onOpenChange }: QuizEngineProps) => {
               ? "Baseado nas suas respostas"
               : loading
               ? "A IA está processando suas respostas"
-              : `Etapa ${step + 1} de ${totalSteps}`}
+              : "Responda para receber sua recomendação"}
           </DialogDescription>
         </DialogHeader>
 
