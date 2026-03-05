@@ -123,7 +123,7 @@ const VoiceRecorderField = ({ details, setDetails, error, setError }: VoiceRecor
     <div>
       <label className="flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-[0.1em] text-white/50 mb-1.5">
         <MessageSquare className="w-3 h-3" />
-        Conta pra gente o que você precisa <span className="text-primary/70">*</span>
+        Conte para gente o que você precisa <span className="text-primary/70">*</span>
       </label>
 
       <div className="relative">
