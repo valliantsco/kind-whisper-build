@@ -12,8 +12,6 @@ interface SlideContent {
   subheadline: string;
   primaryCta: { text: string; href: string };
   secondaryCta?: { text: string; href: string };
-  videoId: string;
-  videoStart?: number;
 }
 
 const SLIDES: SlideContent[] = [
@@ -29,7 +27,6 @@ const SLIDES: SlideContent[] = [
     ],
     subheadline: "A MS Eletric reúne soluções em motos elétricas para quem busca economia, praticidade e uma experiência completa do atendimento ao pós-venda.",
     primaryCta: { text: "Conheça os Modelos", href: "#modelos" },
-    videoId: "ml6ODnWanys",
   },
   {
     tag: "Garantia & Suporte",
@@ -41,8 +38,6 @@ const SLIDES: SlideContent[] = [
     ],
     subheadline: "Do primeiro contato ao pós-venda, a MS Eletric oferece atendimento especializado e suporte técnico para você rodar com tranquilidade.",
     primaryCta: { text: "Saiba mais sobre nosso suporte", href: "#contato" },
-    videoId: "iK7r59HhPjM",
-    videoStart: 26,
   },
 ];
 
@@ -52,8 +47,6 @@ const TAG_ICONS = {
   shield: Shield,
 };
 
-const buildEmbedUrl = (videoId: string, start?: number) =>
-  `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&loop=1&playlist=${videoId}&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&disablekb=1&fs=0&iv_load_policy=3${start ? `&start=${start}` : ''}`;
 
 const HeroSection = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -100,28 +93,6 @@ const HeroSection = () => {
         style={{ backgroundImage: `url(${heroBg})` }}
       />
 
-      {/* Video slideshow background — all iframes preloaded, toggle visibility */}
-      <div className="absolute inset-0">
-        {SLIDES.map((slide, i) => (
-          <motion.div
-            key={i}
-            initial={false}
-            animate={{ opacity: i === currentSlide ? 1 : 0 }}
-            transition={{ duration: 1.2, ease: "easeInOut" }}
-            className="absolute inset-0"
-            style={{ pointerEvents: i === currentSlide ? "auto" : "none" }}
-          >
-            <iframe
-              src={buildEmbedUrl(slide.videoId, slide.videoStart)}
-              className="absolute pointer-events-none top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[180%] h-[180%] max-md:w-[400%] max-md:h-[400%]"
-              style={{ border: 0, aspectRatio: '16/9' }}
-              allow="autoplay; encrypted-media"
-              loading="eager"
-              title={slide.tag}
-            />
-          </motion.div>
-        ))}
-      </div>
 
       {/* Gradient overlays */}
       <div className="absolute inset-0 bg-gradient-to-r from-foreground/95 via-foreground/85 to-foreground/40 z-[3]" />
