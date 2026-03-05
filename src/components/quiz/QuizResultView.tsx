@@ -67,6 +67,59 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
     setCityValidated(true);
     setCityDropdownOpen(false);
     setCitySuggestions([]);
+    setCityError(null);
+  };
+
+  const handleNameChange = (val: string) => {
+    const formatted = formatName(val);
+    setName(formatted);
+    const spam = detectSpam("name", formatted);
+    setNameError(spam);
+  };
+
+  const handlePhoneChange = (val: string) => {
+    const digits = val.replace(/\D/g, "").slice(0, 11);
+    setPhone(formatPhone(digits));
+    if (digits.length === 11) {
+      setPhoneError(validatePhone(digits));
+    } else {
+      setPhoneError(null);
+    }
+  };
+
+  const handleCityChange = (val: string) => {
+    setCity(val);
+    setCityValidated(false);
+    setCityError(null);
+    const spam = detectSpam("city", val);
+    if (spam) {
+      setCityError(spam);
+      setCitySuggestions([]);
+      setCityDropdownOpen(false);
+      return;
+    }
+    if (val.trim().length >= 2) {
+      const results = filterCities(val.trim());
+      setCitySuggestions(results);
+      setCityDropdownOpen(results.length > 0);
+      setFocusedCityIndex(-1);
+    } else {
+      setCitySuggestions([]);
+      setCityDropdownOpen(false);
+    }
+  };
+
+  const handlePhoneBlur = () => {
+    const digits = phone.replace(/\D/g, "");
+    if (digits.length > 0 && digits.length < 11) {
+      setPhoneError("O número deve ter DDD + 9 dígitos");
+    }
+  };
+
+  const handleNameBlur = () => {
+    if (name.trim().length > 0 && !name.trim().includes(" ")) {
+      setNameError("Inclua seu sobrenome também");
+    }
   };
 
   const inputStyle = "w-full rounded-xl border border-border bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:ring-2 focus:ring-primary/30 transition-all";
