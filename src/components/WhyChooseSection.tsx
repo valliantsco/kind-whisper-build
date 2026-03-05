@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
+
 import { MessageCircle, UserCheck, Layers, Wrench, CreditCard, Award, CheckCircle2 } from "lucide-react";
 
 const timelineItems = [
