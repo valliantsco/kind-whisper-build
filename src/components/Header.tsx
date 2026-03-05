@@ -20,10 +20,10 @@ const StatusDot = ({ online }: { online: boolean }) => (
 );
 
 const navItems = [
-  { label: "Inicio", href: "#inicio" },
-  { label: "Sobre nós", href: "#sobre" },
-  { label: "Modelos", href: "#modelos" },
-  { label: "Onde estamos", href: "#onde-estamos" },
+  { label: "Lorem Ipsum", href: "#inicio" },
+  { label: "Dolor Sit", href: "#sobre" },
+  { label: "Amet Consec", href: "#modelos" },
+  { label: "Adipiscing", href: "#onde-estamos" },
 ];
 
 /* Animated hamburger ↔ X icon */
