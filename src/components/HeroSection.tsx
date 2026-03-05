@@ -175,7 +175,7 @@ const HeroSection = () => {
                 <>
 
                   {/* Headline */}
-                  <h1 className="font-display font-black text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-primary-foreground leading-[0.95] mb-3 md:mb-4 uppercase tracking-tight">
+                  <h1 className="font-display font-black text-xl sm:text-2xl md:text-3xl lg:text-4xl text-primary-foreground leading-[1] mb-2.5 md:mb-3 uppercase tracking-tight">
                     {slide.headlineLines.map((line, idx) => {
                       const visibilityClass = line.mobileOnly
                         ? "block sm:hidden"
@@ -206,14 +206,14 @@ const HeroSection = () => {
                   </h1>
 
                   {/* Subheadline */}
-                  <p className="text-xs sm:text-sm md:text-base text-primary-foreground/50 mb-4 md:mb-5 max-w-md leading-relaxed tracking-wide">
+                  <p className="text-[10px] sm:text-xs md:text-sm text-primary-foreground/45 mb-3 md:mb-4 max-w-sm leading-relaxed tracking-wide">
                     {slide.subheadline}
                   </p>
 
                   {/* CTA */}
                   <motion.a
                     href={slide.primaryCta.href}
-                    className="inline-flex items-center justify-center text-[10px] sm:text-xs font-semibold uppercase tracking-[0.14em] px-5 md:px-7 py-2.5 md:py-3 rounded-xl overflow-visible"
+                    className="inline-flex items-center justify-center text-[9px] sm:text-[10px] font-semibold uppercase tracking-[0.14em] px-4 md:px-6 py-2 md:py-2.5 rounded-lg overflow-visible"
                     style={{
                       background: "linear-gradient(135deg, hsl(11 81% 57%), hsl(11 90% 65%))",
                       color: "white",
