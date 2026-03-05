@@ -1,6 +1,6 @@
 import { useState, useRef, useCallback, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Mic, Square, Loader2, MessageSquare } from "lucide-react";
+import { Mic, Square, Loader2, Keyboard } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 
 interface QuizDetailsStepProps {
@@ -11,6 +11,7 @@ interface QuizDetailsStepProps {
 const MAX_RECORDING_SECONDS = 15;
 
 const QuizDetailsStep = ({ details, onDetailsChange }: QuizDetailsStepProps) => {
+  const [mode, setMode] = useState<"idle" | "text" | "audio">("idle");
   const [isRecording, setIsRecording] = useState(false);
   const [isTranscribing, setIsTranscribing] = useState(false);
   const [recordingSeconds, setRecordingSeconds] = useState(0);
@@ -36,6 +37,11 @@ const QuizDetailsStep = ({ details, onDetailsChange }: QuizDetailsStepProps) => 
       }
     };
   }, []);
+
+  // If details already has text, show text mode
+  useEffect(() => {
+    if (details.trim() && mode === "idle") setMode("text");
+  }, [details, mode]);
 
   const startRecording = useCallback(async () => {
     try {
@@ -68,6 +74,7 @@ const QuizDetailsStep = ({ details, onDetailsChange }: QuizDetailsStepProps) => 
           const text = data.transcription;
           if (text && text !== "[áudio inaudível]") {
             onDetailsChange(details ? `${details} ${text}` : text);
+            setMode("text");
           }
         } catch (err) {
           console.error("Transcription error:", err);
@@ -128,88 +135,137 @@ const QuizDetailsStep = ({ details, onDetailsChange }: QuizDetailsStepProps) => 
         </p>
       </div>
 
-      <div className="relative">
-        <textarea
-          ref={textareaRef}
-          value={details}
-          onChange={(e) => {
-            onDetailsChange(e.target.value);
-            e.target.style.height = "auto";
-            e.target.style.height = e.target.scrollHeight + "px";
-          }}
-          placeholder={
-            isTranscribing
-              ? "Processando áudio..."
-              : "Ex: Preciso de um veículo para entregas em ruas com subida, rodo cerca de 40km por dia..."
-          }
-          rows={3}
-          maxLength={500}
-          disabled={isTranscribing}
-          className="w-full rounded-xl border border-border bg-card px-4 py-3 pr-14 text-sm text-foreground placeholder:text-muted-foreground/60 resize-none focus:outline-none focus:ring-2 focus:ring-primary/30 disabled:opacity-50 transition-all"
-          style={{ maxHeight: "30vh", overflow: "hidden" }}
-        />
+      {/* Mode selector — only when idle and not recording/transcribing */}
+      {mode === "idle" && !isRecording && !isTranscribing && (
+        <div className="grid grid-cols-2 gap-3">
+          <motion.button
+            type="button"
+            onClick={() => {
+              setMode("text");
+              setTimeout(() => textareaRef.current?.focus(), 100);
+            }}
+            className="flex flex-col items-center gap-2 p-5 rounded-xl border-2 border-border bg-card hover:border-primary/40 hover:bg-primary/5 transition-all cursor-pointer"
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+          >
+            <Keyboard className="w-7 h-7 text-primary" />
+            <span className="text-sm font-semibold text-foreground">Digitar</span>
+            <span className="text-[10px] text-muted-foreground">Escreva sua necessidade</span>
+          </motion.button>
 
-        {/* Mic button */}
-        <motion.button
-          type="button"
-          onClick={isRecording ? stopRecording : startRecording}
-          disabled={isTranscribing}
-          className="absolute flex items-center justify-center w-9 h-9 rounded-full disabled:opacity-40 cursor-pointer"
-          style={{
-            right: 8,
-            bottom: 8,
-            background: isRecording
-              ? "hsl(var(--destructive) / 0.15)"
-              : "hsl(var(--primary) / 0.1)",
-            border: `1px solid ${isRecording ? "hsl(var(--destructive) / 0.3)" : "hsl(var(--primary) / 0.2)"}`,
-          }}
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
+          <motion.button
+            type="button"
+            onClick={() => {
+              setMode("audio");
+              startRecording();
+            }}
+            className="flex flex-col items-center gap-2 p-5 rounded-xl border-2 border-border bg-card hover:border-primary/40 hover:bg-primary/5 transition-all cursor-pointer"
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+          >
+            <Mic className="w-7 h-7 text-primary" />
+            <span className="text-sm font-semibold text-foreground">Gravar áudio</span>
+            <span className="text-[10px] text-muted-foreground">Máx. {MAX_RECORDING_SECONDS}s</span>
+          </motion.button>
+        </div>
+      )}
+
+      {/* Text input area */}
+      {mode === "text" && (
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="space-y-2"
         >
-          {isTranscribing ? (
-            <Loader2 className="w-4 h-4 text-muted-foreground animate-spin" />
-          ) : isRecording ? (
-            <Square className="w-3.5 h-3.5 text-destructive fill-destructive" />
-          ) : (
-            <Mic className="w-4 h-4 text-primary" />
+          <textarea
+            ref={textareaRef}
+            value={details}
+            onChange={(e) => {
+              onDetailsChange(e.target.value);
+              e.target.style.height = "auto";
+              e.target.style.height = e.target.scrollHeight + "px";
+            }}
+            placeholder="Ex: Preciso de um veículo para entregas em ruas com subida, rodo cerca de 40km por dia..."
+            rows={3}
+            maxLength={500}
+            className="w-full rounded-xl border border-border bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/60 resize-none focus:outline-none focus:ring-2 focus:ring-primary/30 transition-all"
+            style={{ maxHeight: "30vh", overflow: "hidden" }}
+            autoFocus
+          />
+          <div className="flex justify-between items-center">
+            <button
+              type="button"
+              onClick={() => { setMode("audio"); startRecording(); }}
+              className="text-xs text-muted-foreground hover:text-primary transition-colors flex items-center gap-1"
+            >
+              <Mic className="w-3 h-3" /> Ou gravar áudio
+            </button>
+            <span className="text-[10px] text-muted-foreground/60">{details.length}/500</span>
+          </div>
+        </motion.div>
+      )}
+
+      {/* Audio recording state */}
+      {(mode === "audio" || isRecording || isTranscribing) && !details.trim() && mode !== "text" && (
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="space-y-3"
+        >
+          {isRecording && (
+            <motion.div
+              className="flex flex-col items-center gap-4 py-6 rounded-xl bg-destructive/5 border border-destructive/10"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+            >
+              <div className="relative">
+                <motion.div
+                  className="w-16 h-16 rounded-full bg-destructive/10 flex items-center justify-center cursor-pointer"
+                  onClick={stopRecording}
+                  animate={{ scale: [1, 1.05, 1] }}
+                  transition={{ duration: 1.5, repeat: Infinity }}
+                >
+                  <Square className="w-6 h-6 text-destructive fill-destructive" />
+                </motion.div>
+                <motion.div
+                  className="absolute inset-0 rounded-full border-2 border-destructive/30"
+                  animate={{ scale: [1, 1.4], opacity: [0.6, 0] }}
+                  transition={{ duration: 1.5, repeat: Infinity }}
+                />
+              </div>
+              <div className="text-center">
+                <p className="text-sm font-semibold text-foreground">
+                  Gravando... {MAX_RECORDING_SECONDS - recordingSeconds}s
+                </p>
+                <p className="text-xs text-muted-foreground mt-1">
+                  Toque para parar
+                </p>
+              </div>
+            </motion.div>
           )}
-        </motion.button>
-      </div>
 
-      {/* Recording indicator */}
-      <AnimatePresence>
-        {isRecording && (
-          <motion.div
-            className="flex items-center gap-2 px-3 py-2 rounded-lg bg-destructive/5 border border-destructive/10"
-            initial={{ opacity: 0, y: -8 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-          >
-            <span className="relative flex h-2 w-2 shrink-0">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-destructive opacity-75" />
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-destructive" />
-            </span>
-            <span className="text-xs text-muted-foreground">
-              Gravando ({MAX_RECORDING_SECONDS - recordingSeconds}s)... toque para parar
-            </span>
-          </motion.div>
-        )}
-        {isTranscribing && (
-          <motion.div
-            className="flex items-center gap-2 px-3 py-2 rounded-lg bg-primary/5 border border-primary/10"
-            initial={{ opacity: 0, y: -8 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-          >
-            <Loader2 className="w-3 h-3 text-primary animate-spin shrink-0" />
-            <span className="text-xs text-muted-foreground">Processando áudio...</span>
-          </motion.div>
-        )}
-      </AnimatePresence>
+          {isTranscribing && (
+            <motion.div
+              className="flex flex-col items-center gap-3 py-6 rounded-xl bg-primary/5 border border-primary/10"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+            >
+              <Loader2 className="w-8 h-8 text-primary animate-spin" />
+              <p className="text-sm text-muted-foreground">Transcrevendo seu áudio...</p>
+            </motion.div>
+          )}
 
-      <p className="text-[10px] text-muted-foreground/60 text-right">
-        {details.length}/500
-      </p>
+          {!isRecording && !isTranscribing && (
+            <button
+              type="button"
+              onClick={() => setMode("idle")}
+              className="text-xs text-muted-foreground hover:text-foreground transition-colors"
+            >
+              ← Voltar às opções
+            </button>
+          )}
+        </motion.div>
+      )}
     </motion.div>
   );
 };
