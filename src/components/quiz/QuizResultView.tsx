@@ -4,7 +4,8 @@ import { MessageCircle, Star, ChevronRight, User, Phone, MapPin, Clock } from "l
 import type { QuizResult } from "./types";
 import { getModelImage } from "./modelImages";
 import { useBusinessStatus } from "@/hooks/useBusinessHours";
-import { filterCities, BUSINESS_HOURS_INFO } from "@/utils/form-helpers";
+import { filterCities, formatPhone, formatName, validatePhone, BUSINESS_HOURS_INFO } from "@/utils/form-helpers";
+import { detectSpam } from "@/utils/spam-detection";
 
 interface QuizResultViewProps {
   result: QuizResult;
@@ -20,12 +21,10 @@ const getDayMatch = (dayLabel: string): number => {
   return -1;
 };
 
-const formatPhone = (value: string) => {
-  const digits = value.replace(/\D/g, "").slice(0, 11);
-  if (digits.length <= 2) return digits;
-  if (digits.length <= 7) return `(${digits.slice(0, 2)}) ${digits.slice(2)}`;
-  return `(${digits.slice(0, 2)}) ${digits.slice(2, 7)}-${digits.slice(7)}`;
-};
+const getInputClasses = (hasError: boolean) =>
+  `w-full rounded-xl border px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:ring-2 transition-all ${
+    hasError ? "border-destructive/50 focus:ring-destructive/30 bg-destructive/5" : "border-border focus:ring-primary/30 bg-card"
+  }`;
 
 const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps) => {
   const models = result.models?.length ? result.models : [];
@@ -42,9 +41,20 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
   const [focusedCityIndex, setFocusedCityIndex] = useState(-1);
   const [showHoursPopup, setShowHoursPopup] = useState(false);
 
+  // Validation errors
+  const [nameError, setNameError] = useState<string | null>(null);
+  const [phoneError, setPhoneError] = useState<string | null>(null);
+  const [cityError, setCityError] = useState<string | null>(null);
+
   const cityInputRef = useRef<HTMLInputElement>(null);
 
-  const isFormValid = name.trim().length >= 2 && phone.replace(/\D/g, "").length >= 10 && city.trim().length >= 2;
+  const isFormValid =
+    name.trim().length >= 2 &&
+    !nameError &&
+    phone.replace(/\D/g, "").length >= 10 &&
+    !phoneError &&
+    city.trim().length >= 2 &&
+    !cityError;
 
   const buildWhatsAppUrl = () => {
     const modelNames = models.map(m => m.name).join(", ");
