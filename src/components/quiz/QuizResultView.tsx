@@ -122,7 +122,7 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
     }
   };
 
-  const inputStyle = "w-full rounded-xl border border-border bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:ring-2 focus:ring-primary/30 transition-all";
+  
 
   return (
     <motion.div
