@@ -244,23 +244,15 @@ const PopUpContato01 = ({ isOpen, onClose }: PopUpContato01Props) => {
             />
 
             {/* Ambient glow */}
-            <motion.div
-              className="absolute -top-20 -right-20 w-60 h-60 rounded-full pointer-events-none motion-reduce:hidden"
+            <div
+              className="absolute -top-20 -right-20 w-60 h-60 rounded-full pointer-events-none"
               style={{
-                background: "radial-gradient(circle, hsl(11 81% 57% / 0.08) 0%, transparent 70%)",
-                filter: "blur(40px)",
+                background: "radial-gradient(circle, hsl(11 81% 57% / 0.06) 0%, transparent 70%)",
               }}
-              animate={{ opacity: [0.5, 0.8, 0.5] }}
-              transition={{ duration: 4, repeat: Infinity }}
             />
 
             {/* Scrollable content */}
             <div className="overflow-y-auto flex-1 relative scrollbar-hide" style={{ scrollbarWidth: "none" }}>
-              {/* Top scroll fade */}
-              <div
-                className="sticky top-0 left-0 right-0 h-3 pointer-events-none z-10"
-                style={{ background: "linear-gradient(to bottom, hsl(0 0% 14% / 0.92), transparent)" }}
-              />
 
               {/* Header */}
               <div className="flex items-start justify-between px-5 pt-4 pb-3">
@@ -429,18 +421,7 @@ const PopUpContato01 = ({ isOpen, onClose }: PopUpContato01Props) => {
                 </p>
               </div>
 
-              {/* Bottom scroll fade */}
-              <div
-                className="sticky bottom-0 left-0 right-0 h-3 pointer-events-none"
-                style={{ background: "linear-gradient(to top, hsl(0 0% 14% / 0.92), transparent)" }}
-              />
             </div>
-
-            {/* Bottom light strip */}
-            <div
-              className="h-[1px] shrink-0"
-              style={{ background: "linear-gradient(90deg, transparent, hsl(11 81% 57% / 0.4), transparent)" }}
-            />
           </motion.div>
         </motion.div>
       )}
