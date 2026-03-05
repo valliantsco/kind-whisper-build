@@ -637,7 +637,7 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                       className="relative inline-flex rounded-full h-2.5 w-2.5"
                       style={{ background: isOnline ? "hsl(142 76% 50%)" : "hsl(11 81% 57%)" }} />
                     </span>
-                    {isOnline ? "Atendimento online" : offlineMessage}
+                    {isOnline ? "Atendimento Online" : offlineMessage}
                     <span className="ml-auto flex items-center gap-1 text-[9px] opacity-50 group-hover:opacity-80 transition-opacity duration-200">
                       Ver horários <span className="inline-block transition-transform duration-200" style={{ transform: showHoursPopup ? "rotate(90deg)" : "rotate(0deg)" }}>›</span>
                     </span>
