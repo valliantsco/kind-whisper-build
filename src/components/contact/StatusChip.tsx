@@ -33,14 +33,17 @@ const StatusChip = ({ isOnline, offlineMessage }: StatusChipProps) => {
             boxShadow: "0 4px 16px hsl(11 81% 57% / 0.3)",
           }}
         >
-          <span className="relative flex h-2.5 w-2.5 shrink-0">
+          <span className="relative flex h-3.5 w-3.5 shrink-0">
             <span
-              className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-60"
-              style={{ background: isOnline ? "hsl(142 76% 90%)" : "hsl(0 70% 60%)" }}
+              className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75"
+              style={{ background: isOnline ? "hsl(142 76% 50%)" : "hsl(0 75% 50%)" }}
             />
             <span
-              className="relative inline-flex rounded-full h-2.5 w-2.5 border border-white/30"
-              style={{ background: isOnline ? "hsl(142 76% 50%)" : "hsl(0 70% 55%)" }}
+              className="relative inline-flex rounded-full h-3.5 w-3.5 border-2 border-white/40"
+              style={{
+                background: isOnline ? "hsl(142 76% 50%)" : "hsl(0 75% 50%)",
+                boxShadow: isOnline ? "0 0 8px hsl(142 76% 50% / 0.6)" : "0 0 8px hsl(0 75% 50% / 0.6)",
+              }}
             />
           </span>
           {isOnline ? "Atendimento Online" : offlineMessage}
