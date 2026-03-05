@@ -706,7 +706,7 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                 <div>
                   <label className="flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-[0.1em] text-white/50 mb-1.5">
                     <User className="w-3 h-3" />
-                    Seu nome e sobrenome <span className="text-primary/70">*</span>
+                    Como podemos te chamar? <span className="text-primary/70">*</span>
                   </label>
                   <input
                     type="text"
@@ -742,7 +742,7 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                 <div>
                   <label className="flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-[0.1em] text-white/50 mb-1.5">
                     <WhatsAppIcon className="w-3 h-3" />
-                    Seu WhatsApp <span className="text-primary/70">*</span>
+                    WhatsApp para contato <span className="text-primary/70">*</span>
                   </label>
                   <input
                     type="tel"
@@ -788,7 +788,7 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                 <div className="relative">
                   <label className="flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-[0.1em] text-white/50 mb-1.5">
                     <MapPin className="w-3 h-3" />
-                    Sua cidade e estado <span className="text-primary/70">*</span>
+                    De onde você é? <span className="text-primary/70">*</span>
                   </label>
                   <input
                     ref={cityInputRef}
@@ -894,7 +894,7 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                 <div>
                   <label className="flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-[0.1em] text-white/50 mb-1.5">
                     <MessageSquare className="w-3 h-3" />
-                    Como podemos te ajudar? <span className="text-primary/70">*</span>
+                    Conta pra gente o que você precisa <span className="text-primary/70">*</span>
                   </label>
 
 
@@ -917,7 +917,7 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                         e.target.style.height = 'auto';
                         e.target.style.height = e.target.scrollHeight + 'px';
                       }}
-                      placeholder={isTranscribing ? "Processando áudio..." : "Descreva brevemente ou grave um áudio..."}
+                      placeholder={isTranscribing ? "Processando áudio..." : "Ex: Quero saber mais sobre a scooter elétrica..."}
                       rows={3}
                       maxLength={500}
                       disabled={isTranscribing}
