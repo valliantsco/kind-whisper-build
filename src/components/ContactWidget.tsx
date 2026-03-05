@@ -680,10 +680,10 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                       transition={{ type: "spring", stiffness: 400, damping: 25 }}
                       className="absolute left-0 right-0 top-full mt-2 z-50 rounded-xl p-4 space-y-1"
                       style={{
-                        background: "linear-gradient(160deg, hsl(0 0% 18% / 0.97), hsl(0 0% 13% / 0.97))",
+                        background: "linear-gradient(135deg, hsl(11 81% 57% / 0.12), hsl(38 92% 50% / 0.06))",
                         backdropFilter: "blur(24px)",
                         border: "1px solid hsl(11 81% 57% / 0.25)",
-                        boxShadow: "0 16px 48px hsl(0 0% 0% / 0.4), 0 0 24px hsl(11 81% 57% / 0.06), inset 0 1px 0 hsl(0 0% 100% / 0.04), inset 0 0 0 0.5px hsl(11 81% 57% / 0.1)"
+                        boxShadow: "0 12px 40px hsl(0 0% 0% / 0.3), 0 0 20px hsl(11 81% 57% / 0.05)"
                       }}>
                       
                           <div className="flex items-center gap-2 mb-2.5 pb-2" style={{ borderBottom: "1px solid hsl(0 0% 100% / 0.06)" }}>
