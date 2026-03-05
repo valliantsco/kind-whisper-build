@@ -9,12 +9,15 @@ import ContactWidget from "@/components/PopUpContato01";
 const StatusDot = ({ online }: { online: boolean }) => (
   <span className="absolute -top-1.5 -right-1.5 flex items-center justify-center h-5 w-5 z-10">
     <span
-      className="animate-ping absolute inline-flex h-2.5 w-2.5 rounded-full opacity-60"
-      style={{ background: online ? "hsl(142 76% 50%)" : "hsl(11 81% 57%)" }}
+      className="animate-ping absolute inline-flex h-3 w-3 rounded-full opacity-65"
+      style={{ background: online ? "hsl(142 76% 50%)" : "hsl(0 75% 50%)" }}
     />
     <span
-      className="relative inline-flex rounded-full h-2.5 w-2.5 border-[1.5px] border-white"
-      style={{ background: online ? "hsl(142 76% 50%)" : "hsl(11 81% 57%)" }}
+      className="relative inline-flex rounded-full h-3 w-3 border-[1.5px] border-white/30"
+      style={{
+        background: online ? "hsl(142 76% 50%)" : "hsl(0 75% 50%)",
+        boxShadow: online ? "0 0 6px hsl(142 76% 50% / 0.4)" : "0 0 6px hsl(0 75% 50% / 0.4)",
+      }}
     />
   </span>
 );
