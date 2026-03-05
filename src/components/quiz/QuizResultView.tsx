@@ -4,7 +4,8 @@ import { MessageCircle, Star, ChevronRight, User, Phone, MapPin, Clock } from "l
 import type { QuizResult } from "./types";
 import { getModelImage } from "./modelImages";
 import { useBusinessStatus } from "@/hooks/useBusinessHours";
-import { filterCities, BUSINESS_HOURS_INFO } from "@/utils/form-helpers";
+import { filterCities, formatPhone, formatName, validatePhone, BUSINESS_HOURS_INFO } from "@/utils/form-helpers";
+import { detectSpam } from "@/utils/spam-detection";
 
 interface QuizResultViewProps {
   result: QuizResult;
@@ -20,12 +21,10 @@ const getDayMatch = (dayLabel: string): number => {
   return -1;
 };
 
-const formatPhone = (value: string) => {
-  const digits = value.replace(/\D/g, "").slice(0, 11);
-  if (digits.length <= 2) return digits;
-  if (digits.length <= 7) return `(${digits.slice(0, 2)}) ${digits.slice(2)}`;
-  return `(${digits.slice(0, 2)}) ${digits.slice(2, 7)}-${digits.slice(7)}`;
-};
+const getInputClasses = (hasError: boolean) =>
+  `w-full rounded-xl border px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:ring-2 transition-all ${
+    hasError ? "border-destructive/50 focus:ring-destructive/30 bg-destructive/5" : "border-border focus:ring-primary/30 bg-card"
+  }`;
 
 const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps) => {
   const models = result.models?.length ? result.models : [];
@@ -42,9 +41,20 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
   const [focusedCityIndex, setFocusedCityIndex] = useState(-1);
   const [showHoursPopup, setShowHoursPopup] = useState(false);
 
+  // Validation errors
+  const [nameError, setNameError] = useState<string | null>(null);
+  const [phoneError, setPhoneError] = useState<string | null>(null);
+  const [cityError, setCityError] = useState<string | null>(null);
+
   const cityInputRef = useRef<HTMLInputElement>(null);
 
-  const isFormValid = name.trim().length >= 2 && phone.replace(/\D/g, "").length >= 10 && city.trim().length >= 2;
+  const isFormValid =
+    name.trim().length >= 2 &&
+    !nameError &&
+    phone.replace(/\D/g, "").length >= 10 &&
+    !phoneError &&
+    city.trim().length >= 2 &&
+    !cityError;
 
   const buildWhatsAppUrl = () => {
     const modelNames = models.map(m => m.name).join(", ");
@@ -57,9 +67,62 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
     setCityValidated(true);
     setCityDropdownOpen(false);
     setCitySuggestions([]);
+    setCityError(null);
   };
 
-  const inputStyle = "w-full rounded-xl border border-border bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:ring-2 focus:ring-primary/30 transition-all";
+  const handleNameChange = (val: string) => {
+    const formatted = formatName(val);
+    setName(formatted);
+    const spam = detectSpam("name", formatted);
+    setNameError(spam);
+  };
+
+  const handlePhoneChange = (val: string) => {
+    const digits = val.replace(/\D/g, "").slice(0, 11);
+    setPhone(formatPhone(digits));
+    if (digits.length === 11) {
+      setPhoneError(validatePhone(digits));
+    } else {
+      setPhoneError(null);
+    }
+  };
+
+  const handleCityChange = (val: string) => {
+    setCity(val);
+    setCityValidated(false);
+    setCityError(null);
+    const spam = detectSpam("city", val);
+    if (spam) {
+      setCityError(spam);
+      setCitySuggestions([]);
+      setCityDropdownOpen(false);
+      return;
+    }
+    if (val.trim().length >= 2) {
+      const results = filterCities(val.trim());
+      setCitySuggestions(results);
+      setCityDropdownOpen(results.length > 0);
+      setFocusedCityIndex(-1);
+    } else {
+      setCitySuggestions([]);
+      setCityDropdownOpen(false);
+    }
+  };
+
+  const handlePhoneBlur = () => {
+    const digits = phone.replace(/\D/g, "");
+    if (digits.length > 0 && digits.length < 11) {
+      setPhoneError("O número deve ter DDD + 9 dígitos");
+    }
+  };
+
+  const handleNameBlur = () => {
+    if (name.trim().length > 0 && !name.trim().includes(" ")) {
+      setNameError("Inclua seu sobrenome também");
+    }
+  };
+
+  
 
   return (
     <motion.div
@@ -238,11 +301,13 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
           <input
             type="text"
             value={name}
-            onChange={(e) => setName(e.target.value)}
+            onChange={(e) => handleNameChange(e.target.value)}
+            onBlur={handleNameBlur}
             placeholder="João Silva"
             maxLength={100}
-            className={inputStyle}
+            className={getInputClasses(!!nameError)}
           />
+          {nameError && <p className="text-[10px] mt-1 text-destructive">{nameError}</p>}
         </div>
 
         {/* WhatsApp */}
@@ -254,11 +319,13 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
           <input
             type="tel"
             value={phone}
-            onChange={(e) => setPhone(formatPhone(e.target.value))}
+            onChange={(e) => handlePhoneChange(e.target.value)}
+            onBlur={handlePhoneBlur}
             placeholder="(00) 00000-0000"
             maxLength={15}
-            className={inputStyle}
+            className={getInputClasses(!!phoneError)}
           />
+          {phoneError && <p className="text-[10px] mt-1 text-destructive">{phoneError}</p>}
         </div>
 
         {/* City */}
@@ -271,20 +338,7 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
             ref={cityInputRef}
             type="text"
             value={city}
-            onChange={(e) => {
-              const val = e.target.value;
-              setCity(val);
-              setCityValidated(false);
-              if (val.trim().length >= 2) {
-                const results = filterCities(val.trim());
-                setCitySuggestions(results);
-                setCityDropdownOpen(results.length > 0);
-                setFocusedCityIndex(-1);
-              } else {
-                setCitySuggestions([]);
-                setCityDropdownOpen(false);
-              }
-            }}
+            onChange={(e) => handleCityChange(e.target.value)}
             onFocus={() => {
               if (city.trim().length >= 2 && citySuggestions.length > 0) setCityDropdownOpen(true);
             }}
@@ -298,9 +352,10 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
             }}
             placeholder="São Paulo, SP"
             maxLength={100}
-            className={inputStyle}
+            className={getInputClasses(!!cityError)}
             autoComplete="off"
           />
+          {cityError && <p className="text-[10px] mt-1 text-destructive">{cityError}</p>}
           <AnimatePresence>
             {cityDropdownOpen && citySuggestions.length > 0 && (
               <motion.div
