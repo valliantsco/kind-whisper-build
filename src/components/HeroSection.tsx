@@ -86,7 +86,7 @@ const HeroSection = () => {
   }, [nextSlide, isPaused, currentSlide]);
 
   return (
-    <section id="inicio" className="relative min-h-[75vh] flex items-center overflow-hidden">
+    <section id="inicio" className="relative flex items-center overflow-hidden" style={{ minHeight: "calc(75vh - 10px)" }}>
       {/* Background image fallback */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -157,7 +157,7 @@ const HeroSection = () => {
       </div>
 
       {/* Main content — dynamic per slide */}
-      <div className="relative z-10 container mx-auto px-4 pb-4 flex items-end min-h-[75vh]">
+      <div className="relative z-10 container mx-auto px-4 pb-4 flex items-end" style={{ minHeight: "calc(75vh - 10px)" }}>
         <AnimatePresence mode="wait">
           <motion.div
             key={currentSlide}
