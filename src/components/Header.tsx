@@ -336,7 +336,7 @@ const Header = ({ contactOpen, setContactOpen }: HeaderProps) => {
               >
                 <StatusDot online={isOnline} />
                 <WhatsAppIcon />
-                Fale com um especialista
+                Lorem Ipsum Dolor
               </motion.button>
             </div>
 
@@ -451,8 +451,8 @@ const Header = ({ contactOpen, setContactOpen }: HeaderProps) => {
                     >
                       <StatusDot online={isOnline} />
                       <WhatsAppIcon />
-                      Fale com um especialista
-                    </motion.button>
+                       Lorem Ipsum Dolor
+                     </motion.button>
                   </motion.div>
                 </motion.div>
               </motion.div>
