@@ -300,27 +300,59 @@ const Header = ({ contactOpen, setContactOpen }: HeaderProps) => {
 
             {/* Desktop Nav */}
             <nav className="hidden lg:flex items-center gap-1">
-              {navItems.map((item) => (
-                <a
-                  key={item.label}
-                  href={item.href}
-                  className={`group relative px-4 py-2 text-xs font-semibold uppercase tracking-[0.15em] transition-all duration-[800ms] ease-in-out rounded-md ${
-                    scrolled
-                      ? "text-foreground hover:text-primary"
-                      : "text-primary-foreground/90 hover:text-primary-foreground"
-                  }`}
-                >
-                  {item.label}
-                  {/* Neon gradient underline */}
-                  <span
-                    className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[2px] group-hover:w-3/4 transition-all duration-300 ease-out rounded-full"
-                    style={{
-                      background: "linear-gradient(90deg, hsl(11 81% 57%), hsl(11 90% 65%))",
-                      boxShadow: "0 0 8px hsl(11 81% 57% / 0.5)",
+              {navItems.map((item) => {
+                const hasMega = item.label === "Dolor Sit";
+                return (
+                  <div
+                    key={item.label}
+                    className="relative"
+                    onMouseEnter={() => {
+                      if (hasMega) {
+                        if (megaMenuTimeout.current) clearTimeout(megaMenuTimeout.current);
+                        setMegaMenuOpen(true);
+                      }
                     }}
-                  />
-                </a>
-              ))}
+                    onMouseLeave={() => {
+                      if (hasMega) {
+                        megaMenuTimeout.current = setTimeout(() => setMegaMenuOpen(false), 150);
+                      }
+                    }}
+                  >
+                    <a
+                      href={item.href}
+                      className={`group relative px-4 py-2 text-xs font-semibold uppercase tracking-[0.15em] transition-all duration-[800ms] ease-in-out rounded-md inline-flex items-center gap-1 ${
+                        scrolled
+                          ? "text-foreground hover:text-primary"
+                          : "text-primary-foreground/90 hover:text-primary-foreground"
+                      }`}
+                      onClick={(e) => {
+                        if (hasMega) {
+                          e.preventDefault();
+                          setMegaMenuOpen(!megaMenuOpen);
+                        }
+                      }}
+                    >
+                      {item.label}
+                      {hasMega && (
+                        <motion.span
+                          animate={{ rotate: megaMenuOpen ? 180 : 0 }}
+                          transition={{ duration: 0.25 }}
+                        >
+                          <ChevronDown className="w-3 h-3" />
+                        </motion.span>
+                      )}
+                      {/* Neon gradient underline */}
+                      <span
+                        className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[2px] group-hover:w-3/4 transition-all duration-300 ease-out rounded-full"
+                        style={{
+                          background: "linear-gradient(90deg, hsl(11 81% 57%), hsl(11 90% 65%))",
+                          boxShadow: "0 0 8px hsl(11 81% 57% / 0.5)",
+                        }}
+                      />
+                    </a>
+                  </div>
+                );
+              })}
             </nav>
 
             {/* Desktop CTA — WhatsApp gradient matching popup */}
