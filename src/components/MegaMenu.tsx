@@ -1,4 +1,5 @@
 import { motion, AnimatePresence } from "framer-motion";
+import { ArrowRight } from "lucide-react";
 import categoryScooter from "@/assets/category-scooter.jpg";
 import categoryBike from "@/assets/category-bike.jpg";
 import categoryTricycle from "@/assets/category-tricycle.jpg";
@@ -56,7 +57,7 @@ const MegaMenu = ({ open, scrolled, onClose }: MegaMenuProps) => {
             />
 
             <div className="p-5">
-              <div className="grid grid-cols-5 gap-3">
+              <div className="grid grid-cols-6 gap-3">
                 {categories.map((cat, i) => (
                   <motion.a
                     key={cat.label}
@@ -69,43 +70,63 @@ const MegaMenu = ({ open, scrolled, onClose }: MegaMenuProps) => {
                     style={{ aspectRatio: "3/4" }}
                     whileHover={{ scale: 1.03 }}
                   >
-                    {/* Image */}
                     <img
                       src={cat.image}
                       alt={cat.label}
                       className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                     />
-
-                    {/* Gradient overlay */}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
-
-                    {/* Hover glow */}
                     <div
                       className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                      style={{
-                        background: "linear-gradient(135deg, hsl(11 81% 57% / 0.15) 0%, transparent 60%)",
-                      }}
+                      style={{ background: "linear-gradient(135deg, hsl(11 81% 57% / 0.15) 0%, transparent 60%)" }}
                     />
-
-                    {/* Border glow on hover */}
                     <div
                       className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                      style={{
-                        boxShadow: "inset 0 0 0 1.5px hsl(11 81% 57% / 0.6), 0 0 20px hsl(11 81% 57% / 0.15)",
-                      }}
+                      style={{ boxShadow: "inset 0 0 0 1.5px hsl(11 81% 57% / 0.6), 0 0 20px hsl(11 81% 57% / 0.15)" }}
                     />
-
-                    {/* Text */}
                     <div className="absolute bottom-0 left-0 right-0 p-3">
                       <p className="text-white font-bold text-xs uppercase tracking-[0.1em] mb-0.5 drop-shadow-lg">
                         {cat.label}
                       </p>
-                      <p className="text-white/60 text-[10px] tracking-wide">
-                        {cat.desc}
-                      </p>
+                      <p className="text-white/60 text-[10px] tracking-wide">{cat.desc}</p>
                     </div>
                   </motion.a>
                 ))}
+
+                {/* "Ver todos" CTA card */}
+                <motion.a
+                  href="#modelos"
+                  onClick={onClose}
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: categories.length * 0.06, duration: 0.35 }}
+                  className="group relative rounded-xl overflow-hidden cursor-pointer flex flex-col items-center justify-center text-center"
+                  style={{
+                    aspectRatio: "3/4",
+                    background: "linear-gradient(135deg, hsl(11 81% 57%), hsl(11 90% 65%))",
+                    boxShadow: "0 4px 20px hsl(11 81% 57% / 0.2)",
+                  }}
+                  whileHover={{
+                    scale: 1.03,
+                    boxShadow: "0 0 30px hsl(11 81% 57% / 0.4), 0 0 60px hsl(11 81% 57% / 0.15)",
+                  }}
+                >
+                  <div className="flex flex-col items-center gap-2">
+                    <motion.div
+                      className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center"
+                      animate={{ x: [0, 4, 0] }}
+                      transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                    >
+                      <ArrowRight className="w-5 h-5 text-white" />
+                    </motion.div>
+                    <p className="text-white font-bold text-xs uppercase tracking-[0.12em]">
+                      Ver todos
+                    </p>
+                    <p className="text-white/60 text-[10px] tracking-wide">
+                      os modelos
+                    </p>
+                  </div>
+                </motion.a>
               </div>
             </div>
           </div>
