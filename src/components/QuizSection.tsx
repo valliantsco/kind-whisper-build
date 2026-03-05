@@ -11,53 +11,80 @@ const msEletricQuizConfig: QuizConfig = {
   teaserSubheading: "Responda algumas perguntas e receba uma recomendação baseada no seu uso.",
   teaserCta: "Descobrir meu modelo ideal",
   whatsappNumber: "551151996628",
-  businessContext: `A MS Eletric é uma revendedora de veículos elétricos com as seguintes categorias:
+  businessContext: `A MS Eletric é revendedora autorizada AIMA (líder mundial) de veículos elétricos em Uberlândia-MG. Catálogo real:
 
-1. Motos & Scooters Elétricas — Para uso urbano, rotina diária, deslocamento cidade. Modelos: Scooter City 800W, Urban Pro 1500W, Delivery Max.
-2. Bike Elétrica — Mobilidade leve, pedal assistido, ciclovias. Modelos: E-Bike Urban, E-Bike Dobrável, E-Bike Cargo.
-3. Triciclos Elétricos — Conforto, estabilidade, acessibilidade. Modelos: Comfort T3, Triciclo Premium, Triciclo Cargo.
-4. Autopropelidos — Praticidade, última milha, compactos. Modelos: Patinete Pro, Hoverboard X, Monociclo Elétrico.
-5. Motocross Elétrica — Lazer, trilha, off-road. Modelos: Trail X, Adventure Sport E, Cross 3000W.
+AUTOPROPELIDOS (não precisam de habilitação, até 32 km/h):
+- Bike 350: 350W HUB, 29km/h, 40km autonomia, bateria chumbo removível, 90-100kg carga, R$7.990
+- Bike 400+: 400W Bosch, 32km/h, 50km autonomia, bateria lítio removível, 90-100kg carga, R$10.990
+- Bike 500: 500W Bosch, 32km/h, 50km autonomia, bateria lítio removível, 100-120kg carga, R$10.990
+- Bike MS 600: 600W, 32km/h, 70km autonomia, bateria grafeno (não removível), freio a disco, 100-120kg, R$11.990
+- Bliss: 800W, 32km/h, 70km autonomia, bateria lítio, 120-150kg carga, R$15.990
 
-Considere autonomia, terreno, peso suportado, velocidade e finalidade de uso ao recomendar.`,
+BIKES ELÉTRICAS (pedal assistido, pneus grandes):
+- Santa Monica: 500W, 32km/h, 60km autonomia, bateria lítio, freio disco óleo, pneu 27.5", 120-150kg
+- Big Sur: 500W, 32km/h, 60km autonomia, bateria lítio, freio disco óleo, pneu fat 20"x4.0, 120-150kg
+
+TRICICLO ELÉTRICO:
+- Triciclo Elétrico: 650W, 32km/h, 60km autonomia, bateria chumbo, 120-150kg, R$15.990 (ideal para estabilidade e acessibilidade)
+
+MOTOCICLETAS ELÉTRICAS (exigem habilitação):
+- Tour 3K: 3000W, 75km/h, 40km autonomia, bateria lítio removível, 120kg, R$16.990
+- MS 3500: 3500W, 80km/h, 85km autonomia, bateria lítio removível, 120kg, R$18.990
+- MS 2500: 2500W, 52km/h, 50km autonomia, bateria chumbo, 150kg, R$18.990
+- Rhino Delivery: 2000W, 65km/h, 75km autonomia, bateria lítio removível, 150kg, R$18.990 (foco entregas)
+- Cargo: 1000W, 32km/h, 70km autonomia, bateria chumbo, 400kg carga útil, R$28.990 (triciclo de carga pesada)
+
+INFANTIL:
+- Moto Cross Infantil: 800W, 32km/h, 35km autonomia, seletor de velocidade com controle por chave, 55kg, R$5.990
+
+REGRAS DE RECOMENDAÇÃO:
+- Sem habilitação → apenas Autopropelidos, Bikes Elétricas ou Triciclo
+- Entregas/delivery → Rhino Delivery ou Cargo
+- Criança → Moto Cross Infantil
+- Maior autonomia + potência → MS 3500
+- Melhor custo-benefício → Bike 350 ou Bike 400+
+- Terreno irregular/trilha → Big Sur (pneu fat) ou Santa Monica
+- Estabilidade/idoso/PCD → Triciclo Elétrico
+- Carga pesada comercial → Cargo (400kg)`,
   steps: [
     {
-      question: "Qual será o principal uso do veículo?",
+      question: "Para quem é o veículo?",
       options: [
-        "Cidade / Rotina diária",
-        "Trabalho / Entregas",
-        "Lazer / Passeios",
-        "Conforto / Estabilidade",
+        "Para mim (adulto)",
+        "Para uma criança / adolescente",
+        "Para minha empresa (entregas/operação)",
+      ],
+    },
+    {
+      question: "Qual será o principal uso?",
+      options: [
+        "Ir e voltar do trabalho / faculdade",
+        "Entregas e delivery",
+        "Lazer e passeios",
+        "Preciso de estabilidade extra (idoso, PCD)",
         "Não sei ainda",
       ],
     },
     {
+      question: "Você possui habilitação (CNH)?",
+      options: [
+        "Sim, posso pilotar motocicleta",
+        "Não tenho habilitação",
+        "Não sei se precisa",
+      ],
+    },
+    {
       question: "Qual a distância média que você percorre por dia?",
-      options: ["Até 15 km", "15 a 30 km", "30 a 60 km", "Mais de 60 km", "Não sei"],
-    },
-    {
-      question: "Como é o terreno na sua região?",
-      options: [
-        "Plano (cidade, asfalto)",
-        "Misto (plano + algumas subidas)",
-        "Muitas subidas / terreno irregular",
-      ],
-    },
-    {
-      question: "Vai carregar peso ou garupa com frequência?",
-      options: [
-        "Sozinho na maior parte do tempo",
-        "Garupa ocasionalmente",
-        "Carga frequente (entregas, compras)",
-      ],
+      options: ["Até 15 km", "15 a 40 km", "40 a 70 km", "Mais de 70 km"],
     },
     {
       question: "O que é mais importante pra você?",
       options: [
-        "Autonomia (ir mais longe)",
-        "Conforto no dia a dia",
-        "Economia e custo-benefício",
-        "Desempenho e velocidade",
+        "Menor preço / economia",
+        "Maior autonomia (ir mais longe)",
+        "Velocidade e potência",
+        "Capacidade de carga",
+        "Conforto e praticidade",
       ],
     },
   ],
