@@ -5,52 +5,16 @@ import msLogoDark from "@/assets/ms-eletric-logo-dark-new.png";
 import { useBusinessHours } from "@/hooks/useBusinessHours";
 import ContactWidget from "@/components/PopUpContato01";
 
-/* Modern pulsing status indicator */
+/* Simple pulsing status dot — matches popup StatusChip style */
 const StatusDot = ({ online }: { online: boolean }) => (
   <span className="absolute -top-1.5 -right-1.5 flex items-center justify-center h-5 w-5 z-10">
-    {/* Outer ring pulse 1 */}
-    <motion.span
-      className="absolute inset-0 rounded-full"
-      style={{
-        border: `1.5px solid ${online ? "rgba(34,197,94,0.5)" : "rgba(239,68,68,0.5)"}`,
-      }}
-      animate={{ scale: [1, 2.2], opacity: [0.7, 0] }}
-      transition={{ duration: 1.8, repeat: Infinity, ease: "easeOut" }}
-    />
-    {/* Outer ring pulse 2 (offset) */}
-    <motion.span
-      className="absolute inset-0 rounded-full"
-      style={{
-        border: `1px solid ${online ? "rgba(34,197,94,0.4)" : "rgba(239,68,68,0.4)"}`,
-      }}
-      animate={{ scale: [1, 1.8], opacity: [0.5, 0] }}
-      transition={{ duration: 1.8, repeat: Infinity, ease: "easeOut", delay: 0.5 }}
-    />
-    {/* Glow backdrop */}
-    <motion.span
-      className="absolute rounded-full"
-      style={{
-        width: 10,
-        height: 10,
-        background: online
-          ? "radial-gradient(circle, rgba(34,197,94,0.6) 0%, transparent 70%)"
-          : "radial-gradient(circle, rgba(239,68,68,0.6) 0%, transparent 70%)",
-        filter: "blur(3px)",
-      }}
-      animate={{ opacity: [0.5, 1, 0.5] }}
-      transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-    />
-    {/* Core dot with gradient */}
     <span
-      className="relative inline-flex rounded-full h-3 w-3 border-2 border-white"
-      style={{
-        background: online
-          ? "linear-gradient(135deg, #22c55e, #4ade80)"
-          : "linear-gradient(135deg, #ef4444, #f87171)",
-        boxShadow: online
-          ? "0 0 6px rgba(34,197,94,0.8), 0 0 12px rgba(34,197,94,0.3)"
-          : "0 0 6px rgba(239,68,68,0.8), 0 0 12px rgba(239,68,68,0.3)",
-      }}
+      className="animate-ping absolute inline-flex h-2.5 w-2.5 rounded-full opacity-60"
+      style={{ background: online ? "hsl(142 76% 50%)" : "hsl(11 81% 57%)" }}
+    />
+    <span
+      className="relative inline-flex rounded-full h-2.5 w-2.5 border-[1.5px] border-white"
+      style={{ background: online ? "hsl(142 76% 50%)" : "hsl(11 81% 57%)" }}
     />
   </span>
 );
