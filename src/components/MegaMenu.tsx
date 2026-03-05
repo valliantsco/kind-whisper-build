@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from "framer-motion";
-import categoryScooter from "@/assets/category-scooter.jpg";
+import { ArrowRight } from "lucide-react";
 import categoryBike from "@/assets/category-bike.jpg";
 import categoryTricycle from "@/assets/category-tricycle.jpg";
 import categoryAutopropelido from "@/assets/category-autopropelido.jpg";
