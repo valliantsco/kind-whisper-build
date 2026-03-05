@@ -330,7 +330,7 @@ const Header = ({ contactOpen, setContactOpen }: HeaderProps) => {
                 {/* Modern availability indicator */}
                 <StatusDot online={isOnline} />
                 <WhatsAppIcon />
-                Falar com um especialista
+                Fale com um especialista
               </motion.button>
             </div>
 
@@ -452,7 +452,7 @@ const Header = ({ contactOpen, setContactOpen }: HeaderProps) => {
                       {/* Modern availability indicator */}
                       <StatusDot online={isOnline} />
                       <WhatsAppIcon />
-                      Falar com um especialista
+                      Fale com um especialista
                     </motion.button>
                   </motion.div>
                 </motion.div>
