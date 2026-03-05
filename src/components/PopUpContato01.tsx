@@ -12,7 +12,6 @@ import {
   getInputBorderStyle,
 } from "@/utils/form-helpers";
 import { supabase } from "@/integrations/supabase/client";
-import { useUtmParams } from "@/hooks/useUtmParams";
 import StatusChip from "@/components/contact/StatusChip";
 import CityAutocomplete from "@/components/contact/CityAutocomplete";
 import VoiceRecorderField from "@/components/contact/VoiceRecorderField";
@@ -63,7 +62,6 @@ interface PopUpContato01Props {
 
 const PopUpContato01 = ({ isOpen, onClose }: PopUpContato01Props) => {
   const { isOnline, offlineMessage } = useBusinessStatus();
-  const utmParams = useUtmParams();
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [city, setCity] = useState("");
@@ -172,26 +170,6 @@ const PopUpContato01 = ({ isOpen, onClose }: PopUpContato01Props) => {
       ].join("\n");
     }
 
-    // Salvar lead no banco (fire-and-forget, não bloqueia o fluxo)
-    supabase
-      .from("leads")
-      .insert({
-        name: name.trim(),
-        phone: phone.replace(/\D/g, ""),
-        city: city.trim(),
-        details: details.trim() || null,
-        subject,
-        utm_source: utmParams.utm_source,
-        utm_medium: utmParams.utm_medium,
-        utm_campaign: utmParams.utm_campaign,
-        utm_term: utmParams.utm_term,
-        utm_content: utmParams.utm_content,
-        source: "popup_contato",
-      })
-      .then(({ error }) => {
-        if (error) console.error("Lead save error:", error.message);
-      });
-
     window.open(
       `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`,
       "_blank",
@@ -207,7 +185,7 @@ const PopUpContato01 = ({ isOpen, onClose }: PopUpContato01Props) => {
     setErrors({});
     setIsLoading(false);
     onClose();
-  }, [name, phone, city, details, validate, onClose, utmParams]);
+  }, [name, phone, city, details, validate, onClose]);
 
   // ── Render ───────────────────────────────────────────────────────────
   return (
