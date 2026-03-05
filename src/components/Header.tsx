@@ -397,18 +397,22 @@ const Header = ({ contactOpen, setContactOpen }: HeaderProps) => {
                 animate={{ opacity: 1, height: "auto" }}
                 exit={{ opacity: 0, height: 0 }}
                 transition={{ duration: 0.5, ease: [0.25, 0.8, 0.25, 1] as const }}
-                className={`lg:hidden overflow-hidden origin-top rounded-b-[0.9rem] ${
-                  scrolled
-                    ? "bg-white/80 backdrop-blur-2xl"
-                    : "bg-foreground/70 backdrop-blur-2xl"
-                }`}
+                className="lg:hidden overflow-hidden origin-top rounded-b-[0.9rem]"
+                style={{
+                  background: scrolled
+                    ? "rgba(255, 255, 255, 0.88)"
+                    : "hsl(0 0% 14% / 0.92)",
+                  backdropFilter: "blur(24px)",
+                  WebkitBackdropFilter: "blur(24px)",
+                }}
               >
+                {/* Top gradient light strip — matching popup */}
                 <div
-                  className="mx-4 h-[1px]"
+                  className="h-[2px] shrink-0"
                   style={{
                     background: scrolled
                       ? "linear-gradient(90deg, transparent, hsl(0 0% 70% / 0.3), transparent)"
-                      : "linear-gradient(90deg, transparent, hsl(11 81% 57% / 0.4), transparent)",
+                      : "linear-gradient(90deg, transparent, hsl(11 81% 57% / 0.8), hsl(11 90% 65% / 0.8), transparent)",
                   }}
                 />
                 <motion.div
@@ -424,10 +428,10 @@ const Header = ({ contactOpen, setContactOpen }: HeaderProps) => {
                       <motion.div key={item.label} variants={itemVariants}>
                          <a
                           href={item.href}
-                          className={`block px-3 py-3 text-sm font-semibold uppercase tracking-[0.12em] rounded-lg transition-all duration-200 ${
+                           className={`block px-3 py-3 text-sm font-semibold uppercase tracking-[0.12em] rounded-lg transition-all duration-200 ${
                             scrolled
                               ? "text-foreground hover:text-primary hover:bg-primary/5"
-                              : "text-primary-foreground/80 hover:text-primary-foreground hover:bg-primary-foreground/5"
+                              : "text-white/80 hover:text-white hover:bg-white/5"
                           }`}
                           onClick={() => setMobileOpen(false)}
                         >
@@ -449,7 +453,7 @@ const Header = ({ contactOpen, setContactOpen }: HeaderProps) => {
                             style={{
                               background: scrolled
                                 ? "linear-gradient(90deg, transparent, hsl(0 0% 88% / 0.5), transparent)"
-                                : "linear-gradient(90deg, transparent, hsl(0 0% 100% / 0.1), transparent)",
+                                : "linear-gradient(90deg, transparent, hsl(0 0% 100% / 0.08), transparent)",
                             }}
                           />
                         )}
@@ -498,12 +502,12 @@ const Header = ({ contactOpen, setContactOpen }: HeaderProps) => {
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
-            className="fixed inset-0 z-[-1] lg:hidden bg-foreground/20"
+            className="fixed inset-0 z-[-1] lg:hidden bg-foreground/60"
             initial={{ opacity: 0, backdropFilter: "blur(0px)" }}
-            animate={{ opacity: 1, backdropFilter: "blur(6px)" }}
+            animate={{ opacity: 1, backdropFilter: "blur(12px)" }}
             exit={{ opacity: 0, backdropFilter: "blur(0px)" }}
-            transition={{ duration: 0.5, ease: "easeInOut" }}
-            style={{ WebkitBackdropFilter: "blur(6px)" }}
+            transition={{ duration: 0.4, ease: "easeOut" }}
+            style={{ WebkitBackdropFilter: "blur(12px)" }}
             onClick={() => setMobileOpen(false)}
             aria-hidden="true"
           />
