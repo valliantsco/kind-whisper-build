@@ -619,8 +619,8 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                   className="group flex items-center justify-center gap-2.5 px-4 py-2 rounded-xl text-[11px] font-semibold tracking-wide border w-full cursor-pointer transition-all duration-200 hover:brightness-125"
                   style={{
                     background: isOnline ?
-                    "linear-gradient(135deg, hsl(142 76% 36% / 0.15), hsl(142 76% 36% / 0.05))" :
-                    "linear-gradient(135deg, hsl(11 81% 57% / 0.12), hsl(38 92% 50% / 0.06))",
+                    "linear-gradient(135deg, hsl(15 30% 14%), hsl(20 20% 11%))" :
+                    "linear-gradient(135deg, hsl(15 30% 14%), hsl(20 20% 11%))",
                     borderColor: isOnline ?
                     "hsl(142 76% 36% / 0.3)" :
                     "hsl(11 81% 57% / 0.25)",
