@@ -639,7 +639,7 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                     </span>
                     {isOnline ? "Online agora" : offlineMessage}
                     <span className="ml-auto flex items-center gap-1 text-[9px] opacity-50 group-hover:opacity-80 transition-opacity duration-200">
-                      Ver horários ›
+                      Ver horários <span className="inline-block transition-transform duration-200" style={{ transform: showHoursPopup ? "rotate(90deg)" : "rotate(0deg)" }}>›</span>
                     </span>
                   </button>
 
