@@ -1,6 +1,19 @@
 export interface QuizStep {
   question: string;
   options: string[];
+  /** Allow multiple selections (e.g., priorities) */
+  multiSelect?: boolean;
+  /** Max selections when multiSelect is true */
+  maxSelections?: number;
+  /** Helper text shown below the question */
+  helperText?: string;
+  /** Step ID for conditional logic */
+  id?: string;
+  /** Skip to result with this value if a specific option is chosen */
+  skipToResultIf?: {
+    optionIndex: number;
+    result: QuizResult;
+  };
 }
 
 export interface QuizConfig {

@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { Label } from "@/components/ui/label";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, ArrowLeft, Sparkles, MessageCircle, Loader2, RotateCcw } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import type { QuizConfig, QuizResult } from "./types";
+import QuizStepView from "./QuizStepView";
+import QuizResultView from "./QuizResultView";
 
 interface QuizEngineProps {
   config: QuizConfig;
@@ -37,45 +37,60 @@ const QuizEngine = ({ config, open, onOpenChange }: QuizEngineProps) => {
     setAnswers(newAnswers);
   };
 
+  const submitToAI = async (finalAnswers: string[]) => {
+    setLoading(true);
+    setError(null);
+    try {
+      const questionsWithAnswers = config.steps.map((s, i) => ({
+        question: s.question,
+        answer: finalAnswers[i] || "",
+      }));
+
+      const { data, error: fnError } = await supabase.functions.invoke("quiz-recommend", {
+        body: {
+          answers: questionsWithAnswers,
+          businessContext: config.businessContext,
+        },
+      });
+
+      if (fnError) throw new Error(fnError.message || "Erro ao processar");
+
+      if (data?.error) {
+        if (data.error.includes("Rate limit") || data.error.includes("429")) {
+          throw new Error("Muitas requisições. Tente novamente em alguns segundos.");
+        }
+        if (data.error.includes("402") || data.error.includes("Payment")) {
+          throw new Error("Serviço temporariamente indisponível.");
+        }
+        throw new Error(data.error);
+      }
+
+      setResult(data as QuizResult);
+    } catch (e: any) {
+      console.error("Quiz AI error:", e);
+      setError(e.message || "Erro ao gerar recomendação. Tente novamente.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
   const nextStep = async () => {
+    const currentStep = config.steps[step];
+
+    // Check for conditional skip (e.g., child → direct result)
+    if (currentStep.skipToResultIf) {
+      const selectedOption = answers[step];
+      const skipOption = currentStep.options[currentStep.skipToResultIf.optionIndex];
+      if (selectedOption === skipOption) {
+        setResult(currentStep.skipToResultIf.result);
+        return;
+      }
+    }
+
     if (step < totalSteps - 1) {
       setStep(step + 1);
     } else {
-      // Last step — call AI
-      setLoading(true);
-      setError(null);
-      try {
-        const questionsWithAnswers = config.steps.map((s, i) => ({
-          question: s.question,
-          answer: answers[i] || "",
-        }));
-
-        const { data, error: fnError } = await supabase.functions.invoke("quiz-recommend", {
-          body: {
-            answers: questionsWithAnswers,
-            businessContext: config.businessContext,
-          },
-        });
-
-        if (fnError) throw new Error(fnError.message || "Erro ao processar");
-
-        if (data?.error) {
-          if (data.error.includes("Rate limit") || data.error.includes("429")) {
-            throw new Error("Muitas requisições. Tente novamente em alguns segundos.");
-          }
-          if (data.error.includes("402") || data.error.includes("Payment")) {
-            throw new Error("Serviço temporariamente indisponível.");
-          }
-          throw new Error(data.error);
-        }
-
-        setResult(data as QuizResult);
-      } catch (e: any) {
-        console.error("Quiz AI error:", e);
-        setError(e.message || "Erro ao gerar recomendação. Tente novamente.");
-      } finally {
-        setLoading(false);
-      }
+      await submitToAI(answers);
     }
   };
 
@@ -112,7 +127,7 @@ const QuizEngine = ({ config, open, onOpenChange }: QuizEngineProps) => {
               className="h-2 rounded-full transition-all duration-300"
               style={{
                 width: `${progress}%`,
-                background: "linear-gradient(90deg, hsl(11 81% 57%), hsl(11 90% 65%))",
+                background: "linear-gradient(90deg, hsl(var(--primary)), hsl(var(--primary) / 0.7))",
               }}
             />
           </div>
@@ -148,9 +163,8 @@ const QuizEngine = ({ config, open, onOpenChange }: QuizEngineProps) => {
             >
               <p className="text-destructive text-sm">{error}</p>
               <motion.button
-                onClick={() => { setError(null); nextStep(); }}
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-white text-sm font-bold uppercase tracking-wide cursor-pointer"
-                style={{ background: "linear-gradient(135deg, hsl(11 81% 57%), hsl(11 90% 65%))" }}
+                onClick={() => { setError(null); submitToAI(answers); }}
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-white text-sm font-bold uppercase tracking-wide cursor-pointer bg-primary"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -162,97 +176,17 @@ const QuizEngine = ({ config, open, onOpenChange }: QuizEngineProps) => {
 
           {/* Result */}
           {result && !loading && (
-            <motion.div
-              key="result"
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="space-y-5"
-            >
-              {/* Category */}
-              <div className="rounded-xl p-5 text-center" style={{ background: "linear-gradient(135deg, hsl(11 81% 57% / 0.08), hsl(11 90% 65% / 0.04))" }}>
-                <p className="text-xs text-muted-foreground mb-1 uppercase tracking-wider">Categoria recomendada</p>
-                <p className="font-display font-bold text-2xl text-primary">{result.category}</p>
-              </div>
-
-              {/* Justification */}
-              <div className="bg-muted/50 rounded-xl p-4">
-                <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-2">Por que esta recomendação?</p>
-                <p className="text-sm text-foreground leading-relaxed">{result.justification}</p>
-              </div>
-
-              {/* Suggestions */}
-              {result.suggestions.length > 0 && (
-                <div>
-                  <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-2">Modelos sugeridos</p>
-                  <div className="space-y-2">
-                    {result.suggestions.map((s) => (
-                      <div key={s} className="bg-card border border-border rounded-xl px-4 py-3 text-sm font-medium">
-                        {s}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              {/* CTAs */}
-              <div className="flex flex-col gap-3 pt-2">
-                <motion.a
-                  href={whatsappUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2.5 py-3.5 rounded-xl text-white text-[11px] sm:text-sm font-bold uppercase tracking-[0.14em]"
-                  style={{
-                    background: "linear-gradient(135deg, hsl(11 81% 57%), hsl(11 90% 65%))",
-                    boxShadow: "0 4px 20px hsl(11 81% 57% / 0.25)",
-                  }}
-                  whileHover={{
-                    scale: 1.03,
-                    boxShadow: "0 0 25px hsl(11 81% 57% / 0.5), 0 0 50px hsl(11 81% 57% / 0.2)",
-                  }}
-                  whileTap={{ scale: 0.97 }}
-                >
-                  <MessageCircle className="w-5 h-5" />
-                  Falar com consultor no WhatsApp
-                </motion.a>
-                <button
-                  onClick={() => { reset(); }}
-                  className="text-xs text-muted-foreground hover:text-foreground transition-colors py-2 uppercase tracking-wider font-medium"
-                >
-                  Refazer quiz
-                </button>
-              </div>
-            </motion.div>
+            <QuizResultView result={result} whatsappUrl={whatsappUrl} onReset={reset} />
           )}
 
           {/* Question steps */}
           {!result && !loading && !error && (
-            <motion.div
+            <QuizStepView
               key={`step-${step}`}
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -20 }}
-              className="space-y-4"
-            >
-              <p className="font-display font-bold text-lg">{config.steps[step].question}</p>
-              <RadioGroup value={answers[step] || ""} onValueChange={handleAnswer}>
-                {config.steps[step].options.map((opt) => (
-                  <div
-                    key={opt}
-                    className={`flex items-center gap-3 border rounded-xl px-4 py-3 cursor-pointer transition-colors ${
-                      answers[step] === opt
-                        ? "border-primary bg-primary/5"
-                        : "border-border hover:border-muted-foreground/30"
-                    }`}
-                    onClick={() => handleAnswer(opt)}
-                  >
-                    <RadioGroupItem value={opt} id={`quiz-${step}-${opt}`} />
-                    <Label htmlFor={`quiz-${step}-${opt}`} className="cursor-pointer flex-1 text-sm">
-                      {opt}
-                    </Label>
-                  </div>
-                ))}
-              </RadioGroup>
-            </motion.div>
+              stepConfig={config.steps[step]}
+              currentAnswer={answers[step] || ""}
+              onAnswer={handleAnswer}
+            />
           )}
         </AnimatePresence>
 
@@ -271,12 +205,7 @@ const QuizEngine = ({ config, open, onOpenChange }: QuizEngineProps) => {
             <motion.button
               onClick={nextStep}
               disabled={!canProceed}
-              className="flex-1 inline-flex items-center justify-center gap-1 py-2.5 rounded-xl text-white text-sm font-bold uppercase tracking-wide disabled:opacity-40 disabled:cursor-not-allowed"
-              style={{
-                background: canProceed
-                  ? "linear-gradient(135deg, hsl(11 81% 57%), hsl(11 90% 65%))"
-                  : "hsl(0 0% 70%)",
-              }}
+              className="flex-1 inline-flex items-center justify-center gap-1 py-2.5 rounded-xl text-white text-sm font-bold uppercase tracking-wide disabled:opacity-40 disabled:cursor-not-allowed bg-primary"
               whileHover={canProceed ? { scale: 1.02 } : {}}
               whileTap={canProceed ? { scale: 0.98 } : {}}
             >
