@@ -616,7 +616,7 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                   <button
                     type="button"
                     onClick={() => setShowHoursPopup((v) => !v)}
-                    className="flex items-center justify-center gap-2.5 px-4 py-2 rounded-xl text-[11px] font-semibold tracking-wide border w-full cursor-pointer transition-all duration-200 hover:brightness-125"
+                    className="group flex items-center justify-center gap-2.5 px-4 py-2 rounded-xl text-[11px] font-semibold tracking-wide border w-full cursor-pointer transition-all duration-200 hover:brightness-125"
                     style={{
                       background: isOnline
                         ? "linear-gradient(135deg, hsl(142 76% 36% / 0.15), hsl(142 76% 36% / 0.05))"
@@ -638,9 +638,31 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                       />
                     </span>
                     {isOnline ? "Online agora" : offlineMessage}
-                    <Clock className="w-3 h-3 ml-auto opacity-50" />
+                    <span className="ml-auto flex items-center gap-1 text-[9px] opacity-50 group-hover:opacity-80 transition-opacity duration-200">
+                      Ver horários ›
+                    </span>
                   </button>
 
+
+                  {/* Tooltip hint — shows briefly on first open */}
+                  <AnimatePresence>
+                    {!showHoursPopup && (
+                      <motion.div
+                        key="hours-tooltip"
+                        initial={{ opacity: 0, y: 4 }}
+                        animate={{ opacity: [0, 1, 1, 0], y: [4, 0, 0, -2] }}
+                        transition={{ duration: 3, times: [0, 0.15, 0.7, 1], delay: 1.5 }}
+                        className="absolute left-1/2 -translate-x-1/2 top-full mt-1.5 pointer-events-none whitespace-nowrap"
+                      >
+                        <span
+                          className="text-[9px] text-white/50 px-2 py-1 rounded-md"
+                          style={{ background: "hsl(0 0% 10% / 0.8)", border: "1px solid hsl(0 0% 100% / 0.08)" }}
+                        >
+                          Toque para ver os horários
+                        </span>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
 
                   {/* Hours popup */}
                   <AnimatePresence>
