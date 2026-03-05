@@ -734,7 +734,7 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
               />
 
               {/* Form */}
-              <div className="px-5 py-3 space-y-3">
+              <div className="px-5 pt-3.5 pb-3 space-y-3">
                 {/* Name */}
                 <div>
                   <label className="flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-[0.1em] text-white/50 mb-1.5">
