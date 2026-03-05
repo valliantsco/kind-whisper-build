@@ -1,6 +1,6 @@
 import { useState, useCallback, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Clock, User, MessageSquare, Loader2, Mic, Square, MapPin } from "lucide-react";
+import { X, Clock, User, MessageSquare, Loader2, Mic, Square, MapPin, ChevronDown } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useBusinessStatus } from "@/hooks/useBusinessHours";
 import { BRAZILIAN_CITIES } from "@/data/brazilian-cities";
@@ -616,17 +616,18 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                   <button
                     type="button"
                     onClick={() => setShowHoursPopup((v) => !v)}
-                    className="group flex items-center justify-center gap-2.5 px-4 py-2 rounded-xl text-[11px] font-semibold tracking-wide border w-full cursor-pointer transition-all duration-200 hover:brightness-125"
+                    className="group flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl text-[11px] font-medium tracking-wide border w-full cursor-pointer transition-all duration-200"
                     style={{
                       background: isOnline
-                        ? "linear-gradient(135deg, hsl(142 76% 36% / 0.15), hsl(142 76% 36% / 0.05))"
-                        : "linear-gradient(135deg, hsl(11 81% 57% / 0.12), hsl(38 92% 50% / 0.06))",
+                        ? "linear-gradient(135deg, hsl(142 76% 36% / 0.12), hsl(142 76% 36% / 0.04))"
+                        : "linear-gradient(135deg, hsl(11 81% 57% / 0.10), hsl(38 92% 50% / 0.04))",
                       borderColor: isOnline
-                        ? "hsl(142 76% 36% / 0.3)"
-                        : "hsl(11 81% 57% / 0.25)",
+                        ? "hsl(142 76% 36% / 0.2)"
+                        : "hsl(11 81% 57% / 0.18)",
                       color: isOnline ? "hsl(142 70% 70%)" : "hsl(30 90% 75%)",
                     }}
                   >
+                    {/* Status dot */}
                     <span className="relative flex h-2 w-2 shrink-0">
                       <span
                         className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-60"
@@ -637,28 +638,40 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                         style={{ background: isOnline ? "hsl(142 76% 50%)" : "hsl(11 81% 57%)" }}
                       />
                     </span>
-                    {isOnline ? "Online agora" : offlineMessage}
-                    <span className="ml-auto flex items-center gap-1 text-[9px] opacity-50 group-hover:opacity-80 transition-opacity duration-200">
-                      Ver horários ›
+
+                    {/* Status text */}
+                    <span className="flex-1 text-left">{isOnline ? "Online agora" : offlineMessage}</span>
+
+                    {/* "Ver horários" integrated as subtle pill */}
+                    <span
+                      className="flex items-center gap-1 px-2 py-0.5 rounded-md text-[9px] font-medium opacity-40 group-hover:opacity-70 transition-all duration-200"
+                      style={{
+                        background: "hsl(0 0% 100% / 0.06)",
+                        border: "1px solid hsl(0 0% 100% / 0.06)",
+                      }}
+                    >
+                      <Clock className="w-2.5 h-2.5" />
+                      Horários
+                      <ChevronDown
+                        className={`w-2.5 h-2.5 transition-transform duration-200 ${showHoursPopup ? "rotate-180" : ""}`}
+                      />
                     </span>
                   </button>
-
 
                   {/* Tooltip hint — shows briefly on first open */}
                   <AnimatePresence>
                     {!showHoursPopup && (
                       <motion.div
                         key="hours-tooltip"
-                        initial={{ opacity: 0, y: 4 }}
-                        animate={{ opacity: [0, 1, 1, 0], y: [4, 0, 0, -2] }}
-                        transition={{ duration: 3, times: [0, 0.15, 0.7, 1], delay: 1.5 }}
-                        className="absolute left-1/2 -translate-x-1/2 top-full mt-1.5 pointer-events-none whitespace-nowrap"
+                        initial={{ opacity: 0, y: 4, scale: 0.95 }}
+                        animate={{ opacity: [0, 1, 1, 0], y: [4, 0, 0, -2], scale: [0.95, 1, 1, 0.98] }}
+                        transition={{ duration: 3.5, times: [0, 0.12, 0.75, 1], delay: 2 }}
+                        className="flex justify-end pr-2 mt-1 pointer-events-none"
                       >
                         <span
-                          className="text-[9px] text-white/50 px-2 py-1 rounded-md"
-                          style={{ background: "hsl(0 0% 10% / 0.8)", border: "1px solid hsl(0 0% 100% / 0.08)" }}
+                          className="text-[9px] text-white/40 flex items-center gap-1"
                         >
-                          Toque para ver os horários
+                          ↑ toque para ver horários
                         </span>
                       </motion.div>
                     )}
