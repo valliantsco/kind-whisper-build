@@ -315,19 +315,22 @@ const Header = ({ contactOpen, setContactOpen }: HeaderProps) => {
               ))}
             </nav>
 
-            {/* Desktop CTA with glow */}
+            {/* Desktop CTA — WhatsApp gradient matching popup */}
             <div className="hidden lg:flex items-center gap-3">
               <motion.button
                 onClick={() => setContactOpen(true)}
-                className="relative inline-flex items-center justify-center gap-2 h-10 px-5 text-xs font-semibold uppercase tracking-wider rounded-lg bg-primary text-primary-foreground overflow-visible cursor-pointer"
+                className="relative inline-flex items-center justify-center gap-2.5 h-10 px-6 text-[11px] font-bold uppercase tracking-[0.14em] rounded-xl text-white overflow-visible cursor-pointer"
+                style={{
+                  background: "linear-gradient(135deg, #25D366, #128C7E)",
+                  boxShadow: "0 4px 20px rgba(37,211,102,0.2)",
+                }}
                 whileHover={{
                   scale: 1.05,
-                  boxShadow: "0 0 20px hsl(11 81% 57% / 0.5), 0 0 40px hsl(11 81% 57% / 0.2)",
+                  boxShadow: "0 0 25px rgba(37,211,102,0.5), 0 0 50px rgba(37,211,102,0.15)",
                 }}
                 whileTap={{ scale: 0.95 }}
                 transition={{ duration: 0.3 }}
               >
-                {/* Modern availability indicator */}
                 <StatusDot online={isOnline} />
                 <WhatsAppIcon />
                 Fale com um especialista
@@ -425,31 +428,24 @@ const Header = ({ contactOpen, setContactOpen }: HeaderProps) => {
                     ))}
                   </div>
 
-                  {/* Floating CTA with glow */}
+                  {/* Floating CTA — WhatsApp gradient matching popup */}
                   <motion.div variants={itemVariants} className="pt-4">
                     <motion.button
                       onClick={() => {
                         setMobileOpen(false);
                         setContactOpen(true);
                       }}
-                      className="relative flex items-center justify-center gap-3 w-full py-3 rounded-lg bg-primary text-primary-foreground text-xs font-semibold uppercase tracking-wider overflow-visible cursor-pointer"
+                      className="relative flex items-center justify-center gap-3 w-full py-3.5 rounded-xl text-white text-[11px] font-bold uppercase tracking-[0.14em] overflow-visible cursor-pointer"
+                      style={{
+                        background: "linear-gradient(135deg, #25D366, #128C7E)",
+                        boxShadow: "0 4px 20px rgba(37,211,102,0.25)",
+                      }}
                       whileHover={{
                         scale: 1.02,
-                        boxShadow: "0 0 25px hsl(11 81% 57% / 0.6), 0 0 50px hsl(11 81% 57% / 0.2)",
+                        boxShadow: "0 0 25px rgba(37,211,102,0.5), 0 0 50px rgba(37,211,102,0.15)",
                       }}
                       whileTap={{ scale: 0.98 }}
-                      animate={{
-                        boxShadow: [
-                          "0 0 15px hsl(11 81% 57% / 0.3)",
-                          "0 0 25px hsl(11 81% 57% / 0.5)",
-                          "0 0 15px hsl(11 81% 57% / 0.3)",
-                        ],
-                      }}
-                      transition={{
-                        boxShadow: { duration: 2, repeat: Infinity, ease: "easeInOut" },
-                      }}
                     >
-                      {/* Modern availability indicator */}
                       <StatusDot online={isOnline} />
                       <WhatsAppIcon />
                       Fale com um especialista
