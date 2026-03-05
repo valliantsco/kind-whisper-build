@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
+
 import { MessageCircle, UserCheck, Layers, Wrench, CreditCard, Award, CheckCircle2 } from "lucide-react";
 
 const timelineItems = [
@@ -88,12 +88,24 @@ const WhyChooseSection = () => {
           <p className="text-muted-foreground mb-8 leading-relaxed">
             Conte com assistência técnica, peças de reposição e suporte dedicado. Sua compra é protegida do início ao pós-venda.
           </p>
-          <Button size="lg" className="rounded-2xl gap-2 text-base px-10 py-7 font-bold glow-primary hover:scale-105 transition-transform" asChild>
-            <a href="https://wa.me/5500000000000?text=Olá! Gostaria de saber sobre garantia e suporte." target="_blank" rel="noopener noreferrer">
-              <MessageCircle className="w-5 h-5" />
-              Falar com suporte no WhatsApp
-            </a>
-          </Button>
+          <motion.a
+            href="https://wa.me/5500000000000?text=Olá! Gostaria de saber sobre garantia e suporte."
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center gap-2.5 text-[11px] sm:text-sm font-bold uppercase tracking-[0.14em] px-8 md:px-10 py-3.5 md:py-4 rounded-xl text-white overflow-visible"
+            style={{
+              background: "linear-gradient(135deg, hsl(11 81% 57%), hsl(11 90% 65%))",
+              boxShadow: "0 4px 20px hsl(11 81% 57% / 0.25)",
+            }}
+            whileHover={{
+              scale: 1.05,
+              boxShadow: "0 0 25px hsl(11 81% 57% / 0.5), 0 0 50px hsl(11 81% 57% / 0.2)",
+            }}
+            whileTap={{ scale: 0.97 }}
+          >
+            <MessageCircle className="w-5 h-5" />
+            Falar com suporte no WhatsApp
+          </motion.a>
         </motion.div>
       </div>
     </section>
