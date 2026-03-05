@@ -344,7 +344,7 @@ const Header = ({ contactOpen, setContactOpen }: HeaderProps) => {
             <div className="flex lg:hidden items-center gap-3">
               <motion.button
                 onClick={() => setMobileOpen(!mobileOpen)}
-                className="flex items-center gap-2 px-3 py-2.5 rounded-lg bg-primary text-primary-foreground"
+                className="flex items-center justify-center p-2.5 rounded-lg bg-primary text-primary-foreground"
                 whileHover={{
                   scale: 1.05,
                   boxShadow: "0 0 16px hsl(11 81% 57% / 0.5)",
@@ -352,7 +352,6 @@ const Header = ({ contactOpen, setContactOpen }: HeaderProps) => {
                 whileTap={{ scale: 0.95 }}
                 aria-label="Menu"
               >
-                <span className="text-xs font-semibold uppercase tracking-wider">Menu</span>
                 <MenuIcon isOpen={mobileOpen} />
               </motion.button>
             </div>
