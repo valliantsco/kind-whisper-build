@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import msLogo from "@/assets/ms-eletric-logo-white.png";
 import msLogoDark from "@/assets/ms-eletric-logo-dark-new.png";
 import { useBusinessHours } from "@/hooks/useBusinessHours";
-import ContactWidget from "@/components/ContactWidget";
+import ContactWidget from "@/components/PopUpContato01";
 
 /* Modern pulsing status indicator */
 const StatusDot = ({ online }: { online: boolean }) => (
