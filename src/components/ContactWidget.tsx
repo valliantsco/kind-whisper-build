@@ -589,12 +589,12 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
               />
 
               {/* Header */}
-              <div className="flex items-start justify-between px-5 pt-4 pb-3">
+              <div className="flex items-start justify-between px-5 pt-3 pb-2">
                 <div>
                   <h3 className="text-base font-bold text-white tracking-tight">
                     Fale com um especialista da MS Eletric
                   </h3>
-                  <p className="text-xs text-white/50 mt-1 leading-relaxed">
+                  <p className="text-xs text-white/50 mt-0.5 leading-relaxed">
                     {isOnline
                       ? "Estamos online! Preencha os campos e fale agora com um especialista."
                       : "Preencha os campos abaixo e responderemos assim que nosso atendimento retornar."}
@@ -611,7 +611,7 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
               </div>
 
               {/* Status chip + hours popup */}
-              <div className="px-5 pb-4">
+              <div className="px-5 pb-2">
                 <div className="relative">
                   <button
                     type="button"
@@ -729,14 +729,14 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
 
               {/* Divider */}
               <div
-                className="mx-5 h-[1px]"
+                className="mx-5 h-[1px] mt-1"
                 style={{
                   background: "linear-gradient(90deg, transparent, hsl(11 81% 57% / 0.3), transparent)",
                 }}
               />
 
               {/* Form */}
-              <div className="px-5 py-4 space-y-3.5">
+              <div className="px-5 py-3 space-y-3">
                 {/* Name */}
                 <div>
                   <label className="flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-[0.1em] text-white/50 mb-1.5">
