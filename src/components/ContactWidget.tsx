@@ -710,8 +710,9 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                         return (
                       <div
                         key={item.day}
-                        className="flex items-center justify-between py-2 px-2.5 rounded-lg transition-colors duration-150"
+                        className="grid items-center py-2 px-2.5 rounded-lg transition-colors duration-150"
                         style={{
+                          gridTemplateColumns: "1fr auto",
                           background: isToday ? todayBg : "transparent",
                           borderLeft: isToday ? todayBorder : "2px solid transparent"
                         }}>
@@ -721,7 +722,7 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                                 {isToday && <span className="ml-1.5 text-[8px] uppercase tracking-wider font-bold" style={{ color: isOnline ? "hsl(142 70% 70%)" : "hsl(11 81% 57% / 0.8)" }}>Hoje</span>}
                               </span>
                               <span
-                          className="text-[11px] font-semibold"
+                          className="text-[11px] font-semibold text-right tabular-nums"
                           style={{ color: item.hours === "Fechado" ? "hsl(0 60% 55% / 0.7)" : isToday ? (isOnline ? "hsl(142 70% 70%)" : "hsl(11 81% 57%)") : (isOnline ? "hsl(142 70% 70% / 0.75)" : "hsl(11 81% 57% / 0.75)") }}>
                           
                                 {item.hours}
