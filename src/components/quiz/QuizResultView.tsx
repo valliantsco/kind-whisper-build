@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { MessageCircle } from "lucide-react";
+import { MessageCircle, Star, ChevronRight } from "lucide-react";
 import type { QuizResult } from "./types";
 
 interface QuizResultViewProps {
@@ -9,6 +9,11 @@ interface QuizResultViewProps {
 }
 
 const QuizResultView = ({ result, whatsappUrl, onReset }: QuizResultViewProps) => {
+  const models = result.models?.length ? result.models : [];
+
+  // Fallback to old suggestions format if models not present
+  const hasModels = models.length > 0;
+
   return (
     <motion.div
       key="result"
@@ -17,19 +22,69 @@ const QuizResultView = ({ result, whatsappUrl, onReset }: QuizResultViewProps) =
       className="space-y-5"
     >
       {/* Category */}
-      <div className="rounded-xl p-5 text-center bg-primary/5">
-        <p className="text-xs text-muted-foreground mb-1 uppercase tracking-wider">Categoria recomendada</p>
-        <p className="font-display font-bold text-2xl text-primary">{result.category}</p>
+      <div className="rounded-xl p-4 text-center bg-primary/5">
+        <p className="text-[10px] text-muted-foreground mb-1 uppercase tracking-wider">Categoria recomendada</p>
+        <p className="font-display font-bold text-xl text-primary">{result.category}</p>
+        <p className="text-xs text-muted-foreground mt-1">{result.justification}</p>
       </div>
 
-      {/* Justification */}
-      <div className="bg-muted/50 rounded-xl p-4">
-        <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-2">Por que esta recomendação?</p>
-        <p className="text-sm text-foreground leading-relaxed">{result.justification}</p>
-      </div>
+      {hasModels ? (
+        <div className="space-y-3">
+          <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+            Modelos recomendados
+          </p>
 
-      {/* Suggestions */}
-      {result.suggestions.length > 0 && (
+          {models.map((model, i) => (
+            <motion.div
+              key={model.name}
+              initial={{ opacity: 0, x: -10 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: i * 0.1 }}
+              className={`rounded-xl border ${
+                i === 0
+                  ? "border-primary/30 bg-primary/5 p-4"
+                  : "border-border bg-card p-3"
+              }`}
+            >
+              <div className="flex items-start gap-2">
+                {i === 0 && (
+                  <Star className="w-4 h-4 text-primary mt-0.5 flex-shrink-0 fill-primary" />
+                )}
+                {i > 0 && (
+                  <ChevronRight className="w-4 h-4 text-muted-foreground mt-0.5 flex-shrink-0" />
+                )}
+                <div className="flex-1 min-w-0">
+                  <p className={`font-bold ${i === 0 ? "text-base text-primary" : "text-sm text-foreground"}`}>
+                    {model.name}
+                  </p>
+                  <p className={`${i === 0 ? "text-sm text-foreground" : "text-xs text-muted-foreground"} mt-0.5`}>
+                    {model.headline}
+                  </p>
+
+                  {/* Primary model: full details */}
+                  {i === 0 && model.specs && (
+                    <div className="mt-2 bg-muted/50 rounded-lg px-3 py-2">
+                      <p className="text-[10px] uppercase tracking-wider text-muted-foreground mb-1 font-semibold">
+                        Especificações
+                      </p>
+                      <p className="text-xs text-foreground">{model.specs}</p>
+                    </div>
+                  )}
+                  {i === 0 && model.whyFits && (
+                    <div className="mt-2">
+                      <p className="text-[10px] uppercase tracking-wider text-muted-foreground mb-1 font-semibold">
+                        Por que combina com você
+                      </p>
+                      <p className="text-xs text-foreground leading-relaxed">{model.whyFits}</p>
+                    </div>
+                  )}
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      ) : result.suggestions.length > 0 ? (
+        /* Fallback: old format */
         <div>
           <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-2">Modelos sugeridos</p>
           <div className="space-y-2">
@@ -40,7 +95,7 @@ const QuizResultView = ({ result, whatsappUrl, onReset }: QuizResultViewProps) =
             ))}
           </div>
         </div>
-      )}
+      ) : null}
 
       {/* CTAs */}
       <div className="flex flex-col gap-3 pt-2">
