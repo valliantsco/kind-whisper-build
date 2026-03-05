@@ -175,7 +175,7 @@ const HeroSection = () => {
                 <>
 
                   {/* Headline */}
-                  <h1 className="font-display font-black text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-primary-foreground leading-[0.95] mb-5 md:mb-7 uppercase tracking-tight">
+                  <h1 className="font-display font-black text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-primary-foreground leading-[0.95] mb-3 md:mb-4 uppercase tracking-tight">
                     {slide.headlineLines.map((line, idx) => {
                       const visibilityClass = line.mobileOnly
                         ? "block sm:hidden"
@@ -206,7 +206,7 @@ const HeroSection = () => {
                   </h1>
 
                   {/* Subheadline */}
-                  <p className="text-xs sm:text-sm md:text-base text-primary-foreground/50 mb-5 md:mb-6 max-w-xl leading-relaxed tracking-wide">
+                  <p className="text-xs sm:text-sm md:text-base text-primary-foreground/50 mb-4 md:mb-5 max-w-md leading-relaxed tracking-wide">
                     {slide.subheadline}
                   </p>
 
