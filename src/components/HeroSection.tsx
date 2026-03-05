@@ -184,7 +184,7 @@ const HeroSection = () => {
                   </div>
 
                   {/* Headline */}
-                  <h1 className="font-display font-black text-3xl sm:text-4xl md:text-6xl lg:text-7xl text-primary-foreground leading-[0.95] mb-5 md:mb-7 uppercase tracking-tight">
+                  <h1 className="font-display font-black text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-primary-foreground leading-[0.95] mb-5 md:mb-7 uppercase tracking-tight">
                     {slide.headlineLines.map((line, idx) => {
                       const visibilityClass = line.mobileOnly
                         ? "block sm:hidden"
