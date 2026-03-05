@@ -396,7 +396,7 @@ const PopUpContato01 = ({ isOpen, onClose }: PopUpContato01Props) => {
                 <motion.button
                   onClick={handleSubmit}
                   disabled={isLoading}
-                  className="w-full flex items-center justify-center gap-2.5 py-3.5 rounded-xl font-bold text-sm uppercase tracking-[0.12em] text-white cursor-pointer relative overflow-hidden disabled:opacity-70 disabled:cursor-not-allowed"
+                  className="w-full flex items-center justify-center gap-2.5 py-3.5 rounded-xl font-semibold text-sm tracking-wide text-white cursor-pointer relative overflow-hidden disabled:opacity-70 disabled:cursor-not-allowed"
                   style={{
                     background: "linear-gradient(135deg, hsl(11 81% 57%), hsl(11 90% 65%))",
                     boxShadow: "0 4px 20px hsl(11 81% 57% / 0.3)",
