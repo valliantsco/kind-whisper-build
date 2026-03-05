@@ -206,9 +206,27 @@ const HeroSection = () => {
                   </h1>
 
                   {/* Subheadline */}
-                  <p className="text-xs sm:text-sm md:text-base text-primary-foreground/50 mb-8 md:mb-10 max-w-xl leading-relaxed tracking-wide">
+                  <p className="text-xs sm:text-sm md:text-base text-primary-foreground/50 mb-5 md:mb-6 max-w-xl leading-relaxed tracking-wide">
                     {slide.subheadline}
                   </p>
+
+                  {/* CTA */}
+                  <motion.a
+                    href={slide.primaryCta.href}
+                    className="inline-flex items-center justify-center text-[10px] sm:text-xs font-semibold uppercase tracking-[0.14em] px-5 md:px-7 py-2.5 md:py-3 rounded-xl overflow-visible"
+                    style={{
+                      background: "linear-gradient(135deg, hsl(11 81% 57%), hsl(11 90% 65%))",
+                      color: "white",
+                      boxShadow: "0 4px 20px hsl(11 81% 57% / 0.25)",
+                    }}
+                    whileHover={{
+                      scale: 1.05,
+                      boxShadow: "0 0 25px hsl(11 81% 57% / 0.5), 0 0 50px hsl(11 81% 57% / 0.2)",
+                    }}
+                    whileTap={{ scale: 0.97 }}
+                  >
+                    {slide.primaryCta.text}
+                  </motion.a>
 
                 </>
               );
