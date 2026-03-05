@@ -674,39 +674,54 @@ const ContactWidget = ({ isOpen, onClose }: ContactWidgetProps) => {
                       onClick={() => setShowHoursPopup(false)} />
                     
                         <motion.div
-                      initial={{ opacity: 0, y: -6, scale: 0.95 }}
+                      initial={{ opacity: 0, y: -8, scale: 0.92 }}
                       animate={{ opacity: 1, y: 0, scale: 1 }}
-                      exit={{ opacity: 0, y: -6, scale: 0.95 }}
-                      transition={{ duration: 0.2 }}
-                      className="absolute left-0 right-0 top-full mt-2 z-50 rounded-xl p-3.5 space-y-2"
+                      exit={{ opacity: 0, y: -8, scale: 0.92 }}
+                      transition={{ type: "spring", stiffness: 400, damping: 25 }}
+                      className="absolute left-0 right-0 top-full mt-2 z-50 rounded-xl p-4 space-y-1"
                       style={{
-                        background: "linear-gradient(135deg, hsl(0 0% 15% / 0.95), hsl(0 0% 10% / 0.95))",
-                        backdropFilter: "blur(20px)",
-                        border: "1px solid hsl(11 81% 57% / 0.2)",
-                        boxShadow: "0 12px 40px hsl(0 0% 0% / 0.5), 0 0 20px hsl(11 81% 57% / 0.08)"
+                        background: "linear-gradient(160deg, hsl(0 0% 18% / 0.97), hsl(0 0% 13% / 0.97))",
+                        backdropFilter: "blur(24px)",
+                        border: "1px solid transparent",
+                        borderImage: "linear-gradient(135deg, hsl(11 81% 57% / 0.4), hsl(11 81% 57% / 0.1), hsl(11 81% 57% / 0.3)) 1",
+                        borderImageSlice: 1,
+                        boxShadow: "0 16px 48px hsl(0 0% 0% / 0.4), 0 0 24px hsl(11 81% 57% / 0.06), inset 0 1px 0 hsl(0 0% 100% / 0.04)"
                       }}>
                       
-                          <div className="flex items-center gap-2 mb-2">
-                            <Clock className="w-3.5 h-3.5" style={{ color: "hsl(11 81% 57% / 0.7)" }} />
-                            <span className="text-[10px] font-semibold uppercase tracking-[0.12em] text-white/60">
+                          <div className="flex items-center gap-2 mb-2.5 pb-2" style={{ borderBottom: "1px solid hsl(0 0% 100% / 0.06)" }}>
+                            <Clock className="w-3.5 h-3.5" style={{ color: "hsl(11 81% 57% / 0.8)" }} />
+                            <span className="text-[10px] font-semibold uppercase tracking-[0.12em] text-white/50">
                               Horário de atendimento
                             </span>
                           </div>
-                          {businessHoursInfo.map((item) =>
+                          {businessHoursInfo.map((item) => {
+                        const isToday = new Date().getDay() === (
+                          item.day === "Seg - Sex" ? (new Date().getDay() >= 1 && new Date().getDay() <= 5 ? new Date().getDay() : -1) :
+                          item.day === "Sábado" ? 6 :
+                          item.day === "Domingo" ? 0 : -1
+                        );
+                        return (
                       <div
                         key={item.day}
-                        className="flex items-center justify-between py-1.5 px-2 rounded-lg"
-                        style={{ background: "hsl(0 0% 100% / 0.03)" }}>
+                        className="flex items-center justify-between py-2 px-2.5 rounded-lg transition-colors duration-150"
+                        style={{
+                          background: isToday ? "hsl(11 81% 57% / 0.08)" : "transparent",
+                          borderLeft: isToday ? "2px solid hsl(11 81% 57% / 0.6)" : "2px solid transparent"
+                        }}>
                         
-                              <span className="text-[11px] font-medium text-white/60">{item.day}</span>
+                              <span className="text-[11px] font-medium" style={{ color: isToday ? "hsl(0 0% 100% / 0.85)" : "hsl(0 0% 100% / 0.50)" }}>
+                                {item.day}
+                                {isToday && <span className="ml-1.5 text-[8px] uppercase tracking-wider font-bold" style={{ color: "hsl(11 81% 57% / 0.8)" }}>Hoje</span>}
+                              </span>
                               <span
                           className="text-[11px] font-semibold"
-                          style={{ color: item.hours === "Fechado" ? "hsl(0 70% 60%)" : "hsl(11 81% 57% / 0.85)" }}>
+                          style={{ color: item.hours === "Fechado" ? "hsl(0 60% 55% / 0.7)" : isToday ? "hsl(11 81% 57%)" : "hsl(11 81% 57% / 0.75)" }}>
                           
                                 {item.hours}
                               </span>
                             </div>
-                      )}
+                        );
+                      })}
                         </motion.div>
                       </>
                   }
