@@ -340,39 +340,41 @@ const Header = ({ onContactClick }: HeaderProps) => {
                         >
                           {/* Outer glow on hover */}
                           <div
-                            className="absolute -inset-1 rounded-2xl opacity-0 group-hover/item:opacity-100 transition-opacity duration-700 ease-out pointer-events-none -z-10"
+                            className="absolute -inset-2 rounded-2xl opacity-0 group-hover/item:opacity-100 transition-opacity duration-700 ease-out pointer-events-none"
                             style={{
-                              background: "radial-gradient(ellipse at center, hsl(11 81% 57% / 0.25), transparent 70%)",
-                              filter: "blur(8px)",
+                              background: "radial-gradient(ellipse at center, hsl(11 81% 57% / 0.3), transparent 70%)",
+                              filter: "blur(12px)",
                             }}
                           />
-                          <img
-                            src={dropItem.image}
-                            alt={dropItem.label}
-                            className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover/item:scale-110"
-                          />
-                          {/* Vignette overlay */}
-                          <div
-                            className="absolute inset-0"
-                            style={{
-                              background: "linear-gradient(to top, hsl(0 0% 0% / 0.85) 0%, hsl(0 0% 0% / 0.4) 40%, hsl(0 0% 0% / 0.15) 70%, hsl(0 0% 0% / 0.25) 100%)",
-                            }}
-                          />
-                          <div
-                            className="absolute inset-0 opacity-0 group-hover/item:opacity-100 transition-opacity duration-300"
-                            style={{ background: "linear-gradient(135deg, hsl(11 81% 57% / 0.12) 0%, transparent 60%)" }}
-                          />
-                          <div
-                            className="absolute inset-0 rounded-xl opacity-0 group-hover/item:opacity-100 transition-opacity duration-300"
-                            style={{ boxShadow: "inset 0 0 0 1.5px hsl(11 81% 57% / 0.5)" }}
-                          />
-                          <div className="absolute bottom-0 left-0 right-0 p-2.5">
-                            <p className="text-white font-bold text-[11px] uppercase tracking-[0.08em] mb-0.5 drop-shadow-lg">
-                              {dropItem.label}
-                            </p>
-                            <p className="text-white/60 text-[10px] tracking-wide line-clamp-2 group-hover/item:text-white/80 transition-colors duration-300">
-                              {dropItem.description}
-                            </p>
+                          <div className="relative w-full h-full rounded-xl overflow-hidden">
+                            <img
+                              src={dropItem.image}
+                              alt={dropItem.label}
+                              className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover/item:scale-110"
+                            />
+                            {/* Vignette overlay */}
+                            <div
+                              className="absolute inset-0"
+                              style={{
+                                background: "linear-gradient(to top, hsl(0 0% 0% / 0.85) 0%, hsl(0 0% 0% / 0.4) 40%, hsl(0 0% 0% / 0.15) 70%, hsl(0 0% 0% / 0.25) 100%)",
+                              }}
+                            />
+                            <div
+                              className="absolute inset-0 opacity-0 group-hover/item:opacity-100 transition-opacity duration-300"
+                              style={{ background: "linear-gradient(135deg, hsl(11 81% 57% / 0.12) 0%, transparent 60%)" }}
+                            />
+                            <div
+                              className="absolute inset-0 rounded-xl opacity-0 group-hover/item:opacity-100 transition-opacity duration-300"
+                              style={{ boxShadow: "inset 0 0 0 1.5px hsl(11 81% 57% / 0.5)" }}
+                            />
+                            <div className="absolute bottom-0 left-0 right-0 p-2.5">
+                              <p className="text-white font-bold text-[11px] uppercase tracking-[0.08em] mb-0.5 drop-shadow-lg">
+                                {dropItem.label}
+                              </p>
+                              <p className="text-white/60 text-[10px] tracking-wide line-clamp-2 group-hover/item:text-white/80 transition-colors duration-300">
+                                {dropItem.description}
+                              </p>
+                            </div>
                           </div>
                         </motion.a>
                       ))}
