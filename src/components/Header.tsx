@@ -116,6 +116,19 @@ const Header = ({ onContactClick }: HeaderProps) => {
     carousel.scrollLeft = progress * maxScroll;
   }, []);
 
+  const handleSlideBarClick = useCallback((clientX: number) => {
+    const bar = slideBarRef.current;
+    const carousel = carouselRef.current;
+    if (!bar || !carousel) return;
+    const rect = bar.getBoundingClientRect();
+    const thumbWidth = Math.max(25, 100 / 6);
+    const usableWidth = rect.width * (1 - thumbWidth / 100);
+    const rawProgress = (clientX - rect.left - (rect.width * thumbWidth / 100 / 2)) / usableWidth;
+    const progress = Math.max(0, Math.min(1, rawProgress));
+    const maxScroll = carousel.scrollWidth - carousel.clientWidth;
+    carousel.scrollTo({ left: progress * maxScroll, behavior: "smooth" });
+  }, []);
+
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
       if (!isDraggingBar.current) return;
