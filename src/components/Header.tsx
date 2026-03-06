@@ -371,16 +371,13 @@ const Header = ({ onContactClick }: HeaderProps) => {
                           <a
                             key={dropItem.label}
                             href={dropItem.href}
-                            className="group/item relative flex-shrink-0 rounded-xl"
-                            style={{ width: "210px", aspectRatio: "10/11", scrollSnapAlign: "start" }}
+                            className="group/item relative flex-shrink-0 rounded-xl transition-shadow duration-500 ease-in-out"
+                            style={{ width: "210px", aspectRatio: "10/11", scrollSnapAlign: "start", boxShadow: "0 0 0 0 transparent" }}
                             onClick={(e) => { if (isDraggingCards.current) { e.preventDefault(); return; } setActiveDropdown(null); }}
+                            onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.boxShadow = "0 0 14px hsl(11 81% 57% / 0.25), 0 0 4px hsl(11 81% 57% / 0.1)"; }}
+                            onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.boxShadow = "0 0 0 0 transparent"; }}
                           >
-                            <div
-                              className="relative w-full h-full rounded-xl overflow-hidden transition-shadow duration-500 ease-in-out"
-                              style={{ boxShadow: "0 0 0 0 transparent" }}
-                              onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.boxShadow = "0 0 14px hsl(11 81% 57% / 0.25), 0 0 4px hsl(11 81% 57% / 0.1)"; }}
-                              onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.boxShadow = "0 0 0 0 transparent"; }}
-                            >
+                            <div className="relative w-full h-full rounded-xl overflow-hidden">
                               <img
                                 src={dropItem.image}
                                 alt={dropItem.label}
