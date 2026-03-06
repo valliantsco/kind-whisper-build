@@ -109,6 +109,7 @@ const Header = ({ onContactClick }: HeaderProps) => {
       // Reset scroll position and fade state
       setScrollProgress(0);
       setRightFadeOpacity(1);
+      setLeftFadeOpacity(0);
       const el = carouselRef.current;
       if (el) {
         el.scrollLeft = 0;
