@@ -323,17 +323,36 @@ const Header = ({ onContactClick }: HeaderProps) => {
                     </div>
                     <div
                       ref={carouselRef}
-                      className="flex gap-3 overflow-x-auto scrollbar-hide"
-                      style={{ scrollSnapType: "x mandatory", scrollBehavior: "smooth" }}
+                      className="flex gap-3 overflow-x-auto scrollbar-hide cursor-grab active:cursor-grabbing"
+                      style={{ scrollSnapType: "x mandatory" }}
                       onScroll={handleCarouselScroll}
+                      onMouseDown={(e) => {
+                        const el = carouselRef.current;
+                        if (!el) return;
+                        const startX = e.pageX;
+                        const startScroll = el.scrollLeft;
+                        el.style.scrollBehavior = "auto";
+                        el.style.scrollSnapType = "none";
+                        const onMove = (ev: MouseEvent) => {
+                          el.scrollLeft = startScroll - (ev.pageX - startX);
+                        };
+                        const onUp = () => {
+                          el.style.scrollBehavior = "smooth";
+                          el.style.scrollSnapType = "x mandatory";
+                          window.removeEventListener("mousemove", onMove);
+                          window.removeEventListener("mouseup", onUp);
+                        };
+                        window.addEventListener("mousemove", onMove);
+                        window.addEventListener("mouseup", onUp);
+                      }}
                     >
                       {activeItem.dropdownItems.map((dropItem, i) => (
                         <motion.a
                           key={dropItem.label}
                           href={dropItem.href}
-                          initial={{ opacity: 0, y: 12 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          transition={{ delay: i * 0.05, duration: 0.3, ease: "easeOut" }}
+                          initial={{ opacity: 0, x: -20 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ delay: i * 0.06, duration: 0.4, ease: "easeOut" }}
                           className="group/item relative flex-shrink-0 rounded-xl transition-all duration-500"
                           style={{ width: "170px", aspectRatio: "3/4", scrollSnapAlign: "start" }}
                           onClick={() => setActiveDropdown(null)}
@@ -384,9 +403,9 @@ const Header = ({ onContactClick }: HeaderProps) => {
                         <motion.a
                           href="#modelos"
                           onClick={() => setActiveDropdown(null)}
-                          initial={{ opacity: 0, y: 12 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          transition={{ delay: activeItem.dropdownItems.length * 0.05, duration: 0.3 }}
+                          initial={{ opacity: 0, x: -20 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ delay: activeItem.dropdownItems.length * 0.06, duration: 0.4 }}
                           className="group/cta relative flex-shrink-0 rounded-xl overflow-hidden cursor-pointer flex flex-col items-center justify-center text-center"
                           style={{
                             width: "170px",
@@ -433,8 +452,8 @@ const Header = ({ onContactClick }: HeaderProps) => {
                         className="h-full rounded-full"
                         style={{
                           background: "linear-gradient(90deg, hsl(11 81% 57%), hsl(11 90% 65%))",
-                          width: `${Math.max(20, 100 / (activeItem.dropdownItems.length + (activeItem.hasCta ? 1 : 0)))}%`,
-                          marginLeft: `${scrollProgress * (100 - Math.max(20, 100 / (activeItem.dropdownItems.length + (activeItem.hasCta ? 1 : 0))))}%`,
+                          width: "35%",
+                          marginLeft: `${scrollProgress * 65}%`,
                           transition: isDraggingBar.current ? "none" : "all 0.2s ease-out",
                           boxShadow: "0 0 8px hsl(11 81% 57% / 0.4)",
                         }}
