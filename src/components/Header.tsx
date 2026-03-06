@@ -272,7 +272,7 @@ const Header = ({ onContactClick }: HeaderProps) => {
                           animate={{ opacity: 1, y: 0 }}
                           transition={{ delay: i * 0.05, duration: 0.3, ease: "easeOut" }}
                           className="group/item relative flex-shrink-0 rounded-xl overflow-hidden transition-all duration-500"
-                          style={{ width: "140px", aspectRatio: "3/4", scrollSnapAlign: "start" }}
+                          style={{ width: "170px", aspectRatio: "3/4", scrollSnapAlign: "start" }}
                           onClick={() => setActiveDropdown(null)}
                         >
                           {/* Outer glow on hover */}
@@ -301,7 +301,7 @@ const Header = ({ onContactClick }: HeaderProps) => {
                             <p className="text-white font-bold text-[11px] uppercase tracking-[0.08em] mb-0.5 drop-shadow-lg">
                               {dropItem.label}
                             </p>
-                            <p className="text-white/50 text-[9px] tracking-wide group-hover/item:text-white/70 transition-colors duration-300 line-clamp-1">
+                            <p className="text-white/50 text-[10px] tracking-wide group-hover/item:text-white/70 transition-colors duration-300 line-clamp-2">
                               {dropItem.description}
                             </p>
                           </div>
@@ -318,7 +318,7 @@ const Header = ({ onContactClick }: HeaderProps) => {
                           transition={{ delay: activeItem.dropdownItems.length * 0.05, duration: 0.3 }}
                           className="group/cta relative flex-shrink-0 rounded-xl overflow-hidden cursor-pointer flex flex-col items-center justify-center text-center"
                           style={{
-                            width: "140px",
+                            width: "170px",
                             aspectRatio: "3/4",
                             background: "linear-gradient(135deg, hsl(11 81% 57%), hsl(11 90% 65%))",
                           }}
