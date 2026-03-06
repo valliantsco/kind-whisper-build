@@ -67,8 +67,18 @@ const NAV_ITEMS: NavItem[] = [
   },
 ];
 
+const categoryImages = [categoryScooter, categoryBike, categoryTricycle, categoryMotocross, categoryAutopropelido];
+
 const Header = ({ onContactClick }: HeaderProps) => {
   const isOnline = useBusinessHours();
+
+  // Preload category images on mount
+  useEffect(() => {
+    categoryImages.forEach((src) => {
+      const img = new Image();
+      img.src = src;
+    });
+  }, []);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const headerRef = useRef<HTMLDivElement>(null);
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -287,10 +297,10 @@ const Header = ({ onContactClick }: HeaderProps) => {
           {activeItem?.hasDropdown && activeItem.dropdownItems && (
             <motion.div
               key={activeItem.label}
-              initial={{ opacity: 0, y: -4 }}
+              initial={{ opacity: 0, y: -8 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -4 }}
-              transition={{ duration: 0.15, ease: "easeOut" }}
+              exit={{ opacity: 0, y: -8 }}
+              transition={{ duration: 0.3, ease: [0.25, 0.8, 0.25, 1] }}
               className="absolute left-0 right-0 mt-2 rounded-[0.9rem] overflow-hidden"
               style={{
                 background: "hsl(0 0% 14% / 0.95)",
