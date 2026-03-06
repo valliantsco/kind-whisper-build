@@ -84,7 +84,7 @@ const Header = ({ onContactClick }: HeaderProps) => {
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const carouselRef = useRef<HTMLDivElement>(null);
   const [scrollProgress, setScrollProgress] = useState(0);
-  const [showRightFade, setShowRightFade] = useState(true);
+  const [rightFadeOpacity, setRightFadeOpacity] = useState(1);
   const peekDoneRef = useRef(false);
   const isDraggingBar = useRef(false);
   const isDraggingCards = useRef(false);
@@ -99,7 +99,9 @@ const Header = ({ onContactClick }: HeaderProps) => {
     const max = el.scrollWidth - el.clientWidth;
     const progress = max > 0 ? el.scrollLeft / max : 0;
     setScrollProgress(progress);
-    setShowRightFade(progress < 0.95);
+    // Gradual fade: starts fading at 80%, fully gone at 98%
+    const fade = progress < 0.8 ? 1 : Math.max(0, 1 - (progress - 0.8) / 0.18);
+    setRightFadeOpacity(fade);
   };
 
   const handleSlideBarDrag = useCallback((clientX: number) => {
@@ -345,13 +347,13 @@ const Header = ({ onContactClick }: HeaderProps) => {
                         style={{
                           scrollSnapType: "x mandatory",
                           scrollBehavior: "smooth",
-                          maskImage: showRightFade
-                            ? "linear-gradient(to right, black 55%, rgba(0,0,0,0.5) 78%, rgba(0,0,0,0.15) 90%, transparent 100%)"
+                          maskImage: rightFadeOpacity > 0.01
+                            ? `linear-gradient(to right, black 55%, rgba(0,0,0,${0.5 * rightFadeOpacity}) 78%, rgba(0,0,0,${0.15 * rightFadeOpacity}) 90%, rgba(0,0,0,${0 * rightFadeOpacity}) 100%)`
                             : "none",
-                          WebkitMaskImage: showRightFade
-                            ? "linear-gradient(to right, black 55%, rgba(0,0,0,0.5) 78%, rgba(0,0,0,0.15) 90%, transparent 100%)"
+                          WebkitMaskImage: rightFadeOpacity > 0.01
+                            ? `linear-gradient(to right, black 55%, rgba(0,0,0,${0.5 * rightFadeOpacity}) 78%, rgba(0,0,0,${0.15 * rightFadeOpacity}) 90%, rgba(0,0,0,${0 * rightFadeOpacity}) 100%)`
                             : "none",
-                          transition: "mask-image 0.8s ease-out, -webkit-mask-image 0.8s ease-out",
+                          transition: "mask-image 0.5s ease-out, -webkit-mask-image 0.5s ease-out",
                         }}
                         onScroll={handleCarouselScroll}
                         onMouseDown={(e) => {
@@ -461,22 +463,22 @@ const Header = ({ onContactClick }: HeaderProps) => {
                       </div>
 
                       {/* Orange scroll-right button */}
-                      {showRightFade && (
-                        <button
-                          onClick={() => {
-                            const el = carouselRef.current;
-                            if (el) el.scrollBy({ left: 230, behavior: "smooth" });
-                          }}
-                          className="absolute right-2 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full flex items-center justify-center cursor-pointer transition-transform duration-200 hover:scale-110 active:scale-95"
-                          style={{
-                            background: "linear-gradient(135deg, hsl(11 81% 57%), hsl(11 90% 65%))",
-                            boxShadow: "0 4px 12px hsl(11 81% 57% / 0.4)",
-                          }}
-                          aria-label="Próximo"
-                        >
-                          <ArrowRight className="w-4 h-4 text-white" />
-                        </button>
-                      )}
+                      <button
+                        onClick={() => {
+                          const el = carouselRef.current;
+                          if (el) el.scrollBy({ left: 230, behavior: "smooth" });
+                        }}
+                        className="absolute right-2 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full flex items-center justify-center cursor-pointer transition-all duration-500 ease-out hover:scale-110 active:scale-95"
+                        style={{
+                          background: "linear-gradient(135deg, hsl(11 81% 57%), hsl(11 90% 65%))",
+                          boxShadow: "0 4px 12px hsl(11 81% 57% / 0.4)",
+                          opacity: rightFadeOpacity,
+                          pointerEvents: rightFadeOpacity < 0.1 ? "none" : "auto",
+                        }}
+                        aria-label="Próximo"
+                      >
+                        <ArrowRight className="w-4 h-4 text-white" />
+                      </button>
                     </div>
 
                     {/* Slide bar - full width, draggable */}
