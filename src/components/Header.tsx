@@ -293,8 +293,8 @@ const Header = ({ onContactClick }: HeaderProps) => {
                         transition={{ delay: activeItem.dropdownItems.length * 0.05, duration: 0.3 }}
                         className="group/cta relative flex-shrink-0 rounded-xl overflow-hidden cursor-pointer flex flex-col items-center justify-center text-center"
                         style={{
-                          width: "160px",
-                          height: "120px",
+                          width: "220px",
+                          height: "160px",
                           background: "linear-gradient(135deg, hsl(11 81% 57%), hsl(11 90% 65%))",
                         }}
                       >
