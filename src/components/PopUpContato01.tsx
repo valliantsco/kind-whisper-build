@@ -360,6 +360,14 @@ const PopUpContato01 = ({ isOpen, onClose }: PopUpContato01Props) => {
                       return rest;
                     })
                   }
+                  setError={(err) =>
+                    setErrors((prev) => {
+                      const next = { ...prev };
+                      if (err) next.city = err;
+                      else delete next.city;
+                      return next;
+                    })
+                  }
                 />
 
                 {/* Details + Voice */}

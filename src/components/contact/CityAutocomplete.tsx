@@ -2,6 +2,7 @@ import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { MapPin } from "lucide-react";
 import { filterCities, INPUT_BASE_STYLE, getInputBorderStyle } from "@/utils/form-helpers";
+import { detectSpam } from "@/utils/spam-detection";
 
 interface CityAutocompleteProps {
   city: string;
@@ -10,6 +11,7 @@ interface CityAutocompleteProps {
   setCityValidated: (v: boolean) => void;
   error?: string;
   clearError: () => void;
+  setError?: (err: string | null) => void;
 }
 
 const CityAutocomplete = ({
@@ -19,6 +21,7 @@ const CityAutocomplete = ({
   setCityValidated,
   error,
   clearError,
+  setError,
 }: CityAutocompleteProps) => {
   const [suggestions, setSuggestions] = useState<string[]>([]);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -48,7 +51,14 @@ const CityAutocomplete = ({
           const val = e.target.value;
           setCity(val);
           setCityValidated(false);
-          clearError();
+          
+          // Real-time spam detection for city
+          const spamErr = detectSpam("city", val);
+          if (spamErr && setError) {
+            setError(spamErr);
+          } else {
+            clearError();
+          }
 
           if (val.trim().length >= 2) {
             const results = filterCities(val.trim());
