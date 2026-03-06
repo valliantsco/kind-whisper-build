@@ -382,10 +382,10 @@ const Header = ({ onContactClick }: HeaderProps) => {
                             className="group/item relative flex-shrink-0"
                             style={{ width: "210px", aspectRatio: "10/11", scrollSnapAlign: "start" }}
                           >
-                            {/* Glow layer */}
+                            {/* Internal glow layer */}
                             <div
-                              className="absolute -inset-[1px] rounded-xl opacity-0 group-hover/item:opacity-100 transition-opacity duration-500 ease-in-out pointer-events-none z-10"
-                              style={{ boxShadow: "0 0 16px hsl(11 81% 57% / 0.3), 0 0 6px hsl(11 81% 57% / 0.15)" }}
+                              className="absolute inset-0 rounded-xl opacity-0 group-hover/item:opacity-100 transition-opacity duration-500 ease-in-out pointer-events-none z-10"
+                              style={{ boxShadow: "inset 0 0 20px hsl(11 81% 57% / 0.35), inset 0 0 6px hsl(11 81% 57% / 0.2)" }}
                             />
                             <a
                               href={dropItem.href}
