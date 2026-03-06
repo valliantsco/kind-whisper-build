@@ -112,7 +112,7 @@ const Header = ({ onContactClick }: HeaderProps) => {
                 {isOnline ? "Fale conosco" : "Deixe sua mensagem"}
               </span>
             </span>
-          </motion.button>
+          </button>
         </div>
       </div>
     </header>
