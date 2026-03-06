@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import logoWhite from "@/assets/ms-eletric-logo-white.png";
 import { useBusinessHours } from "@/hooks/useBusinessHours";
 import { AnimatePresence, motion } from "framer-motion";
@@ -75,13 +75,55 @@ const Header = ({ onContactClick }: HeaderProps) => {
   const carouselRef = useRef<HTMLDivElement>(null);
   const [scrollProgress, setScrollProgress] = useState(0);
   const peekDoneRef = useRef(false);
+  const isDraggingBar = useRef(false);
+  const slideBarRef = useRef<HTMLDivElement>(null);
 
   const handleCarouselScroll = () => {
+    if (isDraggingBar.current) return;
     const el = carouselRef.current;
     if (!el) return;
     const max = el.scrollWidth - el.clientWidth;
     setScrollProgress(max > 0 ? el.scrollLeft / max : 0);
   };
+
+  const handleSlideBarDrag = useCallback((clientX: number) => {
+    const bar = slideBarRef.current;
+    const carousel = carouselRef.current;
+    if (!bar || !carousel) return;
+    const rect = bar.getBoundingClientRect();
+    const thumbWidth = Math.max(25, 100 / 6);
+    const usableWidth = rect.width * (1 - thumbWidth / 100);
+    const rawProgress = (clientX - rect.left - (rect.width * thumbWidth / 100 / 2)) / usableWidth;
+    const progress = Math.max(0, Math.min(1, rawProgress));
+    setScrollProgress(progress);
+    const maxScroll = carousel.scrollWidth - carousel.clientWidth;
+    carousel.scrollLeft = progress * maxScroll;
+  }, []);
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      if (!isDraggingBar.current) return;
+      e.preventDefault();
+      handleSlideBarDrag(e.clientX);
+    };
+    const handleMouseUp = () => { isDraggingBar.current = false; };
+    const handleTouchMove = (e: TouchEvent) => {
+      if (!isDraggingBar.current) return;
+      handleSlideBarDrag(e.touches[0].clientX);
+    };
+    const handleTouchEnd = () => { isDraggingBar.current = false; };
+
+    window.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener("mouseup", handleMouseUp);
+    window.addEventListener("touchmove", handleTouchMove);
+    window.addEventListener("touchend", handleTouchEnd);
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("mouseup", handleMouseUp);
+      window.removeEventListener("touchmove", handleTouchMove);
+      window.removeEventListener("touchend", handleTouchEnd);
+    };
+  }, [handleSlideBarDrag]);
 
   // Peek animation: scroll right then back when carousel opens
   useEffect(() => {
