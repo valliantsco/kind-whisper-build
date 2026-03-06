@@ -346,12 +346,12 @@ const Header = ({ onContactClick }: HeaderProps) => {
                           scrollSnapType: "x mandatory",
                           scrollBehavior: "smooth",
                           maskImage: showRightFade
-                            ? "linear-gradient(to right, black 70%, transparent 100%)"
+                            ? "linear-gradient(to right, black 60%, rgba(0,0,0,0.4) 82%, rgba(0,0,0,0.08) 92%, transparent 100%)"
                             : "none",
                           WebkitMaskImage: showRightFade
-                            ? "linear-gradient(to right, black 70%, transparent 100%)"
+                            ? "linear-gradient(to right, black 60%, rgba(0,0,0,0.4) 82%, rgba(0,0,0,0.08) 92%, transparent 100%)"
                             : "none",
-                          transition: "mask-image 0.6s ease, -webkit-mask-image 0.6s ease",
+                          transition: "mask-image 0.8s ease-out, -webkit-mask-image 0.8s ease-out",
                         }}
                         onScroll={handleCarouselScroll}
                         onMouseDown={(e) => {
@@ -426,10 +426,10 @@ const Header = ({ onContactClick }: HeaderProps) => {
                                 style={{ boxShadow: "inset 0 0 12px hsl(11 81% 57% / 0.15), inset 0 0 4px hsl(11 81% 57% / 0.1)" }}
                               />
                               <div className="absolute bottom-0 left-0 right-0 p-2.5">
-                                <p className="text-white font-bold text-[12.5px] uppercase tracking-[0.08em] mb-0.5 drop-shadow-lg">
+                                <p className="text-white font-bold text-[14.5px] uppercase tracking-[0.08em] mb-0.5 drop-shadow-lg">
                                   {dropItem.label}
                                 </p>
-                                <p className="text-white/60 text-[11.5px] tracking-wide line-clamp-2 group-hover/item:text-white/80 transition-colors duration-500">
+                                <p className="text-white/60 text-[13px] tracking-wide line-clamp-2 group-hover/item:text-white/80 transition-colors duration-500">
                                   {dropItem.description}
                                 </p>
                               </div>
@@ -457,8 +457,8 @@ const Header = ({ onContactClick }: HeaderProps) => {
                               <div className="w-8 h-8 rounded-full flex items-center justify-center" style={{ background: "hsl(0 0% 100% / 0.2)" }}>
                                 <ArrowRight className="w-4 h-4 text-white" />
                               </div>
-                              <p className="text-white font-bold text-[11px] uppercase tracking-[0.1em]">Ver todos</p>
-                              <p className="text-white/60 text-[9px] tracking-wide">os modelos</p>
+                              <p className="text-white font-bold text-[12.5px] uppercase tracking-[0.1em]">Todos</p>
+                              <p className="text-white/60 text-[10.5px] tracking-wide">os modelos</p>
                             </div>
                           </a>
                         )}
