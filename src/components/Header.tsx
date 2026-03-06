@@ -414,7 +414,7 @@ const Header = ({ onContactClick }: HeaderProps) => {
                                 </p>
                               </div>
                             </a>
-                          </motion.div>
+                          </div>
                         ))}
 
                         {/* CTA card "Ver todos" */}
