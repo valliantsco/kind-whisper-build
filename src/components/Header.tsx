@@ -488,7 +488,7 @@ const Header = ({ onContactClick }: HeaderProps) => {
                         isDraggingBar.current = true;
                         handleSlideBarDrag(e.touches[0].clientX);
                       }}
-                      onClick={(e) => handleSlideBarDrag(e.clientX)}
+                      onClick={(e) => { if (!isDraggingBar.current) handleSlideBarClick(e.clientX); }}
                     >
                       <div
                         className="h-full rounded-full will-change-transform"
