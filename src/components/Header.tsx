@@ -261,8 +261,10 @@ const Header = ({ onContactClick }: HeaderProps) => {
                       <p className="text-white/40 text-[11px] mt-0.5">Encontre o veículo elétrico ideal para você</p>
                     </div>
                     <div
+                      ref={carouselRef}
                       className="flex gap-3 overflow-x-auto scrollbar-hide"
-                      style={{ scrollSnapType: "x mandatory" }}
+                      style={{ scrollSnapType: "x mandatory", scrollBehavior: "smooth" }}
+                      onScroll={handleCarouselScroll}
                     >
                       {activeItem.dropdownItems.map((dropItem, i) => (
                         <motion.a
@@ -288,7 +290,13 @@ const Header = ({ onContactClick }: HeaderProps) => {
                             alt={dropItem.label}
                             className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover/item:scale-110"
                           />
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+                          {/* Vignette overlay */}
+                          <div
+                            className="absolute inset-0"
+                            style={{
+                              background: "linear-gradient(to top, hsl(0 0% 0% / 0.85) 0%, hsl(0 0% 0% / 0.4) 40%, hsl(0 0% 0% / 0.15) 70%, hsl(0 0% 0% / 0.25) 100%)",
+                            }}
+                          />
                           <div
                             className="absolute inset-0 opacity-0 group-hover/item:opacity-100 transition-opacity duration-300"
                             style={{ background: "linear-gradient(135deg, hsl(11 81% 57% / 0.12) 0%, transparent 60%)" }}
@@ -301,7 +309,7 @@ const Header = ({ onContactClick }: HeaderProps) => {
                             <p className="text-white font-bold text-[11px] uppercase tracking-[0.08em] mb-0.5 drop-shadow-lg">
                               {dropItem.label}
                             </p>
-                            <p className="text-white/50 text-[10px] tracking-wide group-hover/item:text-white/70 transition-colors duration-300 line-clamp-2">
+                            <p className="text-white/60 text-[10px] tracking-wide line-clamp-2 group-hover/item:text-white/80 transition-colors duration-300">
                               {dropItem.description}
                             </p>
                           </div>
@@ -341,6 +349,18 @@ const Header = ({ onContactClick }: HeaderProps) => {
                           </div>
                         </motion.a>
                       )}
+                    </div>
+
+                    {/* Slide bar */}
+                    <div className="mt-3 mx-auto rounded-full overflow-hidden" style={{ width: "80px", height: "3px", background: "hsl(0 0% 100% / 0.1)" }}>
+                      <div
+                        className="h-full rounded-full transition-all duration-200 ease-out"
+                        style={{
+                          background: "linear-gradient(90deg, hsl(11 81% 57%), hsl(11 90% 65%))",
+                          width: `${Math.max(25, 100 / (activeItem.dropdownItems.length + (activeItem.hasCta ? 1 : 0)))}%`,
+                          marginLeft: `${scrollProgress * (100 - Math.max(25, 100 / (activeItem.dropdownItems.length + (activeItem.hasCta ? 1 : 0))))}%`,
+                        }}
+                      />
                     </div>
                   </>
                 ) : (
