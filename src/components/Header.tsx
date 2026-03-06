@@ -130,25 +130,14 @@ const Header = ({ onContactClick }: HeaderProps) => {
   }, []);
 
   useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      if (!isDraggingBar.current) return;
-      e.preventDefault();
-      handleSlideBarDrag(e.clientX);
-    };
-    const handleMouseUp = () => { isDraggingBar.current = false; };
     const handleTouchMove = (e: TouchEvent) => {
       if (!isDraggingBar.current) return;
       handleSlideBarDrag(e.touches[0].clientX);
     };
     const handleTouchEnd = () => { isDraggingBar.current = false; };
-
-    window.addEventListener("mousemove", handleMouseMove);
-    window.addEventListener("mouseup", handleMouseUp);
     window.addEventListener("touchmove", handleTouchMove);
     window.addEventListener("touchend", handleTouchEnd);
     return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
-      window.removeEventListener("mouseup", handleMouseUp);
       window.removeEventListener("touchmove", handleTouchMove);
       window.removeEventListener("touchend", handleTouchEnd);
     };
@@ -481,14 +470,29 @@ const Header = ({ onContactClick }: HeaderProps) => {
                       className="mt-5 rounded-full overflow-hidden cursor-pointer select-none"
                       style={{ width: "100%", height: "5px", background: "hsl(0 0% 100% / 0.08)" }}
                       onMouseDown={(e) => {
-                        isDraggingBar.current = true;
-                        handleSlideBarDrag(e.clientX);
+                        const startX = e.clientX;
+                        let dragged = false;
+                        isDraggingBar.current = false;
+                        const onMove = (ev: MouseEvent) => {
+                          if (Math.abs(ev.clientX - startX) > 3) {
+                            dragged = true;
+                            isDraggingBar.current = true;
+                          }
+                          if (dragged) handleSlideBarDrag(ev.clientX);
+                        };
+                        const onUp = (ev: MouseEvent) => {
+                          window.removeEventListener("mousemove", onMove);
+                          window.removeEventListener("mouseup", onUp);
+                          isDraggingBar.current = false;
+                          if (!dragged) handleSlideBarClick(ev.clientX);
+                        };
+                        window.addEventListener("mousemove", onMove);
+                        window.addEventListener("mouseup", onUp);
                       }}
                       onTouchStart={(e) => {
                         isDraggingBar.current = true;
                         handleSlideBarDrag(e.touches[0].clientX);
                       }}
-                      onClick={(e) => { if (!isDraggingBar.current) handleSlideBarClick(e.clientX); }}
                     >
                       <div
                         className="h-full rounded-full will-change-transform"
