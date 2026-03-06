@@ -362,15 +362,20 @@ const Header = ({ onContactClick }: HeaderProps) => {
                           <a
                             key={dropItem.label}
                             href={dropItem.href}
-                            className="group/item relative flex-shrink-0 rounded-xl transition-transform duration-500 ease-out hover:scale-[1.02]"
+                            className="group/item relative flex-shrink-0 rounded-xl"
                             style={{ width: "210px", aspectRatio: "10/11", scrollSnapAlign: "start" }}
                             onClick={(e) => { if (isDraggingCards.current) { e.preventDefault(); return; } setActiveDropdown(null); }}
                           >
-                            <div className="relative w-full h-full rounded-xl overflow-hidden shadow-[0_0_0_0_transparent] group-hover/item:shadow-[0_0_12px_hsl(11_81%_57%/0.2)] transition-shadow duration-500 ease-in-out">
+                            <div
+                              className="relative w-full h-full rounded-xl overflow-hidden transition-shadow duration-500 ease-in-out"
+                              style={{ boxShadow: "0 0 0 0 transparent" }}
+                              onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.boxShadow = "0 0 14px hsl(11 81% 57% / 0.25), 0 0 4px hsl(11 81% 57% / 0.1)"; }}
+                              onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.boxShadow = "0 0 0 0 transparent"; }}
+                            >
                               <img
                                 src={dropItem.image}
                                 alt={dropItem.label}
-                                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover/item:scale-[1.04]"
+                                className="absolute inset-0 w-full h-full object-cover"
                               />
                               <div
                                 className="absolute inset-0"
@@ -447,12 +452,12 @@ const Header = ({ onContactClick }: HeaderProps) => {
                       onClick={(e) => handleSlideBarDrag(e.clientX)}
                     >
                       <div
-                        className="h-full rounded-full"
+                        className="h-full rounded-full will-change-transform"
                         style={{
                           background: "linear-gradient(90deg, hsl(11 81% 57%), hsl(11 90% 65%))",
                           width: "48%",
-                          marginLeft: `${scrollProgress * 52}%`,
-                          transition: isDraggingBar.current ? "none" : "margin-left 0.35s cubic-bezier(0.25, 0.8, 0.25, 1)",
+                          transform: `translateX(${scrollProgress * (100 / 0.48 - 100)}%)`,
+                          transition: isDraggingBar.current ? "none" : "transform 0.5s cubic-bezier(0.22, 1, 0.36, 1)",
                           boxShadow: "0 0 10px hsl(11 81% 57% / 0.5), 0 0 4px hsl(11 81% 57% / 0.3)",
                         }}
                       />
