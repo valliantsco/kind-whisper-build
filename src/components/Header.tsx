@@ -145,17 +145,28 @@ const Header = ({ onContactClick }: HeaderProps) => {
     };
   }, [handleSlideBarDrag]);
 
-  // Peek animation: scroll right then back when carousel opens
+  // Reset carousel state and peek animation when dropdown opens/closes
   useEffect(() => {
-    if (activeDropdown === "Modelos" && carouselRef.current && !peekDoneRef.current) {
-      peekDoneRef.current = true;
+    if (activeDropdown === "Modelos") {
+      // Reset scroll position and fade state
+      setScrollProgress(0);
+      setRightFadeOpacity(1);
       const el = carouselRef.current;
-      requestAnimationFrame(() => {
-        el.scrollTo({ left: 50, behavior: "smooth" });
-        setTimeout(() => {
-          el.scrollTo({ left: 0, behavior: "smooth" });
-        }, 300);
-      });
+      if (el) {
+        el.scrollLeft = 0;
+      }
+      // Peek animation
+      if (!peekDoneRef.current) {
+        peekDoneRef.current = true;
+        requestAnimationFrame(() => {
+          if (carouselRef.current) {
+            carouselRef.current.scrollTo({ left: 50, behavior: "smooth" });
+            setTimeout(() => {
+              carouselRef.current?.scrollTo({ left: 0, behavior: "smooth" });
+            }, 300);
+          }
+        });
+      }
     }
     if (!activeDropdown) {
       peekDoneRef.current = false;
