@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import logoWhite from "@/assets/ms-eletric-logo-white.png";
 import { useBusinessHours } from "@/hooks/useBusinessHours";
 import { AnimatePresence, motion } from "framer-motion";
@@ -75,13 +75,55 @@ const Header = ({ onContactClick }: HeaderProps) => {
   const carouselRef = useRef<HTMLDivElement>(null);
   const [scrollProgress, setScrollProgress] = useState(0);
   const peekDoneRef = useRef(false);
+  const isDraggingBar = useRef(false);
+  const slideBarRef = useRef<HTMLDivElement>(null);
 
   const handleCarouselScroll = () => {
+    if (isDraggingBar.current) return;
     const el = carouselRef.current;
     if (!el) return;
     const max = el.scrollWidth - el.clientWidth;
     setScrollProgress(max > 0 ? el.scrollLeft / max : 0);
   };
+
+  const handleSlideBarDrag = useCallback((clientX: number) => {
+    const bar = slideBarRef.current;
+    const carousel = carouselRef.current;
+    if (!bar || !carousel) return;
+    const rect = bar.getBoundingClientRect();
+    const thumbWidth = Math.max(25, 100 / 6);
+    const usableWidth = rect.width * (1 - thumbWidth / 100);
+    const rawProgress = (clientX - rect.left - (rect.width * thumbWidth / 100 / 2)) / usableWidth;
+    const progress = Math.max(0, Math.min(1, rawProgress));
+    setScrollProgress(progress);
+    const maxScroll = carousel.scrollWidth - carousel.clientWidth;
+    carousel.scrollLeft = progress * maxScroll;
+  }, []);
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      if (!isDraggingBar.current) return;
+      e.preventDefault();
+      handleSlideBarDrag(e.clientX);
+    };
+    const handleMouseUp = () => { isDraggingBar.current = false; };
+    const handleTouchMove = (e: TouchEvent) => {
+      if (!isDraggingBar.current) return;
+      handleSlideBarDrag(e.touches[0].clientX);
+    };
+    const handleTouchEnd = () => { isDraggingBar.current = false; };
+
+    window.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener("mouseup", handleMouseUp);
+    window.addEventListener("touchmove", handleTouchMove);
+    window.addEventListener("touchend", handleTouchEnd);
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("mouseup", handleMouseUp);
+      window.removeEventListener("touchmove", handleTouchMove);
+      window.removeEventListener("touchend", handleTouchEnd);
+    };
+  }, [handleSlideBarDrag]);
 
   // Peek animation: scroll right then back when carousel opens
   useEffect(() => {
@@ -292,45 +334,47 @@ const Header = ({ onContactClick }: HeaderProps) => {
                           initial={{ opacity: 0, y: 12 }}
                           animate={{ opacity: 1, y: 0 }}
                           transition={{ delay: i * 0.05, duration: 0.3, ease: "easeOut" }}
-                          className="group/item relative flex-shrink-0 rounded-xl overflow-hidden transition-all duration-500"
+                          className="group/item relative flex-shrink-0 rounded-xl transition-all duration-500"
                           style={{ width: "170px", aspectRatio: "3/4", scrollSnapAlign: "start" }}
                           onClick={() => setActiveDropdown(null)}
                         >
                           {/* Outer glow on hover */}
                           <div
-                            className="absolute -inset-1 rounded-2xl opacity-0 group-hover/item:opacity-100 transition-opacity duration-700 ease-out pointer-events-none -z-10"
+                            className="absolute -inset-2 rounded-2xl opacity-0 group-hover/item:opacity-100 transition-opacity duration-700 ease-out pointer-events-none"
                             style={{
-                              background: "radial-gradient(ellipse at center, hsl(11 81% 57% / 0.25), transparent 70%)",
-                              filter: "blur(8px)",
+                              background: "radial-gradient(ellipse at center, hsl(11 81% 57% / 0.3), transparent 70%)",
+                              filter: "blur(12px)",
                             }}
                           />
-                          <img
-                            src={dropItem.image}
-                            alt={dropItem.label}
-                            className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover/item:scale-110"
-                          />
-                          {/* Vignette overlay */}
-                          <div
-                            className="absolute inset-0"
-                            style={{
-                              background: "linear-gradient(to top, hsl(0 0% 0% / 0.85) 0%, hsl(0 0% 0% / 0.4) 40%, hsl(0 0% 0% / 0.15) 70%, hsl(0 0% 0% / 0.25) 100%)",
-                            }}
-                          />
-                          <div
-                            className="absolute inset-0 opacity-0 group-hover/item:opacity-100 transition-opacity duration-300"
-                            style={{ background: "linear-gradient(135deg, hsl(11 81% 57% / 0.12) 0%, transparent 60%)" }}
-                          />
-                          <div
-                            className="absolute inset-0 rounded-xl opacity-0 group-hover/item:opacity-100 transition-opacity duration-300"
-                            style={{ boxShadow: "inset 0 0 0 1.5px hsl(11 81% 57% / 0.5)" }}
-                          />
-                          <div className="absolute bottom-0 left-0 right-0 p-2.5">
-                            <p className="text-white font-bold text-[11px] uppercase tracking-[0.08em] mb-0.5 drop-shadow-lg">
-                              {dropItem.label}
-                            </p>
-                            <p className="text-white/60 text-[10px] tracking-wide line-clamp-2 group-hover/item:text-white/80 transition-colors duration-300">
-                              {dropItem.description}
-                            </p>
+                          <div className="relative w-full h-full rounded-xl overflow-hidden">
+                            <img
+                              src={dropItem.image}
+                              alt={dropItem.label}
+                              className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover/item:scale-110"
+                            />
+                            {/* Vignette overlay */}
+                            <div
+                              className="absolute inset-0"
+                              style={{
+                                background: "linear-gradient(to top, hsl(0 0% 0% / 0.85) 0%, hsl(0 0% 0% / 0.4) 40%, hsl(0 0% 0% / 0.15) 70%, hsl(0 0% 0% / 0.25) 100%)",
+                              }}
+                            />
+                            <div
+                              className="absolute inset-0 opacity-0 group-hover/item:opacity-100 transition-opacity duration-300"
+                              style={{ background: "linear-gradient(135deg, hsl(11 81% 57% / 0.12) 0%, transparent 60%)" }}
+                            />
+                            <div
+                              className="absolute inset-0 rounded-xl opacity-0 group-hover/item:opacity-100 transition-opacity duration-300"
+                              style={{ boxShadow: "inset 0 0 0 1.5px hsl(11 81% 57% / 0.5)" }}
+                            />
+                            <div className="absolute bottom-0 left-0 right-0 p-2.5">
+                              <p className="text-white font-bold text-[11px] uppercase tracking-[0.08em] mb-0.5 drop-shadow-lg">
+                                {dropItem.label}
+                              </p>
+                              <p className="text-white/60 text-[10px] tracking-wide line-clamp-2 group-hover/item:text-white/80 transition-colors duration-300">
+                                {dropItem.description}
+                              </p>
+                            </div>
                           </div>
                         </motion.a>
                       ))}
@@ -370,14 +414,29 @@ const Header = ({ onContactClick }: HeaderProps) => {
                       )}
                     </div>
 
-                    {/* Slide bar */}
-                    <div className="mt-3 mx-auto rounded-full overflow-hidden" style={{ width: "80px", height: "3px", background: "hsl(0 0% 100% / 0.1)" }}>
+                    {/* Slide bar - full width, draggable */}
+                    <div
+                      ref={slideBarRef}
+                      className="mt-3 rounded-full overflow-hidden cursor-pointer select-none"
+                      style={{ width: "100%", height: "4px", background: "hsl(0 0% 100% / 0.08)" }}
+                      onMouseDown={(e) => {
+                        isDraggingBar.current = true;
+                        handleSlideBarDrag(e.clientX);
+                      }}
+                      onTouchStart={(e) => {
+                        isDraggingBar.current = true;
+                        handleSlideBarDrag(e.touches[0].clientX);
+                      }}
+                      onClick={(e) => handleSlideBarDrag(e.clientX)}
+                    >
                       <div
-                        className="h-full rounded-full transition-all duration-200 ease-out"
+                        className="h-full rounded-full"
                         style={{
                           background: "linear-gradient(90deg, hsl(11 81% 57%), hsl(11 90% 65%))",
-                          width: `${Math.max(25, 100 / (activeItem.dropdownItems.length + (activeItem.hasCta ? 1 : 0)))}%`,
-                          marginLeft: `${scrollProgress * (100 - Math.max(25, 100 / (activeItem.dropdownItems.length + (activeItem.hasCta ? 1 : 0))))}%`,
+                          width: `${Math.max(20, 100 / (activeItem.dropdownItems.length + (activeItem.hasCta ? 1 : 0)))}%`,
+                          marginLeft: `${scrollProgress * (100 - Math.max(20, 100 / (activeItem.dropdownItems.length + (activeItem.hasCta ? 1 : 0))))}%`,
+                          transition: isDraggingBar.current ? "none" : "all 0.2s ease-out",
+                          boxShadow: "0 0 8px hsl(11 81% 57% / 0.4)",
                         }}
                       />
                     </div>
