@@ -13,7 +13,7 @@ const Header = () => {
         }}
       >
         <a href="#">
-          <img src={logoWhite} alt="MS Eletric" className="h-8 w-auto" />
+          <img src={logoWhite} alt="MS Eletric" className="w-auto" style={{ height: "2.3rem" }} />
         </a>
 
         <nav className="hidden md:flex items-center gap-6">
