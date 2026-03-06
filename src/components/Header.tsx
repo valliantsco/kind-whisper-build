@@ -21,6 +21,7 @@ interface DropdownItem {
   href: string;
   image?: string;
   video?: string;
+  youtubeId?: string;
   icon?: React.ElementType;
 }
 
@@ -40,7 +41,7 @@ const NAV_ITEMS: NavItem[] = [
     hasDropdown: true,
     hasCta: true,
     dropdownItems: [
-      { label: "Scooters", description: "Mobilidade urbana prática e silenciosa", href: "#modelos", image: categoryScooter, video: "https://ppmoesqgmficvajqbamr.supabase.co/storage/v1/object/public/videos/scooter.mp4" },
+      { label: "Scooters", description: "Mobilidade urbana prática e silenciosa", href: "#modelos", image: categoryScooter, youtubeId: "71CRlXlWq7s" },
       { label: "Bikes", description: "Pedale com assistência elétrica", href: "#modelos", image: categoryBike, video: "https://ppmoesqgmficvajqbamr.supabase.co/storage/v1/object/public/videos/bikes.mp4" },
       { label: "Triciclos", description: "Estabilidade e conforto para todos", href: "#modelos", image: categoryTricycle, video: "https://videos.pexels.com/video-files/4488070/4488070-sd_506_960_25fps.mp4" },
       { label: "Motocross", description: "Aventura off-road 100% elétrica", href: "#modelos", image: categoryMotocross, video: "https://ppmoesqgmficvajqbamr.supabase.co/storage/v1/object/public/videos/motocross.mp4" },
@@ -392,7 +393,22 @@ const Header = ({ onContactClick }: HeaderProps) => {
                               className="relative block w-full h-full"
                               onClick={(e) => { if (isDraggingCards.current) { e.preventDefault(); return; } setActiveDropdown(null); }}
                             >
-                              {dropItem.video ? (
+                              {dropItem.youtubeId ? (
+                                <motion.div
+                                  initial={{ opacity: 0 }}
+                                  animate={{ opacity: 1 }}
+                                  transition={{ delay: i * 0.1 + 0.15, duration: 0.8, ease: "easeOut" }}
+                                  className="absolute inset-0 w-full h-full overflow-hidden"
+                                >
+                                  <iframe
+                                    src={`https://www.youtube.com/embed/${dropItem.youtubeId}?autoplay=1&mute=1&loop=1&playlist=${dropItem.youtubeId}&controls=0&showinfo=0&modestbranding=1&rel=0&start=4&playsinline=1`}
+                                    allow="autoplay; encrypted-media"
+                                    allowFullScreen
+                                    className="absolute w-[300%] h-[300%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none"
+                                    style={{ border: "none" }}
+                                  />
+                                </motion.div>
+                              ) : dropItem.video ? (
                                 <motion.video
                                   src={dropItem.video}
                                   poster={dropItem.image}
