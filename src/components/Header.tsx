@@ -2,7 +2,7 @@ import logoWhite from "@/assets/ms-eletric-logo-white.png";
 
 const Header = () => {
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-foreground">
+    <header className="fixed top-0 left-0 right-0 z-50" style={{ backgroundColor: "hsl(0 0% 0%)" }}>
       <div className="mx-auto max-w-7xl flex items-center justify-between px-5 py-4">
         <a href="#">
           <img src={logoWhite} alt="MS Eletric" className="h-8 w-auto" />
