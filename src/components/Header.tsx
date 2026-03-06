@@ -116,6 +116,19 @@ const Header = ({ onContactClick }: HeaderProps) => {
     carousel.scrollLeft = progress * maxScroll;
   }, []);
 
+  const handleSlideBarClick = useCallback((clientX: number) => {
+    const bar = slideBarRef.current;
+    const carousel = carouselRef.current;
+    if (!bar || !carousel) return;
+    const rect = bar.getBoundingClientRect();
+    const thumbWidth = Math.max(25, 100 / 6);
+    const usableWidth = rect.width * (1 - thumbWidth / 100);
+    const rawProgress = (clientX - rect.left - (rect.width * thumbWidth / 100 / 2)) / usableWidth;
+    const progress = Math.max(0, Math.min(1, rawProgress));
+    const maxScroll = carousel.scrollWidth - carousel.clientWidth;
+    carousel.scrollTo({ left: progress * maxScroll, behavior: "smooth" });
+  }, []);
+
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
       if (!isDraggingBar.current) return;
@@ -339,7 +352,7 @@ const Header = ({ onContactClick }: HeaderProps) => {
                     <div className="relative">
                       <div
                         ref={carouselRef}
-                        className="flex gap-3 overflow-x-auto scrollbar-hide cursor-grab active:cursor-grabbing select-none pr-12"
+                        className="flex gap-3 overflow-x-auto scrollbar-hide cursor-grab active:cursor-grabbing select-none"
                         style={{
                           scrollSnapType: "x mandatory",
                           scrollBehavior: "smooth",
@@ -475,7 +488,7 @@ const Header = ({ onContactClick }: HeaderProps) => {
                         isDraggingBar.current = true;
                         handleSlideBarDrag(e.touches[0].clientX);
                       }}
-                      onClick={(e) => handleSlideBarDrag(e.clientX)}
+                      onClick={(e) => { if (!isDraggingBar.current) handleSlideBarClick(e.clientX); }}
                     >
                       <div
                         className="h-full rounded-full will-change-transform"
