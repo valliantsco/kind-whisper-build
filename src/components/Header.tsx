@@ -85,23 +85,22 @@ const Header = ({ onContactClick }: HeaderProps) => {
   const carouselRef = useRef<HTMLDivElement>(null);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [rightFadeOpacity, setRightFadeOpacity] = useState(1);
+  const [leftFadeOpacity, setLeftFadeOpacity] = useState(0);
   const peekDoneRef = useRef(false);
-  const isDraggingBar = useRef(false);
   const isDraggingCards = useRef(false);
   const dragStartX = useRef(0);
   const dragStartScroll = useRef(0);
-  const slideBarRef = useRef<HTMLDivElement>(null);
 
   const handleCarouselScroll = () => {
-    if (isDraggingBar.current) return;
     const el = carouselRef.current;
     if (!el) return;
     const max = el.scrollWidth - el.clientWidth;
     const progress = max > 0 ? el.scrollLeft / max : 0;
     setScrollProgress(progress);
-    // Gradual fade: starts fading at 80%, fully gone at 98%
-    const fade = progress < 0.8 ? 1 : Math.max(0, 1 - (progress - 0.8) / 0.18);
-    setRightFadeOpacity(fade);
+    const rFade = progress < 0.8 ? 1 : Math.max(0, 1 - (progress - 0.8) / 0.18);
+    setRightFadeOpacity(rFade);
+    const lFade = progress > 0.2 ? 1 : Math.max(0, progress / 0.2);
+    setLeftFadeOpacity(lFade);
   };
 
   const handleSlideBarDrag = useCallback((clientX: number) => {
