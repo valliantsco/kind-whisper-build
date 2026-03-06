@@ -314,8 +314,8 @@ const Header = ({ onContactClick }: HeaderProps) => {
                   /* Carousel (Modelos) */
                   <>
                     <div className="mb-3">
-                      <h3 className="text-white/90 text-base font-semibold tracking-wide">Nossos modelos</h3>
-                      <p className="text-white/40 text-[12.5px] mt-0.5">Encontre o veículo elétrico ideal para você</p>
+                      <h3 className="text-white/90 text-base font-semibold tracking-wide">Explore por categoria</h3>
+                      <p className="text-white/40 text-[12.5px] mt-0.5">Mobilidade elétrica para cada estilo de vida</p>
                     </div>
                     <div className="relative">
                       <div
