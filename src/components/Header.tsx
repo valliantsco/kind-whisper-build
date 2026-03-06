@@ -64,13 +64,13 @@ const Header = ({ onContactClick }: HeaderProps) => {
         <div className="flex items-center gap-3">
           <motion.button
             onClick={onContactClick}
+            initial={{ boxShadow: "inset 0 1px 0 hsla(0, 0%, 100%, 0.15), 0 0 0 transparent" }}
             whileHover={{ boxShadow: "inset 0 0 20px hsla(0, 0%, 100%, 0.12), inset 0 1px 0 hsla(0, 0%, 100%, 0.15), 0 4px 24px hsla(11, 81%, 57%, 0.4)" }}
             whileTap={{ scale: 0.97 }}
-            transition={{ duration: 0.5, ease: "easeOut" }}
+            transition={{ boxShadow: { duration: 0.6, ease: [0.4, 0, 0.2, 1] }, scale: { type: "spring", stiffness: 400, damping: 20 } }}
             className="group relative flex items-center gap-2.5 rounded-lg px-5 py-2 text-white cursor-pointer overflow-hidden"
             style={{
               background: "linear-gradient(135deg, hsl(11 81% 57%), hsl(11 90% 65%))",
-              boxShadow: "inset 0 1px 0 hsla(0, 0%, 100%, 0.15)",
             }}
           >
             {/* Pulsing status dot */}
