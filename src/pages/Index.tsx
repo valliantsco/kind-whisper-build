@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Header from "@/components/Header";
 import PopUpContato01 from "@/components/PopUpContato01";
 
 const Index = () => {
@@ -6,6 +7,7 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-foreground">
+      <Header />
       <PopUpContato01 isOpen={contactOpen} onClose={() => setContactOpen(false)} />
     </div>
   );
