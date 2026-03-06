@@ -74,7 +74,7 @@ const Header = ({ onContactClick }: HeaderProps) => {
             }}
           >
             {/* Pulsing status dot */}
-            <span className="relative flex h-1.5 w-1.5 shrink-0 items-center justify-center">
+            <span className="relative flex h-1.5 w-1.5 shrink-0 items-center justify-center -ml-1">
               <span
                 className="absolute inset-0 rounded-full animate-ping opacity-60"
                 style={{
