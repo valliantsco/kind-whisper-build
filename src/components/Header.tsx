@@ -144,13 +144,13 @@ const Header = ({ onContactClick }: HeaderProps) => {
                       activeDropdown === item.label ? "opacity-100" : "opacity-0 group-hover:opacity-100"
                     }`}
                     style={{
-                      background: "radial-gradient(ellipse at center, hsl(11 81% 57% / 0.2), transparent 70%)",
+                      background: "radial-gradient(ellipse at center, hsl(11 81% 57% / 0.08), transparent 70%)",
                     }}
                   />
                   <span className="relative">{item.label}</span>
                   {item.hasDropdown && (
                     <ChevronDown
-                      className={`relative w-3 h-3 transition-transform duration-300 ${
+                      className={`relative w-3 h-3 -ml-0.5 transition-transform duration-300 ${
                         activeDropdown === item.label ? "rotate-180" : ""
                       }`}
                     />
