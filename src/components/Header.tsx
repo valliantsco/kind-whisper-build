@@ -46,7 +46,7 @@ const Header = ({ onContactClick }: HeaderProps) => {
             >
               {/* Orange blur background on hover */}
               <span
-                className="absolute inset-0 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-out pointer-events-none"
+                className="absolute inset-0 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-700 ease-out pointer-events-none"
                 style={{
                   background: "radial-gradient(ellipse at center, hsl(11 81% 57% / 0.12), transparent 70%)",
                 }}
