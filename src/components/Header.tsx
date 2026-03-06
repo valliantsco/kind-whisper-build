@@ -120,7 +120,6 @@ const Header = ({ onContactClick }: HeaderProps) => {
               </span>
             </span>
           </button>
-          </div>
         </div>
       </div>
     </header>
