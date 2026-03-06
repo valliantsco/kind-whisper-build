@@ -17,7 +17,20 @@ const Header = () => {
         </a>
 
         <nav className="hidden md:flex items-center gap-6">
-          {/* Itens serão adicionados aqui */}
+          {[
+            { label: "Início", href: "#inicio" },
+            { label: "Modelos", href: "#modelos" },
+            { label: "Como escolher", href: "#como-escolher" },
+            { label: "Suporte", href: "#suporte" },
+          ].map((item) => (
+            <a
+              key={item.href}
+              href={item.href}
+              className="text-sm font-medium text-white/70 transition-colors hover:text-white"
+            >
+              {item.label}
+            </a>
+          ))}
         </nav>
 
         <div className="flex items-center gap-3">
