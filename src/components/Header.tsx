@@ -361,23 +361,23 @@ const Header = ({ onContactClick }: HeaderProps) => {
                           initial={{ opacity: 0, x: -20 }}
                           animate={{ opacity: 1, x: 0 }}
                           transition={{ delay: i * 0.06, duration: 0.4, ease: "easeOut" }}
-                          className="group/item relative flex-shrink-0 rounded-xl transition-all duration-500"
+                           className="group/item relative flex-shrink-0 rounded-xl transition-all duration-700 ease-out"
                           style={{ width: "210px", aspectRatio: "10/11", scrollSnapAlign: "start" }}
                           onClick={(e) => { if (isDraggingCards.current) { e.preventDefault(); return; } setActiveDropdown(null); }}
                         >
                           {/* Outer glow on hover */}
                           <div
-                            className="absolute -inset-2 rounded-2xl opacity-0 group-hover/item:opacity-100 transition-opacity duration-700 ease-out pointer-events-none"
+                            className="absolute -inset-2 rounded-2xl opacity-0 group-hover/item:opacity-100 transition-opacity duration-500 ease-in-out pointer-events-none"
                             style={{
-                              background: "radial-gradient(ellipse at center, hsl(11 81% 57% / 0.3), transparent 70%)",
-                              filter: "blur(12px)",
+                              background: "radial-gradient(ellipse at center, hsl(11 81% 57% / 0.25), transparent 70%)",
+                              filter: "blur(14px)",
                             }}
                           />
                           <div className="relative w-full h-full rounded-xl overflow-hidden">
                             <img
                               src={dropItem.image}
                               alt={dropItem.label}
-                              className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover/item:scale-110"
+                              className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover/item:scale-[1.04]"
                             />
                             {/* Vignette overlay */}
                             <div
@@ -387,18 +387,14 @@ const Header = ({ onContactClick }: HeaderProps) => {
                               }}
                             />
                             <div
-                              className="absolute inset-0 opacity-0 group-hover/item:opacity-100 transition-opacity duration-300"
-                              style={{ background: "linear-gradient(135deg, hsl(11 81% 57% / 0.12) 0%, transparent 60%)" }}
-                            />
-                            <div
-                              className="absolute inset-0 rounded-xl opacity-0 group-hover/item:opacity-100 transition-opacity duration-300"
-                              style={{ boxShadow: "inset 0 0 0 1.5px hsl(11 81% 57% / 0.5)" }}
+                              className="absolute inset-0 opacity-0 group-hover/item:opacity-100 transition-opacity duration-500 ease-in-out"
+                              style={{ background: "linear-gradient(135deg, hsl(11 81% 57% / 0.1) 0%, transparent 60%)" }}
                             />
                             <div className="absolute bottom-0 left-0 right-0 p-2.5">
                               <p className="text-white font-bold text-[11px] uppercase tracking-[0.08em] mb-0.5 drop-shadow-lg">
                                 {dropItem.label}
                               </p>
-                              <p className="text-white/60 text-[10px] tracking-wide line-clamp-2 group-hover/item:text-white/80 transition-colors duration-300">
+                              <p className="text-white/60 text-[10px] tracking-wide line-clamp-2 group-hover/item:text-white/80 transition-colors duration-500">
                                 {dropItem.description}
                               </p>
                             </div>
@@ -444,7 +440,7 @@ const Header = ({ onContactClick }: HeaderProps) => {
                     {/* Slide bar - full width, draggable */}
                     <div
                       ref={slideBarRef}
-                      className="mt-3 rounded-full overflow-hidden cursor-pointer select-none"
+                      className="mt-5 rounded-full overflow-hidden cursor-pointer select-none"
                       style={{ width: "100%", height: "5px", background: "hsl(0 0% 100% / 0.08)" }}
                       onMouseDown={(e) => {
                         isDraggingBar.current = true;
@@ -460,8 +456,8 @@ const Header = ({ onContactClick }: HeaderProps) => {
                         className="h-full rounded-full"
                         style={{
                           background: "linear-gradient(90deg, hsl(11 81% 57%), hsl(11 90% 65%))",
-                          width: "40%",
-                          marginLeft: `${scrollProgress * 60}%`,
+                          width: "48%",
+                          marginLeft: `${scrollProgress * 52}%`,
                           transition: isDraggingBar.current ? "none" : "margin-left 0.15s ease-out",
                           boxShadow: "0 0 10px hsl(11 81% 57% / 0.5), 0 0 4px hsl(11 81% 57% / 0.3)",
                         }}
