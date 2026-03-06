@@ -255,7 +255,7 @@ const Header = ({ onContactClick }: HeaderProps) => {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: i * 0.05, duration: 0.3, ease: "easeOut" }}
                         className="group/item relative flex flex-col rounded-xl overflow-hidden transition-all duration-300"
-                        style={{ aspectRatio: "3/4" }}
+                        style={{ aspectRatio: "4/3", maxHeight: "120px" }}
                         onClick={() => setActiveDropdown(null)}
                       >
                         <img
