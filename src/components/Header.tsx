@@ -76,6 +76,9 @@ const Header = ({ onContactClick }: HeaderProps) => {
   const [scrollProgress, setScrollProgress] = useState(0);
   const peekDoneRef = useRef(false);
   const isDraggingBar = useRef(false);
+  const isDraggingCards = useRef(false);
+  const dragStartX = useRef(0);
+  const dragStartScroll = useRef(0);
   const slideBarRef = useRef<HTMLDivElement>(null);
 
   const handleCarouselScroll = () => {
