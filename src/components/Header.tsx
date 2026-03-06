@@ -55,7 +55,7 @@ const Header = ({ onContactClick }: HeaderProps) => {
               {/* Underline */}
               <span
                 className="absolute bottom-0 left-1/2 h-[1.5px] w-0 -translate-x-1/2 rounded-full transition-all duration-300 ease-out group-hover:w-1/2 opacity-0 group-hover:opacity-80"
-                style={{ background: "hsl(11 81% 57%)" }}
+                style={{ background: "linear-gradient(90deg, hsl(11 81% 57%), hsl(11 90% 65%))" }}
               />
             </a>
           ))}
