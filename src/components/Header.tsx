@@ -7,8 +7,7 @@ interface HeaderProps {
 }
 
 const Header = ({ onContactClick }: HeaderProps) => {
-  const _isOnline = useBusinessHours();
-  const isOnline = true; // TODO: remover — teste forçado como online
+  const isOnline = useBusinessHours();
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 px-4 pt-3">
