@@ -414,14 +414,29 @@ const Header = ({ onContactClick }: HeaderProps) => {
                       )}
                     </div>
 
-                    {/* Slide bar */}
-                    <div className="mt-3 mx-auto rounded-full overflow-hidden" style={{ width: "80px", height: "3px", background: "hsl(0 0% 100% / 0.1)" }}>
+                    {/* Slide bar - full width, draggable */}
+                    <div
+                      ref={slideBarRef}
+                      className="mt-3 rounded-full overflow-hidden cursor-pointer select-none"
+                      style={{ width: "100%", height: "4px", background: "hsl(0 0% 100% / 0.08)" }}
+                      onMouseDown={(e) => {
+                        isDraggingBar.current = true;
+                        handleSlideBarDrag(e.clientX);
+                      }}
+                      onTouchStart={(e) => {
+                        isDraggingBar.current = true;
+                        handleSlideBarDrag(e.touches[0].clientX);
+                      }}
+                      onClick={(e) => handleSlideBarDrag(e.clientX)}
+                    >
                       <div
-                        className="h-full rounded-full transition-all duration-200 ease-out"
+                        className="h-full rounded-full"
                         style={{
                           background: "linear-gradient(90deg, hsl(11 81% 57%), hsl(11 90% 65%))",
-                          width: `${Math.max(25, 100 / (activeItem.dropdownItems.length + (activeItem.hasCta ? 1 : 0)))}%`,
-                          marginLeft: `${scrollProgress * (100 - Math.max(25, 100 / (activeItem.dropdownItems.length + (activeItem.hasCta ? 1 : 0))))}%`,
+                          width: `${Math.max(20, 100 / (activeItem.dropdownItems.length + (activeItem.hasCta ? 1 : 0)))}%`,
+                          marginLeft: `${scrollProgress * (100 - Math.max(20, 100 / (activeItem.dropdownItems.length + (activeItem.hasCta ? 1 : 0))))}%`,
+                          transition: isDraggingBar.current ? "none" : "all 0.2s ease-out",
+                          boxShadow: "0 0 8px hsl(11 81% 57% / 0.4)",
                         }}
                       />
                     </div>
