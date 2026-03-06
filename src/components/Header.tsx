@@ -74,10 +74,10 @@ const Header = ({ onContactClick }: HeaderProps) => {
 
             {/* Dynamic copy */}
             <span className="flex flex-col items-start leading-none gap-0.5">
-              <span className="text-[11px] font-medium opacity-80">
+              <span className="text-[13px] font-semibold">
                 {isOnline ? "Atendimento online" : "Atendimento offline"}
               </span>
-              <span className="text-[13px] font-semibold">
+              <span className="text-[10px] font-medium opacity-60">
                 {isOnline ? "Fale conosco" : "Deixe sua mensagem"}
               </span>
             </span>
