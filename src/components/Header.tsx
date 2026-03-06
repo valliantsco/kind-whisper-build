@@ -43,9 +43,15 @@ const Header = ({ onContactClick }: HeaderProps) => {
             <a
               key={item.href}
               href={item.href}
-              className="text-sm font-medium text-white/70 transition-colors hover:text-white"
+              className="relative text-sm font-medium text-white/90 transition-colors hover:text-white pb-1 group"
             >
               {item.label}
+              <span
+                className="absolute bottom-0 left-1/2 h-[2px] w-0 -translate-x-1/2 rounded-full transition-all duration-300 ease-out group-hover:w-full"
+                style={{
+                  background: "linear-gradient(90deg, hsl(11 81% 57%), hsl(11 90% 65%))",
+                }}
+              />
             </a>
           ))}
         </nav>
