@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import logoWhite from "@/assets/ms-eletric-logo-white.png";
+import msShieldLogo from "@/assets/ms-shield-logo.png";
 import { useBusinessHours } from "@/hooks/useBusinessHours";
 import { AnimatePresence, motion } from "framer-motion";
 import { ChevronDown, ArrowRight, ArrowLeft, Compass, BarChart3, BookOpen, HelpCircle, Wrench, ShieldCheck } from "lucide-react";
@@ -299,6 +300,20 @@ const Header = ({ onContactClick }: HeaderProps) => {
                 className="absolute bottom-0 left-1/2 -translate-x-1/2 w-3/4 h-1/2 pointer-events-none"
                 style={{
                   background: "radial-gradient(ellipse at bottom center, hsl(11 81% 57% / 0.04), transparent 70%)",
+                }}
+              />
+
+              {/* Shield logo watermark */}
+              <img
+                src={msShieldLogo}
+                alt=""
+                className="absolute pointer-events-none select-none"
+                style={{
+                  bottom: "-20%",
+                  right: "-4%",
+                  width: "280px",
+                  opacity: 0.03,
+                  filter: "grayscale(100%) brightness(2)",
                 }}
               />
 
