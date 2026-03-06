@@ -362,18 +362,11 @@ const Header = ({ onContactClick }: HeaderProps) => {
                           <a
                             key={dropItem.label}
                             href={dropItem.href}
-                            className="group/item relative flex-shrink-0 rounded-xl transition-all duration-700 ease-out"
+                            className="group/item relative flex-shrink-0 rounded-xl transition-transform duration-500 ease-out hover:scale-[1.02]"
                             style={{ width: "210px", aspectRatio: "10/11", scrollSnapAlign: "start" }}
                             onClick={(e) => { if (isDraggingCards.current) { e.preventDefault(); return; } setActiveDropdown(null); }}
                           >
-                            {/* Border glow on hover */}
-                            <div
-                              className="absolute inset-0 rounded-xl opacity-0 group-hover/item:opacity-100 transition-opacity duration-500 ease-in-out pointer-events-none"
-                              style={{
-                                boxShadow: "0 0 15px hsl(11 81% 57% / 0.4), 0 0 30px hsl(11 81% 57% / 0.15), inset 0 0 0 1px hsl(11 81% 57% / 0.3)",
-                              }}
-                            />
-                            <div className="relative w-full h-full rounded-xl overflow-hidden">
+                            <div className="relative w-full h-full rounded-xl overflow-hidden shadow-[0_0_0_0_transparent] group-hover/item:shadow-[0_0_12px_hsl(11_81%_57%/0.2)] transition-shadow duration-500 ease-in-out">
                               <img
                                 src={dropItem.image}
                                 alt={dropItem.label}
