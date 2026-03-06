@@ -362,7 +362,7 @@ const Header = ({ onContactClick }: HeaderProps) => {
                           animate={{ opacity: 1, x: 0 }}
                           transition={{ delay: i * 0.06, duration: 0.4, ease: "easeOut" }}
                           className="group/item relative flex-shrink-0 rounded-xl transition-all duration-500"
-                          style={{ width: "210px", aspectRatio: "1/1", scrollSnapAlign: "start" }}
+                          style={{ width: "210px", aspectRatio: "10/11", scrollSnapAlign: "start" }}
                           onClick={(e) => { if (isDraggingCards.current) { e.preventDefault(); return; } setActiveDropdown(null); }}
                         >
                           {/* Outer glow on hover */}
@@ -417,7 +417,7 @@ const Header = ({ onContactClick }: HeaderProps) => {
                           className="group/cta relative flex-shrink-0 rounded-xl overflow-hidden cursor-pointer flex flex-col items-center justify-center text-center"
                           style={{
                             width: "210px",
-                            aspectRatio: "1/1",
+                            aspectRatio: "10/11",
                             background: "linear-gradient(135deg, hsl(11 81% 57%), hsl(11 90% 65%))",
                           }}
                         >
