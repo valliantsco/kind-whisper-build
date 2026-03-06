@@ -410,7 +410,7 @@ const PopUpContato01 = ({ isOpen, onClose }: PopUpContato01Props) => {
 
                 <p className="text-[9px] text-white/30 text-center leading-relaxed pt-2 pb-1">
                   *Ao enviar, seus dados serão usados apenas para atendimento, conforme a LGPD (
-                  <span style={{ color: "hsl(11 81% 57%)" }}>Lei nº 13.709/2018</span>).
+                  <a href="https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709.htm" target="_blank" rel="noopener noreferrer" style={{ color: "hsl(11 81% 57%)" }} className="hover:underline">Lei nº 13.709/2018</a>).
                 </p>
               </div>
 
