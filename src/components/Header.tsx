@@ -381,11 +381,8 @@ const Header = ({ onContactClick }: HeaderProps) => {
                         }}
                       >
                         {activeItem.dropdownItems.map((dropItem, i) => (
-                          <motion.div
+                          <div
                             key={dropItem.label}
-                            initial={{ opacity: 0, y: 12 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: i * 0.07, duration: 0.35, ease: "easeOut" }}
                             className="group/item relative flex-shrink-0 rounded-xl overflow-hidden"
                             style={{ width: "210px", aspectRatio: "3/4", scrollSnapAlign: "start" }}
                           >
@@ -394,9 +391,12 @@ const Header = ({ onContactClick }: HeaderProps) => {
                               className="relative block w-full h-full"
                               onClick={(e) => { if (isDraggingCards.current) { e.preventDefault(); return; } setActiveDropdown(null); }}
                             >
-                              <img
+                              <motion.img
                                 src={dropItem.image}
                                 alt={dropItem.label}
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                transition={{ delay: i * 0.08 + 0.1, duration: 0.5, ease: "easeOut" }}
                                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 ease-out group-hover/item:scale-[1.08]"
                               />
                               <div
@@ -414,7 +414,7 @@ const Header = ({ onContactClick }: HeaderProps) => {
                                 </p>
                               </div>
                             </a>
-                          </motion.div>
+                          </div>
                         ))}
 
                         {/* CTA card "Ver todos" */}
