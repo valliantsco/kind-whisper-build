@@ -68,14 +68,14 @@ const Header = ({ onContactClick }: HeaderProps) => {
             whileHover={{ scale: 1.04 }}
             whileTap={{ scale: 0.97 }}
             transition={{ type: "spring", stiffness: 400, damping: 20 }}
-            className="group relative flex items-center gap-3 rounded-full px-6 py-2.5 text-white cursor-pointer overflow-hidden"
+            className="group relative flex items-center gap-2 rounded-full px-4 py-2 text-white cursor-pointer overflow-hidden"
             style={{
               background: "linear-gradient(135deg, hsl(11 81% 57%), hsl(11 90% 65%))",
               boxShadow: "0 4px 20px hsla(11, 81%, 57%, 0.35), inset 0 1px 0 hsla(0, 0%, 100%, 0.15)",
             }}
           >
             {/* Pulsing status dot */}
-            <span className="relative flex h-2 w-2 shrink-0">
+            <span className="relative flex h-1.5 w-1.5 shrink-0">
               <span
                 className="absolute inset-0 rounded-full animate-ping opacity-60"
                 style={{
@@ -83,7 +83,7 @@ const Header = ({ onContactClick }: HeaderProps) => {
                 }}
               />
               <span
-                className="relative inline-flex h-2 w-2 rounded-full"
+                className="relative inline-flex h-1.5 w-1.5 rounded-full"
                 style={{
                   backgroundColor: isOnline ? "hsl(142 76% 50%)" : "hsl(0 75% 50%)",
                   boxShadow: isOnline
@@ -94,11 +94,11 @@ const Header = ({ onContactClick }: HeaderProps) => {
             </span>
 
             {/* Dynamic copy */}
-            <span className="flex flex-col items-start leading-none gap-[3px]">
-              <span className="text-[12.5px] font-semibold tracking-wide">
+            <span className="flex flex-col items-start leading-none gap-[2px]">
+              <span className="text-[11px] font-semibold tracking-wide">
                 {isOnline ? "Atendimento online" : "Atendimento offline"}
               </span>
-              <span className="text-[10px] font-medium opacity-70 tracking-wider uppercase">
+              <span className="text-[9px] font-medium opacity-70 tracking-wider uppercase">
                 {isOnline ? "Fale conosco" : "Deixe sua mensagem"}
               </span>
             </span>
