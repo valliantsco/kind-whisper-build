@@ -256,11 +256,13 @@ const Header = ({ onContactClick }: HeaderProps) => {
                 {activeItem.dropdownItems[0]?.image ? (
                   /* Carousel (Modelos) */
                   <>
+                    <div className="mb-3">
+                      <h3 className="text-white/90 text-sm font-semibold tracking-wide">Nossos modelos</h3>
+                      <p className="text-white/40 text-[11px] mt-0.5">Encontre o veículo elétrico ideal para você</p>
+                    </div>
                     <div
-                      ref={carouselRef}
-                      className="flex gap-3 overflow-x-auto scrollbar-hide pb-3"
+                      className="flex gap-3 overflow-x-auto scrollbar-hide"
                       style={{ scrollSnapType: "x mandatory" }}
-                      onScroll={handleCarouselScroll}
                     >
                       {activeItem.dropdownItems.map((dropItem, i) => (
                         <motion.a
@@ -269,10 +271,18 @@ const Header = ({ onContactClick }: HeaderProps) => {
                           initial={{ opacity: 0, y: 12 }}
                           animate={{ opacity: 1, y: 0 }}
                           transition={{ delay: i * 0.05, duration: 0.3, ease: "easeOut" }}
-                          className="group/item relative flex-shrink-0 rounded-xl overflow-hidden transition-all duration-300"
+                          className="group/item relative flex-shrink-0 rounded-xl overflow-hidden transition-all duration-500"
                           style={{ width: "140px", aspectRatio: "3/4", scrollSnapAlign: "start" }}
                           onClick={() => setActiveDropdown(null)}
                         >
+                          {/* Outer glow on hover */}
+                          <div
+                            className="absolute -inset-1 rounded-2xl opacity-0 group-hover/item:opacity-100 transition-opacity duration-700 ease-out pointer-events-none -z-10"
+                            style={{
+                              background: "radial-gradient(ellipse at center, hsl(11 81% 57% / 0.25), transparent 70%)",
+                              filter: "blur(8px)",
+                            }}
+                          />
                           <img
                             src={dropItem.image}
                             alt={dropItem.label}
@@ -331,19 +341,6 @@ const Header = ({ onContactClick }: HeaderProps) => {
                           </div>
                         </motion.a>
                       )}
-                    </div>
-
-                    {/* Slide bar */}
-                    <div className="mt-2 mx-auto rounded-full overflow-hidden" style={{ width: "80px", height: "3px", background: "hsl(0 0% 100% / 0.1)" }}>
-                      <motion.div
-                        className="h-full rounded-full"
-                        style={{
-                          background: "linear-gradient(90deg, hsl(11 81% 57%), hsl(11 90% 65%))",
-                          width: `${Math.max(30, 100 / (activeItem.dropdownItems.length + (activeItem.hasCta ? 1 : 0)))}%`,
-                          marginLeft: `${scrollProgress * (100 - Math.max(30, 100 / (activeItem.dropdownItems.length + (activeItem.hasCta ? 1 : 0))))}%`,
-                        }}
-                        transition={{ type: "tween", duration: 0.1 }}
-                      />
                     </div>
                   </>
                 ) : (
