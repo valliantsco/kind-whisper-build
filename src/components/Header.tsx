@@ -64,7 +64,7 @@ const Header = ({ onContactClick }: HeaderProps) => {
         <div className="flex items-center gap-3">
           <motion.button
             onClick={onContactClick}
-            whileHover={{ boxShadow: "inset 0 0 20px hsla(0, 0%, 100%, 0.12), inset 0 1px 0 hsla(0, 0%, 100%, 0.15)" }}
+            whileHover={{ boxShadow: "inset 0 0 20px hsla(0, 0%, 100%, 0.12), inset 0 1px 0 hsla(0, 0%, 100%, 0.15), 0 4px 24px hsla(11, 81%, 57%, 0.4)" }}
             whileTap={{ scale: 0.97 }}
             transition={{ duration: 0.5, ease: "easeOut" }}
             className="group relative flex items-center gap-2.5 rounded-lg px-5 py-2 text-white cursor-pointer overflow-hidden"
