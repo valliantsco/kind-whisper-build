@@ -42,7 +42,7 @@ const NAV_ITEMS: NavItem[] = [
     hasDropdown: true,
     hasCta: true,
     dropdownItems: [
-      { label: "Bicicletas Elétricas", description: "Conforto, autonomia e liberdade para o dia a dia", href: "#modelos", image: categoryBike, video: "https://ppmoesqgmficvajqbamr.supabase.co/storage/v1/object/public/videos/bicicletas-eletricas.mp4" },
+      { label: "Bicicletas Elétricas", description: "Conforto, autonomia e liberdade para o dia a dia", href: "#modelos", image: categoryBike, video: "https://ppmoesqgmficvajqbamr.supabase.co/storage/v1/object/public/videos/bicicletas-eletricas.mp4", badge: "Novidade" },
       { label: "Autopropelidos", description: "Mobilidade urbana prática, econômica e compacta", href: "#modelos", image: categoryAutopropelido, video: "https://ppmoesqgmficvajqbamr.supabase.co/storage/v1/object/public/videos/autopropelido-v2.mp4" },
       { label: "Scooters Elétricas", description: "Desempenho, conforto e estilo na rotina urbana", href: "#modelos", image: categoryScooter, video: "https://ppmoesqgmficvajqbamr.supabase.co/storage/v1/object/public/videos/scooters-eletricas.mp4", badge: "Mais vendido" },
       { label: "Triciclos Elétricos", description: "Mais estabilidade, segurança e praticidade", href: "#modelos", image: categoryTricycle, video: "https://ppmoesqgmficvajqbamr.supabase.co/storage/v1/object/public/videos/triciclos-eletricos.mp4" },
