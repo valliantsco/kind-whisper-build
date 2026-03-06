@@ -405,7 +405,7 @@ const Header = ({ onContactClick }: HeaderProps) => {
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: i * 0.07, duration: 0.35, ease: "easeOut" }}
                             className="group/item relative flex-shrink-0 rounded-xl overflow-hidden"
-                            style={{ width: "210px", aspectRatio: "10/11", scrollSnapAlign: "start" }}
+                            style={{ width: "210px", aspectRatio: "3/4", scrollSnapAlign: "start" }}
                           >
                             <a
                               href={dropItem.href}
@@ -446,7 +446,7 @@ const Header = ({ onContactClick }: HeaderProps) => {
                             className="group/cta relative flex-shrink-0 rounded-xl overflow-hidden cursor-pointer flex flex-col items-center justify-center text-center"
                             style={{
                               width: "210px",
-                              aspectRatio: "10/11",
+                              aspectRatio: "3/4",
                               background: "linear-gradient(135deg, hsl(11 81% 57%), hsl(11 90% 65%))",
                             }}
                           >
