@@ -323,9 +323,28 @@ const Header = ({ onContactClick }: HeaderProps) => {
                     </div>
                     <div
                       ref={carouselRef}
-                      className="flex gap-3 overflow-x-auto scrollbar-hide"
-                      style={{ scrollSnapType: "x mandatory", scrollBehavior: "smooth" }}
+                      className="flex gap-3 overflow-x-auto scrollbar-hide cursor-grab active:cursor-grabbing"
+                      style={{ scrollSnapType: "x mandatory" }}
                       onScroll={handleCarouselScroll}
+                      onMouseDown={(e) => {
+                        const el = carouselRef.current;
+                        if (!el) return;
+                        const startX = e.pageX;
+                        const startScroll = el.scrollLeft;
+                        el.style.scrollBehavior = "auto";
+                        el.style.scrollSnapType = "none";
+                        const onMove = (ev: MouseEvent) => {
+                          el.scrollLeft = startScroll - (ev.pageX - startX);
+                        };
+                        const onUp = () => {
+                          el.style.scrollBehavior = "smooth";
+                          el.style.scrollSnapType = "x mandatory";
+                          window.removeEventListener("mousemove", onMove);
+                          window.removeEventListener("mouseup", onUp);
+                        };
+                        window.addEventListener("mousemove", onMove);
+                        window.addEventListener("mouseup", onUp);
+                      }}
                     >
                       {activeItem.dropdownItems.map((dropItem, i) => (
                         <motion.a
