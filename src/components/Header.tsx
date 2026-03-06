@@ -363,7 +363,7 @@ const Header = ({ onContactClick }: HeaderProps) => {
                           transition={{ delay: i * 0.06, duration: 0.4, ease: "easeOut" }}
                           className="group/item relative flex-shrink-0 rounded-xl transition-all duration-500"
                           style={{ width: "170px", aspectRatio: "3/4", scrollSnapAlign: "start" }}
-                          onClick={() => setActiveDropdown(null)}
+                          onClick={(e) => { if (isDraggingCards.current) { e.preventDefault(); return; } setActiveDropdown(null); }}
                         >
                           {/* Outer glow on hover */}
                           <div
