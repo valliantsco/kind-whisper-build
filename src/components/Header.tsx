@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import logoWhite from "@/assets/ms-eletric-logo-white.png";
 import msShieldLogo from "@/assets/ms-shield-logo.png";
 import { useBusinessHours } from "@/hooks/useBusinessHours";
