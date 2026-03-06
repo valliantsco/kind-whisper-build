@@ -1,9 +1,9 @@
-import { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import logoWhite from "@/assets/ms-eletric-logo-white.png";
 import msShieldLogo from "@/assets/ms-shield-logo.png";
 import { useBusinessHours } from "@/hooks/useBusinessHours";
 import { AnimatePresence, motion } from "framer-motion";
-import { ChevronDown, ArrowRight, ArrowLeft, Compass, BarChart3, BookOpen, HelpCircle, Wrench, ShieldCheck } from "lucide-react";
+import { ChevronDown, ArrowRight, ArrowLeft, Compass, BarChart3, BookOpen, HelpCircle, Wrench, ShieldCheck, Play } from "lucide-react";
 
 import categoryScooter from "@/assets/category-scooter.jpg";
 import categoryBike from "@/assets/category-bike.jpg";
@@ -22,6 +22,7 @@ interface DropdownItem {
   image?: string;
   video?: string;
   youtubeId?: string;
+  badge?: string;
   icon?: React.ElementType;
 }
 
@@ -41,8 +42,8 @@ const NAV_ITEMS: NavItem[] = [
     hasDropdown: true,
     hasCta: true,
     dropdownItems: [
-      { label: "Scooters", description: "Mobilidade urbana prática e silenciosa", href: "#modelos", image: categoryScooter, video: "https://ppmoesqgmficvajqbamr.supabase.co/storage/v1/object/public/videos/scooter-new.mp4" },
-      { label: "Bikes", description: "Pedale com assistência elétrica", href: "#modelos", image: categoryBike, video: "https://ppmoesqgmficvajqbamr.supabase.co/storage/v1/object/public/videos/bikes.mp4" },
+      { label: "Scooters", description: "Mobilidade urbana prática e silenciosa", href: "#modelos", image: categoryScooter, video: "https://ppmoesqgmficvajqbamr.supabase.co/storage/v1/object/public/videos/scooter-new.mp4", badge: "Mais vendido" },
+      { label: "Bikes", description: "Pedale com assistência elétrica", href: "#modelos", image: categoryBike, video: "https://ppmoesqgmficvajqbamr.supabase.co/storage/v1/object/public/videos/bikes.mp4", badge: "Novo" },
       { label: "Triciclos", description: "Estabilidade e conforto para todos", href: "#modelos", image: categoryTricycle, video: "https://ppmoesqgmficvajqbamr.supabase.co/storage/v1/object/public/videos/tricycle.mp4" },
       { label: "Motocross", description: "Aventura off-road 100% elétrica", href: "#modelos", image: categoryMotocross, video: "https://ppmoesqgmficvajqbamr.supabase.co/storage/v1/object/public/videos/motocross.mp4" },
       { label: "Autopropelidos", description: "Soluções industriais elétricas", href: "#modelos", image: categoryAutopropelido, video: "https://ppmoesqgmficvajqbamr.supabase.co/storage/v1/object/public/videos/autopropelido.mp4" },
@@ -383,70 +384,128 @@ const Header = ({ onContactClick }: HeaderProps) => {
                         }}
                       >
                         {activeItem.dropdownItems.map((dropItem, i) => (
-                          <div
-                            key={dropItem.label}
-                            className="group/item relative flex-shrink-0 rounded-xl overflow-hidden"
-                            style={{ width: "210px", aspectRatio: "3/4", scrollSnapAlign: "start" }}
-                          >
-                            <a
-                              href={dropItem.href}
-                              className="relative block w-full h-full"
-                              onClick={(e) => { if (isDraggingCards.current) { e.preventDefault(); return; } setActiveDropdown(null); }}
+                          <React.Fragment key={dropItem.label}>
+                            <div
+                              className="group/item relative flex-shrink-0 rounded-xl overflow-hidden"
+                              style={{ width: "210px", aspectRatio: "3/4", scrollSnapAlign: "start" }}
                             >
-                              {dropItem.youtubeId ? (
-                                <motion.div
-                                  initial={{ opacity: 0 }}
-                                  animate={{ opacity: 1 }}
-                                  transition={{ delay: i * 0.1 + 0.15, duration: 0.8, ease: "easeOut" }}
-                                  className="absolute inset-0 w-full h-full overflow-hidden"
-                                >
-                                  <iframe
-                                    src={`https://www.youtube.com/embed/${dropItem.youtubeId}?autoplay=1&mute=1&loop=1&playlist=${dropItem.youtubeId}&controls=0&showinfo=0&modestbranding=1&rel=0&start=4&playsinline=1`}
-                                    allow="autoplay; encrypted-media"
-                                    allowFullScreen
-                                    className="absolute w-[300%] h-[300%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none"
-                                    style={{ border: "none" }}
+                              <a
+                                href={dropItem.href}
+                                className="relative block w-full h-full"
+                                onClick={(e) => { if (isDraggingCards.current) { e.preventDefault(); return; } setActiveDropdown(null); }}
+                              >
+                                {dropItem.youtubeId ? (
+                                  <motion.div
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    transition={{ delay: i * 0.1 + 0.15, duration: 0.8, ease: "easeOut" }}
+                                    className="absolute inset-0 w-full h-full overflow-hidden"
+                                  >
+                                    <iframe
+                                      src={`https://www.youtube.com/embed/${dropItem.youtubeId}?autoplay=1&mute=1&loop=1&playlist=${dropItem.youtubeId}&controls=0&showinfo=0&modestbranding=1&rel=0&start=4&playsinline=1`}
+                                      allow="autoplay; encrypted-media"
+                                      allowFullScreen
+                                      className="absolute w-[300%] h-[300%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none"
+                                      style={{ border: "none" }}
+                                    />
+                                  </motion.div>
+                                ) : dropItem.video ? (
+                                  <motion.video
+                                    src={dropItem.video}
+                                    poster={dropItem.image}
+                                    autoPlay
+                                    muted
+                                    loop
+                                    playsInline
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    transition={{ delay: i * 0.1 + 0.15, duration: 0.8, ease: "easeOut" }}
+                                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 ease-out group-hover/item:scale-[1.08]"
                                   />
-                                </motion.div>
-                              ) : dropItem.video ? (
-                                <motion.video
-                                  src={dropItem.video}
-                                  poster={dropItem.image}
-                                  autoPlay
-                                  muted
-                                  loop
-                                  playsInline
-                                  initial={{ opacity: 0 }}
-                                  animate={{ opacity: 1 }}
-                                  transition={{ delay: i * 0.1 + 0.15, duration: 0.8, ease: "easeOut" }}
-                                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 ease-out group-hover/item:scale-[1.08]"
+                                ) : (
+                                  <motion.img
+                                    src={dropItem.image}
+                                    alt={dropItem.label}
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    transition={{ delay: i * 0.1 + 0.15, duration: 0.8, ease: "easeOut" }}
+                                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 ease-out group-hover/item:scale-[1.08]"
+                                  />
+                                )}
+
+                                {/* Dark gradient overlay */}
+                                <div
+                                  className="absolute inset-0"
+                                  style={{
+                                    background: "linear-gradient(to top, hsl(0 0% 0% / 0.85) 0%, hsl(0 0% 0% / 0.4) 40%, hsl(0 0% 0% / 0.15) 70%, hsl(0 0% 0% / 0.25) 100%)",
+                                  }}
                                 />
-                              ) : (
-                                <motion.img
-                                  src={dropItem.image}
-                                  alt={dropItem.label}
-                                  initial={{ opacity: 0 }}
-                                  animate={{ opacity: 1 }}
-                                  transition={{ delay: i * 0.1 + 0.15, duration: 0.8, ease: "easeOut" }}
-                                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 ease-out group-hover/item:scale-[1.08]"
+
+                                {/* 1. Hover orange gradient overlay */}
+                                <div
+                                  className="absolute inset-0 opacity-0 group-hover/item:opacity-100 transition-opacity duration-500 ease-out pointer-events-none"
+                                  style={{
+                                    background: "linear-gradient(135deg, hsl(11 81% 57% / 0.2) 0%, hsl(11 90% 65% / 0.08) 50%, transparent 100%)",
+                                  }}
                                 />
-                              )}
-                              <div
-                                className="absolute inset-0"
-                                style={{
-                                  background: "linear-gradient(to top, hsl(0 0% 0% / 0.85) 0%, hsl(0 0% 0% / 0.4) 40%, hsl(0 0% 0% / 0.15) 70%, hsl(0 0% 0% / 0.25) 100%)",
-                                }}
-                              />
-                              <div className="absolute bottom-0 left-0 right-0 p-2.5">
-                                <p className="text-white font-bold text-[12.5px] uppercase tracking-[0.08em] mb-0.5 drop-shadow-lg">
-                                  {dropItem.label}
-                                </p>
-                                <p className="text-white/60 text-[11px] tracking-wide line-clamp-2 group-hover/item:text-white/80 transition-colors duration-500">
-                                  {dropItem.description}
-                                </p>
-                              </div>
-                            </a>
-                          </div>
+
+                                {/* 3. Badge */}
+                                {dropItem.badge && (
+                                  <motion.div
+                                    initial={{ opacity: 0, scale: 0.8 }}
+                                    animate={{ opacity: 1, scale: 1 }}
+                                    transition={{ delay: i * 0.1 + 0.4, duration: 0.4 }}
+                                    className="absolute top-2 right-2 z-10"
+                                  >
+                                    <span
+                                      className="px-2 py-0.5 rounded-full text-[9px] font-bold uppercase tracking-[0.1em] text-white"
+                                      style={{
+                                        background: "hsl(11 81% 57% / 0.7)",
+                                        backdropFilter: "blur(12px)",
+                                        WebkitBackdropFilter: "blur(12px)",
+                                        border: "1px solid hsl(11 81% 57% / 0.3)",
+                                        boxShadow: "0 2px 8px hsl(11 81% 57% / 0.25)",
+                                      }}
+                                    >
+                                      {dropItem.badge}
+                                    </span>
+                                  </motion.div>
+                                )}
+
+                                {/* 4. Play indicator (video only) */}
+                                {(dropItem.video || dropItem.youtubeId) && (
+                                  <motion.div
+                                    initial={{ opacity: 0.8, scale: 1 }}
+                                    animate={{ opacity: 0, scale: 0.8 }}
+                                    transition={{ delay: i * 0.1 + 1.2, duration: 1.2, ease: "easeOut" }}
+                                    className="absolute top-2 left-2 z-10 w-6 h-6 rounded-full flex items-center justify-center pointer-events-none"
+                                    style={{
+                                      background: "hsl(0 0% 0% / 0.5)",
+                                      backdropFilter: "blur(8px)",
+                                      WebkitBackdropFilter: "blur(8px)",
+                                    }}
+                                  >
+                                    <Play className="w-3 h-3 text-white fill-white ml-0.5" />
+                                  </motion.div>
+                                )}
+
+                                {/* 2. Text with micro-animation on hover */}
+                                <div className="absolute bottom-0 left-0 right-0 p-2.5 transition-transform duration-400 ease-out group-hover/item:-translate-y-1">
+                                  <p className="text-white font-bold text-[12.5px] uppercase tracking-[0.08em] mb-0.5 drop-shadow-lg transition-colors duration-500 group-hover/item:text-[hsl(11,81%,57%)]">
+                                    {dropItem.label}
+                                  </p>
+                                  <p className="text-white/60 text-[11px] tracking-wide line-clamp-2 group-hover/item:text-white/80 transition-colors duration-500">
+                                    {dropItem.description}
+                                  </p>
+                                </div>
+                              </a>
+                            </div>
+
+                            {/* 6. Separator between cards */}
+                            {i < (activeItem.dropdownItems?.length ?? 0) - 1 && (
+                              <div className="flex-shrink-0 w-px self-stretch my-6" style={{ background: "hsl(0 0% 100% / 0.05)" }} />
+                            )}
+                          </React.Fragment>
                         ))}
 
                         {/* CTA card "Ver todos" */}
