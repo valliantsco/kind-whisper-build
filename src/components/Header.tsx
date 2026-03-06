@@ -74,7 +74,7 @@ const Header = ({ onContactClick }: HeaderProps) => {
             }}
           >
             {/* Pulsing status dot */}
-            <span className="relative flex h-1.5 w-1.5 shrink-0 -ml-0.5">
+            <span className="relative flex h-1.5 w-1.5 shrink-0 items-center justify-center">
               <span
                 className="absolute inset-0 rounded-full animate-ping opacity-60"
                 style={{
@@ -94,7 +94,7 @@ const Header = ({ onContactClick }: HeaderProps) => {
 
             {/* Divider — cutout effect */}
             <span
-              className="w-[2px] h-5 rounded-sm shrink-0"
+              className="w-[2px] self-stretch rounded-sm shrink-0 -my-2"
               style={{
                 background: "hsl(0 0% 0% / 0.45)",
                 boxShadow: "1px 0 0 hsl(0 0% 100% / 0.08), -1px 0 0 hsl(0 0% 100% / 0.08)",
