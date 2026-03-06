@@ -136,13 +136,12 @@ const Header = ({ onContactClick }: HeaderProps) => {
     if (activeDropdown === "Modelos" && carouselRef.current && !peekDoneRef.current) {
       peekDoneRef.current = true;
       const el = carouselRef.current;
-      const peekTimeout = setTimeout(() => {
-        el.scrollTo({ left: 60, behavior: "smooth" });
+      requestAnimationFrame(() => {
+        el.scrollTo({ left: 50, behavior: "smooth" });
         setTimeout(() => {
           el.scrollTo({ left: 0, behavior: "smooth" });
-        }, 400);
-      }, 350);
-      return () => clearTimeout(peekTimeout);
+        }, 300);
+      });
     }
     if (!activeDropdown) {
       peekDoneRef.current = false;
@@ -288,10 +287,10 @@ const Header = ({ onContactClick }: HeaderProps) => {
           {activeItem?.hasDropdown && activeItem.dropdownItems && (
             <motion.div
               key={activeItem.label}
-              initial={{ opacity: 0, y: -8 }}
+              initial={{ opacity: 0, y: -4 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -8 }}
-              transition={{ duration: 0.3, ease: [0.25, 0.8, 0.25, 1] }}
+              exit={{ opacity: 0, y: -4 }}
+              transition={{ duration: 0.15, ease: "easeOut" }}
               className="absolute left-0 right-0 mt-2 rounded-[0.9rem] overflow-hidden"
               style={{
                 background: "hsl(0 0% 14% / 0.95)",
