@@ -324,10 +324,10 @@ const Header = ({ onContactClick }: HeaderProps) => {
                       <h3 className="text-white/90 text-sm font-semibold tracking-wide">Nossos modelos</h3>
                       <p className="text-white/40 text-[11px] mt-0.5">Encontre o veículo elétrico ideal para você</p>
                     </div>
-                    <div className="relative">
+                    <div className="relative overflow-hidden">
                       <div
                         ref={carouselRef}
-                        className="flex gap-3 overflow-x-auto scrollbar-hide cursor-grab active:cursor-grabbing select-none"
+                        className="flex gap-3 overflow-x-auto scrollbar-hide cursor-grab active:cursor-grabbing select-none pr-12"
                         style={{ scrollSnapType: "x mandatory", scrollBehavior: "smooth" }}
                         onScroll={handleCarouselScroll}
                         onMouseDown={(e) => {
@@ -428,9 +428,9 @@ const Header = ({ onContactClick }: HeaderProps) => {
 
                       {/* Right fade-out dissolve effect */}
                       <div
-                        className="absolute top-0 right-0 w-16 h-full pointer-events-none z-10 rounded-r-xl"
+                        className="absolute top-0 right-0 w-20 h-full pointer-events-none z-10"
                         style={{
-                          background: "linear-gradient(to left, hsl(0 0% 14% / 0.95) 0%, hsl(0 0% 14% / 0.7) 30%, transparent 100%)",
+                          background: "linear-gradient(to left, hsl(0 0% 14%) 0%, hsl(0 0% 14% / 0.8) 25%, transparent 100%)",
                         }}
                       />
                     </div>
