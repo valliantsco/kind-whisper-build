@@ -360,17 +360,36 @@ const Header = ({ onContactClick }: HeaderProps) => {
                           dragStartScroll.current = el.scrollLeft;
                           el.style.scrollBehavior = "auto";
                           el.style.scrollSnapType = "none";
+                          let lastX = e.pageX;
+                          let velocity = 0;
+                          let lastTime = Date.now();
                           const onMove = (ev: MouseEvent) => {
+                            const now = Date.now();
+                            const dt = Math.max(1, now - lastTime);
                             const diff = ev.pageX - dragStartX.current;
                             if (Math.abs(diff) > 3) isDraggingCards.current = true;
+                            velocity = (ev.pageX - lastX) / dt * 16;
+                            lastX = ev.pageX;
+                            lastTime = now;
                             el.scrollLeft = dragStartScroll.current - diff;
                           };
                           const onUp = () => {
-                            el.style.scrollBehavior = "smooth";
-                            el.style.scrollSnapType = "x mandatory";
                             window.removeEventListener("mousemove", onMove);
                             window.removeEventListener("mouseup", onUp);
-                            setTimeout(() => { isDraggingCards.current = false; }, 10);
+                            // Momentum with friction
+                            const friction = 0.92;
+                            const animate = () => {
+                              if (Math.abs(velocity) < 0.5) {
+                                el.style.scrollSnapType = "x mandatory";
+                                el.style.scrollBehavior = "smooth";
+                                setTimeout(() => { isDraggingCards.current = false; }, 10);
+                                return;
+                              }
+                              el.scrollLeft -= velocity;
+                              velocity *= friction;
+                              requestAnimationFrame(animate);
+                            };
+                            requestAnimationFrame(animate);
                           };
                           window.addEventListener("mousemove", onMove);
                           window.addEventListener("mouseup", onUp);
@@ -384,7 +403,7 @@ const Header = ({ onContactClick }: HeaderProps) => {
                           >
                             <a
                               href={dropItem.href}
-                              className="relative block w-full h-full rounded-xl overflow-hidden"
+                              className="relative block w-full h-full rounded-xl overflow-hidden transition-transform duration-500 ease-out group-hover/item:scale-[1.03]"
                               onClick={(e) => { if (isDraggingCards.current) { e.preventDefault(); return; } setActiveDropdown(null); }}
                             >
                               <img
@@ -401,7 +420,7 @@ const Header = ({ onContactClick }: HeaderProps) => {
                               {/* Internal glow on hover */}
                               <div
                                 className="absolute inset-0 rounded-xl opacity-0 group-hover/item:opacity-100 transition-opacity duration-500 ease-in-out pointer-events-none z-20"
-                                style={{ boxShadow: "inset 0 0 20px hsl(11 81% 57% / 0.35), inset 0 0 6px hsl(11 81% 57% / 0.2)" }}
+                                style={{ boxShadow: "inset 0 0 12px hsl(11 81% 57% / 0.15), inset 0 0 4px hsl(11 81% 57% / 0.1)" }}
                               />
                               <div className="absolute bottom-0 left-0 right-0 p-2.5">
                                 <p className="text-white font-bold text-[11px] uppercase tracking-[0.08em] mb-0.5 drop-shadow-lg">
