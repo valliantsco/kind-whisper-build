@@ -48,7 +48,7 @@ const Header = ({ onContactClick }: HeaderProps) => {
               <span
                 className="absolute inset-0 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-700 ease-out pointer-events-none"
                 style={{
-                  background: "radial-gradient(ellipse at center, hsl(11 81% 57% / 0.12), transparent 70%)",
+                  background: "radial-gradient(ellipse at center, hsl(11 81% 57% / 0.2), transparent 70%)",
                 }}
               />
               <span className="relative">{item.label}</span>
