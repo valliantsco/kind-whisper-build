@@ -130,25 +130,14 @@ const Header = ({ onContactClick }: HeaderProps) => {
   }, []);
 
   useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      if (!isDraggingBar.current) return;
-      e.preventDefault();
-      handleSlideBarDrag(e.clientX);
-    };
-    const handleMouseUp = () => { isDraggingBar.current = false; };
     const handleTouchMove = (e: TouchEvent) => {
       if (!isDraggingBar.current) return;
       handleSlideBarDrag(e.touches[0].clientX);
     };
     const handleTouchEnd = () => { isDraggingBar.current = false; };
-
-    window.addEventListener("mousemove", handleMouseMove);
-    window.addEventListener("mouseup", handleMouseUp);
     window.addEventListener("touchmove", handleTouchMove);
     window.addEventListener("touchend", handleTouchEnd);
     return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
-      window.removeEventListener("mouseup", handleMouseUp);
       window.removeEventListener("touchmove", handleTouchMove);
       window.removeEventListener("touchend", handleTouchEnd);
     };
