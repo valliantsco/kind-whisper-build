@@ -26,28 +26,45 @@ const StatusChip = ({ isOnline, offlineMessage }: StatusChipProps) => {
         <button
           type="button"
           onClick={() => setShowHoursPopup((v) => !v)}
-          className="group flex items-center gap-2.5 px-4 py-2.5 rounded-xl text-[11px] font-semibold tracking-wide w-full cursor-pointer transition-all duration-200 hover:brightness-110"
+          className="group flex items-center gap-2.5 px-5 py-2.5 rounded-xl text-white w-full cursor-pointer transition-all duration-200 hover:brightness-110"
           style={{
             background: "linear-gradient(135deg, hsl(11 81% 57%), hsl(11 90% 65%))",
-            color: "white",
-            boxShadow: "0 4px 16px hsl(11 81% 57% / 0.3)",
+            boxShadow: "0 4px 20px hsl(11 81% 57% / 0.35), inset 0 1px 0 hsl(0 0% 100% / 0.15)",
           }}
         >
-          <span className="relative flex items-center justify-center h-3 w-3 shrink-0 self-center">
+          {/* Pulsing status dot */}
+          <span className="relative flex h-1.5 w-1.5 shrink-0 items-center justify-center -ml-1.5">
             <span
-              className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-65"
-              style={{ background: isOnline ? "hsl(142 76% 50%)" : "hsl(0 75% 50%)" }}
+              className="absolute inset-0 rounded-full animate-ping opacity-60"
+              style={{ backgroundColor: isOnline ? "hsl(142 76% 50%)" : "hsl(0 75% 50%)" }}
             />
             <span
-              className="relative inline-flex rounded-full h-3 w-3 border-[1.5px] border-white/30"
+              className="relative inline-flex h-1.5 w-1.5 rounded-full"
               style={{
-                background: isOnline ? "hsl(142 76% 50%)" : "hsl(0 75% 50%)",
-                boxShadow: isOnline ? "0 0 6px hsl(142 76% 50% / 0.4)" : "0 0 6px hsl(0 75% 50% / 0.4)",
+                backgroundColor: isOnline ? "hsl(142 76% 50%)" : "hsl(0 75% 50%)",
+                boxShadow: isOnline ? "0 0 8px hsl(142 76% 50%)" : "0 0 8px hsl(0 75% 50%)",
               }}
             />
           </span>
-          {isOnline ? "Atendimento Online" : offlineMessage}
-          <span className="ml-auto flex items-center gap-1 text-[9px] opacity-70 group-hover:opacity-100 transition-opacity duration-200">
+
+          {/* Divider */}
+          <span
+            className="w-[2px] h-5 rounded-sm shrink-0"
+            style={{ background: "hsl(0 0% 100% / 0.35)" }}
+          />
+
+          {/* Copy */}
+          <span className="flex flex-col items-start leading-none gap-[2px]">
+            <span className="text-[11px] font-semibold tracking-wide">
+              {isOnline ? "Atendimento online" : offlineMessage}
+            </span>
+            <span className="text-[8px] font-medium opacity-70 tracking-wider uppercase">
+              {isOnline ? "Estamos disponíveis agora" : "Deixe sua mensagem"}
+            </span>
+          </span>
+
+          {/* Ver horários */}
+          <span className="ml-auto flex items-center gap-1 text-[9px] opacity-50 group-hover:opacity-100 transition-opacity duration-200">
             Ver horários{" "}
             <span
               className="inline-block transition-transform duration-200"
