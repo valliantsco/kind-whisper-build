@@ -96,7 +96,7 @@ const Header = ({ onContactClick }: HeaderProps) => {
             <span
               className="w-[2px] h-5 rounded-sm shrink-0"
               style={{
-                background: "hsl(0 0% 100% / 0.7)",
+                background: "hsl(0 0% 100% / 0.35)",
               }}
             />
 
