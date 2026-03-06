@@ -246,11 +246,18 @@ const PopUpContato01 = ({ isOpen, onClose }: PopUpContato01Props) => {
                 </div>
                 <motion.button
                   onClick={onClose}
-                  className="p-1.5 rounded-lg text-white/40 hover:text-white hover:bg-white/10 transition-all duration-200"
-                  whileHover={{ scale: 1.1 }}
+                  className="p-2 rounded-xl text-white cursor-pointer"
+                  style={{
+                    background: "linear-gradient(135deg, hsl(11 81% 57%), hsl(11 90% 65%))",
+                    boxShadow: "0 4px 20px hsl(11 81% 57% / 0.25)",
+                  }}
+                  whileHover={{
+                    scale: 1.1,
+                    boxShadow: "0 0 25px hsl(11 81% 57% / 0.5), 0 0 50px hsl(11 81% 57% / 0.2)",
+                  }}
                   whileTap={{ scale: 0.9 }}
                 >
-                  <X className="w-5 h-5" />
+                  <X className="w-4 h-4" />
                 </motion.button>
               </div>
 
