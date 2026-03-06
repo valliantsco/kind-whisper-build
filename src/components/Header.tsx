@@ -303,14 +303,14 @@ const Header = ({ onContactClick }: HeaderProps) => {
                 }}
               />
 
-              {/* Shield logo watermark */}
+              {/* Shield logo watermark - behind everything */}
               <img
                 src={msShieldLogo}
                 alt=""
-                className="absolute pointer-events-none select-none"
+                className="absolute pointer-events-none select-none z-0"
                 style={{
-                  bottom: "-20%",
-                  right: "-4%",
+                  bottom: "-25%",
+                  right: "25%",
                   width: "280px",
                   opacity: 0.03,
                   filter: "grayscale(100%) brightness(2)",
