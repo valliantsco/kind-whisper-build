@@ -299,8 +299,6 @@ const Header = ({ onContactClick }: HeaderProps) => {
                           maxHeight: "120px",
                           background: "linear-gradient(135deg, hsl(11 81% 57%), hsl(11 90% 65%))",
                         }}
-                          background: "linear-gradient(135deg, hsl(11 81% 57%), hsl(11 90% 65%))",
-                        }}
                       >
                         <div
                           className="absolute inset-0 opacity-0 group-hover/cta:opacity-100 transition-opacity duration-500"
