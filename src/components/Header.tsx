@@ -2,7 +2,7 @@ import { useState, useRef, useEffect, useCallback } from "react";
 import logoWhite from "@/assets/ms-eletric-logo-white.png";
 import { useBusinessHours } from "@/hooks/useBusinessHours";
 import { AnimatePresence, motion } from "framer-motion";
-import { ChevronDown, ArrowRight, Compass, BarChart3, BookOpen, HelpCircle, Wrench, ShieldCheck } from "lucide-react";
+import { ChevronDown, ArrowRight, ArrowLeft, Compass, BarChart3, BookOpen, HelpCircle, Wrench, ShieldCheck } from "lucide-react";
 
 import categoryScooter from "@/assets/category-scooter.jpg";
 import categoryBike from "@/assets/category-bike.jpg";
@@ -102,47 +102,6 @@ const Header = ({ onContactClick }: HeaderProps) => {
     const lFade = progress > 0.2 ? 1 : Math.max(0, progress / 0.2);
     setLeftFadeOpacity(lFade);
   };
-
-  const handleSlideBarDrag = useCallback((clientX: number) => {
-    const bar = slideBarRef.current;
-    const carousel = carouselRef.current;
-    if (!bar || !carousel) return;
-    const rect = bar.getBoundingClientRect();
-    const thumbWidth = Math.max(25, 100 / 6);
-    const usableWidth = rect.width * (1 - thumbWidth / 100);
-    const rawProgress = (clientX - rect.left - (rect.width * thumbWidth / 100 / 2)) / usableWidth;
-    const progress = Math.max(0, Math.min(1, rawProgress));
-    setScrollProgress(progress);
-    const maxScroll = carousel.scrollWidth - carousel.clientWidth;
-    carousel.scrollLeft = progress * maxScroll;
-  }, []);
-
-  const handleSlideBarClick = useCallback((clientX: number) => {
-    const bar = slideBarRef.current;
-    const carousel = carouselRef.current;
-    if (!bar || !carousel) return;
-    const rect = bar.getBoundingClientRect();
-    const thumbWidth = Math.max(25, 100 / 6);
-    const usableWidth = rect.width * (1 - thumbWidth / 100);
-    const rawProgress = (clientX - rect.left - (rect.width * thumbWidth / 100 / 2)) / usableWidth;
-    const progress = Math.max(0, Math.min(1, rawProgress));
-    const maxScroll = carousel.scrollWidth - carousel.clientWidth;
-    carousel.scrollTo({ left: progress * maxScroll, behavior: "smooth" });
-  }, []);
-
-  useEffect(() => {
-    const handleTouchMove = (e: TouchEvent) => {
-      if (!isDraggingBar.current) return;
-      handleSlideBarDrag(e.touches[0].clientX);
-    };
-    const handleTouchEnd = () => { isDraggingBar.current = false; };
-    window.addEventListener("touchmove", handleTouchMove);
-    window.addEventListener("touchend", handleTouchEnd);
-    return () => {
-      window.removeEventListener("touchmove", handleTouchMove);
-      window.removeEventListener("touchend", handleTouchEnd);
-    };
-  }, [handleSlideBarDrag]);
 
   // Reset carousel state and peek animation when dropdown opens/closes
   useEffect(() => {
@@ -357,12 +316,16 @@ const Header = ({ onContactClick }: HeaderProps) => {
                         style={{
                           scrollSnapType: "x mandatory",
                           scrollBehavior: "smooth",
-                          maskImage: rightFadeOpacity > 0.01
-                            ? `linear-gradient(to right, black ${55 + (1 - rightFadeOpacity) * 45}%, transparent 100%)`
-                            : "none",
-                          WebkitMaskImage: rightFadeOpacity > 0.01
-                            ? `linear-gradient(to right, black ${55 + (1 - rightFadeOpacity) * 45}%, transparent 100%)`
-                            : "none",
+                          maskImage: (() => {
+                            const left = leftFadeOpacity > 0.01 ? `transparent 0%, rgba(0,0,0,${leftFadeOpacity}) ${leftFadeOpacity * 8}%` : "black 0%";
+                            const right = rightFadeOpacity > 0.01 ? `rgba(0,0,0,${rightFadeOpacity * 0.5}) ${55 + (1 - rightFadeOpacity) * 35}%, transparent 100%` : "black 100%";
+                            return `linear-gradient(to right, ${left}, black ${10 + (1 - leftFadeOpacity) * 0}%, black ${55 + (1 - rightFadeOpacity) * 45}%, ${right})`;
+                          })(),
+                          WebkitMaskImage: (() => {
+                            const left = leftFadeOpacity > 0.01 ? `transparent 0%, rgba(0,0,0,${leftFadeOpacity}) ${leftFadeOpacity * 8}%` : "black 0%";
+                            const right = rightFadeOpacity > 0.01 ? `rgba(0,0,0,${rightFadeOpacity * 0.5}) ${55 + (1 - rightFadeOpacity) * 35}%, transparent 100%` : "black 100%";
+                            return `linear-gradient(to right, ${left}, black ${10 + (1 - leftFadeOpacity) * 0}%, black ${55 + (1 - rightFadeOpacity) * 45}%, ${right})`;
+                          })(),
                         }}
                         onScroll={handleCarouselScroll}
                         onMouseDown={(e) => {
@@ -471,6 +434,24 @@ const Header = ({ onContactClick }: HeaderProps) => {
                         )}
                       </div>
 
+                      {/* Orange scroll-left button */}
+                      <button
+                        onClick={() => {
+                          const el = carouselRef.current;
+                          if (el) el.scrollBy({ left: -230, behavior: "smooth" });
+                        }}
+                        className="absolute left-2 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full flex items-center justify-center cursor-pointer transition-all duration-500 ease-out hover:scale-110 active:scale-95"
+                        style={{
+                          background: "linear-gradient(135deg, hsl(11 81% 57%), hsl(11 90% 65%))",
+                          boxShadow: "0 4px 12px hsl(11 81% 57% / 0.4)",
+                          opacity: leftFadeOpacity,
+                          pointerEvents: leftFadeOpacity < 0.1 ? "none" : "auto",
+                        }}
+                        aria-label="Anterior"
+                      >
+                        <ArrowLeft className="w-4 h-4 text-white" />
+                      </button>
+
                       {/* Orange scroll-right button */}
                       <button
                         onClick={() => {
@@ -490,43 +471,15 @@ const Header = ({ onContactClick }: HeaderProps) => {
                       </button>
                     </div>
 
-                    {/* Slide bar - full width, draggable */}
-                    <div
-                      ref={slideBarRef}
-                      className="mt-5 rounded-full overflow-hidden cursor-pointer select-none"
-                      style={{ width: "100%", height: "5px", background: "hsl(0 0% 100% / 0.08)" }}
-                      onMouseDown={(e) => {
-                        const startX = e.clientX;
-                        let dragged = false;
-                        isDraggingBar.current = false;
-                        const onMove = (ev: MouseEvent) => {
-                          if (Math.abs(ev.clientX - startX) > 3) {
-                            dragged = true;
-                            isDraggingBar.current = true;
-                          }
-                          if (dragged) handleSlideBarDrag(ev.clientX);
-                        };
-                        const onUp = (ev: MouseEvent) => {
-                          window.removeEventListener("mousemove", onMove);
-                          window.removeEventListener("mouseup", onUp);
-                          isDraggingBar.current = false;
-                          if (!dragged) handleSlideBarClick(ev.clientX);
-                        };
-                        window.addEventListener("mousemove", onMove);
-                        window.addEventListener("mouseup", onUp);
-                      }}
-                      onTouchStart={(e) => {
-                        isDraggingBar.current = true;
-                        handleSlideBarDrag(e.touches[0].clientX);
-                      }}
-                    >
+                    {/* Slide bar - aesthetic only */}
+                    <div className="mt-5 rounded-full overflow-hidden" style={{ width: "100%", height: "4px", background: "hsl(0 0% 100% / 0.08)" }}>
                       <div
                         className="h-full rounded-full will-change-transform"
                         style={{
                           background: "linear-gradient(90deg, hsl(11 81% 57%), hsl(11 90% 65%))",
                           width: "48%",
                           transform: `translateX(${scrollProgress * (100 / 0.48 - 100)}%)`,
-                          transition: isDraggingBar.current ? "none" : "transform 0.5s cubic-bezier(0.22, 1, 0.36, 1)",
+                          transition: "transform 0.5s cubic-bezier(0.22, 1, 0.36, 1)",
                           boxShadow: "0 0 10px hsl(11 81% 57% / 0.5), 0 0 4px hsl(11 81% 57% / 0.3)",
                         }}
                       />
