@@ -164,7 +164,7 @@ export function detectSpam(field: "name" | "city" | "details", value: string): s
       return "Mensagem parece ser spam";
     }
     const meaningfulWords = words.filter((w) => w.length >= 5 && !stopWords.has(w));
-    if (meaningfulWords.length >= 2) {
+    if (meaningfulWords.length >= 1) {
       const gibberishCount = meaningfulWords.filter((w) => isGibberish(w)).length;
       if (gibberishCount / meaningfulWords.length > 0.6) {
         return "*Escreva uma mensagem coerente com o que precisa";
