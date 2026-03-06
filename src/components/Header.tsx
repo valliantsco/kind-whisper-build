@@ -42,11 +42,13 @@ const NAV_ITEMS: NavItem[] = [
     hasDropdown: true,
     hasCta: true,
     dropdownItems: [
-      { label: "Scooters", description: "Mobilidade urbana prática e silenciosa", href: "#modelos", image: categoryScooter, video: "https://ppmoesqgmficvajqbamr.supabase.co/storage/v1/object/public/videos/scooter-new.mp4", badge: "Mais vendido" },
-      { label: "Bikes", description: "Pedale com assistência elétrica", href: "#modelos", image: categoryBike, video: "https://ppmoesqgmficvajqbamr.supabase.co/storage/v1/object/public/videos/bikes.mp4", badge: "Novo" },
-      { label: "Triciclos", description: "Estabilidade e conforto para todos", href: "#modelos", image: categoryTricycle, video: "https://ppmoesqgmficvajqbamr.supabase.co/storage/v1/object/public/videos/tricycle.mp4" },
-      { label: "Motocross", description: "Aventura off-road 100% elétrica", href: "#modelos", image: categoryMotocross, video: "https://ppmoesqgmficvajqbamr.supabase.co/storage/v1/object/public/videos/motocross.mp4" },
-      { label: "Autopropelidos", description: "Soluções industriais elétricas", href: "#modelos", image: categoryAutopropelido, video: "https://ppmoesqgmficvajqbamr.supabase.co/storage/v1/object/public/videos/autopropelido.mp4" },
+      { label: "Bicicletas Elétricas", description: "Conforto, autonomia e liberdade para o dia a dia", href: "#modelos", image: categoryBike, video: "https://ppmoesqgmficvajqbamr.supabase.co/storage/v1/object/public/videos/bikes.mp4" },
+      { label: "Autopropelidos", description: "Mobilidade urbana prática, econômica e compacta", href: "#modelos", image: categoryAutopropelido, video: "https://ppmoesqgmficvajqbamr.supabase.co/storage/v1/object/public/videos/autopropelido.mp4" },
+      { label: "Scooters Elétricas", description: "Desempenho, conforto e estilo na rotina urbana", href: "#modelos", image: categoryScooter, video: "https://ppmoesqgmficvajqbamr.supabase.co/storage/v1/object/public/videos/scooter-new.mp4", badge: "Mais vendido" },
+      { label: "Triciclos Elétricos", description: "Mais estabilidade, segurança e praticidade", href: "#modelos", image: categoryTricycle, video: "https://ppmoesqgmficvajqbamr.supabase.co/storage/v1/object/public/videos/tricycle.mp4" },
+      { label: "Utilitários", description: "Eficiência e resistência para o trabalho", href: "#modelos", image: categoryMotocross },
+      { label: "Infantil", description: "Diversão elétrica para momentos de lazer", href: "#modelos", image: categoryMotocross },
+      { label: "Patinetes", description: "Leves, ágeis e práticos para curtas distâncias", href: "#modelos", image: categoryScooter },
     ],
   },
   {
