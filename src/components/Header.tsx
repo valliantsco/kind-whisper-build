@@ -348,12 +348,11 @@ const Header = ({ onContactClick }: HeaderProps) => {
                           scrollSnapType: "x mandatory",
                           scrollBehavior: "smooth",
                           maskImage: rightFadeOpacity > 0.01
-                            ? `linear-gradient(to right, black 55%, rgba(0,0,0,${0.5 * rightFadeOpacity}) 78%, rgba(0,0,0,${0.15 * rightFadeOpacity}) 90%, rgba(0,0,0,${0 * rightFadeOpacity}) 100%)`
+                            ? `linear-gradient(to right, black ${55 + (1 - rightFadeOpacity) * 45}%, transparent 100%)`
                             : "none",
                           WebkitMaskImage: rightFadeOpacity > 0.01
-                            ? `linear-gradient(to right, black 55%, rgba(0,0,0,${0.5 * rightFadeOpacity}) 78%, rgba(0,0,0,${0.15 * rightFadeOpacity}) 90%, rgba(0,0,0,${0 * rightFadeOpacity}) 100%)`
+                            ? `linear-gradient(to right, black ${55 + (1 - rightFadeOpacity) * 45}%, transparent 100%)`
                             : "none",
-                          transition: "mask-image 0.5s ease-out, -webkit-mask-image 0.5s ease-out",
                         }}
                         onScroll={handleCarouselScroll}
                         onMouseDown={(e) => {
