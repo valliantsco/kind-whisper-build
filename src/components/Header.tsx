@@ -76,6 +76,9 @@ const Header = ({ onContactClick }: HeaderProps) => {
   const [scrollProgress, setScrollProgress] = useState(0);
   const peekDoneRef = useRef(false);
   const isDraggingBar = useRef(false);
+  const isDraggingCards = useRef(false);
+  const dragStartX = useRef(0);
+  const dragStartScroll = useRef(0);
   const slideBarRef = useRef<HTMLDivElement>(null);
 
   const handleCarouselScroll = () => {
@@ -323,24 +326,29 @@ const Header = ({ onContactClick }: HeaderProps) => {
                     </div>
                     <div
                       ref={carouselRef}
-                      className="flex gap-3 overflow-x-auto scrollbar-hide cursor-grab active:cursor-grabbing"
-                      style={{ scrollSnapType: "x mandatory" }}
+                      className="flex gap-3 overflow-x-auto scrollbar-hide cursor-grab active:cursor-grabbing select-none"
+                      style={{ scrollSnapType: "x mandatory", scrollBehavior: "smooth" }}
                       onScroll={handleCarouselScroll}
                       onMouseDown={(e) => {
+                        e.preventDefault();
                         const el = carouselRef.current;
                         if (!el) return;
-                        const startX = e.pageX;
-                        const startScroll = el.scrollLeft;
+                        isDraggingCards.current = false;
+                        dragStartX.current = e.pageX;
+                        dragStartScroll.current = el.scrollLeft;
                         el.style.scrollBehavior = "auto";
                         el.style.scrollSnapType = "none";
                         const onMove = (ev: MouseEvent) => {
-                          el.scrollLeft = startScroll - (ev.pageX - startX);
+                          const diff = ev.pageX - dragStartX.current;
+                          if (Math.abs(diff) > 3) isDraggingCards.current = true;
+                          el.scrollLeft = dragStartScroll.current - diff;
                         };
                         const onUp = () => {
                           el.style.scrollBehavior = "smooth";
                           el.style.scrollSnapType = "x mandatory";
                           window.removeEventListener("mousemove", onMove);
                           window.removeEventListener("mouseup", onUp);
+                          setTimeout(() => { isDraggingCards.current = false; }, 10);
                         };
                         window.addEventListener("mousemove", onMove);
                         window.addEventListener("mouseup", onUp);
@@ -355,7 +363,7 @@ const Header = ({ onContactClick }: HeaderProps) => {
                           transition={{ delay: i * 0.06, duration: 0.4, ease: "easeOut" }}
                           className="group/item relative flex-shrink-0 rounded-xl transition-all duration-500"
                           style={{ width: "170px", aspectRatio: "3/4", scrollSnapAlign: "start" }}
-                          onClick={() => setActiveDropdown(null)}
+                          onClick={(e) => { if (isDraggingCards.current) { e.preventDefault(); return; } setActiveDropdown(null); }}
                         >
                           {/* Outer glow on hover */}
                           <div
@@ -437,7 +445,7 @@ const Header = ({ onContactClick }: HeaderProps) => {
                     <div
                       ref={slideBarRef}
                       className="mt-3 rounded-full overflow-hidden cursor-pointer select-none"
-                      style={{ width: "100%", height: "4px", background: "hsl(0 0% 100% / 0.08)" }}
+                      style={{ width: "100%", height: "5px", background: "hsl(0 0% 100% / 0.08)" }}
                       onMouseDown={(e) => {
                         isDraggingBar.current = true;
                         handleSlideBarDrag(e.clientX);
@@ -452,10 +460,10 @@ const Header = ({ onContactClick }: HeaderProps) => {
                         className="h-full rounded-full"
                         style={{
                           background: "linear-gradient(90deg, hsl(11 81% 57%), hsl(11 90% 65%))",
-                          width: "35%",
-                          marginLeft: `${scrollProgress * 65}%`,
-                          transition: isDraggingBar.current ? "none" : "all 0.2s ease-out",
-                          boxShadow: "0 0 8px hsl(11 81% 57% / 0.4)",
+                          width: "40%",
+                          marginLeft: `${scrollProgress * 60}%`,
+                          transition: isDraggingBar.current ? "none" : "margin-left 0.15s ease-out",
+                          boxShadow: "0 0 10px hsl(11 81% 57% / 0.5), 0 0 4px hsl(11 81% 57% / 0.3)",
                         }}
                       />
                     </div>
