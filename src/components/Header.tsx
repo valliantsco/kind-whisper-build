@@ -62,17 +62,20 @@ const Header = ({ onContactClick }: HeaderProps) => {
         </nav>
 
         <div className="flex items-center gap-3">
-          <motion.button
+          <button
             onClick={onContactClick}
-            initial={{ boxShadow: "inset 0 1px 0 hsla(0, 0%, 100%, 0.15), 0 0 0 transparent" }}
-            whileHover={{ boxShadow: "inset 0 0 20px hsla(0, 0%, 100%, 0.12), inset 0 1px 0 hsla(0, 0%, 100%, 0.15), 0 4px 24px hsla(11, 81%, 57%, 0.4)" }}
-            whileTap={{ scale: 0.97 }}
-            transition={{ boxShadow: { duration: 0.6, ease: [0.4, 0, 0.2, 1] }, scale: { type: "spring", stiffness: 400, damping: 20 } }}
-            className="group relative flex items-center gap-2.5 rounded-lg px-5 py-2 text-white cursor-pointer overflow-hidden"
+            className="group relative flex items-center gap-2.5 rounded-lg px-5 py-2 text-white cursor-pointer overflow-hidden active:scale-[0.97] transition-transform duration-150"
             style={{
               background: "linear-gradient(135deg, hsl(11 81% 57%), hsl(11 90% 65%))",
             }}
           >
+            {/* Glow overlay — gradual fade */}
+            <span
+              className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-700 ease-out pointer-events-none"
+              style={{
+                boxShadow: "inset 0 0 20px hsla(0, 0%, 100%, 0.12), 0 4px 24px hsla(11, 81%, 57%, 0.4)",
+              }}
+            />
             {/* Pulsing status dot */}
             <span className="relative flex h-1.5 w-1.5 shrink-0 items-center justify-center -ml-1.5">
               <span
