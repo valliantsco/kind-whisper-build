@@ -87,7 +87,7 @@ const StatusChip = ({ isOnline, offlineMessage }: StatusChipProps) => {
                 transition={{ type: "spring", stiffness: 400, damping: 25 }}
                 className="absolute left-0 right-0 top-full mt-2 z-50 rounded-xl overflow-hidden"
                 style={{
-                  background: "linear-gradient(145deg, hsl(11 81% 57%), hsl(11 85% 52%))",
+                  background: "linear-gradient(135deg, hsl(11 81% 57%), hsl(11 90% 65%))",
                   boxShadow: "0 12px 40px hsl(0 0% 0% / 0.3), 0 0 20px hsl(11 81% 57% / 0.15)",
                 }}
               >
