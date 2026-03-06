@@ -382,11 +382,6 @@ const Header = ({ onContactClick }: HeaderProps) => {
                             className="group/item relative flex-shrink-0"
                             style={{ width: "210px", aspectRatio: "10/11", scrollSnapAlign: "start" }}
                           >
-                            {/* Internal glow layer */}
-                            <div
-                              className="absolute inset-0 rounded-xl opacity-0 group-hover/item:opacity-100 transition-opacity duration-500 ease-in-out pointer-events-none z-10"
-                              style={{ boxShadow: "inset 0 0 20px hsl(11 81% 57% / 0.35), inset 0 0 6px hsl(11 81% 57% / 0.2)" }}
-                            />
                             <a
                               href={dropItem.href}
                               className="relative block w-full h-full rounded-xl overflow-hidden"
@@ -403,9 +398,10 @@ const Header = ({ onContactClick }: HeaderProps) => {
                                   background: "linear-gradient(to top, hsl(0 0% 0% / 0.85) 0%, hsl(0 0% 0% / 0.4) 40%, hsl(0 0% 0% / 0.15) 70%, hsl(0 0% 0% / 0.25) 100%)",
                                 }}
                               />
+                              {/* Internal glow on hover */}
                               <div
-                                className="absolute inset-0 opacity-0 group-hover/item:opacity-100 transition-opacity duration-500 ease-in-out"
-                                style={{ background: "linear-gradient(135deg, hsl(11 81% 57% / 0.1) 0%, transparent 60%)" }}
+                                className="absolute inset-0 rounded-xl opacity-0 group-hover/item:opacity-100 transition-opacity duration-500 ease-in-out pointer-events-none z-20"
+                                style={{ boxShadow: "inset 0 0 20px hsl(11 81% 57% / 0.35), inset 0 0 6px hsl(11 81% 57% / 0.2)" }}
                               />
                               <div className="absolute bottom-0 left-0 right-0 p-2.5">
                                 <p className="text-white font-bold text-[11px] uppercase tracking-[0.08em] mb-0.5 drop-shadow-lg">
