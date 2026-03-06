@@ -13,14 +13,22 @@ const Header = ({ onContactClick }: HeaderProps) => {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 px-4 pt-3">
       <div
-        className="mx-auto max-w-7xl relative flex items-center justify-between px-5 py-3 rounded-lg"
+        className="mx-auto max-w-7xl relative flex items-center justify-between px-5 py-3 rounded-[0.9rem] overflow-hidden"
         style={{
-          background: "hsla(0, 0%, 11%, 0.75)",
-          backdropFilter: "blur(16px)",
-          WebkitBackdropFilter: "blur(16px)",
-          border: "1px solid hsla(0, 0%, 100%, 0.08)",
+          background: "hsl(0 0% 14% / 0.92)",
+          backdropFilter: "blur(24px)",
+          WebkitBackdropFilter: "blur(24px)",
+          border: "1px solid hsl(0 0% 100% / 0.08)",
+          boxShadow: "0 25px 60px rgba(0,0,0,0.5), 0 0 40px hsl(11 81% 57% / 0.08)",
         }}
       >
+        {/* Top gradient light strip */}
+        <div
+          className="absolute top-0 left-0 right-0 h-[2px]"
+          style={{
+            background: "linear-gradient(90deg, transparent, hsl(11 81% 57% / 0.8), hsl(11 90% 65% / 0.8), transparent)",
+          }}
+        />
         <a href="#">
           <img src={logoWhite} alt="MS Eletric" className="w-auto" style={{ height: "2.53rem" }} />
         </a>
