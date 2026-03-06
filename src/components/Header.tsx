@@ -80,7 +80,7 @@ const Header = ({ onContactClick }: HeaderProps) => {
       img.src = src;
     });
   }, []);
-  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const [activeDropdown, setActiveDropdown] = useState<string | null>("Modelos");
   const headerRef = useRef<HTMLDivElement>(null);
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const carouselRef = useRef<HTMLDivElement>(null);
