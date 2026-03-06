@@ -326,24 +326,29 @@ const Header = ({ onContactClick }: HeaderProps) => {
                     </div>
                     <div
                       ref={carouselRef}
-                      className="flex gap-3 overflow-x-auto scrollbar-hide cursor-grab active:cursor-grabbing"
-                      style={{ scrollSnapType: "x mandatory" }}
+                      className="flex gap-3 overflow-x-auto scrollbar-hide cursor-grab active:cursor-grabbing select-none"
+                      style={{ scrollSnapType: "x mandatory", scrollBehavior: "smooth" }}
                       onScroll={handleCarouselScroll}
                       onMouseDown={(e) => {
+                        e.preventDefault();
                         const el = carouselRef.current;
                         if (!el) return;
-                        const startX = e.pageX;
-                        const startScroll = el.scrollLeft;
+                        isDraggingCards.current = false;
+                        dragStartX.current = e.pageX;
+                        dragStartScroll.current = el.scrollLeft;
                         el.style.scrollBehavior = "auto";
                         el.style.scrollSnapType = "none";
                         const onMove = (ev: MouseEvent) => {
-                          el.scrollLeft = startScroll - (ev.pageX - startX);
+                          const diff = ev.pageX - dragStartX.current;
+                          if (Math.abs(diff) > 3) isDraggingCards.current = true;
+                          el.scrollLeft = dragStartScroll.current - diff;
                         };
                         const onUp = () => {
                           el.style.scrollBehavior = "smooth";
                           el.style.scrollSnapType = "x mandatory";
                           window.removeEventListener("mousemove", onMove);
                           window.removeEventListener("mouseup", onUp);
+                          setTimeout(() => { isDraggingCards.current = false; }, 10);
                         };
                         window.addEventListener("mousemove", onMove);
                         window.addEventListener("mouseup", onUp);
