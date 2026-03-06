@@ -61,21 +61,28 @@ const Header = ({ onContactClick }: HeaderProps) => {
           ))}
         </nav>
 
-        <div className="flex items-center gap-3">
-          <button
-            onClick={onContactClick}
-            className="group relative flex items-center gap-2.5 rounded-lg px-5 py-2 text-white cursor-pointer overflow-hidden active:scale-[0.97] transition-transform duration-150"
-            style={{
-              background: "linear-gradient(135deg, hsl(11 81% 57%), hsl(11 90% 65%))",
-            }}
-          >
-            {/* Glow overlay — gradual fade */}
+          <div className="relative group">
+            {/* External glow — outside overflow-hidden */}
             <span
               className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-700 ease-out pointer-events-none"
               style={{
-                boxShadow: "inset 0 0 20px hsla(0, 0%, 100%, 0.12), 0 4px 24px hsla(11, 81%, 57%, 0.4)",
+                boxShadow: "0 4px 24px hsla(11, 81%, 57%, 0.4)",
               }}
             />
+            <button
+              onClick={onContactClick}
+              className="relative flex items-center gap-2.5 rounded-lg px-5 py-2 text-white cursor-pointer overflow-hidden active:scale-[0.97] transition-transform duration-150"
+              style={{
+                background: "linear-gradient(135deg, hsl(11 81% 57%), hsl(11 90% 65%))",
+              }}
+            >
+              {/* Internal glow */}
+              <span
+                className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-700 ease-out pointer-events-none"
+                style={{
+                  boxShadow: "inset 0 0 20px hsla(0, 0%, 100%, 0.12)",
+                }}
+              />
             {/* Pulsing status dot */}
             <span className="relative flex h-1.5 w-1.5 shrink-0 items-center justify-center -ml-1.5">
               <span
