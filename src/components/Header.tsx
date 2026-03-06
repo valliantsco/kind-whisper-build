@@ -324,117 +324,115 @@ const Header = ({ onContactClick }: HeaderProps) => {
                       <h3 className="text-white/90 text-sm font-semibold tracking-wide">Nossos modelos</h3>
                       <p className="text-white/40 text-[11px] mt-0.5">Encontre o veículo elétrico ideal para você</p>
                     </div>
-                    <div
-                      ref={carouselRef}
-                      className="flex gap-3 overflow-x-auto scrollbar-hide cursor-grab active:cursor-grabbing select-none"
-                      style={{ scrollSnapType: "x mandatory", scrollBehavior: "smooth" }}
-                      onScroll={handleCarouselScroll}
-                      onMouseDown={(e) => {
-                        e.preventDefault();
-                        const el = carouselRef.current;
-                        if (!el) return;
-                        isDraggingCards.current = false;
-                        dragStartX.current = e.pageX;
-                        dragStartScroll.current = el.scrollLeft;
-                        el.style.scrollBehavior = "auto";
-                        el.style.scrollSnapType = "none";
-                        const onMove = (ev: MouseEvent) => {
-                          const diff = ev.pageX - dragStartX.current;
-                          if (Math.abs(diff) > 3) isDraggingCards.current = true;
-                          el.scrollLeft = dragStartScroll.current - diff;
-                        };
-                        const onUp = () => {
-                          el.style.scrollBehavior = "smooth";
-                          el.style.scrollSnapType = "x mandatory";
-                          window.removeEventListener("mousemove", onMove);
-                          window.removeEventListener("mouseup", onUp);
-                          setTimeout(() => { isDraggingCards.current = false; }, 10);
-                        };
-                        window.addEventListener("mousemove", onMove);
-                        window.addEventListener("mouseup", onUp);
-                      }}
-                    >
-                      {activeItem.dropdownItems.map((dropItem, i) => (
-                        <motion.a
-                          key={dropItem.label}
-                          href={dropItem.href}
-                          initial={{ opacity: 0, x: -20 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          transition={{ delay: i * 0.06, duration: 0.4, ease: "easeOut" }}
-                           className="group/item relative flex-shrink-0 rounded-xl transition-all duration-700 ease-out"
-                          style={{ width: "210px", aspectRatio: "10/11", scrollSnapAlign: "start" }}
-                          onClick={(e) => { if (isDraggingCards.current) { e.preventDefault(); return; } setActiveDropdown(null); }}
-                        >
-                          {/* Outer glow on hover */}
-                          <div
-                            className="absolute -inset-2 rounded-2xl opacity-0 group-hover/item:opacity-100 transition-opacity duration-500 ease-in-out pointer-events-none"
-                            style={{
-                              background: "radial-gradient(ellipse at center, hsl(11 81% 57% / 0.25), transparent 70%)",
-                              filter: "blur(14px)",
-                            }}
-                          />
-                          <div className="relative w-full h-full rounded-xl overflow-hidden">
-                            <img
-                              src={dropItem.image}
-                              alt={dropItem.label}
-                              className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover/item:scale-[1.04]"
-                            />
-                            {/* Vignette overlay */}
+                    <div className="relative">
+                      <div
+                        ref={carouselRef}
+                        className="flex gap-3 overflow-x-auto scrollbar-hide cursor-grab active:cursor-grabbing select-none"
+                        style={{ scrollSnapType: "x mandatory", scrollBehavior: "smooth" }}
+                        onScroll={handleCarouselScroll}
+                        onMouseDown={(e) => {
+                          e.preventDefault();
+                          const el = carouselRef.current;
+                          if (!el) return;
+                          isDraggingCards.current = false;
+                          dragStartX.current = e.pageX;
+                          dragStartScroll.current = el.scrollLeft;
+                          el.style.scrollBehavior = "auto";
+                          el.style.scrollSnapType = "none";
+                          const onMove = (ev: MouseEvent) => {
+                            const diff = ev.pageX - dragStartX.current;
+                            if (Math.abs(diff) > 3) isDraggingCards.current = true;
+                            el.scrollLeft = dragStartScroll.current - diff;
+                          };
+                          const onUp = () => {
+                            el.style.scrollBehavior = "smooth";
+                            el.style.scrollSnapType = "x mandatory";
+                            window.removeEventListener("mousemove", onMove);
+                            window.removeEventListener("mouseup", onUp);
+                            setTimeout(() => { isDraggingCards.current = false; }, 10);
+                          };
+                          window.addEventListener("mousemove", onMove);
+                          window.addEventListener("mouseup", onUp);
+                        }}
+                      >
+                        {activeItem.dropdownItems.map((dropItem) => (
+                          <a
+                            key={dropItem.label}
+                            href={dropItem.href}
+                            className="group/item relative flex-shrink-0 rounded-xl transition-all duration-700 ease-out"
+                            style={{ width: "210px", aspectRatio: "10/11", scrollSnapAlign: "start" }}
+                            onClick={(e) => { if (isDraggingCards.current) { e.preventDefault(); return; } setActiveDropdown(null); }}
+                          >
+                            {/* Outer glow on hover */}
                             <div
-                              className="absolute inset-0"
+                              className="absolute -inset-2 rounded-2xl opacity-0 group-hover/item:opacity-100 transition-opacity duration-500 ease-in-out pointer-events-none"
                               style={{
-                                background: "linear-gradient(to top, hsl(0 0% 0% / 0.85) 0%, hsl(0 0% 0% / 0.4) 40%, hsl(0 0% 0% / 0.15) 70%, hsl(0 0% 0% / 0.25) 100%)",
+                                background: "radial-gradient(ellipse at center, hsl(11 81% 57% / 0.25), transparent 70%)",
+                                filter: "blur(14px)",
                               }}
                             />
-                            <div
-                              className="absolute inset-0 opacity-0 group-hover/item:opacity-100 transition-opacity duration-500 ease-in-out"
-                              style={{ background: "linear-gradient(135deg, hsl(11 81% 57% / 0.1) 0%, transparent 60%)" }}
-                            />
-                            <div className="absolute bottom-0 left-0 right-0 p-2.5">
-                              <p className="text-white font-bold text-[11px] uppercase tracking-[0.08em] mb-0.5 drop-shadow-lg">
-                                {dropItem.label}
-                              </p>
-                              <p className="text-white/60 text-[10px] tracking-wide line-clamp-2 group-hover/item:text-white/80 transition-colors duration-500">
-                                {dropItem.description}
-                              </p>
+                            <div className="relative w-full h-full rounded-xl overflow-hidden">
+                              <img
+                                src={dropItem.image}
+                                alt={dropItem.label}
+                                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover/item:scale-[1.04]"
+                              />
+                              <div
+                                className="absolute inset-0"
+                                style={{
+                                  background: "linear-gradient(to top, hsl(0 0% 0% / 0.85) 0%, hsl(0 0% 0% / 0.4) 40%, hsl(0 0% 0% / 0.15) 70%, hsl(0 0% 0% / 0.25) 100%)",
+                                }}
+                              />
+                              <div
+                                className="absolute inset-0 opacity-0 group-hover/item:opacity-100 transition-opacity duration-500 ease-in-out"
+                                style={{ background: "linear-gradient(135deg, hsl(11 81% 57% / 0.1) 0%, transparent 60%)" }}
+                              />
+                              <div className="absolute bottom-0 left-0 right-0 p-2.5">
+                                <p className="text-white font-bold text-[11px] uppercase tracking-[0.08em] mb-0.5 drop-shadow-lg">
+                                  {dropItem.label}
+                                </p>
+                                <p className="text-white/60 text-[10px] tracking-wide line-clamp-2 group-hover/item:text-white/80 transition-colors duration-500">
+                                  {dropItem.description}
+                                </p>
+                              </div>
                             </div>
-                          </div>
-                        </motion.a>
-                      ))}
+                          </a>
+                        ))}
 
-                      {/* CTA card "Ver todos" */}
-                      {activeItem.hasCta && (
-                        <motion.a
-                          href="#modelos"
-                          onClick={() => setActiveDropdown(null)}
-                          initial={{ opacity: 0, x: -20 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          transition={{ delay: activeItem.dropdownItems.length * 0.06, duration: 0.4 }}
-                          className="group/cta relative flex-shrink-0 rounded-xl overflow-hidden cursor-pointer flex flex-col items-center justify-center text-center"
-                          style={{
-                            width: "210px",
-                            aspectRatio: "10/11",
-                            background: "linear-gradient(135deg, hsl(11 81% 57%), hsl(11 90% 65%))",
-                          }}
-                        >
-                          <div
-                            className="absolute inset-0 opacity-0 group-hover/cta:opacity-100 transition-opacity duration-500"
-                            style={{ boxShadow: "inset 0 0 40px hsl(0 0% 100% / 0.1)" }}
-                          />
-                          <div className="flex flex-col items-center gap-1.5">
-                            <motion.div
-                              className="w-8 h-8 rounded-full flex items-center justify-center"
-                              style={{ background: "hsl(0 0% 100% / 0.2)" }}
-                              animate={{ x: [0, 4, 0] }}
-                              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                            >
-                              <ArrowRight className="w-4 h-4 text-white" />
-                            </motion.div>
-                            <p className="text-white font-bold text-[11px] uppercase tracking-[0.1em]">Ver todos</p>
-                            <p className="text-white/60 text-[9px] tracking-wide">os modelos</p>
-                          </div>
-                        </motion.a>
-                      )}
+                        {/* CTA card "Ver todos" */}
+                        {activeItem.hasCta && (
+                          <a
+                            href="#modelos"
+                            onClick={() => setActiveDropdown(null)}
+                            className="group/cta relative flex-shrink-0 rounded-xl overflow-hidden cursor-pointer flex flex-col items-center justify-center text-center"
+                            style={{
+                              width: "210px",
+                              aspectRatio: "10/11",
+                              background: "linear-gradient(135deg, hsl(11 81% 57%), hsl(11 90% 65%))",
+                            }}
+                          >
+                            <div
+                              className="absolute inset-0 opacity-0 group-hover/cta:opacity-100 transition-opacity duration-500"
+                              style={{ boxShadow: "inset 0 0 40px hsl(0 0% 100% / 0.1)" }}
+                            />
+                            <div className="flex flex-col items-center gap-1.5">
+                              <div className="w-8 h-8 rounded-full flex items-center justify-center" style={{ background: "hsl(0 0% 100% / 0.2)" }}>
+                                <ArrowRight className="w-4 h-4 text-white" />
+                              </div>
+                              <p className="text-white font-bold text-[11px] uppercase tracking-[0.1em]">Ver todos</p>
+                              <p className="text-white/60 text-[9px] tracking-wide">os modelos</p>
+                            </div>
+                          </a>
+                        )}
+                      </div>
+
+                      {/* Right fade-out dissolve effect */}
+                      <div
+                        className="absolute top-0 right-0 w-16 h-full pointer-events-none z-10 rounded-r-xl"
+                        style={{
+                          background: "linear-gradient(to left, hsl(0 0% 14% / 0.95) 0%, hsl(0 0% 14% / 0.7) 30%, transparent 100%)",
+                        }}
+                      />
                     </div>
 
                     {/* Slide bar - full width, draggable */}
