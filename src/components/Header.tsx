@@ -346,11 +346,12 @@ const Header = ({ onContactClick }: HeaderProps) => {
                           scrollSnapType: "x mandatory",
                           scrollBehavior: "smooth",
                           maskImage: showRightFade
-                            ? "linear-gradient(to right, black 85%, transparent 100%)"
+                            ? "linear-gradient(to right, black 70%, transparent 100%)"
                             : "none",
                           WebkitMaskImage: showRightFade
-                            ? "linear-gradient(to right, black 85%, transparent 100%)"
+                            ? "linear-gradient(to right, black 70%, transparent 100%)"
                             : "none",
+                          transition: "mask-image 0.6s ease, -webkit-mask-image 0.6s ease",
                         }}
                         onScroll={handleCarouselScroll}
                         onMouseDown={(e) => {
@@ -405,13 +406,13 @@ const Header = ({ onContactClick }: HeaderProps) => {
                           >
                             <a
                               href={dropItem.href}
-                              className="relative block w-full h-full rounded-xl overflow-hidden transition-transform duration-500 ease-out group-hover/item:scale-[1.03]"
+                              className="relative block w-full h-full rounded-xl overflow-hidden"
                               onClick={(e) => { if (isDraggingCards.current) { e.preventDefault(); return; } setActiveDropdown(null); }}
                             >
                               <img
                                 src={dropItem.image}
                                 alt={dropItem.label}
-                                className="absolute inset-0 w-full h-full object-cover"
+                                className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 ease-out group-hover/item:scale-[1.06]"
                               />
                               <div
                                 className="absolute inset-0"
@@ -425,10 +426,10 @@ const Header = ({ onContactClick }: HeaderProps) => {
                                 style={{ boxShadow: "inset 0 0 12px hsl(11 81% 57% / 0.15), inset 0 0 4px hsl(11 81% 57% / 0.1)" }}
                               />
                               <div className="absolute bottom-0 left-0 right-0 p-2.5">
-                                <p className="text-white font-bold text-[11px] uppercase tracking-[0.08em] mb-0.5 drop-shadow-lg">
+                                <p className="text-white font-bold text-[12.5px] uppercase tracking-[0.08em] mb-0.5 drop-shadow-lg">
                                   {dropItem.label}
                                 </p>
-                                <p className="text-white/60 text-[10px] tracking-wide line-clamp-2 group-hover/item:text-white/80 transition-colors duration-500">
+                                <p className="text-white/60 text-[11.5px] tracking-wide line-clamp-2 group-hover/item:text-white/80 transition-colors duration-500">
                                   {dropItem.description}
                                 </p>
                               </div>
