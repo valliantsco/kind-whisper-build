@@ -33,7 +33,7 @@ const Header = ({ onContactClick }: HeaderProps) => {
           <img src={logoWhite} alt="MS Eletric" className="w-auto" style={{ height: "2.53rem" }} />
         </a>
 
-        <nav className="hidden md:flex items-center gap-6 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+        <nav className="hidden md:flex items-center gap-3 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
           {[
             { label: "Início", href: "#inicio" },
             { label: "Modelos", href: "#modelos" },
