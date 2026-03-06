@@ -74,7 +74,7 @@ const Header = ({ onContactClick }: HeaderProps) => {
             }}
           >
             {/* Pulsing status dot */}
-            <span className="relative flex h-1.5 w-1.5 shrink-0">
+            <span className="relative flex h-1.5 w-1.5 shrink-0 -ml-0.5">
               <span
                 className="absolute inset-0 rounded-full animate-ping opacity-60"
                 style={{
@@ -91,6 +91,15 @@ const Header = ({ onContactClick }: HeaderProps) => {
                 }}
               />
             </span>
+
+            {/* Divider — cutout effect */}
+            <span
+              className="self-stretch w-[1px] -my-2"
+              style={{
+                background: "linear-gradient(180deg, transparent, hsl(0 0% 0% / 0.5) 30%, hsl(0 0% 0% / 0.5) 70%, transparent)",
+                boxShadow: "1px 0 0 hsl(0 0% 100% / 0.08), -1px 0 0 hsl(0 0% 100% / 0.08)",
+              }}
+            />
 
             {/* Dynamic copy */}
             <span className="flex flex-col items-start leading-none gap-[2px]">
