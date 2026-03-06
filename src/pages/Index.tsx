@@ -7,7 +7,7 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-foreground">
-      <Header />
+      <Header onContactClick={() => setContactOpen(true)} />
       <PopUpContato01 isOpen={contactOpen} onClose={() => setContactOpen(false)} />
     </div>
   );
