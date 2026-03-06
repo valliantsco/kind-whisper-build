@@ -384,7 +384,7 @@ const Header = ({ onContactClick }: HeaderProps) => {
                           >
                             <a
                               href={dropItem.href}
-                              className="relative block w-full h-full rounded-xl overflow-hidden"
+                              className="relative block w-full h-full rounded-xl overflow-hidden transition-transform duration-500 ease-out group-hover/item:scale-[1.03]"
                               onClick={(e) => { if (isDraggingCards.current) { e.preventDefault(); return; } setActiveDropdown(null); }}
                             >
                               <img
@@ -401,7 +401,7 @@ const Header = ({ onContactClick }: HeaderProps) => {
                               {/* Internal glow on hover */}
                               <div
                                 className="absolute inset-0 rounded-xl opacity-0 group-hover/item:opacity-100 transition-opacity duration-500 ease-in-out pointer-events-none z-20"
-                                style={{ boxShadow: "inset 0 0 20px hsl(11 81% 57% / 0.35), inset 0 0 6px hsl(11 81% 57% / 0.2)" }}
+                                style={{ boxShadow: "inset 0 0 12px hsl(11 81% 57% / 0.15), inset 0 0 4px hsl(11 81% 57% / 0.1)" }}
                               />
                               <div className="absolute bottom-0 left-0 right-0 p-2.5">
                                 <p className="text-white font-bold text-[11px] uppercase tracking-[0.08em] mb-0.5 drop-shadow-lg">
