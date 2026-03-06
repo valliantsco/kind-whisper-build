@@ -452,8 +452,8 @@ const Header = ({ onContactClick }: HeaderProps) => {
                         className="h-full rounded-full"
                         style={{
                           background: "linear-gradient(90deg, hsl(11 81% 57%), hsl(11 90% 65%))",
-                          width: `${Math.max(20, 100 / (activeItem.dropdownItems.length + (activeItem.hasCta ? 1 : 0)))}%`,
-                          marginLeft: `${scrollProgress * (100 - Math.max(20, 100 / (activeItem.dropdownItems.length + (activeItem.hasCta ? 1 : 0))))}%`,
+                          width: "35%",
+                          marginLeft: `${scrollProgress * 65}%`,
                           transition: isDraggingBar.current ? "none" : "all 0.2s ease-out",
                           boxShadow: "0 0 8px hsl(11 81% 57% / 0.4)",
                         }}
