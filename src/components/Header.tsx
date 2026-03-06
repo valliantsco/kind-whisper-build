@@ -1,6 +1,10 @@
 import logoWhite from "@/assets/ms-eletric-logo-white.png";
 
-const Header = () => {
+interface HeaderProps {
+  onContactClick?: () => void;
+}
+
+const Header = ({ onContactClick }: HeaderProps) => {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 px-4 pt-3">
       <div
@@ -34,7 +38,16 @@ const Header = () => {
         </nav>
 
         <div className="flex items-center gap-3">
-          {/* Botões serão adicionados aqui */}
+          <button
+            onClick={onContactClick}
+            className="rounded-md px-5 py-2 text-sm font-semibold tracking-wide text-white transition-all hover:brightness-110"
+            style={{
+              background: "linear-gradient(135deg, hsl(11 81% 57%), hsl(11 90% 65%))",
+              boxShadow: "0 0 16px hsla(11, 81%, 57%, 0.3)",
+            }}
+          >
+            Fale Conosco
+          </button>
         </div>
       </div>
     </header>
