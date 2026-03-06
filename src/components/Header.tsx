@@ -94,10 +94,9 @@ const Header = ({ onContactClick }: HeaderProps) => {
 
             {/* Divider — cutout effect */}
             <span
-              className="self-stretch w-[2px] -my-0.5 rounded-full"
+              className="w-[2px] h-5 rounded-sm shrink-0"
               style={{
-                background: "linear-gradient(180deg, transparent, hsl(0 0% 0% / 0.4) 30%, hsl(0 0% 0% / 0.4) 70%, transparent)",
-                boxShadow: "0.5px 0 0 hsl(0 0% 100% / 0.06), -0.5px 0 0 hsl(0 0% 100% / 0.06)",
+                background: "hsl(0 0% 100% / 0.15)",
               }}
             />
 
