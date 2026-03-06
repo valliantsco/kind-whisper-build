@@ -310,7 +310,7 @@ const Header = ({ onContactClick }: HeaderProps) => {
                 className="absolute pointer-events-none select-none z-0"
                 style={{
                   bottom: "-10%",
-                  right: "45%",
+                  right: "5%",
                   width: "280px",
                   opacity: 0.03,
                   filter: "grayscale(100%) brightness(2)",
