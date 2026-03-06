@@ -255,7 +255,7 @@ const Header = ({ onContactClick }: HeaderProps) => {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: i * 0.05, duration: 0.3, ease: "easeOut" }}
                         className="group/item relative flex flex-col rounded-xl overflow-hidden transition-all duration-300"
-                        style={{ aspectRatio: "3/4" }}
+                        style={{ aspectRatio: "4/3", maxHeight: "120px" }}
                         onClick={() => setActiveDropdown(null)}
                       >
                         <img
@@ -295,7 +295,8 @@ const Header = ({ onContactClick }: HeaderProps) => {
                         transition={{ delay: activeItem.dropdownItems.length * 0.05, duration: 0.3 }}
                         className="group/cta relative rounded-xl overflow-hidden cursor-pointer flex flex-col items-center justify-center text-center"
                         style={{
-                          aspectRatio: "3/4",
+                          aspectRatio: "4/3",
+                          maxHeight: "120px",
                           background: "linear-gradient(135deg, hsl(11 81% 57%), hsl(11 90% 65%))",
                         }}
                       >
