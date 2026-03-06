@@ -67,8 +67,18 @@ const NAV_ITEMS: NavItem[] = [
   },
 ];
 
+const categoryImages = [categoryScooter, categoryBike, categoryTricycle, categoryMotocross, categoryAutopropelido];
+
 const Header = ({ onContactClick }: HeaderProps) => {
   const isOnline = useBusinessHours();
+
+  // Preload category images on mount
+  useEffect(() => {
+    categoryImages.forEach((src) => {
+      const img = new Image();
+      img.src = src;
+    });
+  }, []);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const headerRef = useRef<HTMLDivElement>(null);
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
