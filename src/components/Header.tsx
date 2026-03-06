@@ -339,7 +339,7 @@ const Header = ({ onContactClick }: HeaderProps) => {
                     <div className="relative">
                       <div
                         ref={carouselRef}
-                        className="flex gap-3 overflow-x-auto scrollbar-hide cursor-grab active:cursor-grabbing select-none pr-12"
+                        className="flex gap-3 overflow-x-auto scrollbar-hide cursor-grab active:cursor-grabbing select-none"
                         style={{
                           scrollSnapType: "x mandatory",
                           scrollBehavior: "smooth",
