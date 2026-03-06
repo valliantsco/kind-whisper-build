@@ -307,8 +307,8 @@ const Header = ({ onContactClick }: HeaderProps) => {
                   /* Carousel (Modelos) */
                   <>
                     <div className="mb-3">
-                      <h3 className="text-white/90 text-sm font-semibold tracking-wide">Nossos modelos</h3>
-                      <p className="text-white/40 text-[11px] mt-0.5">Encontre o veículo elétrico ideal para você</p>
+                      <h3 className="text-white/90 text-base font-semibold tracking-wide">Nossos modelos</h3>
+                      <p className="text-white/40 text-[12.5px] mt-0.5">Encontre o veículo elétrico ideal para você</p>
                     </div>
                     <div className="relative">
                       <div
@@ -398,10 +398,10 @@ const Header = ({ onContactClick }: HeaderProps) => {
                                 }}
                               />
                               <div className="absolute bottom-0 left-0 right-0 p-2.5">
-                                <p className="text-white font-bold text-[14.5px] uppercase tracking-[0.08em] mb-0.5 drop-shadow-lg">
+                                <p className="text-white font-bold text-[12.5px] uppercase tracking-[0.08em] mb-0.5 drop-shadow-lg">
                                   {dropItem.label}
                                 </p>
-                                <p className="text-white/60 text-[13px] tracking-wide line-clamp-2 group-hover/item:text-white/80 transition-colors duration-500">
+                                <p className="text-white/60 text-[11px] tracking-wide line-clamp-2 group-hover/item:text-white/80 transition-colors duration-500">
                                   {dropItem.description}
                                 </p>
                               </div>
@@ -428,8 +428,8 @@ const Header = ({ onContactClick }: HeaderProps) => {
                               <div className="w-8 h-8 rounded-full flex items-center justify-center" style={{ background: "hsl(0 0% 100% / 0.2)" }}>
                                 <ArrowRight className="w-4 h-4 text-white" />
                               </div>
-                              <p className="text-white font-bold text-[12.5px] uppercase tracking-[0.1em]">Todos</p>
-                              <p className="text-white/60 text-[10.5px] tracking-wide">os modelos</p>
+                              <p className="text-white font-bold text-[10.5px] uppercase tracking-[0.1em]">Todos</p>
+                              <p className="text-white/60 text-[9px] tracking-wide">os modelos</p>
                             </div>
                           </motion.a>
                         )}
