@@ -392,14 +392,29 @@ const Header = ({ onContactClick }: HeaderProps) => {
                               className="relative block w-full h-full"
                               onClick={(e) => { if (isDraggingCards.current) { e.preventDefault(); return; } setActiveDropdown(null); }}
                             >
-                              <motion.img
-                                src={dropItem.image}
-                                alt={dropItem.label}
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
-                                transition={{ delay: i * 0.1 + 0.15, duration: 0.8, ease: "easeOut" }}
-                                className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 ease-out group-hover/item:scale-[1.08]"
-                              />
+                              {dropItem.video ? (
+                                <motion.video
+                                  src={dropItem.video}
+                                  poster={dropItem.image}
+                                  autoPlay
+                                  muted
+                                  loop
+                                  playsInline
+                                  initial={{ opacity: 0 }}
+                                  animate={{ opacity: 1 }}
+                                  transition={{ delay: i * 0.1 + 0.15, duration: 0.8, ease: "easeOut" }}
+                                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 ease-out group-hover/item:scale-[1.08]"
+                                />
+                              ) : (
+                                <motion.img
+                                  src={dropItem.image}
+                                  alt={dropItem.label}
+                                  initial={{ opacity: 0 }}
+                                  animate={{ opacity: 1 }}
+                                  transition={{ delay: i * 0.1 + 0.15, duration: 0.8, ease: "easeOut" }}
+                                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 ease-out group-hover/item:scale-[1.08]"
+                                />
+                              )}
                               <div
                                 className="absolute inset-0"
                                 style={{
