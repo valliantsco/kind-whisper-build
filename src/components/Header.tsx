@@ -74,6 +74,7 @@ const Header = ({ onContactClick }: HeaderProps) => {
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const carouselRef = useRef<HTMLDivElement>(null);
   const [scrollProgress, setScrollProgress] = useState(0);
+  const peekDoneRef = useRef(false);
 
   const handleCarouselScroll = () => {
     const el = carouselRef.current;
@@ -81,6 +82,24 @@ const Header = ({ onContactClick }: HeaderProps) => {
     const max = el.scrollWidth - el.clientWidth;
     setScrollProgress(max > 0 ? el.scrollLeft / max : 0);
   };
+
+  // Peek animation: scroll right then back when carousel opens
+  useEffect(() => {
+    if (activeDropdown === "Modelos" && carouselRef.current && !peekDoneRef.current) {
+      peekDoneRef.current = true;
+      const el = carouselRef.current;
+      const peekTimeout = setTimeout(() => {
+        el.scrollTo({ left: 60, behavior: "smooth" });
+        setTimeout(() => {
+          el.scrollTo({ left: 0, behavior: "smooth" });
+        }, 400);
+      }, 350);
+      return () => clearTimeout(peekTimeout);
+    }
+    if (!activeDropdown) {
+      peekDoneRef.current = false;
+    }
+  }, [activeDropdown]);
 
   const handleEnter = (label: string) => {
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
