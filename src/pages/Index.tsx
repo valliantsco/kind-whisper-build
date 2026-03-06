@@ -5,7 +5,7 @@ const Index = () => {
   const [contactOpen, setContactOpen] = useState(true);
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-foreground">
       <PopUpContato01 isOpen={contactOpen} onClose={() => setContactOpen(false)} />
     </div>
   );
