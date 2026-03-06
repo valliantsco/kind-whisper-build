@@ -18,7 +18,7 @@ const Header = ({ onContactClick }: HeaderProps) => {
           backdropFilter: "blur(24px)",
           WebkitBackdropFilter: "blur(24px)",
           border: "1px solid hsl(0 0% 100% / 0.08)",
-          boxShadow: "0 4px 16px rgba(0,0,0,0.3), 0 1px 4px rgba(0,0,0,0.2)",
+          boxShadow: "0 6px 24px rgba(0,0,0,0.4), 0 2px 6px rgba(0,0,0,0.25)",
         }}
       >
         {/* Top gradient light strip */}
