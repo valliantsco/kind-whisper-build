@@ -346,10 +346,10 @@ const Header = ({ onContactClick }: HeaderProps) => {
                           scrollSnapType: "x mandatory",
                           scrollBehavior: "smooth",
                           maskImage: showRightFade
-                            ? "linear-gradient(to right, black 60%, rgba(0,0,0,0.4) 82%, rgba(0,0,0,0.08) 92%, transparent 100%)"
+                            ? "linear-gradient(to right, black 55%, rgba(0,0,0,0.5) 78%, rgba(0,0,0,0.15) 90%, transparent 100%)"
                             : "none",
                           WebkitMaskImage: showRightFade
-                            ? "linear-gradient(to right, black 60%, rgba(0,0,0,0.4) 82%, rgba(0,0,0,0.08) 92%, transparent 100%)"
+                            ? "linear-gradient(to right, black 55%, rgba(0,0,0,0.5) 78%, rgba(0,0,0,0.15) 90%, transparent 100%)"
                             : "none",
                           transition: "mask-image 0.8s ease-out, -webkit-mask-image 0.8s ease-out",
                         }}
@@ -379,7 +379,6 @@ const Header = ({ onContactClick }: HeaderProps) => {
                           const onUp = () => {
                             window.removeEventListener("mousemove", onMove);
                             window.removeEventListener("mouseup", onUp);
-                            // Momentum with friction
                             const friction = 0.92;
                             const animate = () => {
                               if (Math.abs(velocity) < 0.5) {
@@ -398,32 +397,30 @@ const Header = ({ onContactClick }: HeaderProps) => {
                           window.addEventListener("mouseup", onUp);
                         }}
                       >
-                        {activeItem.dropdownItems.map((dropItem) => (
-                          <div
+                        {activeItem.dropdownItems.map((dropItem, i) => (
+                          <motion.div
                             key={dropItem.label}
-                            className="group/item relative flex-shrink-0"
+                            initial={{ opacity: 0, y: 12 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: i * 0.07, duration: 0.35, ease: "easeOut" }}
+                            className="group/item relative flex-shrink-0 rounded-xl overflow-hidden"
                             style={{ width: "210px", aspectRatio: "10/11", scrollSnapAlign: "start" }}
                           >
                             <a
                               href={dropItem.href}
-                              className="relative block w-full h-full rounded-xl overflow-hidden"
+                              className="relative block w-full h-full"
                               onClick={(e) => { if (isDraggingCards.current) { e.preventDefault(); return; } setActiveDropdown(null); }}
                             >
                               <img
                                 src={dropItem.image}
                                 alt={dropItem.label}
-                                className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 ease-out group-hover/item:scale-[1.06]"
+                                className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 ease-out group-hover/item:scale-[1.08]"
                               />
                               <div
                                 className="absolute inset-0"
                                 style={{
                                   background: "linear-gradient(to top, hsl(0 0% 0% / 0.85) 0%, hsl(0 0% 0% / 0.4) 40%, hsl(0 0% 0% / 0.15) 70%, hsl(0 0% 0% / 0.25) 100%)",
                                 }}
-                              />
-                              {/* Internal glow on hover */}
-                              <div
-                                className="absolute inset-0 rounded-xl opacity-0 group-hover/item:opacity-100 transition-opacity duration-500 ease-in-out pointer-events-none z-20"
-                                style={{ boxShadow: "inset 0 0 12px hsl(11 81% 57% / 0.15), inset 0 0 4px hsl(11 81% 57% / 0.1)" }}
                               />
                               <div className="absolute bottom-0 left-0 right-0 p-2.5">
                                 <p className="text-white font-bold text-[14.5px] uppercase tracking-[0.08em] mb-0.5 drop-shadow-lg">
@@ -434,14 +431,17 @@ const Header = ({ onContactClick }: HeaderProps) => {
                                 </p>
                               </div>
                             </a>
-                          </div>
+                          </motion.div>
                         ))}
 
                         {/* CTA card "Ver todos" */}
                         {activeItem.hasCta && (
-                          <a
+                          <motion.a
                             href="#modelos"
                             onClick={() => setActiveDropdown(null)}
+                            initial={{ opacity: 0, y: 12 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: (activeItem.dropdownItems?.length ?? 0) * 0.07, duration: 0.35, ease: "easeOut" }}
                             className="group/cta relative flex-shrink-0 rounded-xl overflow-hidden cursor-pointer flex flex-col items-center justify-center text-center"
                             style={{
                               width: "210px",
@@ -449,10 +449,6 @@ const Header = ({ onContactClick }: HeaderProps) => {
                               background: "linear-gradient(135deg, hsl(11 81% 57%), hsl(11 90% 65%))",
                             }}
                           >
-                            <div
-                              className="absolute inset-0 opacity-0 group-hover/cta:opacity-100 transition-opacity duration-500"
-                              style={{ boxShadow: "inset 0 0 40px hsl(0 0% 100% / 0.1)" }}
-                            />
                             <div className="flex flex-col items-center gap-1.5">
                               <div className="w-8 h-8 rounded-full flex items-center justify-center" style={{ background: "hsl(0 0% 100% / 0.2)" }}>
                                 <ArrowRight className="w-4 h-4 text-white" />
@@ -460,9 +456,27 @@ const Header = ({ onContactClick }: HeaderProps) => {
                               <p className="text-white font-bold text-[12.5px] uppercase tracking-[0.1em]">Todos</p>
                               <p className="text-white/60 text-[10.5px] tracking-wide">os modelos</p>
                             </div>
-                          </a>
+                          </motion.a>
                         )}
                       </div>
+
+                      {/* Orange scroll-right button */}
+                      {showRightFade && (
+                        <button
+                          onClick={() => {
+                            const el = carouselRef.current;
+                            if (el) el.scrollBy({ left: 230, behavior: "smooth" });
+                          }}
+                          className="absolute right-2 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full flex items-center justify-center cursor-pointer transition-transform duration-200 hover:scale-110 active:scale-95"
+                          style={{
+                            background: "linear-gradient(135deg, hsl(11 81% 57%), hsl(11 90% 65%))",
+                            boxShadow: "0 4px 12px hsl(11 81% 57% / 0.4)",
+                          }}
+                          aria-label="Próximo"
+                        >
+                          <ArrowRight className="w-4 h-4 text-white" />
+                        </button>
+                      )}
                     </div>
 
                     {/* Slide bar - full width, draggable */}
