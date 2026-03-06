@@ -336,7 +336,7 @@ const Header = ({ onContactClick }: HeaderProps) => {
                       <h3 className="text-white/90 text-sm font-semibold tracking-wide">Nossos modelos</h3>
                       <p className="text-white/40 text-[11px] mt-0.5">Encontre o veículo elétrico ideal para você</p>
                     </div>
-                    <div className="relative overflow-hidden">
+                    <div className="relative" style={{ overflow: "clip", overflowClipMargin: "20px" }}>
                       <div
                         ref={carouselRef}
                         className="flex gap-3 overflow-x-auto scrollbar-hide cursor-grab active:cursor-grabbing select-none pr-12"
