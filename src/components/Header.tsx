@@ -331,9 +331,9 @@ const Header = ({ onContactClick }: HeaderProps) => {
                         <motion.a
                           key={dropItem.label}
                           href={dropItem.href}
-                          initial={{ opacity: 0, y: 12 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          transition={{ delay: i * 0.05, duration: 0.3, ease: "easeOut" }}
+                          initial={{ opacity: 0, x: -20 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ delay: i * 0.06, duration: 0.4, ease: "easeOut" }}
                           className="group/item relative flex-shrink-0 rounded-xl transition-all duration-500"
                           style={{ width: "170px", aspectRatio: "3/4", scrollSnapAlign: "start" }}
                           onClick={() => setActiveDropdown(null)}
