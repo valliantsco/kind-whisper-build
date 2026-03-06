@@ -72,6 +72,15 @@ const Header = ({ onContactClick }: HeaderProps) => {
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const headerRef = useRef<HTMLDivElement>(null);
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const carouselRef = useRef<HTMLDivElement>(null);
+  const [scrollProgress, setScrollProgress] = useState(0);
+
+  const handleCarouselScroll = () => {
+    const el = carouselRef.current;
+    if (!el) return;
+    const max = el.scrollWidth - el.clientWidth;
+    setScrollProgress(max > 0 ? el.scrollLeft / max : 0);
+  };
 
   const handleEnter = (label: string) => {
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
@@ -246,77 +255,97 @@ const Header = ({ onContactClick }: HeaderProps) => {
               <div className="p-5 relative">
                 {activeItem.dropdownItems[0]?.image ? (
                   /* Carousel (Modelos) */
-                  <div className="flex gap-3 overflow-x-auto scrollbar-hide pb-1" style={{ scrollSnapType: "x mandatory" }}>
-                    {activeItem.dropdownItems.map((dropItem, i) => (
-                      <motion.a
-                        key={dropItem.label}
-                        href={dropItem.href}
-                        initial={{ opacity: 0, y: 12 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: i * 0.05, duration: 0.3, ease: "easeOut" }}
-                        className="group/item relative flex-shrink-0 rounded-xl overflow-hidden transition-all duration-300"
-                        style={{ width: "220px", height: "160px", scrollSnapAlign: "start" }}
-                        onClick={() => setActiveDropdown(null)}
-                      >
-                        <img
-                          src={dropItem.image}
-                          alt={dropItem.label}
-                          className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover/item:scale-110"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
-                        <div
-                          className="absolute inset-0 opacity-0 group-hover/item:opacity-100 transition-opacity duration-300"
-                          style={{ background: "linear-gradient(135deg, hsl(11 81% 57% / 0.12) 0%, transparent 60%)" }}
-                        />
-                        <div
-                          className="absolute inset-0 rounded-xl opacity-0 group-hover/item:opacity-100 transition-opacity duration-300"
-                          style={{ boxShadow: "inset 0 0 0 1.5px hsl(11 81% 57% / 0.5)" }}
-                        />
-                        <div className="absolute bottom-0 left-0 right-0 p-2.5">
-                          <p className="text-white font-bold text-[11px] uppercase tracking-[0.08em] mb-0.5 drop-shadow-lg">
-                            {dropItem.label}
-                          </p>
-                          <p className="text-white/50 text-[9px] tracking-wide group-hover/item:text-white/70 transition-colors duration-300 line-clamp-1">
-                            {dropItem.description}
-                          </p>
-                        </div>
-                      </motion.a>
-                    ))}
+                  <>
+                    <div
+                      ref={carouselRef}
+                      className="flex gap-3 overflow-x-auto scrollbar-hide pb-3"
+                      style={{ scrollSnapType: "x mandatory" }}
+                      onScroll={handleCarouselScroll}
+                    >
+                      {activeItem.dropdownItems.map((dropItem, i) => (
+                        <motion.a
+                          key={dropItem.label}
+                          href={dropItem.href}
+                          initial={{ opacity: 0, y: 12 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ delay: i * 0.05, duration: 0.3, ease: "easeOut" }}
+                          className="group/item relative flex-shrink-0 rounded-xl overflow-hidden transition-all duration-300"
+                          style={{ width: "140px", aspectRatio: "3/4", scrollSnapAlign: "start" }}
+                          onClick={() => setActiveDropdown(null)}
+                        >
+                          <img
+                            src={dropItem.image}
+                            alt={dropItem.label}
+                            className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover/item:scale-110"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+                          <div
+                            className="absolute inset-0 opacity-0 group-hover/item:opacity-100 transition-opacity duration-300"
+                            style={{ background: "linear-gradient(135deg, hsl(11 81% 57% / 0.12) 0%, transparent 60%)" }}
+                          />
+                          <div
+                            className="absolute inset-0 rounded-xl opacity-0 group-hover/item:opacity-100 transition-opacity duration-300"
+                            style={{ boxShadow: "inset 0 0 0 1.5px hsl(11 81% 57% / 0.5)" }}
+                          />
+                          <div className="absolute bottom-0 left-0 right-0 p-2.5">
+                            <p className="text-white font-bold text-[11px] uppercase tracking-[0.08em] mb-0.5 drop-shadow-lg">
+                              {dropItem.label}
+                            </p>
+                            <p className="text-white/50 text-[9px] tracking-wide group-hover/item:text-white/70 transition-colors duration-300 line-clamp-1">
+                              {dropItem.description}
+                            </p>
+                          </div>
+                        </motion.a>
+                      ))}
 
-                    {/* CTA card "Ver todos" */}
-                    {activeItem.hasCta && (
-                      <motion.a
-                        href="#modelos"
-                        onClick={() => setActiveDropdown(null)}
-                        initial={{ opacity: 0, y: 12 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: activeItem.dropdownItems.length * 0.05, duration: 0.3 }}
-                        className="group/cta relative flex-shrink-0 rounded-xl overflow-hidden cursor-pointer flex flex-col items-center justify-center text-center"
+                      {/* CTA card "Ver todos" */}
+                      {activeItem.hasCta && (
+                        <motion.a
+                          href="#modelos"
+                          onClick={() => setActiveDropdown(null)}
+                          initial={{ opacity: 0, y: 12 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ delay: activeItem.dropdownItems.length * 0.05, duration: 0.3 }}
+                          className="group/cta relative flex-shrink-0 rounded-xl overflow-hidden cursor-pointer flex flex-col items-center justify-center text-center"
+                          style={{
+                            width: "140px",
+                            aspectRatio: "3/4",
+                            background: "linear-gradient(135deg, hsl(11 81% 57%), hsl(11 90% 65%))",
+                          }}
+                        >
+                          <div
+                            className="absolute inset-0 opacity-0 group-hover/cta:opacity-100 transition-opacity duration-500"
+                            style={{ boxShadow: "inset 0 0 40px hsl(0 0% 100% / 0.1)" }}
+                          />
+                          <div className="flex flex-col items-center gap-1.5">
+                            <motion.div
+                              className="w-8 h-8 rounded-full flex items-center justify-center"
+                              style={{ background: "hsl(0 0% 100% / 0.2)" }}
+                              animate={{ x: [0, 4, 0] }}
+                              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                            >
+                              <ArrowRight className="w-4 h-4 text-white" />
+                            </motion.div>
+                            <p className="text-white font-bold text-[11px] uppercase tracking-[0.1em]">Ver todos</p>
+                            <p className="text-white/60 text-[9px] tracking-wide">os modelos</p>
+                          </div>
+                        </motion.a>
+                      )}
+                    </div>
+
+                    {/* Slide bar */}
+                    <div className="mt-2 mx-auto rounded-full overflow-hidden" style={{ width: "80px", height: "3px", background: "hsl(0 0% 100% / 0.1)" }}>
+                      <motion.div
+                        className="h-full rounded-full"
                         style={{
-                          width: "220px",
-                          height: "160px",
-                          background: "linear-gradient(135deg, hsl(11 81% 57%), hsl(11 90% 65%))",
+                          background: "linear-gradient(90deg, hsl(11 81% 57%), hsl(11 90% 65%))",
+                          width: `${Math.max(30, 100 / (activeItem.dropdownItems.length + (activeItem.hasCta ? 1 : 0)))}%`,
+                          marginLeft: `${scrollProgress * (100 - Math.max(30, 100 / (activeItem.dropdownItems.length + (activeItem.hasCta ? 1 : 0))))}%`,
                         }}
-                      >
-                        <div
-                          className="absolute inset-0 opacity-0 group-hover/cta:opacity-100 transition-opacity duration-500"
-                          style={{ boxShadow: "inset 0 0 40px hsl(0 0% 100% / 0.1)" }}
-                        />
-                        <div className="flex flex-col items-center gap-1.5">
-                          <motion.div
-                            className="w-8 h-8 rounded-full flex items-center justify-center"
-                            style={{ background: "hsl(0 0% 100% / 0.2)" }}
-                            animate={{ x: [0, 4, 0] }}
-                            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                          >
-                            <ArrowRight className="w-4 h-4 text-white" />
-                          </motion.div>
-                          <p className="text-white font-bold text-[11px] uppercase tracking-[0.1em]">Ver todos</p>
-                          <p className="text-white/60 text-[9px] tracking-wide">os modelos</p>
-                        </div>
-                      </motion.a>
-                    )}
-                  </div>
+                        transition={{ type: "tween", duration: 0.1 }}
+                      />
+                    </div>
+                  </>
                 ) : (
                   /* Icon-based list (Como escolher, Suporte) */
                   <div className={`grid gap-2 grid-cols-1 md:grid-cols-${activeItem.dropdownItems.length}`}>
