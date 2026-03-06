@@ -1,5 +1,6 @@
 import logoWhite from "@/assets/ms-eletric-logo-white.png";
 import { useBusinessHours } from "@/hooks/useBusinessHours";
+import { motion } from "framer-motion";
 
 interface HeaderProps {
   onContactClick?: () => void;
@@ -42,47 +43,46 @@ const Header = ({ onContactClick }: HeaderProps) => {
         </nav>
 
         <div className="flex items-center gap-3">
-          <button
+          <motion.button
             onClick={onContactClick}
-            className="group relative flex items-center gap-2.5 rounded-md px-5 py-2.5 text-sm font-semibold tracking-wide text-white transition-all hover:brightness-110"
+            whileHover={{ scale: 1.04 }}
+            whileTap={{ scale: 0.97 }}
+            transition={{ type: "spring", stiffness: 400, damping: 20 }}
+            className="group relative flex items-center gap-3 rounded-full px-6 py-2.5 text-white cursor-pointer overflow-hidden"
             style={{
               background: "linear-gradient(135deg, hsl(11 81% 57%), hsl(11 90% 65%))",
-              boxShadow: "0 0 16px hsla(11, 81%, 57%, 0.3)",
+              boxShadow: "0 4px 20px hsla(11, 81%, 57%, 0.35), inset 0 1px 0 hsla(0, 0%, 100%, 0.15)",
             }}
           >
             {/* Pulsing status dot */}
-            <span className="relative flex h-2.5 w-2.5 shrink-0">
+            <span className="relative flex h-2 w-2 shrink-0">
               <span
-                className="absolute inset-0 rounded-full animate-ping opacity-75"
+                className="absolute inset-0 rounded-full animate-ping opacity-60"
                 style={{
-                  backgroundColor: isOnline
-                    ? "hsl(142 76% 50%)"
-                    : "hsl(0 75% 50%)",
+                  backgroundColor: isOnline ? "hsl(142 76% 50%)" : "hsl(0 75% 50%)",
                 }}
               />
               <span
-                className="relative inline-flex h-2.5 w-2.5 rounded-full"
+                className="relative inline-flex h-2 w-2 rounded-full"
                 style={{
-                  backgroundColor: isOnline
-                    ? "hsl(142 76% 50%)"
-                    : "hsl(0 75% 50%)",
+                  backgroundColor: isOnline ? "hsl(142 76% 50%)" : "hsl(0 75% 50%)",
                   boxShadow: isOnline
-                    ? "0 0 6px hsl(142 76% 50%)"
-                    : "0 0 6px hsl(0 75% 50%)",
+                    ? "0 0 8px hsl(142 76% 50%)"
+                    : "0 0 8px hsl(0 75% 50%)",
                 }}
               />
             </span>
 
             {/* Dynamic copy */}
-            <span className="flex flex-col items-start leading-none gap-0.5">
-              <span className="text-[13px] font-semibold">
+            <span className="flex flex-col items-start leading-none gap-[3px]">
+              <span className="text-[12.5px] font-semibold tracking-wide">
                 {isOnline ? "Atendimento online" : "Atendimento offline"}
               </span>
-              <span className="text-[10px] font-medium opacity-60">
+              <span className="text-[10px] font-medium opacity-70 tracking-wider uppercase">
                 {isOnline ? "Fale conosco" : "Deixe sua mensagem"}
               </span>
             </span>
-          </button>
+          </motion.button>
         </div>
       </div>
     </header>
