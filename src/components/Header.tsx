@@ -336,11 +336,20 @@ const Header = ({ onContactClick }: HeaderProps) => {
                       <h3 className="text-white/90 text-sm font-semibold tracking-wide">Nossos modelos</h3>
                       <p className="text-white/40 text-[11px] mt-0.5">Encontre o veículo elétrico ideal para você</p>
                     </div>
-                    <div className="relative" style={{ contain: "paint" }}>
+                    <div className="relative">
                       <div
                         ref={carouselRef}
                         className="flex gap-3 overflow-x-auto scrollbar-hide cursor-grab active:cursor-grabbing select-none pr-12"
-                        style={{ scrollSnapType: "x mandatory", scrollBehavior: "smooth" }}
+                        style={{
+                          scrollSnapType: "x mandatory",
+                          scrollBehavior: "smooth",
+                          maskImage: showRightFade
+                            ? "linear-gradient(to right, black 85%, transparent 100%)"
+                            : "none",
+                          WebkitMaskImage: showRightFade
+                            ? "linear-gradient(to right, black 85%, transparent 100%)"
+                            : "none",
+                        }}
                         onScroll={handleCarouselScroll}
                         onMouseDown={(e) => {
                           e.preventDefault();
@@ -373,7 +382,7 @@ const Header = ({ onContactClick }: HeaderProps) => {
                             className="group/item relative flex-shrink-0"
                             style={{ width: "210px", aspectRatio: "10/11", scrollSnapAlign: "start" }}
                           >
-                            {/* Glow layer — outside overflow-hidden */}
+                            {/* Glow layer */}
                             <div
                               className="absolute -inset-[1px] rounded-xl opacity-0 group-hover/item:opacity-100 transition-opacity duration-500 ease-in-out pointer-events-none z-10"
                               style={{ boxShadow: "0 0 16px hsl(11 81% 57% / 0.3), 0 0 6px hsl(11 81% 57% / 0.15)" }}
@@ -436,15 +445,6 @@ const Header = ({ onContactClick }: HeaderProps) => {
                           </a>
                         )}
                       </div>
-
-                      {/* Right fade-out dissolve effect */}
-                      <div
-                        className="absolute top-0 right-0 w-20 h-full pointer-events-none z-10 transition-opacity duration-300"
-                        style={{
-                          opacity: showRightFade ? 1 : 0,
-                          background: "linear-gradient(to left, hsl(0 0% 14%) 0%, hsl(0 0% 14% / 0.8) 25%, transparent 100%)",
-                        }}
-                      />
                     </div>
 
                     {/* Slide bar - full width, draggable */}
