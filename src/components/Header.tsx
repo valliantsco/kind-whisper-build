@@ -20,6 +20,7 @@ interface DropdownItem {
   description: string;
   href: string;
   image?: string;
+  video?: string;
   icon?: React.ElementType;
 }
 
@@ -39,11 +40,11 @@ const NAV_ITEMS: NavItem[] = [
     hasDropdown: true,
     hasCta: true,
     dropdownItems: [
-      { label: "Scooters", description: "Mobilidade urbana prática e silenciosa", href: "#modelos", image: categoryScooter },
-      { label: "Bikes", description: "Pedale com assistência elétrica", href: "#modelos", image: categoryBike },
-      { label: "Triciclos", description: "Estabilidade e conforto para todos", href: "#modelos", image: categoryTricycle },
-      { label: "Motocross", description: "Aventura off-road 100% elétrica", href: "#modelos", image: categoryMotocross },
-      { label: "Autopropelidos", description: "Soluções industriais elétricas", href: "#modelos", image: categoryAutopropelido },
+      { label: "Scooters", description: "Mobilidade urbana prática e silenciosa", href: "#modelos", image: categoryScooter, video: "https://videos.pexels.com/video-files/5765171/5765171-sd_506_960_25fps.mp4" },
+      { label: "Bikes", description: "Pedale com assistência elétrica", href: "#modelos", image: categoryBike, video: "https://videos.pexels.com/video-files/5765040/5765040-sd_506_960_25fps.mp4" },
+      { label: "Triciclos", description: "Estabilidade e conforto para todos", href: "#modelos", image: categoryTricycle, video: "https://videos.pexels.com/video-files/4488070/4488070-sd_506_960_25fps.mp4" },
+      { label: "Motocross", description: "Aventura off-road 100% elétrica", href: "#modelos", image: categoryMotocross, video: "https://videos.pexels.com/video-files/5537790/5537790-sd_506_960_25fps.mp4" },
+      { label: "Autopropelidos", description: "Soluções industriais elétricas", href: "#modelos", image: categoryAutopropelido, video: "https://videos.pexels.com/video-files/856237/856237-sd_506_960_25fps.mp4" },
     ],
   },
   {
