@@ -64,10 +64,9 @@ const Header = ({ onContactClick }: HeaderProps) => {
         <div className="flex items-center gap-3">
           <motion.button
             onClick={onContactClick}
-            whileHover={{ boxShadow: "0 4px 24px hsla(11, 81%, 57%, 0.5), inset 0 1px 0 hsla(0, 0%, 100%, 0.2)" }}
             whileTap={{ scale: 0.97 }}
             transition={{ type: "spring", stiffness: 400, damping: 20 }}
-            className="group relative flex items-center gap-2.5 rounded-lg px-5 py-2 text-white cursor-pointer overflow-hidden"
+            className="group relative flex items-center gap-2.5 rounded-lg px-5 py-2 text-white cursor-pointer overflow-hidden transition-shadow duration-500 ease-out hover:shadow-[inset_0_0_20px_hsla(0,0%,100%,0.12)]"
             style={{
               background: "linear-gradient(135deg, hsl(11 81% 57%), hsl(11 90% 65%))",
               boxShadow: "inset 0 1px 0 hsla(0, 0%, 100%, 0.15)",
