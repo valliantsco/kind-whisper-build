@@ -368,16 +368,21 @@ const Header = ({ onContactClick }: HeaderProps) => {
                         }}
                       >
                         {activeItem.dropdownItems.map((dropItem) => (
-                          <a
+                          <div
                             key={dropItem.label}
-                            href={dropItem.href}
-                            className="group/item relative flex-shrink-0 rounded-xl transition-shadow duration-500 ease-in-out"
-                            style={{ width: "210px", aspectRatio: "10/11", scrollSnapAlign: "start", boxShadow: "0 0 0 0 transparent" }}
-                            onClick={(e) => { if (isDraggingCards.current) { e.preventDefault(); return; } setActiveDropdown(null); }}
-                            onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.boxShadow = "0 0 14px hsl(11 81% 57% / 0.25), 0 0 4px hsl(11 81% 57% / 0.1)"; }}
-                            onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.boxShadow = "0 0 0 0 transparent"; }}
+                            className="group/item relative flex-shrink-0"
+                            style={{ width: "210px", aspectRatio: "10/11", scrollSnapAlign: "start" }}
                           >
-                            <div className="relative w-full h-full rounded-xl overflow-hidden">
+                            {/* Glow layer — outside overflow-hidden */}
+                            <div
+                              className="absolute -inset-[1px] rounded-xl opacity-0 group-hover/item:opacity-100 transition-opacity duration-500 ease-in-out pointer-events-none z-10"
+                              style={{ boxShadow: "0 0 16px hsl(11 81% 57% / 0.3), 0 0 6px hsl(11 81% 57% / 0.15)" }}
+                            />
+                            <a
+                              href={dropItem.href}
+                              className="relative block w-full h-full rounded-xl overflow-hidden"
+                              onClick={(e) => { if (isDraggingCards.current) { e.preventDefault(); return; } setActiveDropdown(null); }}
+                            >
                               <img
                                 src={dropItem.image}
                                 alt={dropItem.label}
@@ -401,8 +406,8 @@ const Header = ({ onContactClick }: HeaderProps) => {
                                   {dropItem.description}
                                 </p>
                               </div>
-                            </div>
-                          </a>
+                            </a>
+                          </div>
                         ))}
 
                         {/* CTA card "Ver todos" */}
