@@ -396,7 +396,7 @@ const Header = ({ onContactClick }: HeaderProps) => {
                                 alt={dropItem.label}
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
-                                transition={{ delay: i * 0.08 + 0.1, duration: 0.5, ease: "easeOut" }}
+                                transition={{ delay: i * 0.1 + 0.15, duration: 0.8, ease: "easeOut" }}
                                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 ease-out group-hover/item:scale-[1.08]"
                               />
                               <div
