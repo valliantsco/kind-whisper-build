@@ -318,14 +318,20 @@ const Header = ({ onContactClick }: HeaderProps) => {
                           scrollSnapType: "x mandatory",
                           scrollBehavior: "smooth",
                           maskImage: (() => {
-                            const left = leftFadeOpacity > 0.01 ? `transparent 0%, rgba(0,0,0,${leftFadeOpacity}) ${leftFadeOpacity * 8}%` : "black 0%";
-                            const right = rightFadeOpacity > 0.01 ? `rgba(0,0,0,${rightFadeOpacity * 0.5}) ${55 + (1 - rightFadeOpacity) * 35}%, transparent 100%` : "black 100%";
-                            return `linear-gradient(to right, ${left}, black ${10 + (1 - leftFadeOpacity) * 0}%, black ${55 + (1 - rightFadeOpacity) * 45}%, ${right})`;
+                            const lOp = leftFadeOpacity;
+                            const rOp = rightFadeOpacity;
+                            if (lOp < 0.01 && rOp < 0.01) return "none";
+                            if (lOp < 0.01) return `linear-gradient(to right, black ${55 + (1 - rOp) * 45}%, transparent 100%)`;
+                            if (rOp < 0.01) return `linear-gradient(to right, transparent 0%, black ${lOp * 10}%)`;
+                            return `linear-gradient(to right, transparent 0%, black ${lOp * 10}%, black ${55 + (1 - rOp) * 45}%, transparent 100%)`;
                           })(),
                           WebkitMaskImage: (() => {
-                            const left = leftFadeOpacity > 0.01 ? `transparent 0%, rgba(0,0,0,${leftFadeOpacity}) ${leftFadeOpacity * 8}%` : "black 0%";
-                            const right = rightFadeOpacity > 0.01 ? `rgba(0,0,0,${rightFadeOpacity * 0.5}) ${55 + (1 - rightFadeOpacity) * 35}%, transparent 100%` : "black 100%";
-                            return `linear-gradient(to right, ${left}, black ${10 + (1 - leftFadeOpacity) * 0}%, black ${55 + (1 - rightFadeOpacity) * 45}%, ${right})`;
+                            const lOp = leftFadeOpacity;
+                            const rOp = rightFadeOpacity;
+                            if (lOp < 0.01 && rOp < 0.01) return "none";
+                            if (lOp < 0.01) return `linear-gradient(to right, black ${55 + (1 - rOp) * 45}%, transparent 100%)`;
+                            if (rOp < 0.01) return `linear-gradient(to right, transparent 0%, black ${lOp * 10}%)`;
+                            return `linear-gradient(to right, transparent 0%, black ${lOp * 10}%, black ${55 + (1 - rOp) * 45}%, transparent 100%)`;
                           })(),
                         }}
                         onScroll={handleCarouselScroll}
