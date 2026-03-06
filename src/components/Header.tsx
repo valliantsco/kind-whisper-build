@@ -403,9 +403,9 @@ const Header = ({ onContactClick }: HeaderProps) => {
                         <motion.a
                           href="#modelos"
                           onClick={() => setActiveDropdown(null)}
-                          initial={{ opacity: 0, y: 12 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          transition={{ delay: activeItem.dropdownItems.length * 0.05, duration: 0.3 }}
+                          initial={{ opacity: 0, x: -20 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ delay: activeItem.dropdownItems.length * 0.06, duration: 0.4 }}
                           className="group/cta relative flex-shrink-0 rounded-xl overflow-hidden cursor-pointer flex flex-col items-center justify-center text-center"
                           style={{
                             width: "170px",
