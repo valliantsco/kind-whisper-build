@@ -33,7 +33,7 @@ const Header = ({ onContactClick }: HeaderProps) => {
           <img src={logoWhite} alt="MS Eletric" className="w-auto" style={{ height: "2.53rem" }} />
         </a>
 
-        <nav className="hidden md:flex items-center gap-6 absolute left-1/2 -translate-x-1/2">
+        <nav className="hidden md:flex items-center gap-6 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
           {[
             { label: "Início", href: "#inicio" },
             { label: "Modelos", href: "#modelos" },
@@ -43,14 +43,20 @@ const Header = ({ onContactClick }: HeaderProps) => {
             <a
               key={item.href}
               href={item.href}
-              className="relative text-sm font-medium text-white/90 transition-colors hover:text-white pb-1.5 group"
+              className="relative text-sm font-medium text-white/50 transition-all duration-300 ease-out hover:text-white/95 py-1.5 px-2 rounded-md group"
             >
-              {item.label}
+              {/* Orange blur background on hover */}
+              <span
+                className="absolute inset-0 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-out pointer-events-none"
+                style={{
+                  background: "radial-gradient(ellipse at center, hsl(11 81% 57% / 0.12), transparent 70%)",
+                }}
+              />
+              <span className="relative">{item.label}</span>
+              {/* Underline */}
               <span
                 className="absolute bottom-0 left-1/2 h-[1.5px] w-0 -translate-x-1/2 rounded-full transition-all duration-300 ease-out group-hover:w-1/2 opacity-0 group-hover:opacity-80"
-                style={{
-                  background: "hsl(11 81% 57%)",
-                }}
+                style={{ background: "hsl(11 81% 57%)" }}
               />
             </a>
           ))}
