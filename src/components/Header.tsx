@@ -303,19 +303,6 @@ const Header = ({ onContactClick }: HeaderProps) => {
                 }}
               />
 
-              {/* Shield logo watermark - behind everything */}
-              <img
-                src={msShieldLogo}
-                alt=""
-                className="absolute pointer-events-none select-none z-0"
-                style={{
-                  bottom: "-10%",
-                  right: "5%",
-                  width: "280px",
-                  opacity: 0.03,
-                  filter: "grayscale(100%) brightness(2)",
-                }}
-              />
 
               <div className="p-5 relative">
                 {activeItem.dropdownItems[0]?.image ? (
