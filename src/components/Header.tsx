@@ -445,7 +445,7 @@ const Header = ({ onContactClick }: HeaderProps) => {
                     <div
                       ref={slideBarRef}
                       className="mt-3 rounded-full overflow-hidden cursor-pointer select-none"
-                      style={{ width: "100%", height: "4px", background: "hsl(0 0% 100% / 0.08)" }}
+                      style={{ width: "100%", height: "5px", background: "hsl(0 0% 100% / 0.08)" }}
                       onMouseDown={(e) => {
                         isDraggingBar.current = true;
                         handleSlideBarDrag(e.clientX);
@@ -460,10 +460,10 @@ const Header = ({ onContactClick }: HeaderProps) => {
                         className="h-full rounded-full"
                         style={{
                           background: "linear-gradient(90deg, hsl(11 81% 57%), hsl(11 90% 65%))",
-                          width: "35%",
-                          marginLeft: `${scrollProgress * 65}%`,
-                          transition: isDraggingBar.current ? "none" : "all 0.2s ease-out",
-                          boxShadow: "0 0 8px hsl(11 81% 57% / 0.4)",
+                          width: "40%",
+                          marginLeft: `${scrollProgress * 60}%`,
+                          transition: isDraggingBar.current ? "none" : "margin-left 0.15s ease-out",
+                          boxShadow: "0 0 10px hsl(11 81% 57% / 0.5), 0 0 4px hsl(11 81% 57% / 0.3)",
                         }}
                       />
                     </div>
