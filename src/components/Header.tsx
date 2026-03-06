@@ -400,7 +400,6 @@ const Header = ({ onContactClick }: HeaderProps) => {
                                 className="absolute inset-0 w-full h-full object-cover transition-all duration-700 ease-out group-hover/item:scale-[1.08] opacity-0"
                                 onLoad={(e) => { (e.target as HTMLImageElement).style.opacity = "1"; }}
                               />
-                              />
                               <div
                                 className="absolute inset-0"
                                 style={{
