@@ -360,17 +360,36 @@ const Header = ({ onContactClick }: HeaderProps) => {
                           dragStartScroll.current = el.scrollLeft;
                           el.style.scrollBehavior = "auto";
                           el.style.scrollSnapType = "none";
+                          let lastX = e.pageX;
+                          let velocity = 0;
+                          let lastTime = Date.now();
                           const onMove = (ev: MouseEvent) => {
+                            const now = Date.now();
+                            const dt = Math.max(1, now - lastTime);
                             const diff = ev.pageX - dragStartX.current;
                             if (Math.abs(diff) > 3) isDraggingCards.current = true;
+                            velocity = (ev.pageX - lastX) / dt * 16;
+                            lastX = ev.pageX;
+                            lastTime = now;
                             el.scrollLeft = dragStartScroll.current - diff;
                           };
                           const onUp = () => {
-                            el.style.scrollBehavior = "smooth";
-                            el.style.scrollSnapType = "x mandatory";
                             window.removeEventListener("mousemove", onMove);
                             window.removeEventListener("mouseup", onUp);
-                            setTimeout(() => { isDraggingCards.current = false; }, 10);
+                            // Momentum with friction
+                            const friction = 0.92;
+                            const animate = () => {
+                              if (Math.abs(velocity) < 0.5) {
+                                el.style.scrollSnapType = "x mandatory";
+                                el.style.scrollBehavior = "smooth";
+                                setTimeout(() => { isDraggingCards.current = false; }, 10);
+                                return;
+                              }
+                              el.scrollLeft -= velocity;
+                              velocity *= friction;
+                              requestAnimationFrame(animate);
+                            };
+                            requestAnimationFrame(animate);
                           };
                           window.addEventListener("mousemove", onMove);
                           window.addEventListener("mouseup", onUp);
