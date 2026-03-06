@@ -41,7 +41,7 @@ const NAV_ITEMS: NavItem[] = [
     hasCta: true,
     dropdownItems: [
       { label: "Scooters", description: "Mobilidade urbana prática e silenciosa", href: "#modelos", image: categoryScooter, video: "https://ppmoesqgmficvajqbamr.supabase.co/storage/v1/object/public/videos/scooter.mp4" },
-      { label: "Bikes", description: "Pedale com assistência elétrica", href: "#modelos", image: categoryBike, video: "https://videos.pexels.com/video-files/5765040/5765040-sd_506_960_25fps.mp4" },
+      { label: "Bikes", description: "Pedale com assistência elétrica", href: "#modelos", image: categoryBike, video: "https://ppmoesqgmficvajqbamr.supabase.co/storage/v1/object/public/videos/bikes.mp4" },
       { label: "Triciclos", description: "Estabilidade e conforto para todos", href: "#modelos", image: categoryTricycle, video: "https://videos.pexels.com/video-files/4488070/4488070-sd_506_960_25fps.mp4" },
       { label: "Motocross", description: "Aventura off-road 100% elétrica", href: "#modelos", image: categoryMotocross, video: "https://ppmoesqgmficvajqbamr.supabase.co/storage/v1/object/public/videos/motocross.mp4" },
       { label: "Autopropelidos", description: "Soluções industriais elétricas", href: "#modelos", image: categoryAutopropelido, video: "https://videos.pexels.com/video-files/856237/856237-sd_506_960_25fps.mp4" },
