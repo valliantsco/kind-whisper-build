@@ -456,7 +456,7 @@ const Header = ({ onContactClick }: HeaderProps) => {
                           background: "linear-gradient(90deg, hsl(11 81% 57%), hsl(11 90% 65%))",
                           width: "48%",
                           marginLeft: `${scrollProgress * 52}%`,
-                          transition: isDraggingBar.current ? "none" : "margin-left 0.15s ease-out",
+                          transition: isDraggingBar.current ? "none" : "margin-left 0.35s cubic-bezier(0.25, 0.8, 0.25, 1)",
                           boxShadow: "0 0 10px hsl(11 81% 57% / 0.5), 0 0 4px hsl(11 81% 57% / 0.3)",
                         }}
                       />
