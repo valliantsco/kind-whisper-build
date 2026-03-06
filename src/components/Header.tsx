@@ -414,11 +414,11 @@ const Header = ({ onContactClick }: HeaderProps) => {
                                 ) : dropItem.video ? (
                                   <motion.video
                                     src={dropItem.video}
-                                    poster={dropItem.image}
                                     autoPlay
                                     muted
                                     loop
                                     playsInline
+                                    preload="auto"
                                     initial={{ opacity: 0 }}
                                     animate={{ opacity: 1 }}
                                     transition={{ delay: i * 0.1 + 0.15, duration: 0.8, ease: "easeOut" }}
