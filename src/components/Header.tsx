@@ -74,6 +74,7 @@ const Header = ({ onContactClick }: HeaderProps) => {
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const carouselRef = useRef<HTMLDivElement>(null);
   const [scrollProgress, setScrollProgress] = useState(0);
+  const [showRightFade, setShowRightFade] = useState(true);
   const peekDoneRef = useRef(false);
   const isDraggingBar = useRef(false);
   const isDraggingCards = useRef(false);
@@ -86,7 +87,9 @@ const Header = ({ onContactClick }: HeaderProps) => {
     const el = carouselRef.current;
     if (!el) return;
     const max = el.scrollWidth - el.clientWidth;
-    setScrollProgress(max > 0 ? el.scrollLeft / max : 0);
+    const progress = max > 0 ? el.scrollLeft / max : 0;
+    setScrollProgress(progress);
+    setShowRightFade(progress < 0.95);
   };
 
   const handleSlideBarDrag = useCallback((clientX: number) => {
@@ -363,12 +366,11 @@ const Header = ({ onContactClick }: HeaderProps) => {
                             style={{ width: "210px", aspectRatio: "10/11", scrollSnapAlign: "start" }}
                             onClick={(e) => { if (isDraggingCards.current) { e.preventDefault(); return; } setActiveDropdown(null); }}
                           >
-                            {/* Outer glow on hover */}
+                            {/* Border glow on hover */}
                             <div
-                              className="absolute -inset-2 rounded-2xl opacity-0 group-hover/item:opacity-100 transition-opacity duration-500 ease-in-out pointer-events-none"
+                              className="absolute inset-0 rounded-xl opacity-0 group-hover/item:opacity-100 transition-opacity duration-500 ease-in-out pointer-events-none"
                               style={{
-                                background: "radial-gradient(ellipse at center, hsl(11 81% 57% / 0.25), transparent 70%)",
-                                filter: "blur(14px)",
+                                boxShadow: "0 0 15px hsl(11 81% 57% / 0.4), 0 0 30px hsl(11 81% 57% / 0.15), inset 0 0 0 1px hsl(11 81% 57% / 0.3)",
                               }}
                             />
                             <div className="relative w-full h-full rounded-xl overflow-hidden">
@@ -428,8 +430,9 @@ const Header = ({ onContactClick }: HeaderProps) => {
 
                       {/* Right fade-out dissolve effect */}
                       <div
-                        className="absolute top-0 right-0 w-20 h-full pointer-events-none z-10"
+                        className="absolute top-0 right-0 w-20 h-full pointer-events-none z-10 transition-opacity duration-300"
                         style={{
+                          opacity: showRightFade ? 1 : 0,
                           background: "linear-gradient(to left, hsl(0 0% 14%) 0%, hsl(0 0% 14% / 0.8) 25%, transparent 100%)",
                         }}
                       />
