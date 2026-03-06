@@ -67,7 +67,7 @@ const Header = ({ onContactClick }: HeaderProps) => {
             whileHover={{ scale: 1.04 }}
             whileTap={{ scale: 0.97 }}
             transition={{ type: "spring", stiffness: 400, damping: 20 }}
-            className="group relative flex items-center gap-2.5 rounded-lg px-5 py-2 text-white cursor-pointer overflow-hidden"
+            className="group relative flex items-center gap-2 rounded-xl px-3.5 py-2 text-white cursor-pointer overflow-hidden"
             style={{
               background: "linear-gradient(135deg, hsl(11 81% 57%), hsl(11 90% 65%))",
               boxShadow: "0 4px 20px hsla(11, 81%, 57%, 0.35), inset 0 1px 0 hsla(0, 0%, 100%, 0.15)",
@@ -103,10 +103,10 @@ const Header = ({ onContactClick }: HeaderProps) => {
 
             {/* Dynamic copy */}
             <span className="flex flex-col items-start leading-none gap-[2px]">
-              <span className="text-[11px] font-semibold tracking-wide">
+              <span className="text-[9px] font-semibold tracking-wide">
                 {isOnline ? "Atendimento online" : "Atendimento offline"}
               </span>
-              <span className="text-[8px] font-medium opacity-70 tracking-wider uppercase">
+              <span className="text-[6.5px] font-medium opacity-70 tracking-wider uppercase">
                 {isOnline ? "Fale conosco" : "Deixe sua mensagem"}
               </span>
             </span>
