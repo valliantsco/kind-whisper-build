@@ -217,12 +217,20 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
           {/* Price */}
           {(() => {
             const priceSpec = parseSpecs(model.specs || "").find(s => s.label.toLowerCase().includes("preço") || s.label.toLowerCase().includes("preco"));
-            return priceSpec ? (
+            if (!priceSpec) return null;
+            const isConsulte = priceSpec.value.toLowerCase().includes("consult");
+            return (
               <div className="flex items-center justify-between rounded-xl px-3 py-2.5" style={{ background: "hsl(11 81% 57% / 0.08)", border: "1px solid hsl(11 81% 57% / 0.15)" }}>
-                <span className="text-[10px] uppercase tracking-wider text-white/40 font-medium">A partir de</span>
-                <span className="text-sm font-bold" style={{ color: "hsl(11 81% 57%)" }}>{priceSpec.value}</span>
+                {isConsulte ? (
+                  <span className="text-[11px] font-medium text-white/50 mx-auto">Consulte o valor com nosso time</span>
+                ) : (
+                  <>
+                    <span className="text-[10px] uppercase tracking-wider text-white/40 font-medium">A partir de</span>
+                    <span className="text-sm font-bold" style={{ color: "hsl(11 81% 57%)" }}>{priceSpec.value}</span>
+                  </>
+                )}
               </div>
-            ) : null;
+            );
           })()}
 
           {/* CTA: Saber mais */}
