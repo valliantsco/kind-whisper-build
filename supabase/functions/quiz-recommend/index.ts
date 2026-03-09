@@ -49,19 +49,19 @@ Com base nas respostas do quiz, retorne um JSON com exatamente esta estrutura (s
     {
       "name": "MODELO PRINCIPAL",
       "headline": "Frase de até 10 palavras: benefício principal para o usuário",
-      "specs": "Motor: XW | Vel: Xkm/h | Autonomia: Xkm | Bateria: tipo | Preço: R$X",
+      "specs": "Motor: XW | Vel: Xkm/h | Autonomia: Xkm | Recarga: Xh | Preço: R$X",
       "whyFits": "1-2 frases curtas conectando o perfil do usuário ao modelo"
     },
     {
       "name": "SEGUNDO MODELO",
       "headline": "Frase de até 10 palavras: por que é boa alternativa",
-      "specs": "Motor: XW | Vel: Xkm/h | Autonomia: Xkm | Preço: R$X",
+      "specs": "Motor: XW | Vel: Xkm/h | Autonomia: Xkm | Recarga: Xh | Preço: R$X",
       "whyFits": "1 frase curta sobre por que pode ser interessante"
     },
     {
       "name": "TERCEIRO MODELO (se aplicável)",
       "headline": "Frase de até 10 palavras",
-      "specs": "Motor: XW | Vel: Xkm/h | Autonomia: Xkm | Preço: R$X",
+      "specs": "Motor: XW | Vel: Xkm/h | Autonomia: Xkm | Recarga: Xh | Preço: R$X",
       "whyFits": "1 frase curta"
     }
   ],
@@ -73,7 +73,7 @@ REGRAS:
 - Recomende 2-3 modelos ranqueados do mais adequado ao menos
 - TODOS os modelos devem ter name, headline, specs e whyFits
 - Headlines devem ser CURTAS (máx 10 palavras), focadas no benefício
-- Specs devem seguir o formato exato: Motor | Vel | Autonomia | Preço (mínimo)
+- Specs devem seguir o formato exato: Motor | Vel | Autonomia | Recarga | Preço (todos obrigatórios)
 - whyFits deve ser 1-2 frases CURTAS e diretas
 - Responda APENAS com o JSON, sem texto adicional`;
 

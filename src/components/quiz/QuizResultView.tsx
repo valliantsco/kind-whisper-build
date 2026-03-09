@@ -52,6 +52,8 @@ const specIcon = (label: string) => {
   if (l.includes("motor")) return <Zap className="w-3 h-3" />;
   if (l.includes("vel")) return <Gauge className="w-3 h-3" />;
   if (l.includes("autonomia")) return <Battery className="w-3 h-3" />;
+  if (l.includes("recarga")) return <Clock className="w-3 h-3" />;
+  if (l.includes("preço") || l.includes("preco")) return null;
   return null;
 };
 
@@ -207,10 +209,21 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
 
           {/* Why fits */}
           {model.whyFits && (
-            <p className="text-xs text-white/50 leading-relaxed italic">
-              "{model.whyFits}"
+            <p className="text-xs text-white/50 leading-relaxed">
+              {model.whyFits}
             </p>
           )}
+
+          {/* Price */}
+          {(() => {
+            const priceSpec = parseSpecs(model.specs || "").find(s => s.label.toLowerCase().includes("preço") || s.label.toLowerCase().includes("preco"));
+            return priceSpec ? (
+              <div className="flex items-center justify-between rounded-xl px-3 py-2.5" style={{ background: "hsl(11 81% 57% / 0.08)", border: "1px solid hsl(11 81% 57% / 0.15)" }}>
+                <span className="text-[10px] uppercase tracking-wider text-white/40 font-medium">A partir de</span>
+                <span className="text-sm font-bold" style={{ color: "hsl(11 81% 57%)" }}>{priceSpec.value}</span>
+              </div>
+            ) : null;
+          })()}
 
           {/* CTA: Saber mais */}
           <motion.button
@@ -327,6 +340,17 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
                     {model.whyFits}
                   </p>
                 )}
+
+                {/* Price */}
+                {(() => {
+                  const priceSpec = specs.find(s => s.label.toLowerCase().includes("preço") || s.label.toLowerCase().includes("preco"));
+                  return priceSpec ? (
+                    <div className="flex items-center justify-between rounded-lg px-2.5 py-2" style={{ background: "hsl(11 81% 57% / 0.08)", border: "1px solid hsl(11 81% 57% / 0.12)" }}>
+                      <span className="text-[10px] uppercase tracking-wider text-white/40 font-medium">A partir de</span>
+                      <span className="text-xs font-bold" style={{ color: "hsl(11 81% 57%)" }}>{priceSpec.value}</span>
+                    </div>
+                  ) : null;
+                })()}
 
                 {/* CTA */}
                 <button
