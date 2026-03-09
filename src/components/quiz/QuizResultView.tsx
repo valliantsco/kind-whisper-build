@@ -443,35 +443,52 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
   return (
     <motion.div
       key="result"
-      initial={{ opacity: 0, y: 10 }}
-      animate={{ opacity: 1, y: 0 }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
       className="space-y-5"
     >
-      {/* Category badge */}
-      <div
+      {/* Category badge — reveals first */}
+      <motion.div
         className="rounded-xl p-4 text-center"
         style={{ background: "hsl(11 81% 57% / 0.08)", border: "1px solid hsl(11 81% 57% / 0.12)" }}
+        initial={{ opacity: 0, y: 15, scale: 0.95 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        transition={{ delay: 0.1, duration: 0.4, ease: "easeOut" }}
       >
         <p className="text-[10px] text-white/35 mb-1 uppercase tracking-[0.15em] font-medium">Categoria ideal</p>
         <p className="font-bold text-lg" style={{ color: "hsl(11 81% 57%)" }}>{result.category}</p>
         <p className="text-[11px] text-white/45 mt-1 leading-relaxed max-w-xs mx-auto">{result.justification}</p>
-      </div>
+      </motion.div>
 
       {/* Model cards */}
       {hasModels && (
         <div className="space-y-3">
-          {/* Primary */}
+          {/* Primary — reveals second */}
           {models[0] && renderPrimaryCard(models[0])}
 
-          {/* Secondary label */}
+          {/* Secondary label — reveals third */}
           {models.length > 1 && (
-            <p className="text-[10px] font-semibold uppercase tracking-[0.15em] text-white/30 pt-1">
+            <motion.p
+              className="text-[10px] font-semibold uppercase tracking-[0.15em] text-white/30 pt-1"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1.3 }}
+            >
               Outras opções para o seu perfil
-            </p>
+            </motion.p>
           )}
 
-          {/* Secondary/tertiary */}
-          {models.slice(1).map((model, i) => renderSecondaryCard(model, i + 1))}
+          {/* Secondary/tertiary — reveals last with stagger */}
+          {models.slice(1).map((model, i) => (
+            <motion.div
+              key={model.name}
+              initial={{ opacity: 0, x: -12 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 1.4 + i * 0.15, duration: 0.4 }}
+            >
+              {renderSecondaryCard(model, i + 1)}
+            </motion.div>
+          ))}
         </div>
       )}
 
