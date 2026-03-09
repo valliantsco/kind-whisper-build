@@ -18,6 +18,7 @@ const modelImageMap: Record<string, string> = {
   "bike ms 600": modelBike,
   "ms 600": modelBike,
   "bliss": modelBliss,
+  "liberty ultra": modelBliss,
   "liberty": modelBliss,
   // Bicicletas elétricas
   "santa monica": modelSantaMonica,
