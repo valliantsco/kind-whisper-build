@@ -81,13 +81,13 @@ CATEGORIAS VÁLIDAS: Autopropelidos, Bicicletas Elétricas, Scooters Elétricas,
 12. Triciclo Elétrico | R$ 15.990 | Motor: 650W | Vel: 32km/h | Autonomia: 60km | Recarga: 6-7h | Bateria: chumbo não removível | Carga: 120-150kg
     Perfil: estabilidade, conforto, público maduro, mobilidade assistida, uso interno/urbano.
 
-── ESPORTIVOS ──
+── SCOOTERS ELÉTRICAS (ESPORTIVAS) ──
 
 13. Tour 3K | R$ 16.990 | Motor: 3.000W | Vel: 75km/h | Autonomia: 40km | Recarga: 6-8h | Bateria: lítio removível | Carga: 120kg
-    Perfil: identidade estética forte (custom/chopper), deslocamento urbano com performance, uso recreativo premium.
+    Perfil: identidade estética forte (custom/chopper), deslocamento urbano com performance, uso recreativo premium. Categoria: Scooters Elétricas.
 
 14. S3K | R$ 19.990 | Motor: 3.500W | Vel: 80km/h | Autonomia: 85km | Recarga: 6-8h | Bateria: lítio removível | Carga: 120kg
-    Perfil: maior performance, visual esportivo, substituto parcial de motos a combustão.
+    Perfil: maior performance, visual esportivo, substituto parcial de motos a combustão. Categoria: Scooters Elétricas.
 
 ── UTILITÁRIOS ──
 
