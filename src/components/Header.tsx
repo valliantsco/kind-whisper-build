@@ -606,13 +606,12 @@ const Header = ({ onContactClick }: HeaderProps) => {
                     {activeItem.dropdownItems.map((dropItem, i) => {
                       const Icon = dropItem.icon;
                       return (
-                        <motion.a
+                        <motion.button
                           key={dropItem.label}
-                          href={dropItem.href}
                           initial={{ opacity: 0, y: 10 }}
                           animate={{ opacity: 1, y: 0 }}
                           transition={{ delay: i * 0.06, duration: 0.3, ease: "easeOut" }}
-                          className="group/item flex items-start gap-3 rounded-xl p-4 transition-all duration-300 hover:bg-white/[0.06]"
+                          className="group/item flex items-start gap-3 rounded-xl p-4 transition-all duration-300 hover:bg-white/[0.06] cursor-pointer text-left"
                           style={{ border: "1px solid transparent" }}
                           onMouseEnter={(e) => {
                             (e.currentTarget as HTMLElement).style.borderColor = "hsl(11 81% 57% / 0.25)";
@@ -620,7 +619,15 @@ const Header = ({ onContactClick }: HeaderProps) => {
                           onMouseLeave={(e) => {
                             (e.currentTarget as HTMLElement).style.borderColor = "transparent";
                           }}
-                          onClick={() => setActiveDropdown(null)}
+                          onClick={() => {
+                            setActiveDropdown(null);
+                            if (dropItem.label === "Quiz interativo") {
+                              setQuizOpen(true);
+                            } else {
+                              const el = document.querySelector(dropItem.href);
+                              el?.scrollIntoView({ behavior: "smooth" });
+                            }
+                          }}
                         >
                           {Icon && (
                             <div
@@ -641,7 +648,7 @@ const Header = ({ onContactClick }: HeaderProps) => {
                               {dropItem.description}
                             </p>
                           </div>
-                        </motion.a>
+                        </motion.button>
                       );
                     })}
                   </div>
