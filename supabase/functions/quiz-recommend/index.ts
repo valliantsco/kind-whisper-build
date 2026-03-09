@@ -102,7 +102,7 @@ CATEGORIAS VÁLIDAS: Autopropelidos, Bicicletas Elétricas, Scooters, Triciclos,
 17. Moto Cross Infantil | R$ 5.990 | Motor: 800W | Vel: 32km/h | Autonomia: 35km | Recarga: 6h | Bateria: chumbo não removível | Carga: 55kg
     Perfil: crianças/adolescentes, chácaras, sítios, condomínios, lazer supervisionado.
 
-18. Drift Infantil 350 | Preço: consulte | Motor: 350W | Vel: 12km/h | Autonomia: 8km | Recarga: 3-5h | Bateria: lítio 36V/3Ah | Carga: 80kg
+18. Drift Elétrico 350 | R$ 1.999 | Motor: 350W | Vel: 12km/h | Autonomia: 8km | Recarga: 3-5h | Bateria: lítio 36V/3Ah | Carga: 80kg
     Perfil: drift recreativo, LED RGB, Bluetooth, diversão supervisionada.
 
 ── PATINETES ──
