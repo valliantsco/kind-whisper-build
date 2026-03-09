@@ -5,20 +5,26 @@ import QuizEngine from "@/components/quiz/QuizEngine";
 import type { QuizConfig, QuizResult } from "@/components/quiz/types";
 
 const childDirectResult: QuizResult = {
-  category: "Moto Cross Infantil",
+  category: "Infantil",
   justification:
-    "Para crianças e adolescentes, a Moto Cross Infantil é a escolha perfeita com controle de velocidade por chave.",
+    "Para crianças e adolescentes, temos opções seguras com controle parental de velocidade.",
   models: [
     {
       name: "Moto Cross Infantil",
       headline: "Diversão segura com controle parental de velocidade",
       specs: "Motor: 800W | Vel: 32km/h | Autonomia: 35km | Recarga: 6h | Preço: R$ 5.990",
-      whyFits: "Possui seletor de velocidade com controle por chave, permitindo que os pais ajustem a velocidade máxima conforme a idade e experiência. Ideal para diversão segura com ângulo de escalada de 18°.",
+      whyFits: "Possui seletor de velocidade com controle por chave, permitindo que os pais ajustem a velocidade máxima. Ideal para chácaras, sítios e condomínios.",
+    },
+    {
+      name: "Drift Elétrico 350",
+      headline: "Drift recreativo com LED RGB e Bluetooth",
+      specs: "Motor: 350W | Vel: 12km/h | Autonomia: 8km | Recarga: 3-5h | Preço: R$ 1.999",
+      whyFits: "Para crianças menores que buscam diversão lúdica com sistema de drift, luzes RGB e som Bluetooth em espaços controlados.",
     },
   ],
   suggestions: [],
   whatsappMessage:
-    "Olá, fiz o quiz no site e tenho interesse na Moto Cross Infantil para presentear. Gostaria de saber mais sobre disponibilidade, formas de pagamento e se posso fazer um test ride.",
+    "Olá, fiz o quiz no site e tenho interesse em veículos da linha infantil. Gostaria de saber mais sobre disponibilidade e formas de pagamento.",
 };
 
 const businessContext = `A MS Eletric é revendedora autorizada AIMA (líder mundial) de veículos elétricos em Uberlândia-MG.
@@ -28,88 +34,117 @@ const businessContext = `A MS Eletric é revendedora autorizada AIMA (líder mun
 --- AUTOPROPELIDOS (não precisam de habilitação, até 32 km/h) ---
 
 1. BIKE 350
-Motor: 350W HUB | Vel: 29km/h | Autonomia: 40km | Recarga: 7-8h | Bateria: chumbo removível | Carga: 90-100kg | Escalada: 7° | Preço: R$7.990
-RECOMENDAR QUANDO: uso leve urbano curto (até 20-25km/dia), prioridade é economia/custo-benefício, terreno plano
-EVITAR QUANDO: muitas subidas, autonomia >35km/dia, uso profissional intenso, busca velocidade
+Motor: 350W HUB | Vel: 29km/h | Autonomia: 40km | Recarga: 7-8h | Bateria: chumbo removível | Carga: 90-100kg | Preço: R$7.990
+RECOMENDAR QUANDO: uso leve urbano curto (até 20-25km/dia), prioridade é economia, terreno plano
+EVITAR QUANDO: muitas subidas, autonomia >35km/dia, uso profissional intenso
 
 2. BIKE 400+
-Motor: 400W Bosch | Vel: 32km/h | Autonomia: 50km | Recarga: 7-8h | Bateria: lítio removível | Carga: 90-100kg | Escalada: 10° | Freio dianteiro disco | Preço: R$10.990
-RECOMENDAR QUANDO: urbano diário (11-35km/dia), precisa levar bateria para carregar (apartamento), prioridade economia+praticidade
-EVITAR QUANDO: autonomia >50km/dia, desempenho de moto, carga/baú grande
+Motor: 400W Bosch | Vel: 32km/h | Autonomia: 50km | Recarga: 7-8h | Bateria: lítio removível | Carga: 90-100kg | Preço: R$10.990
+RECOMENDAR QUANDO: urbano diário (11-35km/dia), precisa levar bateria para carregar (apartamento)
+EVITAR QUANDO: autonomia >50km/dia, desempenho de moto
 
 3. BIKE 500
-Motor: 500W Bosch | Vel: 32km/h | Autonomia: 50km | Recarga: 7-8h | Bateria: lítio removível | Carga: 110-120kg | Escalada: 10° | Preço: R$10.990
-RECOMENDAR QUANDO: urbano frequente (11-35km/dia), condutor mais pesado, prioridade robustez/durabilidade, uso diário intenso
-EVITAR QUANDO: autonomia muito alta (MS600/Bliss melhor), delivery profissional (Rhino), carga pesada (Cargo)
+Motor: 500W Bosch | Vel: 32km/h | Autonomia: 50km | Recarga: 7-8h | Bateria: lítio removível | Carga: 100-120kg | Preço: R$10.990
+RECOMENDAR QUANDO: urbano frequente, condutor mais pesado, uso diário intenso
+EVITAR QUANDO: autonomia muito alta (MS600/Bliss melhor), delivery profissional
 
 4. BIKE MS 600
-Motor: 600W | Vel: 32km/h | Autonomia: 70km | Recarga: 7-8h | Bateria: grafeno NÃO removível | Carga: 100-120kg | Escalada: 10° | Freio dianteiro disco | Preço: R$11.990
+Motor: 600W | Vel: 32km/h | Autonomia: 70km | Recarga: 7-8h | Bateria: grafeno NÃO removível | Carga: 100-120kg | Preço: R$11.990
 RECOMENDAR QUANDO: km/dia 21-55km, prioridade autonomia, rotina intensa sem querer moto
-EVITAR QUANDO: precisa levar bateria para carregar (NÃO removível!), quer desempenho de moto
+EVITAR QUANDO: precisa levar bateria para carregar (NÃO removível!)
 
 5. BLISS
-Motor: 800W | Vel: 32km/h | Autonomia: 70km | Recarga: 6-7h | Bateria: lítio | Pneus: 3.0-10 (largos) | Carga: 120-150kg | Preço: R$15.990
-RECOMENDAR QUANDO: km/dia 21-55km, prioridade conforto+robustez+autonomia, ruas ruins/buracos, quer premium sem ser moto
-EVITAR QUANDO: quer velocidade alta (Tour 3K/S3K), delivery/carga profissional
+Motor: 800W | Vel: 32km/h | Autonomia: 70km | Recarga: 6-7h | Bateria: lítio | Carga: 120-150kg | Preço: R$15.990
+RECOMENDAR QUANDO: km/dia 21-55km, prioridade conforto+robustez, ruas ruins/buracos, quer premium
+EVITAR QUANDO: quer velocidade alta, delivery/carga profissional
+
+6. LIBERTY ULTRA
+Motor: 1.000W | Vel: 32km/h | Autonomia: 70km | Recarga: 5-6h | Bateria: lítio 64V/30Ah | Carga: 150kg | Preço: R$12.990
+RECOMENDAR QUANDO: mais autonomia, baú traseiro, deslocamentos recorrentes, entregas leves
+EVITAR QUANDO: quer velocidade de moto, carga pesada
 
 --- BICICLETAS ELÉTRICAS (pedal assistido) ---
 
-6. SANTA MONICA
-Motor: 500W | Vel: 32km/h | Autonomia: 60km | Recarga: 5h | Bateria: lítio | Aro 27.5" | Freio disco óleo | Carga: 120-150kg
-RECOMENDAR QUANDO: quer "cara de bike", conforto+recarga rápida, cidade+lazer, km/dia 11-45km
+7. SANTA MONICA
+Motor: 500W | Vel: 32km/h | Autonomia: 60km | Recarga: 5h | Bateria: lítio | Carga: 120-150kg
+RECOMENDAR QUANDO: quer "cara de bike", conforto+recarga rápida, cidade+lazer
 EVITAR QUANDO: carga/baú profissional, desempenho de moto
 
-7. BIG SUR
-Motor: 500W | Vel: 32km/h | Autonomia: 60km | Recarga: 5h | Bateria: lítio | Pneus fat 20x4.0 | Freio disco óleo | Carga: 120-150kg
-RECOMENDAR QUANDO: ruas ruins/paralelepípedo/terra leve, prioridade conforto+estabilidade, pouca confiança em 2 rodas (alternativa ao triciclo)
-EVITAR QUANDO: desempenho de moto, carga pesada/delivery profissional
+8. BIG SUR
+Motor: 500W | Vel: 32km/h | Autonomia: 60km | Recarga: 5h | Bateria: lítio | Pneus fat 20x4.0 | Carga: 120-150kg
+RECOMENDAR QUANDO: ruas ruins/paralelepípedo/terra leve, prioridade estabilidade, pouca confiança em 2 rodas
+EVITAR QUANDO: desempenho de moto, carga pesada
 
---- TRICICLO ---
+--- SCOOTERS ELÉTRICAS ---
 
-8. TRICICLO ELÉTRICO
+9. HOLIDAY 1000
+Motor: 1.000W | Vel: 32km/h | Autonomia: 45km | Recarga: 8-10h | Bateria: lítio removível | Carga: 150kg | Preço: R$10.490
+RECOMENDAR QUANDO: mobilidade urbana leve, visual amigável, velocidade controlada, deslocamentos curtos
+EVITAR QUANDO: precisa de velocidade alta, autonomia muito longa
+
+10. MS 2500
+Motor: 2.500W | Vel: 52km/h | Autonomia: 50km | Recarga: 6-7h | Bateria: chumbo NÃO removível | Carga: 150kg | Preço: R$14.990
+RECOMENDAR QUANDO: quer sensação de moto moderada, desempenho urbano
+EVITAR QUANDO: precisa levar bateria (NÃO removível), autonomia muito alta
+
+11. NEW HOLIDAY
+Motor: 2.000W | Vel: 50km/h | Autonomia: 50km | Recarga: 6-8h | Bateria: lítio removível | Carga: 150kg | Preço: R$15.990
+RECOMENDAR QUANDO: visual clássico, conforto, banco duplo, recursos: ré, NFC, alarme
+EVITAR QUANDO: precisa de autonomia muito alta
+
+12. TOUR 3K
+Motor: 3.000W | Vel: 75km/h | Autonomia: 40km | Recarga: 6-8h | Bateria: lítio removível | Carga: 120kg | Preço: R$16.990
+RECOMENDAR QUANDO: quer velocidade+agilidade, muitas subidas, bateria removível
+EVITAR QUANDO: precisa rodar muito sem recarga (S3K melhor)
+
+13. S3K
+Motor: 3.500W | Vel: 80km/h | Autonomia: 85km | Recarga: 6-8h | Bateria: lítio removível | Carga: 120kg | Preço: R$19.990
+RECOMENDAR QUANDO: km/dia 36-75km, prioridade autonomia+desempenho, quer a scooter mais completa
+EVITAR QUANDO: deslocamento curto e econômico
+
+--- TRICICLOS ELÉTRICOS ---
+
+14. TRICICLO ELÉTRICO
 Motor: 650W | Vel: 32km/h | Autonomia: 60km | Recarga: 6-7h | Bateria: chumbo NÃO removível | Carga: 120-150kg | Preço: R$15.990
-RECOMENDAR QUANDO: perfil idoso/PCD/pouca confiança, prioridade estabilidade+segurança, urbano tranquilo (11-45km/dia)
-EVITAR QUANDO: quer moto rápida/agilidade, carga pesada (Cargo), precisa levar bateria (NÃO removível)
+RECOMENDAR QUANDO: perfil idoso/PCD/pouca confiança, prioridade estabilidade+segurança
+EVITAR QUANDO: quer velocidade/agilidade, precisa levar bateria (NÃO removível)
 
---- MOTOCICLETAS (exigem habilitação CNH A/AB) ---
+--- UTILITÁRIOS ---
 
-9. MS 2500
-Motor: 2500W | Vel: 52km/h | Autonomia: 50km | Recarga: 6-7h | Bateria: chumbo NÃO removível | Carga: 150kg | Escalada: 12° | Preço: R$18.990
-RECOMENDAR QUANDO: quer sensação de moto moderada, desempenho urbano (11-40km/dia)
-EVITAR QUANDO: precisa levar bateria (NÃO removível), autonomia muito alta, delivery profissional
+15. RHINO DELIVERY
+Motor: 2.000W | Vel: 65km/h | Autonomia: 75km | Recarga: 6-8h | Bateria: lítio removível | Carga: 150kg | Preço: R$18.990
+RECOMENDAR QUANDO: delivery/trabalho dia todo, km/dia 36-75km, carga leve a média
+EVITAR QUANDO: carga pesada/frete (Cargo), uso pessoal curto
 
-10. TOUR 3K
-Motor: 3000W | Vel: 75km/h | Autonomia: 40km | Recarga: 6-8h | Bateria: lítio removível | Carga: 120kg | Escalada: 18° | Preço: R$16.990
-RECOMENDAR QUANDO: quer moto+velocidade+agilidade, muitas subidas, bateria removível, km/dia 11-35km
-EVITAR QUANDO: precisa rodar muito sem recarga (S3K/Rhino melhor), busca economia/uso tranquilo
+16. CARGO
+Motor: 1.000W | Vel: 32km/h | Autonomia: 70km | Recarga: 6-7h | Bateria: chumbo | Carga útil: 400kg | Preço: R$28.990
+RECOMENDAR QUANDO: carga pesada, caixas/mercadoria/frete, perfil empresa/equipe
+EVITAR QUANDO: mobilidade pessoal+velocidade, delivery leve (Rhino melhor)
 
-11. S3K (MS 3500)
-Motor: 3500W | Vel: 80km/h | Autonomia: 85km | Recarga: 6-8h | Bateria: lítio removível | Carga: 120kg | Escalada: 18° | Preço: R$18.990
-RECOMENDAR QUANDO: km/dia 36-75km, prioridade autonomia+desempenho, rotina intensa, quer a moto mais completa
-EVITAR QUANDO: deslocamento curto e econômico (autopropelidos), foco delivery com estrutura (Rhino)
+--- INFANTIL ---
 
-12. RHINO DELIVERY
-Motor: 2000W | Vel: 65km/h | Autonomia: 75km | Recarga: 6-8h | Bateria: lítio removível | Carga: 150kg | Preço: R$18.990
-RECOMENDAR QUANDO: delivery/trabalho dia todo, km/dia 36-75km, prioridade durabilidade+autonomia+agilidade, carga leve a média
-EVITAR QUANDO: carga pesada/frete (Cargo), uso pessoal curto (autopropelidos)
+17. MOTO CROSS INFANTIL
+Motor: 800W | Vel: 32km/h | Autonomia: 35km | Recarga: 6h | Carga: 55kg | Preço: R$5.990
+RECOMENDAR QUANDO: criança/adolescente, uso recreativo/lazer, chácaras/sítios
 
-13. CARGO
-Motor: 1000W | Vel: 32km/h | Autonomia: 70km | Recarga: 6-7h | Bateria: chumbo | Carga útil: 400kg | Preço: R$28.990
-RECOMENDAR QUANDO: carga pesada, caixas/mercadoria/frete, perfil empresa/equipe, transporte de mercadorias
-EVITAR QUANDO: mobilidade pessoal+velocidade, delivery leve de comida/pacotes (Rhino melhor)
+18. DRIFT ELÉTRICO 350
+Motor: 350W | Vel: 12km/h | Autonomia: 8km | Recarga: 3-5h | Carga: 80kg | Preço: R$1.999
+RECOMENDAR QUANDO: crianças menores, drift recreativo, diversão lúdica
 
-14. MOTO CROSS INFANTIL
-Motor: 800W | Vel: 32km/h | Autonomia: 35km | Recarga: 6h | Seletor de velocidade com controle por chave | Carga: 55kg | Preço: R$5.990
-RECOMENDAR QUANDO: criança/adolescente, uso recreativo/lazer
-EVITAR QUANDO: qualquer cenário de deslocamento urbano real, trabalho, entrega
+--- PATINETES ---
+
+19. PATINETE 350
+Motor: 350W | Vel: 30km/h | Autonomia: 30km | Recarga: 5-6h | Carga: 120kg | Preço: R$2.800
+RECOMENDAR QUANDO: última milha, condomínios, campus, mobilidade complementar leve
 
 === REGRAS GERAIS ===
-- Sem habilitação → apenas Autopropelidos, Bikes Elétricas ou Triciclo
+- Sem habilitação → apenas Autopropelidos, Bicicletas Elétricas, Triciclos Elétricos ou Patinetes
+- Com habilitação (CNH A/AB) → pode recomendar Scooters Elétricas e Utilitários também
 - Bateria removível necessária → NÃO recomendar MS 600, Triciclo, MS 2500 (baterias fixas)
 - Entregas profissionais → Rhino Delivery ou Cargo
 - Carga pesada/frete → Cargo (400kg)
 - Estabilidade/idoso/PCD → Triciclo Elétrico ou Big Sur
-- Maior autonomia + potência com moto → S3K
+- Maior autonomia + potência → S3K
 - Melhor custo-benefício entrada → Bike 350
 - Ruas ruins → Big Sur (pneu fat) ou Bliss (pneu largo)`;
 
@@ -146,6 +181,16 @@ export const msEletricQuizConfig: QuizConfig = {
         "Transporte de carga/mercadorias",
         "Lazer / passeios",
         "Ainda estou em dúvida (quero uma recomendação)",
+      ],
+    },
+    {
+      id: "cnh",
+      question: "Você possui habilitação (CNH A ou AB)?",
+      helperText: "Autopropelidos e bicicletas elétricas não exigem habilitação.",
+      options: [
+        "Sim, tenho CNH A ou AB",
+        "Não tenho habilitação",
+        "Estou tirando / pretendo tirar",
       ],
     },
     {
