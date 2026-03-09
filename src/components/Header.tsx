@@ -525,34 +525,14 @@ const Header = ({ onContactClick }: HeaderProps) => {
                               background: "linear-gradient(145deg, hsl(11 81% 52%), hsl(11 90% 58%), hsl(11 81% 50%))",
                               backgroundSize: "200% 200%",
                             }}
-                            whileHover={{
-                              scale: 1.03,
-                              boxShadow: "0 0 36px hsl(11 81% 57% / 0.45), 0 0 72px hsl(11 81% 57% / 0.18)",
-                            }}
                           >
-                            {/* Animated glow border */}
-                            <motion.div
-                              className="absolute inset-0 rounded-xl pointer-events-none"
-                              animate={{
-                                boxShadow: [
-                                  "inset 0 0 0 1.5px hsl(0 0% 100% / 0.15), 0 0 20px hsl(11 81% 57% / 0.2)",
-                                  "inset 0 0 0 1.5px hsl(0 0% 100% / 0.3), 0 0 32px hsl(11 81% 57% / 0.35)",
-                                  "inset 0 0 0 1.5px hsl(0 0% 100% / 0.15), 0 0 20px hsl(11 81% 57% / 0.2)",
-                                ],
-                              }}
-                              transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
-                            />
-
                             <div className="flex flex-col items-center gap-3">
-                              <motion.div
+                              <div
                                 className="w-11 h-11 rounded-full flex items-center justify-center backdrop-blur-sm"
                                 style={{ background: "hsl(0 0% 100% / 0.2)", border: "1px solid hsl(0 0% 100% / 0.1)" }}
-                                whileHover={{ scale: 1.1 }}
-                                animate={{ x: [0, 5, 0] }}
-                                transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
                               >
                                 <ArrowRight className="w-5 h-5 text-white" />
-                              </motion.div>
+                              </div>
                               <div>
                                 <p className="text-white font-bold text-[11px] uppercase tracking-[0.14em] leading-tight">
                                   Explorar catálogo
