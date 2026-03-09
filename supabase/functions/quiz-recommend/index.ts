@@ -35,7 +35,7 @@ ${businessContext || "Não fornecido"}
 
 ═══ CATÁLOGO OFICIAL MS ELETRIC (use APENAS estes produtos) ═══
 
-CATEGORIAS VÁLIDAS: Autopropelidos, Bicicletas Elétricas, Scooters, Triciclos, Utilitários, Esportivos, Infantil, Patinetes
+CATEGORIAS VÁLIDAS: Autopropelidos, Bicicletas Elétricas, Scooters Elétricas, Triciclos Elétricos, Utilitários, Infantil, Patinetes
 
 ── AUTOPROPELIDOS ──
 
@@ -65,7 +65,7 @@ CATEGORIAS VÁLIDAS: Autopropelidos, Bicicletas Elétricas, Scooters, Triciclos,
 8. Big Sur | Preço: consulte | Motor: 500W | Vel: 32km/h | Autonomia: 60km | Recarga: 5h | Bateria: lítio | Carga: 120-150kg
    Perfil: pneus largos (fat tire), visual premium, lazer, pisos variados, mais estabilidade.
 
-── SCOOTERS ──
+── SCOOTERS ELÉTRICAS ──
 
 9. MS 2500 | R$ 14.990 | Motor: 2.500W | Vel: 52km/h | Autonomia: 50km | Recarga: 6-7h | Bateria: chumbo não removível | Carga: 150kg
    Perfil: mais desempenho que autopropelido, deslocamentos diários urbanos, proposta prática.
@@ -76,18 +76,18 @@ CATEGORIAS VÁLIDAS: Autopropelidos, Bicicletas Elétricas, Scooters, Triciclos,
 11. Holiday 1000 | R$ 10.490 | Motor: 1.000W | Vel: 32km/h | Autonomia: 45km | Recarga: 8-10h | Bateria: lítio removível 60V/20Ah | Carga: 150kg
     Perfil: mobilidade urbana leve, velocidade controlada, visual amigável, deslocamentos curtos/médios.
 
-── TRICICLOS ──
+── TRICICLOS ELÉTRICOS ──
 
 12. Triciclo Elétrico | R$ 15.990 | Motor: 650W | Vel: 32km/h | Autonomia: 60km | Recarga: 6-7h | Bateria: chumbo não removível | Carga: 120-150kg
     Perfil: estabilidade, conforto, público maduro, mobilidade assistida, uso interno/urbano.
 
-── ESPORTIVOS ──
+── SCOOTERS ELÉTRICAS (ESPORTIVAS) ──
 
 13. Tour 3K | R$ 16.990 | Motor: 3.000W | Vel: 75km/h | Autonomia: 40km | Recarga: 6-8h | Bateria: lítio removível | Carga: 120kg
-    Perfil: identidade estética forte (custom/chopper), deslocamento urbano com performance, uso recreativo premium.
+    Perfil: identidade estética forte (custom/chopper), deslocamento urbano com performance, uso recreativo premium. Categoria: Scooters Elétricas.
 
 14. S3K | R$ 19.990 | Motor: 3.500W | Vel: 80km/h | Autonomia: 85km | Recarga: 6-8h | Bateria: lítio removível | Carga: 120kg
-    Perfil: maior performance, visual esportivo, substituto parcial de motos a combustão.
+    Perfil: maior performance, visual esportivo, substituto parcial de motos a combustão. Categoria: Scooters Elétricas.
 
 ── UTILITÁRIOS ──
 
