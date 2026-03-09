@@ -18,6 +18,7 @@ const modelImageMap: Record<string, string> = {
   "bike ms 600": modelBike,
   "ms 600": modelBike,
   "bliss": modelBliss,
+  "liberty ultra": modelBliss,
   "liberty": modelBliss,
   // Bicicletas elétricas
   "santa monica": modelSantaMonica,
@@ -43,6 +44,8 @@ const modelImageMap: Record<string, string> = {
   "moto cross infantil": modelMotocrossKids,
   "motocross infantil": modelMotocrossKids,
   "moto cross": modelMotocrossKids,
+  "drift elétrico 350": modelMotocrossKids,
+  "drift eletrico 350": modelMotocrossKids,
   "drift infantil 350": modelMotocrossKids,
   "drift infantil": modelMotocrossKids,
   // Patinetes
