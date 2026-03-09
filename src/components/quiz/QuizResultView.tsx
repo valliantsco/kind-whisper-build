@@ -319,11 +319,7 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
     const priceSpec = specs.find(s => s.label.toLowerCase().includes("preço") || s.label.toLowerCase().includes("preco"));
 
     return (
-      <motion.div
-        key={model.name}
-        initial={{ opacity: 0, x: -8 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ delay: i * 0.1 }}
+      <div
         className="rounded-xl overflow-hidden"
         style={{
           background: "hsl(0 0% 100% / 0.03)",
