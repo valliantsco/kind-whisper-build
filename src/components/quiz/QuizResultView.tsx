@@ -432,7 +432,7 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
             </motion.div>
           )}
         </AnimatePresence>
-      </motion.div>
+      </div>
     );
   };
 
