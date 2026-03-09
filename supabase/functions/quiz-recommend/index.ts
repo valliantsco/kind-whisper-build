@@ -73,7 +73,7 @@ CATEGORIAS VÁLIDAS: Autopropelidos, Bicicletas Elétricas, Scooters, Triciclos,
 10. New Holiday | R$ 15.990 | Motor: 2.000W | Vel: 50km/h | Autonomia: 50km | Recarga: 6-8h | Bateria: lítio removível 60V/20Ah | Carga: 150kg
     Perfil: visual clássico, conforto, banco duplo, recursos: ré, NFC, alarme, parking.
 
-11. Holiday 1000 | Preço: consulte | Motor: 1.000W | Vel: 32km/h | Autonomia: 45km | Recarga: 8-10h | Bateria: lítio removível 60V/20Ah | Carga: 150kg
+11. Holiday 1000 | R$ 10.490 | Motor: 1.000W | Vel: 32km/h | Autonomia: 45km | Recarga: 8-10h | Bateria: lítio removível 60V/20Ah | Carga: 150kg
     Perfil: mobilidade urbana leve, velocidade controlada, visual amigável, deslocamentos curtos/médios.
 
 ── TRICICLOS ──
