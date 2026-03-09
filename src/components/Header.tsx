@@ -88,6 +88,7 @@ const Header = ({ onContactClick }: HeaderProps) => {
     });
   }, []);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const [quizOpen, setQuizOpen] = useState(false);
   const headerRef = useRef<HTMLDivElement>(null);
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const carouselRef = useRef<HTMLDivElement>(null);
