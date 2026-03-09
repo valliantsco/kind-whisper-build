@@ -1,6 +1,6 @@
 import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { MessageCircle, Star, ChevronRight, ChevronDown, User, Phone, MapPin, Clock } from "lucide-react";
+import { MessageCircle, Star, ChevronDown, User, Phone, MapPin, Clock, ExternalLink } from "lucide-react";
 import type { QuizResult } from "./types";
 import { getModelImage } from "./modelImages";
 import { useBusinessStatus } from "@/hooks/useBusinessHours";
@@ -21,7 +21,6 @@ const getDayMatch = (dayLabel: string): number => {
   return -1;
 };
 
-// ── WhatsApp icon ──────────────────────────────────────────────────────
 const WhatsAppIcon = ({ className = "w-5 h-5" }: { className?: string }) => (
   <svg viewBox="0 0 24 24" fill="currentColor" className={className}>
     <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
@@ -35,6 +34,12 @@ const getInputStyle = (hasError: boolean) => ({
   border: hasError ? "1px solid hsl(0 84% 60% / 0.5)" : "1px solid hsl(0 0% 100% / 0.1)",
   ...(hasError ? { boxShadow: "0 0 0 2px hsl(0 84% 60% / 0.1)" } : {}),
 });
+
+/** Truncate text to ~maxLen chars at word boundary */
+const truncate = (text: string, maxLen = 80) => {
+  if (!text || text.length <= maxLen) return text;
+  return text.slice(0, maxLen).replace(/\s+\S*$/, "") + "…";
+};
 
 const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps) => {
   const models = result.models?.length ? result.models : [];
@@ -67,7 +72,7 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
 
   const buildWhatsAppUrl = () => {
     const modelNames = models.map(m => m.name).join(", ");
-    const msg = `Olá! Meu nome é ${name.trim()}, sou de ${city.trim()}. Fiz o quiz no site e recebi a recomendação da categoria "${result.category}" com os modelos: ${modelNames || result.suggestions.join(", ")}. Gostaria de saber mais sobre disponibilidade e condições.`;
+    const msg = `Olá! Meu nome é ${name.trim()}, sou de ${city.trim()}. Fiz o quiz no site e recebi a recomendação: ${result.category} — ${modelNames || result.suggestions.join(", ")}. Gostaria de saber mais!`;
     return `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(msg)}`;
   };
 
@@ -82,18 +87,13 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
   const handleNameChange = (val: string) => {
     const formatted = formatName(val);
     setName(formatted);
-    const spam = detectSpam("name", formatted);
-    setNameError(spam);
+    setNameError(detectSpam("name", formatted));
   };
 
   const handlePhoneChange = (val: string) => {
     const digits = val.replace(/\D/g, "").slice(0, 11);
     setPhone(formatPhone(digits));
-    if (digits.length === 11) {
-      setPhoneError(validatePhone(digits));
-    } else {
-      setPhoneError(null);
-    }
+    setPhoneError(digits.length === 11 ? validatePhone(digits) : null);
   };
 
   const handleCityChange = (val: string) => {
@@ -120,15 +120,141 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
 
   const handlePhoneBlur = () => {
     const digits = phone.replace(/\D/g, "");
-    if (digits.length > 0 && digits.length < 11) {
-      setPhoneError("O número deve ter DDD + 9 dígitos");
-    }
+    if (digits.length > 0 && digits.length < 11) setPhoneError("DDD + 9 dígitos");
   };
 
   const handleNameBlur = () => {
-    if (name.trim().length > 0 && !name.trim().includes(" ")) {
-      setNameError("Inclua seu sobrenome também");
-    }
+    if (name.trim().length > 0 && !name.trim().includes(" ")) setNameError("Inclua seu sobrenome");
+  };
+
+  // ── Render a single model card ──────────────────────────────────────
+  const renderModelCard = (model: typeof models[0], i: number) => {
+    const image = getModelImage(model.name);
+    const isPrimary = i === 0;
+    const isExpanded = expandedModel === i;
+
+    return (
+      <motion.div
+        key={model.name}
+        initial={{ opacity: 0, x: -10 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ delay: i * 0.08 }}
+        className="rounded-xl overflow-hidden"
+        style={{
+          background: isPrimary ? "hsl(11 81% 57% / 0.08)" : "hsl(0 0% 100% / 0.04)",
+          border: isPrimary ? "1px solid hsl(11 81% 57% / 0.25)" : "1px solid hsl(0 0% 100% / 0.08)",
+        }}
+      >
+        {/* Primary hero image */}
+        {isPrimary && image && (
+          <div className="w-full h-36 bg-white flex items-center justify-center overflow-hidden">
+            <img src={image} alt={model.name} className="h-full w-auto object-contain" />
+          </div>
+        )}
+
+        {/* Card body */}
+        <div
+          className={`${isPrimary ? "p-4" : "p-3 cursor-pointer select-none"}`}
+          onClick={!isPrimary ? () => setExpandedModel(isExpanded ? null : i) : undefined}
+        >
+          <div className="flex items-start gap-2.5">
+            {/* Thumbnail for secondary */}
+            {!isPrimary && image && (
+              <div
+                className="w-11 h-11 rounded-lg bg-white overflow-hidden flex-shrink-0 flex items-center justify-center"
+                style={{ border: "1px solid hsl(0 0% 100% / 0.1)" }}
+              >
+                <img src={image} alt={model.name} className="h-full w-auto object-contain" />
+              </div>
+            )}
+
+            {/* No image fallback icon */}
+            {!image && isPrimary && <Star className="w-4 h-4 mt-0.5 flex-shrink-0 fill-current" style={{ color: "hsl(11 81% 57%)" }} />}
+
+            <div className="flex-1 min-w-0">
+              <div className="flex items-center gap-1.5">
+                {isPrimary && image && <Star className="w-3.5 h-3.5 flex-shrink-0 fill-current" style={{ color: "hsl(11 81% 57%)" }} />}
+                <p
+                  className={`font-bold ${isPrimary ? "text-base" : "text-sm text-white/80"}`}
+                  style={isPrimary ? { color: "hsl(11 81% 57%)" } : {}}
+                >
+                  {model.name}
+                </p>
+                {!isPrimary && (
+                  <motion.span
+                    animate={{ rotate: isExpanded ? 180 : 0 }}
+                    transition={{ duration: 0.2 }}
+                    className="ml-auto flex-shrink-0"
+                  >
+                    <ChevronDown className="w-4 h-4 text-white/40" />
+                  </motion.span>
+                )}
+              </div>
+
+              {/* Headline — always visible */}
+              <p className={`${isPrimary ? "text-xs text-white/60" : "text-[11px] text-white/40"} mt-0.5 leading-snug`}>
+                {isPrimary ? model.headline : truncate(model.headline, 60)}
+              </p>
+
+              {/* Primary: show specs & whyFits inline (compact) */}
+              {isPrimary && model.specs && (
+                <div className="mt-2 rounded-lg px-3 py-2" style={{ background: "hsl(0 0% 100% / 0.06)" }}>
+                  <p className="text-[10px] uppercase tracking-wider text-white/40 mb-0.5 font-semibold">Destaques</p>
+                  <p className="text-xs text-white/70 leading-relaxed">{truncate(model.specs, 120)}</p>
+                </div>
+              )}
+              {isPrimary && model.whyFits && (
+                <p className="text-xs text-white/50 mt-2 leading-relaxed">{truncate(model.whyFits, 100)}</p>
+              )}
+            </div>
+          </div>
+        </div>
+
+        {/* Expandable details for secondary/tertiary */}
+        <AnimatePresence>
+          {!isPrimary && isExpanded && (
+            <motion.div
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: "auto", opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.25, ease: "easeInOut" }}
+              className="overflow-hidden"
+            >
+              <div className="px-3 pb-3 space-y-2" style={{ borderTop: "1px solid hsl(0 0% 100% / 0.06)" }}>
+                {model.headline && (
+                  <p className="text-xs text-white/60 mt-2 leading-relaxed">{model.headline}</p>
+                )}
+                {model.specs && (
+                  <div className="rounded-lg px-3 py-2" style={{ background: "hsl(0 0% 100% / 0.06)" }}>
+                    <p className="text-[10px] uppercase tracking-wider text-white/40 mb-0.5 font-semibold">Destaques</p>
+                    <p className="text-xs text-white/70">{truncate(model.specs, 100)}</p>
+                  </div>
+                )}
+                {model.whyFits && (
+                  <p className="text-[11px] text-white/50 leading-relaxed">{truncate(model.whyFits, 80)}</p>
+                )}
+                {/* Saber Mais CTA */}
+                <button
+                  type="button"
+                  className="inline-flex items-center gap-1 text-[11px] font-semibold mt-1 cursor-pointer transition-colors"
+                  style={{ color: "hsl(11 81% 57%)" }}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    // For now, scroll to models section or open product page
+                    const modelsSection = document.getElementById("modelos");
+                    if (modelsSection) {
+                      modelsSection.scrollIntoView({ behavior: "smooth" });
+                    }
+                  }}
+                >
+                  Saber mais <ExternalLink className="w-3 h-3" />
+                </button>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </motion.div>
+    );
   };
 
   return (
@@ -138,113 +264,23 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
       animate={{ opacity: 1, y: 0 }}
       className="space-y-5"
     >
-      {/* Category */}
+      {/* Category badge */}
       <div
         className="rounded-xl p-4 text-center"
         style={{ background: "hsl(11 81% 57% / 0.1)", border: "1px solid hsl(11 81% 57% / 0.15)" }}
       >
-        <p className="text-[10px] text-white/40 mb-1 uppercase tracking-wider">Categoria recomendada</p>
+        <p className="text-[10px] text-white/40 mb-1 uppercase tracking-wider">Categoria ideal para você</p>
         <p className="font-bold text-xl" style={{ color: "hsl(11 81% 57%)" }}>{result.category}</p>
-        <p className="text-xs text-white/50 mt-1">{result.justification}</p>
+        <p className="text-xs text-white/50 mt-1 leading-relaxed">{result.justification}</p>
       </div>
 
+      {/* Model cards */}
       {hasModels ? (
-        <div className="space-y-3">
+        <div className="space-y-2.5">
           <p className="text-xs font-semibold uppercase tracking-wider text-white/40">
-            Modelos recomendados
+            {models.length === 1 ? "Modelo recomendado" : "Modelos recomendados"}
           </p>
-
-          {models.map((model, i) => {
-            const image = getModelImage(model.name);
-            return (
-              <motion.div
-                key={model.name}
-                initial={{ opacity: 0, x: -10 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: i * 0.1 }}
-                className="rounded-xl overflow-hidden"
-                style={{
-                  background: i === 0 ? "hsl(11 81% 57% / 0.08)" : "hsl(0 0% 100% / 0.04)",
-                  border: i === 0 ? "1px solid hsl(11 81% 57% / 0.25)" : "1px solid hsl(0 0% 100% / 0.08)",
-                }}
-              >
-                {i === 0 && image && (
-                  <div className="w-full h-40 bg-white flex items-center justify-center overflow-hidden">
-                    <img src={image} alt={model.name} className="h-full w-auto object-contain" />
-                  </div>
-                )}
-                <div
-                  className={`${i === 0 ? "p-4" : "p-3 cursor-pointer"}`}
-                  onClick={i > 0 ? () => setExpandedModel(expandedModel === i ? null : i) : undefined}
-                >
-                  <div className="flex items-start gap-2">
-                    {i > 0 && image && (
-                      <div className="w-12 h-12 rounded-lg bg-white border overflow-hidden flex-shrink-0 flex items-center justify-center" style={{ borderColor: "hsl(0 0% 100% / 0.1)" }}>
-                        <img src={image} alt={model.name} className="h-full w-auto object-contain" />
-                      </div>
-                    )}
-                    {!image && i === 0 && <Star className="w-4 h-4 mt-0.5 flex-shrink-0 fill-current" style={{ color: "hsl(11 81% 57%)" }} />}
-                    {!image && i > 0 && <ChevronRight className="w-4 h-4 text-white/30 mt-0.5 flex-shrink-0" />}
-                    <div className="flex-1 min-w-0">
-                      <div className="flex items-center gap-1.5">
-                        {i === 0 && image && <Star className="w-3.5 h-3.5 flex-shrink-0 fill-current" style={{ color: "hsl(11 81% 57%)" }} />}
-                        <p className={`font-bold ${i === 0 ? "text-base" : "text-sm text-white/80"}`} style={i === 0 ? { color: "hsl(11 81% 57%)" } : {}}>{model.name}</p>
-                        {i > 0 && (
-                          <motion.span
-                            animate={{ rotate: expandedModel === i ? 180 : 0 }}
-                            transition={{ duration: 0.2 }}
-                            className="ml-auto flex-shrink-0"
-                          >
-                            <ChevronDown className="w-4 h-4 text-white/40" />
-                          </motion.span>
-                        )}
-                      </div>
-                      <p className={`${i === 0 ? "text-sm text-white/70" : "text-xs text-white/40"} mt-0.5`}>{model.headline}</p>
-                      {i === 0 && model.specs && (
-                        <div className="mt-2 rounded-lg px-3 py-2" style={{ background: "hsl(0 0% 100% / 0.06)" }}>
-                          <p className="text-[10px] uppercase tracking-wider text-white/40 mb-1 font-semibold">Especificações</p>
-                          <p className="text-xs text-white/70">{model.specs}</p>
-                        </div>
-                      )}
-                      {i === 0 && model.whyFits && (
-                        <div className="mt-2">
-                          <p className="text-[10px] uppercase tracking-wider text-white/40 mb-1 font-semibold">Por que combina com você</p>
-                          <p className="text-xs text-white/60 leading-relaxed">{model.whyFits}</p>
-                        </div>
-                      )}
-                    </div>
-                  </div>
-                </div>
-                {/* Expandable details for secondary/tertiary models */}
-                <AnimatePresence>
-                  {i > 0 && expandedModel === i && (
-                    <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: "auto", opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.25, ease: "easeInOut" }}
-                      className="overflow-hidden"
-                    >
-                      <div className="px-3 pb-3 space-y-2" style={{ borderTop: "1px solid hsl(0 0% 100% / 0.06)" }}>
-                        {model.specs && (
-                          <div className="mt-2 rounded-lg px-3 py-2" style={{ background: "hsl(0 0% 100% / 0.06)" }}>
-                            <p className="text-[10px] uppercase tracking-wider text-white/40 mb-1 font-semibold">Especificações</p>
-                            <p className="text-xs text-white/70">{model.specs}</p>
-                          </div>
-                        )}
-                        {model.whyFits && (
-                          <div className="mt-1">
-                            <p className="text-[10px] uppercase tracking-wider text-white/40 mb-1 font-semibold">Por que combina com você</p>
-                            <p className="text-xs text-white/60 leading-relaxed">{model.whyFits}</p>
-                          </div>
-                        )}
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </motion.div>
-            );
-          })}
+          {models.map((model, i) => renderModelCard(model, i))}
         </div>
       ) : result.suggestions.length > 0 ? (
         <div>
@@ -263,17 +299,17 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
         </div>
       ) : null}
 
-      {/* Lead Capture Section */}
-      <div className="space-y-4 pt-2">
+      {/* ── Lead capture ────────────────────────────────────────────── */}
+      <div className="space-y-4 pt-1">
         <div
           className="h-[1px]"
           style={{ background: "linear-gradient(90deg, transparent, hsl(11 81% 57% / 0.3), transparent)" }}
         />
-        <p className="text-xs font-semibold uppercase tracking-wider text-white/40 pt-1">
-          Fale com um especialista
+        <p className="text-xs font-semibold uppercase tracking-wider text-white/40">
+          Gostou? Fale com a gente
         </p>
 
-        {/* Status Chip */}
+        {/* Status chip */}
         <div className="relative">
           <button
             type="button"
@@ -356,8 +392,7 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
         {/* Name */}
         <div>
           <label className="flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-[0.1em] text-white/50 mb-1.5">
-            <User className="w-3 h-3" />
-            Como podemos te chamar? <span style={{ color: "hsl(11 81% 57% / 0.7)" }}>*</span>
+            <User className="w-3 h-3" /> Seu nome <span style={{ color: "hsl(11 81% 57% / 0.7)" }}>*</span>
           </label>
           <input
             type="text"
@@ -372,11 +407,10 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
           {nameError && <p className="text-[10px] mt-1" style={{ color: "hsl(0 84% 65%)" }}>{nameError}</p>}
         </div>
 
-        {/* WhatsApp */}
+        {/* Phone */}
         <div>
           <label className="flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-[0.1em] text-white/50 mb-1.5">
-            <Phone className="w-3 h-3" />
-            WhatsApp para contato <span style={{ color: "hsl(11 81% 57% / 0.7)" }}>*</span>
+            <Phone className="w-3 h-3" /> WhatsApp <span style={{ color: "hsl(11 81% 57% / 0.7)" }}>*</span>
           </label>
           <input
             type="tel"
@@ -394,8 +428,7 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
         {/* City */}
         <div className="relative">
           <label className="flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-[0.1em] text-white/50 mb-1.5">
-            <MapPin className="w-3 h-3" />
-            De onde você é? <span style={{ color: "hsl(11 81% 57% / 0.7)" }}>*</span>
+            <MapPin className="w-3 h-3" /> Sua cidade <span style={{ color: "hsl(11 81% 57% / 0.7)" }}>*</span>
           </label>
           <input
             ref={cityInputRef}
@@ -433,17 +466,17 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
                   boxShadow: "0 8px 30px rgba(0,0,0,0.4)",
                 }}
               >
-                {citySuggestions.map((s, i) => (
+                {citySuggestions.map((s, idx) => (
                   <button
                     key={s}
                     type="button"
                     onMouseDown={(e) => { e.preventDefault(); selectCity(s); }}
                     className="w-full text-left px-3 py-2 text-sm transition-colors"
                     style={{
-                      color: focusedCityIndex === i ? "white" : "hsl(0 0% 100% / 0.6)",
-                      background: focusedCityIndex === i ? "hsl(0 0% 100% / 0.1)" : "transparent",
+                      color: focusedCityIndex === idx ? "white" : "hsl(0 0% 100% / 0.6)",
+                      background: focusedCityIndex === idx ? "hsl(0 0% 100% / 0.1)" : "transparent",
                     }}
-                    onMouseEnter={() => setFocusedCityIndex(i)}
+                    onMouseEnter={() => setFocusedCityIndex(idx)}
                   >
                     {s}
                   </button>
@@ -455,7 +488,7 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
       </div>
 
       {/* CTAs */}
-      <div className="flex flex-col gap-3 pt-2">
+      <div className="flex flex-col gap-2.5 pt-1">
         <motion.a
           href={isFormValid ? buildWhatsAppUrl() : undefined}
           target={isFormValid ? "_blank" : undefined}
@@ -472,16 +505,14 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
           whileTap={isFormValid ? { scale: 0.98 } : {}}
         >
           <WhatsAppIcon className="w-5 h-5" />
-          Continuar no WhatsApp
+          Falar no WhatsApp
         </motion.a>
         {!isFormValid && (
-          <p className="text-[10px] text-white/30 text-center">
-            Preencha os campos acima para continuar
-          </p>
+          <p className="text-[10px] text-white/30 text-center">Preencha os campos acima para continuar</p>
         )}
         <button
           onClick={onReset}
-          className="text-xs text-white/40 hover:text-white/70 transition-colors py-2 uppercase tracking-wider font-medium cursor-pointer"
+          className="text-xs text-white/40 hover:text-white/70 transition-colors py-1.5 uppercase tracking-wider font-medium cursor-pointer"
         >
           Refazer quiz
         </button>
