@@ -161,9 +161,9 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
           boxShadow: "0 8px 32px hsl(11 81% 57% / 0.08)",
         }}
       >
-        {/* Badge: melhor escolha + match % */}
+        {/* Badge: melhor escolha */}
         <div
-          className="flex items-center justify-between px-4 py-2"
+          className="flex items-center px-4 py-2"
           style={{
             background: "linear-gradient(90deg, hsl(11 81% 57% / 0.15), transparent)",
             borderBottom: "1px solid hsl(11 81% 57% / 0.12)",
@@ -175,17 +175,6 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
               Melhor escolha para você
             </span>
           </div>
-          <motion.div
-            initial={{ opacity: 0, scale: 0.5 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 1.2, type: "spring", stiffness: 300 }}
-            className="flex items-center gap-1 px-2 py-0.5 rounded-full"
-            style={{ background: "hsl(142 76% 36% / 0.2)", border: "1px solid hsl(142 76% 36% / 0.3)" }}
-          >
-            <span className="text-[10px] font-bold" style={{ color: "hsl(142 76% 50%)" }}>
-              {Math.floor(85 + Math.random() * 13)}% match
-            </span>
-          </motion.div>
         </div>
 
         {/* Image with ambient glow */}
