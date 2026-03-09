@@ -65,7 +65,7 @@ CATEGORIAS VÁLIDAS: Autopropelidos, Bicicletas Elétricas, Scooters Elétricas,
 8. Big Sur | Preço: consulte | Motor: 500W | Vel: 32km/h | Autonomia: 60km | Recarga: 5h | Bateria: lítio | Carga: 120-150kg
    Perfil: pneus largos (fat tire), visual premium, lazer, pisos variados, mais estabilidade.
 
-── SCOOTERS ──
+── SCOOTERS ELÉTRICAS ──
 
 9. MS 2500 | R$ 14.990 | Motor: 2.500W | Vel: 52km/h | Autonomia: 50km | Recarga: 6-7h | Bateria: chumbo não removível | Carga: 150kg
    Perfil: mais desempenho que autopropelido, deslocamentos diários urbanos, proposta prática.
