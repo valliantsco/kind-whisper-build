@@ -209,10 +209,21 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
 
           {/* Why fits */}
           {model.whyFits && (
-            <p className="text-xs text-white/50 leading-relaxed italic">
-              "{model.whyFits}"
+            <p className="text-xs text-white/50 leading-relaxed">
+              {model.whyFits}
             </p>
           )}
+
+          {/* Price */}
+          {(() => {
+            const priceSpec = parseSpecs(model.specs || "").find(s => s.label.toLowerCase().includes("preço") || s.label.toLowerCase().includes("preco"));
+            return priceSpec ? (
+              <div className="flex items-center justify-between rounded-xl px-3 py-2.5" style={{ background: "hsl(11 81% 57% / 0.08)", border: "1px solid hsl(11 81% 57% / 0.15)" }}>
+                <span className="text-[10px] uppercase tracking-wider text-white/40 font-medium">A partir de</span>
+                <span className="text-sm font-bold" style={{ color: "hsl(11 81% 57%)" }}>{priceSpec.value}</span>
+              </div>
+            ) : null;
+          })()}
 
           {/* CTA: Saber mais */}
           <motion.button
