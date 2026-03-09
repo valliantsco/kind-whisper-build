@@ -52,6 +52,8 @@ const specIcon = (label: string) => {
   if (l.includes("motor")) return <Zap className="w-3 h-3" />;
   if (l.includes("vel")) return <Gauge className="w-3 h-3" />;
   if (l.includes("autonomia")) return <Battery className="w-3 h-3" />;
+  if (l.includes("recarga")) return <Clock className="w-3 h-3" />;
+  if (l.includes("preço") || l.includes("preco")) return null;
   return null;
 };
 
