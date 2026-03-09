@@ -35,7 +35,7 @@ ${businessContext || "Não fornecido"}
 
 ═══ CATÁLOGO OFICIAL MS ELETRIC (use APENAS estes produtos) ═══
 
-CATEGORIAS VÁLIDAS: Autopropelidos, Bicicletas Elétricas, Scooters, Triciclos, Utilitários, Esportivos, Infantil, Patinetes
+CATEGORIAS VÁLIDAS: Autopropelidos, Bicicletas Elétricas, Scooters Elétricas, Triciclos Elétricos, Utilitários, Infantil, Patinetes
 
 ── AUTOPROPELIDOS ──
 
