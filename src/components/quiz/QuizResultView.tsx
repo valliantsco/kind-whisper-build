@@ -217,12 +217,20 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
           {/* Price */}
           {(() => {
             const priceSpec = parseSpecs(model.specs || "").find(s => s.label.toLowerCase().includes("preço") || s.label.toLowerCase().includes("preco"));
-            return priceSpec ? (
+            if (!priceSpec) return null;
+            const isConsulte = priceSpec.value.toLowerCase().includes("consult");
+            return (
               <div className="flex items-center justify-between rounded-xl px-3 py-2.5" style={{ background: "hsl(11 81% 57% / 0.08)", border: "1px solid hsl(11 81% 57% / 0.15)" }}>
-                <span className="text-[10px] uppercase tracking-wider text-white/40 font-medium">A partir de</span>
-                <span className="text-sm font-bold" style={{ color: "hsl(11 81% 57%)" }}>{priceSpec.value}</span>
+                {isConsulte ? (
+                  <span className="text-[11px] font-medium text-white/50 mx-auto">Consulte o valor com nosso time</span>
+                ) : (
+                  <>
+                    <span className="text-[10px] uppercase tracking-wider text-white/40 font-medium">A partir de</span>
+                    <span className="text-sm font-bold" style={{ color: "hsl(11 81% 57%)" }}>{priceSpec.value}</span>
+                  </>
+                )}
               </div>
-            ) : null;
+            );
           })()}
 
           {/* CTA: Saber mais */}
@@ -256,6 +264,8 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
     const image = getModelImage(model.name);
     const isExpanded = expandedModel === i;
     const specs = parseSpecs(model.specs || "");
+    const nonPriceSpecs = specs.filter(s => !s.label.toLowerCase().includes("preço") && !s.label.toLowerCase().includes("preco"));
+    const priceSpec = specs.find(s => s.label.toLowerCase().includes("preço") || s.label.toLowerCase().includes("preco"));
 
     return (
       <motion.div
@@ -277,7 +287,7 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
           {/* Thumbnail */}
           {image && (
             <div
-              className="w-12 h-12 rounded-lg bg-white/5 overflow-hidden flex-shrink-0 flex items-center justify-center"
+              className="w-11 h-11 rounded-lg bg-white/5 overflow-hidden flex-shrink-0 flex items-center justify-center"
               style={{ border: "1px solid hsl(0 0% 100% / 0.08)" }}
             >
               <img src={image} alt={model.name} className="h-full w-auto object-contain" />
@@ -286,10 +296,10 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
 
           {/* Info */}
           <div className="flex-1 min-w-0">
-            <p className="text-sm font-semibold text-white/85 group-hover:text-white transition-colors">
+            <p className="text-sm font-semibold text-white/85 group-hover:text-white transition-colors leading-tight">
               {model.name}
             </p>
-            <p className="text-[11px] text-white/40 leading-snug mt-0.5 truncate">
+            <p className="text-[11px] text-white/40 leading-snug mt-0.5 line-clamp-2">
               {model.headline}
             </p>
           </div>
@@ -318,18 +328,21 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
                 className="px-3 pb-3 space-y-2.5"
                 style={{ borderTop: "1px solid hsl(0 0% 100% / 0.06)" }}
               >
-                {/* Specs pills */}
-                {specs.length > 0 && (
-                  <div className="flex flex-wrap gap-1.5 pt-2.5">
-                    {specs.slice(0, 4).map((s, idx) => (
-                      <span
+                {/* Specs grid */}
+                {nonPriceSpecs.length > 0 && (
+                  <div className="grid grid-cols-2 gap-1.5 pt-2.5">
+                    {nonPriceSpecs.slice(0, 4).map((s, idx) => (
+                      <div
                         key={idx}
-                        className="inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-[10px] font-medium text-white/60"
-                        style={{ background: "hsl(0 0% 100% / 0.06)", border: "1px solid hsl(0 0% 100% / 0.06)" }}
+                        className="flex items-center gap-1.5 rounded-lg px-2 py-1.5"
+                        style={{ background: "hsl(0 0% 100% / 0.04)", border: "1px solid hsl(0 0% 100% / 0.06)" }}
                       >
                         <span style={{ color: "hsl(11 81% 57% / 0.6)" }}>{specIcon(s.label)}</span>
-                        {s.label}: <span className="text-white/80 font-semibold">{s.value}</span>
-                      </span>
+                        <div className="min-w-0">
+                          <p className="text-[9px] uppercase tracking-wider text-white/30 leading-none">{s.label}</p>
+                          <p className="text-[11px] font-semibold text-white/80 leading-tight truncate">{s.value}</p>
+                        </div>
+                      </div>
                     ))}
                   </div>
                 )}
@@ -342,15 +355,18 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
                 )}
 
                 {/* Price */}
-                {(() => {
-                  const priceSpec = specs.find(s => s.label.toLowerCase().includes("preço") || s.label.toLowerCase().includes("preco"));
-                  return priceSpec ? (
-                    <div className="flex items-center justify-between rounded-lg px-2.5 py-2" style={{ background: "hsl(11 81% 57% / 0.08)", border: "1px solid hsl(11 81% 57% / 0.12)" }}>
-                      <span className="text-[10px] uppercase tracking-wider text-white/40 font-medium">A partir de</span>
-                      <span className="text-xs font-bold" style={{ color: "hsl(11 81% 57%)" }}>{priceSpec.value}</span>
-                    </div>
-                  ) : null;
-                })()}
+                {priceSpec && (
+                  <div className="flex items-center justify-between rounded-lg px-2.5 py-2" style={{ background: "hsl(11 81% 57% / 0.08)", border: "1px solid hsl(11 81% 57% / 0.12)" }}>
+                    {priceSpec.value.toLowerCase().includes("consult") ? (
+                      <span className="text-[10px] font-medium text-white/50 mx-auto">Consulte o valor com nosso time</span>
+                    ) : (
+                      <>
+                        <span className="text-[10px] uppercase tracking-wider text-white/40 font-medium">A partir de</span>
+                        <span className="text-xs font-bold" style={{ color: "hsl(11 81% 57%)" }}>{priceSpec.value}</span>
+                      </>
+                    )}
+                  </div>
+                )}
 
                 {/* CTA */}
                 <button
