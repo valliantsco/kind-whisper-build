@@ -1,6 +1,6 @@
 import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { MessageCircle, Star, ChevronRight, User, Phone, MapPin, Clock } from "lucide-react";
+import { MessageCircle, Star, ChevronRight, ChevronDown, User, Phone, MapPin, Clock } from "lucide-react";
 import type { QuizResult } from "./types";
 import { getModelImage } from "./modelImages";
 import { useBusinessStatus } from "@/hooks/useBusinessHours";
