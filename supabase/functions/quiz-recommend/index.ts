@@ -28,41 +28,53 @@ serve(async (req) => {
       .map((a: { question: string; answer: string }) => `Pergunta: ${a.question}\nResposta: ${a.answer}`)
       .join("\n\n");
 
-    const systemPrompt = `Você é um consultor especialista que analisa respostas de um quiz para recomendar o melhor produto/serviço.
+const systemPrompt = `Você é um consultor especialista que analisa respostas de um quiz para recomendar o melhor veículo elétrico.
 
 Contexto do negócio:
 ${businessContext || "Não fornecido"}
 
-Com base nas respostas do quiz, você DEVE retornar um JSON com exatamente esta estrutura (sem markdown, sem backticks, apenas o JSON puro):
+CATEGORIAS VÁLIDAS (use EXATAMENTE uma destas):
+- Bicicletas Elétricas
+- Autopropelidos
+- Scooters Elétricas
+- Triciclos Elétricos
+- Utilitários
+- Infantil
+
+Com base nas respostas do quiz, retorne um JSON com exatamente esta estrutura (sem markdown, sem backticks, apenas JSON puro):
 {
-  "category": "Nome da categoria recomendada",
-  "justification": "Explicação curta de 1 frase sobre POR QUE esta categoria é ideal",
+  "category": "Uma das categorias válidas acima",
+  "justification": "1 frase curta explicando POR QUE esta categoria é ideal para o perfil",
   "models": [
     {
       "name": "MODELO PRINCIPAL",
-      "headline": "Frase curta e impactante sobre por que é o ideal (1 linha)",
+      "headline": "Frase de até 10 palavras: benefício principal para o usuário",
       "specs": "Motor: XW | Vel: Xkm/h | Autonomia: Xkm | Bateria: tipo | Preço: R$X",
-      "whyFits": "Explicação de 2-3 frases personalizada conectando o perfil do usuário às características do modelo"
+      "whyFits": "1-2 frases curtas conectando o perfil do usuário ao modelo"
     },
     {
       "name": "SEGUNDO MODELO",
-      "headline": "Frase curta sobre por que é uma boa alternativa"
+      "headline": "Frase de até 10 palavras: por que é boa alternativa",
+      "specs": "Motor: XW | Vel: Xkm/h | Autonomia: Xkm | Preço: R$X",
+      "whyFits": "1 frase curta sobre por que pode ser interessante"
     },
     {
       "name": "TERCEIRO MODELO (se aplicável)",
-      "headline": "Frase curta sobre por que pode ser interessante"
+      "headline": "Frase de até 10 palavras",
+      "specs": "Motor: XW | Vel: Xkm/h | Autonomia: Xkm | Preço: R$X",
+      "whyFits": "1 frase curta"
     }
   ],
   "suggestions": [],
-  "whatsappMessage": "Mensagem em primeira pessoa, tom natural e direto, sem emojis. Deve citar os modelos recomendados e solicitar mais informações."
+  "whatsappMessage": "Mensagem curta em primeira pessoa, tom natural, citando os modelos recomendados."
 }
 
 REGRAS:
 - Recomende 2-3 modelos ranqueados do mais adequado ao menos
-- O primeiro modelo deve ter TODOS os campos (name, headline, specs, whyFits)
-- O segundo e terceiro modelos devem ter apenas name e headline (sem specs/whyFits)
-- A justificativa deve ser curta (1 frase)
-- A mensagem WhatsApp deve soar natural, como se a pessoa estivesse escrevendo
+- TODOS os modelos devem ter name, headline, specs e whyFits
+- Headlines devem ser CURTAS (máx 10 palavras), focadas no benefício
+- Specs devem seguir o formato exato: Motor | Vel | Autonomia | Preço (mínimo)
+- whyFits deve ser 1-2 frases CURTAS e diretas
 - Responda APENAS com o JSON, sem texto adicional`;
 
     const response = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
