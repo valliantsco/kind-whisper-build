@@ -58,7 +58,7 @@ const NAV_ITEMS: NavItem[] = [
     dropdownItems: [
       { label: "Quiz interativo", description: "Descubra o modelo ideal para você", href: "#como-escolher", icon: Compass },
       { label: "Comparativo", description: "Compare especificações lado a lado", href: "#modelos", icon: BarChart3 },
-      { label: "Guia de uso", description: "Entenda qual categoria atende sua necessidade", href: "#como-escolher", icon: BookOpen },
+      
     ],
   },
   {
