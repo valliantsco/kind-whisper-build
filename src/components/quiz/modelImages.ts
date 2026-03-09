@@ -10,37 +10,44 @@ import modelCargo from "@/assets/models/model-cargo.jpg";
 import modelMotocrossKids from "@/assets/models/model-motocross-kids.jpg";
 
 const modelImageMap: Record<string, string> = {
-  // E-bikes / autopropelidos
+  // Autopropelidos
   "bike 350": modelBike,
   "bike 400": modelBike,
   "bike 400+": modelBike,
   "bike 500": modelBike,
-  "ms 600": modelBike,
   "bike ms 600": modelBike,
-  // Scooter
+  "ms 600": modelBike,
   "bliss": modelBliss,
+  "liberty": modelBliss,
   // Bicicletas elétricas
   "santa monica": modelSantaMonica,
   "big sur": modelBigSur,
-  // Triciclo
+  // Scooters
+  "ms 2500": modelMs2500,
+  "ms2500": modelMs2500,
+  "new holiday": modelSportMoto,
+  "holiday 1000": modelSportMoto,
+  // Triciclos
   "triciclo": modelTricycle,
   "triciclo elétrico": modelTricycle,
   "triciclo eletrico": modelTricycle,
-  // Motos
-  "ms 2500": modelMs2500,
-  "ms2500": modelMs2500,
+  // Esportivos
   "tour 3k": modelSportMoto,
   "s3k": modelSportMoto,
   "ms 3500": modelSportMoto,
-  // Delivery / Cargo
+  // Utilitários
   "rhino": modelRhino,
   "rhino delivery": modelRhino,
-  // Cargo
   "cargo": modelCargo,
-  // Kids
+  // Infantil
   "moto cross infantil": modelMotocrossKids,
   "motocross infantil": modelMotocrossKids,
   "moto cross": modelMotocrossKids,
+  "drift infantil 350": modelMotocrossKids,
+  "drift infantil": modelMotocrossKids,
+  // Patinetes
+  "patinete 350": modelBike,
+  "patinete": modelBike,
 };
 
 export function getModelImage(modelName: string): string | undefined {
