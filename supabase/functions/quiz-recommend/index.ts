@@ -73,7 +73,7 @@ REGRAS:
 - Recomende 2-3 modelos ranqueados do mais adequado ao menos
 - TODOS os modelos devem ter name, headline, specs e whyFits
 - Headlines devem ser CURTAS (máx 10 palavras), focadas no benefício
-- Specs devem seguir o formato exato: Motor | Vel | Autonomia | Preço (mínimo)
+- Specs devem seguir o formato exato: Motor | Vel | Autonomia | Recarga | Preço (todos obrigatórios)
 - whyFits deve ser 1-2 frases CURTAS e diretas
 - Responda APENAS com o JSON, sem texto adicional`;
 
