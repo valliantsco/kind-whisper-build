@@ -76,7 +76,7 @@ CATEGORIAS VÁLIDAS: Autopropelidos, Bicicletas Elétricas, Scooters Elétricas,
 11. Holiday 1000 | R$ 10.490 | Motor: 1.000W | Vel: 32km/h | Autonomia: 45km | Recarga: 8-10h | Bateria: lítio removível 60V/20Ah | Carga: 150kg
     Perfil: mobilidade urbana leve, velocidade controlada, visual amigável, deslocamentos curtos/médios.
 
-── TRICICLOS ──
+── TRICICLOS ELÉTRICOS ──
 
 12. Triciclo Elétrico | R$ 15.990 | Motor: 650W | Vel: 32km/h | Autonomia: 60km | Recarga: 6-7h | Bateria: chumbo não removível | Carga: 120-150kg
     Perfil: estabilidade, conforto, público maduro, mobilidade assistida, uso interno/urbano.
