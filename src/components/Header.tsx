@@ -662,6 +662,7 @@ const Header = ({ onContactClick }: HeaderProps) => {
     </header>
 
     <QuizEngine config={msEletricQuizConfig} open={quizOpen} onOpenChange={setQuizOpen} />
+    </>
   );
 };
 
