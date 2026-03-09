@@ -1,6 +1,6 @@
 import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { MessageCircle, Star, ChevronRight, User, Phone, MapPin, Clock } from "lucide-react";
+import { MessageCircle, Star, ChevronRight, ChevronDown, User, Phone, MapPin, Clock } from "lucide-react";
 import type { QuizResult } from "./types";
 import { getModelImage } from "./modelImages";
 import { useBusinessStatus } from "@/hooks/useBusinessHours";
@@ -39,6 +39,7 @@ const getInputStyle = (hasError: boolean) => ({
 const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps) => {
   const models = result.models?.length ? result.models : [];
   const hasModels = models.length > 0;
+  const [expandedModel, setExpandedModel] = useState<number | null>(null);
   const { isOnline, offlineMessage } = useBusinessStatus();
 
   const [name, setName] = useState("");
@@ -172,7 +173,10 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
                     <img src={image} alt={model.name} className="h-full w-auto object-contain" />
                   </div>
                 )}
-                <div className={`${i === 0 ? "p-4" : "p-3"}`}>
+                <div
+                  className={`${i === 0 ? "p-4" : "p-3 cursor-pointer"}`}
+                  onClick={i > 0 ? () => setExpandedModel(expandedModel === i ? null : i) : undefined}
+                >
                   <div className="flex items-start gap-2">
                     {i > 0 && image && (
                       <div className="w-12 h-12 rounded-lg bg-white border overflow-hidden flex-shrink-0 flex items-center justify-center" style={{ borderColor: "hsl(0 0% 100% / 0.1)" }}>
@@ -185,6 +189,15 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
                       <div className="flex items-center gap-1.5">
                         {i === 0 && image && <Star className="w-3.5 h-3.5 flex-shrink-0 fill-current" style={{ color: "hsl(11 81% 57%)" }} />}
                         <p className={`font-bold ${i === 0 ? "text-base" : "text-sm text-white/80"}`} style={i === 0 ? { color: "hsl(11 81% 57%)" } : {}}>{model.name}</p>
+                        {i > 0 && (
+                          <motion.span
+                            animate={{ rotate: expandedModel === i ? 180 : 0 }}
+                            transition={{ duration: 0.2 }}
+                            className="ml-auto flex-shrink-0"
+                          >
+                            <ChevronDown className="w-4 h-4 text-white/40" />
+                          </motion.span>
+                        )}
                       </div>
                       <p className={`${i === 0 ? "text-sm text-white/70" : "text-xs text-white/40"} mt-0.5`}>{model.headline}</p>
                       {i === 0 && model.specs && (
@@ -202,6 +215,33 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
                     </div>
                   </div>
                 </div>
+                {/* Expandable details for secondary/tertiary models */}
+                <AnimatePresence>
+                  {i > 0 && expandedModel === i && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.25, ease: "easeInOut" }}
+                      className="overflow-hidden"
+                    >
+                      <div className="px-3 pb-3 space-y-2" style={{ borderTop: "1px solid hsl(0 0% 100% / 0.06)" }}>
+                        {model.specs && (
+                          <div className="mt-2 rounded-lg px-3 py-2" style={{ background: "hsl(0 0% 100% / 0.06)" }}>
+                            <p className="text-[10px] uppercase tracking-wider text-white/40 mb-1 font-semibold">Especificações</p>
+                            <p className="text-xs text-white/70">{model.specs}</p>
+                          </div>
+                        )}
+                        {model.whyFits && (
+                          <div className="mt-1">
+                            <p className="text-[10px] uppercase tracking-wider text-white/40 mb-1 font-semibold">Por que combina com você</p>
+                            <p className="text-xs text-white/60 leading-relaxed">{model.whyFits}</p>
+                          </div>
+                        )}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </motion.div>
             );
           })}
