@@ -40,7 +40,6 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
   const models = result.models?.length ? result.models : [];
   const hasModels = models.length > 0;
   const [expandedModel, setExpandedModel] = useState<number | null>(null);
-  const hasModels = models.length > 0;
   const { isOnline, offlineMessage } = useBusinessStatus();
 
   const [name, setName] = useState("");
