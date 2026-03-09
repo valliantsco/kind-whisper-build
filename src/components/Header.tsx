@@ -163,6 +163,7 @@ const Header = ({ onContactClick }: HeaderProps) => {
   const activeItem = NAV_ITEMS.find((i) => i.label === activeDropdown);
 
   return (
+    <>
     <header className="fixed top-0 left-0 right-0 z-50 px-4 pt-3">
       <div ref={headerRef} className="mx-auto max-w-7xl relative">
         {/* Main bar */}
