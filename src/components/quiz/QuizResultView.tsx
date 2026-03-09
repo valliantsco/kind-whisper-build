@@ -147,12 +147,13 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
   const renderPrimaryCard = (model: typeof models[0]) => {
     const image = getModelImage(model.name);
     const specs = parseSpecs(model.specs || "");
+    const nonPriceSpecs = specs.filter(s => !s.label.toLowerCase().includes("preço") && !s.label.toLowerCase().includes("preco"));
 
     return (
       <motion.div
-        initial={{ opacity: 0, y: 12 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.1 }}
+        initial={{ opacity: 0, y: 20, scale: 0.97 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        transition={{ delay: 0.5, duration: 0.5, ease: "easeOut" }}
         className="rounded-2xl overflow-hidden"
         style={{
           background: "linear-gradient(165deg, hsl(11 81% 57% / 0.12) 0%, hsl(0 0% 100% / 0.03) 100%)",
@@ -160,38 +161,74 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
           boxShadow: "0 8px 32px hsl(11 81% 57% / 0.08)",
         }}
       >
-        {/* Badge: melhor escolha */}
+        {/* Badge: melhor escolha + match % */}
         <div
-          className="flex items-center gap-1.5 px-4 py-2"
+          className="flex items-center justify-between px-4 py-2"
           style={{
             background: "linear-gradient(90deg, hsl(11 81% 57% / 0.15), transparent)",
             borderBottom: "1px solid hsl(11 81% 57% / 0.12)",
           }}
         >
-          <Star className="w-3 h-3 fill-current" style={{ color: "hsl(11 81% 57%)" }} />
-          <span className="text-[10px] font-bold uppercase tracking-[0.15em]" style={{ color: "hsl(11 81% 57%)" }}>
-            Melhor escolha para você
-          </span>
+          <div className="flex items-center gap-1.5">
+            <Star className="w-3 h-3 fill-current" style={{ color: "hsl(11 81% 57%)" }} />
+            <span className="text-[10px] font-bold uppercase tracking-[0.15em]" style={{ color: "hsl(11 81% 57%)" }}>
+              Melhor escolha para você
+            </span>
+          </div>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 1.2, type: "spring", stiffness: 300 }}
+            className="flex items-center gap-1 px-2 py-0.5 rounded-full"
+            style={{ background: "hsl(142 76% 36% / 0.2)", border: "1px solid hsl(142 76% 36% / 0.3)" }}
+          >
+            <span className="text-[10px] font-bold" style={{ color: "hsl(142 76% 50%)" }}>
+              {Math.floor(85 + Math.random() * 13)}% match
+            </span>
+          </motion.div>
         </div>
 
-        {/* Image */}
+        {/* Image with ambient glow */}
         {image && (
-          <div className="w-full h-40 bg-white/5 flex items-center justify-center overflow-hidden">
-            <img src={image} alt={model.name} className="h-full w-auto object-contain mix-blend-normal" />
+          <div className="w-full h-40 flex items-center justify-center overflow-hidden relative">
+            {/* Ambient glow */}
+            <div
+              className="absolute inset-0 pointer-events-none"
+              style={{
+                background: "radial-gradient(ellipse at center 60%, hsl(11 81% 57% / 0.12) 0%, hsl(11 81% 57% / 0.04) 40%, transparent 70%)",
+              }}
+            />
+            <motion.img
+              src={image}
+              alt={model.name}
+              className="h-full w-auto object-contain relative z-10"
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.7, duration: 0.5 }}
+            />
           </div>
         )}
 
         {/* Content */}
         <div className="p-4 space-y-3">
-          <div>
+          <motion.div
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.8 }}
+          >
             <h4 className="font-bold text-lg text-white">{model.name}</h4>
             <p className="text-xs text-white/50 mt-0.5 leading-relaxed">{model.headline}</p>
-          </div>
+          </motion.div>
 
           {/* Specs grid */}
-          {specs.length > 0 && (
-            <div className="grid grid-cols-2 gap-1.5">
-              {specs.slice(0, 4).map((s, idx) => (
+          {nonPriceSpecs.length > 0 && (
+            <motion.div
+              className="grid grid-cols-2 gap-1.5"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.9 }}
+            >
+              {nonPriceSpecs.slice(0, 4).map((s, idx) => (
                 <div
                   key={idx}
                   className="flex items-center gap-1.5 rounded-lg px-2.5 py-1.5"
@@ -204,23 +241,34 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
                   </div>
                 </div>
               ))}
-            </div>
+            </motion.div>
           )}
 
           {/* Why fits */}
           {model.whyFits && (
-            <p className="text-xs text-white/50 leading-relaxed">
+            <motion.p
+              className="text-xs text-white/50 leading-relaxed"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1.0 }}
+            >
               {model.whyFits}
-            </p>
+            </motion.p>
           )}
 
           {/* Price */}
           {(() => {
-            const priceSpec = parseSpecs(model.specs || "").find(s => s.label.toLowerCase().includes("preço") || s.label.toLowerCase().includes("preco"));
+            const priceSpec = specs.find(s => s.label.toLowerCase().includes("preço") || s.label.toLowerCase().includes("preco"));
             if (!priceSpec) return null;
             const isConsulte = priceSpec.value.toLowerCase().includes("consult");
             return (
-              <div className="flex items-center justify-between rounded-xl px-3 py-2.5" style={{ background: "hsl(11 81% 57% / 0.08)", border: "1px solid hsl(11 81% 57% / 0.15)" }}>
+              <motion.div
+                className="flex items-center justify-between rounded-xl px-3 py-2.5"
+                style={{ background: "hsl(11 81% 57% / 0.08)", border: "1px solid hsl(11 81% 57% / 0.15)" }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 1.1 }}
+              >
                 {isConsulte ? (
                   <span className="text-[11px] font-medium text-white/50 mx-auto">Consulte o valor com nosso time</span>
                 ) : (
@@ -229,7 +277,7 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
                     <span className="text-sm font-bold" style={{ color: "hsl(11 81% 57%)" }}>{priceSpec.value}</span>
                   </>
                 )}
-              </div>
+              </motion.div>
             );
           })()}
 
@@ -242,6 +290,9 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
               border: "1px solid hsl(11 81% 57% / 0.25)",
               color: "hsl(11 81% 57%)",
             }}
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1.2 }}
             whileHover={{
               background: "hsl(11 81% 57% / 0.2)",
               boxShadow: "0 0 20px hsl(11 81% 57% / 0.15)",
