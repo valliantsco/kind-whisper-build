@@ -4,6 +4,8 @@ import msShieldLogo from "@/assets/ms-shield-logo.png";
 import { useBusinessHours } from "@/hooks/useBusinessHours";
 import { AnimatePresence, motion } from "framer-motion";
 import { ChevronDown, ArrowRight, ArrowLeft, Compass, BarChart3, BookOpen, HelpCircle, Wrench, ShieldCheck, Play } from "lucide-react";
+import QuizEngine from "@/components/quiz/QuizEngine";
+import { msEletricQuizConfig } from "@/components/QuizSection";
 
 import categoryScooter from "@/assets/category-scooter.jpg";
 import categoryBike from "@/assets/category-bike.jpg";
@@ -86,6 +88,7 @@ const Header = ({ onContactClick }: HeaderProps) => {
     });
   }, []);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const [quizOpen, setQuizOpen] = useState(false);
   const headerRef = useRef<HTMLDivElement>(null);
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const carouselRef = useRef<HTMLDivElement>(null);
@@ -160,6 +163,7 @@ const Header = ({ onContactClick }: HeaderProps) => {
   const activeItem = NAV_ITEMS.find((i) => i.label === activeDropdown);
 
   return (
+    <>
     <header className="fixed top-0 left-0 right-0 z-50 px-4 pt-3">
       <div ref={headerRef} className="mx-auto max-w-7xl relative">
         {/* Main bar */}
@@ -603,13 +607,12 @@ const Header = ({ onContactClick }: HeaderProps) => {
                     {activeItem.dropdownItems.map((dropItem, i) => {
                       const Icon = dropItem.icon;
                       return (
-                        <motion.a
+                        <motion.button
                           key={dropItem.label}
-                          href={dropItem.href}
                           initial={{ opacity: 0, y: 10 }}
                           animate={{ opacity: 1, y: 0 }}
                           transition={{ delay: i * 0.06, duration: 0.3, ease: "easeOut" }}
-                          className="group/item flex items-start gap-3 rounded-xl p-4 transition-all duration-300 hover:bg-white/[0.06]"
+                          className="group/item flex items-start gap-3 rounded-xl p-4 transition-all duration-300 hover:bg-white/[0.06] cursor-pointer text-left"
                           style={{ border: "1px solid transparent" }}
                           onMouseEnter={(e) => {
                             (e.currentTarget as HTMLElement).style.borderColor = "hsl(11 81% 57% / 0.25)";
@@ -617,7 +620,15 @@ const Header = ({ onContactClick }: HeaderProps) => {
                           onMouseLeave={(e) => {
                             (e.currentTarget as HTMLElement).style.borderColor = "transparent";
                           }}
-                          onClick={() => setActiveDropdown(null)}
+                          onClick={() => {
+                            setActiveDropdown(null);
+                            if (dropItem.label === "Quiz interativo") {
+                              setQuizOpen(true);
+                            } else {
+                              const el = document.querySelector(dropItem.href);
+                              el?.scrollIntoView({ behavior: "smooth" });
+                            }
+                          }}
                         >
                           {Icon && (
                             <div
@@ -638,7 +649,7 @@ const Header = ({ onContactClick }: HeaderProps) => {
                               {dropItem.description}
                             </p>
                           </div>
-                        </motion.a>
+                        </motion.button>
                       );
                     })}
                   </div>
@@ -649,6 +660,9 @@ const Header = ({ onContactClick }: HeaderProps) => {
         </AnimatePresence>
       </div>
     </header>
+
+    <QuizEngine config={msEletricQuizConfig} open={quizOpen} onOpenChange={setQuizOpen} />
+    </>
   );
 };
 
