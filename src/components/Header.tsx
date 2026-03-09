@@ -659,6 +659,8 @@ const Header = ({ onContactClick }: HeaderProps) => {
         </AnimatePresence>
       </div>
     </header>
+
+    <QuizEngine config={msEletricQuizConfig} open={quizOpen} onOpenChange={setQuizOpen} />
   );
 };
 
