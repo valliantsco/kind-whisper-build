@@ -49,7 +49,7 @@ Com base nas respostas do quiz, retorne um JSON com exatamente esta estrutura (s
     {
       "name": "MODELO PRINCIPAL",
       "headline": "Frase de até 10 palavras: benefício principal para o usuário",
-      "specs": "Motor: XW | Vel: Xkm/h | Autonomia: Xkm | Bateria: tipo | Preço: R$X",
+      "specs": "Motor: XW | Vel: Xkm/h | Autonomia: Xkm | Recarga: Xh | Preço: R$X",
       "whyFits": "1-2 frases curtas conectando o perfil do usuário ao modelo"
     },
     {
