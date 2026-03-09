@@ -123,16 +123,16 @@ const QuizDetailsStep = ({ details, onDetailsChange }: QuizDetailsStepProps) => 
       className="space-y-4"
     >
       <div>
-        <h3 className="font-display font-bold text-lg text-foreground mb-1">
+        <h3 className="font-bold text-base text-white mb-1">
           Quer contar mais sobre sua necessidade?
         </h3>
-        <p className="text-sm text-muted-foreground">
+        <p className="text-xs text-white/40">
           Opcional — quanto mais detalhes, melhor será a recomendação.
         </p>
       </div>
 
       <div>
-        <label className="flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-[0.1em] text-muted-foreground mb-1.5">
+        <label className="flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-[0.1em] text-white/50 mb-1.5">
           <MessageSquare className="w-3 h-3" />
           Conte para gente o que você precisa
         </label>
@@ -150,8 +150,14 @@ const QuizDetailsStep = ({ details, onDetailsChange }: QuizDetailsStepProps) => 
             rows={3}
             maxLength={500}
             disabled={isTranscribing}
-            className="w-full rounded-xl border border-border bg-muted/50 px-4 py-3 pr-14 text-sm text-foreground placeholder:text-muted-foreground/50 resize-none focus:outline-none focus:ring-2 focus:ring-primary/30 disabled:opacity-50 transition-all"
-            style={{ maxHeight: "30vh", overflow: "hidden" }}
+            className="w-full rounded-xl px-4 py-3 pr-14 text-sm text-white placeholder:text-white/30 resize-none focus:outline-none focus:ring-2 disabled:opacity-50 transition-all"
+            style={{
+              maxHeight: "30vh",
+              overflow: "hidden",
+              background: "hsl(0 0% 100% / 0.06)",
+              border: "1px solid hsl(0 0% 100% / 0.1)",
+              ...(isFocused ? { borderColor: "hsl(11 81% 57% / 0.5)", boxShadow: "0 0 0 2px hsl(11 81% 57% / 0.15)" } : {}),
+            }}
             onFocus={() => setIsFocused(true)}
             onBlur={() => setIsFocused(false)}
           />
@@ -168,18 +174,17 @@ const QuizDetailsStep = ({ details, onDetailsChange }: QuizDetailsStepProps) => 
                 exit={{ opacity: 0, scale: 0.8 }}
                 transition={{ duration: 0.25, ease: "easeInOut" }}
               >
-                {/* Pulse rings (idle) */}
                 {!isRecording && !isTranscribing && (
                   <>
                     <motion.div
                       className="absolute inset-0 rounded-full pointer-events-none"
-                      style={{ border: "1.5px solid hsl(var(--primary) / 0.25)" }}
+                      style={{ border: "1.5px solid hsl(11 81% 57% / 0.25)" }}
                       animate={{ scale: [1, 1.6], opacity: [0.5, 0] }}
                       transition={{ duration: 2, repeat: Infinity, ease: "easeOut" }}
                     />
                     <motion.div
                       className="absolute inset-0 rounded-full pointer-events-none"
-                      style={{ border: "1px solid hsl(var(--primary) / 0.15)" }}
+                      style={{ border: "1px solid hsl(11 81% 57% / 0.15)" }}
                       animate={{ scale: [1, 1.4], opacity: [0.4, 0] }}
                       transition={{ duration: 2, repeat: Infinity, ease: "easeOut", delay: 0.6 }}
                     />
@@ -192,18 +197,18 @@ const QuizDetailsStep = ({ details, onDetailsChange }: QuizDetailsStepProps) => 
                   className="w-full h-full flex items-center justify-center rounded-full disabled:opacity-40 cursor-pointer"
                   style={{
                     background: isRecording
-                      ? "hsl(var(--destructive) / 0.15)"
+                      ? "hsl(0 84% 60% / 0.15)"
                       : isTranscribing
-                        ? "hsl(var(--muted))"
-                        : "hsl(var(--primary) / 0.1)",
-                    border: `1px solid ${isRecording ? "hsl(var(--destructive) / 0.35)" : "hsl(var(--primary) / 0.2)"}`,
+                        ? "hsl(0 0% 100% / 0.08)"
+                        : "hsl(11 81% 57% / 0.1)",
+                    border: `1px solid ${isRecording ? "hsl(0 84% 60% / 0.35)" : "hsl(11 81% 57% / 0.2)"}`,
                   }}
                   whileHover={isTranscribing ? {} : { scale: 1.1 }}
                   whileTap={isTranscribing ? {} : { scale: 0.88 }}
                   animate={
                     isRecording
                       ? {
-                          borderColor: ["hsl(var(--destructive) / 0.35)", "hsl(var(--destructive) / 0.7)", "hsl(var(--destructive) / 0.35)"],
+                          borderColor: ["hsl(0 84% 60% / 0.35)", "hsl(0 84% 60% / 0.7)", "hsl(0 84% 60% / 0.35)"],
                         }
                       : {}
                   }
@@ -214,15 +219,16 @@ const QuizDetailsStep = ({ details, onDetailsChange }: QuizDetailsStepProps) => 
                   }
                 >
                   {isTranscribing ? (
-                    <Loader2 className="w-4 h-4 text-muted-foreground animate-spin" />
+                    <Loader2 className="w-4 h-4 text-white/50 animate-spin" />
                   ) : isRecording ? (
                     <motion.div
-                      className="w-2.5 h-2.5 rounded-[2px] bg-destructive"
+                      className="w-2.5 h-2.5 rounded-[2px]"
+                      style={{ background: "hsl(0 84% 60%)" }}
                       animate={{ scale: [1, 0.8, 1] }}
                       transition={{ duration: 0.7, repeat: Infinity }}
                     />
                   ) : (
-                    <Mic className="text-primary" style={{ width: 14, height: 14 }} strokeWidth={2.2} />
+                    <Mic style={{ width: 14, height: 14, color: "hsl(11 81% 57%)" }} strokeWidth={2.2} />
                   )}
                 </motion.button>
               </motion.div>
@@ -234,34 +240,42 @@ const QuizDetailsStep = ({ details, onDetailsChange }: QuizDetailsStepProps) => 
         <AnimatePresence>
           {isRecording && (
             <motion.div
-              className="flex items-center gap-2 mt-2 px-3 py-2 rounded-lg bg-destructive/5 border border-destructive/10"
+              className="flex items-center gap-2 mt-2 px-3 py-2 rounded-lg"
+              style={{
+                background: "hsl(0 84% 60% / 0.08)",
+                border: "1px solid hsl(0 84% 60% / 0.15)",
+              }}
               initial={{ opacity: 0, y: -8 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -8 }}
             >
               <span className="relative flex h-2 w-2 shrink-0">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-destructive opacity-75" />
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-destructive" />
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75" style={{ background: "hsl(0 84% 60%)" }} />
+                <span className="relative inline-flex rounded-full h-2 w-2" style={{ background: "hsl(0 84% 60%)" }} />
               </span>
-              <span className="text-[10px] text-muted-foreground">
+              <span className="text-[10px] text-white/50">
                 Gravando ({MAX_RECORDING_SECONDS - recordingSeconds}s)... toque para parar
               </span>
             </motion.div>
           )}
           {isTranscribing && (
             <motion.div
-              className="flex items-center gap-2 mt-2 px-3 py-2 rounded-lg bg-primary/5 border border-primary/10"
+              className="flex items-center gap-2 mt-2 px-3 py-2 rounded-lg"
+              style={{
+                background: "hsl(11 81% 57% / 0.08)",
+                border: "1px solid hsl(11 81% 57% / 0.15)",
+              }}
               initial={{ opacity: 0, y: -8 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -8 }}
             >
-              <Loader2 className="w-3 h-3 text-primary animate-spin shrink-0" />
-              <span className="text-[10px] text-muted-foreground">Processando áudio...</span>
+              <Loader2 className="w-3 h-3 animate-spin shrink-0" style={{ color: "hsl(11 81% 57%)" }} />
+              <span className="text-[10px] text-white/50">Processando áudio...</span>
             </motion.div>
           )}
         </AnimatePresence>
 
-        <p className="text-[10px] text-muted-foreground/60 text-right mt-1">{details.length}/500</p>
+        <p className="text-[10px] text-white/25 text-right mt-1">{details.length}/500</p>
       </div>
     </motion.div>
   );

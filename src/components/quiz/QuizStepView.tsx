@@ -1,7 +1,4 @@
 import { motion } from "framer-motion";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { Checkbox } from "@/components/ui/checkbox";
-import { Label } from "@/components/ui/label";
 import type { QuizStep } from "./types";
 
 interface QuizStepViewProps {
@@ -13,7 +10,6 @@ interface QuizStepViewProps {
 const QuizStepView = ({ stepConfig, currentAnswer, onAnswer }: QuizStepViewProps) => {
   const { question, options, multiSelect, maxSelections, helperText } = stepConfig;
 
-  // For multi-select, answers are stored as comma-separated string
   const selectedItems = multiSelect && currentAnswer ? currentAnswer.split("||") : [];
 
   const toggleMultiItem = (opt: string) => {
@@ -22,7 +18,6 @@ const QuizStepView = ({ stepConfig, currentAnswer, onAnswer }: QuizStepViewProps
       updated = selectedItems.filter((i) => i !== opt);
     } else {
       if (maxSelections && selectedItems.length >= maxSelections) {
-        // Replace the first selected item
         updated = [...selectedItems.slice(1), opt];
       } else {
         updated = [...selectedItems, opt];
@@ -38,51 +33,68 @@ const QuizStepView = ({ stepConfig, currentAnswer, onAnswer }: QuizStepViewProps
       exit={{ opacity: 0, x: -20 }}
       className="space-y-4"
     >
-      <p className="font-display font-bold text-lg">{question}</p>
+      <p className="font-bold text-base text-white">{question}</p>
       {helperText && (
-        <p className="text-muted-foreground text-sm -mt-2">{helperText}</p>
+        <p className="text-white/40 text-xs -mt-2">{helperText}</p>
       )}
 
-      {multiSelect ? (
-        <div className="space-y-2">
-          {options.map((opt) => {
-            const isSelected = selectedItems.includes(opt);
-            return (
-              <div
-                key={opt}
-                className={`flex items-center gap-3 border rounded-xl px-4 py-3 cursor-pointer transition-colors ${
-                  isSelected
-                    ? "border-primary bg-primary/5"
-                    : "border-border hover:border-muted-foreground/30"
-                }`}
-                onClick={() => toggleMultiItem(opt)}
-              >
-                <Checkbox checked={isSelected} />
-                <span className="text-sm flex-1">{opt}</span>
-              </div>
-            );
-          })}
-        </div>
-      ) : (
-        <RadioGroup value={currentAnswer} onValueChange={onAnswer}>
-          {options.map((opt) => (
-            <div
+      <div className="space-y-2">
+        {options.map((opt) => {
+          const isSelected = multiSelect
+            ? selectedItems.includes(opt)
+            : currentAnswer === opt;
+
+          return (
+            <motion.button
               key={opt}
-              className={`flex items-center gap-3 border rounded-xl px-4 py-3 cursor-pointer transition-colors ${
-                currentAnswer === opt
-                  ? "border-primary bg-primary/5"
-                  : "border-border hover:border-muted-foreground/30"
-              }`}
-              onClick={() => onAnswer(opt)}
+              type="button"
+              onClick={() => multiSelect ? toggleMultiItem(opt) : onAnswer(opt)}
+              className="w-full flex items-center gap-3 rounded-xl px-4 py-3 text-left text-sm cursor-pointer transition-all"
+              style={{
+                background: isSelected
+                  ? "hsl(11 81% 57% / 0.12)"
+                  : "hsl(0 0% 100% / 0.04)",
+                border: isSelected
+                  ? "1px solid hsl(11 81% 57% / 0.5)"
+                  : "1px solid hsl(0 0% 100% / 0.08)",
+                color: isSelected ? "white" : "hsl(0 0% 100% / 0.7)",
+              }}
+              whileHover={{
+                background: isSelected
+                  ? "hsl(11 81% 57% / 0.18)"
+                  : "hsl(0 0% 100% / 0.08)",
+              }}
+              whileTap={{ scale: 0.98 }}
             >
-              <RadioGroupItem value={opt} id={`quiz-opt-${opt}`} />
-              <Label htmlFor={`quiz-opt-${opt}`} className="cursor-pointer flex-1 text-sm">
-                {opt}
-              </Label>
-            </div>
-          ))}
-        </RadioGroup>
-      )}
+              {/* Radio/Checkbox indicator */}
+              <span
+                className="w-4 h-4 rounded-full shrink-0 flex items-center justify-center"
+                style={{
+                  border: isSelected
+                    ? "2px solid hsl(11 81% 57%)"
+                    : "1.5px solid hsl(0 0% 100% / 0.25)",
+                  ...(multiSelect ? { borderRadius: "4px" } : {}),
+                }}
+              >
+                {isSelected && (
+                  <motion.span
+                    initial={{ scale: 0 }}
+                    animate={{ scale: 1 }}
+                    className="block"
+                    style={{
+                      width: multiSelect ? 8 : 8,
+                      height: multiSelect ? 8 : 8,
+                      borderRadius: multiSelect ? "2px" : "50%",
+                      background: "hsl(11 81% 57%)",
+                    }}
+                  />
+                )}
+              </span>
+              <span className="flex-1">{opt}</span>
+            </motion.button>
+          );
+        })}
+      </div>
     </motion.div>
   );
 };

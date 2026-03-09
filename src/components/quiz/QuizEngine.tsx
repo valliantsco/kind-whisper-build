@@ -1,12 +1,42 @@
-import { useState } from "react";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight, ArrowLeft, Sparkles, Loader2, RotateCcw } from "lucide-react";
+import { X, ArrowRight, ArrowLeft, Sparkles, Loader2, RotateCcw } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import type { QuizConfig, QuizResult } from "./types";
 import QuizStepView from "./QuizStepView";
 import QuizResultView from "./QuizResultView";
 import QuizDetailsStep from "./QuizDetailsStep";
+
+// ── Animation variants (matching PopUpContato01) ───────────────────────
+const overlayVariants = {
+  hidden: { opacity: 0, backdropFilter: "blur(0px)" },
+  visible: {
+    opacity: 1,
+    backdropFilter: "blur(12px)",
+    transition: { duration: 0.4, ease: "easeOut" as const },
+  },
+  exit: {
+    opacity: 0,
+    backdropFilter: "blur(0px)",
+    transition: { duration: 0.3, ease: "easeIn" as const },
+  },
+};
+
+const panelVariants = {
+  hidden: { opacity: 0, scale: 0.92, y: 40 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    y: 0,
+    transition: { type: "spring" as const, damping: 28, stiffness: 320 },
+  },
+  exit: {
+    opacity: 0,
+    scale: 0.95,
+    y: 20,
+    transition: { duration: 0.2 },
+  },
+};
 
 interface QuizEngineProps {
   config: QuizConfig;
@@ -24,10 +54,24 @@ const QuizEngine = ({ config, open, onOpenChange }: QuizEngineProps) => {
   const [extraDetails, setExtraDetails] = useState("");
 
   const totalSteps = config.steps.length;
-  // Progress: questions + optional details step
   const progressTotal = totalSteps + 1;
   const progressCurrent = showDetailsStep ? totalSteps + 1 : step + 1;
   const progress = (progressCurrent / progressTotal) * 100;
+
+  // Lock body scroll
+  useEffect(() => {
+    if (open) {
+      document.body.style.overflow = "hidden";
+      document.documentElement.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+      document.documentElement.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+      document.documentElement.style.overflow = "";
+    };
+  }, [open]);
 
   const reset = () => {
     setStep(0);
@@ -37,6 +81,11 @@ const QuizEngine = ({ config, open, onOpenChange }: QuizEngineProps) => {
     setError(null);
     setShowDetailsStep(false);
     setExtraDetails("");
+  };
+
+  const handleClose = () => {
+    reset();
+    onOpenChange(false);
   };
 
   const handleAnswer = (answer: string) => {
@@ -54,7 +103,6 @@ const QuizEngine = ({ config, open, onOpenChange }: QuizEngineProps) => {
         answer: finalAnswers[i] || "",
       }));
 
-      // Add extra details as an additional "answer"
       if (details?.trim()) {
         questionsWithAnswers.push({
           question: "Detalhes adicionais fornecidos pelo usuário",
@@ -93,7 +141,6 @@ const QuizEngine = ({ config, open, onOpenChange }: QuizEngineProps) => {
   const nextStep = async () => {
     const currentStep = config.steps[step];
 
-    // Check for conditional skip
     if (currentStep.skipToResultIf) {
       const selectedOption = answers[step];
       const skipOption = currentStep.options[currentStep.skipToResultIf.optionIndex];
@@ -106,7 +153,6 @@ const QuizEngine = ({ config, open, onOpenChange }: QuizEngineProps) => {
     if (step < totalSteps - 1) {
       setStep(step + 1);
     } else {
-      // Show the details step instead of submitting immediately
       setShowDetailsStep(true);
     }
   };
@@ -126,153 +172,255 @@ const QuizEngine = ({ config, open, onOpenChange }: QuizEngineProps) => {
   const canProceed = !!answers[step];
   const isOnDetailsStep = showDetailsStep && !result && !loading && !error;
 
-  const whatsappUrl = result
-    ? `https://wa.me/${config.whatsappNumber}?text=${encodeURIComponent(result.whatsappMessage)}`
-    : "#";
+  // Determine header text
+  const headerTitle = result
+    ? "Sua recomendação"
+    : loading
+    ? "Analisando..."
+    : config.title;
+
+  const headerSubtitle = result
+    ? "Baseado nas suas respostas"
+    : loading
+    ? "A IA está processando suas respostas"
+    : showDetailsStep
+    ? "Quase lá! Mais algum detalhe?"
+    : "Responda para receber sua recomendação";
 
   return (
-    <Dialog open={open} onOpenChange={(v) => { if (!v) reset(); onOpenChange(v); }}>
-      <DialogContent className="sm:max-w-lg max-h-[90vh] overflow-y-auto">
-        <DialogHeader>
-          <DialogTitle className="font-display text-xl">
-            {result ? "Sua recomendação" : loading ? "Analisando..." : config.title}
-          </DialogTitle>
-          <DialogDescription>
-            {result
-              ? "Baseado nas suas respostas"
-              : loading
-              ? "A IA está processando suas respostas"
-              : showDetailsStep
-              ? "Quase lá! Mais algum detalhe?"
-              : "Responda para receber sua recomendação"}
-          </DialogDescription>
-        </DialogHeader>
+    <AnimatePresence>
+      {open && (
+        <motion.div
+          className="fixed inset-0 z-[100] flex items-center justify-center px-4"
+          variants={overlayVariants}
+          initial="hidden"
+          animate="visible"
+          exit="exit"
+        >
+          {/* Backdrop */}
+          <motion.div className="absolute inset-0 bg-foreground/60" onClick={handleClose} />
 
-        {/* Progress bar */}
-        {!result && !loading && (
-          <div className="w-full bg-muted rounded-full h-2 mb-4">
+          {/* Panel */}
+          <motion.div
+            variants={panelVariants}
+            className="relative w-full max-w-md rounded-[0.9rem] overflow-hidden max-h-[90vh] flex flex-col"
+            style={{
+              background: "hsl(0 0% 14% / 0.92)",
+              backdropFilter: "blur(24px)",
+              WebkitBackdropFilter: "blur(24px)",
+              border: "1px solid hsl(0 0% 100% / 0.08)",
+              boxShadow: "0 25px 60px rgba(0,0,0,0.5), 0 0 40px hsl(11 81% 57% / 0.08)",
+            }}
+          >
+            {/* Top gradient light strip */}
             <div
-              className="h-2 rounded-full transition-all duration-300"
+              className="h-[2px] shrink-0"
               style={{
-                width: `${progress}%`,
-                background: "linear-gradient(90deg, hsl(var(--primary)), hsl(var(--primary) / 0.7))",
+                background: "linear-gradient(90deg, transparent, hsl(11 81% 57% / 0.8), hsl(11 90% 65% / 0.8), transparent)",
               }}
             />
-          </div>
-        )}
 
-        <AnimatePresence mode="wait">
-          {/* Loading state */}
-          {loading && (
-            <motion.div
-              key="loading"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="flex flex-col items-center justify-center py-16 gap-4"
-            >
-              <motion.div
-                animate={{ rotate: 360 }}
-                transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
-              >
-                <Sparkles className="w-10 h-10 text-primary" />
-              </motion.div>
-              <p className="text-muted-foreground text-sm">Gerando sua recomendação personalizada...</p>
-            </motion.div>
-          )}
-
-          {/* Error state */}
-          {error && !loading && (
-            <motion.div
-              key="error"
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="space-y-4 py-8 text-center"
-            >
-              <p className="text-destructive text-sm">{error}</p>
-              <motion.button
-                onClick={() => { setError(null); submitToAI(answers, extraDetails); }}
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-white text-sm font-bold uppercase tracking-wide cursor-pointer bg-primary"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <RotateCcw className="w-4 h-4" />
-                Tentar novamente
-              </motion.button>
-            </motion.div>
-          )}
-
-          {/* Result */}
-          {result && !loading && (
-            <QuizResultView result={result} whatsappNumber={config.whatsappNumber} onReset={reset} />
-          )}
-
-          {/* Details step (after all questions, before submit) */}
-          {isOnDetailsStep && (
-            <QuizDetailsStep
-              key="details-step"
-              details={extraDetails}
-              onDetailsChange={setExtraDetails}
+            {/* Ambient glow */}
+            <div
+              className="absolute -top-20 -right-20 w-60 h-60 rounded-full pointer-events-none"
+              style={{
+                background: "radial-gradient(circle, hsl(11 81% 57% / 0.06) 0%, transparent 70%)",
+              }}
             />
-          )}
 
-          {/* Question steps */}
-          {!result && !loading && !error && !showDetailsStep && (
-            <QuizStepView
-              key={`step-${step}`}
-              stepConfig={config.steps[step]}
-              currentAnswer={answers[step] || ""}
-              onAnswer={handleAnswer}
-            />
-          )}
-        </AnimatePresence>
+            {/* Scrollable content */}
+            <div className="overflow-y-auto flex-1 relative scrollbar-hide" style={{ scrollbarWidth: "none" }}>
 
-        {/* Navigation */}
-        {!result && !loading && !error && !showDetailsStep && (
-          <div className="flex gap-3 mt-4">
-            {step > 0 && (
-              <motion.button
-                onClick={prevStep}
-                className="inline-flex items-center gap-1 px-5 py-2.5 rounded-xl border border-border text-sm font-medium hover:bg-muted transition-colors"
-                whileTap={{ scale: 0.95 }}
-              >
-                <ArrowLeft className="w-4 h-4" /> Voltar
-              </motion.button>
-            )}
-            <motion.button
-              onClick={nextStep}
-              disabled={!canProceed}
-              className="flex-1 inline-flex items-center justify-center gap-1 py-2.5 rounded-xl text-white text-sm font-bold uppercase tracking-wide disabled:opacity-40 disabled:cursor-not-allowed bg-primary"
-              whileHover={canProceed ? { scale: 1.02 } : {}}
-              whileTap={canProceed ? { scale: 0.98 } : {}}
-            >
-              Próximo <ArrowRight className="w-4 h-4" />
-            </motion.button>
-          </div>
-        )}
+              {/* Header */}
+              <div className="flex items-start justify-between px-5 pt-4 pb-3">
+                <div>
+                  <h3 className="text-base font-bold text-white tracking-tight">
+                    {headerTitle}
+                  </h3>
+                  <p className="text-xs text-white/50 mt-1 leading-relaxed">
+                    {headerSubtitle}
+                  </p>
+                </div>
+                <motion.button
+                  onClick={handleClose}
+                  className="p-2 rounded-xl text-white cursor-pointer"
+                  style={{
+                    background: "linear-gradient(135deg, hsl(11 81% 57%), hsl(11 90% 65%))",
+                    boxShadow: "0 4px 20px hsl(11 81% 57% / 0.25)",
+                  }}
+                  whileHover={{
+                    scale: 1.1,
+                    boxShadow: "0 0 25px hsl(11 81% 57% / 0.5), 0 0 50px hsl(11 81% 57% / 0.2)",
+                  }}
+                  whileTap={{ scale: 0.9 }}
+                >
+                  <X className="w-4 h-4" />
+                </motion.button>
+              </div>
 
-        {/* Details step navigation */}
-        {isOnDetailsStep && (
-          <div className="flex gap-3 mt-4">
-            <motion.button
-              onClick={prevStep}
-              className="inline-flex items-center gap-1 px-5 py-2.5 rounded-xl border border-border text-sm font-medium hover:bg-muted transition-colors"
-              whileTap={{ scale: 0.95 }}
-            >
-              <ArrowLeft className="w-4 h-4" /> Voltar
-            </motion.button>
-            <motion.button
-              onClick={handleSubmitFromDetails}
-              className="flex-1 inline-flex items-center justify-center gap-1 py-2.5 rounded-xl text-white text-sm font-bold uppercase tracking-wide bg-primary"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              {extraDetails.trim() ? "Ver resultado" : "Pular e ver resultado"} <ArrowRight className="w-4 h-4" />
-            </motion.button>
-          </div>
-        )}
-      </DialogContent>
-    </Dialog>
+              {/* Progress bar */}
+              {!result && !loading && (
+                <div className="px-5 pb-3">
+                  <div className="w-full rounded-full h-1.5" style={{ background: "hsl(0 0% 100% / 0.08)" }}>
+                    <motion.div
+                      className="h-1.5 rounded-full"
+                      style={{
+                        background: "linear-gradient(90deg, hsl(11 81% 57%), hsl(11 90% 65%))",
+                      }}
+                      initial={{ width: 0 }}
+                      animate={{ width: `${progress}%` }}
+                      transition={{ duration: 0.4, ease: "easeOut" }}
+                    />
+                  </div>
+                </div>
+              )}
+
+              {/* Divider */}
+              <div
+                className="mx-5 h-[1px]"
+                style={{ background: "linear-gradient(90deg, transparent, hsl(11 81% 57% / 0.3), transparent)" }}
+              />
+
+              {/* Content area */}
+              <div className="px-5 py-4">
+                <AnimatePresence mode="wait">
+                  {/* Loading state */}
+                  {loading && (
+                    <motion.div
+                      key="loading"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      className="flex flex-col items-center justify-center py-16 gap-4"
+                    >
+                      <motion.div
+                        animate={{ rotate: 360 }}
+                        transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
+                      >
+                        <Sparkles className="w-10 h-10" style={{ color: "hsl(11 81% 57%)" }} />
+                      </motion.div>
+                      <p className="text-white/50 text-sm">Gerando sua recomendação personalizada...</p>
+                    </motion.div>
+                  )}
+
+                  {/* Error state */}
+                  {error && !loading && (
+                    <motion.div
+                      key="error"
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      className="space-y-4 py-8 text-center"
+                    >
+                      <p className="text-sm" style={{ color: "hsl(0 84% 65%)" }}>{error}</p>
+                      <motion.button
+                        onClick={() => { setError(null); submitToAI(answers, extraDetails); }}
+                        className="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-white text-sm font-bold uppercase tracking-wide cursor-pointer"
+                        style={{
+                          background: "linear-gradient(135deg, hsl(11 81% 57%), hsl(11 90% 65%))",
+                          boxShadow: "0 4px 20px hsl(11 81% 57% / 0.3)",
+                        }}
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                      >
+                        <RotateCcw className="w-4 h-4" />
+                        Tentar novamente
+                      </motion.button>
+                    </motion.div>
+                  )}
+
+                  {/* Result */}
+                  {result && !loading && (
+                    <QuizResultView result={result} whatsappNumber={config.whatsappNumber} onReset={reset} />
+                  )}
+
+                  {/* Details step */}
+                  {isOnDetailsStep && (
+                    <QuizDetailsStep
+                      key="details-step"
+                      details={extraDetails}
+                      onDetailsChange={setExtraDetails}
+                    />
+                  )}
+
+                  {/* Question steps */}
+                  {!result && !loading && !error && !showDetailsStep && (
+                    <QuizStepView
+                      key={`step-${step}`}
+                      stepConfig={config.steps[step]}
+                      currentAnswer={answers[step] || ""}
+                      onAnswer={handleAnswer}
+                    />
+                  )}
+                </AnimatePresence>
+
+                {/* Navigation - Questions */}
+                {!result && !loading && !error && !showDetailsStep && (
+                  <div className="flex gap-3 mt-5">
+                    {step > 0 && (
+                      <motion.button
+                        onClick={prevStep}
+                        className="inline-flex items-center gap-1 px-5 py-2.5 rounded-xl text-sm font-medium text-white/70 cursor-pointer"
+                        style={{
+                          border: "1px solid hsl(0 0% 100% / 0.12)",
+                          background: "hsl(0 0% 100% / 0.05)",
+                        }}
+                        whileHover={{ background: "hsl(0 0% 100% / 0.1)" }}
+                        whileTap={{ scale: 0.95 }}
+                      >
+                        <ArrowLeft className="w-4 h-4" /> Voltar
+                      </motion.button>
+                    )}
+                    <motion.button
+                      onClick={nextStep}
+                      disabled={!canProceed}
+                      className="flex-1 inline-flex items-center justify-center gap-1 py-2.5 rounded-xl text-white text-sm font-bold uppercase tracking-wide disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer"
+                      style={{
+                        background: "linear-gradient(135deg, hsl(11 81% 57%), hsl(11 90% 65%))",
+                        boxShadow: canProceed ? "0 4px 20px hsl(11 81% 57% / 0.3)" : "none",
+                      }}
+                      whileHover={canProceed ? { scale: 1.02, boxShadow: "0 0 25px hsl(11 81% 57% / 0.5), 0 0 50px hsl(11 81% 57% / 0.2)" } : {}}
+                      whileTap={canProceed ? { scale: 0.98 } : {}}
+                    >
+                      Próximo <ArrowRight className="w-4 h-4" />
+                    </motion.button>
+                  </div>
+                )}
+
+                {/* Navigation - Details step */}
+                {isOnDetailsStep && (
+                  <div className="flex gap-3 mt-5">
+                    <motion.button
+                      onClick={prevStep}
+                      className="inline-flex items-center gap-1 px-5 py-2.5 rounded-xl text-sm font-medium text-white/70 cursor-pointer"
+                      style={{
+                        border: "1px solid hsl(0 0% 100% / 0.12)",
+                        background: "hsl(0 0% 100% / 0.05)",
+                      }}
+                      whileHover={{ background: "hsl(0 0% 100% / 0.1)" }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      <ArrowLeft className="w-4 h-4" /> Voltar
+                    </motion.button>
+                    <motion.button
+                      onClick={handleSubmitFromDetails}
+                      className="flex-1 inline-flex items-center justify-center gap-1 py-2.5 rounded-xl text-white text-sm font-bold uppercase tracking-wide cursor-pointer"
+                      style={{
+                        background: "linear-gradient(135deg, hsl(11 81% 57%), hsl(11 90% 65%))",
+                        boxShadow: "0 4px 20px hsl(11 81% 57% / 0.3)",
+                      }}
+                      whileHover={{ scale: 1.02, boxShadow: "0 0 25px hsl(11 81% 57% / 0.5), 0 0 50px hsl(11 81% 57% / 0.2)" }}
+                      whileTap={{ scale: 0.98 }}
+                    >
+                      {extraDetails.trim() ? "Ver resultado" : "Pular e ver resultado"} <ArrowRight className="w-4 h-4" />
+                    </motion.button>
+                  </div>
+                )}
+              </div>
+            </div>
+          </motion.div>
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 };
 
