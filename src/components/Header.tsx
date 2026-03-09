@@ -4,6 +4,8 @@ import msShieldLogo from "@/assets/ms-shield-logo.png";
 import { useBusinessHours } from "@/hooks/useBusinessHours";
 import { AnimatePresence, motion } from "framer-motion";
 import { ChevronDown, ArrowRight, ArrowLeft, Compass, BarChart3, BookOpen, HelpCircle, Wrench, ShieldCheck, Play } from "lucide-react";
+import QuizEngine from "@/components/quiz/QuizEngine";
+import { msEletricQuizConfig } from "@/components/QuizSection";
 
 import categoryScooter from "@/assets/category-scooter.jpg";
 import categoryBike from "@/assets/category-bike.jpg";

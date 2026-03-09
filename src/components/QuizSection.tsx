@@ -113,7 +113,7 @@ EVITAR QUANDO: qualquer cenário de deslocamento urbano real, trabalho, entrega
 - Melhor custo-benefício entrada → Bike 350
 - Ruas ruins → Big Sur (pneu fat) ou Bliss (pneu largo)`;
 
-const msEletricQuizConfig: QuizConfig = {
+export const msEletricQuizConfig: QuizConfig = {
   title: "Descubra seu modelo ideal",
   subtitle: "Responda algumas perguntas e receba uma recomendação personalizada",
   teaserHeading: "Não sabe qual escolher?",
