@@ -1,6 +1,6 @@
 import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { MessageCircle, Star, ChevronDown, User, Phone, MapPin, Clock, ExternalLink } from "lucide-react";
+import { MessageCircle, Star, ChevronDown, User, Phone, MapPin, Clock, ExternalLink, Zap, Battery, Gauge, ArrowRight } from "lucide-react";
 import type { QuizResult } from "./types";
 import { getModelImage } from "./modelImages";
 import { useBusinessStatus } from "@/hooks/useBusinessHours";
@@ -35,10 +35,24 @@ const getInputStyle = (hasError: boolean) => ({
   ...(hasError ? { boxShadow: "0 0 0 2px hsl(0 84% 60% / 0.1)" } : {}),
 });
 
-/** Truncate text to ~maxLen chars at word boundary */
-const truncate = (text: string, maxLen = 80) => {
-  if (!text || text.length <= maxLen) return text;
-  return text.slice(0, maxLen).replace(/\s+\S*$/, "") + "…";
+/** Parse specs string into key-value pairs */
+const parseSpecs = (specs: string) => {
+  if (!specs) return [];
+  return specs.split("|").map((s) => {
+    const parts = s.trim().split(":");
+    if (parts.length >= 2) {
+      return { label: parts[0].trim(), value: parts.slice(1).join(":").trim() };
+    }
+    return { label: "", value: s.trim() };
+  }).filter(s => s.value);
+};
+
+const specIcon = (label: string) => {
+  const l = label.toLowerCase();
+  if (l.includes("motor")) return <Zap className="w-3 h-3" />;
+  if (l.includes("vel")) return <Gauge className="w-3 h-3" />;
+  if (l.includes("autonomia")) return <Battery className="w-3 h-3" />;
+  return null;
 };
 
 const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps) => {
@@ -127,92 +141,159 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
     if (name.trim().length > 0 && !name.trim().includes(" ")) setNameError("Inclua seu sobrenome");
   };
 
-  // ── Render a single model card ──────────────────────────────────────
-  const renderModelCard = (model: typeof models[0], i: number) => {
+  // ── Primary model card ──────────────────────────────────────────────
+  const renderPrimaryCard = (model: typeof models[0]) => {
     const image = getModelImage(model.name);
-    const isPrimary = i === 0;
+    const specs = parseSpecs(model.specs || "");
+
+    return (
+      <motion.div
+        initial={{ opacity: 0, y: 12 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.1 }}
+        className="rounded-2xl overflow-hidden"
+        style={{
+          background: "linear-gradient(165deg, hsl(11 81% 57% / 0.12) 0%, hsl(0 0% 100% / 0.03) 100%)",
+          border: "1px solid hsl(11 81% 57% / 0.25)",
+          boxShadow: "0 8px 32px hsl(11 81% 57% / 0.08)",
+        }}
+      >
+        {/* Badge: melhor escolha */}
+        <div
+          className="flex items-center gap-1.5 px-4 py-2"
+          style={{
+            background: "linear-gradient(90deg, hsl(11 81% 57% / 0.15), transparent)",
+            borderBottom: "1px solid hsl(11 81% 57% / 0.12)",
+          }}
+        >
+          <Star className="w-3 h-3 fill-current" style={{ color: "hsl(11 81% 57%)" }} />
+          <span className="text-[10px] font-bold uppercase tracking-[0.15em]" style={{ color: "hsl(11 81% 57%)" }}>
+            Melhor escolha para você
+          </span>
+        </div>
+
+        {/* Image */}
+        {image && (
+          <div className="w-full h-40 bg-white/5 flex items-center justify-center overflow-hidden">
+            <img src={image} alt={model.name} className="h-full w-auto object-contain mix-blend-normal" />
+          </div>
+        )}
+
+        {/* Content */}
+        <div className="p-4 space-y-3">
+          <div>
+            <h4 className="font-bold text-lg text-white">{model.name}</h4>
+            <p className="text-xs text-white/50 mt-0.5 leading-relaxed">{model.headline}</p>
+          </div>
+
+          {/* Specs grid */}
+          {specs.length > 0 && (
+            <div className="grid grid-cols-2 gap-1.5">
+              {specs.slice(0, 4).map((s, idx) => (
+                <div
+                  key={idx}
+                  className="flex items-center gap-1.5 rounded-lg px-2.5 py-1.5"
+                  style={{ background: "hsl(0 0% 100% / 0.05)", border: "1px solid hsl(0 0% 100% / 0.06)" }}
+                >
+                  <span style={{ color: "hsl(11 81% 57% / 0.7)" }}>{specIcon(s.label)}</span>
+                  <div className="min-w-0">
+                    <p className="text-[9px] uppercase tracking-wider text-white/30 leading-none">{s.label}</p>
+                    <p className="text-[11px] font-semibold text-white/80 leading-tight truncate">{s.value}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+
+          {/* Why fits */}
+          {model.whyFits && (
+            <p className="text-xs text-white/50 leading-relaxed italic">
+              "{model.whyFits}"
+            </p>
+          )}
+
+          {/* CTA: Saber mais */}
+          <motion.button
+            type="button"
+            className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider cursor-pointer"
+            style={{
+              background: "hsl(11 81% 57% / 0.12)",
+              border: "1px solid hsl(11 81% 57% / 0.25)",
+              color: "hsl(11 81% 57%)",
+            }}
+            whileHover={{
+              background: "hsl(11 81% 57% / 0.2)",
+              boxShadow: "0 0 20px hsl(11 81% 57% / 0.15)",
+            }}
+            whileTap={{ scale: 0.98 }}
+            onClick={() => {
+              const modelsSection = document.getElementById("modelos");
+              if (modelsSection) modelsSection.scrollIntoView({ behavior: "smooth" });
+            }}
+          >
+            Ver detalhes completos <ArrowRight className="w-3.5 h-3.5" />
+          </motion.button>
+        </div>
+      </motion.div>
+    );
+  };
+
+  // ── Secondary/tertiary model card ───────────────────────────────────
+  const renderSecondaryCard = (model: typeof models[0], i: number) => {
+    const image = getModelImage(model.name);
     const isExpanded = expandedModel === i;
+    const specs = parseSpecs(model.specs || "");
 
     return (
       <motion.div
         key={model.name}
-        initial={{ opacity: 0, x: -10 }}
+        initial={{ opacity: 0, x: -8 }}
         animate={{ opacity: 1, x: 0 }}
-        transition={{ delay: i * 0.08 }}
+        transition={{ delay: i * 0.1 }}
         className="rounded-xl overflow-hidden"
         style={{
-          background: isPrimary ? "hsl(11 81% 57% / 0.08)" : "hsl(0 0% 100% / 0.04)",
-          border: isPrimary ? "1px solid hsl(11 81% 57% / 0.25)" : "1px solid hsl(0 0% 100% / 0.08)",
+          background: "hsl(0 0% 100% / 0.03)",
+          border: "1px solid hsl(0 0% 100% / 0.08)",
         }}
       >
-        {/* Primary hero image */}
-        {isPrimary && image && (
-          <div className="w-full h-36 bg-white flex items-center justify-center overflow-hidden">
-            <img src={image} alt={model.name} className="h-full w-auto object-contain" />
-          </div>
-        )}
-
-        {/* Card body */}
+        {/* Clickable header */}
         <div
-          className={`${isPrimary ? "p-4" : "p-3 cursor-pointer select-none"}`}
-          onClick={!isPrimary ? () => setExpandedModel(isExpanded ? null : i) : undefined}
+          className="flex items-center gap-3 p-3 cursor-pointer select-none group"
+          onClick={() => setExpandedModel(isExpanded ? null : i)}
         >
-          <div className="flex items-start gap-2.5">
-            {/* Thumbnail for secondary */}
-            {!isPrimary && image && (
-              <div
-                className="w-11 h-11 rounded-lg bg-white overflow-hidden flex-shrink-0 flex items-center justify-center"
-                style={{ border: "1px solid hsl(0 0% 100% / 0.1)" }}
-              >
-                <img src={image} alt={model.name} className="h-full w-auto object-contain" />
-              </div>
-            )}
-
-            {/* No image fallback icon */}
-            {!image && isPrimary && <Star className="w-4 h-4 mt-0.5 flex-shrink-0 fill-current" style={{ color: "hsl(11 81% 57%)" }} />}
-
-            <div className="flex-1 min-w-0">
-              <div className="flex items-center gap-1.5">
-                {isPrimary && image && <Star className="w-3.5 h-3.5 flex-shrink-0 fill-current" style={{ color: "hsl(11 81% 57%)" }} />}
-                <p
-                  className={`font-bold ${isPrimary ? "text-base" : "text-sm text-white/80"}`}
-                  style={isPrimary ? { color: "hsl(11 81% 57%)" } : {}}
-                >
-                  {model.name}
-                </p>
-                {!isPrimary && (
-                  <motion.span
-                    animate={{ rotate: isExpanded ? 180 : 0 }}
-                    transition={{ duration: 0.2 }}
-                    className="ml-auto flex-shrink-0"
-                  >
-                    <ChevronDown className="w-4 h-4 text-white/40" />
-                  </motion.span>
-                )}
-              </div>
-
-              {/* Headline — always visible */}
-              <p className={`${isPrimary ? "text-xs text-white/60" : "text-[11px] text-white/40"} mt-0.5 leading-snug`}>
-                {isPrimary ? model.headline : truncate(model.headline, 60)}
-              </p>
-
-              {/* Primary: show specs & whyFits inline (compact) */}
-              {isPrimary && model.specs && (
-                <div className="mt-2 rounded-lg px-3 py-2" style={{ background: "hsl(0 0% 100% / 0.06)" }}>
-                  <p className="text-[10px] uppercase tracking-wider text-white/40 mb-0.5 font-semibold">Destaques</p>
-                  <p className="text-xs text-white/70 leading-relaxed">{truncate(model.specs, 120)}</p>
-                </div>
-              )}
-              {isPrimary && model.whyFits && (
-                <p className="text-xs text-white/50 mt-2 leading-relaxed">{truncate(model.whyFits, 100)}</p>
-              )}
+          {/* Thumbnail */}
+          {image && (
+            <div
+              className="w-12 h-12 rounded-lg bg-white/5 overflow-hidden flex-shrink-0 flex items-center justify-center"
+              style={{ border: "1px solid hsl(0 0% 100% / 0.08)" }}
+            >
+              <img src={image} alt={model.name} className="h-full w-auto object-contain" />
             </div>
+          )}
+
+          {/* Info */}
+          <div className="flex-1 min-w-0">
+            <p className="text-sm font-semibold text-white/85 group-hover:text-white transition-colors">
+              {model.name}
+            </p>
+            <p className="text-[11px] text-white/40 leading-snug mt-0.5 truncate">
+              {model.headline}
+            </p>
           </div>
+
+          {/* Chevron */}
+          <motion.span
+            animate={{ rotate: isExpanded ? 180 : 0 }}
+            transition={{ duration: 0.2 }}
+            className="flex-shrink-0"
+          >
+            <ChevronDown className="w-4 h-4 text-white/30 group-hover:text-white/50 transition-colors" />
+          </motion.span>
         </div>
 
-        {/* Expandable details for secondary/tertiary */}
+        {/* Expandable details */}
         <AnimatePresence>
-          {!isPrimary && isExpanded && (
+          {isExpanded && (
             <motion.div
               initial={{ height: 0, opacity: 0 }}
               animate={{ height: "auto", opacity: 1 }}
@@ -220,34 +301,45 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
               transition={{ duration: 0.25, ease: "easeInOut" }}
               className="overflow-hidden"
             >
-              <div className="px-3 pb-3 space-y-2" style={{ borderTop: "1px solid hsl(0 0% 100% / 0.06)" }}>
-                {model.headline && (
-                  <p className="text-xs text-white/60 mt-2 leading-relaxed">{model.headline}</p>
-                )}
-                {model.specs && (
-                  <div className="rounded-lg px-3 py-2" style={{ background: "hsl(0 0% 100% / 0.06)" }}>
-                    <p className="text-[10px] uppercase tracking-wider text-white/40 mb-0.5 font-semibold">Destaques</p>
-                    <p className="text-xs text-white/70">{truncate(model.specs, 100)}</p>
+              <div
+                className="px-3 pb-3 space-y-2.5"
+                style={{ borderTop: "1px solid hsl(0 0% 100% / 0.06)" }}
+              >
+                {/* Specs pills */}
+                {specs.length > 0 && (
+                  <div className="flex flex-wrap gap-1.5 pt-2.5">
+                    {specs.slice(0, 4).map((s, idx) => (
+                      <span
+                        key={idx}
+                        className="inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-[10px] font-medium text-white/60"
+                        style={{ background: "hsl(0 0% 100% / 0.06)", border: "1px solid hsl(0 0% 100% / 0.06)" }}
+                      >
+                        <span style={{ color: "hsl(11 81% 57% / 0.6)" }}>{specIcon(s.label)}</span>
+                        {s.label}: <span className="text-white/80 font-semibold">{s.value}</span>
+                      </span>
+                    ))}
                   </div>
                 )}
+
+                {/* Why fits */}
                 {model.whyFits && (
-                  <p className="text-[11px] text-white/50 leading-relaxed">{truncate(model.whyFits, 80)}</p>
+                  <p className="text-[11px] text-white/45 leading-relaxed">
+                    {model.whyFits}
+                  </p>
                 )}
-                {/* Saber Mais CTA */}
+
+                {/* CTA */}
                 <button
                   type="button"
-                  className="inline-flex items-center gap-1 text-[11px] font-semibold mt-1 cursor-pointer transition-colors"
+                  className="inline-flex items-center gap-1.5 text-[11px] font-semibold cursor-pointer transition-colors hover:opacity-80"
                   style={{ color: "hsl(11 81% 57%)" }}
                   onClick={(e) => {
                     e.stopPropagation();
-                    // For now, scroll to models section or open product page
                     const modelsSection = document.getElementById("modelos");
-                    if (modelsSection) {
-                      modelsSection.scrollIntoView({ behavior: "smooth" });
-                    }
+                    if (modelsSection) modelsSection.scrollIntoView({ behavior: "smooth" });
                   }}
                 >
-                  Saber mais <ExternalLink className="w-3 h-3" />
+                  Saber mais sobre este modelo <ExternalLink className="w-3 h-3" />
                 </button>
               </div>
             </motion.div>
@@ -267,24 +359,35 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
       {/* Category badge */}
       <div
         className="rounded-xl p-4 text-center"
-        style={{ background: "hsl(11 81% 57% / 0.1)", border: "1px solid hsl(11 81% 57% / 0.15)" }}
+        style={{ background: "hsl(11 81% 57% / 0.08)", border: "1px solid hsl(11 81% 57% / 0.12)" }}
       >
-        <p className="text-[10px] text-white/40 mb-1 uppercase tracking-wider">Categoria ideal para você</p>
-        <p className="font-bold text-xl" style={{ color: "hsl(11 81% 57%)" }}>{result.category}</p>
-        <p className="text-xs text-white/50 mt-1 leading-relaxed">{result.justification}</p>
+        <p className="text-[10px] text-white/35 mb-1 uppercase tracking-[0.15em] font-medium">Categoria ideal</p>
+        <p className="font-bold text-lg" style={{ color: "hsl(11 81% 57%)" }}>{result.category}</p>
+        <p className="text-[11px] text-white/45 mt-1 leading-relaxed max-w-xs mx-auto">{result.justification}</p>
       </div>
 
       {/* Model cards */}
-      {hasModels ? (
-        <div className="space-y-2.5">
-          <p className="text-xs font-semibold uppercase tracking-wider text-white/40">
-            {models.length === 1 ? "Modelo recomendado" : "Modelos recomendados"}
-          </p>
-          {models.map((model, i) => renderModelCard(model, i))}
+      {hasModels && (
+        <div className="space-y-3">
+          {/* Primary */}
+          {models[0] && renderPrimaryCard(models[0])}
+
+          {/* Secondary label */}
+          {models.length > 1 && (
+            <p className="text-[10px] font-semibold uppercase tracking-[0.15em] text-white/30 pt-1">
+              Outras opções para o seu perfil
+            </p>
+          )}
+
+          {/* Secondary/tertiary */}
+          {models.slice(1).map((model, i) => renderSecondaryCard(model, i + 1))}
         </div>
-      ) : result.suggestions.length > 0 ? (
+      )}
+
+      {/* Fallback: old suggestions array */}
+      {!hasModels && result.suggestions.length > 0 && (
         <div>
-          <p className="text-xs font-semibold uppercase tracking-wider text-white/40 mb-2">Modelos sugeridos</p>
+          <p className="text-[10px] font-semibold uppercase tracking-[0.15em] text-white/30 mb-2">Modelos sugeridos</p>
           <div className="space-y-2">
             {result.suggestions.map((s) => (
               <div
@@ -297,17 +400,20 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
             ))}
           </div>
         </div>
-      ) : null}
+      )}
+
+      {/* ── Divider ─────────────────────────────────────────────────── */}
+      <div
+        className="h-[1px]"
+        style={{ background: "linear-gradient(90deg, transparent, hsl(0 0% 100% / 0.1), transparent)" }}
+      />
 
       {/* ── Lead capture ────────────────────────────────────────────── */}
-      <div className="space-y-4 pt-1">
-        <div
-          className="h-[1px]"
-          style={{ background: "linear-gradient(90deg, transparent, hsl(11 81% 57% / 0.3), transparent)" }}
-        />
-        <p className="text-xs font-semibold uppercase tracking-wider text-white/40">
-          Gostou? Fale com a gente
-        </p>
+      <div className="space-y-4">
+        <div className="text-center">
+          <p className="text-sm font-semibold text-white/80">Gostou da recomendação?</p>
+          <p className="text-[11px] text-white/40 mt-0.5">Preencha seus dados e fale direto com um consultor</p>
+        </div>
 
         {/* Status chip */}
         <div className="relative">
@@ -505,7 +611,7 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
           whileTap={isFormValid ? { scale: 0.98 } : {}}
         >
           <WhatsAppIcon className="w-5 h-5" />
-          Falar no WhatsApp
+          Falar com consultor no WhatsApp
         </motion.a>
         {!isFormValid && (
           <p className="text-[10px] text-white/30 text-center">Preencha os campos acima para continuar</p>
