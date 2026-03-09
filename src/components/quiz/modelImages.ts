@@ -44,6 +44,8 @@ const modelImageMap: Record<string, string> = {
   "moto cross infantil": modelMotocrossKids,
   "motocross infantil": modelMotocrossKids,
   "moto cross": modelMotocrossKids,
+  "drift elétrico 350": modelMotocrossKids,
+  "drift eletrico 350": modelMotocrossKids,
   "drift infantil 350": modelMotocrossKids,
   "drift infantil": modelMotocrossKids,
   // Patinetes

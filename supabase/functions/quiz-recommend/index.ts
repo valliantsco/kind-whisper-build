@@ -54,7 +54,7 @@ CATEGORIAS VÁLIDAS: Autopropelidos, Bicicletas Elétricas, Scooters, Triciclos,
 5. Bliss | R$ 15.990 | Motor: 800W | Vel: 32km/h | Autonomia: 70km | Recarga: 6-7h | Bateria: lítio | Carga: 120-150kg
    Perfil: design premium, conforto, autonomia superior, deslocamento cotidiano refinado.
 
-6. Liberty | Preço: consulte | Motor: 1.000W | Vel: 32km/h | Autonomia: 70km | Recarga: 5-6h | Bateria: lítio 64V/30Ah | Carga: 150kg
+6. Liberty Ultra | R$ 12.990 | Motor: 1.000W | Vel: 32km/h | Autonomia: 70km | Recarga: 5-6h | Bateria: lítio 64V/30Ah | Carga: 150kg
    Perfil: mais autonomia, espaço e praticidade, baú traseiro, deslocamentos recorrentes, entregas leves.
 
 ── BICICLETAS ELÉTRICAS ──
