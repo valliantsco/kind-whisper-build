@@ -78,7 +78,7 @@ CATEGORIAS VÁLIDAS: Autopropelidos, Bicicletas Elétricas, Scooters Elétricas,
 
 ── TRICICLOS ELÉTRICOS ──
 
-12. Triciclo Elétrico | R$ 15.990 | Motor: 650W | Vel: 32km/h | Autonomia: 60km | Recarga: 6-7h | Bateria: chumbo não removível | Carga: 120-150kg
+12. Triciclo Elétrico | R$ 15.990 | Motor: 650W | Vel. máxima: 32km/h | Autonomia: 60km | Recarga: 6-7h | Bateria: chumbo não removível | Carga: 120-150kg
     Perfil: estabilidade, conforto, público maduro, mobilidade assistida, uso interno/urbano.
 
 ── SCOOTERS ELÉTRICAS (ESPORTIVAS) ──
