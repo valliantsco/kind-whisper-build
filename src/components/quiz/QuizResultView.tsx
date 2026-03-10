@@ -326,11 +326,11 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
         transition={{ delay: 1.0 }}
       >
         <div className="flex items-center gap-1">
-          <ShieldCheck className="w-3 h-3" style={{ color: "hsl(142 76% 50%)" }} />
+          <ShieldCheck className="w-3 h-3" style={{ color: "hsl(11 81% 57%)" }} />
           <span className="text-[9px] text-white/35 font-medium">Garantia de fábrica</span>
         </div>
         <div className="flex items-center gap-1">
-          <CheckCircle2 className="w-3 h-3" style={{ color: "hsl(142 76% 50%)" }} />
+          <CheckCircle2 className="w-3 h-3" style={{ color: "hsl(11 81% 57%)" }} />
           <span className="text-[9px] text-white/35 font-medium">Pronta entrega</span>
         </div>
       </motion.div>
