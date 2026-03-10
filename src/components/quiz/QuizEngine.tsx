@@ -229,7 +229,12 @@ const QuizEngine = ({ config, open, onOpenChange }: QuizEngineProps) => {
             />
 
             {/* Scrollable content */}
-            <div className="overflow-y-auto flex-1 relative scrollbar-hide" style={{ scrollbarWidth: "none" }}>
+            <div className="overflow-y-auto flex-1 relative quiz-scrollbar"
+              style={{
+                scrollbarWidth: "thin",
+                scrollbarColor: "hsl(0 0% 100% / 0.12) transparent",
+              }}
+            >
 
               {/* Header */}
               <div className="flex items-start justify-between px-5 pt-4 pb-3">
