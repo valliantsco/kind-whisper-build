@@ -11,6 +11,7 @@ import modelRhino from "@/assets/models/model-rhino-new.png";
 import modelMs2500 from "@/assets/models/model-ms2500.jpg";
 import modelSportMoto from "@/assets/models/model-sport-moto.jpg";
 import modelHoliday1000 from "@/assets/models/model-holiday-1000.png";
+import modelLibertyUltra from "@/assets/models/model-liberty-ultra.png";
 import modelS3k from "@/assets/models/model-s3k.png";
 import modelCargo from "@/assets/models/model-cargo.png";
 import modelMotocrossKids from "@/assets/models/model-motocross-kids.jpg";
@@ -24,8 +25,8 @@ const modelImageMap: Record<string, string> = {
   "bike ms 600": modelBikeMs600,
   "ms 600": modelBikeMs600,
   "bliss": modelBliss,
-  "liberty ultra": modelBliss,
-  "liberty": modelBliss,
+  "liberty ultra": modelLibertyUltra,
+  "liberty": modelLibertyUltra,
   // Bicicletas elétricas
   "santa monica": modelSantaMonica,
   "big sur": modelBigSur,
