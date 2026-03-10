@@ -174,7 +174,7 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
         )}
 
         {/* Content */}
-        <div className="p-4 space-y-3">
+        <div className="px-3.5 py-3 space-y-2.5">
           <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.6 }}>
             <h4 className="font-bold text-lg text-white">{model.name}</h4>
             <p className="text-xs text-white/50 mt-0.5 leading-relaxed">{model.headline}</p>
