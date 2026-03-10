@@ -34,7 +34,7 @@ const modelImageMap: Record<string, string> = {
   // Scooters
   "ms 2500": modelMs2500,
   "ms2500": modelMs2500,
-  "new holiday": modelSportMoto,
+  "new holiday": modelNewHoliday,
   "holiday 1000": modelHoliday1000,
   // Triciclos
   "triciclo": modelTricycle,
