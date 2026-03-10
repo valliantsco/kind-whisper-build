@@ -156,6 +156,25 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
         {/* Image */}
         {image &&
         <div className="w-full h-56 overflow-hidden relative">
+            {/* Dissolve: top edge */}
+            <div
+            className="absolute top-0 left-0 right-0 h-16 pointer-events-none z-30"
+            style={{
+              background: "linear-gradient(to bottom, hsl(0 0% 8% / 1) 0%, hsl(0 0% 8% / 0.7) 30%, hsl(0 0% 8% / 0.3) 60%, transparent 100%)"
+            }} />
+            {/* Dissolve: bottom edge */}
+            <div
+            className="absolute bottom-0 left-0 right-0 h-12 pointer-events-none z-30"
+            style={{
+              background: "linear-gradient(to top, hsl(0 0% 8% / 1) 0%, hsl(0 0% 8% / 0.5) 40%, transparent 100%)"
+            }} />
+            {/* Dissolve: side edges */}
+            <div
+            className="absolute inset-0 pointer-events-none z-30"
+            style={{
+              background: "linear-gradient(to right, hsl(0 0% 8% / 0.6) 0%, transparent 15%, transparent 85%, hsl(0 0% 8% / 0.6) 100%)"
+            }} />
+            {/* Orange ambient glow */}
             <div
             className="absolute inset-0 pointer-events-none z-20"
             style={{
