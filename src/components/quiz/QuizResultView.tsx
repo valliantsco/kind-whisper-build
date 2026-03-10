@@ -294,7 +294,7 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
   };
 
   return (
-    <motion.div key="result" initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-4">
+    <motion.div key="result" initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-4 pb-0">
       {/* Primary card */}
       {hasModels && models[0] && renderPrimaryCard(models[0])}
 
@@ -460,7 +460,7 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
       {/* Secondary models */}
       {hasModels && models.length > 1 &&
       <motion.div
-        className="space-y-2 pt-2 pb-0"
+        className="space-y-2 pb-0 pt-[7px]"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.3 }}>
