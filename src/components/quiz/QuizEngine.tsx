@@ -411,7 +411,7 @@ const QuizEngine = ({ config, open, onOpenChange }: QuizEngineProps) => {
                       whileHover={{ scale: 1.02, boxShadow: "0 0 25px hsl(11 81% 57% / 0.5), 0 0 50px hsl(11 81% 57% / 0.2)" }}
                       whileTap={{ scale: 0.98 }}
                     >
-                      {extraDetails.trim() ? "Ver resultado" : "Pular e ver resultado"} <ArrowRight className="w-4 h-4" />
+                      {extraDetails.trim() ? "Ver minha recomendação" : "Pular e ver recomendação"} <ArrowRight className="w-4 h-4" />
                     </motion.button>
                   </div>
                 )}
