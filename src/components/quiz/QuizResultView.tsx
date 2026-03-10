@@ -342,6 +342,12 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
         Fale com um especialista sobre este modelo
       </motion.p>
 
+      <motion.div
+        className="space-y-3.5"
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 1.2 }}
+      >
         {/* Name */}
         <div>
           <label className="flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-[0.1em] text-white/50 mb-1.5">
