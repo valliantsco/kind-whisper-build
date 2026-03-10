@@ -467,7 +467,7 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
         
           <div className="h-[1px]" style={{ background: "linear-gradient(90deg, transparent, hsl(0 0% 100% / 0.06), transparent)" }} />
           <p className="text-[10px] font-semibold uppercase tracking-[0.15em] text-white/20 pt-0">
-            Outras opções para o seu perfil
+            {models.slice(1).length > 1 ? "Outras opções para o seu perfil" : "Outra opção para o seu perfil"}
           </p>
           {models.slice(1).map((model, i) =>
         <motion.div
