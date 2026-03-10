@@ -60,7 +60,7 @@ const specIcon = (label: string) => {
 const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps) => {
   const models = result.models?.length ? result.models : [];
   const hasModels = models.length > 0;
-  const [expandedModel, setExpandedModel] = useState<number | null>(null);
+  
   const { isOnline, offlineMessage } = useBusinessStatus();
 
   const [name, setName] = useState("");
