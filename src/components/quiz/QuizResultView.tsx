@@ -399,7 +399,7 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 1.4 + i * 0.15, duration: 0.4 }}
             >
-              {renderSecondaryCard(model, i + 1)}
+              {renderSecondaryCard(model)}
             </motion.div>
           ))}
         </div>
