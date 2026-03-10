@@ -88,7 +88,7 @@ RECOMENDAR QUANDO: quer sensação de moto moderada, desempenho urbano
 EVITAR QUANDO: precisa levar bateria (NÃO removível), autonomia muito alta
 
 11. NEW HOLIDAY
-Motor: 2.000W | Vel: 50km/h | Autonomia: 50km | Recarga: 6-8h | Bateria: lítio removível | Carga: 150kg | Preço: R$15.990
+Motor: 2.000W | Vel. máxima: 50km/h | Autonomia: 50km | Recarga: 6-8h | Bateria: lítio removível | Carga: 150kg | Preço: R$15.990
 RECOMENDAR QUANDO: visual clássico, conforto, banco duplo, recursos: ré, NFC, alarme
 EVITAR QUANDO: precisa de autonomia muito alta
 
