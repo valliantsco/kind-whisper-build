@@ -381,7 +381,7 @@ const QuizEngine = ({ config, open, onOpenChange }: QuizEngineProps) => {
                       whileHover={canProceed ? { scale: 1.02, boxShadow: "0 0 25px hsl(11 81% 57% / 0.5), 0 0 50px hsl(11 81% 57% / 0.2)" } : {}}
                       whileTap={canProceed ? { scale: 0.98 } : {}}
                     >
-                      Próximo <ArrowRight className="w-4 h-4" />
+                      Continuar <ArrowRight className="w-4 h-4" />
                     </motion.button>
                   </div>
                 )}
