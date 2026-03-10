@@ -134,7 +134,7 @@ RECOMENDAR QUANDO: crianças menores, drift recreativo, diversão lúdica
 --- PATINETES ---
 
 19. PATINETE 350
-Motor: 350W | Vel: 30km/h | Autonomia: 30km | Recarga: 5-6h | Carga: 120kg | Preço: R$2.800
+Motor: 350W | Vel. máxima: 30km/h | Autonomia: 30km | Recarga: 5-6h | Carga: 120kg | Preço: R$2.800
 RECOMENDAR QUANDO: última milha, condomínios, campus, mobilidade complementar leve
 
 === REGRAS GERAIS ===
