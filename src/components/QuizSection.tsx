@@ -71,7 +71,7 @@ RECOMENDAR QUANDO: quer "cara de bike", conforto+recarga rápida, cidade+lazer
 EVITAR QUANDO: carga/baú profissional, desempenho de moto
 
 8. BIG SUR
-Motor: 500W | Vel: 32km/h | Autonomia: 60km | Recarga: 5h | Bateria: lítio | Pneus fat 20x4.0 | Carga: 120-150kg
+Motor: 500W | Vel. máxima: 32km/h | Autonomia: 60km | Recarga: 5h | Bateria: lítio | Pneus fat 20x4.0 | Carga: 120-150kg
 RECOMENDAR QUANDO: ruas ruins/paralelepípedo/terra leve, prioridade estabilidade, pouca confiança em 2 rodas
 EVITAR QUANDO: desempenho de moto, carga pesada
 
