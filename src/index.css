@@ -212,3 +212,18 @@ html {
     display: none !important;
   }
 }
+
+/* Quiz subtle scrollbar */
+.quiz-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+.quiz-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.quiz-scrollbar::-webkit-scrollbar-thumb {
+  background: hsl(0 0% 100% / 0.12);
+  border-radius: 9999px;
+}
+.quiz-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: hsl(0 0% 100% / 0.22);
+}
