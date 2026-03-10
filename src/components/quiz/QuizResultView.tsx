@@ -174,7 +174,7 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
         )}
 
         {/* Content */}
-        <div className="p-4 space-y-3">
+        <div className="px-3.5 py-3 space-y-2.5">
           <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.6 }}>
             <h4 className="font-bold text-lg text-white">{model.name}</h4>
             <p className="text-xs text-white/50 mt-0.5 leading-relaxed">{model.headline}</p>
@@ -218,12 +218,6 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
             </motion.div>
           )}
 
-          {/* AI justification */}
-          {result.justification && (
-            <motion.p className="text-[11px] text-white/35 leading-relaxed italic" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.85 }}>
-              {result.justification}
-            </motion.p>
-          )}
 
           {/* Price */}
           {(() => {
