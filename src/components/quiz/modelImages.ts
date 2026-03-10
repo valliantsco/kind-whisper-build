@@ -39,7 +39,7 @@ const modelImageMap: Record<string, string> = {
   "triciclo eletrico": modelTricycle,
   // Esportivos
   "tour 3k": modelTour3k,
-  "s3k": modelSportMoto,
+  "s3k": modelS3k,
   "ms 3500": modelSportMoto,
   // Utilitários
   "rhino": modelRhino,
