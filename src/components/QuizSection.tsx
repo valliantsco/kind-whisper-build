@@ -93,7 +93,7 @@ RECOMENDAR QUANDO: visual clássico, conforto, banco duplo, recursos: ré, NFC, 
 EVITAR QUANDO: precisa de autonomia muito alta
 
 12. TOUR 3K
-Motor: 3.000W | Vel: 75km/h | Autonomia: 40km | Recarga: 6-8h | Bateria: lítio removível | Carga: 120kg | Preço: R$16.990
+Motor: 3.000W | Vel. máxima: 75km/h | Autonomia: 40km | Recarga: 6-8h | Bateria: lítio removível | Carga: 120kg | Preço: R$16.990
 RECOMENDAR QUANDO: quer velocidade+agilidade, muitas subidas, bateria removível
 EVITAR QUANDO: precisa rodar muito sem recarga (S3K melhor)
 
