@@ -70,7 +70,7 @@ CATEGORIAS VÁLIDAS: Autopropelidos, Bicicletas Elétricas, Scooters Elétricas,
 9. MS 2500 | R$ 14.990 | Motor: 2.500W | Vel. máxima: 52km/h | Autonomia: 50km | Recarga: 6-7h | Bateria: chumbo não removível | Carga: 150kg
    Perfil: mais desempenho que autopropelido, deslocamentos diários urbanos, proposta prática.
 
-10. New Holiday | R$ 15.990 | Motor: 2.000W | Vel: 50km/h | Autonomia: 50km | Recarga: 6-8h | Bateria: lítio removível 60V/20Ah | Carga: 150kg
+10. New Holiday | R$ 15.990 | Motor: 2.000W | Vel. máxima: 50km/h | Autonomia: 50km | Recarga: 6-8h | Bateria: lítio removível 60V/20Ah | Carga: 150kg
     Perfil: visual clássico, conforto, banco duplo, recursos: ré, NFC, alarme, parking.
 
 11. Holiday 1000 | R$ 10.490 | Motor: 1.000W | Vel: 32km/h | Autonomia: 45km | Recarga: 8-10h | Bateria: lítio removível 60V/20Ah | Carga: 150kg
