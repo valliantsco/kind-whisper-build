@@ -10,6 +10,7 @@ import modelTour3k from "@/assets/models/model-tour-3k.png";
 import modelRhino from "@/assets/models/model-rhino-new.png";
 import modelMs2500 from "@/assets/models/model-ms2500.jpg";
 import modelSportMoto from "@/assets/models/model-sport-moto.jpg";
+import modelS3k from "@/assets/models/model-s3k.png";
 import modelCargo from "@/assets/models/model-cargo.png";
 import modelMotocrossKids from "@/assets/models/model-motocross-kids.jpg";
 
@@ -38,7 +39,7 @@ const modelImageMap: Record<string, string> = {
   "triciclo eletrico": modelTricycle,
   // Esportivos
   "tour 3k": modelTour3k,
-  "s3k": modelSportMoto,
+  "s3k": modelS3k,
   "ms 3500": modelSportMoto,
   // Utilitários
   "rhino": modelRhino,
