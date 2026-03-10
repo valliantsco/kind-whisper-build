@@ -278,8 +278,10 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
             }
             <button
               type="button"
-              className="inline-flex items-center gap-0.5 text-[9px] font-medium cursor-pointer transition-opacity opacity-25 hover:opacity-50"
+              className="inline-flex items-center gap-0.5 text-[9px] font-medium cursor-pointer transition-colors opacity-25 hover:opacity-100"
               style={{ color: "hsl(0 0% 100%)" }}
+              onMouseEnter={(e) => e.currentTarget.style.color = "hsl(11 81% 57%)"}
+              onMouseLeave={(e) => { e.currentTarget.style.color = "hsl(0 0% 100%)"; }}
               onClick={() => {
                 const modelsSection = document.getElementById("modelos");
                 if (modelsSection) modelsSection.scrollIntoView({ behavior: "smooth" });
