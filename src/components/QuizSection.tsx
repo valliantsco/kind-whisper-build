@@ -112,7 +112,7 @@ EVITAR QUANDO: quer velocidade/agilidade, precisa levar bateria (NÃO removível
 --- UTILITÁRIOS ---
 
 15. RHINO DELIVERY
-Motor: 2.000W | Vel: 65km/h | Autonomia: 75km | Recarga: 6-8h | Bateria: lítio removível | Carga: 150kg | Preço: R$18.990
+Motor: 2.000W | Vel. máxima: 65km/h | Autonomia: 75km | Recarga: 6-8h | Bateria: lítio removível | Carga: 150kg | Preço: R$18.990
 RECOMENDAR QUANDO: delivery/trabalho dia todo, km/dia 36-75km, carga leve a média
 EVITAR QUANDO: carga pesada/frete (Cargo), uso pessoal curto
 
