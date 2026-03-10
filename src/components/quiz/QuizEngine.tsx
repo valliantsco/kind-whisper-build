@@ -246,7 +246,7 @@ const QuizEngine = ({ config, open, onOpenChange }: QuizEngineProps) => {
             
 
               {/* Header */}
-              <div className="items-start justify-between px-5 pt-4 pb-3 pr-0 flex flex-row">
+              <div className="items-start justify-between px-5 pt-4 pb-3 flex flex-row">
                 <div>
                   <h3 className="text-base font-bold text-white tracking-tight">
                     {headerTitle}
@@ -257,7 +257,7 @@ const QuizEngine = ({ config, open, onOpenChange }: QuizEngineProps) => {
                 </div>
                 <motion.button
                 onClick={handleClose}
-                className="p-2 rounded-xl text-white cursor-pointer mx-[13px]"
+                className="p-2 rounded-xl text-white cursor-pointer shrink-0"
                 style={{
                   background: "linear-gradient(135deg, hsl(11 81% 57%), hsl(11 90% 65%))",
                   boxShadow: "0 4px 20px hsl(11 81% 57% / 0.25)"
