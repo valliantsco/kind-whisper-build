@@ -98,7 +98,7 @@ RECOMENDAR QUANDO: quer velocidade+agilidade, muitas subidas, bateria removível
 EVITAR QUANDO: precisa rodar muito sem recarga (S3K melhor)
 
 13. S3K
-Motor: 3.500W | Vel: 80km/h | Autonomia: 85km | Recarga: 6-8h | Bateria: lítio removível | Carga: 120kg | Preço: R$19.990
+Motor: 3.500W | Vel. máxima: 80km/h | Autonomia: 85km | Recarga: 6-8h | Bateria: lítio removível | Carga: 120kg | Preço: R$19.990
 RECOMENDAR QUANDO: km/dia 36-75km, prioridade autonomia+desempenho, quer a scooter mais completa
 EVITAR QUANDO: deslocamento curto e econômico
 
