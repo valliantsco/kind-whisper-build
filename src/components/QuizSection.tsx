@@ -49,7 +49,7 @@ RECOMENDAR QUANDO: urbano frequente, condutor mais pesado, uso diário intenso
 EVITAR QUANDO: autonomia muito alta (MS600/Bliss melhor), delivery profissional
 
 4. BIKE MS 600
-Motor: 600W | Vel: 32km/h | Autonomia: 70km | Recarga: 7-8h | Bateria: grafeno NÃO removível | Carga: 100-120kg | Preço: R$11.990
+Motor: 600W | Vel. máxima: 32km/h | Autonomia: 70km | Recarga: 7-8h | Bateria: grafeno NÃO removível | Carga: 100-120kg | Preço: R$11.990
 RECOMENDAR QUANDO: km/dia 21-55km, prioridade autonomia, rotina intensa sem querer moto
 EVITAR QUANDO: precisa levar bateria para carregar (NÃO removível!)
 
