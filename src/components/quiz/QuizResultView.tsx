@@ -212,7 +212,7 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
           {/* Specs grid */}
           {nonPriceSpecs.length > 0 && (
             <motion.div
-              className="grid grid-cols-2 gap-1.5"
+              className="grid grid-cols-2 gap-2"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.9 }}
@@ -220,14 +220,17 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
               {nonPriceSpecs.slice(0, 4).map((s, idx) => (
                 <div
                   key={idx}
-                  className="flex items-center gap-1.5 rounded-lg px-2.5 py-1.5"
-                  style={{ background: "hsl(0 0% 100% / 0.05)", border: "1px solid hsl(0 0% 100% / 0.06)" }}
+                  className="rounded-xl px-3 py-2.5 flex flex-col gap-1"
+                  style={{
+                    background: "linear-gradient(135deg, hsl(0 0% 100% / 0.05), hsl(0 0% 100% / 0.02))",
+                    border: "1px solid hsl(0 0% 100% / 0.07)",
+                  }}
                 >
-                  <span style={{ color: "hsl(11 81% 57% / 0.7)" }}>{specIcon(s.label)}</span>
-                  <div className="min-w-0">
-                    <p className="text-[9px] uppercase tracking-wider text-white/30 leading-none">{s.label}</p>
-                    <p className="text-[11px] font-semibold text-white/80 leading-tight truncate">{s.value}</p>
+                  <div className="flex items-center gap-1.5">
+                    <span style={{ color: "hsl(11 81% 57% / 0.8)" }}>{specIcon(s.label)}</span>
+                    <p className="text-[9px] uppercase tracking-[0.12em] text-white/35 font-medium">{s.label}</p>
                   </div>
+                  <p className="text-sm font-bold text-white/90 leading-tight truncate">{s.value}</p>
                 </div>
               ))}
             </motion.div>
