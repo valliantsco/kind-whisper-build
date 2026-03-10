@@ -48,7 +48,7 @@ CATEGORIAS VÁLIDAS: Autopropelidos, Bicicletas Elétricas, Scooters Elétricas,
 3. Bike 500 | R$ 10.990 | Motor: Bosch 500W | Vel. máxima: 32km/h | Autonomia: 50km | Recarga: 7-8h | Bateria: lítio removível | Carga: 100-120kg
    Perfil: autopropelido mais forte para rotina diária, mais peso e uso mais intenso.
 
-4. Bike MS 600 | R$ 11.990 | Motor: 600W | Vel: 32km/h | Autonomia: 70km | Recarga: 7-8h | Bateria: grafeno não removível | Carga: 100-120kg
+4. Bike MS 600 | R$ 11.990 | Motor: 600W | Vel. máxima: 32km/h | Autonomia: 70km | Recarga: 7-8h | Bateria: grafeno não removível | Carga: 100-120kg
    Perfil: uso recorrente, entregas leves, deslocamentos mais longos, maior autonomia no segmento.
 
 5. Bliss | R$ 15.990 | Motor: 800W | Vel: 32km/h | Autonomia: 70km | Recarga: 6-7h | Bateria: lítio | Carga: 120-150kg
