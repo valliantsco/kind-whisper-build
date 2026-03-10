@@ -218,12 +218,6 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
             </motion.div>
           )}
 
-          {/* AI justification */}
-          {result.justification && (
-            <motion.p className="text-[11px] text-white/35 leading-relaxed italic" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.85 }}>
-              {result.justification}
-            </motion.p>
-          )}
 
           {/* Price */}
           {(() => {
