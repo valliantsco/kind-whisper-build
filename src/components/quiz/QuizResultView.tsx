@@ -155,7 +155,7 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
 
         {/* Image */}
         {image &&
-        <div className="w-full h-52 overflow-hidden relative">
+        <div className="w-full h-56 overflow-hidden relative">
             <div
             className="absolute inset-0 pointer-events-none z-20"
             style={{
