@@ -16,6 +16,7 @@ import modelNewHoliday from "@/assets/models/model-new-holiday.png";
 import modelS3k from "@/assets/models/model-s3k.png";
 import modelCargo from "@/assets/models/model-cargo.png";
 import modelMotocrossKids from "@/assets/models/model-motocross-kids.jpg";
+import modelDriftInfantil from "@/assets/models/model-drift-infantil-350.png";
 
 const modelImageMap: Record<string, string> = {
   // Autopropelidos
