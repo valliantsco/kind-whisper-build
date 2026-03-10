@@ -146,7 +146,7 @@ REGRAS:
 - Recomende 2-3 modelos ranqueados do mais adequado ao menos
 - TODOS os modelos devem ter name, headline, specs e whyFits
 - Headlines devem ser CURTAS (máx 10 palavras), focadas no benefício
-- Specs devem usar os VALORES REAIS do catálogo, no formato: Motor | Vel | Autonomia | Recarga | Preço
+- Specs devem usar os VALORES REAIS do catálogo, no formato: Motor | Vel. máxima | Autonomia | Recarga | Preço
 - Para preços "consulte", escreva "Preço: consulte"
 - whyFits deve ser 1-2 frases CURTAS e diretas
 - Responda APENAS com o JSON, sem texto adicional`;
