@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, useRef } from "react";
 import { motion } from "framer-motion";
 import { Star, User, Loader2, Zap, Battery, Gauge, Clock, ExternalLink, CheckCircle2, ShieldCheck } from "lucide-react";
 import type { QuizResult } from "./types";
