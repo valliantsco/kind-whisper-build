@@ -39,7 +39,7 @@ CATEGORIAS VÁLIDAS: Autopropelidos, Bicicletas Elétricas, Scooters Elétricas,
 
 ── AUTOPROPELIDOS ──
 
-1. Bike 350 | R$ 7.990 | Motor: AIMA Hub 350W | Vel: 29km/h | Autonomia: 40km | Recarga: 7-8h | Bateria: chumbo removível | Carga: 90-100kg
+1. Bike 350 | R$ 7.990 | Motor: AIMA Hub 350W | Vel. máxima: 29km/h | Autonomia: 40km | Recarga: 7-8h | Bateria: chumbo removível | Carga: 90-100kg
    Perfil: entrada no segmento elétrico, deslocamentos curtos, bairros, condomínios, centros urbanos planos.
 
 2. Bike 400+ | R$ 10.990 | Motor: Bosch 400W | Vel: 32km/h | Autonomia: 50km | Recarga: 7-8h | Bateria: lítio removível | Carga: 90-100kg
