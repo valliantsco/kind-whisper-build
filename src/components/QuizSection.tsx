@@ -128,7 +128,7 @@ Motor: 800W | Vel. máxima: 32km/h | Autonomia: 35km | Recarga: 6h | Carga: 55kg
 RECOMENDAR QUANDO: criança/adolescente, uso recreativo/lazer, chácaras/sítios
 
 18. DRIFT ELÉTRICO 350
-Motor: 350W | Vel: 12km/h | Autonomia: 8km | Recarga: 3-5h | Carga: 80kg | Preço: R$1.999
+Motor: 350W | Vel. máxima: 12km/h | Autonomia: 8km | Recarga: 3-5h | Carga: 80kg | Preço: R$1.999
 RECOMENDAR QUANDO: crianças menores, drift recreativo, diversão lúdica
 
 --- PATINETES ---
