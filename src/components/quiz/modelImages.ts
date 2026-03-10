@@ -17,6 +17,7 @@ import modelS3k from "@/assets/models/model-s3k.png";
 import modelCargo from "@/assets/models/model-cargo.png";
 import modelMotocrossKids from "@/assets/models/model-motocross-kids.jpg";
 import modelDriftInfantil from "@/assets/models/model-drift-infantil-350.png";
+import modelPatinete350 from "@/assets/models/model-patinete-350.png";
 
 const modelImageMap: Record<string, string> = {
   // Autopropelidos
@@ -58,8 +59,8 @@ const modelImageMap: Record<string, string> = {
   "drift infantil 350": modelDriftInfantil,
   "drift infantil": modelDriftInfantil,
   // Patinetes
-  "patinete 350": modelBike350,
-  "patinete": modelBike350,
+  "patinete 350": modelPatinete350,
+  "patinete": modelPatinete350,
 };
 
 export function getModelImage(modelName: string): string | undefined {
