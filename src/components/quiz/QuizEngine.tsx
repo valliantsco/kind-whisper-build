@@ -174,18 +174,18 @@ const QuizEngine = ({ config, open, onOpenChange }: QuizEngineProps) => {
 
   // Determine header text
   const headerTitle = result
-    ? "Sua recomendação"
+    ? "Encontramos seu modelo ideal"
     : loading
-    ? "Analisando..."
+    ? "Analisando seu perfil..."
     : config.title;
 
   const headerSubtitle = result
-    ? "Baseado nas suas respostas"
+    ? "Recomendação personalizada com base nas suas respostas"
     : loading
-    ? "A IA está processando suas respostas"
+    ? "Estamos cruzando suas respostas com nosso catálogo"
     : showDetailsStep
-    ? "Quase lá! Mais algum detalhe?"
-    : "Responda para receber sua recomendação";
+    ? "Última etapa — algum detalhe a mais?"
+    : config.subtitle || "Responda e descubra o veículo ideal para você";
 
   return (
     <AnimatePresence>
