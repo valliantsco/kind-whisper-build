@@ -296,7 +296,7 @@ const QuizEngine = ({ config, open, onOpenChange }: QuizEngineProps) => {
             
 
               {/* Content area */}
-              <div className="px-5 py-4 pr-[7px]">
+              <div className="px-5 py-4 pr-[20px]">
                 <AnimatePresence mode="wait">
                   {/* Loading state */}
                   {loading &&
