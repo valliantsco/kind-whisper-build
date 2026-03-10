@@ -62,7 +62,7 @@ CATEGORIAS VÁLIDAS: Autopropelidos, Bicicletas Elétricas, Scooters Elétricas,
 7. Santa Monica | Preço: consulte | Motor: 500W | Vel. máxima: 32km/h | Autonomia: 60km | Recarga: 5h | Bateria: lítio | Carga: 120-150kg
    Perfil: design elegante, lifestyle urbano, lazer, deslocamentos diários, posicionamento premium.
 
-8. Big Sur | Preço: consulte | Motor: 500W | Vel: 32km/h | Autonomia: 60km | Recarga: 5h | Bateria: lítio | Carga: 120-150kg
+8. Big Sur | Preço: consulte | Motor: 500W | Vel. máxima: 32km/h | Autonomia: 60km | Recarga: 5h | Bateria: lítio | Carga: 120-150kg
    Perfil: pneus largos (fat tire), visual premium, lazer, pisos variados, mais estabilidade.
 
 ── SCOOTERS ELÉTRICAS ──
