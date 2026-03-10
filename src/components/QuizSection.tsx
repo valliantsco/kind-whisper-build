@@ -44,7 +44,7 @@ RECOMENDAR QUANDO: urbano diário (11-35km/dia), precisa levar bateria para carr
 EVITAR QUANDO: autonomia >50km/dia, desempenho de moto
 
 3. BIKE 500
-Motor: 500W Bosch | Vel: 32km/h | Autonomia: 50km | Recarga: 7-8h | Bateria: lítio removível | Carga: 100-120kg | Preço: R$10.990
+Motor: 500W Bosch | Vel. máxima: 32km/h | Autonomia: 50km | Recarga: 7-8h | Bateria: lítio removível | Carga: 100-120kg | Preço: R$10.990
 RECOMENDAR QUANDO: urbano frequente, condutor mais pesado, uso diário intenso
 EVITAR QUANDO: autonomia muito alta (MS600/Bliss melhor), delivery profissional
 
