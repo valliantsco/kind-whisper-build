@@ -258,9 +258,9 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
         {image &&
         <div
           className="w-14 h-14 rounded-lg overflow-hidden flex-shrink-0 flex items-center justify-center"
-          style={{ background: "hsl(0 0% 100% / 0.04)", border: "1px solid hsl(0 0% 100% / 0.06)" }}>
+          style={{ background: "#ffffff", border: "1px solid hsl(0 0% 100% / 0.10)" }}>
           
-            <img src={image} alt={model.name} className="h-full w-auto object-contain" />
+            <img src={image} alt={model.name} className="h-full w-full object-contain p-1" />
           </div>
         }
         <div className="flex-1 min-w-0">
