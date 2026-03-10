@@ -214,11 +214,15 @@ html {
 }
 
 /* Quiz subtle scrollbar */
+.quiz-scrollbar {
+  padding-right: 6px;
+}
 .quiz-scrollbar::-webkit-scrollbar {
-  width: 4px;
+  width: 3px;
 }
 .quiz-scrollbar::-webkit-scrollbar-track {
   background: transparent;
+  margin: 8px 0;
 }
 .quiz-scrollbar::-webkit-scrollbar-thumb {
   background: hsl(0 0% 100% / 0.12);
