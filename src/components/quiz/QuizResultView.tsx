@@ -172,7 +172,7 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
             <div
             className="absolute bottom-0 left-0 right-0 h-28 pointer-events-none z-20"
             style={{
-              background: "linear-gradient(to top, hsl(0 0% 8%) 0%, hsl(0 0% 8% / 0.8) 35%, hsl(0 0% 8% / 0.3) 65%, transparent 100%)"
+              background: "linear-gradient(to top, hsl(20 8% 22%) 0%, hsl(20 8% 22% / 0.8) 35%, hsl(20 8% 22% / 0.3) 65%, transparent 100%)"
             }} />
             {/* Side dissolve */}
             <div
