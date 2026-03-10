@@ -47,7 +47,20 @@ interface QuizEngineProps {
 const QuizEngine = ({ config, open, onOpenChange }: QuizEngineProps) => {
   const [step, setStep] = useState(0);
   const [answers, setAnswers] = useState<string[]>([]);
-  const [result, setResult] = useState<QuizResult | null>(null);
+  const [result, setResult] = useState<QuizResult | null>({
+    category: "Motocross",
+    suggestions: ["Moto Cross Infantil"],
+    justification: "",
+    whatsappMessage: "",
+    models: [
+      {
+        name: "Moto Cross Infantil",
+        headline: "Diversão segura com controle parental de velocidade",
+        specs: "Motor:800W|Vel:32km/h|Autonomia:35km|Recarga:6h|Preço:R$ 5.990",
+        whyFits: "Possui seletor de velocidade com controle por chave, permitindo que os pais ajustem a velocidade máxima. Ideal para chácaras, sítios e condomínios.",
+      },
+    ],
+  });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [showDetailsStep, setShowDetailsStep] = useState(false);
