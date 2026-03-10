@@ -225,6 +225,9 @@ html {
   background: transparent;
   margin: 10% 0;
 }
+.quiz-scrollbar::-webkit-scrollbar-button {
+  display: none;
+}
 .quiz-scrollbar::-webkit-scrollbar-thumb {
   background: hsl(0 0% 100% / 0.12);
   border-radius: 9999px;
