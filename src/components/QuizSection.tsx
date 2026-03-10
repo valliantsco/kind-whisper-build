@@ -83,7 +83,7 @@ RECOMENDAR QUANDO: mobilidade urbana leve, visual amigável, velocidade controla
 EVITAR QUANDO: precisa de velocidade alta, autonomia muito longa
 
 10. MS 2500
-Motor: 2.500W | Vel: 52km/h | Autonomia: 50km | Recarga: 6-7h | Bateria: chumbo NÃO removível | Carga: 150kg | Preço: R$14.990
+Motor: 2.500W | Vel. máxima: 52km/h | Autonomia: 50km | Recarga: 6-7h | Bateria: chumbo NÃO removível | Carga: 150kg | Preço: R$14.990
 RECOMENDAR QUANDO: quer sensação de moto moderada, desempenho urbano
 EVITAR QUANDO: precisa levar bateria (NÃO removível), autonomia muito alta
 
