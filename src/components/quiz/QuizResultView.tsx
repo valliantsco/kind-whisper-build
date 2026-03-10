@@ -1,6 +1,6 @@
 import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { MessageCircle, Star, User, Phone, MapPin, Clock, ExternalLink, Zap, Battery, Gauge, ArrowRight } from "lucide-react";
+import { MessageCircle, Star, User, Phone, MapPin, Clock, ExternalLink, Zap, Battery, Gauge, CheckCircle2, ShieldCheck } from "lucide-react";
 import type { QuizResult } from "./types";
 import { getModelImage } from "./modelImages";
 import { useBusinessStatus } from "@/hooks/useBusinessHours";
@@ -153,7 +153,7 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
       <motion.div
         initial={{ opacity: 0, y: 20, scale: 0.97 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
-        transition={{ delay: 0.5, duration: 0.5, ease: "easeOut" }}
+        transition={{ delay: 0.3, duration: 0.5, ease: "easeOut" }}
         className="rounded-2xl overflow-hidden"
         style={{
           background: "linear-gradient(165deg, hsl(11 81% 57% / 0.12) 0%, hsl(0 0% 100% / 0.03) 100%)",
@@ -180,7 +180,6 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
         {/* Image with ambient glow */}
         {image && (
           <div className="w-full h-40 flex items-center justify-center overflow-hidden relative">
-            {/* Ambient glow */}
             <div
               className="absolute inset-0 pointer-events-none"
               style={{
@@ -193,7 +192,7 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
               className="h-full w-auto object-contain relative z-10"
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.7, duration: 0.5 }}
+              transition={{ delay: 0.5, duration: 0.5 }}
             />
           </div>
         )}
@@ -203,7 +202,7 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
           <motion.div
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.8 }}
+            transition={{ delay: 0.6 }}
           >
             <h4 className="font-bold text-lg text-white">{model.name}</h4>
             <p className="text-xs text-white/50 mt-0.5 leading-relaxed">{model.headline}</p>
@@ -215,7 +214,7 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
               className="grid grid-cols-2 gap-2"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 0.9 }}
+              transition={{ delay: 0.7 }}
             >
               {nonPriceSpecs.slice(0, 4).map((s, idx) => (
                 <div
@@ -236,15 +235,34 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
             </motion.div>
           )}
 
-          {/* Why fits */}
+          {/* Why fits — contextual description */}
           {model.whyFits && (
-            <motion.p
-              className="text-xs text-white/50 leading-relaxed"
+            <motion.div
+              className="rounded-xl px-3 py-2.5"
+              style={{
+                background: "hsl(0 0% 100% / 0.03)",
+                border: "1px solid hsl(0 0% 100% / 0.06)",
+              }}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 1.0 }}
+              transition={{ delay: 0.8 }}
             >
-              {model.whyFits}
+              <div className="flex items-start gap-2">
+                <CheckCircle2 className="w-3.5 h-3.5 mt-0.5 flex-shrink-0" style={{ color: "hsl(11 81% 57% / 0.7)" }} />
+                <p className="text-[11px] text-white/55 leading-relaxed">{model.whyFits}</p>
+              </div>
+            </motion.div>
+          )}
+
+          {/* Justification from AI */}
+          {result.justification && (
+            <motion.p
+              className="text-[11px] text-white/40 leading-relaxed italic"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.85 }}
+            >
+              {result.justification}
             </motion.p>
           )}
 
@@ -259,7 +277,7 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
                 style={{ background: "hsl(11 81% 57% / 0.08)", border: "1px solid hsl(11 81% 57% / 0.15)" }}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ delay: 1.1 }}
+                transition={{ delay: 0.9 }}
               >
                 {isConsulte ? (
                   <span className="text-[11px] font-medium text-white/50 mx-auto">Consulte o valor com nosso time</span>
@@ -272,37 +290,12 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
               </motion.div>
             );
           })()}
-
-          {/* CTA: Saber mais */}
-          <motion.button
-            type="button"
-            className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider cursor-pointer"
-            style={{
-              background: "hsl(11 81% 57% / 0.12)",
-              border: "1px solid hsl(11 81% 57% / 0.25)",
-              color: "hsl(11 81% 57%)",
-            }}
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.2 }}
-            whileHover={{
-              background: "hsl(11 81% 57% / 0.2)",
-              boxShadow: "0 0 20px hsl(11 81% 57% / 0.15)",
-            }}
-            whileTap={{ scale: 0.98 }}
-            onClick={() => {
-              const modelsSection = document.getElementById("modelos");
-              if (modelsSection) modelsSection.scrollIntoView({ behavior: "smooth" });
-            }}
-          >
-            Ver detalhes completos <ArrowRight className="w-3.5 h-3.5" />
-          </motion.button>
         </div>
       </motion.div>
     );
   };
 
-  // ── Secondary/tertiary model card (simplified) ──────────────────────
+  // ── Secondary model card (compact, discreet "Saber mais") ───────────
   const renderSecondaryCard = (model: typeof models[0]) => {
     const image = getModelImage(model.name);
     const specs = parseSpecs(model.specs || "");
@@ -316,7 +309,6 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
           border: "1px solid hsl(0 0% 100% / 0.08)",
         }}
       >
-        {/* Thumbnail */}
         {image && (
           <div
             className="w-14 h-14 rounded-lg bg-white/5 overflow-hidden flex-shrink-0 flex items-center justify-center"
@@ -326,7 +318,6 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
           </div>
         )}
 
-        {/* Info */}
         <div className="flex-1 min-w-0">
           <p className="text-sm font-semibold text-white/85 leading-tight">{model.name}</p>
           <p className="text-[11px] text-white/40 leading-snug mt-0.5 line-clamp-1">{model.headline}</p>
@@ -336,16 +327,17 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
             ) : (
               <span className="text-[10px] text-white/35">Consulte</span>
             )}
+            {/* Discreet "Saber mais" link */}
             <button
               type="button"
-              className="inline-flex items-center gap-1 text-[10px] font-semibold cursor-pointer transition-colors hover:opacity-80"
-              style={{ color: "hsl(11 81% 57%)" }}
+              className="inline-flex items-center gap-0.5 text-[9px] font-medium cursor-pointer transition-opacity opacity-30 hover:opacity-60"
+              style={{ color: "hsl(0 0% 100%)" }}
               onClick={() => {
                 const modelsSection = document.getElementById("modelos");
                 if (modelsSection) modelsSection.scrollIntoView({ behavior: "smooth" });
               }}
             >
-              Saber mais <ExternalLink className="w-2.5 h-2.5" />
+              Saber mais <ExternalLink className="w-2 h-2" />
             </button>
           </div>
         </div>
@@ -360,48 +352,261 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
       animate={{ opacity: 1 }}
       className="space-y-5"
     >
-      {/* Category badge — reveals first */}
-      <motion.div
-        className="rounded-xl p-4 text-center"
-        style={{ background: "hsl(11 81% 57% / 0.08)", border: "1px solid hsl(11 81% 57% / 0.12)" }}
-        initial={{ opacity: 0, y: 15, scale: 0.95 }}
-        animate={{ opacity: 1, y: 0, scale: 1 }}
-        transition={{ delay: 0.1, duration: 0.4, ease: "easeOut" }}
-      >
-        <p className="text-[10px] text-white/35 mb-1 uppercase tracking-[0.15em] font-medium">Categoria ideal</p>
-        <p className="font-bold text-lg" style={{ color: "hsl(11 81% 57%)" }}>{result.category}</p>
-        <p className="text-[11px] text-white/45 mt-1 leading-relaxed max-w-xs mx-auto">{result.justification}</p>
-      </motion.div>
-
-      {/* Model cards */}
+      {/* Model cards — NO category badge */}
       {hasModels && (
         <div className="space-y-3">
-          {/* Primary — reveals second */}
           {models[0] && renderPrimaryCard(models[0])}
 
-          {/* Secondary label — reveals third */}
-          {models.length > 1 && (
-            <motion.p
-              className="text-[10px] font-semibold uppercase tracking-[0.15em] text-white/30 pt-1"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 1.3 }}
-            >
-              Outras opções para o seu perfil
-            </motion.p>
-          )}
+          {/* WhatsApp CTA — DOMINANT, right after primary card */}
+          <motion.div
+            className="space-y-3"
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1.0, duration: 0.4 }}
+          >
+            {/* Urgency + trust signals */}
+            <div className="flex items-center justify-center gap-4 py-1">
+              <div className="flex items-center gap-1">
+                <ShieldCheck className="w-3 h-3" style={{ color: "hsl(142 76% 50%)" }} />
+                <span className="text-[9px] text-white/40 font-medium">Garantia de fábrica</span>
+              </div>
+              <div className="flex items-center gap-1">
+                <CheckCircle2 className="w-3 h-3" style={{ color: "hsl(142 76% 50%)" }} />
+                <span className="text-[9px] text-white/40 font-medium">Pronta entrega</span>
+              </div>
+            </div>
 
-          {/* Secondary/tertiary — reveals last with stagger */}
-          {models.slice(1).map((model, i) => (
-            <motion.div
-              key={model.name}
-              initial={{ opacity: 0, x: -12 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 1.4 + i * 0.15, duration: 0.4 }}
+            {/* Status chip */}
+            <div className="relative">
+              <button
+                type="button"
+                onClick={() => setShowHoursPopup((v) => !v)}
+                className="group flex items-center gap-2.5 px-4 py-2.5 rounded-xl text-[11px] font-semibold tracking-wide w-full cursor-pointer transition-all duration-200 text-white"
+                style={{
+                  background: "linear-gradient(135deg, hsl(11 81% 57%), hsl(11 90% 65%))",
+                  boxShadow: "0 4px 16px hsl(11 81% 57% / 0.3)",
+                }}
+              >
+                <span className="relative flex items-center justify-center h-3 w-3 shrink-0">
+                  <span
+                    className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-65"
+                    style={{ background: isOnline ? "hsl(142 76% 50%)" : "hsl(0 75% 50%)" }}
+                  />
+                  <span
+                    className="relative inline-flex rounded-full h-3 w-3 border-[1.5px] border-white/30"
+                    style={{
+                      background: isOnline ? "hsl(142 76% 50%)" : "hsl(0 75% 50%)",
+                      boxShadow: isOnline ? "0 0 6px hsl(142 76% 50% / 0.4)" : "0 0 6px hsl(0 75% 50% / 0.4)",
+                    }}
+                  />
+                </span>
+                {isOnline ? "Atendimento Online" : offlineMessage}
+                <span className="ml-auto flex items-center gap-1 text-[9px] opacity-70 group-hover:opacity-100 transition-opacity">
+                  Ver horários <span className="inline-block transition-transform" style={{ transform: showHoursPopup ? "rotate(90deg)" : "rotate(0deg)" }}>›</span>
+                </span>
+              </button>
+
+              <AnimatePresence>
+                {showHoursPopup && (
+                  <>
+                    <div className="fixed inset-0 z-40" onClick={() => setShowHoursPopup(false)} />
+                    <motion.div
+                      initial={{ opacity: 0, y: -8, scale: 0.92 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      exit={{ opacity: 0, y: -8, scale: 0.92 }}
+                      transition={{ type: "spring", stiffness: 400, damping: 25 }}
+                      className="absolute left-0 right-0 top-full mt-2 z-50 rounded-xl p-4 space-y-1 text-white"
+                      style={{
+                        background: "linear-gradient(135deg, hsl(11 81% 57%), hsl(11 90% 65%))",
+                        boxShadow: "0 12px 40px hsl(0 0% 0% / 0.3)",
+                      }}
+                    >
+                      <div className="flex items-center gap-2 mb-2.5 pb-2" style={{ borderBottom: "1px solid hsl(0 0% 100% / 0.2)" }}>
+                        <Clock className="w-2.5 h-2.5 text-white/80" />
+                        <span className="text-[11px] font-semibold tracking-wide">Horário de atendimento</span>
+                      </div>
+                      {BUSINESS_HOURS_INFO.map((item) => {
+                        const isToday = TODAY === getDayMatch(item.day);
+                        return (
+                          <div
+                            key={item.day}
+                            className="grid items-center py-2 px-2.5 rounded-lg"
+                            style={{
+                              gridTemplateColumns: "1fr auto",
+                              background: isToday ? "hsl(0 0% 100% / 0.15)" : "transparent",
+                              borderLeft: isToday ? "2px solid hsl(0 0% 100% / 0.7)" : "2px solid transparent",
+                            }}
+                          >
+                            <span className="text-[11px] font-medium" style={{ color: isToday ? "white" : "hsl(0 0% 100% / 0.65)" }}>
+                              {item.day}
+                              {isToday && <span className="ml-1.5 text-[8px] uppercase tracking-wider font-bold">Hoje</span>}
+                            </span>
+                            <span
+                              className="text-[11px] font-semibold text-right tabular-nums"
+                              style={{ color: item.hours === "Fechado" ? "hsl(0 0% 100% / 0.4)" : isToday ? "white" : "hsl(0 0% 100% / 0.75)" }}
+                            >
+                              {item.hours}
+                            </span>
+                          </div>
+                        );
+                      })}
+                    </motion.div>
+                  </>
+                )}
+              </AnimatePresence>
+            </div>
+
+            {/* Lead form */}
+            <div className="space-y-3">
+              {/* Name */}
+              <div>
+                <label className="flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-[0.1em] text-white/50 mb-1.5">
+                  <User className="w-3 h-3" /> Seu nome <span style={{ color: "hsl(11 81% 57% / 0.7)" }}>*</span>
+                </label>
+                <input
+                  type="text"
+                  value={name}
+                  onChange={(e) => handleNameChange(e.target.value)}
+                  onBlur={handleNameBlur}
+                  placeholder="João Silva"
+                  maxLength={100}
+                  className={INPUT_STYLE}
+                  style={getInputStyle(!!nameError)}
+                />
+                {nameError && <p className="text-[10px] mt-1" style={{ color: "hsl(0 84% 65%)" }}>{nameError}</p>}
+              </div>
+
+              {/* Phone */}
+              <div>
+                <label className="flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-[0.1em] text-white/50 mb-1.5">
+                  <Phone className="w-3 h-3" /> WhatsApp <span style={{ color: "hsl(11 81% 57% / 0.7)" }}>*</span>
+                </label>
+                <input
+                  type="tel"
+                  value={phone}
+                  onChange={(e) => handlePhoneChange(e.target.value)}
+                  onBlur={handlePhoneBlur}
+                  placeholder="(00) 00000-0000"
+                  maxLength={15}
+                  className={INPUT_STYLE}
+                  style={getInputStyle(!!phoneError)}
+                />
+                {phoneError && <p className="text-[10px] mt-1" style={{ color: "hsl(0 84% 65%)" }}>{phoneError}</p>}
+              </div>
+
+              {/* City */}
+              <div className="relative">
+                <label className="flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-[0.1em] text-white/50 mb-1.5">
+                  <MapPin className="w-3 h-3" /> Sua cidade <span style={{ color: "hsl(11 81% 57% / 0.7)" }}>*</span>
+                </label>
+                <input
+                  ref={cityInputRef}
+                  type="text"
+                  value={city}
+                  onChange={(e) => handleCityChange(e.target.value)}
+                  onFocus={() => {
+                    if (city.trim().length >= 2 && citySuggestions.length > 0) setCityDropdownOpen(true);
+                  }}
+                  onBlur={() => setTimeout(() => setCityDropdownOpen(false), 200)}
+                  onKeyDown={(e) => {
+                    if (!cityDropdownOpen) return;
+                    if (e.key === "ArrowDown") { e.preventDefault(); setFocusedCityIndex((p) => Math.min(p + 1, citySuggestions.length - 1)); }
+                    else if (e.key === "ArrowUp") { e.preventDefault(); setFocusedCityIndex((p) => Math.max(p - 1, 0)); }
+                    else if (e.key === "Enter" && focusedCityIndex >= 0) { e.preventDefault(); selectCity(citySuggestions[focusedCityIndex]); }
+                    else if (e.key === "Escape") setCityDropdownOpen(false);
+                  }}
+                  placeholder="São Paulo, SP"
+                  maxLength={100}
+                  className={INPUT_STYLE}
+                  style={getInputStyle(!!cityError)}
+                  autoComplete="off"
+                />
+                {cityError && <p className="text-[10px] mt-1" style={{ color: "hsl(0 84% 65%)" }}>{cityError}</p>}
+                <AnimatePresence>
+                  {cityDropdownOpen && citySuggestions.length > 0 && (
+                    <motion.div
+                      initial={{ opacity: 0, y: -4 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -4 }}
+                      className="absolute left-0 right-0 z-50 mt-1 rounded-lg overflow-hidden max-h-40 overflow-y-auto"
+                      style={{
+                        background: "hsl(0 0% 18%)",
+                        border: "1px solid hsl(0 0% 100% / 0.1)",
+                        boxShadow: "0 8px 30px rgba(0,0,0,0.4)",
+                      }}
+                    >
+                      {citySuggestions.map((s, idx) => (
+                        <button
+                          key={s}
+                          type="button"
+                          onMouseDown={(e) => { e.preventDefault(); selectCity(s); }}
+                          className="w-full text-left px-3 py-2 text-sm transition-colors"
+                          style={{
+                            color: focusedCityIndex === idx ? "white" : "hsl(0 0% 100% / 0.6)",
+                            background: focusedCityIndex === idx ? "hsl(0 0% 100% / 0.1)" : "transparent",
+                          }}
+                          onMouseEnter={() => setFocusedCityIndex(idx)}
+                        >
+                          {s}
+                        </button>
+                      ))}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+            </div>
+
+            {/* Big WhatsApp CTA */}
+            <motion.a
+              href={isFormValid ? buildWhatsAppUrl() : undefined}
+              target={isFormValid ? "_blank" : undefined}
+              rel="noopener noreferrer"
+              onClick={(e) => { if (!isFormValid) e.preventDefault(); }}
+              className={`flex items-center justify-center gap-2.5 py-4 rounded-xl text-white text-base font-semibold tracking-wide ${
+                isFormValid ? "cursor-pointer" : "opacity-40 cursor-not-allowed"
+              }`}
+              style={{
+                background: "linear-gradient(135deg, hsl(142 76% 36%), hsl(142 76% 42%))",
+                boxShadow: isFormValid ? "0 4px 24px hsl(142 76% 36% / 0.35)" : "none",
+              }}
+              whileHover={isFormValid ? { scale: 1.02, boxShadow: "0 0 30px hsl(142 76% 36% / 0.5), 0 0 60px hsl(142 76% 36% / 0.2)" } : {}}
+              whileTap={isFormValid ? { scale: 0.98 } : {}}
             >
-              {renderSecondaryCard(model)}
-            </motion.div>
-          ))}
+              <WhatsAppIcon className="w-5 h-5" />
+              Falar com consultor no WhatsApp
+            </motion.a>
+            {!isFormValid && (
+              <p className="text-[10px] text-white/30 text-center">Preencha os campos acima para continuar</p>
+            )}
+          </motion.div>
+
+          {/* Secondary models — below CTA */}
+          {models.length > 1 && (
+            <>
+              <div
+                className="h-[1px] mt-2"
+                style={{ background: "linear-gradient(90deg, transparent, hsl(0 0% 100% / 0.08), transparent)" }}
+              />
+              <motion.p
+                className="text-[10px] font-semibold uppercase tracking-[0.15em] text-white/25 pt-1"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 1.3 }}
+              >
+                Outras opções para o seu perfil
+              </motion.p>
+              {models.slice(1).map((model, i) => (
+                <motion.div
+                  key={model.name}
+                  initial={{ opacity: 0, x: -12 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 1.4 + i * 0.15, duration: 0.4 }}
+                >
+                  {renderSecondaryCard(model)}
+                </motion.div>
+              ))}
+            </>
+          )}
         </div>
       )}
 
@@ -423,227 +628,13 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
         </div>
       )}
 
-      {/* ── Divider ─────────────────────────────────────────────────── */}
-      <div
-        className="h-[1px]"
-        style={{ background: "linear-gradient(90deg, transparent, hsl(0 0% 100% / 0.1), transparent)" }}
-      />
-
-      {/* ── Lead capture ────────────────────────────────────────────── */}
-      <div className="space-y-4">
-        <div className="text-center">
-          <p className="text-sm font-semibold text-white/80">Gostou da recomendação?</p>
-          <p className="text-[11px] text-white/40 mt-0.5">Preencha seus dados e fale direto com um consultor</p>
-        </div>
-
-        {/* Status chip */}
-        <div className="relative">
-          <button
-            type="button"
-            onClick={() => setShowHoursPopup((v) => !v)}
-            className="group flex items-center gap-2.5 px-4 py-2.5 rounded-xl text-[11px] font-semibold tracking-wide w-full cursor-pointer transition-all duration-200 text-white"
-            style={{
-              background: "linear-gradient(135deg, hsl(11 81% 57%), hsl(11 90% 65%))",
-              boxShadow: "0 4px 16px hsl(11 81% 57% / 0.3)",
-            }}
-          >
-            <span className="relative flex items-center justify-center h-3 w-3 shrink-0">
-              <span
-                className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-65"
-                style={{ background: isOnline ? "hsl(142 76% 50%)" : "hsl(0 75% 50%)" }}
-              />
-              <span
-                className="relative inline-flex rounded-full h-3 w-3 border-[1.5px] border-white/30"
-                style={{
-                  background: isOnline ? "hsl(142 76% 50%)" : "hsl(0 75% 50%)",
-                  boxShadow: isOnline ? "0 0 6px hsl(142 76% 50% / 0.4)" : "0 0 6px hsl(0 75% 50% / 0.4)",
-                }}
-              />
-            </span>
-            {isOnline ? "Atendimento Online" : offlineMessage}
-            <span className="ml-auto flex items-center gap-1 text-[9px] opacity-70 group-hover:opacity-100 transition-opacity">
-              Ver horários <span className="inline-block transition-transform" style={{ transform: showHoursPopup ? "rotate(90deg)" : "rotate(0deg)" }}>›</span>
-            </span>
-          </button>
-
-          <AnimatePresence>
-            {showHoursPopup && (
-              <>
-                <div className="fixed inset-0 z-40" onClick={() => setShowHoursPopup(false)} />
-                <motion.div
-                  initial={{ opacity: 0, y: -8, scale: 0.92 }}
-                  animate={{ opacity: 1, y: 0, scale: 1 }}
-                  exit={{ opacity: 0, y: -8, scale: 0.92 }}
-                  transition={{ type: "spring", stiffness: 400, damping: 25 }}
-                  className="absolute left-0 right-0 top-full mt-2 z-50 rounded-xl p-4 space-y-1 text-white"
-                  style={{
-                    background: "linear-gradient(135deg, hsl(11 81% 57%), hsl(11 90% 65%))",
-                    boxShadow: "0 12px 40px hsl(0 0% 0% / 0.3)",
-                  }}
-                >
-                  <div className="flex items-center gap-2 mb-2.5 pb-2" style={{ borderBottom: "1px solid hsl(0 0% 100% / 0.2)" }}>
-                    <Clock className="w-2.5 h-2.5 text-white/80" />
-                    <span className="text-[11px] font-semibold tracking-wide">Horário de atendimento</span>
-                  </div>
-                  {BUSINESS_HOURS_INFO.map((item) => {
-                    const isToday = TODAY === getDayMatch(item.day);
-                    return (
-                      <div
-                        key={item.day}
-                        className="grid items-center py-2 px-2.5 rounded-lg"
-                        style={{
-                          gridTemplateColumns: "1fr auto",
-                          background: isToday ? "hsl(0 0% 100% / 0.15)" : "transparent",
-                          borderLeft: isToday ? "2px solid hsl(0 0% 100% / 0.7)" : "2px solid transparent",
-                        }}
-                      >
-                        <span className="text-[11px] font-medium" style={{ color: isToday ? "white" : "hsl(0 0% 100% / 0.65)" }}>
-                          {item.day}
-                          {isToday && <span className="ml-1.5 text-[8px] uppercase tracking-wider font-bold">Hoje</span>}
-                        </span>
-                        <span
-                          className="text-[11px] font-semibold text-right tabular-nums"
-                          style={{ color: item.hours === "Fechado" ? "hsl(0 0% 100% / 0.4)" : isToday ? "white" : "hsl(0 0% 100% / 0.75)" }}
-                        >
-                          {item.hours}
-                        </span>
-                      </div>
-                    );
-                  })}
-                </motion.div>
-              </>
-            )}
-          </AnimatePresence>
-        </div>
-
-        {/* Name */}
-        <div>
-          <label className="flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-[0.1em] text-white/50 mb-1.5">
-            <User className="w-3 h-3" /> Seu nome <span style={{ color: "hsl(11 81% 57% / 0.7)" }}>*</span>
-          </label>
-          <input
-            type="text"
-            value={name}
-            onChange={(e) => handleNameChange(e.target.value)}
-            onBlur={handleNameBlur}
-            placeholder="João Silva"
-            maxLength={100}
-            className={INPUT_STYLE}
-            style={getInputStyle(!!nameError)}
-          />
-          {nameError && <p className="text-[10px] mt-1" style={{ color: "hsl(0 84% 65%)" }}>{nameError}</p>}
-        </div>
-
-        {/* Phone */}
-        <div>
-          <label className="flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-[0.1em] text-white/50 mb-1.5">
-            <Phone className="w-3 h-3" /> WhatsApp <span style={{ color: "hsl(11 81% 57% / 0.7)" }}>*</span>
-          </label>
-          <input
-            type="tel"
-            value={phone}
-            onChange={(e) => handlePhoneChange(e.target.value)}
-            onBlur={handlePhoneBlur}
-            placeholder="(00) 00000-0000"
-            maxLength={15}
-            className={INPUT_STYLE}
-            style={getInputStyle(!!phoneError)}
-          />
-          {phoneError && <p className="text-[10px] mt-1" style={{ color: "hsl(0 84% 65%)" }}>{phoneError}</p>}
-        </div>
-
-        {/* City */}
-        <div className="relative">
-          <label className="flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-[0.1em] text-white/50 mb-1.5">
-            <MapPin className="w-3 h-3" /> Sua cidade <span style={{ color: "hsl(11 81% 57% / 0.7)" }}>*</span>
-          </label>
-          <input
-            ref={cityInputRef}
-            type="text"
-            value={city}
-            onChange={(e) => handleCityChange(e.target.value)}
-            onFocus={() => {
-              if (city.trim().length >= 2 && citySuggestions.length > 0) setCityDropdownOpen(true);
-            }}
-            onBlur={() => setTimeout(() => setCityDropdownOpen(false), 200)}
-            onKeyDown={(e) => {
-              if (!cityDropdownOpen) return;
-              if (e.key === "ArrowDown") { e.preventDefault(); setFocusedCityIndex((p) => Math.min(p + 1, citySuggestions.length - 1)); }
-              else if (e.key === "ArrowUp") { e.preventDefault(); setFocusedCityIndex((p) => Math.max(p - 1, 0)); }
-              else if (e.key === "Enter" && focusedCityIndex >= 0) { e.preventDefault(); selectCity(citySuggestions[focusedCityIndex]); }
-              else if (e.key === "Escape") setCityDropdownOpen(false);
-            }}
-            placeholder="São Paulo, SP"
-            maxLength={100}
-            className={INPUT_STYLE}
-            style={getInputStyle(!!cityError)}
-            autoComplete="off"
-          />
-          {cityError && <p className="text-[10px] mt-1" style={{ color: "hsl(0 84% 65%)" }}>{cityError}</p>}
-          <AnimatePresence>
-            {cityDropdownOpen && citySuggestions.length > 0 && (
-              <motion.div
-                initial={{ opacity: 0, y: -4 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -4 }}
-                className="absolute left-0 right-0 z-50 mt-1 rounded-lg overflow-hidden max-h-40 overflow-y-auto"
-                style={{
-                  background: "hsl(0 0% 18%)",
-                  border: "1px solid hsl(0 0% 100% / 0.1)",
-                  boxShadow: "0 8px 30px rgba(0,0,0,0.4)",
-                }}
-              >
-                {citySuggestions.map((s, idx) => (
-                  <button
-                    key={s}
-                    type="button"
-                    onMouseDown={(e) => { e.preventDefault(); selectCity(s); }}
-                    className="w-full text-left px-3 py-2 text-sm transition-colors"
-                    style={{
-                      color: focusedCityIndex === idx ? "white" : "hsl(0 0% 100% / 0.6)",
-                      background: focusedCityIndex === idx ? "hsl(0 0% 100% / 0.1)" : "transparent",
-                    }}
-                    onMouseEnter={() => setFocusedCityIndex(idx)}
-                  >
-                    {s}
-                  </button>
-                ))}
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </div>
-      </div>
-
-      {/* CTAs */}
-      <div className="flex flex-col gap-2.5 pt-1">
-        <motion.a
-          href={isFormValid ? buildWhatsAppUrl() : undefined}
-          target={isFormValid ? "_blank" : undefined}
-          rel="noopener noreferrer"
-          onClick={(e) => { if (!isFormValid) e.preventDefault(); }}
-          className={`flex items-center justify-center gap-2.5 py-3.5 rounded-xl text-white text-sm font-semibold tracking-wide ${
-            isFormValid ? "cursor-pointer" : "opacity-40 cursor-not-allowed"
-          }`}
-          style={{
-            background: "linear-gradient(135deg, hsl(11 81% 57%), hsl(11 90% 65%))",
-            boxShadow: isFormValid ? "0 4px 20px hsl(11 81% 57% / 0.3)" : "none",
-          }}
-          whileHover={isFormValid ? { scale: 1.02, boxShadow: "0 0 25px hsl(11 81% 57% / 0.5), 0 0 50px hsl(11 81% 57% / 0.2)" } : {}}
-          whileTap={isFormValid ? { scale: 0.98 } : {}}
-        >
-          <WhatsAppIcon className="w-5 h-5" />
-          Falar com consultor no WhatsApp
-        </motion.a>
-        {!isFormValid && (
-          <p className="text-[10px] text-white/30 text-center">Preencha os campos acima para continuar</p>
-        )}
-        <button
-          onClick={onReset}
-          className="text-xs text-white/40 hover:text-white/70 transition-colors py-1.5 uppercase tracking-wider font-medium cursor-pointer"
-        >
-          Refazer quiz
-        </button>
-      </div>
+      {/* Refazer */}
+      <button
+        onClick={onReset}
+        className="w-full text-xs text-white/30 hover:text-white/60 transition-colors py-1.5 uppercase tracking-wider font-medium cursor-pointer"
+      >
+        Refazer quiz
+      </button>
     </motion.div>
   );
 };
