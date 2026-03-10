@@ -155,9 +155,9 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
 
         {/* Image */}
         {image &&
-        <div className="w-full h-40 flex items-center justify-center overflow-hidden relative">
+        <div className="w-full h-44 overflow-hidden relative">
             <div
-            className="absolute inset-0 pointer-events-none"
+            className="absolute inset-0 pointer-events-none z-20"
             style={{
               background: "radial-gradient(ellipse at center 60%, hsl(11 81% 57% / 0.10) 0%, hsl(11 81% 57% / 0.03) 40%, transparent 70%)"
             }} />
@@ -165,7 +165,7 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
             <motion.img
             src={image}
             alt={model.name}
-            className="h-full w-auto object-contain relative z-10"
+            className="w-full h-full object-cover object-center relative z-10"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.5, duration: 0.5 }} />
