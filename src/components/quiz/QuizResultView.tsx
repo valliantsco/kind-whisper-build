@@ -1,5 +1,5 @@
-import { useState, useCallback, useRef } from "react";
-import { motion } from "framer-motion";
+import { useState, useCallback, useRef, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Star, User, Loader2, Zap, Battery, Gauge, Clock, ExternalLink, CheckCircle2, ShieldCheck, ChevronDown } from "lucide-react";
 import type { QuizResult } from "./types";
 import { getModelImage } from "./modelImages";
@@ -46,8 +46,17 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
   const models = result.models?.length ? result.models : [];
   const hasModels = models.length > 0;
   const formRef = useRef<HTMLDivElement>(null);
+  const [showScrollHint, setShowScrollHint] = useState(true);
 
-
+  useEffect(() => {
+    if (!formRef.current) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) setShowScrollHint(false); },
+      { threshold: 0.3 }
+    );
+    observer.observe(formRef.current);
+    return () => observer.disconnect();
+  }, []);
 
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
@@ -331,29 +340,31 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
       </motion.div>
 
       {/* Scroll indicator with vignette */}
-      <motion.div
-        className="relative flex flex-col items-center gap-1 py-3 cursor-pointer"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.05 }}
-        onClick={() => formRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}
-      >
-        {/* Gradient vignette from dark bottom */}
-        <div
-          className="absolute inset-x-0 bottom-0 h-full pointer-events-none"
-          style={{
-            background: "linear-gradient(to top, hsl(0 0% 14% / 0.7), transparent)"
-          }}
-        />
-        <span className="text-[10px] text-white/40 font-medium relative z-10">Fale com um especialista</span>
-        <motion.div
-          className="relative z-10"
-          animate={{ y: [0, 5, 0] }}
-          transition={{ duration: 1.4, repeat: Infinity, ease: "easeInOut" }}
-        >
-          <ChevronDown className="w-5 h-5 text-white/40" />
-        </motion.div>
-      </motion.div>
+      <AnimatePresence>
+        {showScrollHint && (
+          <motion.div
+            className="relative flex flex-col items-center gap-1 py-3 cursor-pointer"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0, height: 0, marginTop: 0, marginBottom: 0, paddingTop: 0, paddingBottom: 0 }}
+            transition={{ duration: 0.4 }}
+            onClick={() => formRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}
+          >
+            <div
+              className="absolute inset-x-0 bottom-0 h-full pointer-events-none"
+              style={{ background: "linear-gradient(to top, hsl(0 0% 14% / 0.7), transparent)" }}
+            />
+            <span className="text-[10px] text-white/40 font-medium relative z-10">Fale com um especialista</span>
+            <motion.div
+              className="relative z-10"
+              animate={{ y: [0, 5, 0] }}
+              transition={{ duration: 1.4, repeat: Infinity, ease: "easeInOut" }}
+            >
+              <ChevronDown className="w-5 h-5 text-white/40" />
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Lead form section */}
       <div ref={formRef}>
