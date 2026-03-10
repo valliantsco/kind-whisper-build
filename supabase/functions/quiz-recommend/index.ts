@@ -51,7 +51,7 @@ CATEGORIAS VÁLIDAS: Autopropelidos, Bicicletas Elétricas, Scooters Elétricas,
 4. Bike MS 600 | R$ 11.990 | Motor: 600W | Vel. máxima: 32km/h | Autonomia: 70km | Recarga: 7-8h | Bateria: grafeno não removível | Carga: 100-120kg
    Perfil: uso recorrente, entregas leves, deslocamentos mais longos, maior autonomia no segmento.
 
-5. Bliss | R$ 15.990 | Motor: 800W | Vel: 32km/h | Autonomia: 70km | Recarga: 6-7h | Bateria: lítio | Carga: 120-150kg
+5. Bliss | R$ 15.990 | Motor: 800W | Vel. máxima: 32km/h | Autonomia: 70km | Recarga: 6-7h | Bateria: lítio | Carga: 120-150kg
    Perfil: design premium, conforto, autonomia superior, deslocamento cotidiano refinado.
 
 6. Liberty Ultra | R$ 12.990 | Motor: 1.000W | Vel: 32km/h | Autonomia: 70km | Recarga: 5-6h | Bateria: lítio 64V/30Ah | Carga: 150kg
