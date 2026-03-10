@@ -59,7 +59,7 @@ RECOMENDAR QUANDO: km/dia 21-55km, prioridade conforto+robustez, ruas ruins/bura
 EVITAR QUANDO: quer velocidade alta, delivery/carga profissional
 
 6. LIBERTY ULTRA
-Motor: 1.000W | Vel: 32km/h | Autonomia: 70km | Recarga: 5-6h | Bateria: lítio 64V/30Ah | Carga: 150kg | Preço: R$12.990
+Motor: 1.000W | Vel. máxima: 32km/h | Autonomia: 70km | Recarga: 5-6h | Bateria: lítio 64V/30Ah | Carga: 150kg | Preço: R$12.990
 RECOMENDAR QUANDO: mais autonomia, baú traseiro, deslocamentos recorrentes, entregas leves
 EVITAR QUANDO: quer velocidade de moto, carga pesada
 
