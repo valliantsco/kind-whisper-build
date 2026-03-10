@@ -488,13 +488,6 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
         </motion.div>
       )}
 
-      {/* Refazer */}
-      <button
-        onClick={onReset}
-        className="w-full text-xs text-white/25 hover:text-white/50 transition-colors py-1.5 uppercase tracking-wider font-medium cursor-pointer"
-      >
-        Refazer quiz
-      </button>
 
       {/* LGPD disclaimer */}
       <p className="text-[9px] text-white/20 text-center leading-relaxed pb-2">
