@@ -217,6 +217,10 @@ html {
 .quiz-scrollbar {
   padding-right: 0px;
   margin-right: 2px;
+  scrollbar-color: transparent transparent;
+}
+.quiz-scrollbar:hover {
+  scrollbar-color: hsl(0 0% 100% / 0.12) transparent;
 }
 .quiz-scrollbar::-webkit-scrollbar {
   width: 3px;
@@ -234,9 +238,13 @@ html {
   display: none;
 }
 .quiz-scrollbar::-webkit-scrollbar-thumb {
-  background: hsl(0 0% 100% / 0.12);
+  background: transparent;
   border-radius: 9999px;
+  transition: background 0.3s ease;
 }
-.quiz-scrollbar::-webkit-scrollbar-thumb:hover {
+.quiz-scrollbar:hover::-webkit-scrollbar-thumb {
+  background: hsl(0 0% 100% / 0.12);
+}
+.quiz-scrollbar:hover::-webkit-scrollbar-thumb:hover {
   background: hsl(0 0% 100% / 0.22);
 }
