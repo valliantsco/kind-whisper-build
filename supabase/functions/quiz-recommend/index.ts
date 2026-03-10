@@ -107,7 +107,7 @@ CATEGORIAS VÁLIDAS: Autopropelidos, Bicicletas Elétricas, Scooters Elétricas,
 
 ── PATINETES ──
 
-19. Patinete 350 | R$ 2.800 | Motor: 350W | Vel: 30km/h | Autonomia: 30km | Recarga: 5-6h | Bateria: lítio 36V/10Ah | Carga: 120kg
+19. Patinete 350 | R$ 2.800 | Motor: 350W | Vel. máxima: 30km/h | Autonomia: 30km | Recarga: 5-6h | Bateria: lítio 36V/10Ah | Carga: 120kg
     Perfil: última milha, condomínios, campus, mobilidade complementar leve.
 
 ═══ FIM DO CATÁLOGO ═══
