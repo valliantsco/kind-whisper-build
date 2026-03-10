@@ -246,7 +246,7 @@ const QuizEngine = ({ config, open, onOpenChange }: QuizEngineProps) => {
             
 
               {/* Header */}
-              <div className="items-start justify-between px-5 pt-4 pb-3 pr-0 flex flex-row">
+              <div className="items-start justify-between px-5 pt-4 pb-3 flex flex-row">
                 <div>
                   <h3 className="text-base font-bold text-white tracking-tight">
                     {headerTitle}
