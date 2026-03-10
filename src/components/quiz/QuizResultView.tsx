@@ -332,21 +332,15 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
       {/* Divider */}
       <div className="mx-0 h-[1px]" style={{ background: "linear-gradient(90deg, transparent, hsl(11 81% 57% / 0.3), transparent)" }} />
 
-      {/* Status chip — same as PopUpContato01 */}
-      <StatusChip isOnline={isOnline} offlineMessage={offlineMessage} />
-
-      {/* Lead form — same pattern as PopUpContato01 */}
-      <motion.div
-        className="space-y-3.5"
-        initial={{ opacity: 0, y: 10 }}
+      {/* Lead form headline */}
+      <motion.p
+        className="text-sm font-semibold text-white/70 text-center leading-relaxed"
+        initial={{ opacity: 0, y: 8 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1.1 }}
       >
-        <p className="text-xs text-white/40 leading-relaxed text-center">
-          {isOnline
-            ? "Preencha seus dados e converse agora com um especialista sobre este modelo."
-            : "Preencha seus dados e responderemos assim que nosso atendimento retornar."}
-        </p>
+        Fale com um especialista sobre este modelo
+      </motion.p>
 
         {/* Name */}
         <div>
