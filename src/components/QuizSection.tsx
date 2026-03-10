@@ -34,7 +34,7 @@ const businessContext = `A MS Eletric é revendedora autorizada AIMA (líder mun
 --- AUTOPROPELIDOS (não precisam de habilitação, até 32 km/h) ---
 
 1. BIKE 350
-Motor: 350W HUB | Vel: 29km/h | Autonomia: 40km | Recarga: 7-8h | Bateria: chumbo removível | Carga: 90-100kg | Preço: R$7.990
+Motor: 350W HUB | Vel. máxima: 29km/h | Autonomia: 40km | Recarga: 7-8h | Bateria: chumbo removível | Carga: 90-100kg | Preço: R$7.990
 RECOMENDAR QUANDO: uso leve urbano curto (até 20-25km/dia), prioridade é economia, terreno plano
 EVITAR QUANDO: muitas subidas, autonomia >35km/dia, uso profissional intenso
 
