@@ -484,7 +484,7 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
 
 
       {/* LGPD disclaimer */}
-      <p className="text-[9px] text-white/20 text-center leading-relaxed pb-2">
+      <p className="text-[9px] text-white/20 text-center leading-relaxed">
         *Ao enviar, seus dados serão usados apenas para atendimento, conforme a LGPD (
         <a href="https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709.htm" target="_blank" rel="noopener noreferrer" style={{ color: "hsl(11 81% 57%)" }} className="hover:underline">Lei nº 13.709/2018</a>).
       </p>
