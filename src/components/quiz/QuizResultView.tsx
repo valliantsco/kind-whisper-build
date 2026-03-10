@@ -155,7 +155,7 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
 
         {/* Image */}
         {image &&
-        <div className="w-full h-52 overflow-hidden relative">
+        <div className="w-full h-52 overflow-hidden relative" style={{ border: "1px solid hsl(11 81% 57% / 0.35)", borderRadius: "12px" }}>
             {/* Ambient glow */}
             <div
             className="absolute inset-0 pointer-events-none z-20"
