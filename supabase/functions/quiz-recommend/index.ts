@@ -91,7 +91,7 @@ CATEGORIAS VÁLIDAS: Autopropelidos, Bicicletas Elétricas, Scooters Elétricas,
 
 ── UTILITÁRIOS ──
 
-15. Rhino Delivery | R$ 18.990 | Motor: 2.000W | Vel: 65km/h | Autonomia: 75km | Recarga: 6-8h | Bateria: lítio removível | Carga: 150kg
+15. Rhino Delivery | R$ 18.990 | Motor: 2.000W | Vel. máxima: 65km/h | Autonomia: 75km | Recarga: 6-8h | Bateria: lítio removível | Carga: 150kg
     Perfil: delivery, restaurantes, dark kitchens, farmácias, logística de última milha.
 
 16. Cargo | R$ 28.990 | Motor: 1.000W | Vel: 32km/h | Autonomia: 70km | Recarga: 6-7h | Bateria: chumbo | Carga: 400kg
