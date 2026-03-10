@@ -211,7 +211,7 @@ const QuizEngine = ({ config, open, onOpenChange }: QuizEngineProps) => {
         exit="exit">
         
           {/* Backdrop */}
-          <motion.div className="absolute inset-0 bg-foreground/60" onClick={handleClose} />
+          <motion.div className="absolute inset-0 bg-foreground/60 pt-[4px] pb-[4px]" onClick={handleClose} />
 
           {/* Panel */}
           <motion.div
