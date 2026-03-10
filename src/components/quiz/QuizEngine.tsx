@@ -257,7 +257,7 @@ const QuizEngine = ({ config, open, onOpenChange }: QuizEngineProps) => {
                 </div>
                 <motion.button
                 onClick={handleClose}
-                className="p-2 rounded-xl text-white cursor-pointer mx-[13px]"
+                className="p-2 rounded-xl text-white cursor-pointer shrink-0"
                 style={{
                   background: "linear-gradient(135deg, hsl(11 81% 57%), hsl(11 90% 65%))",
                   boxShadow: "0 4px 20px hsl(11 81% 57% / 0.25)"
