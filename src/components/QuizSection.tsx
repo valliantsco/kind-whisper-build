@@ -105,7 +105,7 @@ EVITAR QUANDO: deslocamento curto e econômico
 --- TRICICLOS ELÉTRICOS ---
 
 14. TRICICLO ELÉTRICO
-Motor: 650W | Vel: 32km/h | Autonomia: 60km | Recarga: 6-7h | Bateria: chumbo NÃO removível | Carga: 120-150kg | Preço: R$15.990
+Motor: 650W | Vel. máxima: 32km/h | Autonomia: 60km | Recarga: 6-7h | Bateria: chumbo NÃO removível | Carga: 120-150kg | Preço: R$15.990
 RECOMENDAR QUANDO: perfil idoso/PCD/pouca confiança, prioridade estabilidade+segurança
 EVITAR QUANDO: quer velocidade/agilidade, precisa levar bateria (NÃO removível)
 
