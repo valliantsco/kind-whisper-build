@@ -46,8 +46,17 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
   const models = result.models?.length ? result.models : [];
   const hasModels = models.length > 0;
   const formRef = useRef<HTMLDivElement>(null);
+  const [showScrollHint, setShowScrollHint] = useState(true);
 
-
+  useEffect(() => {
+    if (!formRef.current) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) setShowScrollHint(false); },
+      { threshold: 0.3 }
+    );
+    observer.observe(formRef.current);
+    return () => observer.disconnect();
+  }, []);
 
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
