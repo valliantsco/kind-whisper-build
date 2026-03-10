@@ -39,7 +39,7 @@ RECOMENDAR QUANDO: uso leve urbano curto (até 20-25km/dia), prioridade é econo
 EVITAR QUANDO: muitas subidas, autonomia >35km/dia, uso profissional intenso
 
 2. BIKE 400+
-Motor: 400W Bosch | Vel: 32km/h | Autonomia: 50km | Recarga: 7-8h | Bateria: lítio removível | Carga: 90-100kg | Preço: R$10.990
+Motor: 400W Bosch | Vel. máxima: 32km/h | Autonomia: 50km | Recarga: 7-8h | Bateria: lítio removível | Carga: 90-100kg | Preço: R$10.990
 RECOMENDAR QUANDO: urbano diário (11-35km/dia), precisa levar bateria para carregar (apartamento)
 EVITAR QUANDO: autonomia >50km/dia, desempenho de moto
 
