@@ -155,28 +155,9 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
 
         {/* Image */}
         {image &&
-        <div className="w-full h-56 overflow-hidden relative">
-            {/* Dissolve: top edge */}
+        <div className="w-full h-40 flex items-center justify-center overflow-hidden relative">
             <div
-            className="absolute top-0 left-0 right-0 h-16 pointer-events-none z-30"
-            style={{
-              background: "linear-gradient(to bottom, hsl(0 0% 8% / 1) 0%, hsl(0 0% 8% / 0.7) 30%, hsl(0 0% 8% / 0.3) 60%, transparent 100%)"
-            }} />
-            {/* Dissolve: bottom edge */}
-            <div
-            className="absolute bottom-0 left-0 right-0 h-12 pointer-events-none z-30"
-            style={{
-              background: "linear-gradient(to top, hsl(0 0% 8% / 1) 0%, hsl(0 0% 8% / 0.5) 40%, transparent 100%)"
-            }} />
-            {/* Dissolve: side edges */}
-            <div
-            className="absolute inset-0 pointer-events-none z-30"
-            style={{
-              background: "linear-gradient(to right, hsl(0 0% 8% / 0.6) 0%, transparent 15%, transparent 85%, hsl(0 0% 8% / 0.6) 100%)"
-            }} />
-            {/* Orange ambient glow */}
-            <div
-            className="absolute inset-0 pointer-events-none z-20"
+            className="absolute inset-0 pointer-events-none"
             style={{
               background: "radial-gradient(ellipse at center 60%, hsl(11 81% 57% / 0.10) 0%, hsl(11 81% 57% / 0.03) 40%, transparent 70%)"
             }} />
@@ -184,7 +165,7 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
             <motion.img
             src={image}
             alt={model.name}
-            className="w-full h-full object-cover object-center relative z-10"
+            className="h-full w-auto object-contain relative z-10"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.5, duration: 0.5 }} />
@@ -212,7 +193,7 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
               }}>
               
                   <div className="flex items-center gap-1.5">
-                    <span style={{ color: "hsl(11 81% 57% / 0.8)" }}>{specIcon(s.label)}</span>
+                    <span style={{ color: "hsl(11 81% 57% / 0.8)" }} className="pt-[3px]">{specIcon(s.label)}</span>
                     <p className="text-[9px] uppercase tracking-[0.12em] text-white/35 font-medium">{s.label}</p>
                   </div>
                   <p className="text-sm font-bold text-white/90 leading-tight truncate">{s.value}</p>
@@ -300,7 +281,7 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
               className="inline-flex items-center gap-0.5 text-[9px] font-medium cursor-pointer transition-colors opacity-25 hover:opacity-100"
               style={{ color: "hsl(0 0% 100%)" }}
               onMouseEnter={(e) => e.currentTarget.style.color = "hsl(11 81% 57%)"}
-              onMouseLeave={(e) => { e.currentTarget.style.color = "hsl(0 0% 100%)"; }}
+              onMouseLeave={(e) => {e.currentTarget.style.color = "hsl(0 0% 100%)";}}
               onClick={() => {
                 const modelsSection = document.getElementById("modelos");
                 if (modelsSection) modelsSection.scrollIntoView({ behavior: "smooth" });
