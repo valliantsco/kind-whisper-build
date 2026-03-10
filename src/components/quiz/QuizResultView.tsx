@@ -1,6 +1,6 @@
 import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { MessageCircle, Star, ChevronDown, User, Phone, MapPin, Clock, ExternalLink, Zap, Battery, Gauge, ArrowRight } from "lucide-react";
+import { MessageCircle, Star, User, Phone, MapPin, Clock, ExternalLink, Zap, Battery, Gauge, ArrowRight } from "lucide-react";
 import type { QuizResult } from "./types";
 import { getModelImage } from "./modelImages";
 import { useBusinessStatus } from "@/hooks/useBusinessHours";
@@ -60,7 +60,7 @@ const specIcon = (label: string) => {
 const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps) => {
   const models = result.models?.length ? result.models : [];
   const hasModels = models.length > 0;
-  const [expandedModel, setExpandedModel] = useState<number | null>(null);
+  
   const { isOnline, offlineMessage } = useBusinessStatus();
 
   const [name, setName] = useState("");
@@ -212,7 +212,7 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
           {/* Specs grid */}
           {nonPriceSpecs.length > 0 && (
             <motion.div
-              className="grid grid-cols-2 gap-1.5"
+              className="grid grid-cols-2 gap-2"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.9 }}
@@ -220,14 +220,17 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
               {nonPriceSpecs.slice(0, 4).map((s, idx) => (
                 <div
                   key={idx}
-                  className="flex items-center gap-1.5 rounded-lg px-2.5 py-1.5"
-                  style={{ background: "hsl(0 0% 100% / 0.05)", border: "1px solid hsl(0 0% 100% / 0.06)" }}
+                  className="rounded-xl px-3 py-2.5 flex flex-col gap-1"
+                  style={{
+                    background: "linear-gradient(135deg, hsl(0 0% 100% / 0.05), hsl(0 0% 100% / 0.02))",
+                    border: "1px solid hsl(0 0% 100% / 0.07)",
+                  }}
                 >
-                  <span style={{ color: "hsl(11 81% 57% / 0.7)" }}>{specIcon(s.label)}</span>
-                  <div className="min-w-0">
-                    <p className="text-[9px] uppercase tracking-wider text-white/30 leading-none">{s.label}</p>
-                    <p className="text-[11px] font-semibold text-white/80 leading-tight truncate">{s.value}</p>
+                  <div className="flex items-center gap-1.5">
+                    <span style={{ color: "hsl(11 81% 57% / 0.8)" }}>{specIcon(s.label)}</span>
+                    <p className="text-[9px] uppercase tracking-[0.12em] text-white/35 font-medium">{s.label}</p>
                   </div>
+                  <p className="text-sm font-bold text-white/90 leading-tight truncate">{s.value}</p>
                 </div>
               ))}
             </motion.div>
@@ -299,128 +302,53 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
     );
   };
 
-  // ── Secondary/tertiary model card ───────────────────────────────────
-  const renderSecondaryCard = (model: typeof models[0], i: number) => {
+  // ── Secondary/tertiary model card (simplified) ──────────────────────
+  const renderSecondaryCard = (model: typeof models[0]) => {
     const image = getModelImage(model.name);
-    const isExpanded = expandedModel === i;
     const specs = parseSpecs(model.specs || "");
-    const nonPriceSpecs = specs.filter(s => !s.label.toLowerCase().includes("preço") && !s.label.toLowerCase().includes("preco"));
     const priceSpec = specs.find(s => s.label.toLowerCase().includes("preço") || s.label.toLowerCase().includes("preco"));
 
     return (
       <div
-        className="rounded-xl overflow-hidden"
+        className="rounded-xl overflow-hidden flex items-center gap-3 p-3"
         style={{
           background: "hsl(0 0% 100% / 0.03)",
           border: "1px solid hsl(0 0% 100% / 0.08)",
         }}
       >
-        {/* Clickable header */}
-        <div
-          className="flex items-center gap-3 p-3 cursor-pointer select-none group"
-          onClick={() => setExpandedModel(isExpanded ? null : i)}
-        >
-          {/* Thumbnail */}
-          {image && (
-            <div
-              className="w-11 h-11 rounded-lg bg-white/5 overflow-hidden flex-shrink-0 flex items-center justify-center"
-              style={{ border: "1px solid hsl(0 0% 100% / 0.08)" }}
-            >
-              <img src={image} alt={model.name} className="h-full w-auto object-contain" />
-            </div>
-          )}
-
-          {/* Info */}
-          <div className="flex-1 min-w-0">
-            <p className="text-sm font-semibold text-white/85 group-hover:text-white transition-colors leading-tight">
-              {model.name}
-            </p>
-            <p className="text-[11px] text-white/40 leading-snug mt-0.5 line-clamp-2">
-              {model.headline}
-            </p>
-          </div>
-
-          {/* Chevron */}
-          <motion.span
-            animate={{ rotate: isExpanded ? 180 : 0 }}
-            transition={{ duration: 0.2 }}
-            className="flex-shrink-0"
+        {/* Thumbnail */}
+        {image && (
+          <div
+            className="w-14 h-14 rounded-lg bg-white/5 overflow-hidden flex-shrink-0 flex items-center justify-center"
+            style={{ border: "1px solid hsl(0 0% 100% / 0.08)" }}
           >
-            <ChevronDown className="w-4 h-4 text-white/30 group-hover:text-white/50 transition-colors" />
-          </motion.span>
-        </div>
+            <img src={image} alt={model.name} className="h-full w-auto object-contain" />
+          </div>
+        )}
 
-        {/* Expandable details */}
-        <AnimatePresence>
-          {isExpanded && (
-            <motion.div
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: "auto", opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }}
-              transition={{ duration: 0.25, ease: "easeInOut" }}
-              className="overflow-hidden"
+        {/* Info */}
+        <div className="flex-1 min-w-0">
+          <p className="text-sm font-semibold text-white/85 leading-tight">{model.name}</p>
+          <p className="text-[11px] text-white/40 leading-snug mt-0.5 line-clamp-1">{model.headline}</p>
+          <div className="flex items-center justify-between mt-1.5">
+            {priceSpec && !priceSpec.value.toLowerCase().includes("consult") ? (
+              <span className="text-xs font-bold" style={{ color: "hsl(11 81% 57%)" }}>{priceSpec.value}</span>
+            ) : (
+              <span className="text-[10px] text-white/35">Consulte</span>
+            )}
+            <button
+              type="button"
+              className="inline-flex items-center gap-1 text-[10px] font-semibold cursor-pointer transition-colors hover:opacity-80"
+              style={{ color: "hsl(11 81% 57%)" }}
+              onClick={() => {
+                const modelsSection = document.getElementById("modelos");
+                if (modelsSection) modelsSection.scrollIntoView({ behavior: "smooth" });
+              }}
             >
-              <div
-                className="px-3 pb-3 space-y-2.5"
-                style={{ borderTop: "1px solid hsl(0 0% 100% / 0.06)" }}
-              >
-                {/* Specs grid */}
-                {nonPriceSpecs.length > 0 && (
-                  <div className="grid grid-cols-2 gap-1.5 pt-2.5">
-                    {nonPriceSpecs.slice(0, 4).map((s, idx) => (
-                      <div
-                        key={idx}
-                        className="flex items-center gap-1.5 rounded-lg px-2 py-1.5"
-                        style={{ background: "hsl(0 0% 100% / 0.04)", border: "1px solid hsl(0 0% 100% / 0.06)" }}
-                      >
-                        <span style={{ color: "hsl(11 81% 57% / 0.6)" }}>{specIcon(s.label)}</span>
-                        <div className="min-w-0">
-                          <p className="text-[9px] uppercase tracking-wider text-white/30 leading-none">{s.label}</p>
-                          <p className="text-[11px] font-semibold text-white/80 leading-tight truncate">{s.value}</p>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                )}
-
-                {/* Why fits */}
-                {model.whyFits && (
-                  <p className="text-[11px] text-white/45 leading-relaxed">
-                    {model.whyFits}
-                  </p>
-                )}
-
-                {/* Price */}
-                {priceSpec && (
-                  <div className="flex items-center justify-between rounded-lg px-2.5 py-2" style={{ background: "hsl(11 81% 57% / 0.08)", border: "1px solid hsl(11 81% 57% / 0.12)" }}>
-                    {priceSpec.value.toLowerCase().includes("consult") ? (
-                      <span className="text-[10px] font-medium text-white/50 mx-auto">Consulte o valor com nosso time</span>
-                    ) : (
-                      <>
-                        <span className="text-[10px] uppercase tracking-wider text-white/40 font-medium">A partir de</span>
-                        <span className="text-xs font-bold" style={{ color: "hsl(11 81% 57%)" }}>{priceSpec.value}</span>
-                      </>
-                    )}
-                  </div>
-                )}
-
-                {/* CTA */}
-                <button
-                  type="button"
-                  className="inline-flex items-center gap-1.5 text-[11px] font-semibold cursor-pointer transition-colors hover:opacity-80"
-                  style={{ color: "hsl(11 81% 57%)" }}
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    const modelsSection = document.getElementById("modelos");
-                    if (modelsSection) modelsSection.scrollIntoView({ behavior: "smooth" });
-                  }}
-                >
-                  Saber mais sobre este modelo <ExternalLink className="w-3 h-3" />
-                </button>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+              Saber mais <ExternalLink className="w-2.5 h-2.5" />
+            </button>
+          </div>
+        </div>
       </div>
     );
   };
@@ -471,7 +399,7 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 1.4 + i * 0.15, duration: 0.4 }}
             >
-              {renderSecondaryCard(model, i + 1)}
+              {renderSecondaryCard(model)}
             </motion.div>
           ))}
         </div>
