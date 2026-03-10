@@ -1,22 +1,26 @@
-import modelBike from "@/assets/models/model-bike.jpg";
-import modelBliss from "@/assets/models/model-bliss.jpg";
-import modelSantaMonica from "@/assets/models/model-santa-monica.jpg";
-import modelBigSur from "@/assets/models/model-big-sur.jpg";
-import modelTricycle from "@/assets/models/model-tricycle.jpg";
+import modelBike350 from "@/assets/models/model-bike-350.png";
+import modelBike400 from "@/assets/models/model-bike-400.png";
+import modelBike500 from "@/assets/models/model-bike-500.png";
+import modelBikeMs600 from "@/assets/models/model-bike-ms600.png";
+import modelBliss from "@/assets/models/model-bliss-new.png";
+import modelSantaMonica from "@/assets/models/model-santa-monica-new.png";
+import modelBigSur from "@/assets/models/model-big-sur-new.png";
+import modelTricycle from "@/assets/models/model-tricycle-new.png";
+import modelTour3k from "@/assets/models/model-tour-3k.png";
+import modelRhino from "@/assets/models/model-rhino-new.png";
 import modelMs2500 from "@/assets/models/model-ms2500.jpg";
 import modelSportMoto from "@/assets/models/model-sport-moto.jpg";
-import modelRhino from "@/assets/models/model-rhino.jpg";
 import modelCargo from "@/assets/models/model-cargo.jpg";
 import modelMotocrossKids from "@/assets/models/model-motocross-kids.jpg";
 
 const modelImageMap: Record<string, string> = {
   // Autopropelidos
-  "bike 350": modelBike,
-  "bike 400": modelBike,
-  "bike 400+": modelBike,
-  "bike 500": modelBike,
-  "bike ms 600": modelBike,
-  "ms 600": modelBike,
+  "bike 350": modelBike350,
+  "bike 400": modelBike400,
+  "bike 400+": modelBike400,
+  "bike 500": modelBike500,
+  "bike ms 600": modelBikeMs600,
+  "ms 600": modelBikeMs600,
   "bliss": modelBliss,
   "liberty ultra": modelBliss,
   "liberty": modelBliss,
@@ -33,7 +37,7 @@ const modelImageMap: Record<string, string> = {
   "triciclo elétrico": modelTricycle,
   "triciclo eletrico": modelTricycle,
   // Esportivos
-  "tour 3k": modelSportMoto,
+  "tour 3k": modelTour3k,
   "s3k": modelSportMoto,
   "ms 3500": modelSportMoto,
   // Utilitários
@@ -49,8 +53,8 @@ const modelImageMap: Record<string, string> = {
   "drift infantil 350": modelMotocrossKids,
   "drift infantil": modelMotocrossKids,
   // Patinetes
-  "patinete 350": modelBike,
-  "patinete": modelBike,
+  "patinete 350": modelBike350,
+  "patinete": modelBike350,
 };
 
 export function getModelImage(modelName: string): string | undefined {
