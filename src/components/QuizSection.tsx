@@ -194,62 +194,6 @@ export const msEletricQuizConfig: QuizConfig = {
       ],
     },
     {
-      id: "km_per_day",
-      question: "Em média, quantos quilômetros pretende rodar por dia?",
-      options: [
-        "Até 20 km",
-        "21 a 35 km",
-        "36 a 55 km",
-        "Mais de 55 km",
-      ],
-    },
-    {
-      id: "route_terrain",
-      question: "Como são as ruas e o relevo onde você anda?",
-      options: [
-        "Cidade com asfalto bom, poucas subidas",
-        "Ruas ruins (buracos, paralelepípedo) ou muitas subidas",
-        "Misto (asfalto + terra leve)",
-        "Uso curto (condomínio / bairro / pequenas distâncias)",
-      ],
-    },
-    {
-      id: "cargo_need",
-      question: "Precisa transportar carga com frequência?",
-      options: [
-        "Não, no máximo mochila ou bolsa",
-        "Sim, itens leves (pequenos volumes)",
-        "Sim, baú médio / volumes maiores",
-        "Sim, carga pesada (mercadorias/frete)",
-      ],
-    },
-    {
-      id: "charging",
-      question: "Onde pretende carregar o veículo?",
-      helperText: "Isso ajuda a definir se você precisa de bateria removível.",
-      options: [
-        "Tenho tomada fácil na garagem (carrego no local)",
-        "Preciso levar a bateria para carregar (apartamento / sem tomada)",
-        "No trabalho ou faculdade",
-        "Em casa e no trabalho",
-      ],
-    },
-    {
-      id: "priorities",
-      question: "O que é mais importante para você? (escolha até 2)",
-      multiSelect: true,
-      maxSelections: 2,
-      options: [
-        "Autonomia (rodar mais sem preocupação)",
-        "Economia (menor custo no dia a dia)",
-        "Conforto (uso agradável e estável)",
-        "Desempenho (mais velocidade e retomada)",
-        "Estabilidade e segurança (paradas e manobras)",
-        "Robustez / durabilidade (uso intenso)",
-        "Capacidade de carga (transportar volumes)",
-      ],
-    },
-    {
       id: "budget",
       question: "Qual faixa de investimento faz mais sentido para você?",
       options: [
