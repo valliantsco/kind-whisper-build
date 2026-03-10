@@ -18,7 +18,7 @@ const childDirectResult: QuizResult = {
     {
       name: "Drift Elétrico 350",
       headline: "Drift recreativo com LED RGB e Bluetooth",
-      specs: "Motor: 350W | Vel: 12km/h | Autonomia: 8km | Recarga: 3-5h | Preço: R$ 1.999",
+      specs: "Motor: 350W | Vel. máxima: 12km/h | Autonomia: 8km | Recarga: 3-5h | Preço: R$ 1.999",
       whyFits: "Para crianças menores que buscam diversão lúdica com sistema de drift, luzes RGB e som Bluetooth em espaços controlados.",
     },
   ],
