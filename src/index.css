@@ -227,6 +227,11 @@ html {
 }
 .quiz-scrollbar::-webkit-scrollbar-button {
   display: none;
+  width: 0;
+  height: 0;
+}
+.quiz-scrollbar::-webkit-scrollbar-corner {
+  display: none;
 }
 .quiz-scrollbar::-webkit-scrollbar-thumb {
   background: hsl(0 0% 100% / 0.12);
