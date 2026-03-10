@@ -117,7 +117,7 @@ RECOMENDAR QUANDO: delivery/trabalho dia todo, km/dia 36-75km, carga leve a méd
 EVITAR QUANDO: carga pesada/frete (Cargo), uso pessoal curto
 
 16. CARGO
-Motor: 1.000W | Vel: 32km/h | Autonomia: 70km | Recarga: 6-7h | Bateria: chumbo | Carga útil: 400kg | Preço: R$28.990
+Motor: 1.000W | Vel. máxima: 32km/h | Autonomia: 70km | Recarga: 6-7h | Bateria: chumbo | Carga útil: 400kg | Preço: R$28.990
 RECOMENDAR QUANDO: carga pesada, caixas/mercadoria/frete, perfil empresa/equipe
 EVITAR QUANDO: mobilidade pessoal+velocidade, delivery leve (Rhino melhor)
 
