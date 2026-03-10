@@ -51,6 +51,7 @@ const QuizEngine = ({ config, open, onOpenChange }: QuizEngineProps) => {
     category: "Motocross",
     suggestions: ["Moto Cross Infantil"],
     justification: "",
+    whatsappMessage: "",
     models: [
       {
         name: "Moto Cross Infantil",
