@@ -54,7 +54,7 @@ RECOMENDAR QUANDO: km/dia 21-55km, prioridade autonomia, rotina intensa sem quer
 EVITAR QUANDO: precisa levar bateria para carregar (NÃO removível!)
 
 5. BLISS
-Motor: 800W | Vel: 32km/h | Autonomia: 70km | Recarga: 6-7h | Bateria: lítio | Carga: 120-150kg | Preço: R$15.990
+Motor: 800W | Vel. máxima: 32km/h | Autonomia: 70km | Recarga: 6-7h | Bateria: lítio | Carga: 120-150kg | Preço: R$15.990
 RECOMENDAR QUANDO: km/dia 21-55km, prioridade conforto+robustez, ruas ruins/buracos, quer premium
 EVITAR QUANDO: quer velocidade alta, delivery/carga profissional
 
