@@ -33,7 +33,7 @@ const modelImageMap: Record<string, string> = {
   "ms 2500": modelMs2500,
   "ms2500": modelMs2500,
   "new holiday": modelSportMoto,
-  "holiday 1000": modelSportMoto,
+  "holiday 1000": modelHoliday1000,
   // Triciclos
   "triciclo": modelTricycle,
   "triciclo elétrico": modelTricycle,
