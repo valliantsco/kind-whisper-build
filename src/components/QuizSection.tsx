@@ -124,7 +124,7 @@ EVITAR QUANDO: mobilidade pessoal+velocidade, delivery leve (Rhino melhor)
 --- INFANTIL ---
 
 17. MOTO CROSS INFANTIL
-Motor: 800W | Vel: 32km/h | Autonomia: 35km | Recarga: 6h | Carga: 55kg | Preço: R$5.990
+Motor: 800W | Vel. máxima: 32km/h | Autonomia: 35km | Recarga: 6h | Carga: 55kg | Preço: R$5.990
 RECOMENDAR QUANDO: criança/adolescente, uso recreativo/lazer, chácaras/sítios
 
 18. DRIFT ELÉTRICO 350
