@@ -126,7 +126,7 @@ Com base nas respostas do quiz, retorne um JSON com exatamente esta estrutura (s
     {
       "name": "SEGUNDO MODELO",
       "headline": "Frase de até 10 palavras: por que é boa alternativa",
-      "specs": "Motor: XW | Vel: Xkm/h | Autonomia: Xkm | Recarga: Xh | Preço: R$X",
+      "specs": "Motor: XW | Vel. máxima: Xkm/h | Autonomia: Xkm | Recarga: Xh | Preço: R$X",
       "whyFits": "1 frase curta sobre por que pode ser interessante"
     },
     {
