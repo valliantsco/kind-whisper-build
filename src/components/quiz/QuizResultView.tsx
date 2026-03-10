@@ -155,19 +155,33 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
 
         {/* Image */}
         {image &&
-        <div className="w-full h-40 flex items-center justify-center overflow-hidden relative">
+        <div className="w-full h-56 overflow-hidden relative">
+            {/* Ambient glow */}
             <div
-            className="absolute inset-0 pointer-events-none"
+            className="absolute inset-0 pointer-events-none z-20"
             style={{
               background: "radial-gradient(ellipse at center 60%, hsl(11 81% 57% / 0.10) 0%, hsl(11 81% 57% / 0.03) 40%, transparent 70%)"
+            }} />
+            {/* Bottom dissolve */}
+            <div
+            className="absolute bottom-0 left-0 right-0 h-24 pointer-events-none z-20"
+            style={{
+              background: "linear-gradient(to top, hsl(0 0% 8%) 0%, hsl(0 0% 8% / 0.7) 40%, transparent 100%)"
+            }} />
+            {/* Side dissolve */}
+            <div
+            className="absolute inset-0 pointer-events-none z-20"
+            style={{
+              background: "linear-gradient(90deg, hsl(0 0% 8% / 0.4) 0%, transparent 15%, transparent 85%, hsl(0 0% 8% / 0.4) 100%)"
             }} />
           
             <motion.img
             src={image}
             alt={model.name}
-            className="h-full w-auto object-contain relative z-10"
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
+            className="w-full h-full object-contain relative z-10"
+            style={{ transform: "scale(1.05)" }}
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1.05 }}
             transition={{ delay: 0.5, duration: 0.5 }} />
           
           </div>
