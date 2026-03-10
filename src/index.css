@@ -215,7 +215,8 @@ html {
 
 /* Quiz subtle scrollbar */
 .quiz-scrollbar {
-  padding-right: 4px;
+  padding-right: 0px;
+  margin-right: 2px;
 }
 .quiz-scrollbar::-webkit-scrollbar {
   width: 3px;
