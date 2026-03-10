@@ -162,26 +162,31 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
             style={{
               background: "radial-gradient(ellipse at center 60%, hsl(11 81% 57% / 0.10) 0%, hsl(11 81% 57% / 0.03) 40%, transparent 70%)"
             }} />
+            {/* Top dissolve */}
+            <div
+            className="absolute top-0 left-0 right-0 h-20 pointer-events-none z-20"
+            style={{
+              background: "linear-gradient(to bottom, hsl(0 0% 8%) 0%, hsl(0 0% 8% / 0.5) 50%, transparent 100%)"
+            }} />
             {/* Bottom dissolve */}
             <div
-            className="absolute bottom-0 left-0 right-0 h-24 pointer-events-none z-20"
+            className="absolute bottom-0 left-0 right-0 h-28 pointer-events-none z-20"
             style={{
-              background: "linear-gradient(to top, hsl(0 0% 8%) 0%, hsl(0 0% 8% / 0.7) 40%, transparent 100%)"
+              background: "linear-gradient(to top, hsl(0 0% 8%) 0%, hsl(0 0% 8% / 0.8) 35%, hsl(0 0% 8% / 0.3) 65%, transparent 100%)"
             }} />
             {/* Side dissolve */}
             <div
             className="absolute inset-0 pointer-events-none z-20"
             style={{
-              background: "linear-gradient(90deg, hsl(0 0% 8% / 0.4) 0%, transparent 15%, transparent 85%, hsl(0 0% 8% / 0.4) 100%)"
+              background: "linear-gradient(90deg, hsl(0 0% 8% / 0.6) 0%, transparent 20%, transparent 80%, hsl(0 0% 8% / 0.6) 100%)"
             }} />
           
             <motion.img
             src={image}
             alt={model.name}
-            className="w-full h-full object-contain relative z-10"
-            style={{ transform: "scale(1.05)" }}
+            className="w-full h-full object-cover relative z-10"
             initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1.05 }}
+            animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.5, duration: 0.5 }} />
           
           </div>
