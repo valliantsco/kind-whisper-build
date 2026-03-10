@@ -239,7 +239,9 @@ const PopUpContato01 = ({ isOpen, onClose }: PopUpContato01Props) => {
                     Fale com um especialista da MS Eletric
                   </h3>
                   <p className="text-xs text-white/50 mt-1 leading-relaxed">
-                    Preencha os campos abaixo para falar com um especialista.
+                    {isOnline
+                      ? "Estamos online! Preencha os campos e fale agora com um especialista."
+                      : "Preencha os campos abaixo e responderemos assim que nosso atendimento retornar."}
                   </p>
                 </div>
                 <motion.button
@@ -258,6 +260,9 @@ const PopUpContato01 = ({ isOpen, onClose }: PopUpContato01Props) => {
                   <X className="w-4 h-4" />
                 </motion.button>
               </div>
+
+              {/* Status chip */}
+              <StatusChip isOnline={isOnline} offlineMessage={offlineMessage} />
 
               {/* Divider */}
               <div
