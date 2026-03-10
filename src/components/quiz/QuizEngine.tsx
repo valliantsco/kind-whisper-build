@@ -267,7 +267,40 @@ const QuizEngine = ({ config, open, onOpenChange }: QuizEngineProps) => {
           
 
             {/* Scrollable content */}
-            <div className="overflow-y-auto flex-1 relative scrollbar-hide">
+            <div ref={scrollRef} onScroll={checkScrollEnd} className="overflow-y-auto flex-1 relative scrollbar-hide">
+
+            {/* Scroll hint overlay */}
+            <AnimatePresence>
+              {showScrollHint && (
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.3 }}
+                  className="sticky bottom-0 left-0 right-0 z-20 pointer-events-none flex flex-col items-center"
+                >
+                  <div
+                    className="w-full h-20"
+                    style={{
+                      background: "linear-gradient(to top, hsl(0 0% 14% / 0.95) 0%, hsl(0 0% 14% / 0.7) 40%, transparent 100%)"
+                    }}
+                  />
+                  <motion.div
+                    className="absolute bottom-3 flex flex-col items-center gap-0.5 pointer-events-auto cursor-pointer"
+                    animate={{ y: [0, 6, 0] }}
+                    transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+                    onClick={() => {
+                      scrollRef.current?.scrollBy({ top: 200, behavior: "smooth" });
+                    }}
+                  >
+                    <span className="text-[9px] font-semibold uppercase tracking-[0.15em] text-white/40">
+                      Preencha o formulário abaixo
+                    </span>
+                    <ChevronDown className="w-4 h-4 text-white/40" />
+                  </motion.div>
+                </motion.div>
+              )}
+            </AnimatePresence>
             
 
               {/* Header */}
