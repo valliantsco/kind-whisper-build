@@ -66,7 +66,7 @@ EVITAR QUANDO: quer velocidade de moto, carga pesada
 --- BICICLETAS ELÉTRICAS (pedal assistido) ---
 
 7. SANTA MONICA
-Motor: 500W | Vel: 32km/h | Autonomia: 60km | Recarga: 5h | Bateria: lítio | Carga: 120-150kg
+Motor: 500W | Vel. máxima: 32km/h | Autonomia: 60km | Recarga: 5h | Bateria: lítio | Carga: 120-150kg
 RECOMENDAR QUANDO: quer "cara de bike", conforto+recarga rápida, cidade+lazer
 EVITAR QUANDO: carga/baú profissional, desempenho de moto
 
