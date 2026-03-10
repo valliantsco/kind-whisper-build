@@ -10,7 +10,7 @@ import modelTour3k from "@/assets/models/model-tour-3k.png";
 import modelRhino from "@/assets/models/model-rhino-new.png";
 import modelMs2500 from "@/assets/models/model-ms2500.jpg";
 import modelSportMoto from "@/assets/models/model-sport-moto.jpg";
-import modelCargo from "@/assets/models/model-cargo.jpg";
+import modelCargo from "@/assets/models/model-cargo.png";
 import modelMotocrossKids from "@/assets/models/model-motocross-kids.jpg";
 
 const modelImageMap: Record<string, string> = {
