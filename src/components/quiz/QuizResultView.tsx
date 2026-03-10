@@ -340,29 +340,31 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
       </motion.div>
 
       {/* Scroll indicator with vignette */}
-      <motion.div
-        className="relative flex flex-col items-center gap-1 py-3 cursor-pointer"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.05 }}
-        onClick={() => formRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}
-      >
-        {/* Gradient vignette from dark bottom */}
-        <div
-          className="absolute inset-x-0 bottom-0 h-full pointer-events-none"
-          style={{
-            background: "linear-gradient(to top, hsl(0 0% 14% / 0.7), transparent)"
-          }}
-        />
-        <span className="text-[10px] text-white/40 font-medium relative z-10">Fale com um especialista</span>
-        <motion.div
-          className="relative z-10"
-          animate={{ y: [0, 5, 0] }}
-          transition={{ duration: 1.4, repeat: Infinity, ease: "easeInOut" }}
-        >
-          <ChevronDown className="w-5 h-5 text-white/40" />
-        </motion.div>
-      </motion.div>
+      <AnimatePresence>
+        {showScrollHint && (
+          <motion.div
+            className="relative flex flex-col items-center gap-1 py-3 cursor-pointer"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0, height: 0, marginTop: 0, marginBottom: 0, paddingTop: 0, paddingBottom: 0 }}
+            transition={{ duration: 0.4 }}
+            onClick={() => formRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}
+          >
+            <div
+              className="absolute inset-x-0 bottom-0 h-full pointer-events-none"
+              style={{ background: "linear-gradient(to top, hsl(0 0% 14% / 0.7), transparent)" }}
+            />
+            <span className="text-[10px] text-white/40 font-medium relative z-10">Fale com um especialista</span>
+            <motion.div
+              className="relative z-10"
+              animate={{ y: [0, 5, 0] }}
+              transition={{ duration: 1.4, repeat: Infinity, ease: "easeInOut" }}
+            >
+              <ChevronDown className="w-5 h-5 text-white/40" />
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Lead form section */}
       <div ref={formRef}>
