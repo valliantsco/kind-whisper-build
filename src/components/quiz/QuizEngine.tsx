@@ -65,6 +65,31 @@ const QuizEngine = ({ config, open, onOpenChange }: QuizEngineProps) => {
   const [error, setError] = useState<string | null>(null);
   const [showDetailsStep, setShowDetailsStep] = useState(false);
   const [extraDetails, setExtraDetails] = useState("");
+  const [showScrollHint, setShowScrollHint] = useState(false);
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  const checkScrollEnd = useCallback(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+    const isAtBottom = el.scrollHeight - el.scrollTop - el.clientHeight < 40;
+    if (isAtBottom) setShowScrollHint(false);
+  }, []);
+
+  // Show scroll hint when result appears
+  useEffect(() => {
+    if (result && !loading) {
+      // Small delay to let content render
+      const timer = setTimeout(() => {
+        const el = scrollRef.current;
+        if (el && el.scrollHeight > el.clientHeight + 40) {
+          setShowScrollHint(true);
+        }
+      }, 1400);
+      return () => clearTimeout(timer);
+    } else {
+      setShowScrollHint(false);
+    }
+  }, [result, loading]);
 
   const totalSteps = config.steps.length;
   const progressTotal = totalSteps + 1;
