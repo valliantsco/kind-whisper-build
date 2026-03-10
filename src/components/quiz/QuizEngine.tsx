@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, ArrowRight, ArrowLeft, Sparkles, Loader2, RotateCcw } from "lucide-react";
+import { X, ArrowRight, ArrowLeft, Sparkles, Loader2, RotateCcw, ChevronDown } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import type { QuizConfig, QuizResult } from "./types";
 import QuizStepView from "./QuizStepView";
