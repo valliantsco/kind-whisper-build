@@ -78,7 +78,7 @@ EVITAR QUANDO: desempenho de moto, carga pesada
 --- SCOOTERS ELÉTRICAS ---
 
 9. HOLIDAY 1000
-Motor: 1.000W | Vel: 32km/h | Autonomia: 45km | Recarga: 8-10h | Bateria: lítio removível | Carga: 150kg | Preço: R$10.490
+Motor: 1.000W | Vel. máxima: 32km/h | Autonomia: 45km | Recarga: 8-10h | Bateria: lítio removível | Carga: 150kg | Preço: R$10.490
 RECOMENDAR QUANDO: mobilidade urbana leve, visual amigável, velocidade controlada, deslocamentos curtos
 EVITAR QUANDO: precisa de velocidade alta, autonomia muito longa
 
