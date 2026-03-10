@@ -56,7 +56,7 @@ const QuizEngine = ({ config, open, onOpenChange }: QuizEngineProps) => {
     {
       name: "Moto Cross Infantil",
       headline: "Diversão segura com controle parental de velocidade",
-      specs: "Motor:800W|Vel:32km/h|Autonomia:35km|Recarga:6h|Preço:R$ 5.990",
+      specs: "Motor:800W|Vel. máxima:32km/h|Autonomia:35km|Recarga:6h|Preço:R$ 5.990",
       whyFits: "Possui seletor de velocidade com controle por chave, permitindo que os pais ajustem a velocidade máxima. Ideal para chácaras, sítios e condomínios."
     }]
 
