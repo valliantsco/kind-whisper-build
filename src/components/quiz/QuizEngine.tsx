@@ -250,7 +250,7 @@ const QuizEngine = ({ config, open, onOpenChange }: QuizEngineProps) => {
             
 
               {/* Header */}
-              <div className="flex items-start justify-between px-5 pt-4 pb-3">
+              <div className="items-start justify-between px-5 pt-4 pb-3 pr-0 flex flex-row">
                 <div>
                   <h3 className="text-base font-bold text-white tracking-tight">
                     {headerTitle}
@@ -261,7 +261,7 @@ const QuizEngine = ({ config, open, onOpenChange }: QuizEngineProps) => {
                 </div>
                 <motion.button
                 onClick={handleClose}
-                className="p-2 rounded-xl text-white cursor-pointer"
+                className="p-2 rounded-xl text-white cursor-pointer mx-[13px]"
                 style={{
                   background: "linear-gradient(135deg, hsl(11 81% 57%), hsl(11 90% 65%))",
                   boxShadow: "0 4px 20px hsl(11 81% 57% / 0.25)"
@@ -300,7 +300,7 @@ const QuizEngine = ({ config, open, onOpenChange }: QuizEngineProps) => {
             
 
               {/* Content area */}
-              <div className="px-5 py-4 pr-[15px]">
+              <div className="px-5 py-4 pr-[7px]">
                 <AnimatePresence mode="wait">
                   {/* Loading state */}
                   {loading &&
