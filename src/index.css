@@ -223,7 +223,7 @@ html {
 }
 .quiz-scrollbar::-webkit-scrollbar-track {
   background: transparent;
-  margin: 3% 0;
+  margin: 10% 0;
 }
 .quiz-scrollbar::-webkit-scrollbar-thumb {
   background: hsl(0 0% 100% / 0.12);
