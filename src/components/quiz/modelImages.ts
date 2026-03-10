@@ -59,8 +59,8 @@ const modelImageMap: Record<string, string> = {
   "drift infantil 350": modelDriftInfantil,
   "drift infantil": modelDriftInfantil,
   // Patinetes
-  "patinete 350": modelBike350,
-  "patinete": modelBike350,
+  "patinete 350": modelPatinete350,
+  "patinete": modelPatinete350,
 };
 
 export function getModelImage(modelName: string): string | undefined {
