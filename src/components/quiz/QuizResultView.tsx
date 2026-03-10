@@ -155,31 +155,7 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
 
         {/* Image */}
         {image &&
-        <div className="w-full h-[252px] overflow-hidden relative" style={{ background: "hsl(0 0% 100%)", borderBottom: "0.5px solid hsl(11 81% 57% / 0.25)" }}>
-            {/* Ambient glow */}
-            <div
-            className="absolute inset-0 pointer-events-none z-20"
-            style={{
-              background: "radial-gradient(ellipse at center 60%, hsl(11 81% 57% / 0.10) 0%, hsl(11 81% 57% / 0.03) 40%, transparent 70%)"
-            }} />
-            {/* Top dissolve */}
-            <div
-            className="absolute top-0 left-0 right-0 h-20 pointer-events-none z-20"
-            style={{
-              background: "linear-gradient(to bottom, hsl(0 0% 8%) 0%, hsl(0 0% 8% / 0.5) 50%, transparent 100%)"
-            }} />
-            {/* Bottom dissolve */}
-            <div
-            className="absolute bottom-0 left-0 right-0 h-28 pointer-events-none z-20"
-            style={{
-              background: "linear-gradient(to top, hsl(20 8% 22%) 0%, hsl(20 8% 22% / 0.8) 35%, hsl(20 8% 22% / 0.3) 65%, transparent 100%)"
-            }} />
-            {/* Side dissolve */}
-            <div
-            className="absolute inset-0 pointer-events-none z-20"
-            style={{
-              background: "linear-gradient(90deg, hsl(0 0% 8% / 0.6) 0%, transparent 20%, transparent 80%, hsl(0 0% 8% / 0.6) 100%)"
-            }} />
+        <div className="w-full h-[252px] overflow-hidden relative" style={{ background: "hsl(0 0% 100%)", borderBottom: "1px solid transparent", borderImage: "linear-gradient(90deg, transparent, hsl(11 81% 57% / 0.5), hsl(11 90% 65% / 0.5), transparent) 1" }}>
           
             <motion.img
             src={image}
