@@ -241,7 +241,7 @@ const QuizEngine = ({ config, open, onOpenChange }: QuizEngineProps) => {
           
 
             {/* Scrollable content */}
-            <div className="overflow-y-auto flex-1 relative scrollbar-hide">
+            <div className="overflow-y-auto flex-1 relative scrollbar-hide quiz-scrollbar">
             
 
               {/* Header */}
