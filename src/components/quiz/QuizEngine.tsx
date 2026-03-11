@@ -73,7 +73,16 @@ const QuizEngine = ({ config, open, onOpenChange }: QuizEngineProps) => {
     };
   }, [open]);
 
-  const reset = () => {
+  useEffect(() => {
+    if (!open) return;
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") handleClose();
+    };
+
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [open]);
     setStep(0);
     setAnswers([]);
     setResult(null);
