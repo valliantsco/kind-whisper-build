@@ -256,9 +256,13 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
         style={{ background: "hsl(0 0% 100% / 0.03)", border: "1px solid hsl(0 0% 100% / 0.06)" }}>
         {image && (
           <div
-            className="w-16 h-16 rounded-lg overflow-hidden flex-shrink-0 flex items-center justify-center"
-            style={{ background: "#ffffff", border: "1px solid hsl(0 0% 100% / 0.10)" }}>
-            <img src={image} alt={model.name} className="h-full w-full object-contain p-1" />
+            className="w-16 h-16 rounded-lg overflow-hidden flex-shrink-0 p-[1px]"
+            style={{ background: "linear-gradient(135deg, hsl(11 81% 57%), hsl(11 90% 65%), hsl(11 81% 57%))" }}>
+            <div
+              className="w-full h-full rounded-[7px] flex items-center justify-center"
+              style={{ background: "hsl(0 0% 100%)" }}>
+              <img src={image} alt={model.name} className="h-full w-full object-contain p-1" />
+            </div>
           </div>
         )}
         <div className="flex-1 min-w-0">
