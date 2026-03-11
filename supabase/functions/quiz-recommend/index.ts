@@ -15,6 +15,8 @@ const normalize = (value: string) =>
     .replace(/[\u0300-\u036f]/g, "")
     .trim();
 
+const INFANT_MODEL_KEYS = new Set(INFANT_MODELS.map((model) => normalize(model)));
+
 const ensureInfantCoverage = (parsed: any, answers: Array<{ question: string; answer: string }>) => {
   const answersText = answers.map((a) => `${a.question} ${a.answer}`).join(" ");
   const normalizedAnswers = normalize(answersText);
@@ -25,6 +27,17 @@ const ensureInfantCoverage = (parsed: any, answers: Array<{ question: string; an
     normalize(parsed?.category || "") === "infantil";
 
   if (!isChildAudience) return parsed;
+
+  const prefersDrift =
+    normalizedAnswers.includes("drift") ||
+    normalizedAnswers.includes("ludic") ||
+    normalizedAnswers.includes("bluetooth") ||
+    normalizedAnswers.includes("led") ||
+    normalizedAnswers.includes("crianca menor");
+
+  const prioritizedInfantModels = prefersDrift
+    ? (["Drift Elétrico 350", "Moto Cross Infantil"] as const)
+    : INFANT_MODELS;
 
   const baseCatalog: Record<string, { headline: string; specs: string; whyFits: string }> = {
     "Moto Cross Infantil": {
@@ -44,7 +57,7 @@ const ensureInfantCoverage = (parsed: any, answers: Array<{ question: string; an
     if (model?.name) existingByName.set(normalize(model.name), model);
   }
 
-  const enforcedModels = INFANT_MODELS.map((name) => {
+  const enforcedModels = prioritizedInfantModels.map((name) => {
     const existing = existingByName.get(normalize(name));
     return {
       name,
@@ -55,7 +68,7 @@ const ensureInfantCoverage = (parsed: any, answers: Array<{ question: string; an
   });
 
   const otherModels = (Array.isArray(parsed?.models) ? parsed.models : []).filter(
-    (model: any) => model?.name && !INFANT_MODELS.map(normalize).includes(normalize(model.name))
+    (model: any) => model?.name && !INFANT_MODEL_KEYS.has(normalize(model.name))
   );
 
   return {
