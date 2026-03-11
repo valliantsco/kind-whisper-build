@@ -11,15 +11,15 @@ const childDirectResult: QuizResult = {
   models: [
     {
       name: "Moto Cross Infantil",
-      headline: "Diversão segura com controle parental de velocidade",
+      headline: "Aventura segura para crescer com confiança",
       specs: "Motor: 800W | Vel. máxima: 32km/h | Autonomia: 35km | Recarga: 6h | Preço: R$ 5.990",
-      whyFits: "Possui seletor de velocidade com controle por chave, permitindo que os pais ajustem a velocidade máxima. Ideal para chácaras, sítios e condomínios.",
+      whyFits: "Ideal para quem quer um modelo infantil com pegada esportiva e sensação de evolução. Entrega diversão com segurança em ambientes controlados e supervisionados.",
     },
     {
       name: "Drift Elétrico 350",
-      headline: "Drift recreativo com LED RGB e Bluetooth",
+      headline: "Diversão leve e criativa para os pequenos",
       specs: "Motor: 350W | Vel. máxima: 12km/h | Autonomia: 8km | Recarga: 3-5h | Preço: R$ 1.999",
-      whyFits: "Para crianças menores que buscam diversão lúdica com sistema de drift, luzes RGB e som Bluetooth em espaços controlados.",
+      whyFits: "Perfeito para momentos de lazer em família, com proposta lúdica e fácil de curtir. É uma opção acessível para iniciar na mobilidade elétrica com estilo.",
     },
   ],
   suggestions: [],
