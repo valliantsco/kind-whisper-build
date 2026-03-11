@@ -212,6 +212,9 @@ const QuizEngine = ({ config, open, onOpenChange }: QuizEngineProps) => {
           {/* Panel */}
           <motion.div
           variants={panelVariants}
+          role="dialog"
+          aria-modal="true"
+          aria-label="Quiz de recomendação de veículos"
           className="relative w-full max-w-md rounded-[0.9rem] overflow-hidden max-h-[90vh] flex flex-col"
           style={{
             background: "hsl(0 0% 14% / 0.92)",
