@@ -73,6 +73,17 @@ const QuizEngine = ({ config, open, onOpenChange }: QuizEngineProps) => {
     };
   }, [open]);
 
+  useEffect(() => {
+    if (!open) return;
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") handleClose();
+    };
+
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [open]);
+
   const reset = () => {
     setStep(0);
     setAnswers([]);
@@ -203,6 +214,9 @@ const QuizEngine = ({ config, open, onOpenChange }: QuizEngineProps) => {
           {/* Panel */}
           <motion.div
           variants={panelVariants}
+          role="dialog"
+          aria-modal="true"
+          aria-label="Quiz de recomendação de veículos"
           className="relative w-full max-w-md rounded-[0.9rem] overflow-hidden max-h-[90vh] flex flex-col"
           style={{
             background: "hsl(0 0% 14% / 0.92)",
@@ -229,7 +243,7 @@ const QuizEngine = ({ config, open, onOpenChange }: QuizEngineProps) => {
           
 
             {/* Scrollable content */}
-            <div className="overflow-y-auto flex-1 relative scrollbar-hide">
+            <div className="overflow-y-auto flex-1 relative scrollbar-hide quiz-scrollbar">
             
 
               {/* Header */}
