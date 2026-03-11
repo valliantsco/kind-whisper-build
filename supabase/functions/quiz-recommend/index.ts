@@ -41,14 +41,14 @@ const ensureInfantCoverage = (parsed: any, answers: Array<{ question: string; an
 
   const baseCatalog: Record<string, { headline: string; specs: string; whyFits: string }> = {
     "Moto Cross Infantil": {
-      headline: "Diversão segura com mais performance para adolescentes",
+      headline: "Aventura segura para crescer com confiança",
       specs: "Motor: 800W | Vel. máxima: 32km/h | Autonomia: 35km | Recarga: 6h | Preço: R$ 5.990",
-      whyFits: "Ideal para adolescentes e crianças maiores em uso recreativo supervisionado.",
+      whyFits: "Ideal para adolescentes e crianças maiores em uso recreativo supervisionado, com proposta esportiva e divertida.",
     },
     "Drift Elétrico 350": {
-      headline: "Drift recreativo com LED RGB e Bluetooth",
+      headline: "Diversão leve e criativa para os pequenos",
       specs: "Motor: 350W | Vel. máxima: 12km/h | Autonomia: 8km | Recarga: 3-5h | Preço: R$ 1.999",
-      whyFits: "Ótimo para crianças menores com foco em diversão lúdica e controlada.",
+      whyFits: "Ótimo para crianças menores em momentos de lazer, com experiência lúdica e fácil de aproveitar.",
     },
   };
 
