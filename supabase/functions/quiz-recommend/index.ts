@@ -215,6 +215,7 @@ Com base nas respostas do quiz, retorne um JSON com exatamente esta estrutura (s
 REGRAS:
 - Use APENAS modelos do catálogo acima. NUNCA invente modelos.
 - Use o NOME EXATO do catálogo (ex: "Bike 400+", "MS 2500", "Rhino Delivery")
+- Se o perfil for infantil/crianças/adolescentes, inclua SEMPRE "Moto Cross Infantil" e "Drift Elétrico 350" como base da recomendação.
 - Recomende 2-3 modelos ranqueados do mais adequado ao menos
 - TODOS os modelos devem ter name, headline, specs e whyFits
 - Headlines devem ser CURTAS (máx 10 palavras), focadas no benefício
