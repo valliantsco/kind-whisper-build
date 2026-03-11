@@ -293,7 +293,9 @@ REGRAS:
       parsed.suggestions = [];
     }
 
-    return new Response(JSON.stringify(parsed), {
+    const finalResult = ensureInfantCoverage(parsed, answers);
+
+    return new Response(JSON.stringify(finalResult), {
       status: 200,
       headers: { ...corsHeaders, "Content-Type": "application/json" },
     });
