@@ -254,13 +254,19 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
       <div
         className="rounded-xl overflow-hidden flex items-center gap-3 p-3"
         style={{ background: "hsl(0 0% 100% / 0.03)", border: "1px solid hsl(0 0% 100% / 0.06)" }}>
+        {image && (
+          <div
+            className="w-16 h-16 rounded-lg overflow-hidden flex-shrink-0 flex items-center justify-center"
+            style={{ background: "#ffffff", border: "1px solid hsl(0 0% 100% / 0.10)" }}>
+            <img src={image} alt={model.name} className="h-full w-full object-contain p-1" />
+          </div>
+        )}
         <div className="flex-1 min-w-0">
           <p className="text-sm font-semibold text-white/80 leading-tight">{model.name}</p>
           <p className="text-[11px] text-white/35 leading-snug mt-0.5 line-clamp-1">{model.headline}</p>
           <div className="flex items-center justify-between mt-1.5">
             {priceSpec && !priceSpec.value.toLowerCase().includes("consult") ?
             <span className="text-xs font-bold" style={{ color: "hsl(11 81% 57%)" }}>{priceSpec.value}</span> :
-
             <span className="text-[10px] text-white/30">Consulte</span>
             }
             <button
@@ -273,7 +279,6 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
                 const modelsSection = document.getElementById("modelos");
                 if (modelsSection) modelsSection.scrollIntoView({ behavior: "smooth" });
               }}>
-              
               Saber mais <ExternalLink className="w-2 h-2" />
             </button>
           </div>
