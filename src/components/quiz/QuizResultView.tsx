@@ -155,19 +155,17 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
 
         {/* Image */}
         {image &&
-        <div className="w-full h-[252px] overflow-hidden relative p-[1px]" style={{ background: "linear-gradient(135deg, hsl(11 81% 57%), hsl(11 90% 65%), hsl(11 81% 57%))" }}>
-          <div className="w-full h-full overflow-hidden relative" style={{ background: "hsl(0 0% 100%)" }}>
-            <div className="absolute bottom-0 left-0 right-0 h-[1px] z-20" style={{ background: "linear-gradient(90deg, transparent, hsl(11 81% 57% / 0.5), hsl(11 90% 65% / 0.5), transparent)" }} />
-            <motion.img
-              src={image}
-              alt={model.name}
-              className="w-full h-full object-contain object-center relative z-10"
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.5, duration: 0.5 }}
-            />
-          </div>
-          </div>
+        <div className="w-full h-[252px] overflow-hidden relative" style={{ background: "hsl(0 0% 100%)" }}>
+          <div className="absolute bottom-0 left-0 right-0 h-[1px] z-20" style={{ background: "linear-gradient(90deg, transparent, hsl(11 81% 57% / 0.5), hsl(11 90% 65% / 0.5), transparent)" }} />
+          <motion.img
+            src={image}
+            alt={model.name}
+            className="w-full h-full object-contain object-center relative z-10"
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.5, duration: 0.5 }}
+          />
+        </div>
         }
 
         {/* Content */}
