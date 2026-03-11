@@ -191,15 +191,15 @@ Com base nas respostas do quiz, retorne um JSON com exatamente esta estrutura (s
   "models": [
     {
       "name": "NOME EXATO do catálogo",
-      "headline": "Frase de até 10 palavras: benefício principal para o usuário",
+      "headline": "Frase de até 10 palavras, acessível e envolvente, sem jargão técnico",
       "specs": "Motor: XW | Vel. máxima: Xkm/h | Autonomia: Xkm | Recarga: Xh | Preço: R$X",
-      "whyFits": "1-2 frases curtas conectando o perfil do usuário ao modelo"
+      "whyFits": "1-2 frases curtas focadas em experiência, benefícios e diferenciais para o perfil"
     },
     {
       "name": "SEGUNDO MODELO",
-      "headline": "Frase de até 10 palavras: por que é boa alternativa",
+      "headline": "Frase de até 10 palavras, acessível e envolvente",
       "specs": "Motor: XW | Vel. máxima: Xkm/h | Autonomia: Xkm | Recarga: Xh | Preço: R$X",
-      "whyFits": "1 frase curta sobre por que pode ser interessante"
+      "whyFits": "1 frase curta sobre benefícios práticos para o usuário"
     },
     {
       "name": "TERCEIRO MODELO (se aplicável)",
@@ -218,7 +218,9 @@ REGRAS:
 - Se o perfil for infantil/crianças/adolescentes, inclua SEMPRE "Moto Cross Infantil" e "Drift Elétrico 350" como base da recomendação.
 - Recomende 2-3 modelos ranqueados do mais adequado ao menos
 - TODOS os modelos devem ter name, headline, specs e whyFits
-- Headlines devem ser CURTAS (máx 10 palavras), focadas no benefício
+- Headlines devem ser curtas, claras, acessíveis e sem termos técnicos pesados
+- Em whyFits, priorize benefícios, sensação de uso, conforto, segurança e praticidade
+- Evite repetir números técnicos em headline e whyFits; deixe os dados técnicos no campo specs
 - Specs devem usar os VALORES REAIS do catálogo, no formato: Motor | Vel. máxima | Autonomia | Recarga | Preço
 - Para preços "consulte", escreva "Preço: consulte"
 - whyFits deve ser 1-2 frases CURTAS e diretas
