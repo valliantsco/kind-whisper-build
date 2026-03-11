@@ -83,6 +83,8 @@ const QuizEngine = ({ config, open, onOpenChange }: QuizEngineProps) => {
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
   }, [open]);
+
+  const reset = () => {
     setStep(0);
     setAnswers([]);
     setResult(null);
