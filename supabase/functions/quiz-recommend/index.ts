@@ -6,6 +6,65 @@ const corsHeaders = {
     "authorization, x-client-info, apikey, content-type, x-supabase-client-platform, x-supabase-client-platform-version, x-supabase-client-runtime, x-supabase-client-runtime-version",
 };
 
+const INFANT_MODELS = ["Moto Cross Infantil", "Drift Elétrico 350"] as const;
+
+const normalize = (value: string) =>
+  value
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .trim();
+
+const ensureInfantCoverage = (parsed: any, answers: Array<{ question: string; answer: string }>) => {
+  const answersText = answers.map((a) => `${a.question} ${a.answer}`).join(" ");
+  const normalizedAnswers = normalize(answersText);
+  const isChildAudience =
+    normalizedAnswers.includes("crianca") ||
+    normalizedAnswers.includes("adolescente") ||
+    normalizedAnswers.includes("infantil") ||
+    normalize(parsed?.category || "") === "infantil";
+
+  if (!isChildAudience) return parsed;
+
+  const baseCatalog: Record<string, { headline: string; specs: string; whyFits: string }> = {
+    "Moto Cross Infantil": {
+      headline: "Diversão segura com mais performance para adolescentes",
+      specs: "Motor: 800W | Vel. máxima: 32km/h | Autonomia: 35km | Recarga: 6h | Preço: R$ 5.990",
+      whyFits: "Ideal para adolescentes e crianças maiores em uso recreativo supervisionado.",
+    },
+    "Drift Elétrico 350": {
+      headline: "Drift recreativo com LED RGB e Bluetooth",
+      specs: "Motor: 350W | Vel. máxima: 12km/h | Autonomia: 8km | Recarga: 3-5h | Preço: R$ 1.999",
+      whyFits: "Ótimo para crianças menores com foco em diversão lúdica e controlada.",
+    },
+  };
+
+  const existingByName = new Map<string, any>();
+  for (const model of Array.isArray(parsed?.models) ? parsed.models : []) {
+    if (model?.name) existingByName.set(normalize(model.name), model);
+  }
+
+  const enforcedModels = INFANT_MODELS.map((name) => {
+    const existing = existingByName.get(normalize(name));
+    return {
+      name,
+      headline: existing?.headline || baseCatalog[name].headline,
+      specs: existing?.specs || baseCatalog[name].specs,
+      whyFits: existing?.whyFits || baseCatalog[name].whyFits,
+    };
+  });
+
+  const otherModels = (Array.isArray(parsed?.models) ? parsed.models : []).filter(
+    (model: any) => model?.name && !INFANT_MODELS.map(normalize).includes(normalize(model.name))
+  );
+
+  return {
+    ...parsed,
+    category: "Infantil",
+    models: [...enforcedModels, ...otherModels].slice(0, 3),
+  };
+};
+
 serve(async (req) => {
   if (req.method === "OPTIONS") {
     return new Response(null, { headers: corsHeaders });
@@ -234,7 +293,9 @@ REGRAS:
       parsed.suggestions = [];
     }
 
-    return new Response(JSON.stringify(parsed), {
+    const finalResult = ensureInfantCoverage(parsed, answers);
+
+    return new Response(JSON.stringify(finalResult), {
       status: 200,
       headers: { ...corsHeaders, "Content-Type": "application/json" },
     });
