@@ -710,11 +710,6 @@ const Header = ({ onContactClick }: HeaderProps) => {
                         window.open("https://maps.app.goo.gl/7iwuPGQuN4rAhqRf8", "_blank");
                       }}
                     >
-                      {/* Top label */}
-                      <div className="absolute top-0 left-0 right-0 z-10 px-4 py-3 flex items-center gap-2" style={{ background: "linear-gradient(to bottom, hsl(0 0% 0% / 0.85), transparent)" }}>
-                        <MapPin className="w-3.5 h-3.5 text-primary" />
-                        <span className="text-[11px] uppercase tracking-[0.15em] font-semibold text-white/80" style={{ fontFamily: "Verdana, sans-serif" }}>Onde estamos</span>
-                      </div>
 
                       {/* Google Maps iframe — dark styled */}
                       <div className="absolute inset-0 overflow-hidden rounded-xl">
