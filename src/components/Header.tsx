@@ -516,7 +516,7 @@ const Header = ({ onContactClick }: HeaderProps) => {
                           </React.Fragment>
                         ))}
 
-                        {/* CTA card "Explorar catálogo" */}
+                        {/* CTA card "Ver todos os modelos" */}
                         {activeItem.hasCta && (
                           <motion.a
                             href="#modelos"
@@ -524,26 +524,58 @@ const Header = ({ onContactClick }: HeaderProps) => {
                             initial={{ opacity: 0, y: 12 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: (activeItem.dropdownItems?.length ?? 0) * 0.07, duration: 0.35, ease: "easeOut" }}
+                            whileHover={{ scale: 1.03 }}
+                            whileTap={{ scale: 0.97 }}
                             className="group/cta relative flex-shrink-0 rounded-xl overflow-hidden cursor-pointer flex flex-col items-center justify-center text-center"
                             style={{
                               width: "210px",
                               aspectRatio: "3/4",
-                              background: "linear-gradient(145deg, hsl(11 81% 52%), hsl(11 90% 58%), hsl(11 81% 50%))",
-                              backgroundSize: "200% 200%",
+                              background: "linear-gradient(160deg, hsl(11 81% 50%) 0%, hsl(11 90% 58%) 50%, hsl(11 81% 52%) 100%)",
                             }}
                           >
-                            <div className="flex flex-col items-center gap-3">
-                              <div
-                                className="w-11 h-11 rounded-full flex items-center justify-center backdrop-blur-sm"
-                                style={{ background: "hsl(0 0% 100% / 0.2)", border: "1px solid hsl(0 0% 100% / 0.1)" }}
+                            {/* Animated glow border */}
+                            <motion.div
+                              className="absolute inset-0 rounded-xl pointer-events-none"
+                              animate={{
+                                boxShadow: [
+                                  "inset 0 0 0 1.5px hsl(0 0% 100% / 0.12), 0 0 16px hsl(11 81% 57% / 0.15)",
+                                  "inset 0 0 0 1.5px hsl(0 0% 100% / 0.28), 0 0 28px hsl(11 81% 57% / 0.3)",
+                                  "inset 0 0 0 1.5px hsl(0 0% 100% / 0.12), 0 0 16px hsl(11 81% 57% / 0.15)",
+                                ],
+                              }}
+                              transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+                            />
+
+                            {/* Top-to-bottom subtle dark gradient for depth */}
+                            <div
+                              className="absolute inset-0 rounded-xl pointer-events-none"
+                              style={{ background: "linear-gradient(180deg, hsl(0 0% 0% / 0.15) 0%, transparent 40%, hsl(0 0% 0% / 0.1) 100%)" }}
+                            />
+
+                            <div className="relative flex flex-col items-center gap-3">
+                              <motion.div
+                                className="w-12 h-12 rounded-full flex items-center justify-center"
+                                style={{
+                                  background: "hsl(0 0% 100% / 0.18)",
+                                  border: "1.5px solid hsl(0 0% 100% / 0.2)",
+                                  backdropFilter: "blur(8px)",
+                                }}
+                                animate={{ x: [0, 5, 0] }}
+                                transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut" }}
                               >
-                                <ArrowRight className="w-5 h-5 text-white" />
-                              </div>
+                                <ArrowRight className="w-5 h-5 text-white drop-shadow-md" />
+                              </motion.div>
                               <div>
-                                <p className="text-white font-bold text-[11px] uppercase tracking-[0.14em] leading-tight">
-                                  Explorar catálogo
+                                <p
+                                  className="text-white font-bold text-[11px] uppercase tracking-[0.14em] leading-tight"
+                                  style={{ textShadow: "0 1px 4px hsl(0 0% 0% / 0.3)" }}
+                                >
+                                  Ver todos os modelos
                                 </p>
-                                <p className="text-white/50 text-[10px] tracking-wide mt-1">
+                                <p
+                                  className="text-[10px] tracking-wide mt-1"
+                                  style={{ color: "hsl(0 0% 100% / 0.55)", textShadow: "0 1px 3px hsl(0 0% 0% / 0.25)" }}
+                                >
                                   19 modelos disponíveis
                                 </p>
                               </div>
