@@ -408,7 +408,7 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
           <motion.button
             type="button"
             aria-label="Rolar para o formulário de contato"
-            className="w-auto inline-flex flex-col items-center gap-1 py-2 px-6 rounded-lg cursor-pointer group transition-transform duration-200 hover:scale-[1.02] active:scale-[0.98] mx-auto"
+            className="w-full flex flex-col items-center gap-1.5 py-2.5 rounded-xl cursor-pointer group transition-transform duration-200 hover:scale-[1.02] active:scale-[0.98]"
             style={{
               background: "linear-gradient(180deg, hsl(var(--primary) / 0.06), hsl(var(--primary) / 0.02))",
               border: "1px solid hsl(var(--primary) / 0.12)",
