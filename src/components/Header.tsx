@@ -642,7 +642,12 @@ const Header = ({ onContactClick }: HeaderProps) => {
                   </>
                 ) : (
                   /* Icon-based list (Suporte) — compact horizontal cards */
-                  <div className="flex gap-3">
+                  <>
+                    <div className="mb-4">
+                      <h3 className="text-white/90 text-base font-semibold tracking-wide">Como podemos ajudar?</h3>
+                      <p className="text-white/40 text-[12.5px] mt-0.5">Suporte completo para sua experiência elétrica</p>
+                    </div>
+                    <div className="flex gap-3">
                     {activeItem.dropdownItems.map((dropItem, i) => {
                       const Icon = dropItem.icon;
                       return (
