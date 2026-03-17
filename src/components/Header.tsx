@@ -651,6 +651,13 @@ const Header = ({ onContactClick }: HeaderProps) => {
                       transition={{ delay: 0.05, duration: 0.3, ease: "easeOut" }}
                       className="relative flex-1 rounded-xl overflow-hidden p-5 flex flex-col justify-between"
                       style={{
+                        ...({
+                          background: "linear-gradient(160deg, hsl(0 0% 12% / 0.6), hsl(0 0% 8% / 0.7))",
+                          border: "1px solid hsl(0 0% 100% / 0.06)",
+                          minHeight: "280px",
+                        }),
+                      }}
+                      style={{
                         background: "linear-gradient(160deg, hsl(0 0% 12% / 0.6), hsl(0 0% 8% / 0.7))",
                         border: "1px solid hsl(0 0% 100% / 0.06)",
                       }}
