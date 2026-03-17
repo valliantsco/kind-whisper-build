@@ -722,8 +722,8 @@ const Header = ({ onContactClick }: HeaderProps) => {
                           src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d2250!2d-48.26122457146234!3d-18.892441917718067!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1spt-BR!2sbr!4v1700000000000!5m2!1spt-BR!2sbr"
                           className="absolute border-0 pointer-events-none"
                           style={{
-                            top: "-100px",
-                            left: "-10px",
+                            top: "-80px",
+                            left: "-30px",
                             width: "calc(100% + 60px)",
                             height: "calc(100% + 160px)",
                             filter: "invert(1) hue-rotate(180deg) brightness(0.95) contrast(1.1) saturate(0.3)",
