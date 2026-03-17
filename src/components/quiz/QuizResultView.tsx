@@ -279,6 +279,8 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
       (s) => s.label.toLowerCase().includes("preço") || s.label.toLowerCase().includes("preco")
     );
 
+    const image = getModelImage(model.name);
+
     return (
       <div
         className="rounded-xl overflow-hidden flex items-center gap-3 p-3"
@@ -287,6 +289,19 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
           border: "1px solid hsl(0 0% 100% / 0.06)",
         }}
       >
+        {image && (
+          <div
+            className="w-16 h-16 rounded-lg overflow-hidden flex-shrink-0"
+            style={{ background: "#ffffff" }}
+          >
+            <img
+              src={image}
+              alt={model.name}
+              className="w-full h-full object-contain object-center"
+              loading="lazy"
+            />
+          </div>
+        )}
         <div className="flex-1 min-w-0">
           <p className="text-sm font-semibold text-primary-foreground/80 leading-tight">{model.name}</p>
           <p className="text-[11px] text-primary-foreground/35 leading-snug mt-0.5 line-clamp-1">{model.headline}</p>
