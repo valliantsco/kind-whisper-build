@@ -235,13 +235,7 @@ const QuizEngine = ({ config, open, onOpenChange }: QuizEngineProps) => {
               }}
             />
 
-            {/* Mobile drag handle */}
-            <div className="flex justify-center pt-2 pb-0 sm:hidden">
-              <div
-                className="w-10 h-1 rounded-full"
-                style={{ background: "hsl(0 0% 100% / 0.15)" }}
-              />
-            </div>
+            {/* Mobile drag handle - hidden when centered */}
 
             {/* Ambient glow */}
             <div
