@@ -206,8 +206,8 @@ const Header = ({ onContactClick }: HeaderProps) => {
                     />
                   )}
                   <span
-                    className={`absolute bottom-0 left-0 h-[1.5px] rounded-full transition-all duration-300 ease-out ${
-                      activeDropdown === item.label ? "right-0 opacity-80" : "right-full opacity-0 group-hover:right-0 group-hover:opacity-80"
+                    className={`absolute bottom-0 left-[15%] h-[1.5px] rounded-full transition-all duration-300 ease-out ${
+                      activeDropdown === item.label ? "right-[15%] opacity-80" : "right-full opacity-0 group-hover:right-[15%] group-hover:opacity-80"
                     }`}
                     style={{ background: "linear-gradient(90deg, hsl(11 81% 57%), hsl(11 90% 65%))" }}
                   />
