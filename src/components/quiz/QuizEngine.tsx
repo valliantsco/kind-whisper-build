@@ -201,7 +201,7 @@ const QuizEngine = ({ config, open, onOpenChange }: QuizEngineProps) => {
     <AnimatePresence>
       {open && (
         <motion.div
-          className="fixed inset-0 z-[100] flex items-end sm:items-center justify-center sm:px-4"
+          className="fixed inset-0 z-[100] flex items-center justify-center px-4"
           variants={overlayVariants}
           initial="hidden"
           animate="visible"
@@ -216,14 +216,13 @@ const QuizEngine = ({ config, open, onOpenChange }: QuizEngineProps) => {
             role="dialog"
             aria-modal="true"
             aria-label="Quiz de recomendação de veículos"
-            className="relative w-full sm:max-w-md rounded-t-2xl sm:rounded-[0.9rem] overflow-hidden flex flex-col"
+            className="relative w-full max-w-md rounded-[0.9rem] overflow-hidden flex flex-col"
             style={{
               maxHeight: "calc(92vh - env(safe-area-inset-bottom, 0px))",
               background: "hsl(0 0% 14% / 0.95)",
               backdropFilter: "blur(24px)",
               WebkitBackdropFilter: "blur(24px)",
               border: "1px solid hsl(0 0% 100% / 0.08)",
-              borderBottom: "none",
               boxShadow: "0 -8px 40px rgba(0,0,0,0.4), 0 0 40px hsl(var(--primary) / 0.08)",
             }}
           >
@@ -236,13 +235,7 @@ const QuizEngine = ({ config, open, onOpenChange }: QuizEngineProps) => {
               }}
             />
 
-            {/* Mobile drag handle */}
-            <div className="flex justify-center pt-2 pb-0 sm:hidden">
-              <div
-                className="w-10 h-1 rounded-full"
-                style={{ background: "hsl(0 0% 100% / 0.15)" }}
-              />
-            </div>
+            {/* Mobile drag handle - hidden when centered */}
 
             {/* Ambient glow */}
             <div
@@ -255,7 +248,7 @@ const QuizEngine = ({ config, open, onOpenChange }: QuizEngineProps) => {
             {/* Scrollable content */}
             <div className="overflow-y-auto flex-1 relative scrollbar-hide" data-quiz-scroll>
               {/* Header */}
-              <div className="items-start justify-between px-4 sm:px-5 pt-3 sm:pt-4 pb-3 flex flex-row">
+              <div className="items-start justify-between px-5 pt-4 pb-3 flex flex-row">
                 <div className="min-w-0 flex-1 pr-3">
                   <h3 className="text-base font-bold text-primary-foreground tracking-tight">{headerTitle}</h3>
                   <p className="text-xs text-primary-foreground/50 mt-1 leading-relaxed">{headerSubtitle}</p>
@@ -280,7 +273,7 @@ const QuizEngine = ({ config, open, onOpenChange }: QuizEngineProps) => {
 
               {/* Progress bar */}
               {!result && !loading && (
-                <div className="px-4 sm:px-5 pb-3">
+                <div className="px-5 pb-3">
                   <div className="w-full rounded-full h-1" style={{ background: "hsl(0 0% 100% / 0.06)" }}>
                     <motion.div
                       className="h-1 rounded-full"
@@ -304,7 +297,7 @@ const QuizEngine = ({ config, open, onOpenChange }: QuizEngineProps) => {
               />
 
               {/* Content area */}
-              <div className="px-4 sm:px-5 py-4">
+              <div className="px-5 py-4">
                 <AnimatePresence mode="wait">
                   {/* Loading state */}
                   {loading && (
