@@ -56,7 +56,7 @@ const MegaMenu = ({ open, scrolled, onClose }: MegaMenuProps) => {
             />
 
             <div className="p-5">
-              <div className="grid grid-cols-6 gap-3">
+              <div className="grid grid-cols-5 gap-3">
                 {categories.map((cat, i) => (
                   <motion.a
                     key={cat.label}
