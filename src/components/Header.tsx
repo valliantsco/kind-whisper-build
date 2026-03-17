@@ -713,18 +713,10 @@ const Header = ({ onContactClick }: HeaderProps) => {
                         window.open("https://maps.app.goo.gl/7iwuPGQuN4rAhqRf8", "_blank");
                       }}
                     >
-                      {/* Static map with pulsing pin */}
+                      {/* Map */}
                       <div className="absolute inset-0">
                         <StaticMapCanvas />
                       </div>
-
-                      {/* Bottom gradient for text readability */}
-                      <div
-                        className="absolute bottom-0 left-0 right-0 h-[45%] pointer-events-none"
-                        style={{
-                          background: "linear-gradient(180deg, transparent 0%, hsl(0 0% 3% / 0.8) 100%)",
-                        }}
-                      />
 
                       {/* Content overlay */}
                       <div className="relative z-10 p-5 flex flex-col h-full justify-between">
