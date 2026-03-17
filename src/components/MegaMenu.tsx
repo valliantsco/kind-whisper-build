@@ -93,7 +93,7 @@ const MegaMenu = ({ open, scrolled, onClose }: MegaMenuProps) => {
                   </motion.a>
                 ))}
 
-                {/* "Ver todos" CTA card */}
+                {/* "Ver todos os modelos" CTA card */}
                 <motion.a
                   href="#modelos"
                   onClick={onClose}
@@ -103,46 +103,57 @@ const MegaMenu = ({ open, scrolled, onClose }: MegaMenuProps) => {
                   className="group relative rounded-xl overflow-hidden cursor-pointer flex flex-col items-center justify-center text-center"
                   style={{
                     aspectRatio: "3/4",
-                    background: "linear-gradient(145deg, hsl(11 81% 52%), hsl(11 90% 58%), hsl(11 81% 50%))",
-                    backgroundSize: "200% 200%",
+                    background: "linear-gradient(160deg, hsl(11 81% 50%) 0%, hsl(11 90% 58%) 50%, hsl(11 81% 52%) 100%)",
                   }}
                   whileHover={{
                     scale: 1.03,
                     boxShadow: "0 0 36px hsl(11 81% 57% / 0.45), 0 0 72px hsl(11 81% 57% / 0.18)",
                   }}
+                  whileTap={{ scale: 0.97 }}
                 >
                   {/* Animated glow border */}
                   <motion.div
                     className="absolute inset-0 rounded-xl pointer-events-none"
                     animate={{
                       boxShadow: [
-                        "inset 0 0 0 1.5px hsl(0 0% 100% / 0.15), 0 0 20px hsl(11 81% 57% / 0.2)",
-                        "inset 0 0 0 1.5px hsl(0 0% 100% / 0.3), 0 0 32px hsl(11 81% 57% / 0.35)",
-                        "inset 0 0 0 1.5px hsl(0 0% 100% / 0.15), 0 0 20px hsl(11 81% 57% / 0.2)",
+                        "inset 0 0 0 1.5px hsl(0 0% 100% / 0.12), 0 0 16px hsl(11 81% 57% / 0.15)",
+                        "inset 0 0 0 1.5px hsl(0 0% 100% / 0.28), 0 0 28px hsl(11 81% 57% / 0.3)",
+                        "inset 0 0 0 1.5px hsl(0 0% 100% / 0.12), 0 0 16px hsl(11 81% 57% / 0.15)",
                       ],
                     }}
                     transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
                   />
 
-                  <div className="flex flex-col items-center gap-3">
+                  {/* Depth gradient overlay */}
+                  <div
+                    className="absolute inset-0 rounded-xl pointer-events-none"
+                    style={{ background: "linear-gradient(180deg, hsl(0 0% 0% / 0.15) 0%, transparent 40%, hsl(0 0% 0% / 0.1) 100%)" }}
+                  />
+
+                  <div className="relative flex flex-col items-center gap-3">
                     <motion.div
-                      className="w-11 h-11 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center border border-white/10"
-                      animate={{ x: [0, 6, 0] }}
-                      transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                      whileHover={{
-                        scale: 1.15,
-                        backgroundColor: "rgba(255,255,255,0.35)",
-                        borderColor: "rgba(255,255,255,0.3)",
-                        transition: { duration: 0.3 },
+                      className="w-12 h-12 rounded-full flex items-center justify-center"
+                      style={{
+                        background: "hsl(0 0% 100% / 0.18)",
+                        border: "1.5px solid hsl(0 0% 100% / 0.2)",
+                        backdropFilter: "blur(8px)",
                       }}
+                      animate={{ x: [0, 5, 0] }}
+                      transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut" }}
                     >
                       <ArrowRight className="w-5 h-5 text-white drop-shadow-md" />
                     </motion.div>
                     <div>
-                      <p className="text-white font-bold text-[11px] uppercase tracking-[0.14em] leading-tight">
-                        Explorar catálogo
+                      <p
+                        className="text-white font-bold text-[11px] uppercase tracking-[0.14em] leading-tight"
+                        style={{ textShadow: "0 1px 4px hsl(0 0% 0% / 0.3)" }}
+                      >
+                        Ver todos os modelos
                       </p>
-                      <p className="text-white/50 text-[10px] tracking-wide mt-1">
+                      <p
+                        className="text-[10px] tracking-wide mt-1"
+                        style={{ color: "hsl(0 0% 100% / 0.55)", textShadow: "0 1px 3px hsl(0 0% 0% / 0.25)" }}
+                      >
                         19 modelos disponíveis
                       </p>
                     </div>
