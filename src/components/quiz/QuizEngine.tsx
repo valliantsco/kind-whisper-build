@@ -345,7 +345,13 @@ const QuizEngine = ({ config, open, onOpenChange }: QuizEngineProps) => {
 
                   {/* Result */}
                   {result && !loading && (
-                    <QuizResultView result={result} whatsappNumber={config.whatsappNumber} onReset={reset} />
+                    <Suspense fallback={
+                      <div className="flex flex-col items-center justify-center py-16 gap-4">
+                        <Loader2 className="w-8 h-8 text-primary animate-spin" />
+                      </div>
+                    }>
+                      <QuizResultView result={result} whatsappNumber={config.whatsappNumber} onReset={reset} />
+                    </Suspense>
                   )}
 
                   {/* Details step */}
