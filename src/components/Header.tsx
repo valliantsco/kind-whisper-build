@@ -60,7 +60,7 @@ const NAV_ITEMS: NavItem[] = [
     hasDropdown: true,
     dropdownItems: [
       { label: "Nossa história", description: "Desde 2015 transformando a mobilidade urbana no Brasil com veículos elétricos acessíveis, seguros e sustentáveis.", href: "#sobre", icon: Building2 },
-      { label: "Localização", description: "Arujá, SP — Região metropolitana de São Paulo, próximo à Rodovia Presidente Dutra.", href: "#contato", icon: MapPin },
+      { label: "Localização", description: "Av. João Pinheiro, 3747 — Uberlândia, MG", href: "#contato", icon: MapPin },
     ],
   },
 ];
