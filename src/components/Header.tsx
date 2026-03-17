@@ -692,65 +692,6 @@ const Header = ({ onContactClick }: HeaderProps) => {
                       </a>
                     </motion.div>
 
-                    {/* Vertical separator */}
-                    <div className="flex-shrink-0 w-px self-stretch my-3" style={{ background: "hsl(0 0% 100% / 0.08)" }} />
-
-                    {/* Right panel — Location with globe zoom video */}
-                    <motion.div
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.12, duration: 0.3, ease: "easeOut" }}
-                      className="group/loc relative flex-1 rounded-xl overflow-hidden cursor-pointer"
-                      style={{
-                        border: "1px solid hsl(0 0% 100% / 0.06)",
-                        transition: "border-color 0.3s, box-shadow 0.3s",
-                        minHeight: "280px",
-                      }}
-                      onMouseEnter={() => {}}
-                      onMouseLeave={() => {}}
-                      onClick={() => {
-                        setActiveDropdown(null);
-                        window.open("https://maps.app.goo.gl/7iwuPGQuN4rAhqRf8", "_blank");
-                      }}
-                    >
-                      {/* Map */}
-                      <div className="absolute inset-0">
-                        <StaticMapCanvas />
-                      </div>
-
-                      {/* Content overlay */}
-                      <div className="relative z-10 p-5 flex flex-col h-full justify-between">
-                        {/* Header */}
-                        <div className="flex items-center gap-2.5">
-                          <div
-                            className="shrink-0 w-9 h-9 rounded-lg flex items-center justify-center"
-                            style={{ background: "hsl(11 81% 57% / 0.2)", border: "1px solid hsl(11 81% 57% / 0.3)", backdropFilter: "blur(8px)" }}
-                          >
-                            <MapPin className="w-4 h-4" style={{ color: "hsl(11 81% 57%)" }} />
-                          </div>
-                          <h4 className="text-[13px] font-semibold text-white tracking-wide" style={{ textShadow: "0 1px 4px rgba(0,0,0,0.6)" }}>Onde estamos</h4>
-                        </div>
-
-                        {/* Bottom info */}
-                        <div>
-                          <div className="space-y-1.5 mb-3">
-                            <p className="text-[12px] font-medium text-white/90" style={{ textShadow: "0 1px 3px rgba(0,0,0,0.7)" }}>
-                              Av. João Pinheiro, 3747 – Brasil
-                            </p>
-                            <p className="text-[11px] text-white/60" style={{ textShadow: "0 1px 3px rgba(0,0,0,0.7)" }}>
-                              Uberlândia – MG, 38400-714
-                            </p>
-                            <p className="text-[11px] text-white/50" style={{ textShadow: "0 1px 3px rgba(0,0,0,0.7)" }}>
-                              (34) 3222-8899
-                            </p>
-                          </div>
-                          <div className="flex items-center gap-1.5 text-[10px] font-medium tracking-wide" style={{ color: "hsl(11 81% 57%)", textShadow: "0 1px 3px rgba(0,0,0,0.5)" }}>
-                            <Navigation className="w-3 h-3" />
-                            <span>Abrir no Google Maps</span>
-                          </div>
-                        </div>
-                      </div>
-                    </motion.div>
                   </div>
                 ) : (
                   /* Icon-based list — compact horizontal cards */
