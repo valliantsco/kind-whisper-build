@@ -119,7 +119,7 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
     !errors.city;
 
   const buildWhatsAppMessage = () => {
-    const modelNames = models.map((m) => m.name).join(", ");
+    const primaryModel = models.length > 0 ? models[0].name : (result.suggestions[0] || "veículo recomendado");
     return [
       `*Por favor, para que seu atendimento prossiga, não apague esta mensagem antes de enviar!*`,
       ``,
@@ -127,11 +127,9 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
       ``,
       `*Cidade:* ${city.trim()}`,
       ``,
-      `*Assunto:* Quiz — Recomendação de veículo`,
+      `Olá! Recentemente completei o quiz disponível em seu site e recebi a recomendação do modelo *${primaryModel}*.`,
       ``,
-      `*Resultado do quiz:* ${result.category} — ${modelNames || result.suggestions.join(", ")}`,
-      ``,
-      `Olá! Fiz o quiz no site e recebi a recomendação acima. Gostaria de saber mais sobre disponibilidade e condições de pagamento.`,
+      `Poderia fornecer mais informações sobre esse modelo, incluindo sua disponibilidade e as condições de pagamento?`,
     ].join("\n");
   };
 
