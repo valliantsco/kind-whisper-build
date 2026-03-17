@@ -4,7 +4,7 @@ import msShieldLogo from "@/assets/ms-shield-logo.png";
 import ctaRider from "@/assets/cta-rider.jpg";
 import { useBusinessHours } from "@/hooks/useBusinessHours";
 import { AnimatePresence, motion } from "framer-motion";
-import { ChevronDown, ArrowRight, ArrowLeft, Compass, BarChart3, BookOpen, HelpCircle, Wrench, ShieldCheck, Play } from "lucide-react";
+import { ChevronDown, ArrowRight, ArrowLeft, Compass, BarChart3, BookOpen, HelpCircle, Wrench, ShieldCheck, Play, MapPin } from "lucide-react";
 import QuizEngine from "@/components/quiz/QuizEngine";
 import { msEletricQuizConfig } from "@/components/QuizSection";
 
@@ -61,6 +61,7 @@ const NAV_ITEMS: NavItem[] = [
     dropdownItems: [
       { label: "Central de ajuda", description: "Dúvidas frequentes e tutoriais", href: "#suporte", icon: HelpCircle },
       { label: "Garantia", description: "Informações sobre garantia e cobertura", href: "#suporte", icon: ShieldCheck },
+      { label: "Onde estamos", description: "Arujá, SP — Conheça nossa sede", href: "#contato", icon: MapPin },
     ],
   },
 ];
