@@ -89,29 +89,31 @@ const StaticMapCanvas: React.FC<{ className?: string }> = ({ className = "" }) =
     ctx.fillStyle = BG;
     ctx.fillRect(0, 0, w, h);
 
-    // Draw blocks (filled rectangles between streets)
+    // Draw blocks (filled rectangles between streets) — Google Maps dark style
     const vLines = [-7.5, -4.5, -2, 0, 2, 4.5, 7];
     const hLines = [-8, -5, -2.2, 1.8, 4.5, 7, 9.5];
-    ctx.fillStyle = BLOCK_FILL;
     for (let i = 0; i < vLines.length - 1; i++) {
       for (let j = 0; j < hLines.length - 1; j++) {
-        const bx = cx + vLines[i] * scale + 1.5;
-        const by = cy + hLines[j] * scale + 1.5;
-        const bw = (vLines[i + 1] - vLines[i]) * scale - 3;
-        const bh = (hLines[j + 1] - hLines[j]) * scale - 3;
+        const bx = cx + vLines[i] * scale + 1;
+        const by = cy + hLines[j] * scale + 1;
+        const bw = (vLines[i + 1] - vLines[i]) * scale - 2;
+        const bh = (hLines[j + 1] - hLines[j]) * scale - 2;
         if (bw > 2 && bh > 2) {
+          ctx.fillStyle = (i + j) % 2 === 0 ? BLOCK_FILL : BLOCK_FILL_ALT;
           ctx.fillRect(bx, by, bw, bh);
         }
       }
     }
 
-    // Some building shapes inside blocks
-    ctx.fillStyle = "rgba(40, 40, 60, 0.7)";
+    // Building footprints inside blocks — darker rectangles like Google Maps
+    ctx.fillStyle = "#2a2a2e";
     const buildings = [
-      [-6, -4, 1.2, 0.8], [-5.5, -6.5, 0.8, 1], [1, -4, 0.6, 0.5],
-      [5.5, -3, 1.5, 1.2], [-3, 2.5, 0.7, 0.6], [1.5, 5, 0.9, 0.7],
-      [-6, 5, 1, 0.8], [3, 0.5, 0.5, 0.4], [-1, -6, 0.8, 0.6],
-      [5.8, 5.5, 1.2, 0.9], [-3.5, -6.8, 0.6, 0.5], [6.2, 1, 0.5, 0.7],
+      [-6, -4, 1.4, 0.9], [-5.5, -6.5, 0.9, 1.1], [1, -4, 0.7, 0.6],
+      [5.5, -3, 1.6, 1.3], [-3, 2.5, 0.8, 0.7], [1.5, 5, 1, 0.8],
+      [-6, 5, 1.1, 0.9], [3, 0.5, 0.6, 0.5], [-1, -6, 0.9, 0.7],
+      [5.8, 5.5, 1.3, 1], [-3.5, -6.8, 0.7, 0.6], [6.2, 1, 0.6, 0.8],
+      [-1.2, 2.8, 0.5, 0.4], [0.5, -3.8, 0.6, 0.5], [-5.8, 0, 0.7, 0.5],
+      [3.2, 5.8, 0.8, 0.6], [-6.5, -1, 0.6, 0.4], [1.8, -6.5, 0.5, 0.7],
     ];
     for (const [bx, by, bw, bh] of buildings) {
       ctx.fillRect(cx + bx * scale, cy + by * scale, bw * scale, bh * scale);
