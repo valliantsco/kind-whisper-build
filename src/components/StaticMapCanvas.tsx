@@ -6,7 +6,7 @@ import React from "react";
  */
 
 const MAPS_EMBED_URL =
-  "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1867.5!2d-48.2772!3d-18.9186!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94a44f7a5b9b3b3b%3A0x0!2zMTjCsDU1JzA3LjAiUyA0OMKwMTYnMzguMCJX!5e0!3m2!1spt-BR!2sbr!4v1700000000000!5m2!1spt-BR!2sbr";
+  "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1500!2d-48.27648!3d-18.91778!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94a4451b1e8b6b3d%3A0x4f3b6e2a5c8d9e1f!2sAv.%20Jo%C3%A3o%20Pinheiro%2C%203747%20-%20Aparecida%2C%20Uberl%C3%A2ndia%20-%20MG!5e0!3m2!1spt-BR!2sbr!4v1700000000000!5m2!1spt-BR!2sbr";
 
 const StaticMapCanvas: React.FC<{ className?: string }> = ({ className = "" }) => {
   return (
