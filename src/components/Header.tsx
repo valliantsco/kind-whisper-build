@@ -530,28 +530,53 @@ const Header = ({ onContactClick }: HeaderProps) => {
                               width: "210px",
                               aspectRatio: "3/4",
                               scrollSnapAlign: "start",
-                              background: "linear-gradient(160deg, hsl(11 81% 50%) 0%, hsl(11 90% 58%) 50%, hsl(11 81% 52%) 100%)",
+                              background: "hsl(0 0% 8%)",
+                              border: "1px solid hsl(0 0% 100% / 0.06)",
                             }}
                           >
-                            <div className="flex flex-col items-center gap-3 px-4">
+                            {/* Subtle orange radial glow */}
+                            <div
+                              className="absolute inset-0 pointer-events-none"
+                              style={{ background: "radial-gradient(ellipse at center 70%, hsl(11 81% 57% / 0.08), transparent 70%)" }}
+                            />
+
+                            {/* Top light strip matching menu style */}
+                            <div
+                              className="absolute top-0 left-0 right-0 h-[1.5px]"
+                              style={{ background: "linear-gradient(90deg, transparent, hsl(11 81% 57% / 0.5), transparent)" }}
+                            />
+
+                            <div className="relative flex flex-col items-center gap-4 px-5">
                               <p
-                                className="text-white font-bold text-[11px] uppercase tracking-[0.14em] leading-snug"
-                                style={{ textShadow: "0 1px 4px hsl(0 0% 0% / 0.25)" }}
+                                className="text-white/90 font-bold text-[11px] uppercase tracking-[0.14em] leading-snug"
                               >
                                 Ver todos os modelos
                               </p>
                               <p
-                                className="text-[10px] tracking-wide -mt-1.5"
-                                style={{ color: "hsl(0 0% 100% / 0.55)", textShadow: "0 1px 3px hsl(0 0% 0% / 0.2)" }}
+                                className="text-[10px] tracking-wide -mt-2"
+                                style={{ color: "hsl(0 0% 100% / 0.35)" }}
                               >
                                 19 modelos disponíveis
                               </p>
-                              <motion.div
-                                animate={{ x: [0, 4, 0] }}
-                                transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
+
+                              {/* Orange pill with animated arrow */}
+                              <div
+                                className="flex items-center gap-1.5 px-4 py-1.5 rounded-full"
+                                style={{
+                                  background: "linear-gradient(135deg, hsl(11 81% 57%), hsl(11 90% 62%))",
+                                  boxShadow: "0 4px 16px hsl(11 81% 57% / 0.3), 0 0 24px hsl(11 81% 57% / 0.1)",
+                                }}
                               >
-                                <ArrowRight className="w-5 h-5 text-white" />
-                              </motion.div>
+                                <span className="text-white text-[9px] font-semibold uppercase tracking-[0.1em]">
+                                  Explorar
+                                </span>
+                                <motion.div
+                                  animate={{ x: [0, 3, 0] }}
+                                  transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
+                                >
+                                  <ArrowRight className="w-3 h-3 text-white" />
+                                </motion.div>
+                              </div>
                             </div>
                           </motion.a>
                         )}
