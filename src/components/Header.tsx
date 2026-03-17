@@ -735,12 +735,16 @@ const Header = ({ onContactClick }: HeaderProps) => {
                       </div>
                       <div className="space-y-2.5 flex-1">
                         <div>
-                          <p className="text-[11px] font-medium text-white/60 mb-0.5">Sede</p>
-                          <p className="text-[11px] text-white/40 leading-relaxed">Arujá, SP — Região Metropolitana de São Paulo</p>
+                          <p className="text-[11px] font-medium text-white/60 mb-0.5">Endereço</p>
+                          <p className="text-[11px] text-white/40 leading-relaxed">Av. João Pinheiro, 3747 – Brasil<br/>Uberlândia – MG, 38400-714</p>
                         </div>
                         <div>
-                          <p className="text-[11px] font-medium text-white/60 mb-0.5">Referência</p>
-                          <p className="text-[11px] text-white/40 leading-relaxed">Próximo à Rod. Presidente Dutra</p>
+                          <p className="text-[11px] font-medium text-white/60 mb-0.5">Contato</p>
+                          <p className="text-[11px] text-white/40 leading-relaxed">(34) 3222-8899</p>
+                        </div>
+                        <div className="flex items-center gap-1.5">
+                          <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
+                          <p className="text-[10px] text-white/50">4.3 ⭐ no Google • mseletric.com</p>
                         </div>
                       </div>
                       <div className="mt-3 flex items-center gap-1.5 text-[10px] font-medium tracking-wide" style={{ color: "hsl(11 81% 57% / 0.8)" }}>
