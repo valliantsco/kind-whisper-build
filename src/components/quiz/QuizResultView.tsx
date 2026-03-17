@@ -1,6 +1,6 @@
 import { useState, useCallback, useEffect, useRef } from "react";
-import { motion } from "framer-motion";
-import { Star, User, Loader2, Zap, Battery, Gauge, Clock, ExternalLink, CheckCircle2, ShieldCheck } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Star, User, Loader2, Zap, Battery, Gauge, Clock, ExternalLink, CheckCircle2, ShieldCheck, ChevronDown } from "lucide-react";
 import type { QuizResult } from "./types";
 import { getModelImage } from "./modelImages";
 import { formatPhone, formatName, validatePhone, INPUT_BASE_STYLE, getInputBorderStyle } from "@/utils/form-helpers";
