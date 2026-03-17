@@ -762,10 +762,6 @@ const Header = ({ onContactClick }: HeaderProps) => {
                             {/* Narrower teardrop */}
                             <path d="M17 0C7.6 0 0 7.6 0 17c0 13.5 15 35.8 16.1 37.5a1.1 1.1 0 001.8 0C19 52.8 34 30.5 34 17 34 7.6 26.4 0 17 0z" fill="url(#pinGrad)" />
                             <path d="M17 0C7.6 0 0 7.6 0 17c0 13.5 15 35.8 16.1 37.5a1.1 1.1 0 001.8 0C19 52.8 34 30.5 34 17 34 7.6 26.4 0 17 0z" fill="url(#pinShine)" />
-                            {/* Inner circle */}
-                            <circle cx="17" cy="16" r="11" fill="hsl(0, 0%, 0%)" fillOpacity="0.2" />
-                            <circle cx="17" cy="16" r="10" fill="white" fillOpacity="0.12" />
-                            <circle cx="17" cy="16" r="10.5" stroke="white" strokeOpacity="0.2" strokeWidth="0.5" fill="none" />
                           </svg>
                           {/* Shield logo */}
                           <img 
