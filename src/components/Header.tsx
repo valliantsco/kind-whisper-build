@@ -40,7 +40,7 @@ interface NavItem {
 const NAV_ITEMS: NavItem[] = [
   { label: "Início", href: "#inicio" },
   {
-    label: "Nossos modelos",
+    label: "Modelos",
     href: "#modelos",
     hasDropdown: true,
     hasCta: true,
