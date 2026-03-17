@@ -407,6 +407,33 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
         </div>
       </motion.div>
 
+      {/* Scroll hint indicator */}
+      <AnimatePresence>
+        {showScrollHint && (
+          <motion.div
+            className="flex flex-col items-center gap-0.5 py-1 cursor-pointer"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ delay: 1.1, duration: 0.4 }}
+            onClick={() => {
+              formRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+              setShowScrollHint(false);
+            }}
+          >
+            <span className="text-[9px] font-medium uppercase tracking-[0.15em] text-primary/60">
+              Fale com um especialista
+            </span>
+            <motion.div
+              animate={{ y: [0, 5, 0] }}
+              transition={{ duration: 1.4, repeat: Infinity, ease: "easeInOut" }}
+            >
+              <ChevronDown className="w-4 h-4 text-primary/50" />
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       {/* Divider */}
       <div
         className="mx-0 h-[1px]"
