@@ -60,7 +60,6 @@ const NAV_ITEMS: NavItem[] = [
     hasDropdown: true,
     dropdownItems: [
       { label: "Central de ajuda", description: "Dúvidas frequentes e tutoriais", href: "#suporte", icon: HelpCircle },
-      { label: "Assistência técnica", description: "Encontre uma assistência autorizada", href: "#suporte", icon: Wrench },
       { label: "Garantia", description: "Informações sobre garantia e cobertura", href: "#suporte", icon: ShieldCheck },
     ],
   },
