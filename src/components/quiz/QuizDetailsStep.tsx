@@ -150,7 +150,7 @@ const QuizDetailsStep = ({ details, onDetailsChange }: QuizDetailsStepProps) => 
             rows={3}
             maxLength={500}
             disabled={isTranscribing}
-            className="w-full rounded-xl px-4 py-3 pr-14 text-sm text-primary-foreground placeholder:text-primary-foreground/30 resize-none focus:outline-none focus:ring-2 disabled:opacity-50 transition-all"
+            className="w-full rounded-xl px-4 py-3.5 pr-14 text-sm text-primary-foreground placeholder:text-primary-foreground/30 resize-none focus:outline-none focus:ring-2 disabled:opacity-50 transition-all min-h-[100px]"
             style={{
               maxHeight: "30vh",
               overflow: "hidden",
@@ -173,7 +173,7 @@ const QuizDetailsStep = ({ details, onDetailsChange }: QuizDetailsStepProps) => 
               <motion.div
                 key="mic-group"
                 className="absolute"
-                style={{ width: 30, height: 30, right: 8, bottom: 14 }}
+                style={{ width: 36, height: 36, right: 8, bottom: 12 }}
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.8 }}
@@ -199,7 +199,8 @@ const QuizDetailsStep = ({ details, onDetailsChange }: QuizDetailsStepProps) => 
                   type="button"
                   onClick={isRecording ? stopRecording : startRecording}
                   disabled={isTranscribing}
-                  className="w-full h-full flex items-center justify-center rounded-full disabled:opacity-40 cursor-pointer"
+                  aria-label={isRecording ? "Parar gravação" : "Gravar áudio"}
+                  className="w-full h-full flex items-center justify-center rounded-full disabled:opacity-40 cursor-pointer min-h-[36px] min-w-[36px]"
                   style={{
                     background: isRecording
                       ? "hsl(var(--destructive) / 0.15)"
@@ -236,7 +237,7 @@ const QuizDetailsStep = ({ details, onDetailsChange }: QuizDetailsStepProps) => 
                       transition={{ duration: 0.7, repeat: Infinity }}
                     />
                   ) : (
-                    <Mic className="text-primary" style={{ width: 14, height: 14 }} strokeWidth={2.2} />
+                    <Mic className="text-primary" style={{ width: 15, height: 15 }} strokeWidth={2.2} />
                   )}
                 </motion.button>
               </motion.div>
@@ -248,7 +249,7 @@ const QuizDetailsStep = ({ details, onDetailsChange }: QuizDetailsStepProps) => 
         <AnimatePresence>
           {isRecording && (
             <motion.div
-              className="flex items-center gap-2 mt-2 px-3 py-2 rounded-lg"
+              className="flex items-center gap-2 mt-2 px-3 py-2.5 rounded-lg"
               style={{
                 background: "hsl(var(--destructive) / 0.08)",
                 border: "1px solid hsl(var(--destructive) / 0.15)",
@@ -261,14 +262,14 @@ const QuizDetailsStep = ({ details, onDetailsChange }: QuizDetailsStepProps) => 
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-destructive opacity-75" />
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-destructive" />
               </span>
-              <span className="text-[10px] text-primary-foreground/50">
+              <span className="text-[11px] text-primary-foreground/50">
                 Gravando ({MAX_RECORDING_SECONDS - recordingSeconds}s)... toque para parar
               </span>
             </motion.div>
           )}
           {isTranscribing && (
             <motion.div
-              className="flex items-center gap-2 mt-2 px-3 py-2 rounded-lg"
+              className="flex items-center gap-2 mt-2 px-3 py-2.5 rounded-lg"
               style={{
                 background: "hsl(var(--primary) / 0.08)",
                 border: "1px solid hsl(var(--primary) / 0.15)",
@@ -278,12 +279,12 @@ const QuizDetailsStep = ({ details, onDetailsChange }: QuizDetailsStepProps) => 
               exit={{ opacity: 0, y: -8 }}
             >
               <Loader2 className="w-3 h-3 animate-spin shrink-0 text-primary" />
-              <span className="text-[10px] text-primary-foreground/50">Processando áudio...</span>
+              <span className="text-[11px] text-primary-foreground/50">Processando áudio...</span>
             </motion.div>
           )}
         </AnimatePresence>
 
-        <p className="text-[10px] text-primary-foreground/25 text-right mt-1">{details.length}/500</p>
+        <p className="text-[10px] text-primary-foreground/25 text-right mt-1.5">{details.length}/500</p>
       </div>
     </motion.div>
   );
