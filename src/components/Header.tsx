@@ -759,7 +759,7 @@ const Header = ({ onContactClick }: HeaderProps) => {
                             <circle cx="18" cy="17" r="8" fill="white" fillOpacity="0.15" />
                           </svg>
                           {/* Logo inside pin */}
-                          <img src={msShieldLogo} alt="MS Eletric" className="absolute top-[7px] left-1/2 -translate-x-1/2 w-[18px] h-[18px] object-contain drop-shadow-sm" />
+                          <img src={logoWhite} alt="MS Eletric" className="absolute top-[5px] left-1/2 -translate-x-1/2 w-[26px] h-[26px] object-contain drop-shadow-sm" style={{ filter: "brightness(0) invert(1)" }} />
                         </div>
 
                         {/* Shadow on ground */}
