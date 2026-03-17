@@ -711,14 +711,22 @@ const Header = ({ onContactClick }: HeaderProps) => {
                       
                     >
                       {/* Google Maps iframe — clean, no overlays */}
-                      <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1800!2d-48.26122457146234!3d-18.892441917718067!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1spt-BR!2sbr!4v1700000000000!5m2!1spt-BR!2sbr"
-                        className="absolute inset-0 w-full h-full border-0 pointer-events-none"
-                        allowFullScreen={false}
-                        loading="lazy"
-                        referrerPolicy="no-referrer-when-downgrade"
-                        title="MS Eletric - Uberlândia"
-                      />
+                      <div className="absolute inset-0 overflow-hidden">
+                        <iframe
+                          src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d2250!2d-48.26122457146234!3d-18.892441917718067!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1spt-BR!2sbr!4v1700000000000!5m2!1spt-BR!2sbr"
+                          className="absolute border-0 pointer-events-none"
+                          style={{
+                            top: "-60px",
+                            left: "-20px",
+                            width: "calc(100% + 40px)",
+                            height: "calc(100% + 100px)",
+                          }}
+                          allowFullScreen={false}
+                          loading="lazy"
+                          referrerPolicy="no-referrer-when-downgrade"
+                          title="MS Eletric - Uberlândia"
+                        />
+                      </div>
                     </motion.div>
                   </div>
                 ) : (
