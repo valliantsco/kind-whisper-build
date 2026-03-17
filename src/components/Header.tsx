@@ -321,7 +321,9 @@ const Header = ({ onContactClick }: HeaderProps) => {
                       <h3 className="text-white/90 text-base font-semibold tracking-wide">Explore por categoria</h3>
                       <p className="text-white/40 text-[12.5px] mt-0.5">Mobilidade elétrica para cada estilo de vida</p>
                     </div>
-                    <div className="relative">
+                    <div className="relative flex gap-4">
+                      {/* Scrollable carousel area */}
+                      <div className="relative flex-1 min-w-0">
                       <div
                         ref={carouselRef}
                         className="flex gap-3 overflow-x-auto scrollbar-hide cursor-grab active:cursor-grabbing select-none"
