@@ -653,6 +653,7 @@ const Header = ({ onContactClick }: HeaderProps) => {
                       style={{
                         background: "linear-gradient(160deg, hsl(0 0% 12% / 0.6), hsl(0 0% 8% / 0.7))",
                         border: "1px solid hsl(0 0% 100% / 0.06)",
+                        minHeight: "280px",
                       }}
                     >
                       <div
