@@ -61,7 +61,7 @@ const NAV_ITEMS: NavItem[] = [
     dropdownItems: [
       { label: "Central de ajuda", description: "Dúvidas frequentes e tutoriais", href: "#suporte", icon: HelpCircle },
       { label: "Garantia", description: "Informações sobre garantia e cobertura", href: "#suporte", icon: ShieldCheck },
-      { label: "Onde estamos", description: "Arujá, SP — Conheça nossa sede", href: "#contato", icon: MapPin },
+      
     ],
   },
 ];
