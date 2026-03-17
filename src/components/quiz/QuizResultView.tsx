@@ -210,9 +210,7 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
         </div>
 
         {/* Image with skeleton */}
-        {image && (
-          <ImageWithSkeleton src={image} alt={model.name} />
-        )}
+        {image && <ImageWithSkeleton src={image} alt={model.name} />}
 
         {/* Content */}
         <div className="px-3.5 py-3 space-y-2.5">
@@ -313,7 +311,6 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
     const priceSpec = specs.find(
       (s) => s.label.toLowerCase().includes("preço") || s.label.toLowerCase().includes("preco")
     );
-
     const image = getModelImage(model.name);
 
     return (
@@ -348,7 +345,7 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
             )}
             <button
               type="button"
-              className="inline-flex items-center gap-0.5 text-[9px] font-medium cursor-pointer transition-colors text-primary-foreground/25 hover:text-primary"
+              className="inline-flex items-center gap-0.5 text-[9px] font-medium cursor-pointer transition-colors text-primary-foreground/25 hover:text-primary min-h-[28px] px-1"
               onClick={() => {
                 const modelsSection = document.getElementById("modelos");
                 if (modelsSection) modelsSection.scrollIntoView({ behavior: "smooth" });
@@ -464,7 +461,8 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
 
       {/* Lead form headline */}
       <motion.p
-        className="text-sm font-semibold text-primary-foreground/70 leading-relaxed text-left" ref={formRef}
+        className="text-sm font-semibold text-primary-foreground/70 leading-relaxed text-left"
+        ref={formRef}
         initial={{ opacity: 0, y: 8 }}
         animate={{ opacity: 1, y: 0 }}
         transition={stagger(1.1)}
@@ -505,7 +503,7 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
             placeholder="João Silva"
             maxLength={100}
             autoComplete="name"
-            className={`${INPUT_BASE_STYLE} cw-input ${errors.name ? "cw-input-error" : ""}`}
+            className={`${INPUT_BASE_STYLE} cw-input ${errors.name ? "cw-input-error" : ""} min-h-[44px]`}
             style={getInputBorderStyle(!!errors.name)}
           />
           {errors.name && (
@@ -550,7 +548,7 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
             placeholder="(00) 00000-0000"
             maxLength={20}
             autoComplete="tel"
-            className={`${INPUT_BASE_STYLE} cw-input ${errors.phone ? "cw-input-error" : ""}`}
+            className={`${INPUT_BASE_STYLE} cw-input ${errors.phone ? "cw-input-error" : ""} min-h-[44px]`}
             style={getInputBorderStyle(!!errors.phone)}
           />
           {errors.phone && (
@@ -585,7 +583,7 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
         <motion.button
           onClick={handleSubmit}
           disabled={!isFormValid || isLoading}
-          className="w-full flex items-center justify-center gap-2.5 py-3.5 rounded-xl font-semibold text-sm tracking-wide text-primary-foreground cursor-pointer relative overflow-hidden disabled:opacity-40 disabled:cursor-not-allowed"
+          className="w-full flex items-center justify-center gap-2.5 py-3.5 rounded-xl font-semibold text-sm tracking-wide text-primary-foreground cursor-pointer relative overflow-hidden disabled:opacity-40 disabled:cursor-not-allowed min-h-[48px]"
           style={{
             background: "linear-gradient(135deg, hsl(var(--primary)), hsl(11 90% 65%))",
             boxShadow: isFormValid ? "0 4px 20px hsl(var(--primary) / 0.3)" : "none",
@@ -637,7 +635,7 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
       )}
 
       {/* LGPD disclaimer */}
-      <p className="text-[9px] text-primary-foreground/20 text-center leading-relaxed">
+      <p className="text-[9px] text-primary-foreground/20 text-center leading-relaxed pb-[env(safe-area-inset-bottom,0px)]">
         *Ao enviar, seus dados serão usados apenas para atendimento, conforme a LGPD (
         <a
           href="https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709.htm"

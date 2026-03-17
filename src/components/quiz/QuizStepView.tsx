@@ -51,12 +51,11 @@ const QuizStepView = ({ stepConfig, currentAnswer, onAnswer }: QuizStepViewProps
               type="button"
               role="option"
               onClick={() => {
-                // Haptic feedback on mobile
                 if (navigator.vibrate) navigator.vibrate(10);
                 multiSelect ? toggleMultiItem(opt) : onAnswer(opt);
               }}
               aria-selected={isSelected}
-              className="w-full flex items-center gap-3 rounded-xl px-4 py-3 text-left text-sm cursor-pointer transition-colors"
+              className="w-full flex items-center gap-3 rounded-xl px-4 py-3.5 text-left text-sm cursor-pointer transition-colors min-h-[48px]"
               style={{
                 background: isSelected ? "hsl(var(--primary) / 0.14)" : "hsl(0 0% 100% / 0.04)",
                 border: isSelected
@@ -72,22 +71,24 @@ const QuizStepView = ({ stepConfig, currentAnswer, onAnswer }: QuizStepViewProps
               whileTap={{ scale: 0.98 }}
             >
               <span
-                className="w-4 h-4 shrink-0 flex items-center justify-center"
+                className="w-[18px] h-[18px] shrink-0 flex items-center justify-center"
                 style={{
                   borderRadius: multiSelect ? "4px" : "50%",
                   border: isSelected
                     ? "2px solid hsl(var(--primary))"
                     : "1.5px solid hsl(0 0% 100% / 0.28)",
+                  background: isSelected ? "hsl(var(--primary) / 0.08)" : "transparent",
                 }}
               >
                 {isSelected && (
                   <motion.span
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
+                    transition={{ type: "spring", stiffness: 500, damping: 20 }}
                     className="block"
                     style={{
-                      width: 8,
-                      height: 8,
+                      width: 9,
+                      height: 9,
                       borderRadius: multiSelect ? "2px" : "50%",
                       background: "hsl(var(--primary))",
                     }}
@@ -98,9 +99,13 @@ const QuizStepView = ({ stepConfig, currentAnswer, onAnswer }: QuizStepViewProps
               <span className="flex-1 leading-relaxed">{opt}</span>
 
               {isSelected && (
-                <span className="text-[9px] uppercase tracking-[0.1em] font-semibold text-primary-foreground/55">
-                  selecionado
-                </span>
+                <motion.span
+                  initial={{ opacity: 0, x: 5 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  className="text-[9px] uppercase tracking-[0.1em] font-semibold text-primary/80"
+                >
+                  ✓
+                </motion.span>
               )}
             </motion.button>
           );

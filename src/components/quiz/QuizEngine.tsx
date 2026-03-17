@@ -201,7 +201,7 @@ const QuizEngine = ({ config, open, onOpenChange }: QuizEngineProps) => {
     <AnimatePresence>
       {open && (
         <motion.div
-          className="fixed inset-0 z-[100] flex items-center justify-center px-4"
+          className="fixed inset-0 z-[100] flex items-end sm:items-center justify-center sm:px-4"
           variants={overlayVariants}
           initial="hidden"
           animate="visible"
@@ -210,19 +210,21 @@ const QuizEngine = ({ config, open, onOpenChange }: QuizEngineProps) => {
           {/* Backdrop */}
           <motion.div className="absolute inset-0 bg-foreground/60" onClick={handleClose} />
 
-          {/* Panel */}
+          {/* Panel — full-width bottom sheet on mobile, centered card on desktop */}
           <motion.div
             variants={panelVariants}
             role="dialog"
             aria-modal="true"
             aria-label="Quiz de recomendação de veículos"
-            className="relative w-full max-w-md rounded-[0.9rem] overflow-hidden max-h-[90vh] flex flex-col"
+            className="relative w-full sm:max-w-md rounded-t-2xl sm:rounded-[0.9rem] overflow-hidden flex flex-col"
             style={{
-              background: "hsl(0 0% 14% / 0.92)",
+              maxHeight: "calc(92vh - env(safe-area-inset-bottom, 0px))",
+              background: "hsl(0 0% 14% / 0.95)",
               backdropFilter: "blur(24px)",
               WebkitBackdropFilter: "blur(24px)",
               border: "1px solid hsl(0 0% 100% / 0.08)",
-              boxShadow: "0 25px 60px rgba(0,0,0,0.5), 0 0 40px hsl(var(--primary) / 0.08)",
+              borderBottom: "none",
+              boxShadow: "0 -8px 40px rgba(0,0,0,0.4), 0 0 40px hsl(var(--primary) / 0.08)",
             }}
           >
             {/* Top gradient light strip */}
@@ -234,6 +236,14 @@ const QuizEngine = ({ config, open, onOpenChange }: QuizEngineProps) => {
               }}
             />
 
+            {/* Mobile drag handle */}
+            <div className="flex justify-center pt-2 pb-0 sm:hidden">
+              <div
+                className="w-10 h-1 rounded-full"
+                style={{ background: "hsl(0 0% 100% / 0.15)" }}
+              />
+            </div>
+
             {/* Ambient glow */}
             <div
               className="absolute -top-20 -right-20 w-60 h-60 rounded-full pointer-events-none"
@@ -243,9 +253,9 @@ const QuizEngine = ({ config, open, onOpenChange }: QuizEngineProps) => {
             />
 
             {/* Scrollable content */}
-            <div className="overflow-y-auto flex-1 relative scrollbar-hide">
+            <div className="overflow-y-auto flex-1 relative scrollbar-hide" data-quiz-scroll>
               {/* Header */}
-              <div className="items-start justify-between px-5 pt-4 pb-3 flex flex-row">
+              <div className="items-start justify-between px-4 sm:px-5 pt-3 sm:pt-4 pb-3 flex flex-row">
                 <div className="min-w-0 flex-1 pr-3">
                   <h3 className="text-base font-bold text-primary-foreground tracking-tight">{headerTitle}</h3>
                   <p className="text-xs text-primary-foreground/50 mt-1 leading-relaxed">{headerSubtitle}</p>
@@ -270,10 +280,10 @@ const QuizEngine = ({ config, open, onOpenChange }: QuizEngineProps) => {
 
               {/* Progress bar */}
               {!result && !loading && (
-                <div className="px-5 pb-3">
-                  <div className="w-full rounded-full h-1.5" style={{ background: "hsl(0 0% 100% / 0.08)" }}>
+                <div className="px-4 sm:px-5 pb-3">
+                  <div className="w-full rounded-full h-1" style={{ background: "hsl(0 0% 100% / 0.06)" }}>
                     <motion.div
-                      className="h-1.5 rounded-full"
+                      className="h-1 rounded-full"
                       style={{
                         background: "linear-gradient(90deg, hsl(var(--primary)), hsl(11 90% 65%))",
                       }}
@@ -287,14 +297,14 @@ const QuizEngine = ({ config, open, onOpenChange }: QuizEngineProps) => {
 
               {/* Divider */}
               <div
-                className="mx-5 h-[1px]"
+                className="mx-4 sm:mx-5 h-[1px]"
                 style={{
-                  background: "linear-gradient(90deg, transparent, hsl(var(--primary) / 0.3), transparent)",
+                  background: "linear-gradient(90deg, transparent, hsl(var(--primary) / 0.25), transparent)",
                 }}
               />
 
               {/* Content area */}
-              <div className="px-5 py-4">
+              <div className="px-4 sm:px-5 py-4">
                 <AnimatePresence mode="wait">
                   {/* Loading state */}
                   {loading && (
@@ -311,7 +321,10 @@ const QuizEngine = ({ config, open, onOpenChange }: QuizEngineProps) => {
                       >
                         <Sparkles className="w-10 h-10 text-primary" />
                       </motion.div>
-                      <p className="text-primary-foreground/50 text-sm">Gerando sua recomendação personalizada...</p>
+                      <div className="text-center space-y-1">
+                        <p className="text-primary-foreground/60 text-sm font-medium">Gerando sua recomendação...</p>
+                        <p className="text-primary-foreground/30 text-[11px]">Isso pode levar alguns segundos</p>
+                      </div>
                     </motion.div>
                   )}
 
@@ -372,11 +385,11 @@ const QuizEngine = ({ config, open, onOpenChange }: QuizEngineProps) => {
 
                 {/* Navigation - Questions */}
                 {!result && !loading && !error && !showDetailsStep && (
-                  <div className="flex gap-3 mt-5">
+                  <div className="flex gap-3 mt-5 pb-[env(safe-area-inset-bottom,0px)]">
                     {step > 0 && (
                       <motion.button
                         onClick={prevStep}
-                        className="inline-flex items-center gap-1 px-5 py-2.5 rounded-xl text-sm font-medium text-primary-foreground/70 cursor-pointer"
+                        className="inline-flex items-center gap-1 px-5 py-3 rounded-xl text-sm font-medium text-primary-foreground/70 cursor-pointer min-h-[44px]"
                         style={{
                           border: "1px solid hsl(0 0% 100% / 0.12)",
                           background: "hsl(0 0% 100% / 0.05)",
@@ -390,7 +403,7 @@ const QuizEngine = ({ config, open, onOpenChange }: QuizEngineProps) => {
                     <motion.button
                       onClick={nextStep}
                       disabled={!canProceed}
-                      className="flex-1 inline-flex items-center justify-center gap-1 py-2.5 rounded-xl text-primary-foreground text-sm font-bold uppercase tracking-wide disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer"
+                      className="flex-1 inline-flex items-center justify-center gap-1.5 py-3 rounded-xl text-primary-foreground text-sm font-bold uppercase tracking-wide disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer min-h-[44px]"
                       style={{
                         background: "linear-gradient(135deg, hsl(var(--primary)), hsl(11 90% 65%))",
                         boxShadow: canProceed ? "0 4px 20px hsl(var(--primary) / 0.3)" : "none",
@@ -413,10 +426,10 @@ const QuizEngine = ({ config, open, onOpenChange }: QuizEngineProps) => {
 
                 {/* Navigation - Details step */}
                 {isOnDetailsStep && (
-                  <div className="flex gap-3 mt-5">
+                  <div className="flex gap-3 mt-5 pb-[env(safe-area-inset-bottom,0px)]">
                     <motion.button
                       onClick={prevStep}
-                      className="inline-flex items-center gap-1 px-5 py-2.5 rounded-xl text-sm font-medium text-primary-foreground/70 cursor-pointer"
+                      className="inline-flex items-center gap-1 px-5 py-3 rounded-xl text-sm font-medium text-primary-foreground/70 cursor-pointer min-h-[44px]"
                       style={{
                         border: "1px solid hsl(0 0% 100% / 0.12)",
                         background: "hsl(0 0% 100% / 0.05)",
@@ -428,7 +441,7 @@ const QuizEngine = ({ config, open, onOpenChange }: QuizEngineProps) => {
                     </motion.button>
                     <motion.button
                       onClick={handleSubmitFromDetails}
-                      className="flex-1 inline-flex items-center justify-center gap-1 py-2.5 rounded-xl text-primary-foreground text-sm font-bold uppercase tracking-wide cursor-pointer"
+                      className="flex-1 inline-flex items-center justify-center gap-1.5 py-3 rounded-xl text-primary-foreground text-sm font-bold uppercase tracking-wide cursor-pointer min-h-[44px]"
                       style={{
                         background: "linear-gradient(135deg, hsl(var(--primary)), hsl(11 90% 65%))",
                         boxShadow: "0 4px 20px hsl(var(--primary) / 0.3)",
