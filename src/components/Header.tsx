@@ -747,7 +747,7 @@ const Header = ({ onContactClick }: HeaderProps) => {
 
                         {/* Pin body */}
                         <div className="relative flex flex-col items-center" style={{ filter: "drop-shadow(0 6px 16px hsl(11 81% 57% / 0.6)) drop-shadow(0 2px 4px hsl(0 0% 0% / 0.5))" }}>
-                          <svg width="44" height="58" viewBox="0 0 44 58" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <svg width="34" height="58" viewBox="0 0 34 58" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <defs>
                               <linearGradient id="pinGrad" x1="0" y1="0" x2="0.5" y2="1">
                                 <stop offset="0%" stopColor="hsl(11, 81%, 64%)" />
@@ -758,19 +758,14 @@ const Header = ({ onContactClick }: HeaderProps) => {
                                 <stop offset="0%" stopColor="white" stopOpacity="0.25" />
                                 <stop offset="100%" stopColor="white" stopOpacity="0" />
                               </radialGradient>
-                              <clipPath id="pinClip">
-                                <path d="M22 0C9.85 0 0 9.85 0 22c0 15.4 19.8 34.6 20.9 35.7a1.5 1.5 0 002.2 0C24.2 56.6 44 37.4 44 22 44 9.85 34.15 0 22 0z" />
-                              </clipPath>
                             </defs>
-                            {/* Main shape */}
-                            <path d="M22 0C9.85 0 0 9.85 0 22c0 15.4 19.8 34.6 20.9 35.7a1.5 1.5 0 002.2 0C24.2 56.6 44 37.4 44 22 44 9.85 34.15 0 22 0z" fill="url(#pinGrad)" />
-                            {/* Shine overlay */}
-                            <path d="M22 0C9.85 0 0 9.85 0 22c0 15.4 19.8 34.6 20.9 35.7a1.5 1.5 0 002.2 0C24.2 56.6 44 37.4 44 22 44 9.85 34.15 0 22 0z" fill="url(#pinShine)" />
-                            {/* Inner white circle bg */}
-                            <circle cx="22" cy="21" r="14" fill="hsl(0, 0%, 0%)" fillOpacity="0.2" />
-                            <circle cx="22" cy="21" r="13" fill="white" fillOpacity="0.12" />
-                            {/* Subtle border ring */}
-                            <circle cx="22" cy="21" r="13.5" stroke="white" strokeOpacity="0.2" strokeWidth="0.5" fill="none" />
+                            {/* Narrower teardrop */}
+                            <path d="M17 0C7.6 0 0 7.6 0 17c0 13.5 15 35.8 16.1 37.5a1.1 1.1 0 001.8 0C19 52.8 34 30.5 34 17 34 7.6 26.4 0 17 0z" fill="url(#pinGrad)" />
+                            <path d="M17 0C7.6 0 0 7.6 0 17c0 13.5 15 35.8 16.1 37.5a1.1 1.1 0 001.8 0C19 52.8 34 30.5 34 17 34 7.6 26.4 0 17 0z" fill="url(#pinShine)" />
+                            {/* Inner circle */}
+                            <circle cx="17" cy="16" r="11" fill="hsl(0, 0%, 0%)" fillOpacity="0.2" />
+                            <circle cx="17" cy="16" r="10" fill="white" fillOpacity="0.12" />
+                            <circle cx="17" cy="16" r="10.5" stroke="white" strokeOpacity="0.2" strokeWidth="0.5" fill="none" />
                           </svg>
                           {/* Shield logo */}
                           <img 
@@ -778,11 +773,11 @@ const Header = ({ onContactClick }: HeaderProps) => {
                             alt="MS Eletric" 
                             className="absolute object-contain" 
                             style={{ 
-                              top: "8px", 
+                              top: "5px", 
                               left: "50%", 
                               transform: "translateX(-50%)", 
-                              width: "24px", 
-                              height: "24px", 
+                              width: "22px", 
+                              height: "22px", 
                               filter: "brightness(0) invert(1) drop-shadow(0 1px 2px hsl(0 0% 0% / 0.3))" 
                             }} 
                           />
