@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { Star, User, Loader2, Zap, Battery, Gauge, Clock, ExternalLink, CheckCircle2, ShieldCheck } from "lucide-react";
 import type { QuizResult } from "./types";
@@ -43,12 +43,51 @@ const specIcon = (label: string) => {
   return null;
 };
 
+/* ── Skeleton image loader ────────────────────────────────────────── */
+const ImageWithSkeleton = ({ src, alt }: { src: string; alt: string }) => {
+  const [loaded, setLoaded] = useState(false);
+  return (
+    <div className="w-full h-[252px] overflow-hidden relative bg-white">
+      {!loaded && (
+        <div className="absolute inset-0 z-20 flex items-center justify-center bg-white">
+          <div className="w-3/4 h-3/4 rounded-xl animate-pulse" style={{ background: "hsl(0 0% 92%)" }} />
+        </div>
+      )}
+      <div
+        className="absolute bottom-0 left-0 right-0 h-[1px] z-20"
+        style={{
+          background: "linear-gradient(90deg, transparent, hsl(var(--primary) / 0.5), hsl(var(--primary) / 0.5), transparent)",
+        }}
+      />
+      <motion.img
+        src={src}
+        alt={alt}
+        className="w-full h-full object-contain object-center relative z-10"
+        loading="lazy"
+        onLoad={() => setLoaded(true)}
+        initial={{ opacity: 0, scale: 0.95 }}
+        animate={loaded ? { opacity: 1, scale: 1 } : { opacity: 0 }}
+        transition={{ duration: 0.5 }}
+      />
+    </div>
+  );
+};
+
 /* ── Stagger helpers ──────────────────────────────────────────────── */
 const stagger = (base: number, idx = 0) => ({ delay: base + idx * 0.08 });
 
 const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps) => {
   const models = result.models?.length ? result.models : [];
   const hasModels = models.length > 0;
+  const formRef = useRef<HTMLDivElement>(null);
+
+  // Auto-scroll to lead form after result renders
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      formRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+    }, 1800);
+    return () => clearTimeout(timer);
+  }, []);
 
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
@@ -157,26 +196,9 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
           </div>
         </div>
 
-        {/* Image */}
+        {/* Image with skeleton */}
         {image && (
-          <div className="w-full h-[252px] overflow-hidden relative bg-white">
-            <div
-              className="absolute bottom-0 left-0 right-0 h-[1px] z-20"
-              style={{
-                background:
-                  "linear-gradient(90deg, transparent, hsl(var(--primary) / 0.5), hsl(var(--primary) / 0.5), transparent)",
-              }}
-            />
-            <motion.img
-              src={image}
-              alt={model.name}
-              className="w-full h-full object-contain object-center relative z-10"
-              loading="lazy"
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.5, duration: 0.5 }}
-            />
-          </div>
+          <ImageWithSkeleton src={image} alt={model.name} />
         )}
 
         {/* Content */}
@@ -328,7 +350,7 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
   };
 
   return (
-    <motion.div key="result" initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-4 pb-0">
+    <motion.div key="result" initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-4 pb-0" aria-live="polite" aria-atomic="true">
       {/* Primary card */}
       {hasModels && models[0] && renderPrimaryCard(models[0])}
 
@@ -380,7 +402,7 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
 
       {/* Lead form headline */}
       <motion.p
-        className="text-sm font-semibold text-primary-foreground/70 leading-relaxed text-left"
+        className="text-sm font-semibold text-primary-foreground/70 leading-relaxed text-left" ref={formRef}
         initial={{ opacity: 0, y: 8 }}
         animate={{ opacity: 1, y: 0 }}
         transition={stagger(1.1)}

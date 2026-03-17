@@ -4,7 +4,8 @@ import { X, ArrowRight, ArrowLeft, Sparkles, Loader2, RotateCcw } from "lucide-r
 import { supabase } from "@/integrations/supabase/client";
 import type { QuizConfig, QuizResult } from "./types";
 import QuizStepView from "./QuizStepView";
-import QuizResultView from "./QuizResultView";
+import { lazy, Suspense } from "react";
+const QuizResultView = lazy(() => import("./QuizResultView"));
 import QuizDetailsStep from "./QuizDetailsStep";
 
 /* ── Animation variants ─────────────────────────────────────────── */
@@ -344,7 +345,13 @@ const QuizEngine = ({ config, open, onOpenChange }: QuizEngineProps) => {
 
                   {/* Result */}
                   {result && !loading && (
-                    <QuizResultView result={result} whatsappNumber={config.whatsappNumber} onReset={reset} />
+                    <Suspense fallback={
+                      <div className="flex flex-col items-center justify-center py-16 gap-4">
+                        <Loader2 className="w-8 h-8 text-primary animate-spin" />
+                      </div>
+                    }>
+                      <QuizResultView result={result} whatsappNumber={config.whatsappNumber} onReset={reset} />
+                    </Suspense>
                   )}
 
                   {/* Details step */}

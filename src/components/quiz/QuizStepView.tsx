@@ -50,7 +50,11 @@ const QuizStepView = ({ stepConfig, currentAnswer, onAnswer }: QuizStepViewProps
               key={opt}
               type="button"
               role="option"
-              onClick={() => (multiSelect ? toggleMultiItem(opt) : onAnswer(opt))}
+              onClick={() => {
+                // Haptic feedback on mobile
+                if (navigator.vibrate) navigator.vibrate(10);
+                multiSelect ? toggleMultiItem(opt) : onAnswer(opt);
+              }}
               aria-selected={isSelected}
               className="w-full flex items-center gap-3 rounded-xl px-4 py-3 text-left text-sm cursor-pointer transition-colors"
               style={{
