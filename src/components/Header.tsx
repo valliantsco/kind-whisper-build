@@ -710,11 +710,6 @@ const Header = ({ onContactClick }: HeaderProps) => {
                         window.open("https://maps.app.goo.gl/7iwuPGQuN4rAhqRf8", "_blank");
                       }}
                     >
-                      {/* Top label */}
-                      <div className="absolute top-0 left-0 right-0 z-10 px-4 py-3 flex items-center gap-2" style={{ background: "linear-gradient(to bottom, hsl(0 0% 0% / 0.85), transparent)" }}>
-                        <MapPin className="w-3.5 h-3.5 text-primary" />
-                        <span className="text-[11px] uppercase tracking-[0.15em] font-semibold text-white/80" style={{ fontFamily: "Verdana, sans-serif" }}>Onde estamos</span>
-                      </div>
 
                       {/* Google Maps iframe — dark styled */}
                       <div className="absolute inset-0 overflow-hidden rounded-xl">
@@ -781,13 +776,6 @@ const Header = ({ onContactClick }: HeaderProps) => {
 
                         {/* Ground shadow */}
                         <div className="w-6 h-[3px] rounded-full mx-auto -mt-0.5" style={{ background: "hsl(0 0% 0% / 0.45)", filter: "blur(3px)" }} />
-                      </div>
-                      <div className="absolute bottom-0 left-0 right-0 z-10 px-4 py-3 flex items-center justify-between" style={{ background: "linear-gradient(to top, hsl(0 0% 0% / 0.9), transparent)" }}>
-                        <span className="text-[10.5px] text-white/50" style={{ fontFamily: "Verdana, sans-serif" }}>Uberlândia, MG</span>
-                        <span className="text-[10px] uppercase tracking-[0.12em] text-primary/70 font-semibold flex items-center gap-1 group-hover/loc:text-primary transition-colors" style={{ fontFamily: "Verdana, sans-serif" }}>
-                          Abrir mapa
-                          <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
-                        </span>
                       </div>
 
                       {/* Hover glow border */}
