@@ -710,12 +710,7 @@ const Header = ({ onContactClick }: HeaderProps) => {
                       }}
                       whileHover={{ scale: 1.01 }}
                     >
-                      <div
-                        className="absolute top-0 left-0 right-0 h-[1px] opacity-0 group-hover/loc:opacity-100 transition-opacity duration-500 z-20"
-                        style={{ background: "linear-gradient(90deg, transparent, hsl(11 81% 57% / 0.4), transparent)" }}
-                      />
-
-                      {/* Google Maps iframe */}
+                      {/* Google Maps iframe — clean, no overlays */}
                       <iframe
                         src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1800!2d-48.26122457146234!3d-18.892441917718067!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1spt-BR!2sbr!4v1700000000000!5m2!1spt-BR!2sbr"
                         className="absolute inset-0 w-full h-full border-0 pointer-events-none"
@@ -725,37 +720,6 @@ const Header = ({ onContactClick }: HeaderProps) => {
                         title="MS Eletric - Uberlândia"
                         style={{ filter: "brightness(0.7) contrast(1.1) saturate(0.3)" }}
                       />
-
-                      {/* Content overlay */}
-                      <div className="relative z-10 p-5 flex flex-col h-full justify-between">
-                        <div className="flex items-center gap-2.5">
-                          <div
-                            className="shrink-0 w-9 h-9 rounded-lg flex items-center justify-center"
-                            style={{ background: "hsl(11 81% 57% / 0.2)", border: "1px solid hsl(11 81% 57% / 0.3)", backdropFilter: "blur(8px)" }}
-                          >
-                            <MapPin className="w-4 h-4" style={{ color: "hsl(11 81% 57%)" }} />
-                          </div>
-                          <h4 className="text-[13px] font-semibold text-white tracking-wide" style={{ textShadow: "0 1px 4px rgba(0,0,0,0.8)" }}>Onde estamos</h4>
-                        </div>
-
-                        <div>
-                          <div className="space-y-1.5 mb-3">
-                            <p className="text-[12px] font-medium text-white/90" style={{ textShadow: "0 1px 3px rgba(0,0,0,0.8)" }}>
-                              Av. João Pinheiro, 3747 – Brasil
-                            </p>
-                            <p className="text-[11px] text-white/60" style={{ textShadow: "0 1px 3px rgba(0,0,0,0.8)" }}>
-                              Uberlândia – MG, 38400-714
-                            </p>
-                            <p className="text-[11px] text-white/50" style={{ textShadow: "0 1px 3px rgba(0,0,0,0.8)" }}>
-                              (34) 3222-8899
-                            </p>
-                          </div>
-                          <div className="flex items-center gap-1.5 text-[11px] font-semibold tracking-wide" style={{ color: "hsl(11 81% 57%)", textShadow: "0 1px 3px rgba(0,0,0,0.6)" }}>
-                            <Navigation className="w-3.5 h-3.5" />
-                            <span>Abrir no Google Maps</span>
-                          </div>
-                        </div>
-                      </div>
                     </motion.div>
                   </div>
                 ) : (
