@@ -772,8 +772,8 @@ const Header = ({ onContactClick }: HeaderProps) => {
                               top: "10px", 
                               left: "50%", 
                               transform: "translateX(-50%)", 
-                              width: "22px", 
-                              height: "22px", 
+                              width: "25px", 
+                              height: "25px", 
                               filter: "brightness(0) invert(1) drop-shadow(0 1px 2px hsl(0 0% 0% / 0.3))" 
                             }} 
                           />
