@@ -717,7 +717,7 @@ const Header = ({ onContactClick }: HeaderProps) => {
                       }}
                       onClick={() => {
                         setActiveDropdown(null);
-                        window.open("https://maps.google.com/?q=MS+Eletric+Aruja+SP", "_blank");
+                        window.open("https://maps.app.goo.gl/7iwuPGQuN4rAhqRf8", "_blank");
                       }}
                     >
                       <div
