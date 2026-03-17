@@ -55,16 +55,6 @@ const NAV_ITEMS: NavItem[] = [
     ],
   },
   {
-    label: "Como escolher",
-    href: "#como-escolher",
-    hasDropdown: true,
-    dropdownItems: [
-      { label: "Quiz interativo", description: "Descubra o modelo ideal para você", href: "#como-escolher", icon: Compass },
-      { label: "Comparativo", description: "Compare especificações lado a lado", href: "#modelos", icon: BarChart3 },
-      
-    ],
-  },
-  {
     label: "Suporte",
     href: "#suporte",
     hasDropdown: true,
