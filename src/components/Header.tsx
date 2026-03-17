@@ -706,16 +706,8 @@ const Header = ({ onContactClick }: HeaderProps) => {
                         transition: "border-color 0.3s, box-shadow 0.3s",
                         minHeight: "280px",
                       }}
-                      onMouseEnter={(e) => {
-                        const el = e.currentTarget as HTMLElement;
-                        el.style.borderColor = "hsl(11 81% 57% / 0.25)";
-                        el.style.boxShadow = "0 4px 20px hsl(11 81% 57% / 0.08)";
-                      }}
-                      onMouseLeave={(e) => {
-                        const el = e.currentTarget as HTMLElement;
-                        el.style.borderColor = "hsl(0 0% 100% / 0.06)";
-                        el.style.boxShadow = "none";
-                      }}
+                      onMouseEnter={() => {}}
+                      onMouseLeave={() => {}}
                       onClick={() => {
                         setActiveDropdown(null);
                         window.open("https://maps.app.goo.gl/7iwuPGQuN4rAhqRf8", "_blank");
