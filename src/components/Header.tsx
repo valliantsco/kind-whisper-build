@@ -525,7 +525,6 @@ const Header = ({ onContactClick }: HeaderProps) => {
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: (activeItem.dropdownItems?.length ?? 0) * 0.07, duration: 0.35, ease: "easeOut" }}
                             whileTap={{ scale: 0.97 }}
-                            whileTap={{ scale: 0.97 }}
                             className="group/cta relative flex-shrink-0 rounded-xl overflow-hidden cursor-pointer flex flex-col items-center justify-center text-center"
                             style={{
                               width: "210px",
