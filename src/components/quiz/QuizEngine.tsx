@@ -273,7 +273,7 @@ const QuizEngine = ({ config, open, onOpenChange }: QuizEngineProps) => {
 
               {/* Progress bar */}
               {!result && !loading && (
-                <div className="px-4 sm:px-5 pb-3">
+                <div className="px-5 pb-3">
                   <div className="w-full rounded-full h-1" style={{ background: "hsl(0 0% 100% / 0.06)" }}>
                     <motion.div
                       className="h-1 rounded-full"
