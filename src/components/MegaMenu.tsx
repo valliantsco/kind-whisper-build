@@ -1,5 +1,6 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+import ctaRider from "@/assets/cta-rider.jpg";
 import categoryScooter from "@/assets/category-scooter.jpg";
 import categoryBike from "@/assets/category-bike.jpg";
 import categoryTricycle from "@/assets/category-tricycle.jpg";
@@ -93,69 +94,65 @@ const MegaMenu = ({ open, scrolled, onClose }: MegaMenuProps) => {
                   </motion.a>
                 ))}
 
-                {/* "Ver todos os modelos" CTA card */}
+                {/* "Ver todos os modelos" CTA card with rider image */}
                 <motion.a
                   href="#modelos"
                   onClick={onClose}
                   initial={{ opacity: 0, y: 12 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: categories.length * 0.06, duration: 0.35 }}
-                  className="group relative rounded-xl overflow-hidden cursor-pointer flex flex-col items-center justify-center text-center"
-                  style={{
-                    aspectRatio: "3/4",
-                    background: "linear-gradient(160deg, hsl(11 81% 50%) 0%, hsl(11 90% 58%) 50%, hsl(11 81% 52%) 100%)",
-                  }}
-                  whileHover={{
-                    scale: 1.03,
-                    boxShadow: "0 0 36px hsl(11 81% 57% / 0.45), 0 0 72px hsl(11 81% 57% / 0.18)",
-                  }}
-                  whileTap={{ scale: 0.97 }}
+                  className="group relative rounded-xl overflow-hidden cursor-pointer"
+                  style={{ aspectRatio: "3/4" }}
                 >
-                  {/* Animated glow border */}
-                  <motion.div
-                    className="absolute inset-0 rounded-xl pointer-events-none"
-                    animate={{
-                      boxShadow: [
-                        "inset 0 0 0 1.5px hsl(0 0% 100% / 0.12), 0 0 16px hsl(11 81% 57% / 0.15)",
-                        "inset 0 0 0 1.5px hsl(0 0% 100% / 0.28), 0 0 28px hsl(11 81% 57% / 0.3)",
-                        "inset 0 0 0 1.5px hsl(0 0% 100% / 0.12), 0 0 16px hsl(11 81% 57% / 0.15)",
-                      ],
-                    }}
-                    transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+                  <img
+                    src={ctaRider}
+                    alt="Ver todos os modelos"
+                    className="absolute inset-0 w-full h-full object-cover"
                   />
-
-                  {/* Depth gradient overlay */}
                   <div
-                    className="absolute inset-0 rounded-xl pointer-events-none"
-                    style={{ background: "linear-gradient(180deg, hsl(0 0% 0% / 0.15) 0%, transparent 40%, hsl(0 0% 0% / 0.1) 100%)" }}
+                    className="absolute inset-0"
+                    style={{
+                      background: "linear-gradient(to top, hsl(0 0% 0% / 0.88) 0%, hsl(0 0% 0% / 0.5) 40%, hsl(0 0% 0% / 0.2) 70%, hsl(0 0% 0% / 0.1) 100%)",
+                    }}
                   />
-
-                  <div className="relative flex flex-col items-center gap-3">
-                    <motion.div
-                      className="w-12 h-12 rounded-full flex items-center justify-center"
-                      style={{
-                        background: "hsl(0 0% 100% / 0.18)",
-                        border: "1.5px solid hsl(0 0% 100% / 0.2)",
-                        backdropFilter: "blur(8px)",
-                      }}
-                      animate={{ x: [0, 5, 0] }}
-                      transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut" }}
-                    >
-                      <ArrowRight className="w-5 h-5 text-white drop-shadow-md" />
-                    </motion.div>
+                  <div
+                    className="absolute inset-0 pointer-events-none"
+                    style={{ background: "linear-gradient(135deg, hsl(11 81% 57% / 0.12) 0%, transparent 60%)" }}
+                  />
+                  <div className="absolute bottom-0 left-0 right-0 p-3 flex flex-col gap-2.5">
                     <div>
                       <p
-                        className="text-white font-bold text-[11px] uppercase tracking-[0.14em] leading-tight"
-                        style={{ textShadow: "0 1px 4px hsl(0 0% 0% / 0.3)" }}
+                        className="text-white font-bold text-[12px] uppercase tracking-[0.1em] leading-tight"
+                        style={{ textShadow: "0 1px 6px hsl(0 0% 0% / 0.5)" }}
                       >
                         Ver todos os modelos
                       </p>
                       <p
-                        className="text-[10px] tracking-wide mt-1"
-                        style={{ color: "hsl(0 0% 100% / 0.55)", textShadow: "0 1px 3px hsl(0 0% 0% / 0.25)" }}
+                        className="text-[10px] tracking-wide mt-0.5"
+                        style={{ color: "hsl(0 0% 100% / 0.55)", textShadow: "0 1px 3px hsl(0 0% 0% / 0.4)" }}
                       >
                         19 modelos disponíveis
                       </p>
+                    </div>
+                    <div
+                      className="flex items-center gap-1.5 w-fit px-3 py-1.5 rounded-full"
+                      style={{
+                        background: "linear-gradient(135deg, hsl(11 81% 57%), hsl(11 90% 62%))",
+                        boxShadow: "0 2px 10px hsl(11 81% 57% / 0.35)",
+                      }}
+                    >
+                      <span
+                        className="text-white text-[10px] font-semibold uppercase tracking-[0.08em]"
+                        style={{ textShadow: "0 1px 2px hsl(0 0% 0% / 0.2)" }}
+                      >
+                        Explorar
+                      </span>
+                      <motion.div
+                        animate={{ x: [0, 4, 0] }}
+                        transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
+                      >
+                        <ArrowRight className="w-3.5 h-3.5 text-white" />
+                      </motion.div>
                     </div>
                   </div>
                 </motion.a>
