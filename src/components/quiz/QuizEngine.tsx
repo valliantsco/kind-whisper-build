@@ -223,7 +223,6 @@ const QuizEngine = ({ config, open, onOpenChange }: QuizEngineProps) => {
               backdropFilter: "blur(24px)",
               WebkitBackdropFilter: "blur(24px)",
               border: "1px solid hsl(0 0% 100% / 0.08)",
-              borderBottom: "none",
               boxShadow: "0 -8px 40px rgba(0,0,0,0.4), 0 0 40px hsl(var(--primary) / 0.08)",
             }}
           >
