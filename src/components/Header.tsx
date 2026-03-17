@@ -735,7 +735,35 @@ const Header = ({ onContactClick }: HeaderProps) => {
                         />
                       </div>
 
-                      {/* Bottom info bar */}
+                      {/* Custom MS Eletric brand pin */}
+                      <div className="absolute inset-0 z-[5] flex items-center justify-center pointer-events-none">
+                        {/* Pulse ring */}
+                        <div className="absolute w-16 h-16 rounded-full animate-ping" style={{ background: "hsl(11 81% 57% / 0.15)", animationDuration: "2.5s" }} />
+                        <div className="absolute w-12 h-12 rounded-full" style={{ background: "hsl(11 81% 57% / 0.1)", boxShadow: "0 0 30px hsl(11 81% 57% / 0.2)" }} />
+                        {/* Pin body */}
+                        <div className="relative flex flex-col items-center">
+                          <div
+                            className="w-10 h-10 rounded-full flex items-center justify-center"
+                            style={{
+                              background: "linear-gradient(135deg, hsl(11 81% 57%), hsl(11 81% 45%))",
+                              boxShadow: "0 4px 20px hsl(11 81% 57% / 0.5), 0 0 40px hsl(11 81% 57% / 0.2), inset 0 1px 0 hsl(0 0% 100% / 0.2)",
+                              border: "2px solid hsl(0 0% 100% / 0.25)",
+                            }}
+                          >
+                            <span className="text-white font-bold text-[10px] tracking-[0.1em]" style={{ fontFamily: "Verdana, sans-serif" }}>MS</span>
+                          </div>
+                          {/* Pin tail */}
+                          <div
+                            className="w-2.5 h-2.5 rotate-45 -mt-1.5"
+                            style={{
+                              background: "linear-gradient(135deg, hsl(11 81% 45%), hsl(11 81% 40%))",
+                              boxShadow: "2px 2px 8px hsl(11 81% 57% / 0.3)",
+                            }}
+                          />
+                          {/* Shadow on ground */}
+                          <div className="w-6 h-1.5 rounded-full mt-1 opacity-40" style={{ background: "hsl(0 0% 0% / 0.6)", filter: "blur(2px)" }} />
+                        </div>
+                      </div>
                       <div className="absolute bottom-0 left-0 right-0 z-10 px-4 py-3 flex items-center justify-between" style={{ background: "linear-gradient(to top, hsl(0 0% 0% / 0.9), transparent)" }}>
                         <span className="text-[10.5px] text-white/50" style={{ fontFamily: "Verdana, sans-serif" }}>Uberlândia, MG</span>
                         <span className="text-[10px] uppercase tracking-[0.12em] text-primary/70 font-semibold flex items-center gap-1 group-hover/loc:text-primary transition-colors" style={{ fontFamily: "Verdana, sans-serif" }}>
