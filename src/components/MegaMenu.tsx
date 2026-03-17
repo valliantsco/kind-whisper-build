@@ -92,52 +92,6 @@ const MegaMenu = ({ open, scrolled, onClose }: MegaMenuProps) => {
                   </motion.a>
                 ))}
 
-                {/* "Ver todos os modelos" CTA card */}
-                <motion.a
-                  href="#modelos"
-                  onClick={onClose}
-                  initial={{ opacity: 0, y: 12 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: categories.length * 0.06, duration: 0.35 }}
-                  className="group relative rounded-xl overflow-hidden cursor-pointer flex flex-col items-center justify-center text-center"
-                  style={{
-                    aspectRatio: "3/4",
-                    background: "hsl(0 0% 8%)",
-                    border: "1px solid hsl(0 0% 100% / 0.06)",
-                  }}
-                >
-                  <div
-                    className="absolute inset-0 pointer-events-none"
-                    style={{ background: "radial-gradient(ellipse at center 70%, hsl(11 81% 57% / 0.08), transparent 70%)" }}
-                  />
-                  <div
-                    className="absolute top-0 left-0 right-0 h-[1.5px]"
-                    style={{ background: "linear-gradient(90deg, transparent, hsl(11 81% 57% / 0.5), transparent)" }}
-                  />
-                  <div className="relative flex flex-col items-center gap-4 px-5">
-                    <p className="text-white/90 font-bold text-[11px] uppercase tracking-[0.14em] leading-snug">
-                      Ver todos os modelos
-                    </p>
-                    <p className="text-[10px] tracking-wide -mt-2" style={{ color: "hsl(0 0% 100% / 0.35)" }}>
-                      19 modelos disponíveis
-                    </p>
-                    <div
-                      className="flex items-center gap-1.5 px-4 py-1.5 rounded-full"
-                      style={{
-                        background: "linear-gradient(135deg, hsl(11 81% 57%), hsl(11 90% 62%))",
-                        boxShadow: "0 4px 16px hsl(11 81% 57% / 0.3), 0 0 24px hsl(11 81% 57% / 0.1)",
-                      }}
-                    >
-                      <span className="text-white text-[9px] font-semibold uppercase tracking-[0.1em]">Explorar</span>
-                      <motion.div
-                        animate={{ x: [0, 3, 0] }}
-                        transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
-                      >
-                        <ArrowRight className="w-3 h-3 text-white" />
-                      </motion.div>
-                    </div>
-                  </div>
-                </motion.a>
               </div>
             </div>
           </div>
