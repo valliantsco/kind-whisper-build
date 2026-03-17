@@ -410,27 +410,42 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
       {/* Scroll hint indicator */}
       <AnimatePresence>
         {showScrollHint && (
-          <motion.div
-            className="flex flex-col items-center gap-0.5 py-1 cursor-pointer"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0, y: -8 }}
-            transition={{ delay: 1.1, duration: 0.4 }}
+          <motion.button
+            type="button"
+            aria-label="Rolar para o formulário de contato"
+            className="w-full flex flex-col items-center gap-1.5 py-3 rounded-xl cursor-pointer group transition-transform duration-200 hover:scale-[1.02] active:scale-[0.98]"
+            style={{
+              background: "linear-gradient(180deg, hsl(var(--primary) / 0.06), hsl(var(--primary) / 0.02))",
+              border: "1px solid hsl(var(--primary) / 0.12)",
+            }}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8, scale: 0.95 }}
+            transition={{ delay: 1.1, duration: 0.5, ease: "easeOut" }}
             onClick={() => {
+              if (navigator.vibrate) navigator.vibrate(10);
               formRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
               setShowScrollHint(false);
             }}
           >
-            <span className="text-[9px] font-medium uppercase tracking-[0.15em] text-primary/60">
+            <span className="text-[10px] font-semibold uppercase tracking-[0.14em] text-primary-foreground/50 group-hover:text-primary/80 transition-colors duration-200">
               Fale com um especialista
             </span>
             <motion.div
-              animate={{ y: [0, 5, 0] }}
-              transition={{ duration: 1.4, repeat: Infinity, ease: "easeInOut" }}
+              className="relative"
+              animate={{ y: [0, 6, 0] }}
+              transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
             >
-              <ChevronDown className="w-4 h-4 text-primary/50" />
+              <ChevronDown className="w-5 h-5 text-primary/70 group-hover:text-primary transition-colors duration-200" />
+              {/* Glow pulse behind chevron */}
+              <motion.div
+                className="absolute inset-0 rounded-full blur-md"
+                style={{ background: "hsl(var(--primary) / 0.3)" }}
+                animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.5, 1] }}
+                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+              />
             </motion.div>
-          </motion.div>
+          </motion.button>
         )}
       </AnimatePresence>
 
