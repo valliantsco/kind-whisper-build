@@ -720,16 +720,10 @@ const Header = ({ onContactClick }: HeaderProps) => {
 
                       {/* Bottom gradient for text readability */}
                       <div
-                        className="absolute inset-0 pointer-events-none"
+                        className="absolute bottom-0 left-0 right-0 h-[45%] pointer-events-none"
                         style={{
-                          background: "linear-gradient(180deg, transparent 40%, hsl(0 0% 3% / 0.85) 100%)",
+                          background: "linear-gradient(180deg, transparent 0%, hsl(0 0% 3% / 0.8) 100%)",
                         }}
-                      />
-
-                      {/* Top light strip on hover */}
-                      <div
-                        className="absolute top-0 left-0 right-0 h-[1px] opacity-0 group-hover/loc:opacity-100 transition-opacity duration-500 z-10"
-                        style={{ background: "linear-gradient(90deg, transparent, hsl(11 81% 57% / 0.5), transparent)" }}
                       />
 
                       {/* Content overlay */}
