@@ -94,66 +94,38 @@ const MegaMenu = ({ open, scrolled, onClose }: MegaMenuProps) => {
                   </motion.a>
                 ))}
 
-                {/* "Ver todos os modelos" CTA card with rider image */}
+                {/* "Ver todos os modelos" CTA card */}
                 <motion.a
                   href="#modelos"
                   onClick={onClose}
                   initial={{ opacity: 0, y: 12 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: categories.length * 0.06, duration: 0.35 }}
-                  className="group relative rounded-xl overflow-hidden cursor-pointer"
-                  style={{ aspectRatio: "3/4" }}
+                  className="group relative rounded-xl overflow-hidden cursor-pointer flex flex-col items-center justify-center text-center"
+                  style={{
+                    aspectRatio: "3/4",
+                    background: "linear-gradient(160deg, hsl(11 81% 50%) 0%, hsl(11 90% 58%) 50%, hsl(11 81% 52%) 100%)",
+                  }}
                 >
-                  <img
-                    src={ctaRider}
-                    alt="Ver todos os modelos"
-                    className="absolute inset-0 w-full h-full object-cover"
-                  />
-                  <div
-                    className="absolute inset-0"
-                    style={{
-                      background: "linear-gradient(to top, hsl(0 0% 0% / 0.88) 0%, hsl(0 0% 0% / 0.5) 40%, hsl(0 0% 0% / 0.2) 70%, hsl(0 0% 0% / 0.1) 100%)",
-                    }}
-                  />
-                  <div
-                    className="absolute inset-0 pointer-events-none"
-                    style={{ background: "linear-gradient(135deg, hsl(11 81% 57% / 0.12) 0%, transparent 60%)" }}
-                  />
-                  <div className="absolute bottom-0 left-0 right-0 p-3 flex flex-col gap-2.5">
-                    <div>
-                      <p
-                        className="text-white font-bold text-[12px] uppercase tracking-[0.1em] leading-tight"
-                        style={{ textShadow: "0 1px 6px hsl(0 0% 0% / 0.5)" }}
-                      >
-                        Ver todos os modelos
-                      </p>
-                      <p
-                        className="text-[10px] tracking-wide mt-0.5"
-                        style={{ color: "hsl(0 0% 100% / 0.55)", textShadow: "0 1px 3px hsl(0 0% 0% / 0.4)" }}
-                      >
-                        19 modelos disponíveis
-                      </p>
-                    </div>
-                    <div
-                      className="flex items-center gap-1.5 w-fit px-3 py-1.5 rounded-full"
-                      style={{
-                        background: "linear-gradient(135deg, hsl(11 81% 57%), hsl(11 90% 62%))",
-                        boxShadow: "0 2px 10px hsl(11 81% 57% / 0.35)",
-                      }}
+                  <div className="flex flex-col items-center gap-3 px-4">
+                    <p
+                      className="text-white font-bold text-[11px] uppercase tracking-[0.14em] leading-snug"
+                      style={{ textShadow: "0 1px 4px hsl(0 0% 0% / 0.25)" }}
                     >
-                      <span
-                        className="text-white text-[10px] font-semibold uppercase tracking-[0.08em]"
-                        style={{ textShadow: "0 1px 2px hsl(0 0% 0% / 0.2)" }}
-                      >
-                        Explorar
-                      </span>
-                      <motion.div
-                        animate={{ x: [0, 4, 0] }}
-                        transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
-                      >
-                        <ArrowRight className="w-3.5 h-3.5 text-white" />
-                      </motion.div>
-                    </div>
+                      Ver todos os modelos
+                    </p>
+                    <p
+                      className="text-[10px] tracking-wide -mt-1.5"
+                      style={{ color: "hsl(0 0% 100% / 0.55)", textShadow: "0 1px 3px hsl(0 0% 0% / 0.2)" }}
+                    >
+                      19 modelos disponíveis
+                    </p>
+                    <motion.div
+                      animate={{ x: [0, 4, 0] }}
+                      transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
+                    >
+                      <ArrowRight className="w-5 h-5 text-white" />
+                    </motion.div>
                   </div>
                 </motion.a>
               </div>
