@@ -304,12 +304,6 @@ const Header = ({ onContactClick }: HeaderProps) => {
                   background: "radial-gradient(ellipse at bottom center, hsl(11 81% 57% / 0.04), transparent 70%)",
                 }}
               />
-
-                    {/* Vertical separator */}
-                    <div className="flex-shrink-0 w-px self-stretch my-3" style={{ background: "hsl(0 0% 100% / 0.08)" }} />
-
-                    {/* Right panel — Onde estamos */}
-                    <motion.div
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.12, duration: 0.3, ease: "easeOut" }}
