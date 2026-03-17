@@ -408,7 +408,7 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
           <motion.button
             type="button"
             aria-label="Rolar para o formulário de contato"
-            className="w-full flex flex-col items-center gap-1.5 py-3 rounded-xl cursor-pointer group transition-transform duration-200 hover:scale-[1.02] active:scale-[0.98]"
+            className="w-auto inline-flex flex-col items-center gap-1 py-2 px-6 rounded-lg cursor-pointer group transition-transform duration-200 hover:scale-[1.02] active:scale-[0.98] mx-auto"
             style={{
               background: "linear-gradient(180deg, hsl(var(--primary) / 0.06), hsl(var(--primary) / 0.02))",
               border: "1px solid hsl(var(--primary) / 0.12)",
@@ -423,27 +423,20 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
               setShowScrollHint(false);
             }}
           >
-            <span className="text-[10px] font-semibold uppercase tracking-[0.14em] text-primary-foreground/50 group-hover:text-primary/80 transition-colors duration-200">
+            <span className="text-[9px] font-semibold uppercase tracking-[0.14em] text-primary-foreground/50 group-hover:text-primary/80 transition-colors duration-200">
               Fale com um especialista
             </span>
-            <div className="relative flex flex-col items-center -space-y-2">
+            <div className="relative flex items-center justify-center">
               <motion.div
-                animate={{ y: [0, 6, 0] }}
+                animate={{ y: [0, 4, 0] }}
                 transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
               >
-                <ChevronDown className="w-5 h-5 text-primary/70 group-hover:text-primary transition-colors duration-200" />
+                <ChevronDown className="w-4 h-4 text-primary/70 group-hover:text-primary transition-colors duration-200" />
               </motion.div>
-              <motion.div
-                animate={{ y: [0, 6, 0] }}
-                transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut", delay: 0.25 }}
-              >
-                <ChevronDown className="w-5 h-5 text-primary/40 group-hover:text-primary/70 transition-colors duration-200" />
-              </motion.div>
-              {/* Glow pulse */}
               <motion.div
                 className="absolute inset-0 rounded-full blur-md pointer-events-none"
-                style={{ background: "hsl(var(--primary) / 0.25)" }}
-                animate={{ opacity: [0.2, 0.6, 0.2], scale: [1, 1.4, 1] }}
+                style={{ background: "hsl(var(--primary) / 0.2)" }}
+                animate={{ opacity: [0.2, 0.5, 0.2], scale: [1, 1.3, 1] }}
                 transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
               />
             </div>
