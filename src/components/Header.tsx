@@ -723,7 +723,7 @@ const Header = ({ onContactClick }: HeaderProps) => {
                         loading="lazy"
                         referrerPolicy="no-referrer-when-downgrade"
                         title="MS Eletric - Uberlândia"
-                        style={{ filter: "invert(92%) hue-rotate(180deg) saturate(0.15) brightness(0.5) contrast(1.5)" }}
+                        style={{ filter: "brightness(0.7) contrast(1.1) saturate(0.3)" }}
                       />
 
                       {/* Content overlay */}
