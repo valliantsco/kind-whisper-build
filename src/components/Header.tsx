@@ -694,16 +694,16 @@ const Header = ({ onContactClick }: HeaderProps) => {
                     {/* Vertical separator */}
                     <div className="flex-shrink-0 w-px self-stretch my-3" style={{ background: "hsl(0 0% 100% / 0.08)" }} />
 
-                    {/* Right panel — Location */}
+                    {/* Right panel — Location with globe zoom video */}
                     <motion.div
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.12, duration: 0.3, ease: "easeOut" }}
-                      className="group/loc relative flex-1 rounded-xl overflow-hidden p-5 flex flex-col cursor-pointer"
+                      className="group/loc relative flex-1 rounded-xl overflow-hidden cursor-pointer"
                       style={{
-                        background: "linear-gradient(160deg, hsl(0 0% 12% / 0.6), hsl(0 0% 8% / 0.7))",
                         border: "1px solid hsl(0 0% 100% / 0.06)",
                         transition: "border-color 0.3s, box-shadow 0.3s",
+                        minHeight: "280px",
                       }}
                       onMouseEnter={(e) => {
                         const el = e.currentTarget as HTMLElement;
@@ -720,49 +720,61 @@ const Header = ({ onContactClick }: HeaderProps) => {
                         window.open("https://maps.app.goo.gl/7iwuPGQuN4rAhqRf8", "_blank");
                       }}
                     >
-                      <div
-                        className="absolute top-0 left-0 right-0 h-[1px] opacity-0 group-hover/loc:opacity-100 transition-opacity duration-500"
-                        style={{ background: "linear-gradient(90deg, transparent, hsl(11 81% 57% / 0.4), transparent)" }}
+                      {/* Video background */}
+                      <video
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        className="absolute inset-0 w-full h-full object-cover"
+                        src="https://ppmoesqgmficvajqbamr.supabase.co/storage/v1/object/public/videos/globe-zoom-uberlandia.mp4"
                       />
-                      <div className="flex items-center gap-2.5 mb-3">
-                        <div
-                          className="shrink-0 w-9 h-9 rounded-lg flex items-center justify-center"
-                          style={{ background: "hsl(11 81% 57% / 0.1)", border: "1px solid hsl(11 81% 57% / 0.18)" }}
-                        >
-                          <MapPin className="w-4 h-4" style={{ color: "hsl(11 81% 57%)" }} />
+
+                      {/* Dark overlay gradient */}
+                      <div
+                        className="absolute inset-0"
+                        style={{
+                          background: "linear-gradient(180deg, hsl(0 0% 0% / 0.3) 0%, hsl(0 0% 0% / 0.15) 40%, hsl(0 0% 0% / 0.7) 100%)",
+                        }}
+                      />
+
+                      {/* Top light strip on hover */}
+                      <div
+                        className="absolute top-0 left-0 right-0 h-[1px] opacity-0 group-hover/loc:opacity-100 transition-opacity duration-500 z-10"
+                        style={{ background: "linear-gradient(90deg, transparent, hsl(11 81% 57% / 0.5), transparent)" }}
+                      />
+
+                      {/* Content overlay */}
+                      <div className="relative z-10 p-5 flex flex-col h-full justify-between">
+                        {/* Header */}
+                        <div className="flex items-center gap-2.5">
+                          <div
+                            className="shrink-0 w-9 h-9 rounded-lg flex items-center justify-center"
+                            style={{ background: "hsl(11 81% 57% / 0.2)", border: "1px solid hsl(11 81% 57% / 0.3)", backdropFilter: "blur(8px)" }}
+                          >
+                            <MapPin className="w-4 h-4" style={{ color: "hsl(11 81% 57%)" }} />
+                          </div>
+                          <h4 className="text-[13px] font-semibold text-white tracking-wide" style={{ textShadow: "0 1px 4px rgba(0,0,0,0.6)" }}>Onde estamos</h4>
                         </div>
-                        <h4 className="text-[13px] font-semibold text-white/90 tracking-wide">Onde estamos</h4>
-                      </div>
-                      {/* Mini map embed */}
-                      <div className="rounded-lg overflow-hidden mb-3 border" style={{ border: "1px solid hsl(0 0% 100% / 0.08)" }}>
-                        <iframe
-                          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1891.5!2d-48.2772!3d-18.9186!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94a4457f5f5f5f5f%3A0x0!2sAv.%20Jo%C3%A3o%20Pinheiro%2C%203747%20-%20Brasil%2C%20Uberl%C3%A2ndia%20-%20MG!5e0!3m2!1spt-BR!2sbr!4v1"
-                          width="100%"
-                          height="100"
-                          style={{ border: 0, filter: "invert(90%) hue-rotate(180deg) brightness(0.7) contrast(1.2)" }}
-                          allowFullScreen={false}
-                          loading="lazy"
-                          referrerPolicy="no-referrer-when-downgrade"
-                          className="pointer-events-none"
-                        />
-                      </div>
-                      <div className="space-y-2 flex-1">
+
+                        {/* Bottom info */}
                         <div>
-                          <p className="text-[11px] font-medium text-white/60 mb-0.5">Endereço</p>
-                          <p className="text-[11px] text-white/40 leading-relaxed">Av. João Pinheiro, 3747 – Brasil<br/>Uberlândia – MG, 38400-714</p>
+                          <div className="space-y-1.5 mb-3">
+                            <p className="text-[12px] font-medium text-white/90" style={{ textShadow: "0 1px 3px rgba(0,0,0,0.7)" }}>
+                              Av. João Pinheiro, 3747 – Brasil
+                            </p>
+                            <p className="text-[11px] text-white/60" style={{ textShadow: "0 1px 3px rgba(0,0,0,0.7)" }}>
+                              Uberlândia – MG, 38400-714
+                            </p>
+                            <p className="text-[11px] text-white/50" style={{ textShadow: "0 1px 3px rgba(0,0,0,0.7)" }}>
+                              (34) 3222-8899
+                            </p>
+                          </div>
+                          <div className="flex items-center gap-1.5 text-[10px] font-medium tracking-wide" style={{ color: "hsl(11 81% 57%)", textShadow: "0 1px 3px rgba(0,0,0,0.5)" }}>
+                            <Navigation className="w-3 h-3" />
+                            <span>Abrir no Google Maps</span>
+                          </div>
                         </div>
-                        <div>
-                          <p className="text-[11px] font-medium text-white/60 mb-0.5">Contato</p>
-                          <p className="text-[11px] text-white/40 leading-relaxed">(34) 3222-8899</p>
-                        </div>
-                        <div className="flex items-center gap-1.5">
-                          <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
-                          <p className="text-[10px] text-white/50">4.3 ⭐ no Google • mseletric.com</p>
-                        </div>
-                      </div>
-                      <div className="mt-3 flex items-center gap-1.5 text-[10px] font-medium tracking-wide" style={{ color: "hsl(11 81% 57% / 0.8)" }}>
-                        <Navigation className="w-3 h-3" />
-                        <span>Abrir no Google Maps</span>
                       </div>
                     </motion.div>
                   </div>
