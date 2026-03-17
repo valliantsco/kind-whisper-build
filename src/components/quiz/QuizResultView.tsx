@@ -166,26 +166,9 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
           </div>
         </div>
 
-        {/* Image */}
+        {/* Image with skeleton */}
         {image && (
-          <div className="w-full h-[252px] overflow-hidden relative bg-white">
-            <div
-              className="absolute bottom-0 left-0 right-0 h-[1px] z-20"
-              style={{
-                background:
-                  "linear-gradient(90deg, transparent, hsl(var(--primary) / 0.5), hsl(var(--primary) / 0.5), transparent)",
-              }}
-            />
-            <motion.img
-              src={image}
-              alt={model.name}
-              className="w-full h-full object-contain object-center relative z-10"
-              loading="lazy"
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.5, duration: 0.5 }}
-            />
-          </div>
+          <ImageWithSkeleton src={image} alt={model.name} />
         )}
 
         {/* Content */}
