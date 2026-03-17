@@ -1,6 +1,6 @@
 import { useState, useCallback, useEffect, useRef } from "react";
-import { motion } from "framer-motion";
-import { Star, User, Loader2, Zap, Battery, Gauge, Clock, ExternalLink, CheckCircle2, ShieldCheck } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Star, User, Loader2, Zap, Battery, Gauge, Clock, ExternalLink, CheckCircle2, ShieldCheck, ChevronDown } from "lucide-react";
 import type { QuizResult } from "./types";
 import { getModelImage } from "./modelImages";
 import { formatPhone, formatName, validatePhone, INPUT_BASE_STYLE, getInputBorderStyle } from "@/utils/form-helpers";
@@ -80,6 +80,19 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
   const models = result.models?.length ? result.models : [];
   const hasModels = models.length > 0;
   const formRef = useRef<HTMLDivElement>(null);
+  const [showScrollHint, setShowScrollHint] = useState(true);
+
+  // Hide scroll hint when user scrolls or after timeout
+  useEffect(() => {
+    const hideHint = () => setShowScrollHint(false);
+    const timer = setTimeout(hideHint, 6000);
+    const scrollContainer = formRef.current?.closest('[data-quiz-scroll]') || window;
+    scrollContainer.addEventListener('scroll', hideHint, { once: true, passive: true });
+    return () => {
+      clearTimeout(timer);
+      scrollContainer.removeEventListener('scroll', hideHint);
+    };
+  }, []);
 
   // Auto-scroll to lead form after result renders
   useEffect(() => {
@@ -393,6 +406,33 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
           <span className="text-[9px] text-primary-foreground/35 font-medium">Pronta entrega</span>
         </div>
       </motion.div>
+
+      {/* Scroll hint indicator */}
+      <AnimatePresence>
+        {showScrollHint && (
+          <motion.div
+            className="flex flex-col items-center gap-0.5 py-1 cursor-pointer"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ delay: 1.1, duration: 0.4 }}
+            onClick={() => {
+              formRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+              setShowScrollHint(false);
+            }}
+          >
+            <span className="text-[9px] font-medium uppercase tracking-[0.15em] text-primary/60">
+              Fale com um especialista
+            </span>
+            <motion.div
+              animate={{ y: [0, 5, 0] }}
+              transition={{ duration: 1.4, repeat: Infinity, ease: "easeInOut" }}
+            >
+              <ChevronDown className="w-4 h-4 text-primary/50" />
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Divider */}
       <div
