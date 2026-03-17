@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import logoWhite from "@/assets/ms-eletric-logo-white.png";
 import msShieldLogo from "@/assets/ms-shield-logo.png";
+import ctaRider from "@/assets/cta-rider.jpg";
 import { useBusinessHours } from "@/hooks/useBusinessHours";
 import { AnimatePresence, motion } from "framer-motion";
 import { ChevronDown, ArrowRight, ArrowLeft, Compass, BarChart3, BookOpen, HelpCircle, Wrench, ShieldCheck, Play } from "lucide-react";
