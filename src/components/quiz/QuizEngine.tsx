@@ -248,7 +248,7 @@ const QuizEngine = ({ config, open, onOpenChange }: QuizEngineProps) => {
             {/* Scrollable content */}
             <div className="overflow-y-auto flex-1 relative scrollbar-hide" data-quiz-scroll>
               {/* Header */}
-              <div className="items-start justify-between px-4 sm:px-5 pt-3 sm:pt-4 pb-3 flex flex-row">
+              <div className="items-start justify-between px-5 pt-4 pb-3 flex flex-row">
                 <div className="min-w-0 flex-1 pr-3">
                   <h3 className="text-base font-bold text-primary-foreground tracking-tight">{headerTitle}</h3>
                   <p className="text-xs text-primary-foreground/50 mt-1 leading-relaxed">{headerSubtitle}</p>
