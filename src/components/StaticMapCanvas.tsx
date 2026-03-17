@@ -4,14 +4,16 @@ import React, { useRef, useEffect, useCallback } from "react";
  * StaticMapCanvas — Dark street map of Uberlândia with pulsing MS Eletric pin
  */
 
-const BG = "#1a1a2e";
-const BLOCK_FILL = "rgba(30, 30, 50, 0.9)";
-const STREET_MAIN = "rgba(60, 60, 80, 0.8)";
-const STREET_SEC = "rgba(45, 45, 65, 0.6)";
-const LABEL_MAIN = "rgba(100, 160, 255, 0.7)";
-const LABEL_SEC = "rgba(100, 160, 255, 0.45)";
-const ORANGE = "hsl(11, 81%, 57%)";
-const ORANGE_GLOW = "hsla(11, 81%, 57%, 0.35)";
+// Google Maps dark mode palette aligned with MS Eletric brand (#000 bg, #FF4D22 orange)
+const BG = "#0e0e0e";
+const BLOCK_FILL = "#1c1c1c";
+const BLOCK_FILL_ALT = "#222222";
+const STREET_MAIN = "rgba(55, 55, 58, 0.95)";
+const STREET_SEC = "rgba(40, 40, 44, 0.75)";
+const LABEL_MAIN = "rgba(130, 175, 255, 0.65)";
+const LABEL_SEC = "rgba(130, 175, 255, 0.4)";
+const ORANGE = "#FF4D22";
+const ORANGE_GLOW = "rgba(255, 77, 34, 0.30)";
 
 interface Street {
   name: string;
@@ -87,29 +89,31 @@ const StaticMapCanvas: React.FC<{ className?: string }> = ({ className = "" }) =
     ctx.fillStyle = BG;
     ctx.fillRect(0, 0, w, h);
 
-    // Draw blocks (filled rectangles between streets)
+    // Draw blocks (filled rectangles between streets) — Google Maps dark style
     const vLines = [-7.5, -4.5, -2, 0, 2, 4.5, 7];
     const hLines = [-8, -5, -2.2, 1.8, 4.5, 7, 9.5];
-    ctx.fillStyle = BLOCK_FILL;
     for (let i = 0; i < vLines.length - 1; i++) {
       for (let j = 0; j < hLines.length - 1; j++) {
-        const bx = cx + vLines[i] * scale + 1.5;
-        const by = cy + hLines[j] * scale + 1.5;
-        const bw = (vLines[i + 1] - vLines[i]) * scale - 3;
-        const bh = (hLines[j + 1] - hLines[j]) * scale - 3;
+        const bx = cx + vLines[i] * scale + 1;
+        const by = cy + hLines[j] * scale + 1;
+        const bw = (vLines[i + 1] - vLines[i]) * scale - 2;
+        const bh = (hLines[j + 1] - hLines[j]) * scale - 2;
         if (bw > 2 && bh > 2) {
+          ctx.fillStyle = (i + j) % 2 === 0 ? BLOCK_FILL : BLOCK_FILL_ALT;
           ctx.fillRect(bx, by, bw, bh);
         }
       }
     }
 
-    // Some building shapes inside blocks
-    ctx.fillStyle = "rgba(40, 40, 60, 0.7)";
+    // Building footprints inside blocks — darker rectangles like Google Maps
+    ctx.fillStyle = "#2a2a2e";
     const buildings = [
-      [-6, -4, 1.2, 0.8], [-5.5, -6.5, 0.8, 1], [1, -4, 0.6, 0.5],
-      [5.5, -3, 1.5, 1.2], [-3, 2.5, 0.7, 0.6], [1.5, 5, 0.9, 0.7],
-      [-6, 5, 1, 0.8], [3, 0.5, 0.5, 0.4], [-1, -6, 0.8, 0.6],
-      [5.8, 5.5, 1.2, 0.9], [-3.5, -6.8, 0.6, 0.5], [6.2, 1, 0.5, 0.7],
+      [-6, -4, 1.4, 0.9], [-5.5, -6.5, 0.9, 1.1], [1, -4, 0.7, 0.6],
+      [5.5, -3, 1.6, 1.3], [-3, 2.5, 0.8, 0.7], [1.5, 5, 1, 0.8],
+      [-6, 5, 1.1, 0.9], [3, 0.5, 0.6, 0.5], [-1, -6, 0.9, 0.7],
+      [5.8, 5.5, 1.3, 1], [-3.5, -6.8, 0.7, 0.6], [6.2, 1, 0.6, 0.8],
+      [-1.2, 2.8, 0.5, 0.4], [0.5, -3.8, 0.6, 0.5], [-5.8, 0, 0.7, 0.5],
+      [3.2, 5.8, 0.8, 0.6], [-6.5, -1, 0.6, 0.4], [1.8, -6.5, 0.5, 0.7],
     ];
     for (const [bx, by, bw, bh] of buildings) {
       ctx.fillRect(cx + bx * scale, cy + by * scale, bw * scale, bh * scale);
@@ -146,17 +150,23 @@ const StaticMapCanvas: React.FC<{ className?: string }> = ({ className = "" }) =
       const lx = cx + lm.x * scale;
       const ly = cy + lm.y * scale;
 
-      // Icon circle
+      // Icon circle — Google Maps style blue dot
       ctx.beginPath();
-      ctx.arc(lx, ly, 6, 0, Math.PI * 2);
-      ctx.fillStyle = "rgba(80, 80, 120, 0.6)";
+      ctx.arc(lx, ly, 5, 0, Math.PI * 2);
+      ctx.fillStyle = "rgba(50, 50, 60, 0.85)";
       ctx.fill();
-      ctx.strokeStyle = "rgba(100, 160, 255, 0.4)";
-      ctx.lineWidth = 1;
+      ctx.strokeStyle = "rgba(100, 140, 220, 0.5)";
+      ctx.lineWidth = 1.2;
       ctx.stroke();
 
+      // Inner dot
+      ctx.beginPath();
+      ctx.arc(lx, ly, 2, 0, Math.PI * 2);
+      ctx.fillStyle = "rgba(100, 140, 220, 0.7)";
+      ctx.fill();
+
       // Label (multiline)
-      ctx.font = `bold ${lmFontSize}px -apple-system, sans-serif`;
+      ctx.font = `bold ${lmFontSize}px -apple-system, BlinkMacSystemFont, sans-serif`;
       ctx.fillStyle = LABEL_MAIN;
       const lines = lm.name.split("\n");
       lines.forEach((line, i) => {
