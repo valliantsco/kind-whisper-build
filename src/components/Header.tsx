@@ -4,7 +4,7 @@ import msShieldLogo from "@/assets/ms-shield-logo.png";
 import ctaRider from "@/assets/cta-rider.jpg";
 import { useBusinessHours } from "@/hooks/useBusinessHours";
 import { AnimatePresence, motion } from "framer-motion";
-import { ChevronDown, ArrowRight, ArrowLeft, Compass, BarChart3, BookOpen, HelpCircle, Wrench, ShieldCheck, Play, MapPin } from "lucide-react";
+import { ChevronDown, ArrowRight, ArrowLeft, Compass, BarChart3, BookOpen, HelpCircle, Wrench, ShieldCheck, Play, MapPin, Building2, Navigation } from "lucide-react";
 import QuizEngine from "@/components/quiz/QuizEngine";
 import { msEletricQuizConfig } from "@/components/QuizSection";
 
@@ -54,7 +54,15 @@ const NAV_ITEMS: NavItem[] = [
       { label: "Patinetes", description: "Leves, ágeis e práticos para curtas distâncias", href: "#modelos", image: categoryScooter, video: "https://ppmoesqgmficvajqbamr.supabase.co/storage/v1/object/public/videos/patinetes.mp4" },
     ],
   },
-  { label: "Sobre nós", href: "#sobre" },
+  {
+    label: "Sobre nós",
+    href: "#sobre",
+    hasDropdown: true,
+    dropdownItems: [
+      { label: "Nossa história", description: "Desde 2015 transformando a mobilidade urbana no Brasil com veículos elétricos acessíveis, seguros e sustentáveis.", href: "#sobre", icon: Building2 },
+      { label: "Localização", description: "Arujá, SP — Região metropolitana de São Paulo, próximo à Rodovia Presidente Dutra.", href: "#contato", icon: MapPin },
+    ],
+  },
 ];
 
 const categoryImages = [categoryScooter, categoryBike, categoryTricycle, categoryMotocross, categoryAutopropelido];
@@ -634,8 +642,115 @@ const Header = ({ onContactClick }: HeaderProps) => {
                       />
                     </div>
                   </>
+                ) : activeItem.label === "Sobre nós" ? (
+                  /* Two-panel layout for Sobre Nós */
+                  <div className="flex gap-4">
+                    {/* Left panel — Company overview */}
+                    <motion.div
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.05, duration: 0.3, ease: "easeOut" }}
+                      className="relative flex-1 rounded-xl overflow-hidden p-5 flex flex-col justify-between"
+                      style={{
+                        background: "linear-gradient(160deg, hsl(0 0% 12% / 0.6), hsl(0 0% 8% / 0.7))",
+                        border: "1px solid hsl(0 0% 100% / 0.06)",
+                      }}
+                    >
+                      <div
+                        className="absolute top-0 left-0 right-0 h-[1px]"
+                        style={{ background: "linear-gradient(90deg, transparent, hsl(11 81% 57% / 0.3), transparent)" }}
+                      />
+                      <div>
+                        <div className="flex items-center gap-2.5 mb-3">
+                          <div
+                            className="shrink-0 w-9 h-9 rounded-lg flex items-center justify-center"
+                            style={{ background: "hsl(11 81% 57% / 0.1)", border: "1px solid hsl(11 81% 57% / 0.18)" }}
+                          >
+                            <Building2 className="w-4 h-4" style={{ color: "hsl(11 81% 57%)" }} />
+                          </div>
+                          <h4 className="text-[13px] font-semibold text-white/90 tracking-wide">Nossa história</h4>
+                        </div>
+                        <p className="text-[11px] text-white/45 leading-relaxed">
+                          Desde 2015, a MS Eletric transforma a mobilidade urbana no Brasil com veículos elétricos acessíveis, seguros e sustentáveis. Presente em todo o território nacional, levamos inovação e liberdade para milhares de pessoas.
+                        </p>
+                      </div>
+                      <a
+                        href="#sobre"
+                        onClick={() => {
+                          setActiveDropdown(null);
+                          document.querySelector("#sobre")?.scrollIntoView({ behavior: "smooth" });
+                        }}
+                        className="mt-4 inline-flex items-center gap-2 self-start px-4 py-2 rounded-full text-[11px] font-semibold tracking-wide text-white cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-lg active:scale-95"
+                        style={{
+                          background: "linear-gradient(135deg, hsl(11 81% 57%), hsl(11 90% 65%))",
+                          boxShadow: "0 4px 12px hsl(11 81% 57% / 0.3)",
+                        }}
+                      >
+                        Conheça nossa história
+                        <ArrowRight className="w-3.5 h-3.5" />
+                      </a>
+                    </motion.div>
+
+                    {/* Vertical separator */}
+                    <div className="flex-shrink-0 w-px self-stretch my-3" style={{ background: "hsl(0 0% 100% / 0.08)" }} />
+
+                    {/* Right panel — Location */}
+                    <motion.div
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.12, duration: 0.3, ease: "easeOut" }}
+                      className="group/loc relative flex-1 rounded-xl overflow-hidden p-5 flex flex-col cursor-pointer"
+                      style={{
+                        background: "linear-gradient(160deg, hsl(0 0% 12% / 0.6), hsl(0 0% 8% / 0.7))",
+                        border: "1px solid hsl(0 0% 100% / 0.06)",
+                        transition: "border-color 0.3s, box-shadow 0.3s",
+                      }}
+                      onMouseEnter={(e) => {
+                        const el = e.currentTarget as HTMLElement;
+                        el.style.borderColor = "hsl(11 81% 57% / 0.25)";
+                        el.style.boxShadow = "0 4px 20px hsl(11 81% 57% / 0.08)";
+                      }}
+                      onMouseLeave={(e) => {
+                        const el = e.currentTarget as HTMLElement;
+                        el.style.borderColor = "hsl(0 0% 100% / 0.06)";
+                        el.style.boxShadow = "none";
+                      }}
+                      onClick={() => {
+                        setActiveDropdown(null);
+                        window.open("https://maps.google.com/?q=MS+Eletric+Aruja+SP", "_blank");
+                      }}
+                    >
+                      <div
+                        className="absolute top-0 left-0 right-0 h-[1px] opacity-0 group-hover/loc:opacity-100 transition-opacity duration-500"
+                        style={{ background: "linear-gradient(90deg, transparent, hsl(11 81% 57% / 0.4), transparent)" }}
+                      />
+                      <div className="flex items-center gap-2.5 mb-3">
+                        <div
+                          className="shrink-0 w-9 h-9 rounded-lg flex items-center justify-center"
+                          style={{ background: "hsl(11 81% 57% / 0.1)", border: "1px solid hsl(11 81% 57% / 0.18)" }}
+                        >
+                          <MapPin className="w-4 h-4" style={{ color: "hsl(11 81% 57%)" }} />
+                        </div>
+                        <h4 className="text-[13px] font-semibold text-white/90 tracking-wide">Onde estamos</h4>
+                      </div>
+                      <div className="space-y-2.5 flex-1">
+                        <div>
+                          <p className="text-[11px] font-medium text-white/60 mb-0.5">Sede</p>
+                          <p className="text-[11px] text-white/40 leading-relaxed">Arujá, SP — Região Metropolitana de São Paulo</p>
+                        </div>
+                        <div>
+                          <p className="text-[11px] font-medium text-white/60 mb-0.5">Referência</p>
+                          <p className="text-[11px] text-white/40 leading-relaxed">Próximo à Rod. Presidente Dutra</p>
+                        </div>
+                      </div>
+                      <div className="mt-3 flex items-center gap-1.5 text-[10px] font-medium tracking-wide" style={{ color: "hsl(11 81% 57% / 0.8)" }}>
+                        <Navigation className="w-3 h-3" />
+                        <span>Abrir no Google Maps</span>
+                      </div>
+                    </motion.div>
+                  </div>
                 ) : (
-                  /* Icon-based list (Suporte) — compact horizontal cards */
+                  /* Icon-based list — compact horizontal cards */
                   <>
                     <div className="mb-4">
                       <h3 className="text-white/90 text-base font-semibold tracking-wide">Como podemos ajudar?</h3>
@@ -678,19 +793,14 @@ const Header = ({ onContactClick }: HeaderProps) => {
                             }
                           }}
                         >
-                          {/* Top light strip on hover */}
                           <div
                             className="absolute top-0 left-0 right-0 h-[1px] opacity-0 group-hover/item:opacity-100 transition-opacity duration-500"
                             style={{ background: "linear-gradient(90deg, transparent, hsl(11 81% 57% / 0.4), transparent)" }}
                           />
-
                           {Icon && (
                             <div
                               className="relative shrink-0 w-9 h-9 rounded-lg flex items-center justify-center transition-all duration-300 group-hover/item:scale-105"
-                              style={{
-                                background: "hsl(11 81% 57% / 0.1)",
-                                border: "1px solid hsl(11 81% 57% / 0.18)",
-                              }}
+                              style={{ background: "hsl(11 81% 57% / 0.1)", border: "1px solid hsl(11 81% 57% / 0.18)" }}
                             >
                               <Icon className="w-4 h-4" style={{ color: "hsl(11 81% 57%)" }} />
                             </div>
