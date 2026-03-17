@@ -721,9 +721,9 @@ const Header = ({ onContactClick }: HeaderProps) => {
                         window.open("https://maps.app.goo.gl/7iwuPGQuN4rAhqRf8", "_blank");
                       }}
                     >
-                      {/* Canvas globe zoom animation */}
+                      {/* Static map with pulsing pin */}
                       <div className="absolute inset-0">
-                        <GlobeZoomCanvas />
+                        <StaticMapCanvas />
                       </div>
 
                       {/* Bottom gradient for text readability */}
