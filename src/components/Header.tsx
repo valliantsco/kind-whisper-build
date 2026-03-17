@@ -758,8 +758,8 @@ const Header = ({ onContactClick }: HeaderProps) => {
                             <circle cx="18" cy="17" r="9" fill="hsl(0, 0%, 0%)" fillOpacity="0.25" />
                             <circle cx="18" cy="17" r="8" fill="white" fillOpacity="0.15" />
                           </svg>
-                          {/* MS text inside pin */}
-                          <span className="absolute top-[10px] left-1/2 -translate-x-1/2 text-white font-bold text-[11px] tracking-[0.12em]" style={{ fontFamily: "Verdana, sans-serif", textShadow: "0 1px 3px hsl(0 0% 0% / 0.4)" }}>MS</span>
+                          {/* Logo inside pin */}
+                          <img src={msShieldLogo} alt="MS Eletric" className="absolute top-[7px] left-1/2 -translate-x-1/2 w-[18px] h-[18px] object-contain drop-shadow-sm" />
                         </div>
 
                         {/* Shadow on ground */}
