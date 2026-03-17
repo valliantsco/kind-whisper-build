@@ -19,7 +19,7 @@ const StaticMapCanvas: React.FC<{ className?: string }> = ({ className = "" }) =
         loading="lazy"
         referrerPolicy="no-referrer-when-downgrade"
         title="MS Eletric - Uberlândia"
-        style={{ filter: "invert(90%) hue-rotate(180deg) saturate(0.3) brightness(0.6) contrast(1.3)" }}
+        style={{ filter: "invert(92%) hue-rotate(180deg) saturate(0.15) brightness(0.45) contrast(1.6) sepia(0.1)" }}
       />
 
       {/* Orange tint overlay for brand alignment */}
