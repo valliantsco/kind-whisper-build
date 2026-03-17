@@ -706,16 +706,8 @@ const Header = ({ onContactClick }: HeaderProps) => {
                         transition: "border-color 0.3s, box-shadow 0.3s",
                         minHeight: "280px",
                       }}
-                      onMouseEnter={(e) => {
-                        const el = e.currentTarget as HTMLElement;
-                        el.style.borderColor = "hsl(11 81% 57% / 0.25)";
-                        el.style.boxShadow = "0 4px 20px hsl(11 81% 57% / 0.08)";
-                      }}
-                      onMouseLeave={(e) => {
-                        const el = e.currentTarget as HTMLElement;
-                        el.style.borderColor = "hsl(0 0% 100% / 0.06)";
-                        el.style.boxShadow = "none";
-                      }}
+                      onMouseEnter={() => {}}
+                      onMouseLeave={() => {}}
                       onClick={() => {
                         setActiveDropdown(null);
                         window.open("https://maps.app.goo.gl/7iwuPGQuN4rAhqRf8", "_blank");
@@ -728,16 +720,10 @@ const Header = ({ onContactClick }: HeaderProps) => {
 
                       {/* Bottom gradient for text readability */}
                       <div
-                        className="absolute inset-0 pointer-events-none"
+                        className="absolute bottom-0 left-0 right-0 h-[45%] pointer-events-none"
                         style={{
-                          background: "linear-gradient(180deg, transparent 40%, hsl(0 0% 3% / 0.85) 100%)",
+                          background: "linear-gradient(180deg, transparent 0%, hsl(0 0% 3% / 0.8) 100%)",
                         }}
-                      />
-
-                      {/* Top light strip on hover */}
-                      <div
-                        className="absolute top-0 left-0 right-0 h-[1px] opacity-0 group-hover/loc:opacity-100 transition-opacity duration-500 z-10"
-                        style={{ background: "linear-gradient(90deg, transparent, hsl(11 81% 57% / 0.5), transparent)" }}
                       />
 
                       {/* Content overlay */}
