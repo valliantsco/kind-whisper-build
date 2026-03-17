@@ -43,6 +43,36 @@ const specIcon = (label: string) => {
   return null;
 };
 
+/* ── Skeleton image loader ────────────────────────────────────────── */
+const ImageWithSkeleton = ({ src, alt }: { src: string; alt: string }) => {
+  const [loaded, setLoaded] = useState(false);
+  return (
+    <div className="w-full h-[252px] overflow-hidden relative bg-white">
+      {!loaded && (
+        <div className="absolute inset-0 z-20 flex items-center justify-center bg-white">
+          <div className="w-3/4 h-3/4 rounded-xl animate-pulse" style={{ background: "hsl(0 0% 92%)" }} />
+        </div>
+      )}
+      <div
+        className="absolute bottom-0 left-0 right-0 h-[1px] z-20"
+        style={{
+          background: "linear-gradient(90deg, transparent, hsl(var(--primary) / 0.5), hsl(var(--primary) / 0.5), transparent)",
+        }}
+      />
+      <motion.img
+        src={src}
+        alt={alt}
+        className="w-full h-full object-contain object-center relative z-10"
+        loading="lazy"
+        onLoad={() => setLoaded(true)}
+        initial={{ opacity: 0, scale: 0.95 }}
+        animate={loaded ? { opacity: 1, scale: 1 } : { opacity: 0 }}
+        transition={{ duration: 0.5 }}
+      />
+    </div>
+  );
+};
+
 /* ── Stagger helpers ──────────────────────────────────────────────── */
 const stagger = (base: number, idx = 0) => ({ delay: base + idx * 0.08 });
 
