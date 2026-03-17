@@ -305,7 +305,57 @@ const Header = ({ onContactClick }: HeaderProps) => {
                 }}
               />
 
+                    {/* Vertical separator */}
+                    <div className="flex-shrink-0 w-px self-stretch my-3" style={{ background: "hsl(0 0% 100% / 0.08)" }} />
 
+                    {/* Right panel — Onde estamos */}
+                    <motion.div
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.12, duration: 0.3, ease: "easeOut" }}
+                      className="relative flex-1 rounded-xl overflow-hidden p-5 flex flex-col justify-between cursor-pointer group/loc"
+                      style={{
+                        background: "linear-gradient(160deg, hsl(0 0% 12% / 0.6), hsl(0 0% 8% / 0.7))",
+                        border: "1px solid hsl(0 0% 100% / 0.06)",
+                        transition: "border-color 0.3s",
+                      }}
+                      onClick={() => {
+                        setActiveDropdown(null);
+                        window.open("https://maps.app.goo.gl/7iwuPGQuN4rAhqRf8", "_blank");
+                      }}
+                      whileHover={{ scale: 1.01 }}
+                    >
+                      <div
+                        className="absolute top-0 left-0 right-0 h-[1px] opacity-0 group-hover/loc:opacity-100 transition-opacity duration-500"
+                        style={{ background: "linear-gradient(90deg, transparent, hsl(11 81% 57% / 0.4), transparent)" }}
+                      />
+                      <div>
+                        <div className="flex items-center gap-2.5 mb-3">
+                          <div
+                            className="shrink-0 w-9 h-9 rounded-lg flex items-center justify-center"
+                            style={{ background: "hsl(11 81% 57% / 0.1)", border: "1px solid hsl(11 81% 57% / 0.18)" }}
+                          >
+                            <MapPin className="w-4 h-4" style={{ color: "hsl(11 81% 57%)" }} />
+                          </div>
+                          <h4 className="text-[13px] font-semibold text-white/90 tracking-wide">Onde estamos</h4>
+                        </div>
+                        <div className="space-y-1.5">
+                          <p className="text-[12px] font-medium text-white/80">
+                            Av. João Pinheiro, 3747 – Brasil
+                          </p>
+                          <p className="text-[11px] text-white/50">
+                            Uberlândia – MG, 38400-714
+                          </p>
+                          <p className="text-[11px] text-white/40">
+                            (34) 3222-8899
+                          </p>
+                        </div>
+                      </div>
+                      <div className="mt-4 flex items-center gap-1.5 text-[11px] font-semibold tracking-wide" style={{ color: "hsl(11 81% 57%)" }}>
+                        <Navigation className="w-3.5 h-3.5" />
+                        <span>Abrir no Google Maps</span>
+                      </div>
+                    </motion.div>
               <div className="p-5 relative">
                 {activeItem.dropdownItems[0]?.image ? (
                   /* Carousel (Modelos) */
