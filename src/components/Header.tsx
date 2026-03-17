@@ -760,8 +760,8 @@ const Header = ({ onContactClick }: HeaderProps) => {
                               </radialGradient>
                             </defs>
                             {/* Narrower teardrop */}
-                            <path d="M17 0C7.6 0 0 7.6 0 17c0 13.5 15 35.8 16.1 37.5a1.1 1.1 0 001.8 0C19 52.8 34 30.5 34 17 34 7.6 26.4 0 17 0z" fill="url(#pinGrad)" />
-                            <path d="M17 0C7.6 0 0 7.6 0 17c0 13.5 15 35.8 16.1 37.5a1.1 1.1 0 001.8 0C19 52.8 34 30.5 34 17 34 7.6 26.4 0 17 0z" fill="url(#pinShine)" />
+                            <path d="M17 0C9.5 0 0 6 0 15c0 13.5 15 37.8 16.1 39.5a1.1 1.1 0 001.8 0C19 54.8 34 28.5 34 15 34 6 24.5 0 17 0z" fill="url(#pinGrad)" />
+                            <path d="M17 0C9.5 0 0 6 0 15c0 13.5 15 37.8 16.1 39.5a1.1 1.1 0 001.8 0C19 54.8 34 28.5 34 15 34 6 24.5 0 17 0z" fill="url(#pinShine)" />
                           </svg>
                           {/* Shield logo */}
                           <img 
