@@ -49,6 +49,15 @@ const stagger = (base: number, idx = 0) => ({ delay: base + idx * 0.08 });
 const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps) => {
   const models = result.models?.length ? result.models : [];
   const hasModels = models.length > 0;
+  const formRef = useRef<HTMLDivElement>(null);
+
+  // Auto-scroll to lead form after result renders
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      formRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+    }, 1800);
+    return () => clearTimeout(timer);
+  }, []);
 
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
