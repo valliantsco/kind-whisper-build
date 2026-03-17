@@ -713,6 +713,7 @@ const Header = ({ onContactClick }: HeaderProps) => {
                       );
                     })}
                   </div>
+                  </>
                 )}
               </div>
             </motion.div>
