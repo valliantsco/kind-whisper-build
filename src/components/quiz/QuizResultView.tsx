@@ -80,6 +80,19 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
   const models = result.models?.length ? result.models : [];
   const hasModels = models.length > 0;
   const formRef = useRef<HTMLDivElement>(null);
+  const [showScrollHint, setShowScrollHint] = useState(true);
+
+  // Hide scroll hint when user scrolls or after timeout
+  useEffect(() => {
+    const hideHint = () => setShowScrollHint(false);
+    const timer = setTimeout(hideHint, 6000);
+    const scrollContainer = formRef.current?.closest('[data-quiz-scroll]') || window;
+    scrollContainer.addEventListener('scroll', hideHint, { once: true, passive: true });
+    return () => {
+      clearTimeout(timer);
+      scrollContainer.removeEventListener('scroll', hideHint);
+    };
+  }, []);
 
   // Auto-scroll to lead form after result renders
   useEffect(() => {
