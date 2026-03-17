@@ -54,7 +54,15 @@ const NAV_ITEMS: NavItem[] = [
       { label: "Patinetes", description: "Leves, ágeis e práticos para curtas distâncias", href: "#modelos", image: categoryScooter, video: "https://ppmoesqgmficvajqbamr.supabase.co/storage/v1/object/public/videos/patinetes.mp4" },
     ],
   },
-  { label: "Sobre nós", href: "#sobre" },
+  {
+    label: "Sobre nós",
+    href: "#sobre",
+    hasDropdown: true,
+    dropdownItems: [
+      { label: "Nossa história", description: "Desde 2015 transformando a mobilidade urbana no Brasil com veículos elétricos acessíveis, seguros e sustentáveis.", href: "#sobre", icon: Building2 },
+      { label: "Localização", description: "Arujá, SP — Região metropolitana de São Paulo, próximo à Rodovia Presidente Dutra.", href: "#contato", icon: MapPin },
+    ],
+  },
 ];
 
 const categoryImages = [categoryScooter, categoryBike, categoryTricycle, categoryMotocross, categoryAutopropelido];
