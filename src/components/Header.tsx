@@ -40,7 +40,7 @@ interface NavItem {
 const NAV_ITEMS: NavItem[] = [
   { label: "Início", href: "#inicio" },
   {
-    label: "Modelos",
+    label: "Nossos modelos",
     href: "#modelos",
     hasDropdown: true,
     hasCta: true,
@@ -52,16 +52,6 @@ const NAV_ITEMS: NavItem[] = [
       { label: "Utilitários", description: "Eficiência e resistência para o trabalho", href: "#modelos", image: categoryMotocross, video: "https://ppmoesqgmficvajqbamr.supabase.co/storage/v1/object/public/videos/utilitarios.mp4" },
       { label: "Infantil", description: "Diversão elétrica para momentos de lazer", href: "#modelos", image: categoryMotocross, video: "https://ppmoesqgmficvajqbamr.supabase.co/storage/v1/object/public/videos/infantil.mp4" },
       { label: "Patinetes", description: "Leves, ágeis e práticos para curtas distâncias", href: "#modelos", image: categoryScooter, video: "https://ppmoesqgmficvajqbamr.supabase.co/storage/v1/object/public/videos/patinetes.mp4" },
-    ],
-  },
-  {
-    label: "Como escolher",
-    href: "#como-escolher",
-    hasDropdown: true,
-    dropdownItems: [
-      { label: "Quiz interativo", description: "Descubra o modelo ideal para você", href: "#como-escolher", icon: Compass },
-      { label: "Comparativo", description: "Compare especificações lado a lado", href: "#modelos", icon: BarChart3 },
-      
     ],
   },
   {
