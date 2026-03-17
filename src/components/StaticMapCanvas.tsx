@@ -22,22 +22,6 @@ const StaticMapCanvas: React.FC<{ className?: string }> = ({ className = "" }) =
         style={{ filter: "invert(92%) hue-rotate(180deg) saturate(0.15) brightness(0.45) contrast(1.6) sepia(0.1)" }}
       />
 
-      {/* Orange tint overlay for brand alignment */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background: "linear-gradient(135deg, rgba(255,77,34,0.06) 0%, transparent 50%, rgba(255,77,34,0.04) 100%)",
-          mixBlendMode: "overlay",
-        }}
-      />
-
-      {/* Dark vignette edges */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          boxShadow: "inset 0 0 60px 20px rgba(10,10,14,0.7)",
-        }}
-      />
     </div>
   );
 };
