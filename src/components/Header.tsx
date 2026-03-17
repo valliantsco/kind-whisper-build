@@ -548,6 +548,81 @@ const Header = ({ onContactClick }: HeaderProps) => {
                             </div>
                           </motion.a>
                         )}
+
+                        {/* Quiz CTA card */}
+                        {activeItem.hasCta && (
+                          <motion.button
+                            onClick={() => { setActiveDropdown(null); setQuizOpen(true); }}
+                            initial={{ opacity: 0, y: 12 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: ((activeItem.dropdownItems?.length ?? 0) + 1) * 0.07, duration: 0.35, ease: "easeOut" }}
+                            className="group/quiz relative flex-shrink-0 rounded-xl overflow-hidden cursor-pointer flex flex-col items-center justify-center text-center"
+                            style={{
+                              width: "210px",
+                              aspectRatio: "3/4",
+                              background: "linear-gradient(160deg, hsl(0 0% 10%), hsl(0 0% 6%))",
+                              border: "1px solid hsl(0 0% 100% / 0.1)",
+                            }}
+                          >
+                            {/* Animated border glow */}
+                            <motion.div
+                              className="absolute inset-0 rounded-xl pointer-events-none"
+                              animate={{
+                                boxShadow: [
+                                  "inset 0 0 0 1px hsl(11 81% 57% / 0.15), 0 0 16px hsl(11 81% 57% / 0.05)",
+                                  "inset 0 0 0 1px hsl(11 81% 57% / 0.35), 0 0 24px hsl(11 81% 57% / 0.12)",
+                                  "inset 0 0 0 1px hsl(11 81% 57% / 0.15), 0 0 16px hsl(11 81% 57% / 0.05)",
+                                ],
+                              }}
+                              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                            />
+
+                            {/* Subtle gradient accent */}
+                            <div
+                              className="absolute inset-0 opacity-40 group-hover/quiz:opacity-70 transition-opacity duration-500"
+                              style={{
+                                background: "radial-gradient(ellipse at 50% 80%, hsl(11 81% 57% / 0.15), transparent 70%)",
+                              }}
+                            />
+
+                            <div className="relative flex flex-col items-center gap-4 px-4">
+                              {/* Icon */}
+                              <motion.div
+                                className="w-12 h-12 rounded-full flex items-center justify-center"
+                                style={{
+                                  background: "linear-gradient(135deg, hsl(11 81% 57% / 0.2), hsl(11 81% 57% / 0.08))",
+                                  border: "1px solid hsl(11 81% 57% / 0.25)",
+                                }}
+                                animate={{ scale: [1, 1.06, 1] }}
+                                transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+                              >
+                                <Compass className="w-5 h-5 text-[hsl(11,81%,57%)]" />
+                              </motion.div>
+
+                              {/* Copy */}
+                              <div className="space-y-1.5">
+                                <p className="text-white font-bold text-[12px] uppercase tracking-[0.12em] leading-tight">
+                                  Não sabe qual escolher?
+                                </p>
+                                <p className="text-white/45 text-[10.5px] leading-relaxed tracking-wide">
+                                  Responda em 1 min e descubra o modelo ideal para você
+                                </p>
+                              </div>
+
+                              {/* Mini CTA */}
+                              <div
+                                className="flex items-center gap-1.5 px-3 py-1.5 rounded-full group-hover/quiz:gap-2.5 transition-all duration-300"
+                                style={{
+                                  background: "linear-gradient(135deg, hsl(11 81% 57%), hsl(11 90% 65%))",
+                                  boxShadow: "0 2px 10px hsl(11 81% 57% / 0.3)",
+                                }}
+                              >
+                                <span className="text-white text-[10px] font-semibold uppercase tracking-[0.1em]">Fazer quiz</span>
+                                <ArrowRight className="w-3 h-3 text-white" />
+                              </div>
+                            </div>
+                          </motion.button>
+                        )}
                       </div>
 
                       {/* Orange scroll-left button */}
