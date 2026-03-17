@@ -216,7 +216,7 @@ const QuizEngine = ({ config, open, onOpenChange }: QuizEngineProps) => {
             role="dialog"
             aria-modal="true"
             aria-label="Quiz de recomendação de veículos"
-            className="relative w-full sm:max-w-md rounded-t-2xl sm:rounded-[0.9rem] overflow-hidden flex flex-col"
+            className="relative w-full max-w-md rounded-[0.9rem] overflow-hidden flex flex-col"
             style={{
               maxHeight: "calc(92vh - env(safe-area-inset-bottom, 0px))",
               background: "hsl(0 0% 14% / 0.95)",
