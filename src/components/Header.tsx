@@ -708,7 +708,7 @@ const Header = ({ onContactClick }: HeaderProps) => {
                         setActiveDropdown(null);
                         window.open("https://maps.app.goo.gl/7iwuPGQuN4rAhqRf8", "_blank");
                       }}
-                      whileHover={{ scale: 1.01 }}
+                      
                     >
                       {/* Google Maps iframe — clean, no overlays */}
                       <iframe
