@@ -733,7 +733,20 @@ const Header = ({ onContactClick }: HeaderProps) => {
                         </div>
                         <h4 className="text-[13px] font-semibold text-white/90 tracking-wide">Onde estamos</h4>
                       </div>
-                      <div className="space-y-2.5 flex-1">
+                      {/* Mini map embed */}
+                      <div className="rounded-lg overflow-hidden mb-3 border" style={{ border: "1px solid hsl(0 0% 100% / 0.08)" }}>
+                        <iframe
+                          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1891.5!2d-48.2772!3d-18.9186!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94a4457f5f5f5f5f%3A0x0!2sAv.%20Jo%C3%A3o%20Pinheiro%2C%203747%20-%20Brasil%2C%20Uberl%C3%A2ndia%20-%20MG!5e0!3m2!1spt-BR!2sbr!4v1"
+                          width="100%"
+                          height="100"
+                          style={{ border: 0, filter: "invert(90%) hue-rotate(180deg) brightness(0.7) contrast(1.2)" }}
+                          allowFullScreen={false}
+                          loading="lazy"
+                          referrerPolicy="no-referrer-when-downgrade"
+                          className="pointer-events-none"
+                        />
+                      </div>
+                      <div className="space-y-2 flex-1">
                         <div>
                           <p className="text-[11px] font-medium text-white/60 mb-0.5">Endereço</p>
                           <p className="text-[11px] text-white/40 leading-relaxed">Av. João Pinheiro, 3747 – Brasil<br/>Uberlândia – MG, 38400-714</p>
