@@ -736,7 +736,7 @@ const Header = ({ onContactClick }: HeaderProps) => {
                       </div>
 
                       {/* Custom MS Eletric brand pin — traditional pin shape */}
-                      <div className="absolute z-[5] pointer-events-none" style={{ top: "calc(44% + 10px)", left: "48%", transform: "translate(-50%, -100%)" }}>
+                      <div className="absolute z-[5] pointer-events-none" style={{ top: "calc(44% + 10px)", left: "calc(48% + 60px)", transform: "translate(-50%, -100%)" }}>
                         {/* Pulse ring on ground */}
                         <div className="absolute bottom-[-8px] left-1/2 -translate-x-1/2">
                           <div className="w-10 h-10 rounded-full animate-ping" style={{ background: "hsl(11 81% 57% / 0.15)", animationDuration: "2.5s" }} />
