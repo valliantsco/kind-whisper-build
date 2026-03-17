@@ -700,7 +700,8 @@ const Header = ({ onContactClick }: HeaderProps) => {
                       transition={{ delay: 0.12, duration: 0.3, ease: "easeOut" }}
                       className="relative flex-1 rounded-xl overflow-hidden cursor-pointer group/loc"
                       style={{
-                        border: "1px solid hsl(0 0% 100% / 0.06)",
+                        background: "linear-gradient(160deg, hsl(0 0% 12% / 0.6), hsl(0 0% 8% / 0.7))",
+                        border: "1px solid hsl(0 0% 100% / 0.08)",
                         transition: "border-color 0.3s",
                         minHeight: "280px",
                       }}
@@ -708,9 +709,14 @@ const Header = ({ onContactClick }: HeaderProps) => {
                         setActiveDropdown(null);
                         window.open("https://maps.app.goo.gl/7iwuPGQuN4rAhqRf8", "_blank");
                       }}
-                      
                     >
-                      {/* Google Maps iframe — clean, no overlays */}
+                      {/* Top label */}
+                      <div className="absolute top-0 left-0 right-0 z-10 px-4 py-3 flex items-center gap-2" style={{ background: "linear-gradient(to bottom, hsl(0 0% 0% / 0.85), transparent)" }}>
+                        <MapPin className="w-3.5 h-3.5 text-primary" />
+                        <span className="text-[11px] uppercase tracking-[0.15em] font-semibold text-white/80" style={{ fontFamily: "Verdana, sans-serif" }}>Onde estamos</span>
+                      </div>
+
+                      {/* Google Maps iframe — dark styled */}
                       <div className="absolute inset-0 overflow-hidden rounded-xl">
                         <iframe
                           src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d2250!2d-48.26122457146234!3d-18.892441917718067!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1spt-BR!2sbr!4v1700000000000!5m2!1spt-BR!2sbr"
@@ -720,6 +726,7 @@ const Header = ({ onContactClick }: HeaderProps) => {
                             left: "-30px",
                             width: "calc(100% + 60px)",
                             height: "calc(100% + 160px)",
+                            filter: "invert(1) hue-rotate(180deg) brightness(0.95) contrast(1.1) saturate(0.3)",
                           }}
                           allowFullScreen={false}
                           loading="lazy"
@@ -727,6 +734,18 @@ const Header = ({ onContactClick }: HeaderProps) => {
                           title="MS Eletric - Uberlândia"
                         />
                       </div>
+
+                      {/* Bottom info bar */}
+                      <div className="absolute bottom-0 left-0 right-0 z-10 px-4 py-3 flex items-center justify-between" style={{ background: "linear-gradient(to top, hsl(0 0% 0% / 0.9), transparent)" }}>
+                        <span className="text-[10.5px] text-white/50" style={{ fontFamily: "Verdana, sans-serif" }}>Uberlândia, MG</span>
+                        <span className="text-[10px] uppercase tracking-[0.12em] text-primary/70 font-semibold flex items-center gap-1 group-hover/loc:text-primary transition-colors" style={{ fontFamily: "Verdana, sans-serif" }}>
+                          Abrir mapa
+                          <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+                        </span>
+                      </div>
+
+                      {/* Hover glow border */}
+                      <div className="absolute inset-0 rounded-xl opacity-0 group-hover/loc:opacity-100 transition-opacity duration-500 pointer-events-none" style={{ boxShadow: "inset 0 0 0 1px hsl(11 81% 57% / 0.3), 0 0 20px hsl(11 81% 57% / 0.08)" }} />
                     </motion.div>
                   </div>
                 ) : (
