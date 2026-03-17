@@ -718,7 +718,6 @@ const Header = ({ onContactClick }: HeaderProps) => {
                         loading="lazy"
                         referrerPolicy="no-referrer-when-downgrade"
                         title="MS Eletric - Uberlândia"
-                        style={{ filter: "brightness(0.7) contrast(1.1) saturate(0.3)" }}
                       />
                     </motion.div>
                   </div>
