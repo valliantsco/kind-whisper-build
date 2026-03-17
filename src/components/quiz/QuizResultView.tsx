@@ -320,7 +320,7 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
   };
 
   return (
-    <motion.div key="result" initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-4 pb-0">
+    <motion.div key="result" initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-4 pb-0" aria-live="polite" aria-atomic="true">
       {/* Primary card */}
       {hasModels && models[0] && renderPrimaryCard(models[0])}
 
