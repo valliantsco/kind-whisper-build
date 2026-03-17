@@ -201,7 +201,7 @@ const QuizEngine = ({ config, open, onOpenChange }: QuizEngineProps) => {
     <AnimatePresence>
       {open && (
         <motion.div
-          className="fixed inset-0 z-[100] flex items-end sm:items-center justify-center sm:px-4"
+          className="fixed inset-0 z-[100] flex items-center justify-center px-4"
           variants={overlayVariants}
           initial="hidden"
           animate="visible"
