@@ -54,16 +54,6 @@ const NAV_ITEMS: NavItem[] = [
       { label: "Patinetes", description: "Leves, ágeis e práticos para curtas distâncias", href: "#modelos", image: categoryScooter, video: "https://ppmoesqgmficvajqbamr.supabase.co/storage/v1/object/public/videos/patinetes.mp4" },
     ],
   },
-  {
-    label: "Suporte",
-    href: "#suporte",
-    hasDropdown: true,
-    dropdownItems: [
-      { label: "Central de ajuda", description: "Dúvidas frequentes e tutoriais", href: "#suporte", icon: HelpCircle },
-      { label: "Garantia", description: "Informações sobre garantia e cobertura", href: "#suporte", icon: ShieldCheck },
-      
-    ],
-  },
 ];
 
 const categoryImages = [categoryScooter, categoryBike, categoryTricycle, categoryMotocross, categoryAutopropelido];
