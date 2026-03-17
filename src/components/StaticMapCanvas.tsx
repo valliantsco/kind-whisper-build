@@ -4,14 +4,16 @@ import React, { useRef, useEffect, useCallback } from "react";
  * StaticMapCanvas — Dark street map of Uberlândia with pulsing MS Eletric pin
  */
 
-const BG = "#1a1a2e";
-const BLOCK_FILL = "rgba(30, 30, 50, 0.9)";
-const STREET_MAIN = "rgba(60, 60, 80, 0.8)";
-const STREET_SEC = "rgba(45, 45, 65, 0.6)";
-const LABEL_MAIN = "rgba(100, 160, 255, 0.7)";
-const LABEL_SEC = "rgba(100, 160, 255, 0.45)";
-const ORANGE = "hsl(11, 81%, 57%)";
-const ORANGE_GLOW = "hsla(11, 81%, 57%, 0.35)";
+// Google Maps dark mode palette aligned with MS Eletric brand (#000 bg, #FF4D22 orange)
+const BG = "#0e0e0e";
+const BLOCK_FILL = "#1c1c1c";
+const BLOCK_FILL_ALT = "#222222";
+const STREET_MAIN = "rgba(55, 55, 58, 0.95)";
+const STREET_SEC = "rgba(40, 40, 44, 0.75)";
+const LABEL_MAIN = "rgba(130, 175, 255, 0.65)";
+const LABEL_SEC = "rgba(130, 175, 255, 0.4)";
+const ORANGE = "#FF4D22";
+const ORANGE_GLOW = "rgba(255, 77, 34, 0.30)";
 
 interface Street {
   name: string;
