@@ -1,11 +1,10 @@
 import React, { useRef, useMemo, useEffect, useState } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
-import { OrbitControls, Sphere, Html } from "@react-three/drei";
+import { OrbitControls, Sphere, Line } from "@react-three/drei";
 import * as THREE from "three";
 import { MapPin, Phone, Clock, Star, ExternalLink } from "lucide-react";
 import { motion } from "framer-motion";
 
-// Uberlândia coordinates
 const UBERLANDIA_LAT = -18.9186;
 const UBERLANDIA_LNG = -48.2772;
 const GLOBE_RADIUS = 2;
@@ -20,45 +19,37 @@ function latLngToVector3(lat: number, lng: number, radius: number): THREE.Vector
   );
 }
 
-// Grid lines on the globe
 function GlobeGrid() {
-  const gridRef = useRef<THREE.Group>(null);
-
-  const gridLines = useMemo(() => {
-    const lines: JSX.Element[] = [];
-    // Latitude lines
+  const lines = useMemo(() => {
+    const result: { points: [number, number, number][] }[] = [];
     for (let lat = -60; lat <= 60; lat += 30) {
-      const points: THREE.Vector3[] = [];
-      for (let lng = 0; lng <= 360; lng += 2) {
-        points.push(latLngToVector3(lat, lng - 180, GLOBE_RADIUS + 0.005));
+      const pts: [number, number, number][] = [];
+      for (let lng = 0; lng <= 360; lng += 4) {
+        const v = latLngToVector3(lat, lng - 180, GLOBE_RADIUS + 0.005);
+        pts.push([v.x, v.y, v.z]);
       }
-      const geometry = new THREE.BufferGeometry().setFromPoints(points);
-      lines.push(
-        <line key={`lat-${lat}`} geometry={geometry}>
-          <lineBasicMaterial color="hsl(11, 81%, 57%)" transparent opacity={0.08} />
-        </line>
-      );
+      result.push({ points: pts });
     }
-    // Longitude lines
     for (let lng = -180; lng < 180; lng += 30) {
-      const points: THREE.Vector3[] = [];
-      for (let lat = -90; lat <= 90; lat += 2) {
-        points.push(latLngToVector3(lat, lng, GLOBE_RADIUS + 0.005));
+      const pts: [number, number, number][] = [];
+      for (let lat = -90; lat <= 90; lat += 4) {
+        const v = latLngToVector3(lat, lng, GLOBE_RADIUS + 0.005);
+        pts.push([v.x, v.y, v.z]);
       }
-      const geometry = new THREE.BufferGeometry().setFromPoints(points);
-      lines.push(
-        <line key={`lng-${lng}`} geometry={geometry}>
-          <lineBasicMaterial color="hsl(11, 81%, 57%)" transparent opacity={0.08} />
-        </line>
-      );
+      result.push({ points: pts });
     }
-    return lines;
+    return result;
   }, []);
 
-  return <group ref={gridRef}>{gridLines}</group>;
+  return (
+    <group>
+      {lines.map((l, i) => (
+        <Line key={i} points={l.points} color="#FF4D22" lineWidth={0.5} transparent opacity={0.08} />
+      ))}
+    </group>
+  );
 }
 
-// Floating particles
 function Particles() {
   const count = 200;
   const ref = useRef<THREE.Points>(null);
@@ -77,65 +68,52 @@ function Particles() {
   }, []);
 
   useFrame((_, delta) => {
-    if (ref.current) {
-      ref.current.rotation.y += delta * 0.02;
-    }
+    if (ref.current) ref.current.rotation.y += delta * 0.02;
   });
 
   return (
     <points ref={ref}>
       <bufferGeometry>
-        <bufferAttribute
-          attach="attributes-position"
-          args={[positions, 3]}
-        />
+        <bufferAttribute attach="attributes-position" args={[positions, 3]} />
       </bufferGeometry>
-      <pointsMaterial
-        size={0.015}
-        color="hsl(11, 81%, 57%)"
-        transparent
-        opacity={0.4}
-        sizeAttenuation
-      />
+      <pointsMaterial size={0.015} color="#FF4D22" transparent opacity={0.4} sizeAttenuation />
     </points>
   );
 }
 
-// Animated pin at Uberlândia
 function LocationPin() {
-  const pinPos = useMemo(() => latLngToVector3(UBERLANDIA_LAT, UBERLANDIA_LNG, GLOBE_RADIUS), []);
   const pinRef = useRef<THREE.Group>(null);
   const ringRef = useRef<THREE.Mesh>(null);
 
   useFrame((state) => {
+    const t = state.clock.elapsedTime;
     if (pinRef.current) {
-      // Slight float
       pinRef.current.position.copy(
-        latLngToVector3(UBERLANDIA_LAT, UBERLANDIA_LNG, GLOBE_RADIUS + 0.02 + Math.sin(state.clock.elapsedTime * 2) * 0.015)
+        latLngToVector3(UBERLANDIA_LAT, UBERLANDIA_LNG, GLOBE_RADIUS + 0.02 + Math.sin(t * 2) * 0.015)
       );
     }
     if (ringRef.current) {
-      const scale = 1 + Math.sin(state.clock.elapsedTime * 1.5) * 0.3;
+      const scale = 1 + Math.sin(t * 1.5) * 0.3;
       ringRef.current.scale.set(scale, scale, scale);
-      (ringRef.current.material as THREE.MeshBasicMaterial).opacity = 0.6 - Math.sin(state.clock.elapsedTime * 1.5) * 0.3;
+      (ringRef.current.material as THREE.MeshBasicMaterial).opacity = 0.6 - Math.sin(t * 1.5) * 0.3;
     }
   });
 
+  const surfacePos = latLngToVector3(UBERLANDIA_LAT, UBERLANDIA_LNG, GLOBE_RADIUS);
+  const normal = surfacePos.clone().normalize();
+
   return (
     <group>
-      {/* Pulsing ring on surface */}
-      <mesh ref={ringRef} position={pinPos} lookAt={new THREE.Vector3(0, 0, 0)}>
+      <mesh ref={ringRef} position={surfacePos} quaternion={new THREE.Quaternion().setFromUnitVectors(new THREE.Vector3(0, 0, 1), normal)}>
         <ringGeometry args={[0.06, 0.08, 32]} />
         <meshBasicMaterial color="#FF4D22" transparent opacity={0.5} side={THREE.DoubleSide} />
       </mesh>
 
-      {/* Pin dot */}
-      <group ref={pinRef} position={pinPos}>
+      <group ref={pinRef} position={surfacePos}>
         <mesh>
           <sphereGeometry args={[0.035, 16, 16]} />
           <meshBasicMaterial color="#FF4D22" />
         </mesh>
-        {/* Glow */}
         <mesh>
           <sphereGeometry args={[0.06, 16, 16]} />
           <meshBasicMaterial color="#FF4D22" transparent opacity={0.15} />
@@ -145,13 +123,14 @@ function LocationPin() {
   );
 }
 
-// Simple stylized continent outlines (simplified)
 function ContinentOutlines() {
-  const outlineRef = useRef<THREE.Group>(null);
-
-  // Simplified continent shapes as arc segments
   const continents = useMemo(() => {
-    // South America simplified outline points
+    const toPoints = (coords: [number, number][]): [number, number, number][] =>
+      coords.map(([lat, lng]) => {
+        const v = latLngToVector3(lat, lng, GLOBE_RADIUS + 0.003);
+        return [v.x, v.y, v.z] as [number, number, number];
+      });
+
     const southAmerica: [number, number][] = [
       [-12, -35], [-10, -37], [-8, -35], [-5, -35], [-2, -44],
       [2, -50], [5, -55], [5, -60], [3, -65], [0, -68],
@@ -162,7 +141,6 @@ function ContinentOutlines() {
       [-25, -46], [-20, -40], [-15, -39], [-12, -35],
     ];
 
-    // Brazil highlight region
     const brazil: [number, number][] = [
       [-5, -35], [-3, -38], [-2, -44], [0, -49], [2, -52],
       [4, -55], [4, -60], [2, -64], [-2, -67], [-5, -69],
@@ -171,7 +149,6 @@ function ContinentOutlines() {
       [-23, -43], [-18, -40], [-13, -39], [-8, -35], [-5, -35],
     ];
 
-    // North America simplified
     const northAmerica: [number, number][] = [
       [10, -85], [15, -88], [20, -90], [25, -95], [28, -97],
       [30, -100], [32, -105], [35, -110], [38, -115], [40, -120],
@@ -182,7 +159,6 @@ function ContinentOutlines() {
       [25, -80], [20, -87], [15, -88], [10, -85],
     ];
 
-    // Africa simplified
     const africa: [number, number][] = [
       [35, 0], [33, -5], [30, -10], [25, -15], [20, -17],
       [15, -17], [10, -15], [5, -10], [3, -5], [0, 5],
@@ -190,85 +166,41 @@ function ContinentOutlines() {
       [-20, 25], [-25, 28], [-30, 30], [-33, 28], [-35, 22],
       [-33, 18], [-30, 15], [-25, 15], [-20, 12], [-15, 10],
       [-10, 8], [-5, 5], [0, 0], [5, -3], [10, -5],
-      [15, -8], [20, -10], [25, -5], [30, 0], [33, 5],
-      [35, 5], [35, 0],
+      [15, -8], [20, -10], [25, -5], [30, 0], [33, 5], [35, 0],
     ];
-
-    // Europe simplified
-    const europe: [number, number][] = [
-      [36, -5], [38, 0], [40, 5], [42, 3], [44, 5],
-      [46, 8], [48, 10], [50, 12], [52, 10], [54, 12],
-      [56, 14], [58, 16], [60, 18], [62, 20], [64, 22],
-      [66, 25], [68, 28], [70, 30], [68, 32], [65, 30],
-      [60, 28], [55, 25], [50, 20], [48, 18], [46, 15],
-      [44, 12], [42, 10], [40, 8], [38, 5], [36, -5],
-    ];
-
-    const createLine = (coords: [number, number][], color: string, opacity: number) => {
-      const points = coords.map(([lat, lng]) => latLngToVector3(lat, lng, GLOBE_RADIUS + 0.003));
-      const geometry = new THREE.BufferGeometry().setFromPoints(points);
-      return { geometry, color, opacity };
-    };
 
     return [
-      createLine(southAmerica, "#FF4D22", 0.25),
-      createLine(brazil, "#FF4D22", 0.45),
-      createLine(northAmerica, "#FF4D22", 0.18),
-      createLine(africa, "#FF4D22", 0.18),
-      createLine(europe, "#FF4D22", 0.18),
+      { points: toPoints(southAmerica), opacity: 0.25 },
+      { points: toPoints(brazil), opacity: 0.45 },
+      { points: toPoints(northAmerica), opacity: 0.18 },
+      { points: toPoints(africa), opacity: 0.18 },
     ];
   }, []);
 
-  useFrame((_, delta) => {
-    if (outlineRef.current) {
-      outlineRef.current.rotation.y += delta * 0.015;
-    }
-  });
+  const ref = useRef<THREE.Group>(null);
+  useFrame((_, delta) => { if (ref.current) ref.current.rotation.y += delta * 0.015; });
 
   return (
-    <group ref={outlineRef}>
+    <group ref={ref}>
       {continents.map((c, i) => (
-        <line key={i} geometry={c.geometry}>
-          <lineBasicMaterial color={c.color} transparent opacity={c.opacity} linewidth={1} />
-        </line>
+        <Line key={i} points={c.points} color="#FF4D22" lineWidth={1} transparent opacity={c.opacity} />
       ))}
     </group>
   );
 }
 
-// Globe with auto-rotation
 function Globe() {
   const globeRef = useRef<THREE.Group>(null);
-
-  useFrame((_, delta) => {
-    if (globeRef.current) {
-      globeRef.current.rotation.y += delta * 0.05;
-    }
-  });
+  useFrame((_, delta) => { if (globeRef.current) globeRef.current.rotation.y += delta * 0.05; });
 
   return (
     <group ref={globeRef}>
-      {/* Main sphere */}
       <Sphere args={[GLOBE_RADIUS, 64, 64]}>
-        <meshStandardMaterial
-          color="#0a0a0a"
-          roughness={0.9}
-          metalness={0.1}
-          transparent
-          opacity={0.95}
-        />
+        <meshStandardMaterial color="#0a0a0a" roughness={0.9} metalness={0.1} transparent opacity={0.95} />
       </Sphere>
-
-      {/* Atmosphere glow */}
       <Sphere args={[GLOBE_RADIUS + 0.04, 64, 64]}>
-        <meshBasicMaterial
-          color="#FF4D22"
-          transparent
-          opacity={0.03}
-          side={THREE.BackSide}
-        />
+        <meshBasicMaterial color="#FF4D22" transparent opacity={0.03} side={THREE.BackSide} />
       </Sphere>
-
       <GlobeGrid />
       <ContinentOutlines />
       <LocationPin />
@@ -276,19 +208,15 @@ function Globe() {
   );
 }
 
-// Camera auto-position
 function CameraController() {
   const { camera } = useThree();
-
   useEffect(() => {
     camera.position.set(3, 1.5, 3);
     camera.lookAt(0, 0, 0);
   }, [camera]);
-
   return null;
 }
 
-// Main component
 const LocationGlobe = () => {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -303,62 +231,38 @@ const LocationGlobe = () => {
   }, []);
 
   return (
-    <section
-      ref={sectionRef}
-      id="localizacao"
-      className="relative py-24 md:py-32 overflow-hidden"
-      style={{ background: "#000" }}
-    >
-      {/* Subtle gradient background */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background: "radial-gradient(ellipse at 30% 50%, hsl(11 81% 57% / 0.04) 0%, transparent 60%)",
-        }}
-      />
+    <section ref={sectionRef} id="localizacao" className="relative py-24 md:py-32 overflow-hidden" style={{ background: "#000" }}>
+      <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse at 30% 50%, hsl(11 81% 57% / 0.04) 0%, transparent 60%)" }} />
 
       <div className="container mx-auto px-6 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          {/* Left — 3D Globe */}
+          {/* 3D Globe */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={isVisible ? { opacity: 1, scale: 1 } : {}}
             transition={{ duration: 0.8, ease: [0.25, 0.8, 0.25, 1] }}
             className="relative aspect-square max-w-[500px] mx-auto w-full"
           >
-            <Canvas
-              camera={{ fov: 45, near: 0.1, far: 100 }}
-              dpr={[1, 2]}
-              style={{ background: "transparent" }}
-            >
+            <Canvas camera={{ fov: 45, near: 0.1, far: 100 }} dpr={[1, 2]} style={{ background: "transparent" }}>
               <CameraController />
               <ambientLight intensity={0.3} />
               <directionalLight position={[5, 5, 5]} intensity={0.5} color="#FF4D22" />
               <directionalLight position={[-5, -3, -5]} intensity={0.2} color="#ffffff" />
               <Globe />
               <Particles />
-              <OrbitControls
-                enableZoom={false}
-                enablePan={false}
-                autoRotate={false}
-                minPolarAngle={Math.PI / 3}
-                maxPolarAngle={Math.PI / 1.5}
-              />
+              <OrbitControls enableZoom={false} enablePan={false} autoRotate={false} minPolarAngle={Math.PI / 3} maxPolarAngle={Math.PI / 1.5} />
             </Canvas>
-
-            {/* Corner decoration */}
             <div className="absolute top-0 left-0 w-16 h-16 border-t border-l rounded-tl-xl pointer-events-none" style={{ borderColor: "hsl(11 81% 57% / 0.15)" }} />
             <div className="absolute bottom-0 right-0 w-16 h-16 border-b border-r rounded-br-xl pointer-events-none" style={{ borderColor: "hsl(11 81% 57% / 0.15)" }} />
           </motion.div>
 
-          {/* Right — Info */}
+          {/* Info */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             animate={isVisible ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
             className="space-y-8"
           >
-            {/* Header */}
             <div>
               <motion.p
                 initial={{ opacity: 0, y: 10 }}
@@ -378,33 +282,12 @@ const LocationGlobe = () => {
               </p>
             </div>
 
-            {/* Info cards */}
             <div className="space-y-3">
               {[
-                {
-                  icon: MapPin,
-                  label: "Endereço",
-                  value: "Av. João Pinheiro, 3747 – Brasil",
-                  sub: "Uberlândia – MG, 38400-714",
-                },
-                {
-                  icon: Phone,
-                  label: "Telefone",
-                  value: "(34) 3222-8899",
-                  sub: null,
-                },
-                {
-                  icon: Clock,
-                  label: "Horário",
-                  value: "Seg – Sex: 8h às 18h",
-                  sub: "Sáb: 8h às 12h",
-                },
-                {
-                  icon: Star,
-                  label: "Avaliação",
-                  value: "4.3 ★★★★☆ no Google",
-                  sub: null,
-                },
+                { icon: MapPin, label: "Endereço", value: "Av. João Pinheiro, 3747 – Brasil", sub: "Uberlândia – MG, 38400-714" },
+                { icon: Phone, label: "Telefone", value: "(34) 3222-8899", sub: null },
+                { icon: Clock, label: "Horário", value: "Seg – Sex: 8h às 18h", sub: "Sáb: 8h às 12h" },
+                { icon: Star, label: "Avaliação", value: "4.3 ★★★★☆ no Google", sub: null },
               ].map((item, i) => (
                 <motion.div
                   key={item.label}
@@ -413,12 +296,8 @@ const LocationGlobe = () => {
                   transition={{ delay: 0.5 + i * 0.1, duration: 0.4 }}
                   className="group flex items-start gap-3 p-3 rounded-xl transition-all duration-300 hover:bg-white/[0.03]"
                   style={{ border: "1px solid transparent" }}
-                  onMouseEnter={(e) => {
-                    (e.currentTarget as HTMLElement).style.borderColor = "hsl(11 81% 57% / 0.15)";
-                  }}
-                  onMouseLeave={(e) => {
-                    (e.currentTarget as HTMLElement).style.borderColor = "transparent";
-                  }}
+                  onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.borderColor = "hsl(11 81% 57% / 0.15)"; }}
+                  onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.borderColor = "transparent"; }}
                 >
                   <div
                     className="shrink-0 w-9 h-9 rounded-lg flex items-center justify-center mt-0.5"
@@ -435,7 +314,6 @@ const LocationGlobe = () => {
               ))}
             </div>
 
-            {/* CTA */}
             <motion.a
               href="https://maps.app.goo.gl/7iwuPGQuN4rAhqRf8"
               target="_blank"
