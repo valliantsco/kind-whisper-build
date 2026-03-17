@@ -402,7 +402,7 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
 
       {/* Lead form headline */}
       <motion.p
-        className="text-sm font-semibold text-primary-foreground/70 leading-relaxed text-left"
+        className="text-sm font-semibold text-primary-foreground/70 leading-relaxed text-left" ref={formRef}
         initial={{ opacity: 0, y: 8 }}
         animate={{ opacity: 1, y: 0 }}
         transition={stagger(1.1)}

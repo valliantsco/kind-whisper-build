@@ -4,7 +4,8 @@ import { X, ArrowRight, ArrowLeft, Sparkles, Loader2, RotateCcw } from "lucide-r
 import { supabase } from "@/integrations/supabase/client";
 import type { QuizConfig, QuizResult } from "./types";
 import QuizStepView from "./QuizStepView";
-import QuizResultView from "./QuizResultView";
+import { lazy, Suspense } from "react";
+const QuizResultView = lazy(() => import("./QuizResultView"));
 import QuizDetailsStep from "./QuizDetailsStep";
 
 /* ── Animation variants ─────────────────────────────────────────── */
