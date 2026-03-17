@@ -735,35 +735,61 @@ const Header = ({ onContactClick }: HeaderProps) => {
                         />
                       </div>
 
-                      {/* Custom MS Eletric brand pin — traditional pin shape */}
+                      {/* Custom MS Eletric brand pin */}
                       <div className="absolute z-[5] pointer-events-none" style={{ top: "calc(44% + 40px)", left: "calc(48% + 60px)", transform: "translate(-50%, -100%)" }}>
-                        {/* Pulse ring on ground */}
-                        <div className="absolute bottom-[-8px] left-1/2 -translate-x-1/2">
-                          <div className="w-10 h-10 rounded-full animate-ping" style={{ background: "hsl(11 81% 57% / 0.15)", animationDuration: "2.5s" }} />
+                        {/* Pulse rings */}
+                        <div className="absolute -bottom-1 left-1/2 -translate-x-1/2">
+                          <div className="w-8 h-8 rounded-full animate-ping" style={{ background: "hsl(11 81% 57% / 0.2)", animationDuration: "2.5s" }} />
+                        </div>
+                        <div className="absolute -bottom-1 left-1/2 -translate-x-1/2">
+                          <div className="w-5 h-5 rounded-full" style={{ background: "hsl(11 81% 57% / 0.35)", animationDuration: "3s" }} />
                         </div>
 
-                        {/* Pin SVG — traditional teardrop shape */}
-                        <div className="relative flex flex-col items-center" style={{ filter: "drop-shadow(0 4px 12px hsl(11 81% 57% / 0.5)) drop-shadow(0 8px 24px hsl(0 0% 0% / 0.4))" }}>
-                          <svg width="36" height="48" viewBox="0 0 36 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            {/* Pin shape — teardrop */}
+                        {/* Pin body */}
+                        <div className="relative flex flex-col items-center" style={{ filter: "drop-shadow(0 6px 16px hsl(11 81% 57% / 0.6)) drop-shadow(0 2px 4px hsl(0 0% 0% / 0.5))" }}>
+                          <svg width="44" height="58" viewBox="0 0 44 58" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <defs>
-                              <linearGradient id="pinGrad" x1="0" y1="0" x2="1" y2="1">
-                                <stop offset="0%" stopColor="hsl(11, 81%, 62%)" />
-                                <stop offset="100%" stopColor="hsl(11, 81%, 42%)" />
+                              <linearGradient id="pinGrad" x1="0" y1="0" x2="0.5" y2="1">
+                                <stop offset="0%" stopColor="hsl(11, 81%, 64%)" />
+                                <stop offset="50%" stopColor="hsl(11, 81%, 54%)" />
+                                <stop offset="100%" stopColor="hsl(11, 81%, 38%)" />
                               </linearGradient>
+                              <radialGradient id="pinShine" cx="0.35" cy="0.25" r="0.6">
+                                <stop offset="0%" stopColor="white" stopOpacity="0.25" />
+                                <stop offset="100%" stopColor="white" stopOpacity="0" />
+                              </radialGradient>
+                              <clipPath id="pinClip">
+                                <path d="M22 0C9.85 0 0 9.85 0 22c0 15.4 19.8 34.6 20.9 35.7a1.5 1.5 0 002.2 0C24.2 56.6 44 37.4 44 22 44 9.85 34.15 0 22 0z" />
+                              </clipPath>
                             </defs>
-                            <path d="M18 0C8.06 0 0 8.06 0 18c0 12.6 16.2 28.4 17.1 29.3a1.2 1.2 0 001.8 0C19.8 46.4 36 30.6 36 18 36 8.06 27.94 0 18 0z" fill="url(#pinGrad)" />
-                            <path d="M18 0C8.06 0 0 8.06 0 18c0 12.6 16.2 28.4 17.1 29.3a1.2 1.2 0 001.8 0C19.8 46.4 36 30.6 36 18 36 8.06 27.94 0 18 0z" fill="white" fillOpacity="0.08" />
-                            {/* Inner circle */}
-                            <circle cx="18" cy="17" r="9" fill="hsl(0, 0%, 0%)" fillOpacity="0.25" />
-                            <circle cx="18" cy="17" r="8" fill="white" fillOpacity="0.15" />
+                            {/* Main shape */}
+                            <path d="M22 0C9.85 0 0 9.85 0 22c0 15.4 19.8 34.6 20.9 35.7a1.5 1.5 0 002.2 0C24.2 56.6 44 37.4 44 22 44 9.85 34.15 0 22 0z" fill="url(#pinGrad)" />
+                            {/* Shine overlay */}
+                            <path d="M22 0C9.85 0 0 9.85 0 22c0 15.4 19.8 34.6 20.9 35.7a1.5 1.5 0 002.2 0C24.2 56.6 44 37.4 44 22 44 9.85 34.15 0 22 0z" fill="url(#pinShine)" />
+                            {/* Inner white circle bg */}
+                            <circle cx="22" cy="21" r="14" fill="hsl(0, 0%, 0%)" fillOpacity="0.2" />
+                            <circle cx="22" cy="21" r="13" fill="white" fillOpacity="0.12" />
+                            {/* Subtle border ring */}
+                            <circle cx="22" cy="21" r="13.5" stroke="white" strokeOpacity="0.2" strokeWidth="0.5" fill="none" />
                           </svg>
-                          {/* Logo inside pin */}
-                          <img src={msShieldLogo} alt="MS Eletric" className="absolute top-[5px] left-1/2 -translate-x-1/2 w-[26px] h-[26px] object-contain drop-shadow-sm" style={{ filter: "brightness(0) invert(1)" }} />
+                          {/* Shield logo */}
+                          <img 
+                            src={msShieldLogo} 
+                            alt="MS Eletric" 
+                            className="absolute object-contain" 
+                            style={{ 
+                              top: "8px", 
+                              left: "50%", 
+                              transform: "translateX(-50%)", 
+                              width: "24px", 
+                              height: "24px", 
+                              filter: "brightness(0) invert(1) drop-shadow(0 1px 2px hsl(0 0% 0% / 0.3))" 
+                            }} 
+                          />
                         </div>
 
-                        {/* Shadow on ground */}
-                        <div className="w-5 h-2 rounded-full mx-auto -mt-0.5 opacity-50" style={{ background: "hsl(0 0% 0% / 0.5)", filter: "blur(3px)" }} />
+                        {/* Ground shadow */}
+                        <div className="w-6 h-[3px] rounded-full mx-auto -mt-0.5" style={{ background: "hsl(0 0% 0% / 0.45)", filter: "blur(3px)" }} />
                       </div>
                       <div className="absolute bottom-0 left-0 right-0 z-10 px-4 py-3 flex items-center justify-between" style={{ background: "linear-gradient(to top, hsl(0 0% 0% / 0.9), transparent)" }}>
                         <span className="text-[10.5px] text-white/50" style={{ fontFamily: "Verdana, sans-serif" }}>Uberlândia, MG</span>
