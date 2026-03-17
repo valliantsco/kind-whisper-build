@@ -721,21 +721,16 @@ const Header = ({ onContactClick }: HeaderProps) => {
                         window.open("https://maps.app.goo.gl/7iwuPGQuN4rAhqRf8", "_blank");
                       }}
                     >
-                      {/* Video background */}
-                      <video
-                        autoPlay
-                        loop
-                        muted
-                        playsInline
-                        className="absolute inset-0 w-full h-full object-cover"
-                        src="https://ppmoesqgmficvajqbamr.supabase.co/storage/v1/object/public/videos/globe-zoom-uberlandia.mp4"
-                      />
+                      {/* Canvas globe zoom animation */}
+                      <div className="absolute inset-0">
+                        <GlobeZoomCanvas />
+                      </div>
 
-                      {/* Dark overlay gradient */}
+                      {/* Bottom gradient for text readability */}
                       <div
-                        className="absolute inset-0"
+                        className="absolute inset-0 pointer-events-none"
                         style={{
-                          background: "linear-gradient(180deg, hsl(0 0% 0% / 0.3) 0%, hsl(0 0% 0% / 0.15) 40%, hsl(0 0% 0% / 0.7) 100%)",
+                          background: "linear-gradient(180deg, transparent 40%, hsl(0 0% 3% / 0.85) 100%)",
                         }}
                       />
 
