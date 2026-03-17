@@ -60,7 +60,7 @@ const NAV_ITEMS: NavItem[] = [
     hasDropdown: true,
     dropdownItems: [
       { label: "Nossa história", description: "Desde 2015 transformando a mobilidade urbana no Brasil com veículos elétricos acessíveis, seguros e sustentáveis.", href: "#sobre", icon: Building2 },
-      { label: "Localização", description: "Arujá, SP — Região metropolitana de São Paulo, próximo à Rodovia Presidente Dutra.", href: "#contato", icon: MapPin },
+      { label: "Localização", description: "Av. João Pinheiro, 3747 — Uberlândia, MG", href: "#contato", icon: MapPin },
     ],
   },
 ];
@@ -717,7 +717,7 @@ const Header = ({ onContactClick }: HeaderProps) => {
                       }}
                       onClick={() => {
                         setActiveDropdown(null);
-                        window.open("https://maps.google.com/?q=MS+Eletric+Aruja+SP", "_blank");
+                        window.open("https://maps.app.goo.gl/7iwuPGQuN4rAhqRf8", "_blank");
                       }}
                     >
                       <div
@@ -735,12 +735,16 @@ const Header = ({ onContactClick }: HeaderProps) => {
                       </div>
                       <div className="space-y-2.5 flex-1">
                         <div>
-                          <p className="text-[11px] font-medium text-white/60 mb-0.5">Sede</p>
-                          <p className="text-[11px] text-white/40 leading-relaxed">Arujá, SP — Região Metropolitana de São Paulo</p>
+                          <p className="text-[11px] font-medium text-white/60 mb-0.5">Endereço</p>
+                          <p className="text-[11px] text-white/40 leading-relaxed">Av. João Pinheiro, 3747 – Brasil<br/>Uberlândia – MG, 38400-714</p>
                         </div>
                         <div>
-                          <p className="text-[11px] font-medium text-white/60 mb-0.5">Referência</p>
-                          <p className="text-[11px] text-white/40 leading-relaxed">Próximo à Rod. Presidente Dutra</p>
+                          <p className="text-[11px] font-medium text-white/60 mb-0.5">Contato</p>
+                          <p className="text-[11px] text-white/40 leading-relaxed">(34) 3222-8899</p>
+                        </div>
+                        <div className="flex items-center gap-1.5">
+                          <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
+                          <p className="text-[10px] text-white/50">4.3 ⭐ no Google • mseletric.com</p>
                         </div>
                       </div>
                       <div className="mt-3 flex items-center gap-1.5 text-[10px] font-medium tracking-wide" style={{ color: "hsl(11 81% 57% / 0.8)" }}>
