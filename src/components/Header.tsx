@@ -773,11 +773,11 @@ const Header = ({ onContactClick }: HeaderProps) => {
                             alt="MS Eletric" 
                             className="absolute object-contain" 
                             style={{ 
-                              top: "8px", 
+                              top: "5px", 
                               left: "50%", 
                               transform: "translateX(-50%)", 
-                              width: "24px", 
-                              height: "24px", 
+                              width: "22px", 
+                              height: "22px", 
                               filter: "brightness(0) invert(1) drop-shadow(0 1px 2px hsl(0 0% 0% / 0.3))" 
                             }} 
                           />
