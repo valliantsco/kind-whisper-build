@@ -735,34 +735,35 @@ const Header = ({ onContactClick }: HeaderProps) => {
                         />
                       </div>
 
-                      {/* Custom MS Eletric brand pin */}
-                      <div className="absolute inset-0 z-[5] flex items-center justify-center pointer-events-none">
-                        {/* Pulse ring */}
-                        <div className="absolute w-16 h-16 rounded-full animate-ping" style={{ background: "hsl(11 81% 57% / 0.15)", animationDuration: "2.5s" }} />
-                        <div className="absolute w-12 h-12 rounded-full" style={{ background: "hsl(11 81% 57% / 0.1)", boxShadow: "0 0 30px hsl(11 81% 57% / 0.2)" }} />
-                        {/* Pin body */}
-                        <div className="relative flex flex-col items-center">
-                          <div
-                            className="w-10 h-10 rounded-full flex items-center justify-center"
-                            style={{
-                              background: "linear-gradient(135deg, hsl(11 81% 57%), hsl(11 81% 45%))",
-                              boxShadow: "0 4px 20px hsl(11 81% 57% / 0.5), 0 0 40px hsl(11 81% 57% / 0.2), inset 0 1px 0 hsl(0 0% 100% / 0.2)",
-                              border: "2px solid hsl(0 0% 100% / 0.25)",
-                            }}
-                          >
-                            <span className="text-white font-bold text-[10px] tracking-[0.1em]" style={{ fontFamily: "Verdana, sans-serif" }}>MS</span>
-                          </div>
-                          {/* Pin tail */}
-                          <div
-                            className="w-2.5 h-2.5 rotate-45 -mt-1.5"
-                            style={{
-                              background: "linear-gradient(135deg, hsl(11 81% 45%), hsl(11 81% 40%))",
-                              boxShadow: "2px 2px 8px hsl(11 81% 57% / 0.3)",
-                            }}
-                          />
-                          {/* Shadow on ground */}
-                          <div className="w-6 h-1.5 rounded-full mt-1 opacity-40" style={{ background: "hsl(0 0% 0% / 0.6)", filter: "blur(2px)" }} />
+                      {/* Custom MS Eletric brand pin — traditional pin shape */}
+                      <div className="absolute z-[5] pointer-events-none" style={{ top: "42%", left: "50%", transform: "translate(-50%, -100%)" }}>
+                        {/* Pulse ring on ground */}
+                        <div className="absolute bottom-[-8px] left-1/2 -translate-x-1/2">
+                          <div className="w-10 h-10 rounded-full animate-ping" style={{ background: "hsl(11 81% 57% / 0.15)", animationDuration: "2.5s" }} />
                         </div>
+
+                        {/* Pin SVG — traditional teardrop shape */}
+                        <div className="relative flex flex-col items-center" style={{ filter: "drop-shadow(0 4px 12px hsl(11 81% 57% / 0.5)) drop-shadow(0 8px 24px hsl(0 0% 0% / 0.4))" }}>
+                          <svg width="36" height="48" viewBox="0 0 36 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            {/* Pin shape — teardrop */}
+                            <defs>
+                              <linearGradient id="pinGrad" x1="0" y1="0" x2="1" y2="1">
+                                <stop offset="0%" stopColor="hsl(11, 81%, 62%)" />
+                                <stop offset="100%" stopColor="hsl(11, 81%, 42%)" />
+                              </linearGradient>
+                            </defs>
+                            <path d="M18 0C8.06 0 0 8.06 0 18c0 12.6 16.2 28.4 17.1 29.3a1.2 1.2 0 001.8 0C19.8 46.4 36 30.6 36 18 36 8.06 27.94 0 18 0z" fill="url(#pinGrad)" />
+                            <path d="M18 0C8.06 0 0 8.06 0 18c0 12.6 16.2 28.4 17.1 29.3a1.2 1.2 0 001.8 0C19.8 46.4 36 30.6 36 18 36 8.06 27.94 0 18 0z" fill="white" fillOpacity="0.08" />
+                            {/* Inner circle */}
+                            <circle cx="18" cy="17" r="9" fill="hsl(0, 0%, 0%)" fillOpacity="0.25" />
+                            <circle cx="18" cy="17" r="8" fill="white" fillOpacity="0.15" />
+                          </svg>
+                          {/* MS text inside pin */}
+                          <span className="absolute top-[10px] left-1/2 -translate-x-1/2 text-white font-bold text-[11px] tracking-[0.12em]" style={{ fontFamily: "Verdana, sans-serif", textShadow: "0 1px 3px hsl(0 0% 0% / 0.4)" }}>MS</span>
+                        </div>
+
+                        {/* Shadow on ground */}
+                        <div className="w-5 h-2 rounded-full mx-auto -mt-0.5 opacity-50" style={{ background: "hsl(0 0% 0% / 0.5)", filter: "blur(3px)" }} />
                       </div>
                       <div className="absolute bottom-0 left-0 right-0 z-10 px-4 py-3 flex items-center justify-between" style={{ background: "linear-gradient(to top, hsl(0 0% 0% / 0.9), transparent)" }}>
                         <span className="text-[10.5px] text-white/50" style={{ fontFamily: "Verdana, sans-serif" }}>Uberlândia, MG</span>
