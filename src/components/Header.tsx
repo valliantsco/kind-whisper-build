@@ -641,27 +641,27 @@ const Header = ({ onContactClick }: HeaderProps) => {
                     </div>
                   </>
                 ) : (
-                  /* Icon-based list (Suporte) — premium glassmorphism cards */
-                  <div className={`grid gap-4 grid-cols-1 md:grid-cols-${activeItem.dropdownItems.length}`}>
+                  /* Icon-based list (Suporte) — compact horizontal cards */
+                  <div className="flex gap-3">
                     {activeItem.dropdownItems.map((dropItem, i) => {
                       const Icon = dropItem.icon;
                       return (
                         <motion.button
                           key={dropItem.label}
-                          initial={{ opacity: 0, y: 14 }}
+                          initial={{ opacity: 0, y: 10 }}
                           animate={{ opacity: 1, y: 0 }}
-                          transition={{ delay: i * 0.08, duration: 0.35, ease: "easeOut" }}
-                          className="group/item relative flex flex-col items-center text-center rounded-2xl p-6 pb-5 cursor-pointer overflow-hidden"
+                          transition={{ delay: i * 0.07, duration: 0.3, ease: "easeOut" }}
+                          className="group/item relative flex items-center gap-3 rounded-xl px-4 py-3 cursor-pointer overflow-hidden flex-1"
                           style={{
-                            background: "linear-gradient(160deg, hsl(0 0% 12% / 0.8), hsl(0 0% 8% / 0.9))",
+                            background: "linear-gradient(160deg, hsl(0 0% 12% / 0.6), hsl(0 0% 8% / 0.7))",
                             border: "1px solid hsl(0 0% 100% / 0.06)",
                             transition: "border-color 0.3s, box-shadow 0.3s, transform 0.3s",
                           }}
                           onMouseEnter={(e) => {
                             const el = e.currentTarget as HTMLElement;
-                            el.style.borderColor = "hsl(11 81% 57% / 0.35)";
-                            el.style.boxShadow = "0 8px 32px hsl(11 81% 57% / 0.12), inset 0 1px 0 hsl(0 0% 100% / 0.04)";
-                            el.style.transform = "translateY(-2px)";
+                            el.style.borderColor = "hsl(11 81% 57% / 0.3)";
+                            el.style.boxShadow = "0 4px 20px hsl(11 81% 57% / 0.1)";
+                            el.style.transform = "translateY(-1px)";
                           }}
                           onMouseLeave={(e) => {
                             const el = e.currentTarget as HTMLElement;
@@ -679,35 +679,28 @@ const Header = ({ onContactClick }: HeaderProps) => {
                             }
                           }}
                         >
-                          {/* Subtle top light strip */}
+                          {/* Top light strip on hover */}
                           <div
                             className="absolute top-0 left-0 right-0 h-[1px] opacity-0 group-hover/item:opacity-100 transition-opacity duration-500"
-                            style={{ background: "linear-gradient(90deg, transparent, hsl(11 81% 57% / 0.5), transparent)" }}
-                          />
-
-                          {/* Background glow on hover */}
-                          <div
-                            className="absolute inset-0 opacity-0 group-hover/item:opacity-100 transition-opacity duration-500 pointer-events-none"
-                            style={{ background: "radial-gradient(ellipse at center 40%, hsl(11 81% 57% / 0.06), transparent 70%)" }}
+                            style={{ background: "linear-gradient(90deg, transparent, hsl(11 81% 57% / 0.4), transparent)" }}
                           />
 
                           {Icon && (
                             <div
-                              className="relative shrink-0 w-12 h-12 rounded-xl flex items-center justify-center mb-4 transition-all duration-300 group-hover/item:scale-110"
+                              className="relative shrink-0 w-9 h-9 rounded-lg flex items-center justify-center transition-all duration-300 group-hover/item:scale-105"
                               style={{
-                                background: "linear-gradient(135deg, hsl(11 81% 57% / 0.12), hsl(11 81% 57% / 0.04))",
-                                border: "1px solid hsl(11 81% 57% / 0.2)",
-                                boxShadow: "0 4px 16px hsl(11 81% 57% / 0.08)",
+                                background: "hsl(11 81% 57% / 0.1)",
+                                border: "1px solid hsl(11 81% 57% / 0.18)",
                               }}
                             >
-                              <Icon className="w-5 h-5" style={{ color: "hsl(11 81% 57%)" }} />
+                              <Icon className="w-4 h-4" style={{ color: "hsl(11 81% 57%)" }} />
                             </div>
                           )}
-                          <div className="relative">
-                            <span className="text-[13px] font-bold text-white/90 tracking-wide uppercase group-hover/item:text-white transition-colors duration-300">
+                          <div className="relative text-left">
+                            <span className="text-[12px] font-semibold text-white/90 tracking-wide group-hover/item:text-white transition-colors duration-300">
                               {dropItem.label}
                             </span>
-                            <p className="text-[11px] text-white/35 mt-1.5 leading-relaxed group-hover/item:text-white/50 transition-colors duration-300">
+                            <p className="text-[10px] text-white/35 mt-0.5 leading-relaxed group-hover/item:text-white/50 transition-colors duration-300">
                               {dropItem.description}
                             </p>
                           </div>
