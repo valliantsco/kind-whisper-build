@@ -150,17 +150,23 @@ const StaticMapCanvas: React.FC<{ className?: string }> = ({ className = "" }) =
       const lx = cx + lm.x * scale;
       const ly = cy + lm.y * scale;
 
-      // Icon circle
+      // Icon circle — Google Maps style blue dot
       ctx.beginPath();
-      ctx.arc(lx, ly, 6, 0, Math.PI * 2);
-      ctx.fillStyle = "rgba(80, 80, 120, 0.6)";
+      ctx.arc(lx, ly, 5, 0, Math.PI * 2);
+      ctx.fillStyle = "rgba(50, 50, 60, 0.85)";
       ctx.fill();
-      ctx.strokeStyle = "rgba(100, 160, 255, 0.4)";
-      ctx.lineWidth = 1;
+      ctx.strokeStyle = "rgba(100, 140, 220, 0.5)";
+      ctx.lineWidth = 1.2;
       ctx.stroke();
 
+      // Inner dot
+      ctx.beginPath();
+      ctx.arc(lx, ly, 2, 0, Math.PI * 2);
+      ctx.fillStyle = "rgba(100, 140, 220, 0.7)";
+      ctx.fill();
+
       // Label (multiline)
-      ctx.font = `bold ${lmFontSize}px -apple-system, sans-serif`;
+      ctx.font = `bold ${lmFontSize}px -apple-system, BlinkMacSystemFont, sans-serif`;
       ctx.fillStyle = LABEL_MAIN;
       const lines = lm.name.split("\n");
       lines.forEach((line, i) => {
