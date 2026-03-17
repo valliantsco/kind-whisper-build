@@ -431,20 +431,27 @@ const QuizResultView = ({ result, whatsappNumber, onReset }: QuizResultViewProps
             <span className="text-[10px] font-semibold uppercase tracking-[0.14em] text-primary-foreground/50 group-hover:text-primary/80 transition-colors duration-200">
               Fale com um especialista
             </span>
-            <motion.div
-              className="relative"
-              animate={{ y: [0, 6, 0] }}
-              transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
-            >
-              <ChevronDown className="w-5 h-5 text-primary/70 group-hover:text-primary transition-colors duration-200" />
-              {/* Glow pulse behind chevron */}
+            <div className="relative flex flex-col items-center -space-y-2">
               <motion.div
-                className="absolute inset-0 rounded-full blur-md"
-                style={{ background: "hsl(var(--primary) / 0.3)" }}
-                animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.5, 1] }}
+                animate={{ y: [0, 6, 0] }}
+                transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
+              >
+                <ChevronDown className="w-5 h-5 text-primary/70 group-hover:text-primary transition-colors duration-200" />
+              </motion.div>
+              <motion.div
+                animate={{ y: [0, 6, 0] }}
+                transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut", delay: 0.25 }}
+              >
+                <ChevronDown className="w-5 h-5 text-primary/40 group-hover:text-primary/70 transition-colors duration-200" />
+              </motion.div>
+              {/* Glow pulse */}
+              <motion.div
+                className="absolute inset-0 rounded-full blur-md pointer-events-none"
+                style={{ background: "hsl(var(--primary) / 0.25)" }}
+                animate={{ opacity: [0.2, 0.6, 0.2], scale: [1, 1.4, 1] }}
                 transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
               />
-            </motion.div>
+            </div>
           </motion.button>
         )}
       </AnimatePresence>
