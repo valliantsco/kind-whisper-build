@@ -643,7 +643,7 @@ const Header = ({ onContactClick }: HeaderProps) => {
                   </>
                 ) : activeItem.label === "Sobre nós" ? (
                   /* Two-panel layout for Sobre Nós */
-                  <div className="flex gap-4">
+                  <div className="flex gap-4" style={{ height: "280px" }}>
                     {/* Left panel — Company overview */}
                     <motion.div
                       initial={{ opacity: 0, y: 10 }}
