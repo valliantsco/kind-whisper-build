@@ -55,16 +55,7 @@ const NAV_ITEMS: NavItem[] = [
       { label: "Patinetes", description: "Leves, ágeis e práticos para curtas distâncias", href: "#modelos", image: categoryScooter, video: "https://ppmoesqgmficvajqbamr.supabase.co/storage/v1/object/public/videos/patinetes.mp4" },
     ],
   },
-  {
-    label: "Sobre nós",
-    href: "#sobre",
-    hasDropdown: true,
-    dropdownItems: [
-      { label: "Nossa Missão", description: "Democratizar a mobilidade elétrica no Brasil, oferecendo veículos acessíveis, eficientes e sustentáveis para todos.", href: "#sobre", icon: Compass },
-      { label: "Nossa Visão", description: "Ser referência nacional em mobilidade elétrica urbana, liderando a transição para um transporte mais limpo e inteligente.", href: "#sobre", icon: BarChart3 },
-      { label: "Nossa História", description: "Desde 2015, transformando a mobilidade urbana em Uberlândia e expandindo para todo o Brasil com inovação e compromisso.", href: "#sobre", icon: BookOpen },
-    ],
-  },
+  { label: "Sobre nós", href: "#sobre" },
   {
     label: "Visite-nos",
     href: "#contato",
