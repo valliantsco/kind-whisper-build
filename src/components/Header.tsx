@@ -56,7 +56,7 @@ const NAV_ITEMS: NavItem[] = [
     ],
   },
   {
-    label: "Sobre nós",
+    label: "Visite-nos",
     href: "#sobre",
     hasDropdown: true,
     dropdownItems: [
@@ -641,7 +641,7 @@ const Header = ({ onContactClick }: HeaderProps) => {
                       />
                     </div>
                   </>
-                ) : activeItem.label === "Sobre nós" ? (
+                ) : activeItem.label === "Visite-nos" ? (
                   /* Enhanced Sobre Nós layout */
                   <div>
                     {/* Section headline */}
