@@ -56,7 +56,7 @@ const NAV_ITEMS: NavItem[] = [
     ],
   },
   {
-    label: "Sobre nós",
+    label: "Visite-nos",
     href: "#sobre",
     hasDropdown: true,
     dropdownItems: [
