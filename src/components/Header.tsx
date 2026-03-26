@@ -56,8 +56,18 @@ const NAV_ITEMS: NavItem[] = [
     ],
   },
   {
-    label: "Visite-nos",
+    label: "Sobre nós",
     href: "#sobre",
+    hasDropdown: true,
+    dropdownItems: [
+      { label: "Nossa Missão", description: "Democratizar a mobilidade elétrica no Brasil, oferecendo veículos acessíveis, eficientes e sustentáveis para todos.", href: "#sobre", icon: Compass },
+      { label: "Nossa Visão", description: "Ser referência nacional em mobilidade elétrica urbana, liderando a transição para um transporte mais limpo e inteligente.", href: "#sobre", icon: BarChart3 },
+      { label: "Nossa História", description: "Desde 2015, transformando a mobilidade urbana em Uberlândia e expandindo para todo o Brasil com inovação e compromisso.", href: "#sobre", icon: BookOpen },
+    ],
+  },
+  {
+    label: "Visite-nos",
+    href: "#contato",
     hasDropdown: true,
     dropdownItems: [
       { label: "Nossa história", description: "Desde 2015 transformando a mobilidade urbana no Brasil com veículos elétricos acessíveis, seguros e sustentáveis.", href: "#sobre", icon: Building2 },
