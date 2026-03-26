@@ -651,6 +651,95 @@ const Header = ({ onContactClick }: HeaderProps) => {
                       />
                     </div>
                   </>
+                ) : activeItem.label === "Sobre nós" ? (
+                  /* Sobre Nós — Mission, Vision, History */
+                  <div>
+                    <div className="mb-4">
+                      <motion.div
+                        initial={{ opacity: 0, x: -10 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.3 }}
+                        className="flex items-center gap-2 mb-1.5"
+                      >
+                        <div
+                          className="w-1 h-4 rounded-full shrink-0"
+                          style={{ background: "linear-gradient(180deg, hsl(11 81% 57%), hsl(11 90% 65%))" }}
+                        />
+                        <span className="text-[9px] font-bold uppercase tracking-[0.2em]" style={{ color: "hsl(11 81% 57%)" }}>
+                          Quem somos
+                        </span>
+                      </motion.div>
+                      <motion.h3
+                        initial={{ opacity: 0, y: 6 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.05, duration: 0.3 }}
+                        className="text-white text-[15px] font-semibold tracking-wide"
+                      >
+                        Conheça a MS Eletric
+                      </motion.h3>
+                      <motion.p
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 0.1, duration: 0.3 }}
+                        className="text-white/35 text-[11px] mt-0.5"
+                      >
+                        Pioneirismo e inovação em mobilidade elétrica desde 2015
+                      </motion.p>
+                    </div>
+
+                    <div className="grid grid-cols-3 gap-3">
+                      {activeItem.dropdownItems.map((item, i) => {
+                        const Icon = item.icon;
+                        return (
+                          <motion.a
+                            key={item.label}
+                            href={item.href}
+                            onClick={() => setActiveDropdown(null)}
+                            initial={{ opacity: 0, y: 12 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: i * 0.08, duration: 0.3 }}
+                            className="group/card relative flex flex-col rounded-xl p-4 cursor-pointer overflow-hidden"
+                            style={{
+                              background: "linear-gradient(160deg, hsl(0 0% 12% / 0.6), hsl(0 0% 8% / 0.7))",
+                              border: "1px solid hsl(0 0% 100% / 0.06)",
+                              transition: "border-color 0.3s, box-shadow 0.3s, transform 0.3s",
+                            }}
+                            onMouseEnter={(e) => {
+                              const el = e.currentTarget as HTMLElement;
+                              el.style.borderColor = "hsl(11 81% 57% / 0.3)";
+                              el.style.boxShadow = "0 4px 20px hsl(11 81% 57% / 0.1)";
+                              el.style.transform = "translateY(-2px)";
+                            }}
+                            onMouseLeave={(e) => {
+                              const el = e.currentTarget as HTMLElement;
+                              el.style.borderColor = "hsl(0 0% 100% / 0.06)";
+                              el.style.boxShadow = "none";
+                              el.style.transform = "translateY(0)";
+                            }}
+                          >
+                            <div
+                              className="absolute top-0 left-0 right-0 h-[1px] opacity-0 group-hover/card:opacity-100 transition-opacity duration-500"
+                              style={{ background: "linear-gradient(90deg, transparent, hsl(11 81% 57% / 0.4), transparent)" }}
+                            />
+                            {Icon && (
+                              <div
+                                className="w-9 h-9 rounded-lg flex items-center justify-center mb-3 transition-transform duration-300 group-hover/card:scale-105"
+                                style={{ background: "hsl(11 81% 57% / 0.1)", border: "1px solid hsl(11 81% 57% / 0.18)" }}
+                              >
+                                <Icon className="w-4 h-4" style={{ color: "hsl(11 81% 57%)" }} />
+                              </div>
+                            )}
+                            <h4 className="text-white/90 text-[12px] font-semibold tracking-wide mb-1.5 group-hover/card:text-white transition-colors duration-300">
+                              {item.label}
+                            </h4>
+                            <p className="text-white/35 text-[10px] leading-relaxed group-hover/card:text-white/50 transition-colors duration-300">
+                              {item.description}
+                            </p>
+                          </motion.a>
+                        );
+                      })}
+                    </div>
+                  </div>
                 ) : activeItem.label === "Visite-nos" ? (
                   /* Enhanced Sobre Nós layout — full width */
                   <div className="flex gap-3" style={{ minHeight: "340px" }}>
