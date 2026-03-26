@@ -641,7 +641,7 @@ const Header = ({ onContactClick }: HeaderProps) => {
                       />
                     </div>
                   </>
-                ) : activeItem.label === "Sobre nós" ? (
+                ) : ) : activeItem.label === "Visite-nos" ? ( ? (
                   /* Enhanced Sobre Nós layout */
                   <div>
                     {/* Section headline */}
