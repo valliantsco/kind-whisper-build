@@ -728,6 +728,81 @@ const Header = ({ onContactClick }: HeaderProps) => {
                         <div className="w-6 h-[3px] rounded-full mx-auto -mt-0.5" style={{ background: "hsl(0 0% 0% / 0.45)", filter: "blur(3px)" }} />
                       </div>
 
+                      {/* Info overlay */}
+                      <div
+                        className="absolute bottom-0 left-0 right-0 z-[6] pointer-events-none"
+                        style={{
+                          background: "linear-gradient(to top, hsl(0 0% 0% / 0.92) 0%, hsl(0 0% 0% / 0.7) 50%, transparent 100%)",
+                        }}
+                      >
+                        <div className="px-5 pb-4 pt-10 flex items-end justify-between gap-4">
+                          {/* Left: Address + phone */}
+                          <div className="space-y-2">
+                            <div className="flex items-center gap-2">
+                              <div
+                                className="w-7 h-7 rounded-lg flex items-center justify-center shrink-0"
+                                style={{
+                                  background: "hsl(11 81% 57% / 0.15)",
+                                  border: "1px solid hsl(11 81% 57% / 0.25)",
+                                }}
+                              >
+                                <MapPin className="w-3.5 h-3.5" style={{ color: "hsl(11 81% 57%)" }} />
+                              </div>
+                              <div>
+                                <p className="text-white text-[11px] font-semibold tracking-wide leading-tight">
+                                  Av. João Pinheiro, 3747
+                                </p>
+                                <p className="text-white/45 text-[9.5px] tracking-wide">
+                                  Uberlândia — MG
+                                </p>
+                              </div>
+                            </div>
+
+                            <div className="flex items-center gap-2">
+                              <div
+                                className="w-7 h-7 rounded-lg flex items-center justify-center shrink-0"
+                                style={{
+                                  background: "hsl(11 81% 57% / 0.15)",
+                                  border: "1px solid hsl(11 81% 57% / 0.25)",
+                                }}
+                              >
+                                <Navigation className="w-3.5 h-3.5" style={{ color: "hsl(11 81% 57%)" }} />
+                              </div>
+                              <p className="text-white/50 text-[10px] tracking-wide">
+                                (34) 3219-6628
+                              </p>
+                            </div>
+                          </div>
+
+                          {/* Right: Hours */}
+                          <div
+                            className="rounded-lg px-3 py-2 shrink-0"
+                            style={{
+                              background: "hsl(0 0% 100% / 0.05)",
+                              border: "1px solid hsl(0 0% 100% / 0.08)",
+                            }}
+                          >
+                            <p className="text-white/60 text-[8px] font-bold uppercase tracking-[0.15em] mb-1.5">
+                              Horários
+                            </p>
+                            <div className="space-y-0.5">
+                              <div className="flex items-center justify-between gap-4">
+                                <span className="text-white/45 text-[9.5px]">Seg – Sex</span>
+                                <span className="text-white/70 text-[9.5px] font-semibold tabular-nums">08h – 18h</span>
+                              </div>
+                              <div className="flex items-center justify-between gap-4">
+                                <span className="text-white/45 text-[9.5px]">Sábado</span>
+                                <span className="text-white/70 text-[9.5px] font-semibold tabular-nums">08h – 12h</span>
+                              </div>
+                              <div className="flex items-center justify-between gap-4">
+                                <span className="text-white/45 text-[9.5px]">Domingo</span>
+                                <span className="text-white/35 text-[9.5px] italic">Fechado</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
                       {/* Hover glow border */}
                       <div className="absolute inset-0 rounded-xl opacity-0 group-hover/loc:opacity-100 transition-opacity duration-500 pointer-events-none" style={{ boxShadow: "inset 0 0 0 1px hsl(11 81% 57% / 0.3), 0 0 20px hsl(11 81% 57% / 0.08)" }} />
                     </motion.div>
