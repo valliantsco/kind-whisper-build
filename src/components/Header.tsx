@@ -4,7 +4,7 @@ import msShieldLogo from "@/assets/ms-shield-logo.png";
 import ctaRider from "@/assets/cta-rider.jpg";
 import { useBusinessHours } from "@/hooks/useBusinessHours";
 import { AnimatePresence, motion } from "framer-motion";
-import { ChevronDown, ArrowRight, ArrowLeft, Compass, BarChart3, BookOpen, HelpCircle, Wrench, ShieldCheck, Play, MapPin, Building2, Navigation } from "lucide-react";
+import { ChevronDown, ArrowRight, ArrowLeft, Compass, BarChart3, BookOpen, HelpCircle, Wrench, ShieldCheck, Play, MapPin, Building2, Navigation, Phone, Clock, ExternalLink, Zap } from "lucide-react";
 import QuizEngine from "@/components/quiz/QuizEngine";
 import { msEletricQuizConfig } from "@/components/QuizSection";
 
