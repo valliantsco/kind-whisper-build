@@ -653,94 +653,102 @@ const Header = ({ onContactClick }: HeaderProps) => {
                         className="flex flex-col rounded-xl overflow-hidden shrink-0"
                         style={{
                           width: "280px",
-                          background: "linear-gradient(160deg, hsl(0 0% 12% / 0.8), hsl(0 0% 6% / 0.9))",
-                          border: "1px solid hsl(0 0% 100% / 0.08)",
+                          background: "linear-gradient(160deg, hsl(0 0% 11% / 0.9), hsl(0 0% 6% / 0.95))",
+                          border: "1px solid hsl(0 0% 100% / 0.07)",
                         }}
                       >
-                        {/* Top accent */}
+                        {/* Top accent line */}
                         <div className="h-[2px] shrink-0" style={{ background: "linear-gradient(90deg, hsl(11 81% 57%), hsl(11 90% 65%), transparent)" }} />
 
-                        {/* Header inside card */}
-                        <div className="px-4 pt-3 pb-2">
-                          <div className="flex items-center gap-2 mb-1">
-                            <div
-                              className="w-1 h-4 rounded-full shrink-0"
-                              style={{ background: "linear-gradient(180deg, hsl(11 81% 57%), hsl(11 90% 65%))" }}
-                            />
-                            <span className="text-[9px] font-bold uppercase tracking-[0.2em]" style={{ color: "hsl(11 81% 57%)" }}>
-                              Conheça a MS Eletric
-                            </span>
+                        {/* Card content */}
+                        <div className="flex flex-col flex-1 px-5 pt-4 pb-4 gap-3">
+
+                          {/* Header */}
+                          <div>
+                            <div className="flex items-center gap-2 mb-1.5">
+                              <div
+                                className="w-1 h-4 rounded-full shrink-0"
+                                style={{ background: "linear-gradient(180deg, hsl(11 81% 57%), hsl(11 90% 65%))" }}
+                              />
+                              <span className="text-[9px] font-bold uppercase tracking-[0.2em]" style={{ color: "hsl(11 81% 57%)" }}>
+                                Conheça a MS Eletric
+                              </span>
+                            </div>
+                            <h3 className="text-white text-[15px] font-semibold tracking-wide leading-snug">
+                              Venha nos visitar
+                            </h3>
+                            <p className="text-white/35 text-[11px] mt-0.5 leading-relaxed">
+                              Transformando a mobilidade urbana desde 2015
+                            </p>
                           </div>
-                          <h3 className="text-white text-sm font-semibold tracking-wide">
-                            Venha nos visitar
-                          </h3>
-                          <p className="text-white/40 text-[11px] mt-0.5">
-                            Transformando a mobilidade urbana desde 2015
-                          </p>
-                        </div>
 
-                        {/* Divider */}
-                        <div className="mx-4 h-px" style={{ background: "hsl(0 0% 100% / 0.06)" }} />
+                          {/* Divider */}
+                          <div className="h-px shrink-0" style={{ background: "hsl(0 0% 100% / 0.06)" }} />
 
-                        <div className="px-4 pt-3 pb-2 flex flex-col gap-2.5 flex-1">
                           {/* Address */}
-                          <div className="flex items-start gap-2.5">
+                          <div className="flex items-start gap-3">
                             <div
-                              className="w-7 h-7 rounded-lg flex items-center justify-center shrink-0 mt-0.5"
+                              className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0"
                               style={{
-                                background: "hsl(11 81% 57% / 0.12)",
-                                border: "1px solid hsl(11 81% 57% / 0.2)",
+                                background: "hsl(11 81% 57% / 0.1)",
+                                border: "1px solid hsl(11 81% 57% / 0.18)",
                               }}
                             >
-                              <MapPin className="w-3.5 h-3.5" style={{ color: "hsl(11 81% 57%)" }} />
+                              <MapPin className="w-4 h-4" style={{ color: "hsl(11 81% 57%)" }} />
                             </div>
-                            <div>
-                              <p className="text-[8px] font-bold uppercase tracking-[0.15em] text-white/40 mb-0.5">Endereço</p>
-                              <p className="text-white text-[11px] font-semibold tracking-wide leading-tight">
+                            <div className="min-w-0">
+                              <p className="text-[8px] font-bold uppercase tracking-[0.15em] text-white/35 mb-0.5">Endereço</p>
+                              <p className="text-white text-[12px] font-semibold tracking-wide leading-tight">
                                 Av. João Pinheiro, 3747
                               </p>
-                              <p className="text-white/45 text-[10px] tracking-wide">
+                              <p className="text-white/40 text-[10.5px] tracking-wide">
                                 Uberlândia — MG, 38408-168
                               </p>
                             </div>
                           </div>
 
                           {/* Phone */}
-                          <div className="flex items-center gap-2.5">
+                          <div className="flex items-center gap-3">
                             <div
-                              className="w-7 h-7 rounded-lg flex items-center justify-center shrink-0"
+                              className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0"
                               style={{
-                                background: "hsl(11 81% 57% / 0.12)",
-                                border: "1px solid hsl(11 81% 57% / 0.2)",
+                                background: "hsl(11 81% 57% / 0.1)",
+                                border: "1px solid hsl(11 81% 57% / 0.18)",
                               }}
                             >
-                              <Phone className="w-3.5 h-3.5" style={{ color: "hsl(11 81% 57%)" }} />
+                              <Phone className="w-4 h-4" style={{ color: "hsl(11 81% 57%)" }} />
                             </div>
-                            <div>
-                              <p className="text-[8px] font-bold uppercase tracking-[0.15em] text-white/40 mb-0.5">Telefone</p>
-                              <a href="tel:+553432196628" className="text-white/80 text-[11px] font-semibold tracking-wide hover:text-white transition-colors duration-200">(34) 3219-6628</a>
+                            <div className="min-w-0">
+                              <p className="text-[8px] font-bold uppercase tracking-[0.15em] text-white/35 mb-0.5">Telefone</p>
+                              <a
+                                href="tel:+553432196628"
+                                onClick={(e) => e.stopPropagation()}
+                                className="text-white/80 text-[12px] font-semibold tracking-wide hover:text-white transition-colors duration-200 inline-flex items-center gap-1"
+                              >
+                                (34) 3219-6628
+                              </a>
                             </div>
                           </div>
 
                           {/* Divider */}
-                          <div className="h-px" style={{ background: "hsl(0 0% 100% / 0.06)" }} />
+                          <div className="h-px shrink-0" style={{ background: "hsl(0 0% 100% / 0.06)" }} />
 
                           {/* Hours */}
-                          <div>
-                            <div className="flex items-center gap-2 mb-1.5">
-                              <Clock className="w-3 h-3" style={{ color: "hsl(11 81% 57% / 0.7)" }} />
-                              <p className="text-[8px] font-bold uppercase tracking-[0.15em] text-white/40">Horários</p>
+                          <div className="flex-1">
+                            <div className="flex items-center gap-2 mb-2">
+                              <Clock className="w-3.5 h-3.5" style={{ color: "hsl(11 81% 57% / 0.6)" }} />
+                              <p className="text-[8px] font-bold uppercase tracking-[0.15em] text-white/35">Horários</p>
                             </div>
-                            <div className="space-y-1">
+                            <div className="space-y-1.5">
                               {[
                                 { day: "Seg – Sex", hours: "08h – 18h", active: true },
                                 { day: "Sábado", hours: "08h – 12h", active: true },
                                 { day: "Domingo", hours: "Fechado", active: false },
                               ].map((row) => (
                                 <div key={row.day} className="flex items-center justify-between">
-                                  <span className="text-white/45 text-[10px]">{row.day}</span>
+                                  <span className="text-white/40 text-[10.5px]">{row.day}</span>
                                   <span
-                                    className={`text-[10px] font-semibold tabular-nums ${row.active ? "text-white/70" : "text-white/30 italic"}`}
+                                    className={`text-[10.5px] font-semibold tabular-nums ${row.active ? "text-white/65" : "text-white/25 italic"}`}
                                   >
                                     {row.hours}
                                   </span>
@@ -748,15 +756,13 @@ const Header = ({ onContactClick }: HeaderProps) => {
                               ))}
                             </div>
                           </div>
-                        </div>
 
-                        {/* Bottom CTA */}
-                        <div className="px-4 pb-3 pt-1 mt-auto">
+                          {/* CTA Button */}
                           <button
-                            className="w-full flex items-center justify-center gap-2 py-2 rounded-lg text-[10px] font-semibold uppercase tracking-[0.1em] text-white cursor-pointer transition-all duration-300 hover:brightness-110 active:scale-[0.98]"
+                            className="w-full flex items-center justify-center gap-2 py-2.5 rounded-lg text-[10px] font-bold uppercase tracking-[0.12em] text-white cursor-pointer transition-all duration-300 hover:brightness-110 hover:shadow-lg active:scale-[0.98] shrink-0"
                             style={{
                               background: "linear-gradient(135deg, hsl(11 81% 57%), hsl(11 90% 65%))",
-                              boxShadow: "0 3px 12px hsl(11 81% 57% / 0.3)",
+                              boxShadow: "0 4px 16px hsl(11 81% 57% / 0.3)",
                             }}
                             onClick={(e) => {
                               e.stopPropagation();
@@ -764,7 +770,7 @@ const Header = ({ onContactClick }: HeaderProps) => {
                               window.open("https://maps.app.goo.gl/7iwuPGQuN4rAhqRf8", "_blank");
                             }}
                           >
-                            <ExternalLink className="w-3 h-3" />
+                            <ExternalLink className="w-3.5 h-3.5" />
                             Abrir no Google Maps
                           </button>
                         </div>
