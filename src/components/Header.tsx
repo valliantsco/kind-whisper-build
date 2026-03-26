@@ -642,10 +642,8 @@ const Header = ({ onContactClick }: HeaderProps) => {
                     </div>
                   </>
                 ) : activeItem.label === "Visite-nos" ? (
-                  /* Enhanced Sobre Nós layout */
-                  <div>
-                    {/* Two-panel layout with integrated header */}
-                    <div className="flex gap-3" style={{ height: "300px" }}>
+                  /* Enhanced Sobre Nós layout — full width */
+                  <div className="flex gap-3" style={{ height: "300px" }}>
 
                       {/* Left panel: Info card */}
                       <motion.div
@@ -848,32 +846,6 @@ const Header = ({ onContactClick }: HeaderProps) => {
                           <div className="w-6 h-[3px] rounded-full mx-auto -mt-0.5" style={{ background: "hsl(0 0% 0% / 0.45)", filter: "blur(3px)" }} />
                         </div>
 
-                        {/* Status badge on map */}
-                        <motion.div
-                          initial={{ opacity: 0, scale: 0.9 }}
-                          animate={{ opacity: 1, scale: 1 }}
-                          transition={{ delay: 0.25, duration: 0.3 }}
-                          className="absolute top-3 right-3 z-[6] flex items-center gap-2 px-2.5 py-1 rounded-full pointer-events-none"
-                          style={{
-                            background: "hsl(0 0% 0% / 0.6)",
-                            backdropFilter: "blur(12px)",
-                            border: `1px solid ${isOnline ? "hsl(142 76% 50% / 0.2)" : "hsl(0 75% 50% / 0.2)"}`,
-                          }}
-                        >
-                          <span className="relative flex h-1.5 w-1.5">
-                            <span
-                              className="absolute inset-0 rounded-full animate-ping opacity-60"
-                              style={{ backgroundColor: isOnline ? "hsl(142 76% 50%)" : "hsl(0 75% 50%)" }}
-                            />
-                            <span
-                              className="relative inline-flex h-1.5 w-1.5 rounded-full"
-                              style={{ backgroundColor: isOnline ? "hsl(142 76% 50%)" : "hsl(0 75% 50%)" }}
-                            />
-                          </span>
-                          <span className="text-[9px] font-semibold tracking-wide" style={{ color: isOnline ? "hsl(142 76% 70%)" : "hsl(0 75% 70%)" }}>
-                            {isOnline ? "Aberto agora" : "Fechado"}
-                          </span>
-                        </motion.div>
 
                         {/* Bottom-right navigate label */}
                         <motion.div
@@ -895,7 +867,6 @@ const Header = ({ onContactClick }: HeaderProps) => {
                         <div className="absolute inset-0 rounded-xl opacity-0 group-hover/loc:opacity-100 transition-opacity duration-500 pointer-events-none" style={{ boxShadow: "inset 0 0 0 1px hsl(11 81% 57% / 0.3), 0 0 20px hsl(11 81% 57% / 0.08)" }} />
                       </motion.div>
                     </div>
-                  </div>
                 ) : (
                   /* Icon-based list — compact horizontal cards */
                   <>
