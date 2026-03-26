@@ -867,7 +867,6 @@ const Header = ({ onContactClick }: HeaderProps) => {
                         <div className="absolute inset-0 rounded-xl opacity-0 group-hover/loc:opacity-100 transition-opacity duration-500 pointer-events-none" style={{ boxShadow: "inset 0 0 0 1px hsl(11 81% 57% / 0.3), 0 0 20px hsl(11 81% 57% / 0.08)" }} />
                       </motion.div>
                     </div>
-                  </div>
                 ) : (
                   /* Icon-based list — compact horizontal cards */
                   <>
