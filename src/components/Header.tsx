@@ -642,10 +642,8 @@ const Header = ({ onContactClick }: HeaderProps) => {
                     </div>
                   </>
                 ) : activeItem.label === "Visite-nos" ? (
-                  /* Enhanced Sobre Nós layout */
-                  <div>
-                    {/* Two-panel layout with integrated header */}
-                    <div className="flex gap-3" style={{ height: "300px" }}>
+                  /* Enhanced Sobre Nós layout — full width */
+                  <div className="flex gap-3" style={{ height: "300px" }}>
 
                       {/* Left panel: Info card */}
                       <motion.div
