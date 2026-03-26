@@ -718,7 +718,7 @@ const Header = ({ onContactClick }: HeaderProps) => {
                             </div>
                             <div>
                               <p className="text-[8px] font-bold uppercase tracking-[0.15em] text-white/40 mb-0.5">Telefone</p>
-                              <p className="text-white/80 text-[11px] font-semibold tracking-wide">(34) 3219-6628</p>
+                              <a href="tel:+553432196628" className="text-white/80 text-[11px] font-semibold tracking-wide hover:text-white transition-colors duration-200">(34) 3219-6628</a>
                             </div>
                           </div>
 
