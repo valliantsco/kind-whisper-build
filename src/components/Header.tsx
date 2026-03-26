@@ -643,57 +643,8 @@ const Header = ({ onContactClick }: HeaderProps) => {
                   </>
                 ) : activeItem.label === "Sobre nós" ? (
                   /* Two-panel layout for Sobre Nós */
-                  <div className="flex gap-4" style={{ height: "280px" }}>
-                    {/* Left panel — Company overview */}
-                    <motion.div
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.05, duration: 0.3, ease: "easeOut" }}
-                      className="relative flex-1 rounded-xl overflow-hidden p-5 flex flex-col justify-between h-full"
-                      style={{
-                        background: "linear-gradient(160deg, hsl(0 0% 12% / 0.6), hsl(0 0% 8% / 0.7))",
-                        border: "1px solid hsl(0 0% 100% / 0.06)",
-                      }}
-                    >
-                      <div
-                        className="absolute top-0 left-0 right-0 h-[1px]"
-                        style={{ background: "linear-gradient(90deg, transparent, hsl(11 81% 57% / 0.3), transparent)" }}
-                      />
-                      <div>
-                        <div className="flex items-center gap-2.5 mb-3">
-                          <div
-                            className="shrink-0 w-9 h-9 rounded-lg flex items-center justify-center"
-                            style={{ background: "hsl(11 81% 57% / 0.1)", border: "1px solid hsl(11 81% 57% / 0.18)" }}
-                          >
-                            <Building2 className="w-4 h-4" style={{ color: "hsl(11 81% 57%)" }} />
-                          </div>
-                          <h4 className="text-[13px] font-semibold text-white/90 tracking-wide">Nossa história</h4>
-                        </div>
-                        <p className="text-[11px] text-white/45 leading-relaxed">
-                          Desde 2015, a MS Eletric transforma a mobilidade urbana no Brasil com veículos elétricos acessíveis, seguros e sustentáveis. Presente em todo o território nacional, levamos inovação e liberdade para milhares de pessoas.
-                        </p>
-                      </div>
-                      <a
-                        href="#sobre"
-                        onClick={() => {
-                          setActiveDropdown(null);
-                          document.querySelector("#sobre")?.scrollIntoView({ behavior: "smooth" });
-                        }}
-                        className="mt-4 inline-flex items-center gap-2 self-start px-4 py-2 rounded-full text-[11px] font-semibold tracking-wide text-white cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-lg active:scale-95"
-                        style={{
-                          background: "linear-gradient(135deg, hsl(11 81% 57%), hsl(11 90% 65%))",
-                          boxShadow: "0 4px 12px hsl(11 81% 57% / 0.3)",
-                        }}
-                      >
-                        Conheça nossa história
-                        <ArrowRight className="w-3.5 h-3.5" />
-                      </a>
-                    </motion.div>
-
-                    {/* Vertical separator */}
-                    <div className="flex-shrink-0 w-px self-stretch my-3" style={{ background: "hsl(0 0% 100% / 0.08)" }} />
-
-                    {/* Right panel — Onde estamos */}
+                  <div style={{ height: "280px" }}>
+                    {/* Onde estamos */}
                     <motion.div
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
