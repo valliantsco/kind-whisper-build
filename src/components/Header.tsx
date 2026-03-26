@@ -644,101 +644,61 @@ const Header = ({ onContactClick }: HeaderProps) => {
                 ) : activeItem.label === "Visite-nos" ? (
                   /* Enhanced Sobre Nós layout */
                   <div>
-                    {/* Section headline */}
-                    <div className="mb-4 flex items-end justify-between">
-                      <div>
-                        <motion.div
-                          initial={{ opacity: 0, x: -10 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          transition={{ duration: 0.3 }}
-                          className="flex items-center gap-2 mb-1"
-                        >
-                          <div
-                            className="w-1 h-4 rounded-full"
-                            style={{ background: "linear-gradient(180deg, hsl(11 81% 57%), hsl(11 90% 65%))" }}
-                          />
-                          <span className="text-[9px] font-bold uppercase tracking-[0.2em]" style={{ color: "hsl(11 81% 57%)" }}>
-                            Conheça a MS Eletric
-                          </span>
-                        </motion.div>
-                        <motion.h3
-                          initial={{ opacity: 0, y: 6 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          transition={{ delay: 0.05, duration: 0.3 }}
-                          className="text-white text-base font-semibold tracking-wide"
-                        >
-                          Venha nos visitar
-                        </motion.h3>
-                        <motion.p
-                          initial={{ opacity: 0 }}
-                          animate={{ opacity: 1 }}
-                          transition={{ delay: 0.1, duration: 0.3 }}
-                          className="text-white/40 text-[12px] mt-0.5"
-                        >
-                          Transformando a mobilidade urbana desde 2015
-                        </motion.p>
-                      </div>
-
-                      {/* Online status badge */}
-                      <motion.div
-                        initial={{ opacity: 0, scale: 0.9 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ delay: 0.15, duration: 0.3 }}
-                        className="flex items-center gap-2 px-3 py-1.5 rounded-full shrink-0"
-                        style={{
-                          background: isOnline ? "hsl(142 76% 50% / 0.08)" : "hsl(0 75% 50% / 0.08)",
-                          border: `1px solid ${isOnline ? "hsl(142 76% 50% / 0.2)" : "hsl(0 75% 50% / 0.2)"}`,
-                        }}
-                      >
-                        <span className="relative flex h-1.5 w-1.5">
-                          <span
-                            className="absolute inset-0 rounded-full animate-ping opacity-60"
-                            style={{ backgroundColor: isOnline ? "hsl(142 76% 50%)" : "hsl(0 75% 50%)" }}
-                          />
-                          <span
-                            className="relative inline-flex h-1.5 w-1.5 rounded-full"
-                            style={{ backgroundColor: isOnline ? "hsl(142 76% 50%)" : "hsl(0 75% 50%)" }}
-                          />
-                        </span>
-                        <span className="text-[9px] font-semibold tracking-wide" style={{ color: isOnline ? "hsl(142 76% 70%)" : "hsl(0 75% 70%)" }}>
-                          {isOnline ? "Aberto agora" : "Fechado"}
-                        </span>
-                      </motion.div>
-                    </div>
-
-                    {/* Two-panel layout */}
-                    <div className="flex gap-3" style={{ height: "260px" }}>
+                    {/* Two-panel layout with integrated header */}
+                    <div className="flex gap-3" style={{ height: "300px" }}>
 
                       {/* Left panel: Info card */}
                       <motion.div
                         initial={{ opacity: 0, x: -12 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: 0.1, duration: 0.35, ease: "easeOut" }}
-                        className="flex flex-col justify-between rounded-xl overflow-hidden shrink-0"
+                        className="flex flex-col rounded-xl overflow-hidden shrink-0"
                         style={{
-                          width: "260px",
+                          width: "280px",
                           background: "linear-gradient(160deg, hsl(0 0% 12% / 0.8), hsl(0 0% 6% / 0.9))",
                           border: "1px solid hsl(0 0% 100% / 0.08)",
                         }}
                       >
                         {/* Top accent */}
-                        <div className="h-[2px]" style={{ background: "linear-gradient(90deg, hsl(11 81% 57%), hsl(11 90% 65%), transparent)" }} />
+                        <div className="h-[2px] shrink-0" style={{ background: "linear-gradient(90deg, hsl(11 81% 57%), hsl(11 90% 65%), transparent)" }} />
 
-                        <div className="px-4 pt-4 pb-3 flex flex-col gap-3 flex-1">
+                        {/* Header inside card */}
+                        <div className="px-4 pt-3 pb-2">
+                          <div className="flex items-center gap-2 mb-1">
+                            <div
+                              className="w-1 h-4 rounded-full shrink-0"
+                              style={{ background: "linear-gradient(180deg, hsl(11 81% 57%), hsl(11 90% 65%))" }}
+                            />
+                            <span className="text-[9px] font-bold uppercase tracking-[0.2em]" style={{ color: "hsl(11 81% 57%)" }}>
+                              Conheça a MS Eletric
+                            </span>
+                          </div>
+                          <h3 className="text-white text-sm font-semibold tracking-wide">
+                            Venha nos visitar
+                          </h3>
+                          <p className="text-white/40 text-[11px] mt-0.5">
+                            Transformando a mobilidade urbana desde 2015
+                          </p>
+                        </div>
+
+                        {/* Divider */}
+                        <div className="mx-4 h-px" style={{ background: "hsl(0 0% 100% / 0.06)" }} />
+
+                        <div className="px-4 pt-3 pb-2 flex flex-col gap-2.5 flex-1">
                           {/* Address */}
                           <div className="flex items-start gap-2.5">
                             <div
-                              className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 mt-0.5"
+                              className="w-7 h-7 rounded-lg flex items-center justify-center shrink-0 mt-0.5"
                               style={{
                                 background: "hsl(11 81% 57% / 0.12)",
                                 border: "1px solid hsl(11 81% 57% / 0.2)",
                               }}
                             >
-                              <MapPin className="w-4 h-4" style={{ color: "hsl(11 81% 57%)" }} />
+                              <MapPin className="w-3.5 h-3.5" style={{ color: "hsl(11 81% 57%)" }} />
                             </div>
                             <div>
                               <p className="text-[8px] font-bold uppercase tracking-[0.15em] text-white/40 mb-0.5">Endereço</p>
-                              <p className="text-white text-[11.5px] font-semibold tracking-wide leading-tight">
+                              <p className="text-white text-[11px] font-semibold tracking-wide leading-tight">
                                 Av. João Pinheiro, 3747
                               </p>
                               <p className="text-white/45 text-[10px] tracking-wide">
@@ -750,17 +710,17 @@ const Header = ({ onContactClick }: HeaderProps) => {
                           {/* Phone */}
                           <div className="flex items-center gap-2.5">
                             <div
-                              className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0"
+                              className="w-7 h-7 rounded-lg flex items-center justify-center shrink-0"
                               style={{
                                 background: "hsl(11 81% 57% / 0.12)",
                                 border: "1px solid hsl(11 81% 57% / 0.2)",
                               }}
                             >
-                              <Phone className="w-4 h-4" style={{ color: "hsl(11 81% 57%)" }} />
+                              <Phone className="w-3.5 h-3.5" style={{ color: "hsl(11 81% 57%)" }} />
                             </div>
                             <div>
                               <p className="text-[8px] font-bold uppercase tracking-[0.15em] text-white/40 mb-0.5">Telefone</p>
-                              <p className="text-white/80 text-[11.5px] font-semibold tracking-wide">(34) 3219-6628</p>
+                              <p className="text-white/80 text-[11px] font-semibold tracking-wide">(34) 3219-6628</p>
                             </div>
                           </div>
 
@@ -769,7 +729,7 @@ const Header = ({ onContactClick }: HeaderProps) => {
 
                           {/* Hours */}
                           <div>
-                            <div className="flex items-center gap-2 mb-2">
+                            <div className="flex items-center gap-2 mb-1.5">
                               <Clock className="w-3 h-3" style={{ color: "hsl(11 81% 57% / 0.7)" }} />
                               <p className="text-[8px] font-bold uppercase tracking-[0.15em] text-white/40">Horários</p>
                             </div>
@@ -793,9 +753,9 @@ const Header = ({ onContactClick }: HeaderProps) => {
                         </div>
 
                         {/* Bottom CTA */}
-                        <div className="px-4 pb-3">
+                        <div className="px-4 pb-3 pt-1 mt-auto">
                           <button
-                            className="w-full flex items-center justify-center gap-2 py-2 rounded-lg text-[10px] font-semibold uppercase tracking-[0.1em] text-white cursor-pointer transition-all duration-300 hover:brightness-110 active:scale-[0.98] pointer-events-auto"
+                            className="w-full flex items-center justify-center gap-2 py-2 rounded-lg text-[10px] font-semibold uppercase tracking-[0.1em] text-white cursor-pointer transition-all duration-300 hover:brightness-110 active:scale-[0.98]"
                             style={{
                               background: "linear-gradient(135deg, hsl(11 81% 57%), hsl(11 90% 65%))",
                               boxShadow: "0 3px 12px hsl(11 81% 57% / 0.3)",
@@ -811,9 +771,6 @@ const Header = ({ onContactClick }: HeaderProps) => {
                           </button>
                         </div>
                       </motion.div>
-
-                      {/* Vertical separator */}
-                      <div className="w-px self-stretch my-4" style={{ background: "hsl(0 0% 100% / 0.06)" }} />
 
                       {/* Right panel: Map */}
                       <motion.div
@@ -891,12 +848,39 @@ const Header = ({ onContactClick }: HeaderProps) => {
                           <div className="w-6 h-[3px] rounded-full mx-auto -mt-0.5" style={{ background: "hsl(0 0% 0% / 0.45)", filter: "blur(3px)" }} />
                         </div>
 
-                        {/* Top-right label */}
+                        {/* Status badge on map */}
                         <motion.div
-                          initial={{ opacity: 0, y: -6 }}
+                          initial={{ opacity: 0, scale: 0.9 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          transition={{ delay: 0.25, duration: 0.3 }}
+                          className="absolute top-3 right-3 z-[6] flex items-center gap-2 px-2.5 py-1 rounded-full pointer-events-none"
+                          style={{
+                            background: "hsl(0 0% 0% / 0.6)",
+                            backdropFilter: "blur(12px)",
+                            border: `1px solid ${isOnline ? "hsl(142 76% 50% / 0.2)" : "hsl(0 75% 50% / 0.2)"}`,
+                          }}
+                        >
+                          <span className="relative flex h-1.5 w-1.5">
+                            <span
+                              className="absolute inset-0 rounded-full animate-ping opacity-60"
+                              style={{ backgroundColor: isOnline ? "hsl(142 76% 50%)" : "hsl(0 75% 50%)" }}
+                            />
+                            <span
+                              className="relative inline-flex h-1.5 w-1.5 rounded-full"
+                              style={{ backgroundColor: isOnline ? "hsl(142 76% 50%)" : "hsl(0 75% 50%)" }}
+                            />
+                          </span>
+                          <span className="text-[9px] font-semibold tracking-wide" style={{ color: isOnline ? "hsl(142 76% 70%)" : "hsl(0 75% 70%)" }}>
+                            {isOnline ? "Aberto agora" : "Fechado"}
+                          </span>
+                        </motion.div>
+
+                        {/* Bottom-right navigate label */}
+                        <motion.div
+                          initial={{ opacity: 0, y: 6 }}
                           animate={{ opacity: 1, y: 0 }}
                           transition={{ delay: 0.3, duration: 0.3 }}
-                          className="absolute top-3 right-3 z-[6] flex items-center gap-1.5 px-2.5 py-1 rounded-full pointer-events-none"
+                          className="absolute bottom-3 right-3 z-[6] flex items-center gap-1.5 px-2.5 py-1 rounded-full pointer-events-none"
                           style={{
                             background: "hsl(0 0% 0% / 0.6)",
                             backdropFilter: "blur(12px)",
