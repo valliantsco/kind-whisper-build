@@ -75,12 +75,11 @@ const useMobileMenu = ({ items, isOnline, onContactClick, onQuizOpen }: MobileMe
       aria-label={open ? "Fechar menu" : "Abrir menu"}
     >
       {/* Animated hamburger → X */}
-      <div className="relative h-[14px] w-5">
+      <div className="flex w-5 flex-col items-stretch justify-between" style={{ height: "14px" }}>
         <motion.span
-          className="absolute left-0 right-0 top-0 h-[2px] rounded-full"
+          className="h-[2px] rounded-full"
           style={{
             background: open ? "hsl(var(--primary))" : "#f5f5f5",
-            transformOrigin: "center",
           }}
           animate={{
             y: open ? 6 : 0,
@@ -89,10 +88,9 @@ const useMobileMenu = ({ items, isOnline, onContactClick, onQuizOpen }: MobileMe
           transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
         />
         <motion.span
-          className="absolute left-0 right-0 top-1/2 h-[2px] -translate-y-1/2 rounded-full"
+          className="h-[2px] rounded-full"
           style={{
             background: open ? "hsl(var(--primary))" : "#f5f5f5",
-            transformOrigin: "center",
           }}
           animate={{
             opacity: open ? 0 : 1,
@@ -101,10 +99,9 @@ const useMobileMenu = ({ items, isOnline, onContactClick, onQuizOpen }: MobileMe
           transition={{ duration: 0.2, ease: [0.4, 0, 0.2, 1] }}
         />
         <motion.span
-          className="absolute bottom-0 left-0 right-0 h-[2px] rounded-full"
+          className="h-[2px] rounded-full"
           style={{
             background: open ? "hsl(var(--primary))" : "#f5f5f5",
-            transformOrigin: "center",
           }}
           animate={{
             y: open ? -6 : 0,
