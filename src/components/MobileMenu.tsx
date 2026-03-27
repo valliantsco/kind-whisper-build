@@ -519,18 +519,9 @@ const useMobileMenu = ({ items, isOnline, onContactClick, onQuizOpen }: MobileMe
                       <a
                         href={item.href}
                         onClick={closeMenu}
-                        className="flex items-center gap-3 py-3.5 px-4 rounded-2xl text-[14px] font-semibold tracking-wide transition-colors duration-200 active:scale-[0.98]"
+                        className="block py-3.5 px-4 rounded-2xl text-[14px] font-semibold tracking-wide transition-colors duration-200 active:scale-[0.98]"
                         style={{ color: "hsl(0 0% 100% / 0.7)" }}
                       >
-                        <div
-                          className="w-8 h-8 rounded-xl flex items-center justify-center shrink-0"
-                          style={{
-                            background: "hsl(0 0% 100% / 0.04)",
-                            border: "1px solid hsl(0 0% 100% / 0.06)",
-                          }}
-                        >
-                          <span className="w-1.5 h-1.5 rounded-full" style={{ background: "hsl(0 0% 100% / 0.2)" }} />
-                        </div>
                         {item.label}
                       </a>
                     )}
