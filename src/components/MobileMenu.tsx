@@ -119,13 +119,10 @@ const MobileMenu = ({ items, isOnline, onContactClick, onQuizOpen }: MobileMenuP
                   transformOrigin: "top center",
                 }}
               >
-                {/* Top accent */}
+                {/* Subtle separator from header */}
                 <div
-                  className="h-[2px] shrink-0"
-                  style={{
-                    background:
-                      "linear-gradient(90deg, transparent, hsl(11 81% 57% / 0.7), hsl(11 90% 65% / 0.7), transparent)",
-                  }}
+                  className="h-px shrink-0 mx-4"
+                  style={{ background: "hsl(0 0% 100% / 0.06)" }}
                 />
 
                 <div
