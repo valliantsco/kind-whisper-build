@@ -230,6 +230,8 @@ const Header = ({ onContactClick }: HeaderProps) => {
             ))}
           </nav>
 
+          <ThemeToggle />
+
           {/* CTA */}
           <div className="relative group">
             <span
