@@ -67,36 +67,35 @@ const useMobileMenu = ({ items, isOnline, onContactClick, onQuizOpen }: MobileMe
   const triggerButton = (
     <button
       onClick={toggleMenu}
-      className="md:hidden relative flex items-center justify-center w-10 h-10 rounded-[0.7rem] cursor-pointer overflow-hidden active:scale-95 transition-transform duration-150"
+      className="md:hidden relative grid h-10 w-10 place-items-center overflow-hidden rounded-[0.7rem] border cursor-pointer active:scale-95 transition-transform duration-150"
       style={{
         background: open
-          ? "linear-gradient(135deg, hsl(11 81% 57% / 0.12), hsl(11 81% 57% / 0.04))"
-          : "transparent",
-        border: "none",
+          ? "linear-gradient(135deg, hsl(var(--primary) / 0.16), hsl(var(--primary) / 0.05))"
+          : "hsl(var(--background) / 0)",
+        borderColor: open ? "hsl(var(--primary) / 0.28)" : "hsl(var(--foreground) / 0.12)",
         transition: "all 0.3s ease",
       }}
       aria-label={open ? "Fechar menu" : "Abrir menu"}
     >
       {/* Animated hamburger → X */}
-      <div className="relative w-[18px] h-[12px]">
+      <div className="relative h-[14px] w-5">
         <motion.span
-          className="absolute left-0 right-0 h-[1.5px] rounded-full"
+          className="absolute left-0 right-0 top-0 h-[2px] rounded-full"
           style={{
-            top: 0,
-            background: open ? "hsl(11 81% 57%)" : "hsl(0 0% 100% / 0.8)",
+            background: open ? "hsl(var(--primary))" : "hsl(var(--foreground) / 0.86)",
+            transformOrigin: "center",
           }}
           animate={{
-            y: open ? 5.25 : 0,
+            y: open ? 6 : 0,
             rotate: open ? 45 : 0,
           }}
           transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
         />
         <motion.span
-          className="absolute left-0 right-0 h-[1.5px] rounded-full"
+          className="absolute left-0 right-0 top-1/2 h-[2px] -translate-y-1/2 rounded-full"
           style={{
-            top: "50%",
-            marginTop: "-0.75px",
-            background: open ? "hsl(11 81% 57%)" : "hsl(0 0% 100% / 0.5)",
+            background: open ? "hsl(var(--primary))" : "hsl(var(--foreground) / 0.56)",
+            transformOrigin: "center",
           }}
           animate={{
             opacity: open ? 0 : 1,
@@ -105,13 +104,13 @@ const useMobileMenu = ({ items, isOnline, onContactClick, onQuizOpen }: MobileMe
           transition={{ duration: 0.2, ease: [0.4, 0, 0.2, 1] }}
         />
         <motion.span
-          className="absolute left-0 right-0 h-[1.5px] rounded-full"
+          className="absolute bottom-0 left-0 right-0 h-[2px] rounded-full"
           style={{
-            bottom: 0,
-            background: open ? "hsl(11 81% 57%)" : "hsl(0 0% 100% / 0.8)",
+            background: open ? "hsl(var(--primary))" : "hsl(var(--foreground) / 0.86)",
+            transformOrigin: "center",
           }}
           animate={{
-            y: open ? -5.25 : 0,
+            y: open ? -6 : 0,
             rotate: open ? -45 : 0,
           }}
           transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
