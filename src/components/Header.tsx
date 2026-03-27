@@ -166,124 +166,127 @@ const Header = ({ onContactClick }: HeaderProps) => {
     <>
     <header className="fixed top-0 left-0 right-0 z-50 px-4 pt-3">
       <div ref={headerRef} className="mx-auto max-w-7xl relative">
-        {/* Main bar */}
+        {/* Main container — wraps bar + mobile dropdown seamlessly */}
         <div
-          className="relative flex items-center justify-between px-5 py-3 rounded-[0.9rem]"
+          className="relative overflow-hidden transition-[border-radius] duration-300"
           style={{
             background: "hsl(0 0% 14% / 0.92)",
             backdropFilter: "blur(24px)",
             WebkitBackdropFilter: "blur(24px)",
             border: "1px solid hsl(0 0% 100% / 0.08)",
             boxShadow: "0 6px 24px rgba(0,0,0,0.4), 0 2px 6px rgba(0,0,0,0.25)",
+            borderRadius: mobileMenuOpen ? "0.9rem 0.9rem 0.9rem 0.9rem" : "0.9rem",
           }}
         >
+          {/* Top accent line */}
           <div
-            className="absolute top-0 left-0 right-0 h-[2px] rounded-t-[0.9rem] overflow-hidden"
+            className="absolute top-0 left-0 right-0 h-[2px] rounded-t-[0.9rem] overflow-hidden z-10"
             style={{
               background: "linear-gradient(90deg, transparent, hsl(11 81% 57% / 0.8), hsl(11 90% 65% / 0.8), transparent)",
             }}
           />
 
-          <a href="#">
-            <img src={logoWhite} alt="MS Eletric" className="w-auto" style={{ height: "2.53rem" }} />
-          </a>
+          {/* Header bar */}
+          <div className="relative flex items-center justify-between px-5 py-3">
+            <a href="#">
+              <img src={logoWhite} alt="MS Eletric" className="w-auto" style={{ height: "2.53rem" }} />
+            </a>
 
-          <nav className="hidden md:flex items-center gap-4 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-            {NAV_ITEMS.map((item) => (
-              <div
-                key={item.label}
-                className="relative"
-                onMouseEnter={() => item.hasDropdown && handleEnter(item.label)}
-                onMouseLeave={handleLeave}
-              >
-                <a
-                  href={item.href}
-                  onClick={(e) => {
-                    if (item.hasDropdown) {
-                      e.preventDefault();
-                      setActiveDropdown(activeDropdown === item.label ? null : item.label);
-                    }
-                  }}
-                  className={`relative text-sm font-medium transition-all duration-300 ease-out py-1.5 px-2 rounded-md group flex items-center gap-1 ${
-                    activeDropdown === item.label ? "text-white/95" : "text-white/50 hover:text-white/95"
-                  }`}
+            <nav className="hidden md:flex items-center gap-4 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+              {NAV_ITEMS.map((item) => (
+                <div
+                  key={item.label}
+                  className="relative"
+                  onMouseEnter={() => item.hasDropdown && handleEnter(item.label)}
+                  onMouseLeave={handleLeave}
                 >
-                  <span
-                    className={`absolute inset-0 rounded-md transition-opacity duration-700 ease-out pointer-events-none ${
-                      activeDropdown === item.label ? "opacity-100" : "opacity-0 group-hover:opacity-100"
-                    }`}
-                    style={{
-                      background: "radial-gradient(ellipse at center, hsl(11 81% 57% / 0.08), transparent 70%)",
+                  <a
+                    href={item.href}
+                    onClick={(e) => {
+                      if (item.hasDropdown) {
+                        e.preventDefault();
+                        setActiveDropdown(activeDropdown === item.label ? null : item.label);
+                      }
                     }}
-                  />
-                  <span className="relative">{item.label}</span>
-                  {item.hasDropdown && (
-                    <ChevronDown
-                      className={`relative w-3 h-3 -ml-0.5 transition-transform duration-300 ${
-                        activeDropdown === item.label ? "rotate-180" : ""
-                      }`}
-                    />
-                  )}
-                  <span
-                    className={`absolute bottom-0 h-[1.5px] rounded-full transition-all duration-300 ease-out ${
-                      activeDropdown === item.label
-                        ? "left-[20%] right-[20%] opacity-80"
-                        : "left-1/2 right-1/2 opacity-0 group-hover:left-[20%] group-hover:right-[20%] group-hover:opacity-80"
+                    className={`relative text-sm font-medium transition-all duration-300 ease-out py-1.5 px-2 rounded-md group flex items-center gap-1 ${
+                      activeDropdown === item.label ? "text-white/95" : "text-white/50 hover:text-white/95"
                     }`}
-                    style={{ background: "linear-gradient(90deg, hsl(11 81% 57%), hsl(11 90% 65%))" }}
-                  />
-                </a>
-              </div>
-            ))}
-          </nav>
+                  >
+                    <span
+                      className={`absolute inset-0 rounded-md transition-opacity duration-700 ease-out pointer-events-none ${
+                        activeDropdown === item.label ? "opacity-100" : "opacity-0 group-hover:opacity-100"
+                      }`}
+                      style={{
+                        background: "radial-gradient(ellipse at center, hsl(11 81% 57% / 0.08), transparent 70%)",
+                      }}
+                    />
+                    <span className="relative">{item.label}</span>
+                    {item.hasDropdown && (
+                      <ChevronDown
+                        className={`relative w-3 h-3 -ml-0.5 transition-transform duration-300 ${
+                          activeDropdown === item.label ? "rotate-180" : ""
+                        }`}
+                      />
+                    )}
+                    <span
+                      className={`absolute bottom-0 h-[1.5px] rounded-full transition-all duration-300 ease-out ${
+                        activeDropdown === item.label
+                          ? "left-[20%] right-[20%] opacity-80"
+                          : "left-1/2 right-1/2 opacity-0 group-hover:left-[20%] group-hover:right-[20%] group-hover:opacity-80"
+                      }`}
+                      style={{ background: "linear-gradient(90deg, hsl(11 81% 57%), hsl(11 90% 65%))" }}
+                    />
+                  </a>
+                </div>
+              ))}
+            </nav>
 
-          {/* CTA — desktop only */}
-          <div className="relative group hidden md:block">
-            <span
-              className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-700 ease-out pointer-events-none"
-              style={{ boxShadow: "0 4px 24px hsla(11, 81%, 57%, 0.4)" }}
-            />
-            <button
-              onClick={onContactClick}
-              className="relative flex items-center gap-2.5 rounded-lg px-5 py-2 text-white cursor-pointer overflow-hidden active:scale-[0.97] transition-transform duration-150"
-              style={{ background: "linear-gradient(135deg, hsl(11 81% 57%), hsl(11 90% 65%))" }}
-            >
+            {/* CTA — desktop only */}
+            <div className="relative group hidden md:block">
               <span
                 className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-700 ease-out pointer-events-none"
-                style={{ boxShadow: "inset 0 0 20px hsla(0, 0%, 100%, 0.12)" }}
+                style={{ boxShadow: "0 4px 24px hsla(11, 81%, 57%, 0.4)" }}
               />
-              <span className="relative flex h-1.5 w-1.5 shrink-0 items-center justify-center -ml-1.5">
+              <button
+                onClick={onContactClick}
+                className="relative flex items-center gap-2.5 rounded-lg px-5 py-2 text-white cursor-pointer overflow-hidden active:scale-[0.97] transition-transform duration-150"
+                style={{ background: "linear-gradient(135deg, hsl(11 81% 57%), hsl(11 90% 65%))" }}
+              >
                 <span
-                  className="absolute inset-0 rounded-full animate-ping opacity-60"
-                  style={{ backgroundColor: isOnline ? "hsl(142 76% 50%)" : "hsl(0 75% 50%)" }}
+                  className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-700 ease-out pointer-events-none"
+                  style={{ boxShadow: "inset 0 0 20px hsla(0, 0%, 100%, 0.12)" }}
                 />
-                <span
-                  className="relative inline-flex h-1.5 w-1.5 rounded-full"
-                  style={{
-                    backgroundColor: isOnline ? "hsl(142 76% 50%)" : "hsl(0 75% 50%)",
-                    boxShadow: isOnline ? "0 0 8px hsl(142 76% 50%)" : "0 0 8px hsl(0 75% 50%)",
-                  }}
-                />
-              </span>
-              <span className="w-[2px] h-5 rounded-sm shrink-0" style={{ background: "hsl(0 0% 100% / 0.35)" }} />
-              <span className="flex flex-col items-start leading-none gap-[2px]">
-                <span className="text-[11px] font-semibold tracking-wide">
-                  {isOnline ? "Atendimento Online" : "Atendimento Offline"}
+                <span className="relative flex h-1.5 w-1.5 shrink-0 items-center justify-center -ml-1.5">
+                  <span
+                    className="absolute inset-0 rounded-full animate-ping opacity-60"
+                    style={{ backgroundColor: isOnline ? "hsl(142 76% 50%)" : "hsl(0 75% 50%)" }}
+                  />
+                  <span
+                    className="relative inline-flex h-1.5 w-1.5 rounded-full"
+                    style={{
+                      backgroundColor: isOnline ? "hsl(142 76% 50%)" : "hsl(0 75% 50%)",
+                      boxShadow: isOnline ? "0 0 8px hsl(142 76% 50%)" : "0 0 8px hsl(0 75% 50%)",
+                    }}
+                  />
                 </span>
-                <span className="text-[8px] font-medium opacity-70 tracking-wider uppercase">
-                  {isOnline ? "Fale conosco" : "Deixe sua mensagem"}
+                <span className="w-[2px] h-5 rounded-sm shrink-0" style={{ background: "hsl(0 0% 100% / 0.35)" }} />
+                <span className="flex flex-col items-start leading-none gap-[2px]">
+                  <span className="text-[11px] font-semibold tracking-wide">
+                    {isOnline ? "Atendimento Online" : "Atendimento Offline"}
+                  </span>
+                  <span className="text-[8px] font-medium opacity-70 tracking-wider uppercase">
+                    {isOnline ? "Fale conosco" : "Deixe sua mensagem"}
+                  </span>
                 </span>
-              </span>
-            </button>
+              </button>
+            </div>
+
+            {/* Mobile menu trigger */}
+            {mobileMenuTrigger}
           </div>
 
-          {/* Mobile menu */}
-          <MobileMenu
-            items={NAV_ITEMS}
-            isOnline={isOnline}
-            onContactClick={onContactClick}
-            onQuizOpen={() => setQuizOpen(true)}
-          />
+          {/* Mobile dropdown — renders inside same container */}
+          {mobileDropdown}
         </div>
 
         {/* Dropdown mega menu */}
