@@ -33,8 +33,8 @@ const overlayVariants = {
 
 const drawerVariants = {
   hidden: { x: "100%" },
-  visible: { x: 0, transition: { type: "spring", damping: 30, stiffness: 300 } },
-  exit: { x: "100%", transition: { duration: 0.25, ease: [0.4, 0, 1, 1] } },
+  visible: { x: 0, transition: { type: "spring" as const, damping: 30, stiffness: 300 } },
+  exit: { x: "100%", transition: { duration: 0.25, ease: [0.4, 0, 1, 1] as const } },
 };
 
 const itemVariants = {
@@ -42,7 +42,7 @@ const itemVariants = {
   visible: (i: number) => ({
     opacity: 1,
     x: 0,
-    transition: { delay: 0.08 + i * 0.05, duration: 0.35, ease: "easeOut" },
+    transition: { delay: 0.08 + i * 0.05, duration: 0.35, ease: "easeOut" as const },
   }),
 };
 
