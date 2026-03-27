@@ -164,39 +164,16 @@ const useMobileMenu = ({ items, isOnline, onContactClick, onQuizOpen }: MobileMe
                               : "1px solid transparent",
                           }}
                         >
-                          <div className="flex items-center gap-3">
-                            {/* Icon indicator */}
-                            <div
-                              className="w-8 h-8 rounded-xl flex items-center justify-center shrink-0 transition-all duration-300"
-                              style={{
-                                background: expandedItem === item.label
-                                  ? "linear-gradient(135deg, hsl(11 81% 57% / 0.2), hsl(11 81% 57% / 0.08))"
-                                  : "hsl(0 0% 100% / 0.04)",
-                                border: expandedItem === item.label
-                                  ? "1px solid hsl(11 81% 57% / 0.2)"
-                                  : "1px solid hsl(0 0% 100% / 0.06)",
-                              }}
-                            >
-                              <Zap
-                                className="w-3.5 h-3.5 transition-colors duration-300"
-                                style={{
-                                  color: expandedItem === item.label
-                                    ? "hsl(11 81% 57%)"
-                                    : "hsl(0 0% 100% / 0.35)",
-                                }}
-                              />
-                            </div>
-                            <span
-                              className="text-[14px] font-semibold tracking-wide transition-colors duration-300"
-                              style={{
-                                color: expandedItem === item.label
-                                  ? "hsl(0 0% 100% / 0.95)"
-                                  : "hsl(0 0% 100% / 0.7)",
-                              }}
-                            >
-                              {item.label}
-                            </span>
-                          </div>
+                          <span
+                            className="text-[14px] font-semibold tracking-wide transition-colors duration-300"
+                            style={{
+                              color: expandedItem === item.label
+                                ? "hsl(0 0% 100% / 0.95)"
+                                : "hsl(0 0% 100% / 0.7)",
+                            }}
+                          >
+                            {item.label}
+                          </span>
                           <motion.div
                             animate={{ rotate: expandedItem === item.label ? 180 : 0 }}
                             transition={{ duration: 0.35, ease: [0.4, 0, 0.2, 1] }}
@@ -519,18 +496,9 @@ const useMobileMenu = ({ items, isOnline, onContactClick, onQuizOpen }: MobileMe
                       <a
                         href={item.href}
                         onClick={closeMenu}
-                        className="flex items-center gap-3 py-3.5 px-4 rounded-2xl text-[14px] font-semibold tracking-wide transition-colors duration-200 active:scale-[0.98]"
+                        className="block py-3.5 px-4 rounded-2xl text-[14px] font-semibold tracking-wide transition-colors duration-200 active:scale-[0.98]"
                         style={{ color: "hsl(0 0% 100% / 0.7)" }}
                       >
-                        <div
-                          className="w-8 h-8 rounded-xl flex items-center justify-center shrink-0"
-                          style={{
-                            background: "hsl(0 0% 100% / 0.04)",
-                            border: "1px solid hsl(0 0% 100% / 0.06)",
-                          }}
-                        >
-                          <span className="w-1.5 h-1.5 rounded-full" style={{ background: "hsl(0 0% 100% / 0.2)" }} />
-                        </div>
                         {item.label}
                       </a>
                     )}
