@@ -77,35 +77,42 @@ const useMobileMenu = ({ items, isOnline, onContactClick, onQuizOpen }: MobileMe
       }}
       aria-label={open ? "Fechar menu" : "Abrir menu"}
     >
-      {/* Animated hamburger → X morphing lines */}
-      <div className="relative w-[18px] h-[14px] flex flex-col justify-between">
+      {/* Animated hamburger → X */}
+      <div className="relative w-[18px] h-[12px]">
         <motion.span
-          className="block h-[1.5px] rounded-full origin-left"
-          style={{ background: open ? "hsl(11 81% 57%)" : "hsl(0 0% 100% / 0.8)" }}
+          className="absolute left-0 right-0 h-[1.5px] rounded-full"
+          style={{
+            top: 0,
+            background: open ? "hsl(11 81% 57%)" : "hsl(0 0% 100% / 0.8)",
+          }}
           animate={{
+            y: open ? 5.25 : 0,
             rotate: open ? 45 : 0,
-            y: open ? -1 : 0,
-            width: open ? "20px" : "18px",
           }}
           transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
         />
         <motion.span
-          className="block h-[1.5px] rounded-full"
-          style={{ background: open ? "hsl(11 81% 57%)" : "hsl(0 0% 100% / 0.5)" }}
+          className="absolute left-0 right-0 h-[1.5px] rounded-full"
+          style={{
+            top: "50%",
+            marginTop: "-0.75px",
+            background: open ? "hsl(11 81% 57%)" : "hsl(0 0% 100% / 0.5)",
+          }}
           animate={{
             opacity: open ? 0 : 1,
             scaleX: open ? 0 : 1,
-            x: open ? 8 : 0,
           }}
-          transition={{ duration: 0.25, ease: [0.4, 0, 0.2, 1] }}
+          transition={{ duration: 0.2, ease: [0.4, 0, 0.2, 1] }}
         />
         <motion.span
-          className="block h-[1.5px] rounded-full origin-left"
-          style={{ background: open ? "hsl(11 81% 57%)" : "hsl(0 0% 100% / 0.8)" }}
+          className="absolute left-0 right-0 h-[1.5px] rounded-full"
+          style={{
+            bottom: 0,
+            background: open ? "hsl(11 81% 57%)" : "hsl(0 0% 100% / 0.8)",
+          }}
           animate={{
+            y: open ? -5.25 : 0,
             rotate: open ? -45 : 0,
-            y: open ? 1 : 0,
-            width: open ? "20px" : "12px",
           }}
           transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
         />
