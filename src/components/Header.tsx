@@ -155,6 +155,13 @@ const Header = ({ onContactClick }: HeaderProps) => {
 
   const activeItem = NAV_ITEMS.find((i) => i.label === activeDropdown);
 
+  const { triggerButton: mobileMenuTrigger, dropdownBody: mobileDropdown, isOpen: mobileMenuOpen } = useMobileMenu({
+    items: NAV_ITEMS,
+    isOnline,
+    onContactClick,
+    onQuizOpen: () => setQuizOpen(true),
+  });
+
   return (
     <>
     <header className="fixed top-0 left-0 right-0 z-50 px-4 pt-3">
