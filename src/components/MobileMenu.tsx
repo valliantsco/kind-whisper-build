@@ -92,9 +92,9 @@ const MobileMenu = ({ items, isOnline, onContactClick, onQuizOpen }: MobileMenuP
         <AnimatePresence>
           {open && (
             <>
-              {/* Invisible click-away layer (no visual backdrop) */}
+              {/* Invisible click-away layer */}
               <div
-                className="fixed inset-0 z-[90]"
+                className="fixed inset-0 z-[110]"
                 onClick={closeMenu}
               />
 
@@ -104,7 +104,7 @@ const MobileMenu = ({ items, isOnline, onContactClick, onQuizOpen }: MobileMenuP
                 animate={{ opacity: 1, height: "auto" }}
                 exit={{ opacity: 0, height: 0 }}
                 transition={{ duration: 0.35, ease: [0.25, 0.8, 0.25, 1] }}
-                className="fixed left-4 right-4 z-[91] overflow-hidden"
+                className="fixed left-4 right-4 z-[111] overflow-hidden"
                 style={{
                   top: "60px",
                   maxHeight: "calc(100dvh - 72px)",
