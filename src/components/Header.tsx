@@ -309,9 +309,22 @@ const Header = ({ onContactClick }: HeaderProps) => {
                 {activeItem.dropdownItems[0]?.image ? (
                   /* Carousel (Modelos) */
                   <>
-                    <div className="mb-3">
-                      <h3 className="text-white/90 text-base font-semibold tracking-wide">Explore por categoria</h3>
-                      <p className="text-white/40 text-[12.5px] mt-0.5">Mobilidade elétrica para cada estilo de vida</p>
+                    <div className="mb-4">
+                      <div className="flex items-center gap-2 mb-1.5">
+                        <div
+                          className="w-1 h-4 rounded-full shrink-0"
+                          style={{ background: "linear-gradient(180deg, hsl(11 81% 57%), hsl(11 90% 65%))" }}
+                        />
+                        <span className="text-[9px] font-bold uppercase tracking-[0.2em]" style={{ color: "hsl(11 81% 57%)" }}>
+                          Conheça a MS Eletric
+                        </span>
+                      </div>
+                      <h3 className="text-white text-[15px] font-semibold tracking-wide">
+                        Explore por categoria
+                      </h3>
+                      <p className="text-white/35 text-[11px] mt-0.5">
+                        Mobilidade elétrica para cada estilo de vida
+                      </p>
                     </div>
                     <div className="relative flex gap-4">
                       {/* Scrollable carousel area */}
