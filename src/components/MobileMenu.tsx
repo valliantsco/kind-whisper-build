@@ -164,39 +164,16 @@ const useMobileMenu = ({ items, isOnline, onContactClick, onQuizOpen }: MobileMe
                               : "1px solid transparent",
                           }}
                         >
-                          <div className="flex items-center gap-3">
-                            {/* Icon indicator */}
-                            <div
-                              className="w-8 h-8 rounded-xl flex items-center justify-center shrink-0 transition-all duration-300"
-                              style={{
-                                background: expandedItem === item.label
-                                  ? "linear-gradient(135deg, hsl(11 81% 57% / 0.2), hsl(11 81% 57% / 0.08))"
-                                  : "hsl(0 0% 100% / 0.04)",
-                                border: expandedItem === item.label
-                                  ? "1px solid hsl(11 81% 57% / 0.2)"
-                                  : "1px solid hsl(0 0% 100% / 0.06)",
-                              }}
-                            >
-                              <Zap
-                                className="w-3.5 h-3.5 transition-colors duration-300"
-                                style={{
-                                  color: expandedItem === item.label
-                                    ? "hsl(11 81% 57%)"
-                                    : "hsl(0 0% 100% / 0.35)",
-                                }}
-                              />
-                            </div>
-                            <span
-                              className="text-[14px] font-semibold tracking-wide transition-colors duration-300"
-                              style={{
-                                color: expandedItem === item.label
-                                  ? "hsl(0 0% 100% / 0.95)"
-                                  : "hsl(0 0% 100% / 0.7)",
-                              }}
-                            >
-                              {item.label}
-                            </span>
-                          </div>
+                          <span
+                            className="text-[14px] font-semibold tracking-wide transition-colors duration-300"
+                            style={{
+                              color: expandedItem === item.label
+                                ? "hsl(0 0% 100% / 0.95)"
+                                : "hsl(0 0% 100% / 0.7)",
+                            }}
+                          >
+                            {item.label}
+                          </span>
                           <motion.div
                             animate={{ rotate: expandedItem === item.label ? 180 : 0 }}
                             transition={{ duration: 0.35, ease: [0.4, 0, 0.2, 1] }}
