@@ -92,33 +92,30 @@ const MobileMenu = ({ items, isOnline, onContactClick, onQuizOpen }: MobileMenuP
         <AnimatePresence>
           {open && (
             <>
-              {/* Backdrop */}
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.25 }}
+              {/* Invisible click-away layer (no visual backdrop) */}
+              <div
                 className="fixed inset-0 z-[90]"
-                style={{ background: "hsl(0 0% 0% / 0.5)" }}
                 onClick={closeMenu}
               />
 
-              {/* Dropdown panel */}
+              {/* Dropdown panel — seamless extension of header bar */}
               <motion.div
-                initial={{ opacity: 0, y: -12, scaleY: 0.96 }}
-                animate={{ opacity: 1, y: 0, scaleY: 1 }}
-                exit={{ opacity: 0, y: -12, scaleY: 0.96 }}
-                transition={{ duration: 0.3, ease: [0.25, 0.8, 0.25, 1] }}
-                className="fixed left-4 right-4 z-[91] overflow-hidden rounded-2xl"
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: "auto" }}
+                exit={{ opacity: 0, height: 0 }}
+                transition={{ duration: 0.35, ease: [0.25, 0.8, 0.25, 1] }}
+                className="fixed left-4 right-4 z-[91] overflow-hidden"
                 style={{
-                  top: "72px",
-                  maxHeight: "calc(100dvh - 84px)",
-                  background: "hsl(0 0% 12% / 0.94)",
-                  backdropFilter: "blur(32px)",
-                  WebkitBackdropFilter: "blur(32px)",
-                  border: "1px solid hsl(0 0% 100% / 0.08)",
-                  boxShadow:
-                    "0 16px 48px rgba(0,0,0,0.5), 0 6px 16px rgba(0,0,0,0.3)",
+                  top: "60px",
+                  maxHeight: "calc(100dvh - 72px)",
+                  background: "hsl(0 0% 14% / 0.92)",
+                  backdropFilter: "blur(24px)",
+                  WebkitBackdropFilter: "blur(24px)",
+                  borderLeft: "1px solid hsl(0 0% 100% / 0.08)",
+                  borderRight: "1px solid hsl(0 0% 100% / 0.08)",
+                  borderBottom: "1px solid hsl(0 0% 100% / 0.08)",
+                  borderRadius: "0 0 0.9rem 0.9rem",
+                  boxShadow: "0 12px 32px rgba(0,0,0,0.35), 0 4px 12px rgba(0,0,0,0.2)",
                   transformOrigin: "top center",
                 }}
               >
