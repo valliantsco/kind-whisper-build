@@ -67,41 +67,49 @@ const useMobileMenu = ({ items, isOnline, onContactClick, onQuizOpen }: MobileMe
   const triggerButton = (
     <button
       onClick={toggleMenu}
-      className="md:hidden relative flex items-center justify-center w-10 h-10 rounded-xl cursor-pointer overflow-hidden group"
+      className="md:hidden relative flex items-center justify-center w-10 h-10 rounded-[0.7rem] cursor-pointer overflow-hidden active:scale-95 transition-transform duration-150"
       style={{
         background: open
-          ? "linear-gradient(135deg, hsl(11 81% 57% / 0.15), hsl(11 81% 57% / 0.05))"
-          : "hsl(0 0% 100% / 0.06)",
-        border: open
-          ? "1px solid hsl(11 81% 57% / 0.25)"
-          : "1px solid hsl(0 0% 100% / 0.08)",
+          ? "linear-gradient(135deg, hsl(11 81% 57% / 0.12), hsl(11 81% 57% / 0.04))"
+          : "transparent",
+        border: "none",
         transition: "all 0.3s ease",
       }}
       aria-label={open ? "Fechar menu" : "Abrir menu"}
     >
-      <AnimatePresence mode="wait">
-        {open ? (
-          <motion.div
-            key="close"
-            initial={{ rotate: -90, opacity: 0, scale: 0.5 }}
-            animate={{ rotate: 0, opacity: 1, scale: 1 }}
-            exit={{ rotate: 90, opacity: 0, scale: 0.5 }}
-            transition={{ duration: 0.25, ease: [0.4, 0, 0.2, 1] }}
-          >
-            <X className="w-[18px] h-[18px]" style={{ color: "hsl(11 81% 57%)" }} />
-          </motion.div>
-        ) : (
-          <motion.div
-            key="menu"
-            initial={{ rotate: 90, opacity: 0, scale: 0.5 }}
-            animate={{ rotate: 0, opacity: 1, scale: 1 }}
-            exit={{ rotate: -90, opacity: 0, scale: 0.5 }}
-            transition={{ duration: 0.25, ease: [0.4, 0, 0.2, 1] }}
-          >
-            <Menu className="w-[18px] h-[18px] text-white/80" />
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {/* Animated hamburger → X morphing lines */}
+      <div className="relative w-[18px] h-[14px] flex flex-col justify-between">
+        <motion.span
+          className="block h-[1.5px] rounded-full origin-left"
+          style={{ background: open ? "hsl(11 81% 57%)" : "hsl(0 0% 100% / 0.8)" }}
+          animate={{
+            rotate: open ? 45 : 0,
+            y: open ? -1 : 0,
+            width: open ? "20px" : "18px",
+          }}
+          transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
+        />
+        <motion.span
+          className="block h-[1.5px] rounded-full"
+          style={{ background: open ? "hsl(11 81% 57%)" : "hsl(0 0% 100% / 0.5)" }}
+          animate={{
+            opacity: open ? 0 : 1,
+            scaleX: open ? 0 : 1,
+            x: open ? 8 : 0,
+          }}
+          transition={{ duration: 0.25, ease: [0.4, 0, 0.2, 1] }}
+        />
+        <motion.span
+          className="block h-[1.5px] rounded-full origin-left"
+          style={{ background: open ? "hsl(11 81% 57%)" : "hsl(0 0% 100% / 0.8)" }}
+          animate={{
+            rotate: open ? -45 : 0,
+            y: open ? 1 : 0,
+            width: open ? "20px" : "12px",
+          }}
+          transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
+        />
+      </div>
     </button>
   );
 
