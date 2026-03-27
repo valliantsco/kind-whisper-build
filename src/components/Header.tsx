@@ -230,8 +230,8 @@ const Header = ({ onContactClick }: HeaderProps) => {
             ))}
           </nav>
 
-          {/* CTA */}
-          <div className="relative group">
+          {/* CTA — desktop only */}
+          <div className="relative group hidden md:block">
             <span
               className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-700 ease-out pointer-events-none"
               style={{ boxShadow: "0 4px 24px hsla(11, 81%, 57%, 0.4)" }}
@@ -269,6 +269,14 @@ const Header = ({ onContactClick }: HeaderProps) => {
               </span>
             </button>
           </div>
+
+          {/* Mobile menu */}
+          <MobileMenu
+            items={NAV_ITEMS}
+            isOnline={isOnline}
+            onContactClick={onContactClick}
+            onQuizOpen={() => setQuizOpen(true)}
+          />
         </div>
 
         {/* Dropdown mega menu */}
