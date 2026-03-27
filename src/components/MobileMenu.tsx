@@ -10,6 +10,8 @@ import {
   ExternalLink,
   Compass,
   Play,
+  X,
+  Zap,
 } from "lucide-react";
 
 interface MobileMenuItem {
@@ -35,10 +37,6 @@ interface MobileMenuProps {
   onQuizOpen: () => void;
 }
 
-/**
- * Returns the hamburger button (for the header bar)
- * and the dropdown body (to render below the bar, inside the same container).
- */
 const useMobileMenu = ({ items, isOnline, onContactClick, onQuizOpen }: MobileMenuProps) => {
   const [open, setOpen] = useState(false);
   const [expandedItem, setExpandedItem] = useState<string | null>(null);
@@ -62,154 +60,286 @@ const useMobileMenu = ({ items, isOnline, onContactClick, onQuizOpen }: MobileMe
 
   const scrollCarousel = (label: string, dir: "left" | "right") => {
     const el = carouselRefs.current[label];
-    if (el) el.scrollBy({ left: dir === "left" ? -200 : 200, behavior: "smooth" });
+    if (el) el.scrollBy({ left: dir === "left" ? -180 : 180, behavior: "smooth" });
   };
 
+  /* ─── Trigger Button ─── */
   const triggerButton = (
     <button
       onClick={toggleMenu}
-      className="md:hidden relative flex items-center justify-center w-10 h-10 rounded-lg cursor-pointer"
+      className="md:hidden relative flex items-center justify-center w-10 h-10 rounded-xl cursor-pointer overflow-hidden group"
       style={{
-        background: "hsl(0 0% 100% / 0.06)",
-        border: "1px solid hsl(0 0% 100% / 0.08)",
+        background: open
+          ? "linear-gradient(135deg, hsl(11 81% 57% / 0.15), hsl(11 81% 57% / 0.05))"
+          : "hsl(0 0% 100% / 0.06)",
+        border: open
+          ? "1px solid hsl(11 81% 57% / 0.25)"
+          : "1px solid hsl(0 0% 100% / 0.08)",
+        transition: "all 0.3s ease",
       }}
       aria-label={open ? "Fechar menu" : "Abrir menu"}
     >
       <AnimatePresence mode="wait">
         {open ? (
           <motion.div
-            key="chevron"
-            initial={{ rotate: -90, opacity: 0 }}
-            animate={{ rotate: 0, opacity: 1 }}
-            exit={{ rotate: 90, opacity: 0 }}
-            transition={{ duration: 0.2 }}
+            key="close"
+            initial={{ rotate: -90, opacity: 0, scale: 0.5 }}
+            animate={{ rotate: 0, opacity: 1, scale: 1 }}
+            exit={{ rotate: 90, opacity: 0, scale: 0.5 }}
+            transition={{ duration: 0.25, ease: [0.4, 0, 0.2, 1] }}
           >
-            <ChevronDown className="w-5 h-5 text-white/80" />
+            <X className="w-[18px] h-[18px]" style={{ color: "hsl(11 81% 57%)" }} />
           </motion.div>
         ) : (
           <motion.div
             key="menu"
-            initial={{ rotate: 90, opacity: 0 }}
-            animate={{ rotate: 0, opacity: 1 }}
-            exit={{ rotate: -90, opacity: 0 }}
-            transition={{ duration: 0.2 }}
+            initial={{ rotate: 90, opacity: 0, scale: 0.5 }}
+            animate={{ rotate: 0, opacity: 1, scale: 1 }}
+            exit={{ rotate: -90, opacity: 0, scale: 0.5 }}
+            transition={{ duration: 0.25, ease: [0.4, 0, 0.2, 1] }}
           >
-            <Menu className="w-5 h-5 text-white/80" />
+            <Menu className="w-[18px] h-[18px] text-white/80" />
           </motion.div>
         )}
       </AnimatePresence>
     </button>
   );
 
+  /* ─── Dropdown Body ─── */
   const dropdownBody = (
     <AnimatePresence>
       {open && (
         <>
-          {/* Click-away (covers viewport behind header) */}
+          {/* Click-away overlay */}
           <div className="fixed inset-0 z-[49]" onClick={closeMenu} />
 
           <motion.div
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.35, ease: [0.25, 0.8, 0.25, 1] }}
-            className="md:hidden overflow-hidden"
+            transition={{ duration: 0.4, ease: [0.25, 0.8, 0.25, 1] }}
+            className="md:hidden overflow-hidden relative"
           >
-            {/* Separator */}
-            <div className="h-px mx-3" style={{ background: "hsl(0 0% 100% / 0.06)" }} />
+            {/* Gradient separator */}
+            <div
+              className="h-px mx-4"
+              style={{
+                background: "linear-gradient(90deg, transparent, hsl(11 81% 57% / 0.3), hsl(0 0% 100% / 0.08), transparent)",
+              }}
+            />
+
+            {/* Subtle ambient glow */}
+            <div
+              className="absolute top-0 left-1/2 -translate-x-1/2 w-2/3 h-24 pointer-events-none"
+              style={{
+                background: "radial-gradient(ellipse at top center, hsl(11 81% 57% / 0.06), transparent 70%)",
+              }}
+            />
 
             <div
-              className="overflow-y-auto"
+              className="overflow-y-auto relative"
               style={{ maxHeight: "calc(100dvh - 80px)" }}
             >
               {/* Nav items */}
-              <div className="px-3 pt-2 pb-1.5 space-y-0.5">
+              <div className="px-3 pt-3 pb-2 space-y-1">
                 {items.map((item, i) => (
                   <motion.div
                     key={item.label}
-                    initial={{ opacity: 0, y: 6 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.04 + i * 0.04, duration: 0.28, ease: "easeOut" }}
+                    initial={{ opacity: 0, x: -12 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.06 + i * 0.06, duration: 0.35, ease: [0.25, 0.8, 0.25, 1] }}
                   >
                     {item.hasDropdown ? (
                       <div>
+                        {/* Expandable section header */}
                         <button
                           onClick={() => toggleExpand(item.label)}
-                          className="w-full flex items-center justify-between py-3 px-3 rounded-xl cursor-pointer transition-all duration-200"
+                          className="w-full flex items-center justify-between py-3.5 px-4 rounded-2xl cursor-pointer transition-all duration-300"
                           style={{
-                            background: expandedItem === item.label ? "hsl(0 0% 100% / 0.04)" : "transparent",
+                            background: expandedItem === item.label
+                              ? "linear-gradient(135deg, hsl(11 81% 57% / 0.08), hsl(0 0% 100% / 0.03))"
+                              : "transparent",
+                            border: expandedItem === item.label
+                              ? "1px solid hsl(11 81% 57% / 0.12)"
+                              : "1px solid transparent",
                           }}
                         >
-                          <span
-                            className="text-[14px] font-semibold tracking-wide transition-colors duration-200"
-                            style={{
-                              color: expandedItem === item.label ? "hsl(11 81% 57%)" : "hsl(0 0% 100% / 0.8)",
-                            }}
-                          >
-                            {item.label}
-                          </span>
+                          <div className="flex items-center gap-3">
+                            {/* Icon indicator */}
+                            <div
+                              className="w-8 h-8 rounded-xl flex items-center justify-center shrink-0 transition-all duration-300"
+                              style={{
+                                background: expandedItem === item.label
+                                  ? "linear-gradient(135deg, hsl(11 81% 57% / 0.2), hsl(11 81% 57% / 0.08))"
+                                  : "hsl(0 0% 100% / 0.04)",
+                                border: expandedItem === item.label
+                                  ? "1px solid hsl(11 81% 57% / 0.2)"
+                                  : "1px solid hsl(0 0% 100% / 0.06)",
+                              }}
+                            >
+                              <Zap
+                                className="w-3.5 h-3.5 transition-colors duration-300"
+                                style={{
+                                  color: expandedItem === item.label
+                                    ? "hsl(11 81% 57%)"
+                                    : "hsl(0 0% 100% / 0.35)",
+                                }}
+                              />
+                            </div>
+                            <span
+                              className="text-[14px] font-semibold tracking-wide transition-colors duration-300"
+                              style={{
+                                color: expandedItem === item.label
+                                  ? "hsl(0 0% 100% / 0.95)"
+                                  : "hsl(0 0% 100% / 0.7)",
+                              }}
+                            >
+                              {item.label}
+                            </span>
+                          </div>
                           <motion.div
                             animate={{ rotate: expandedItem === item.label ? 180 : 0 }}
-                            transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
+                            transition={{ duration: 0.35, ease: [0.4, 0, 0.2, 1] }}
                           >
                             <ChevronDown
-                              className="w-4 h-4"
+                              className="w-4 h-4 transition-colors duration-300"
                               style={{
-                                color: expandedItem === item.label ? "hsl(11 81% 57%)" : "hsl(0 0% 100% / 0.3)",
+                                color: expandedItem === item.label
+                                  ? "hsl(11 81% 57%)"
+                                  : "hsl(0 0% 100% / 0.25)",
                               }}
                             />
                           </motion.div>
                         </button>
 
+                        {/* Expanded content */}
                         <AnimatePresence>
                           {expandedItem === item.label && item.dropdownItems && (
                             <motion.div
                               initial={{ height: 0, opacity: 0 }}
                               animate={{ height: "auto", opacity: 1 }}
                               exit={{ height: 0, opacity: 0 }}
-                              transition={{ duration: 0.35, ease: [0.25, 0.8, 0.25, 1] }}
+                              transition={{ duration: 0.4, ease: [0.25, 0.8, 0.25, 1] }}
                               className="overflow-hidden"
                             >
-                              <div className="pb-2">
+                              <div className="pt-2 pb-3">
+                                {/* Image/video cards carousel */}
                                 {item.dropdownItems[0]?.image ? (
                                   <>
+                                    {/* Section label */}
+                                    <div className="flex items-center gap-2 px-4 mb-3">
+                                      <div
+                                        className="w-0.5 h-3 rounded-full"
+                                        style={{ background: "linear-gradient(180deg, hsl(11 81% 57%), hsl(11 90% 65%))" }}
+                                      />
+                                      <span
+                                        className="text-[8px] font-bold uppercase tracking-[0.2em]"
+                                        style={{ color: "hsl(11 81% 57% / 0.7)" }}
+                                      >
+                                        Categorias
+                                      </span>
+                                    </div>
+
+                                    {/* Carousel */}
                                     <div className="relative">
                                       <div
                                         ref={(el) => { carouselRefs.current[item.label] = el; }}
-                                        className="flex gap-2.5 overflow-x-auto pb-2 px-1 snap-x snap-mandatory scrollbar-hide"
-                                        style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+                                        className="flex gap-3 overflow-x-auto pb-3 px-4 snap-x snap-mandatory scrollbar-hide"
+                                        style={{
+                                          scrollbarWidth: "none",
+                                          msOverflowStyle: "none",
+                                          maskImage: "linear-gradient(to right, black 0%, black 85%, transparent 100%)",
+                                          WebkitMaskImage: "linear-gradient(to right, black 0%, black 85%, transparent 100%)",
+                                        }}
                                       >
                                         {item.dropdownItems.map((sub, j) => (
                                           <motion.a
                                             key={sub.label}
                                             href={sub.href}
                                             onClick={closeMenu}
-                                            initial={{ opacity: 0, scale: 0.92 }}
-                                            animate={{ opacity: 1, scale: 1 }}
-                                            transition={{ delay: j * 0.04, duration: 0.3 }}
-                                            className="relative flex-shrink-0 rounded-xl overflow-hidden snap-start"
-                                            style={{ width: "150px", aspectRatio: "3/4" }}
+                                            initial={{ opacity: 0, scale: 0.88, y: 8 }}
+                                            animate={{ opacity: 1, scale: 1, y: 0 }}
+                                            transition={{ delay: j * 0.05, duration: 0.35, ease: [0.25, 0.8, 0.25, 1] }}
+                                            className="relative flex-shrink-0 rounded-2xl overflow-hidden snap-start group/card"
+                                            style={{
+                                              width: "140px",
+                                              aspectRatio: "3/4",
+                                              border: "1px solid hsl(0 0% 100% / 0.06)",
+                                            }}
                                           >
+                                            {/* Media */}
                                             {sub.video ? (
-                                              <video src={sub.video} autoPlay muted loop playsInline preload="metadata" className="absolute inset-0 w-full h-full object-cover" />
+                                              <video
+                                                src={sub.video}
+                                                autoPlay
+                                                muted
+                                                loop
+                                                playsInline
+                                                preload="metadata"
+                                                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover/card:scale-105"
+                                              />
                                             ) : (
-                                              <img src={sub.image} alt={sub.label} className="absolute inset-0 w-full h-full object-cover" />
+                                              <img
+                                                src={sub.image}
+                                                alt={sub.label}
+                                                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover/card:scale-105"
+                                              />
                                             )}
-                                            <div className="absolute inset-0" style={{ background: "linear-gradient(to top, hsl(0 0% 0% / 0.85) 0%, hsl(0 0% 0% / 0.3) 50%, hsl(0 0% 0% / 0.15) 100%)" }} />
+
+                                            {/* Overlay gradient */}
+                                            <div
+                                              className="absolute inset-0"
+                                              style={{
+                                                background: "linear-gradient(to top, hsl(0 0% 0% / 0.9) 0%, hsl(0 0% 0% / 0.4) 40%, hsl(0 0% 0% / 0.1) 100%)",
+                                              }}
+                                            />
+
+                                            {/* Badge */}
                                             {sub.badge && (
-                                              <span className="absolute top-1.5 right-1.5 z-10 px-1.5 py-0.5 rounded-full text-[7px] font-bold uppercase tracking-[0.08em] text-white" style={{ background: "hsl(11 81% 57% / 0.75)", backdropFilter: "blur(8px)" }}>
+                                              <span
+                                                className="absolute top-2 right-2 z-10 px-2 py-[3px] rounded-full text-[7px] font-bold uppercase tracking-[0.1em] text-white"
+                                                style={{
+                                                  background: "linear-gradient(135deg, hsl(11 81% 57% / 0.85), hsl(11 90% 65% / 0.85))",
+                                                  backdropFilter: "blur(8px)",
+                                                  border: "1px solid hsl(11 81% 57% / 0.3)",
+                                                  boxShadow: "0 2px 8px hsl(11 81% 57% / 0.3)",
+                                                }}
+                                              >
                                                 {sub.badge}
                                               </span>
                                             )}
+
+                                            {/* Video indicator */}
                                             {sub.video && (
-                                              <div className="absolute top-1.5 left-1.5 z-10 w-5 h-5 rounded-full flex items-center justify-center" style={{ background: "hsl(0 0% 0% / 0.45)" }}>
-                                                <Play className="w-2.5 h-2.5 text-white fill-white ml-0.5" />
+                                              <div
+                                                className="absolute top-2 left-2 z-10 w-6 h-6 rounded-full flex items-center justify-center"
+                                                style={{
+                                                  background: "hsl(0 0% 0% / 0.5)",
+                                                  backdropFilter: "blur(4px)",
+                                                  border: "1px solid hsl(0 0% 100% / 0.1)",
+                                                }}
+                                              >
+                                                <Play className="w-2.5 h-2.5 text-white fill-white ml-[1px]" />
                                               </div>
                                             )}
-                                            <div className="absolute bottom-0 left-0 right-0 p-2.5">
-                                              <p className="text-white font-bold text-[10px] uppercase tracking-[0.08em] mb-0.5 drop-shadow-lg">{sub.label}</p>
-                                              <p className="text-white/50 text-[8px] tracking-wide line-clamp-2">{sub.description}</p>
+
+                                            {/* Text */}
+                                            <div className="absolute bottom-0 left-0 right-0 p-3">
+                                              <p className="text-white font-bold text-[10px] uppercase tracking-[0.1em] mb-1 drop-shadow-lg leading-tight">
+                                                {sub.label}
+                                              </p>
+                                              <p className="text-white/45 text-[8px] tracking-wide line-clamp-2 leading-relaxed">
+                                                {sub.description}
+                                              </p>
                                             </div>
+
+                                            {/* Bottom accent line */}
+                                            <div
+                                              className="absolute bottom-0 left-3 right-3 h-[1.5px] rounded-full opacity-0 group-hover/card:opacity-100 transition-opacity duration-500"
+                                              style={{
+                                                background: "linear-gradient(90deg, transparent, hsl(11 81% 57% / 0.6), transparent)",
+                                              }}
+                                            />
                                           </motion.a>
                                         ))}
                                       </div>
@@ -217,47 +347,80 @@ const useMobileMenu = ({ items, isOnline, onContactClick, onQuizOpen }: MobileMe
                                       {/* Scroll buttons */}
                                       <button
                                         onClick={() => scrollCarousel(item.label, "left")}
-                                        className="absolute left-0 top-1/2 -translate-y-1/2 z-10 w-7 h-7 rounded-full flex items-center justify-center"
-                                        style={{ background: "hsl(0 0% 0% / 0.6)", backdropFilter: "blur(8px)", border: "1px solid hsl(0 0% 100% / 0.1)" }}
+                                        className="absolute left-1 top-1/2 -translate-y-1/2 z-10 w-7 h-7 rounded-full flex items-center justify-center transition-all duration-200 active:scale-90"
+                                        style={{
+                                          background: "hsl(0 0% 0% / 0.7)",
+                                          backdropFilter: "blur(8px)",
+                                          border: "1px solid hsl(0 0% 100% / 0.12)",
+                                          boxShadow: "0 2px 8px hsl(0 0% 0% / 0.4)",
+                                        }}
                                         aria-label="Anterior"
                                       >
-                                        <ArrowRight className="w-3 h-3 text-white rotate-180" />
+                                        <ArrowRight className="w-3 h-3 text-white/80 rotate-180" />
                                       </button>
                                       <button
                                         onClick={() => scrollCarousel(item.label, "right")}
-                                        className="absolute right-0 top-1/2 -translate-y-1/2 z-10 w-7 h-7 rounded-full flex items-center justify-center"
-                                        style={{ background: "hsl(0 0% 0% / 0.6)", backdropFilter: "blur(8px)", border: "1px solid hsl(0 0% 100% / 0.1)" }}
+                                        className="absolute right-1 top-1/2 -translate-y-1/2 z-10 w-7 h-7 rounded-full flex items-center justify-center transition-all duration-200 active:scale-90"
+                                        style={{
+                                          background: "hsl(0 0% 0% / 0.7)",
+                                          backdropFilter: "blur(8px)",
+                                          border: "1px solid hsl(0 0% 100% / 0.12)",
+                                          boxShadow: "0 2px 8px hsl(0 0% 0% / 0.4)",
+                                        }}
                                         aria-label="Próximo"
                                       >
-                                        <ArrowRight className="w-3 h-3 text-white" />
+                                        <ArrowRight className="w-3 h-3 text-white/80" />
                                       </button>
                                     </div>
 
+                                    {/* Quiz CTA */}
                                     {item.hasCta && (
                                       <motion.button
-                                        initial={{ opacity: 0, y: 6 }}
+                                        initial={{ opacity: 0, y: 10 }}
                                         animate={{ opacity: 1, y: 0 }}
-                                        transition={{ delay: 0.15, duration: 0.3 }}
+                                        transition={{ delay: 0.2, duration: 0.35 }}
                                         onClick={() => { closeMenu(); onQuizOpen(); }}
-                                        className="w-full mt-2 flex items-center gap-3 px-3.5 py-3 rounded-xl cursor-pointer"
-                                        style={{ background: "linear-gradient(160deg, hsl(0 0% 10%), hsl(0 0% 6%))", border: "1px solid hsl(11 81% 57% / 0.2)" }}
+                                        className="w-[calc(100%-2rem)] mx-4 mt-1 flex items-center gap-3 px-4 py-3.5 rounded-2xl cursor-pointer group/quiz active:scale-[0.98] transition-transform duration-150"
+                                        style={{
+                                          background: "linear-gradient(135deg, hsl(0 0% 12%), hsl(0 0% 7%))",
+                                          border: "1px solid hsl(11 81% 57% / 0.15)",
+                                          boxShadow: "0 4px 16px hsl(0 0% 0% / 0.3), inset 0 1px 0 hsl(0 0% 100% / 0.03)",
+                                        }}
                                       >
-                                        <div className="w-9 h-9 rounded-full flex items-center justify-center shrink-0" style={{ background: "linear-gradient(135deg, hsl(11 81% 57% / 0.2), hsl(11 81% 57% / 0.08))", border: "1px solid hsl(11 81% 57% / 0.25)" }}>
-                                          <Compass className="w-4 h-4" style={{ color: "hsl(11 81% 57%)" }} />
+                                        <div
+                                          className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0"
+                                          style={{
+                                            background: "linear-gradient(135deg, hsl(11 81% 57% / 0.2), hsl(11 81% 57% / 0.06))",
+                                            border: "1px solid hsl(11 81% 57% / 0.2)",
+                                            boxShadow: "0 0 16px hsl(11 81% 57% / 0.1)",
+                                          }}
+                                        >
+                                          <Compass className="w-[18px] h-[18px]" style={{ color: "hsl(11 81% 57%)" }} />
                                         </div>
                                         <div className="text-left flex-1 min-w-0">
-                                          <p className="text-white font-bold text-[11px] uppercase tracking-[0.1em]">Não sabe qual escolher?</p>
-                                          <p className="text-white/40 text-[9px] tracking-wide">Descubra em 1 min com o quiz</p>
+                                          <p className="text-white/90 font-bold text-[11px] uppercase tracking-[0.1em]">
+                                            Não sabe qual escolher?
+                                          </p>
+                                          <p className="text-white/35 text-[9px] tracking-wide mt-0.5">
+                                            Descubra em 1 min com o quiz
+                                          </p>
                                         </div>
-                                        <div className="flex items-center gap-1 px-2.5 py-1.5 rounded-full shrink-0" style={{ background: "linear-gradient(135deg, hsl(11 81% 57%), hsl(11 90% 65%))" }}>
-                                          <span className="text-white text-[8px] font-bold uppercase tracking-[0.08em]">Quiz</span>
-                                          <ArrowRight className="w-2.5 h-2.5 text-white" />
+                                        <div
+                                          className="flex items-center gap-1.5 px-3 py-2 rounded-xl shrink-0 transition-all duration-300"
+                                          style={{
+                                            background: "linear-gradient(135deg, hsl(11 81% 57%), hsl(11 90% 65%))",
+                                            boxShadow: "0 2px 10px hsl(11 81% 57% / 0.3)",
+                                          }}
+                                        >
+                                          <span className="text-white text-[8px] font-bold uppercase tracking-[0.1em]">Quiz</span>
+                                          <ArrowRight className="w-3 h-3 text-white" />
                                         </div>
                                       </motion.button>
                                     )}
                                   </>
                                 ) : (
-                                  <div className="space-y-1.5 px-1">
+                                  /* Non-image items (e.g. Visite-nos) */
+                                  <div className="space-y-1.5 px-2">
                                     {item.dropdownItems.map((sub, j) => {
                                       const Icon = sub.icon;
                                       return (
@@ -265,56 +428,84 @@ const useMobileMenu = ({ items, isOnline, onContactClick, onQuizOpen }: MobileMe
                                           key={sub.label}
                                           href={sub.href}
                                           onClick={closeMenu}
-                                          initial={{ opacity: 0, x: 10 }}
+                                          initial={{ opacity: 0, x: 16 }}
                                           animate={{ opacity: 1, x: 0 }}
-                                          transition={{ delay: j * 0.05, duration: 0.3 }}
-                                          className="flex items-center gap-3 px-3 py-3 rounded-xl"
-                                          style={{ background: "hsl(0 0% 100% / 0.03)" }}
+                                          transition={{ delay: j * 0.06, duration: 0.35, ease: [0.25, 0.8, 0.25, 1] }}
+                                          className="flex items-center gap-3 px-4 py-3.5 rounded-2xl transition-all duration-200 active:scale-[0.98]"
+                                          style={{
+                                            background: "linear-gradient(135deg, hsl(0 0% 100% / 0.04), hsl(0 0% 100% / 0.01))",
+                                            border: "1px solid hsl(0 0% 100% / 0.05)",
+                                          }}
                                         >
                                           {Icon && (
-                                            <div className="w-9 h-9 rounded-lg flex items-center justify-center shrink-0" style={{ background: "hsl(11 81% 57% / 0.1)", border: "1px solid hsl(11 81% 57% / 0.18)" }}>
-                                              <Icon className="w-4 h-4" style={{ color: "hsl(11 81% 57%)" }} />
+                                            <div
+                                              className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0"
+                                              style={{
+                                                background: "linear-gradient(135deg, hsl(11 81% 57% / 0.12), hsl(11 81% 57% / 0.04))",
+                                                border: "1px solid hsl(11 81% 57% / 0.15)",
+                                              }}
+                                            >
+                                              <Icon className="w-[18px] h-[18px]" style={{ color: "hsl(11 81% 57%)" }} />
                                             </div>
                                           )}
                                           <div className="min-w-0 flex-1">
                                             <p className="text-white/90 text-[12px] font-semibold tracking-wide">{sub.label}</p>
-                                            <p className="text-white/35 text-[10px] mt-0.5 leading-relaxed line-clamp-2">{sub.description}</p>
+                                            <p className="text-white/30 text-[10px] mt-1 leading-relaxed line-clamp-2">{sub.description}</p>
                                           </div>
-                                          <ArrowRight className="w-3.5 h-3.5 text-white/20 shrink-0" />
+                                          <ArrowRight className="w-3.5 h-3.5 text-white/15 shrink-0" />
                                         </motion.a>
                                       );
                                     })}
 
+                                    {/* Visite-nos extra info */}
                                     {item.label === "Visite-nos" && (
-                                      <div className="mt-2 space-y-2 px-1">
-                                        <div className="h-px" style={{ background: "hsl(0 0% 100% / 0.06)" }} />
-                                        <div className="flex items-start gap-3 px-2 py-2">
-                                          <MapPin className="w-3.5 h-3.5 mt-0.5 shrink-0" style={{ color: "hsl(11 81% 57% / 0.6)" }} />
-                                          <div>
-                                            <p className="text-white/80 text-[11px] font-semibold">Av. João Pinheiro, 3747</p>
-                                            <p className="text-white/35 text-[9px]">Uberlândia — MG</p>
+                                      <motion.div
+                                        initial={{ opacity: 0 }}
+                                        animate={{ opacity: 1 }}
+                                        transition={{ delay: 0.15, duration: 0.4 }}
+                                        className="mt-3 mx-1 rounded-2xl overflow-hidden"
+                                        style={{
+                                          background: "linear-gradient(160deg, hsl(0 0% 10%), hsl(0 0% 6%))",
+                                          border: "1px solid hsl(0 0% 100% / 0.05)",
+                                        }}
+                                      >
+                                        {/* Info rows */}
+                                        <div className="px-4 py-3.5 space-y-3">
+                                          <div className="flex items-start gap-3">
+                                            <MapPin className="w-3.5 h-3.5 mt-0.5 shrink-0" style={{ color: "hsl(11 81% 57% / 0.6)" }} />
+                                            <div>
+                                              <p className="text-white/80 text-[11px] font-semibold">Av. João Pinheiro, 3747</p>
+                                              <p className="text-white/30 text-[9px] mt-0.5">Uberlândia — MG</p>
+                                            </div>
+                                          </div>
+                                          <div className="h-px" style={{ background: "hsl(0 0% 100% / 0.04)" }} />
+                                          <div className="flex items-center gap-3">
+                                            <Phone className="w-3.5 h-3.5 shrink-0" style={{ color: "hsl(11 81% 57% / 0.6)" }} />
+                                            <a href="tel:+553432196628" className="text-white/70 text-[11px] font-semibold">(34) 3219-6628</a>
+                                          </div>
+                                          <div className="h-px" style={{ background: "hsl(0 0% 100% / 0.04)" }} />
+                                          <div className="flex items-center gap-3">
+                                            <Clock className="w-3.5 h-3.5 shrink-0" style={{ color: "hsl(11 81% 57% / 0.6)" }} />
+                                            <div className="text-white/45 text-[10px] space-y-0.5">
+                                              <p>Seg – Sex: <span className="text-white/70 font-medium">08h – 18h</span></p>
+                                              <p>Sábado: <span className="text-white/70 font-medium">08h – 12h</span></p>
+                                            </div>
                                           </div>
                                         </div>
-                                        <div className="flex items-center gap-3 px-2 py-2">
-                                          <Phone className="w-3.5 h-3.5 shrink-0" style={{ color: "hsl(11 81% 57% / 0.6)" }} />
-                                          <a href="tel:+553432196628" className="text-white/70 text-[11px] font-semibold hover:text-white transition-colors">(34) 3219-6628</a>
-                                        </div>
-                                        <div className="flex items-center gap-3 px-2 py-2">
-                                          <Clock className="w-3.5 h-3.5 shrink-0" style={{ color: "hsl(11 81% 57% / 0.6)" }} />
-                                          <div className="text-white/50 text-[10px] space-y-0.5">
-                                            <p>Seg – Sex: <span className="text-white/70 font-medium">08h – 18h</span></p>
-                                            <p>Sábado: <span className="text-white/70 font-medium">08h – 12h</span></p>
-                                          </div>
-                                        </div>
+
+                                        {/* Maps CTA */}
                                         <button
                                           onClick={() => { closeMenu(); window.open("https://maps.app.goo.gl/7iwuPGQuN4rAhqRf8", "_blank"); }}
-                                          className="w-full flex items-center justify-center gap-2 py-2.5 rounded-lg text-[10px] font-bold uppercase tracking-[0.1em] text-white cursor-pointer transition-all duration-200 hover:brightness-110 active:scale-[0.98]"
-                                          style={{ background: "linear-gradient(135deg, hsl(11 81% 57%), hsl(11 90% 65%))", boxShadow: "0 4px 16px hsl(11 81% 57% / 0.25)" }}
+                                          className="w-full flex items-center justify-center gap-2 py-3 text-[10px] font-bold uppercase tracking-[0.12em] text-white cursor-pointer transition-all duration-200 active:scale-[0.98]"
+                                          style={{
+                                            background: "linear-gradient(135deg, hsl(11 81% 57%), hsl(11 90% 65%))",
+                                            boxShadow: "0 -4px 16px hsl(11 81% 57% / 0.15)",
+                                          }}
                                         >
                                           <ExternalLink className="w-3.5 h-3.5" />
                                           Abrir no Google Maps
                                         </button>
-                                      </div>
+                                      </motion.div>
                                     )}
                                   </div>
                                 )}
@@ -324,41 +515,85 @@ const useMobileMenu = ({ items, isOnline, onContactClick, onQuizOpen }: MobileMe
                         </AnimatePresence>
                       </div>
                     ) : (
+                      /* Simple nav link */
                       <a
                         href={item.href}
                         onClick={closeMenu}
-                        className="block py-3 px-3 rounded-xl text-[14px] font-semibold tracking-wide"
-                        style={{ color: "hsl(0 0% 100% / 0.8)" }}
+                        className="flex items-center gap-3 py-3.5 px-4 rounded-2xl text-[14px] font-semibold tracking-wide transition-colors duration-200 active:scale-[0.98]"
+                        style={{ color: "hsl(0 0% 100% / 0.7)" }}
                       >
+                        <div
+                          className="w-8 h-8 rounded-xl flex items-center justify-center shrink-0"
+                          style={{
+                            background: "hsl(0 0% 100% / 0.04)",
+                            border: "1px solid hsl(0 0% 100% / 0.06)",
+                          }}
+                        >
+                          <span className="w-1.5 h-1.5 rounded-full" style={{ background: "hsl(0 0% 100% / 0.2)" }} />
+                        </div>
                         {item.label}
                       </a>
                     )}
 
+                    {/* Separator between items */}
                     {i < items.length - 1 && (
-                      <div className="mx-3 h-px" style={{ background: "hsl(0 0% 100% / 0.04)" }} />
+                      <div
+                        className="mx-4 h-px my-0.5"
+                        style={{ background: "linear-gradient(90deg, transparent, hsl(0 0% 100% / 0.04), transparent)" }}
+                      />
                     )}
                   </motion.div>
                 ))}
               </div>
 
-              {/* Bottom CTA */}
-              <div className="px-3 pb-3 pt-1">
+              {/* Bottom CTA bar */}
+              <div className="px-3 pb-4 pt-2">
+                {/* Gradient separator */}
+                <div
+                  className="h-px mx-1 mb-3"
+                  style={{
+                    background: "linear-gradient(90deg, transparent, hsl(11 81% 57% / 0.2), hsl(0 0% 100% / 0.06), transparent)",
+                  }}
+                />
                 <motion.button
-                  initial={{ opacity: 0, y: 8 }}
+                  initial={{ opacity: 0, y: 12 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.2, duration: 0.3 }}
+                  transition={{ delay: 0.25, duration: 0.4, ease: [0.25, 0.8, 0.25, 1] }}
                   onClick={() => { closeMenu(); onContactClick?.(); }}
-                  className="w-full relative flex items-center justify-center gap-3 rounded-xl px-5 py-3.5 text-white cursor-pointer overflow-hidden active:scale-[0.97] transition-transform duration-150"
-                  style={{ background: "linear-gradient(135deg, hsl(11 81% 57%), hsl(11 90% 65%))", boxShadow: "0 4px 16px hsl(11 81% 57% / 0.3)" }}
+                  className="w-full relative flex items-center justify-center gap-3 rounded-2xl px-5 py-4 text-white cursor-pointer overflow-hidden active:scale-[0.97] transition-transform duration-150"
+                  style={{
+                    background: "linear-gradient(135deg, hsl(11 81% 57%), hsl(11 90% 65%))",
+                    boxShadow: "0 6px 24px hsl(11 81% 57% / 0.35), inset 0 1px 0 hsl(0 0% 100% / 0.15)",
+                  }}
                 >
+                  {/* Shine effect */}
+                  <span
+                    className="absolute inset-0 pointer-events-none"
+                    style={{
+                      background: "linear-gradient(135deg, hsl(0 0% 100% / 0.12) 0%, transparent 50%)",
+                    }}
+                  />
                   <span className="relative flex h-2 w-2 shrink-0">
-                    <span className="absolute inset-0 rounded-full animate-ping opacity-60" style={{ backgroundColor: isOnline ? "hsl(142 76% 50%)" : "hsl(0 75% 50%)" }} />
-                    <span className="relative inline-flex h-2 w-2 rounded-full" style={{ backgroundColor: isOnline ? "hsl(142 76% 50%)" : "hsl(0 75% 50%)", boxShadow: isOnline ? "0 0 8px hsl(142 76% 50%)" : "0 0 8px hsl(0 75% 50%)" }} />
+                    <span
+                      className="absolute inset-0 rounded-full animate-ping opacity-60"
+                      style={{ backgroundColor: isOnline ? "hsl(142 76% 50%)" : "hsl(0 75% 50%)" }}
+                    />
+                    <span
+                      className="relative inline-flex h-2 w-2 rounded-full"
+                      style={{
+                        backgroundColor: isOnline ? "hsl(142 76% 50%)" : "hsl(0 75% 50%)",
+                        boxShadow: isOnline ? "0 0 10px hsl(142 76% 50%)" : "0 0 10px hsl(0 75% 50%)",
+                      }}
+                    />
                   </span>
                   <span className="w-px h-5 rounded-sm" style={{ background: "hsl(0 0% 100% / 0.3)" }} />
-                  <span className="flex flex-col items-start leading-none gap-[3px]">
-                    <span className="text-[12px] font-semibold tracking-wide">{isOnline ? "Atendimento Online" : "Atendimento Offline"}</span>
-                    <span className="text-[9px] font-medium opacity-70 tracking-wider uppercase">{isOnline ? "Fale conosco agora" : "Deixe sua mensagem"}</span>
+                  <span className="relative flex flex-col items-start leading-none gap-[3px]">
+                    <span className="text-[12px] font-bold tracking-wide">
+                      {isOnline ? "Atendimento Online" : "Atendimento Offline"}
+                    </span>
+                    <span className="text-[9px] font-medium opacity-75 tracking-wider uppercase">
+                      {isOnline ? "Fale conosco agora" : "Deixe sua mensagem"}
+                    </span>
                   </span>
                 </motion.button>
               </div>
