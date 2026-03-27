@@ -106,7 +106,7 @@ const MobileMenu = ({ items, isOnline, onContactClick, onQuizOpen }: MobileMenuP
                 transition={{ duration: 0.35, ease: [0.25, 0.8, 0.25, 1] }}
                 className="fixed left-4 right-4 z-[111] overflow-hidden"
                 style={{
-                  top: "60px",
+                  top: "80px",
                   maxHeight: "calc(100dvh - 72px)",
                   background: "hsl(0 0% 14% / 0.92)",
                   backdropFilter: "blur(24px)",
