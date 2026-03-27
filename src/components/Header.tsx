@@ -316,7 +316,7 @@ const Header = ({ onContactClick }: HeaderProps) => {
                           style={{ background: "linear-gradient(180deg, hsl(11 81% 57%), hsl(11 90% 65%))" }}
                         />
                         <span className="text-[9px] font-bold uppercase tracking-[0.2em]" style={{ color: "hsl(11 81% 57%)" }}>
-                          Conheça a MS Eletric
+                          Nossos Veículos Elétricos
                         </span>
                       </div>
                       <h3 className="text-white text-[15px] font-semibold tracking-wide">
@@ -685,7 +685,7 @@ const Header = ({ onContactClick }: HeaderProps) => {
                                 style={{ background: "linear-gradient(180deg, hsl(11 81% 57%), hsl(11 90% 65%))" }}
                               />
                               <span className="text-[9px] font-bold uppercase tracking-[0.2em]" style={{ color: "hsl(11 81% 57%)" }}>
-                                Conheça a MS Eletric
+                                Nossa Localização
                               </span>
                             </div>
                             <h3 className="text-white text-[15px] font-semibold tracking-wide leading-snug">
