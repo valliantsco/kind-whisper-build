@@ -7,7 +7,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { ChevronDown, ArrowRight, ArrowLeft, Compass, BarChart3, BookOpen, HelpCircle, Wrench, ShieldCheck, Play, MapPin, Building2, Navigation, Phone, Clock, ExternalLink, Zap } from "lucide-react";
 import QuizEngine from "@/components/quiz/QuizEngine";
 import { msEletricQuizConfig } from "@/components/QuizSection";
-
+import MobileMenu from "@/components/MobileMenu";
 
 
 import categoryScooter from "@/assets/category-scooter.jpg";
@@ -230,8 +230,8 @@ const Header = ({ onContactClick }: HeaderProps) => {
             ))}
           </nav>
 
-          {/* CTA */}
-          <div className="relative group">
+          {/* CTA — desktop only */}
+          <div className="relative group hidden md:block">
             <span
               className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-700 ease-out pointer-events-none"
               style={{ boxShadow: "0 4px 24px hsla(11, 81%, 57%, 0.4)" }}
@@ -269,6 +269,14 @@ const Header = ({ onContactClick }: HeaderProps) => {
               </span>
             </button>
           </div>
+
+          {/* Mobile menu */}
+          <MobileMenu
+            items={NAV_ITEMS}
+            isOnline={isOnline}
+            onContactClick={onContactClick}
+            onQuizOpen={() => setQuizOpen(true)}
+          />
         </div>
 
         {/* Dropdown mega menu */}
