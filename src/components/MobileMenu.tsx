@@ -75,20 +75,21 @@ const MobileMenu = ({ items, isOnline, onContactClick, onQuizOpen }: MobileMenuP
         <Menu className="w-5 h-5 text-white/80" />
       </button>
 
-      <AnimatePresence>
-        {open && (
-          <>
-            {/* Overlay */}
-            <motion.div
-              variants={overlayVariants}
-              initial="hidden"
-              animate="visible"
-              exit="hidden"
-              transition={{ duration: 0.25 }}
-              className="fixed inset-0 z-[100]"
-              style={{ background: "hsl(0 0% 0% / 0.6)", backdropFilter: "blur(4px)" }}
-              onClick={closeMenu}
-            />
+      {createPortal(
+        <AnimatePresence>
+          {open && (
+            <>
+              {/* Overlay */}
+              <motion.div
+                variants={overlayVariants}
+                initial="hidden"
+                animate="visible"
+                exit="hidden"
+                transition={{ duration: 0.25 }}
+                className="fixed inset-0 z-[100]"
+                style={{ background: "hsl(0 0% 0% / 0.6)", backdropFilter: "blur(4px)" }}
+                onClick={closeMenu}
+              />
 
             {/* Drawer */}
             <motion.div
