@@ -7,7 +7,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { ChevronDown, ArrowRight, ArrowLeft, Compass, BarChart3, BookOpen, HelpCircle, Wrench, ShieldCheck, Play, MapPin, Building2, Navigation, Phone, Clock, ExternalLink, Zap } from "lucide-react";
 import QuizEngine from "@/components/quiz/QuizEngine";
 import { msEletricQuizConfig } from "@/components/QuizSection";
-import ThemeToggle from "@/components/ThemeToggle";
+
 
 
 import categoryScooter from "@/assets/category-scooter.jpg";
@@ -229,8 +229,6 @@ const Header = ({ onContactClick }: HeaderProps) => {
               </div>
             ))}
           </nav>
-
-          <ThemeToggle />
 
           {/* CTA */}
           <div className="relative group">
