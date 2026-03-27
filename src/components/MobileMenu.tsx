@@ -441,7 +441,9 @@ const MobileMenu = ({ items, isOnline, onContactClick, onQuizOpen }: MobileMenuP
             </motion.div>
           </>
         )}
-      </AnimatePresence>
+      </AnimatePresence>,
+      document.body
+      )}
     </>
   );
 };
