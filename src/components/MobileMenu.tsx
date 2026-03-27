@@ -67,13 +67,10 @@ const useMobileMenu = ({ items, isOnline, onContactClick, onQuizOpen }: MobileMe
   const triggerButton = (
     <button
       onClick={toggleMenu}
-      className="md:hidden relative grid h-10 w-10 place-items-center overflow-hidden rounded-[0.7rem] border cursor-pointer active:scale-95 transition-transform duration-150"
+      className="md:hidden relative grid h-10 w-10 place-items-center cursor-pointer active:scale-95 transition-transform duration-150"
       style={{
-        background: open
-          ? "linear-gradient(135deg, hsl(var(--primary) / 0.16), hsl(var(--primary) / 0.05))"
-          : "hsl(var(--background) / 0)",
-        borderColor: open ? "hsl(var(--primary) / 0.28)" : "hsl(var(--foreground) / 0.12)",
-        transition: "all 0.3s ease",
+        background: "transparent",
+        border: "none",
       }}
       aria-label={open ? "Fechar menu" : "Abrir menu"}
     >
@@ -82,7 +79,7 @@ const useMobileMenu = ({ items, isOnline, onContactClick, onQuizOpen }: MobileMe
         <motion.span
           className="absolute left-0 right-0 top-0 h-[2px] rounded-full"
           style={{
-            background: open ? "hsl(var(--primary))" : "hsl(var(--foreground) / 0.86)",
+            background: open ? "hsl(var(--primary))" : "#f5f5f5",
             transformOrigin: "center",
           }}
           animate={{
@@ -94,7 +91,7 @@ const useMobileMenu = ({ items, isOnline, onContactClick, onQuizOpen }: MobileMe
         <motion.span
           className="absolute left-0 right-0 top-1/2 h-[2px] -translate-y-1/2 rounded-full"
           style={{
-            background: open ? "hsl(var(--primary))" : "hsl(var(--foreground) / 0.56)",
+            background: open ? "hsl(var(--primary))" : "#f5f5f5",
             transformOrigin: "center",
           }}
           animate={{
@@ -106,7 +103,7 @@ const useMobileMenu = ({ items, isOnline, onContactClick, onQuizOpen }: MobileMe
         <motion.span
           className="absolute bottom-0 left-0 right-0 h-[2px] rounded-full"
           style={{
-            background: open ? "hsl(var(--primary))" : "hsl(var(--foreground) / 0.86)",
+            background: open ? "hsl(var(--primary))" : "#f5f5f5",
             transformOrigin: "center",
           }}
           animate={{
