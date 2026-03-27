@@ -56,7 +56,7 @@ const StatusChip = ({ isOnline, offlineMessage }: StatusChipProps) => {
           {/* Copy */}
           <span className="flex flex-col items-start leading-none gap-[2px]">
             <span className="text-[11px] font-semibold tracking-wide">
-              {isOnline ? "Atendimento online" : offlineMessage}
+              {isOnline ? "Atendimento Online" : offlineMessage}
             </span>
             <span className="text-[8px] font-medium opacity-70 tracking-wider uppercase">
               {isOnline ? "Estamos disponíveis agora" : "Deixe sua mensagem"}
