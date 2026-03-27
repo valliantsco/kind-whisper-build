@@ -261,7 +261,7 @@ const Header = ({ onContactClick }: HeaderProps) => {
               <span className="w-[2px] h-5 rounded-sm shrink-0" style={{ background: "hsl(0 0% 100% / 0.35)" }} />
               <span className="flex flex-col items-start leading-none gap-[2px]">
                 <span className="text-[11px] font-semibold tracking-wide">
-                  {isOnline ? "Atendimento online" : "Atendimento offline"}
+                  {isOnline ? "Atendimento Online" : "Atendimento Offline"}
                 </span>
                 <span className="text-[8px] font-medium opacity-70 tracking-wider uppercase">
                   {isOnline ? "Fale conosco" : "Deixe sua mensagem"}
