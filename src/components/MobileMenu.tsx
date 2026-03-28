@@ -1,8 +1,9 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   ChevronDown,
   ArrowRight,
+  ArrowLeft,
   Menu,
   MapPin,
   Phone,
@@ -41,6 +42,21 @@ const useMobileMenu = ({ items, isOnline, onContactClick, onQuizOpen }: MobileMe
   const [open, setOpen] = useState(false);
   const [expandedItem, setExpandedItem] = useState<string | null>(null);
   const carouselRefs = useRef<Record<string, HTMLDivElement | null>>({});
+  const [scrollStates, setScrollStates] = useState<Record<string, { left: number; right: number }>>({});
+
+  const handleCarouselScroll = useCallback((label: string) => {
+    const el = carouselRefs.current[label];
+    if (!el) return;
+    const max = el.scrollWidth - el.clientWidth;
+    if (max <= 0) {
+      setScrollStates(prev => ({ ...prev, [label]: { left: 0, right: 0 } }));
+      return;
+    }
+    const progress = el.scrollLeft / max;
+    const leftOpacity = progress > 0.15 ? 1 : Math.max(0, progress / 0.15);
+    const rightOpacity = progress < 0.85 ? 1 : Math.max(0, 1 - (progress - 0.85) / 0.15);
+    setScrollStates(prev => ({ ...prev, [label]: { left: leftOpacity, right: rightOpacity } }));
+  }, []);
 
   const toggleMenu = () => {
     setOpen((v) => {
@@ -228,14 +244,32 @@ const useMobileMenu = ({ items, isOnline, onContactClick, onQuizOpen }: MobileMe
                                     {/* Carousel */}
                                     <div className="relative">
                                       <div
-                                        ref={(el) => { carouselRefs.current[item.label] = el; }}
+                                        ref={(el) => {
+                                          carouselRefs.current[item.label] = el;
+                                          if (el) requestAnimationFrame(() => handleCarouselScroll(item.label));
+                                        }}
                                         className="flex gap-3 overflow-x-auto pb-3 px-4 snap-x snap-mandatory scrollbar-hide"
                                         style={{
                                           scrollbarWidth: "none",
                                           msOverflowStyle: "none",
-                                          maskImage: "linear-gradient(to right, black 0%, black 85%, transparent 100%)",
-                                          WebkitMaskImage: "linear-gradient(to right, black 0%, black 85%, transparent 100%)",
+                                          scrollSnapType: "x mandatory",
+                                          scrollBehavior: "smooth",
+                                          maskImage: (() => {
+                                            const s = scrollStates[item.label] || { left: 0, right: 1 };
+                                            if (s.left < 0.01 && s.right < 0.01) return "none";
+                                            if (s.left < 0.01) return `linear-gradient(to right, black ${55 + (1 - s.right) * 45}%, transparent 100%)`;
+                                            if (s.right < 0.01) return `linear-gradient(to right, transparent 0%, black ${s.left * 10}%)`;
+                                            return `linear-gradient(to right, transparent 0%, black ${s.left * 10}%, black ${55 + (1 - s.right) * 45}%, transparent 100%)`;
+                                          })(),
+                                          WebkitMaskImage: (() => {
+                                            const s = scrollStates[item.label] || { left: 0, right: 1 };
+                                            if (s.left < 0.01 && s.right < 0.01) return "none";
+                                            if (s.left < 0.01) return `linear-gradient(to right, black ${55 + (1 - s.right) * 45}%, transparent 100%)`;
+                                            if (s.right < 0.01) return `linear-gradient(to right, transparent 0%, black ${s.left * 10}%)`;
+                                            return `linear-gradient(to right, transparent 0%, black ${s.left * 10}%, black ${55 + (1 - s.right) * 45}%, transparent 100%)`;
+                                          })(),
                                         }}
+                                        onScroll={() => handleCarouselScroll(item.label)}
                                       >
                                         {item.dropdownItems.map((sub, j) => (
                                           <motion.a
@@ -252,109 +286,59 @@ const useMobileMenu = ({ items, isOnline, onContactClick, onQuizOpen }: MobileMe
                                               border: "1px solid hsl(0 0% 100% / 0.06)",
                                             }}
                                           >
-                                            {/* Media */}
                                             {sub.video ? (
-                                              <video
-                                                src={sub.video}
-                                                autoPlay
-                                                muted
-                                                loop
-                                                playsInline
-                                                preload="metadata"
-                                                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover/card:scale-105"
-                                              />
+                                              <video src={sub.video} autoPlay muted loop playsInline preload="metadata" className="absolute inset-0 w-full h-full object-cover" />
                                             ) : (
-                                              <img
-                                                src={sub.image}
-                                                alt={sub.label}
-                                                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover/card:scale-105"
-                                              />
+                                              <img src={sub.image} alt={sub.label} className="absolute inset-0 w-full h-full object-cover" />
                                             )}
-
-                                            {/* Overlay gradient */}
-                                            <div
-                                              className="absolute inset-0"
-                                              style={{
-                                                background: "linear-gradient(to top, hsl(0 0% 0% / 0.9) 0%, hsl(0 0% 0% / 0.4) 40%, hsl(0 0% 0% / 0.1) 100%)",
-                                              }}
-                                            />
-
-                                            {/* Badge */}
+                                            <div className="absolute inset-0" style={{ background: "linear-gradient(to top, hsl(0 0% 0% / 0.9) 0%, hsl(0 0% 0% / 0.4) 40%, hsl(0 0% 0% / 0.1) 100%)" }} />
                                             {sub.badge && (
-                                              <span
-                                                className="absolute top-2 right-2 z-10 px-2 py-[3px] rounded-full text-[8px] font-bold uppercase tracking-[0.1em] text-white"
-                                                style={{
-                                                  background: "linear-gradient(135deg, hsl(11 81% 57% / 0.85), hsl(11 90% 65% / 0.85))",
-                                                  backdropFilter: "blur(8px)",
-                                                  border: "1px solid hsl(11 81% 57% / 0.3)",
-                                                  boxShadow: "0 2px 8px hsl(11 81% 57% / 0.3)",
-                                                }}
-                                              >
+                                              <span className="absolute top-2 right-2 z-10 px-2 py-[3px] rounded-full text-[8px] font-bold uppercase tracking-[0.1em] text-white" style={{ background: "linear-gradient(135deg, hsl(11 81% 57% / 0.85), hsl(11 90% 65% / 0.85))", backdropFilter: "blur(8px)", border: "1px solid hsl(11 81% 57% / 0.3)", boxShadow: "0 2px 8px hsl(11 81% 57% / 0.3)" }}>
                                                 {sub.badge}
                                               </span>
                                             )}
-
-                                            {/* Video indicator */}
                                             {sub.video && (
-                                              <div
-                                                className="absolute top-2 left-2 z-10 w-6 h-6 rounded-full flex items-center justify-center"
-                                                style={{
-                                                  background: "hsl(0 0% 0% / 0.5)",
-                                                  backdropFilter: "blur(4px)",
-                                                  border: "1px solid hsl(0 0% 100% / 0.1)",
-                                                }}
-                                              >
+                                              <div className="absolute top-2 left-2 z-10 w-6 h-6 rounded-full flex items-center justify-center" style={{ background: "hsl(0 0% 0% / 0.5)", backdropFilter: "blur(4px)", border: "1px solid hsl(0 0% 100% / 0.1)" }}>
                                                 <Play className="w-2.5 h-2.5 text-white fill-white ml-[1px]" />
                                               </div>
                                             )}
-
-                                            {/* Text */}
                                             <div className="absolute bottom-0 left-0 right-0 p-3.5">
-                                              <p className="text-white font-bold text-[12px] uppercase tracking-[0.1em] mb-1 drop-shadow-lg leading-tight">
-                                                {sub.label}
-                                              </p>
-                                              <p className="text-white/45 text-[9px] tracking-wide line-clamp-2 leading-relaxed">
-                                                {sub.description}
-                                              </p>
+                                              <p className="text-white font-bold text-[12px] uppercase tracking-[0.1em] mb-1 drop-shadow-lg leading-tight">{sub.label}</p>
+                                              <p className="text-white/45 text-[9px] tracking-wide line-clamp-2 leading-relaxed">{sub.description}</p>
                                             </div>
-
-                                            {/* Bottom accent line */}
-                                            <div
-                                              className="absolute bottom-0 left-3 right-3 h-[1.5px] rounded-full opacity-0 group-hover/card:opacity-100 transition-opacity duration-500"
-                                              style={{
-                                                background: "linear-gradient(90deg, transparent, hsl(11 81% 57% / 0.6), transparent)",
-                                              }}
-                                            />
+                                            <div className="absolute bottom-0 left-3 right-3 h-[1.5px] rounded-full opacity-0 group-hover/card:opacity-100 transition-opacity duration-500" style={{ background: "linear-gradient(90deg, transparent, hsl(11 81% 57% / 0.6), transparent)" }} />
                                           </motion.a>
                                         ))}
                                       </div>
 
-                                      {/* Scroll buttons */}
+                                      {/* Orange scroll-left button */}
                                       <button
                                         onClick={() => scrollCarousel(item.label, "left")}
-                                        className="absolute left-1 top-1/2 -translate-y-1/2 z-10 w-7 h-7 rounded-full flex items-center justify-center transition-all duration-200 active:scale-90"
+                                        className="absolute left-2 top-1/2 -translate-y-1/2 z-10 w-8 h-8 rounded-full flex items-center justify-center cursor-pointer transition-all duration-500 ease-out active:scale-90"
                                         style={{
-                                          background: "hsl(0 0% 0% / 0.7)",
-                                          backdropFilter: "blur(8px)",
-                                          border: "1px solid hsl(0 0% 100% / 0.12)",
-                                          boxShadow: "0 2px 8px hsl(0 0% 0% / 0.4)",
+                                          background: "linear-gradient(135deg, hsl(11 81% 57%), hsl(11 90% 65%))",
+                                          boxShadow: "0 4px 12px hsl(11 81% 57% / 0.4)",
+                                          opacity: scrollStates[item.label]?.left ?? 0,
+                                          pointerEvents: (scrollStates[item.label]?.left ?? 0) < 0.1 ? "none" : "auto",
                                         }}
                                         aria-label="Anterior"
                                       >
-                                        <ArrowRight className="w-3 h-3 text-white/80 rotate-180" />
+                                        <ArrowLeft className="w-3.5 h-3.5 text-white" />
                                       </button>
+
+                                      {/* Orange scroll-right button */}
                                       <button
                                         onClick={() => scrollCarousel(item.label, "right")}
-                                        className="absolute right-1 top-1/2 -translate-y-1/2 z-10 w-7 h-7 rounded-full flex items-center justify-center transition-all duration-200 active:scale-90"
+                                        className="absolute right-2 top-1/2 -translate-y-1/2 z-10 w-8 h-8 rounded-full flex items-center justify-center cursor-pointer transition-all duration-500 ease-out active:scale-90"
                                         style={{
-                                          background: "hsl(0 0% 0% / 0.7)",
-                                          backdropFilter: "blur(8px)",
-                                          border: "1px solid hsl(0 0% 100% / 0.12)",
-                                          boxShadow: "0 2px 8px hsl(0 0% 0% / 0.4)",
+                                          background: "linear-gradient(135deg, hsl(11 81% 57%), hsl(11 90% 65%))",
+                                          boxShadow: "0 4px 12px hsl(11 81% 57% / 0.4)",
+                                          opacity: scrollStates[item.label]?.right ?? 1,
+                                          pointerEvents: (scrollStates[item.label]?.right ?? 1) < 0.1 ? "none" : "auto",
                                         }}
                                         aria-label="Próximo"
                                       >
-                                        <ArrowRight className="w-3 h-3 text-white/80" />
+                                        <ArrowRight className="w-3.5 h-3.5 text-white" />
                                       </button>
                                     </div>
 
