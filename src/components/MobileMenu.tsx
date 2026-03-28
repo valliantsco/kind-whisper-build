@@ -1,5 +1,6 @@
 import React, { useState, useRef, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { categories } from "@/components/MegaMenu";
 import {
   ChevronDown,
   ArrowRight,
