@@ -55,8 +55,8 @@ const MegaMenu = ({ open, scrolled, onClose }: MegaMenuProps) => {
               }}
             />
 
-            <div className="p-5">
-              <div className="grid grid-cols-5 gap-3">
+            <div className="p-6">
+              <div className="grid grid-cols-5 gap-4">
                 {categories.map((cat, i) => (
                   <motion.a
                     key={cat.label}
@@ -65,7 +65,7 @@ const MegaMenu = ({ open, scrolled, onClose }: MegaMenuProps) => {
                     initial={{ opacity: 0, y: 12 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: i * 0.06, duration: 0.35 }}
-                    className="group relative rounded-xl overflow-hidden cursor-pointer"
+                    className="group relative rounded-xl overflow-hidden cursor-pointer min-h-[280px]"
                     style={{ aspectRatio: "3/4" }}
                     whileHover={{ scale: 1.03 }}
                   >
