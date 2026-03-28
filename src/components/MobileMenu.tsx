@@ -244,7 +244,7 @@ const useMobileMenu = ({ items, isOnline, onContactClick, onQuizOpen }: MobileMe
                                           carouselRefs.current[item.label] = el;
                                           if (el) requestAnimationFrame(() => handleCarouselScroll(item.label));
                                         }}
-                                        className="flex gap-3 overflow-x-auto pb-3 px-4 snap-x snap-mandatory scrollbar-hide"
+                                        className="flex gap-3 overflow-x-auto pb-3 px-4 snap-x snap-mandatory scrollbar-hide justify-center"
                                         style={{
                                           scrollbarWidth: "none",
                                           msOverflowStyle: "none",
