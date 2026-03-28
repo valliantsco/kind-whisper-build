@@ -10,7 +10,7 @@ import {
   Clock,
   ExternalLink,
   Compass,
-  Play,
+  
   X,
   Zap,
 } from "lucide-react";
