@@ -234,7 +234,7 @@ const useMobileMenu = ({ items, isOnline, onContactClick, onQuizOpen }: MobileMe
                                         style={{ background: "linear-gradient(180deg, hsl(11 81% 57%), hsl(11 90% 65%))" }}
                                       />
                                       <span
-                                        className="text-sm font-bold uppercase tracking-[0.1em]"
+                                        className="text-[12.5px] font-bold uppercase tracking-[0.1em]"
                                         style={{ color: "hsl(11 81% 57% / 0.7)" }}
                                       >
                                         Categorias
