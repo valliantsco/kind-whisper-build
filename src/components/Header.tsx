@@ -419,7 +419,7 @@ const Header = ({ onContactClick }: HeaderProps) => {
                           <React.Fragment key={dropItem.label}>
                             <div
                               className="group/item relative flex-shrink-0 rounded-xl overflow-hidden"
-                              style={{ width: "305px", aspectRatio: "3/4", scrollSnapAlign: "start" }}
+                              style={{ width: "198px", aspectRatio: "3/4", scrollSnapAlign: "start" }}
                             >
                               <a
                                 href={dropItem.href}
