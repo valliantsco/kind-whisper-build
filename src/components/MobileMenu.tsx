@@ -293,7 +293,7 @@ const useMobileMenu = ({ items, isOnline, onContactClick, onQuizOpen }: MobileMe
                                                 {sub.badge}
                                               </span>
                                             )}
-                                            <div className="absolute bottom-0 left-0 right-0 p-3.5">
+                                            <div className="absolute bottom-0 left-0 right-0 p-3.5 z-[2]">
                                               <p className="text-white font-bold text-[12px] uppercase tracking-[0.1em] mb-1 drop-shadow-lg leading-tight">{sub.label}</p>
                                               <p className="text-white/45 text-[9px] tracking-wide line-clamp-2 leading-relaxed">{sub.description}</p>
                                             </div>
