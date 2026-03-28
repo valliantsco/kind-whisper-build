@@ -59,7 +59,7 @@ const CategoryCard = ({
     }}
   >
     {/* Media — wrapped in its own div to contain stacking */}
-    <div className="absolute inset-0 z-[1]">
+    <div style={{ position: "absolute", inset: 0, zIndex: 1 }}>
       {sub.video ? (
         <video
           src={sub.video}
