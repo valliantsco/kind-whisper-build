@@ -342,7 +342,20 @@ const useMobileMenu = ({ items, isOnline, onContactClick, onQuizOpen }: MobileMe
                                       </button>
                                     </div>
 
-                                    {/* Quiz CTA */}
+                                    {/* Scroll progress bar */}
+                                    <div className="mt-3 mx-4 rounded-full overflow-hidden" style={{ height: "4px", background: "hsl(0 0% 100% / 0.08)" }}>
+                                      <div
+                                        className="h-full rounded-full will-change-transform"
+                                        style={{
+                                          background: "linear-gradient(90deg, hsl(11 81% 57%), hsl(11 90% 65%))",
+                                          width: "48%",
+                                          transform: `translateX(${(scrollStates[item.label]?.progress ?? 0) * (100 / 0.48 - 100)}%)`,
+                                          transition: "transform 0.5s cubic-bezier(0.22, 1, 0.36, 1)",
+                                          boxShadow: "0 0 10px hsl(11 81% 57% / 0.5), 0 0 4px hsl(11 81% 57% / 0.3)",
+                                        }}
+                                      />
+                                    </div>
+
                                     {item.hasCta && (
                                       <motion.button
                                         initial={{ opacity: 0, y: 10 }}
