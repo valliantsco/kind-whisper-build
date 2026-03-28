@@ -546,7 +546,7 @@ const Header = ({ onContactClick }: HeaderProps) => {
                       <button
                         onClick={() => {
                           const el = carouselRef.current;
-                          if (el) el.scrollBy({ left: -320, behavior: "smooth" });
+                          if (el) el.scrollBy({ left: -210, behavior: "smooth" });
                         }}
                         className="absolute left-2 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full flex items-center justify-center cursor-pointer transition-all duration-500 ease-out hover:scale-110 active:scale-95"
                         style={{
