@@ -287,15 +287,15 @@ const useMobileMenu = ({ items, isOnline, onContactClick, onQuizOpen }: MobileMe
                                             ) : (
                                               <img src={sub.image} alt={sub.label} className="absolute inset-0 w-full h-full object-cover" />
                                             )}
-                                            <div className="absolute inset-0 z-[1]" style={{ background: "linear-gradient(to top, hsl(0 0% 0% / 0.9) 0%, hsl(0 0% 0% / 0.4) 40%, hsl(0 0% 0% / 0.1) 100%)" }} />
+                                            <div className="absolute inset-0 z-[1]" style={{ background: "linear-gradient(to top, hsl(0 0% 0% / 0.95) 0%, hsl(0 0% 0% / 0.55) 45%, hsl(0 0% 0% / 0.08) 100%)" }} />
                                             {sub.badge && (
                                               <span className="absolute top-2 right-2 z-[3] px-2 py-[3px] rounded-full text-[8px] font-bold uppercase tracking-[0.1em] text-white" style={{ background: "linear-gradient(135deg, hsl(11 81% 57% / 0.85), hsl(11 90% 65% / 0.85))", backdropFilter: "blur(8px)", border: "1px solid hsl(11 81% 57% / 0.3)", boxShadow: "0 2px 8px hsl(11 81% 57% / 0.3)" }}>
                                                 {sub.badge}
                                               </span>
                                             )}
-                                            <div className="absolute bottom-0 left-0 right-0 p-3.5 z-[2]">
-                                              <p className="text-white font-bold text-[12px] uppercase tracking-[0.1em] mb-1 drop-shadow-lg leading-tight">{sub.label}</p>
-                                              <p className="text-white/45 text-[9px] tracking-wide line-clamp-2 leading-relaxed">{sub.description}</p>
+                                            <div className="absolute bottom-0 left-0 right-0 p-3 z-[2]">
+                                              <p className="text-white font-bold text-[11px] uppercase tracking-[0.08em] mb-1 drop-shadow-lg leading-snug line-clamp-1">{sub.label}</p>
+                                              <p className="text-white/80 text-[9px] tracking-wide leading-snug line-clamp-2 min-h-[22px]">{sub.description}</p>
                                             </div>
                                             <div className="absolute bottom-0 left-3 right-3 h-[1.5px] rounded-full opacity-0 group-hover/card:opacity-100 transition-opacity duration-500" style={{ background: "linear-gradient(90deg, transparent, hsl(11 81% 57% / 0.6), transparent)" }} />
                                           </motion.a>
@@ -355,7 +355,7 @@ const useMobileMenu = ({ items, isOnline, onContactClick, onQuizOpen }: MobileMe
                                         animate={{ opacity: 1, y: 0 }}
                                         transition={{ delay: 0.2, duration: 0.35 }}
                                         onClick={() => { closeMenu(); onQuizOpen(); }}
-                                        className="mx-[11px] mb-2 flex items-center gap-2.5 px-2 py-1 rounded-2xl cursor-pointer group/quiz active:scale-[0.98] transition-transform duration-150"
+                                        className="mx-4 mt-3 mb-2 flex items-center gap-2.5 px-2 py-1 rounded-2xl cursor-pointer group/quiz active:scale-[0.98] transition-transform duration-150"
                                         style={{
                                           background: "linear-gradient(135deg, hsl(0 0% 12%), hsl(0 0% 7%))",
                                           border: "1px solid hsl(11 81% 57% / 0.15)",
