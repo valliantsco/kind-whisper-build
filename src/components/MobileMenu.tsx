@@ -60,7 +60,7 @@ const CategoryCard = ({
       border: "1px solid hsl(0 0% 100% / 0.08)",
     }}
   >
-    {/* Media */}
+    {/* Media — z-[1] ensures it stays behind overlay */}
     {sub.video ? (
       <video
         src={sub.video}
@@ -69,29 +69,29 @@ const CategoryCard = ({
         loop
         playsInline
         preload="metadata"
-        className="absolute inset-0 w-full h-full object-cover"
+        className="absolute inset-0 w-full h-full object-cover z-[1]"
       />
     ) : sub.image ? (
       <img
         src={sub.image}
         alt={sub.label}
-        className="absolute inset-0 w-full h-full object-cover"
+        className="absolute inset-0 w-full h-full object-cover z-[1]"
       />
     ) : null}
 
-    {/* Gradient overlay for text legibility */}
+    {/* Gradient overlay — z-[2] above media */}
     <div
-      className="absolute inset-0 z-[1]"
+      className="absolute inset-0 z-[2]"
       style={{
         background:
           "linear-gradient(to top, hsl(0 0% 0% / 0.92) 0%, hsl(0 0% 0% / 0.6) 40%, hsl(0 0% 0% / 0.1) 100%)",
       }}
     />
 
-    {/* Badge */}
+    {/* Badge — z-[4] above overlay */}
     {sub.badge && (
       <span
-        className="absolute top-2 right-2 z-[3] px-2 py-[3px] rounded-full text-[7px] font-bold uppercase tracking-[0.1em] text-white"
+        className="absolute top-2 right-2 z-[4] px-2 py-[3px] rounded-full text-[7px] font-bold uppercase tracking-[0.1em] text-white"
         style={{
           background: "linear-gradient(135deg, hsl(11 81% 57% / 0.9), hsl(11 90% 65% / 0.9))",
           backdropFilter: "blur(6px)",
@@ -102,12 +102,12 @@ const CategoryCard = ({
       </span>
     )}
 
-    {/* Text content */}
-    <div className="absolute bottom-0 left-0 right-0 p-3 z-[2]">
+    {/* Text content — z-[3] above overlay */}
+    <div className="absolute bottom-0 left-0 right-0 p-3 z-[3]">
       <p className="text-white font-bold text-[11px] uppercase tracking-[0.06em] leading-tight line-clamp-1 drop-shadow-lg">
         {sub.label}
       </p>
-      <p className="text-white/75 text-[9px] tracking-wide leading-snug mt-1 line-clamp-2">
+      <p className="text-white/75 text-[9px] tracking-wide leading-snug mt-1 line-clamp-2 drop-shadow-md">
         {sub.description}
       </p>
     </div>
