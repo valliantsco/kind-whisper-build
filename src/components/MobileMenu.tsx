@@ -219,7 +219,7 @@ const useMobileMenu = ({ items, isOnline, onContactClick, onQuizOpen }: MobileMe
                               transition={{ duration: 0.4, ease: [0.25, 0.8, 0.25, 1] }}
                               className="overflow-hidden"
                             >
-                              <div className="pt-2 pb-3">
+                              <div className="pt-0.5 pb-3">
                                 {/* Image/video cards carousel */}
                                 {item.dropdownItems[0]?.image ? (
                                   <>
