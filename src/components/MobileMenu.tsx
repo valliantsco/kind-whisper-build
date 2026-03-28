@@ -56,8 +56,8 @@ const CategoryCard = ({
     transition={{ delay: index * 0.04, duration: 0.3, ease: [0.25, 0.8, 0.25, 1] }}
     className="relative flex-shrink-0 rounded-2xl overflow-hidden snap-center"
     style={{
-      width: "160px",
-      height: "210px",
+      width: "192px",
+      height: "252px",
       border: "1px solid hsl(0 0% 100% / 0.08)",
       isolation: "isolate",
     }}
