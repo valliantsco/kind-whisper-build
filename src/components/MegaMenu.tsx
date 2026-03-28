@@ -65,7 +65,7 @@ const MegaMenu = ({ open, scrolled, onClose }: MegaMenuProps) => {
                     initial={{ opacity: 0, y: 12 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: i * 0.06, duration: 0.35 }}
-                    className="group relative rounded-xl overflow-hidden cursor-pointer min-h-[280px]"
+                    className="group relative rounded-2xl overflow-hidden cursor-pointer min-h-[406px]"
                     style={{ aspectRatio: "3/4" }}
                     whileHover={{ scale: 1.03 }}
                   >
@@ -80,14 +80,14 @@ const MegaMenu = ({ open, scrolled, onClose }: MegaMenuProps) => {
                       style={{ background: "linear-gradient(135deg, hsl(11 81% 57% / 0.15) 0%, transparent 60%)" }}
                     />
                     <div
-                      className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                      className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                       style={{ boxShadow: "inset 0 0 0 1.5px hsl(11 81% 57% / 0.6), 0 0 20px hsl(11 81% 57% / 0.15)" }}
                     />
-                    <div className="absolute bottom-0 left-0 right-0 p-3">
-                      <p className="text-white font-bold text-xs uppercase tracking-[0.1em] mb-0.5 drop-shadow-lg">
+                    <div className="absolute bottom-0 left-0 right-0 p-4">
+                      <p className="text-white font-bold text-sm uppercase tracking-[0.1em] mb-1 drop-shadow-lg">
                         {cat.label}
                       </p>
-                      <p className="text-white/60 text-[10px] tracking-wide">{cat.desc}</p>
+                      <p className="text-white/60 text-xs tracking-wide">{cat.desc}</p>
                     </div>
                   </motion.a>
                 ))}
