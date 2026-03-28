@@ -419,7 +419,7 @@ const Header = ({ onContactClick }: HeaderProps) => {
                           <React.Fragment key={dropItem.label}>
                             <div
                               className="group/item relative flex-shrink-0 rounded-xl overflow-hidden"
-                              style={{ width: "210px", aspectRatio: "3/4", scrollSnapAlign: "start" }}
+                              style={{ width: "305px", aspectRatio: "3/4", scrollSnapAlign: "start" }}
                             >
                               <a
                                 href={dropItem.href}
@@ -522,11 +522,11 @@ const Header = ({ onContactClick }: HeaderProps) => {
                                 )}
 
                                 {/* 2. Text with micro-animation on hover */}
-                                <div className="absolute bottom-0 left-0 right-0 p-2.5 transition-transform duration-400 ease-out group-hover/item:-translate-y-1">
-                                  <p className="text-white font-bold text-[12.5px] uppercase tracking-[0.08em] mb-0.5 drop-shadow-lg transition-colors duration-500 group-hover/item:text-[hsl(11,81%,57%)]">
+                                <div className="absolute bottom-0 left-0 right-0 p-3.5 transition-transform duration-400 ease-out group-hover/item:-translate-y-1">
+                                  <p className="text-white font-bold text-[14px] uppercase tracking-[0.08em] mb-1 drop-shadow-lg transition-colors duration-500 group-hover/item:text-[hsl(11,81%,57%)]">
                                     {dropItem.label}
                                   </p>
-                                  <p className="text-white/60 text-[11px] tracking-wide line-clamp-2 group-hover/item:text-white/80 transition-colors duration-500">
+                                  <p className="text-white/60 text-[12px] tracking-wide line-clamp-2 group-hover/item:text-white/80 transition-colors duration-500">
                                     {dropItem.description}
                                   </p>
                                 </div>
@@ -546,7 +546,7 @@ const Header = ({ onContactClick }: HeaderProps) => {
                       <button
                         onClick={() => {
                           const el = carouselRef.current;
-                          if (el) el.scrollBy({ left: -230, behavior: "smooth" });
+                          if (el) el.scrollBy({ left: -320, behavior: "smooth" });
                         }}
                         className="absolute left-2 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full flex items-center justify-center cursor-pointer transition-all duration-500 ease-out hover:scale-110 active:scale-95"
                         style={{
@@ -564,7 +564,7 @@ const Header = ({ onContactClick }: HeaderProps) => {
                       <button
                         onClick={() => {
                           const el = carouselRef.current;
-                          if (el) el.scrollBy({ left: 230, behavior: "smooth" });
+                          if (el) el.scrollBy({ left: 320, behavior: "smooth" });
                         }}
                         className="absolute right-2 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full flex items-center justify-center cursor-pointer transition-all duration-500 ease-out hover:scale-110 active:scale-95"
                         style={{
