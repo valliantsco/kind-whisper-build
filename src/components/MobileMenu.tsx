@@ -112,7 +112,7 @@ const CategoryCard = ({
       <p className="text-white font-bold text-[14px] uppercase tracking-[0.06em] leading-tight line-clamp-1 drop-shadow-lg">
         {sub.label}
       </p>
-      <p className="text-white/75 text-[9px] tracking-wide leading-snug mt-1 line-clamp-2 drop-shadow-md">
+      <p className="text-white/75 text-[12px] tracking-wide leading-snug mt-1 line-clamp-2 drop-shadow-md">
         {sub.description}
       </p>
     </div>
