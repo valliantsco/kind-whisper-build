@@ -53,7 +53,7 @@ const useMobileMenu = ({ items, isOnline, onContactClick, onQuizOpen }: MobileMe
       return;
     }
     const progress = el.scrollLeft / max;
-    const leftOpacity = progress > 0.15 ? 1 : Math.max(0, progress / 0.15);
+    const leftOpacity = progress > 0.25 ? 1 : progress < 0.12 ? 0 : Math.max(0, (progress - 0.12) / 0.13);
     const rightOpacity = progress < 0.85 ? 1 : Math.max(0, 1 - (progress - 0.85) / 0.15);
     setScrollStates(prev => ({ ...prev, [label]: { left: leftOpacity, right: rightOpacity, progress } }));
   }, []);
