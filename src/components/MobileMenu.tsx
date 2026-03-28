@@ -228,7 +228,7 @@ const useMobileMenu = ({ items, isOnline, onContactClick, onQuizOpen }: MobileMe
                                 {item.dropdownItems[0]?.image ? (
                                   <>
                                     {/* Section label */}
-                                    <div className="flex items-center gap-2 px-4 pt-[2px] mb-3">
+                                    <div className="flex items-center gap-2 px-4 pt-1 mb-3">
                                       <div
                                         className="w-0.5 h-3 rounded-full"
                                         style={{ background: "linear-gradient(180deg, hsl(11 81% 57%), hsl(11 90% 65%))" }}
