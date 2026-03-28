@@ -359,7 +359,7 @@ const useMobileMenu = ({ items, isOnline, onContactClick, onQuizOpen }: MobileMe
                                         animate={{ opacity: 1, y: 0 }}
                                         transition={{ delay: 0.2, duration: 0.35 }}
                                         onClick={() => { closeMenu(); onQuizOpen(); }}
-                                        className="ml-1 mr-[-6px] flex items-center gap-3 px-4 py-3.5 rounded-2xl cursor-pointer group/quiz active:scale-[0.98] transition-transform duration-150"
+                                        className="mx-5 flex items-center gap-3 px-4 py-3.5 rounded-2xl cursor-pointer group/quiz active:scale-[0.98] transition-transform duration-150"
                                         style={{
                                           background: "linear-gradient(135deg, hsl(0 0% 12%), hsl(0 0% 7%))",
                                           border: "1px solid hsl(11 81% 57% / 0.15)",
