@@ -60,7 +60,7 @@ const CategoryCard = ({
       border: "1px solid hsl(0 0% 100% / 0.08)",
     }}
   >
-    {/* Media */}
+    {/* Media — z-[1] ensures it stays behind overlay */}
     {sub.video ? (
       <video
         src={sub.video}
@@ -69,19 +69,19 @@ const CategoryCard = ({
         loop
         playsInline
         preload="metadata"
-        className="absolute inset-0 w-full h-full object-cover"
+        className="absolute inset-0 w-full h-full object-cover z-[1]"
       />
     ) : sub.image ? (
       <img
         src={sub.image}
         alt={sub.label}
-        className="absolute inset-0 w-full h-full object-cover"
+        className="absolute inset-0 w-full h-full object-cover z-[1]"
       />
     ) : null}
 
-    {/* Gradient overlay for text legibility */}
+    {/* Gradient overlay — z-[2] above media */}
     <div
-      className="absolute inset-0 z-[1]"
+      className="absolute inset-0 z-[2]"
       style={{
         background:
           "linear-gradient(to top, hsl(0 0% 0% / 0.92) 0%, hsl(0 0% 0% / 0.6) 40%, hsl(0 0% 0% / 0.1) 100%)",
