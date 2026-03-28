@@ -56,10 +56,14 @@ const CategoryCard = ({
       width: "196px",
       height: "257px",
       border: "1px solid hsl(0 0% 100% / 0.08)",
+      transform: "translateZ(0)",
+      WebkitTransform: "translateZ(0)",
+      willChange: "transform",
+      WebkitMaskImage: "-webkit-radial-gradient(white, black)",
     }}
   >
     {/* Media — wrapped in its own div to contain stacking */}
-    <div style={{ position: "absolute", inset: 0, zIndex: 1 }}>
+    <div style={{ position: "absolute", inset: 0, zIndex: 1, WebkitTransform: "translateZ(0)", transform: "translateZ(0)" }}>
       {sub.video ? (
         <video
           src={sub.video}
@@ -90,6 +94,8 @@ const CategoryCard = ({
         zIndex: 2,
         pointerEvents: "none",
         background: "linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.65) 45%, rgba(0,0,0,0.15) 100%)",
+        WebkitTransform: "translateZ(0)",
+        transform: "translateZ(0)",
       }}
     />
 
@@ -109,7 +115,7 @@ const CategoryCard = ({
     )}
 
     {/* Text content — z-[3] above overlay */}
-    <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: "12px", zIndex: 20 }}>
+    <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: "12px", zIndex: 20, WebkitTransform: "translateZ(0)", transform: "translateZ(0)" }}>
       <p className="text-white font-bold text-[12px] uppercase tracking-[0.06em] leading-tight line-clamp-1 drop-shadow-lg">
         {sub.label}
       </p>
