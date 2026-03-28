@@ -60,7 +60,7 @@ const useMobileMenu = ({ items, isOnline, onContactClick, onQuizOpen }: MobileMe
 
   const scrollCarousel = (label: string, dir: "left" | "right") => {
     const el = carouselRefs.current[label];
-    if (el) el.scrollBy({ left: dir === "left" ? -180 : 180, behavior: "smooth" });
+    if (el) el.scrollBy({ left: dir === "left" ? -260 : 260, behavior: "smooth" });
   };
 
   /* ─── Trigger Button ─── */
