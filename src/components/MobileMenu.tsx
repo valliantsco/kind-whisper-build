@@ -237,7 +237,7 @@ const useMobileMenu = ({ items, isOnline, onContactClick, onQuizOpen }: MobileMe
                                         className="text-[11px] font-bold uppercase tracking-[0.1em]"
                                         style={{ color: "hsl(11 81% 57% / 0.7)" }}
                                       >
-                                        Categorias
+                                        Nossos Veículos Elétricos
                                       </span>
                                     </div>
 
