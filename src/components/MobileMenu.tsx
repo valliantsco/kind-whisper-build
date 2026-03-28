@@ -60,7 +60,7 @@ const useMobileMenu = ({ items, isOnline, onContactClick, onQuizOpen }: MobileMe
 
   const scrollCarousel = (label: string, dir: "left" | "right") => {
     const el = carouselRefs.current[label];
-    if (el) el.scrollBy({ left: dir === "left" ? -180 : 180, behavior: "smooth" });
+    if (el) el.scrollBy({ left: dir === "left" ? -260 : 260, behavior: "smooth" });
   };
 
   /* ─── Trigger Button ─── */
@@ -247,7 +247,7 @@ const useMobileMenu = ({ items, isOnline, onContactClick, onQuizOpen }: MobileMe
                                             transition={{ delay: j * 0.05, duration: 0.35, ease: [0.25, 0.8, 0.25, 1] }}
                                             className="relative flex-shrink-0 rounded-2xl overflow-hidden snap-start group/card"
                                             style={{
-                                              width: "140px",
+                                              width: "203px",
                                               aspectRatio: "3/4",
                                               border: "1px solid hsl(0 0% 100% / 0.06)",
                                             }}
@@ -282,7 +282,7 @@ const useMobileMenu = ({ items, isOnline, onContactClick, onQuizOpen }: MobileMe
                                             {/* Badge */}
                                             {sub.badge && (
                                               <span
-                                                className="absolute top-2 right-2 z-10 px-2 py-[3px] rounded-full text-[7px] font-bold uppercase tracking-[0.1em] text-white"
+                                                className="absolute top-2 right-2 z-10 px-2 py-[3px] rounded-full text-[8px] font-bold uppercase tracking-[0.1em] text-white"
                                                 style={{
                                                   background: "linear-gradient(135deg, hsl(11 81% 57% / 0.85), hsl(11 90% 65% / 0.85))",
                                                   backdropFilter: "blur(8px)",
@@ -309,11 +309,11 @@ const useMobileMenu = ({ items, isOnline, onContactClick, onQuizOpen }: MobileMe
                                             )}
 
                                             {/* Text */}
-                                            <div className="absolute bottom-0 left-0 right-0 p-3">
-                                              <p className="text-white font-bold text-[10px] uppercase tracking-[0.1em] mb-1 drop-shadow-lg leading-tight">
+                                            <div className="absolute bottom-0 left-0 right-0 p-3.5">
+                                              <p className="text-white font-bold text-[12px] uppercase tracking-[0.1em] mb-1 drop-shadow-lg leading-tight">
                                                 {sub.label}
                                               </p>
-                                              <p className="text-white/45 text-[8px] tracking-wide line-clamp-2 leading-relaxed">
+                                              <p className="text-white/45 text-[9px] tracking-wide line-clamp-2 leading-relaxed">
                                                 {sub.description}
                                               </p>
                                             </div>
