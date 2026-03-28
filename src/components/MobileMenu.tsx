@@ -309,12 +309,14 @@ const useMobileMenu = ({ items, isOnline, onContactClick, onQuizOpen }: MobileMe
                                       {/* Orange scroll-left button */}
                                       <button
                                         onClick={() => scrollCarousel(item.label, "left")}
-                                        className="absolute left-2 top-1/2 -translate-y-1/2 z-10 w-8 h-8 rounded-full flex items-center justify-center cursor-pointer transition-all duration-500 ease-out active:scale-90"
+                                        className="absolute left-2 top-1/2 -translate-y-1/2 z-10 w-8 h-8 rounded-full flex items-center justify-center cursor-pointer active:scale-90"
                                         style={{
                                           background: "linear-gradient(135deg, hsl(11 81% 57%), hsl(11 90% 65%))",
-                                          boxShadow: "0 4px 12px hsl(11 81% 57% / 0.4)",
+                                          boxShadow: (scrollStates[item.label]?.left ?? 0) > 0.1 ? "0 4px 12px hsl(11 81% 57% / 0.4)" : "none",
                                           opacity: scrollStates[item.label]?.left ?? 0,
+                                          visibility: (scrollStates[item.label]?.left ?? 0) < 0.01 ? "hidden" : "visible",
                                           pointerEvents: (scrollStates[item.label]?.left ?? 0) < 0.1 ? "none" : "auto",
+                                          transition: "opacity 0.5s ease-out, visibility 0.5s ease-out, box-shadow 0.5s ease-out",
                                         }}
                                         aria-label="Anterior"
                                       >
