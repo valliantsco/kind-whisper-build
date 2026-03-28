@@ -202,43 +202,8 @@ const ModelsCarousel = ({
           }}
           onScroll={updateScroll}
         >
-          {categories.map((cat, j) => (
-            <motion.a
-              key={cat.label}
-              href={cat.href}
-              onClick={onClose}
-              initial={{ opacity: 0, scale: 0.92, y: 6 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              transition={{ delay: j * 0.04, duration: 0.3, ease: [0.25, 0.8, 0.25, 1] }}
-              className="group relative flex-shrink-0 rounded-2xl overflow-hidden snap-center"
-              style={{
-                width: "160px",
-                height: "210px",
-                border: "1px solid hsl(0 0% 100% / 0.08)",
-                isolation: "isolate",
-              }}
-            >
-              <img
-                src={cat.image}
-                alt={cat.label}
-                className="absolute inset-0 w-full h-full object-cover z-[1]"
-              />
-              <div
-                className="absolute inset-0 z-[2]"
-                style={{
-                  background:
-                    "linear-gradient(to top, hsl(0 0% 0% / 0.92) 0%, hsl(0 0% 0% / 0.6) 40%, hsl(0 0% 0% / 0.1) 100%)",
-                }}
-              />
-              <div className="absolute bottom-0 left-0 right-0 p-3 z-[3]">
-                <p className="text-white font-bold text-[11px] uppercase tracking-[0.06em] leading-tight line-clamp-1 drop-shadow-lg">
-                  {cat.label}
-                </p>
-                <p className="text-white/75 text-[9px] tracking-wide leading-snug mt-1 line-clamp-2 drop-shadow-md">
-                  {cat.desc}
-                </p>
-              </div>
-            </motion.a>
+          {(item.dropdownItems || []).map((sub, j) => (
+            <CategoryCard key={sub.label} sub={sub} index={j} onClose={onClose} />
           ))}
         </div>
 
