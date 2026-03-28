@@ -123,7 +123,7 @@ const CategoryCard = ({
         background: "linear-gradient(90deg, transparent, hsl(11 81% 57% / 0.6), transparent)",
       }}
     />
-  </motion.a>
+  </a>
 );
 
 /* ═══════════════════════════════════════════
