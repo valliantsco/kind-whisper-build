@@ -56,11 +56,10 @@ const CategoryCard = ({
       width: "196px",
       height: "257px",
       border: "1px solid hsl(0 0% 100% / 0.08)",
-      isolation: "isolate",
     }}
   >
     {/* Media — wrapped in its own div to contain stacking */}
-    <div className="absolute inset-0 z-[1]">
+    <div style={{ position: "absolute", inset: 0, zIndex: 1 }}>
       {sub.video ? (
         <video
           src={sub.video}
@@ -85,18 +84,21 @@ const CategoryCard = ({
 
     {/* Gradient overlay — z-[2] above media */}
     <div
-      className="absolute inset-0 z-[2]"
       style={{
-        background:
-          "linear-gradient(to top, hsl(0 0% 0% / 0.92) 0%, hsl(0 0% 0% / 0.6) 40%, hsl(0 0% 0% / 0.1) 100%)",
+        position: "absolute",
+        inset: 0,
+        zIndex: 2,
+        pointerEvents: "none",
+        background: "linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.65) 45%, rgba(0,0,0,0.15) 100%)",
       }}
     />
 
     {/* Badge — z-[4] above overlay */}
     {sub.badge && (
       <span
-        className="absolute top-2 right-2 z-[10] px-2 py-[3px] rounded-full text-[8px] font-bold uppercase tracking-[0.1em] text-white"
+        className="absolute top-2 right-2 px-2 py-[3px] rounded-full text-[8px] font-bold uppercase tracking-[0.1em] text-white"
         style={{
+          zIndex: 30,
           background: "linear-gradient(135deg, hsl(11 81% 57% / 0.9), hsl(11 90% 65% / 0.9))",
           backdropFilter: "blur(6px)",
           border: "1px solid hsl(11 81% 57% / 0.3)",
@@ -107,7 +109,7 @@ const CategoryCard = ({
     )}
 
     {/* Text content — z-[3] above overlay */}
-    <div className="absolute bottom-0 left-0 right-0 p-3 z-[10]">
+    <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: "12px", zIndex: 20 }}>
       <p className="text-white font-bold text-[12px] uppercase tracking-[0.06em] leading-tight line-clamp-1 drop-shadow-lg">
         {sub.label}
       </p>
