@@ -343,7 +343,7 @@ const useMobileMenu = ({ items, isOnline, onContactClick, onQuizOpen }: MobileMe
                                     </div>
 
                                     {/* Scroll progress bar */}
-                                    <div className="my-3 mx-4 rounded-full overflow-hidden" style={{ height: "4px", background: "hsl(0 0% 100% / 0.08)" }}>
+                                    <div className="mt-3 mb-[22px] mx-4 rounded-full overflow-hidden" style={{ height: "4px", background: "hsl(0 0% 100% / 0.08)" }}>
                                       <div
                                         className="h-full rounded-full will-change-transform"
                                         style={{
