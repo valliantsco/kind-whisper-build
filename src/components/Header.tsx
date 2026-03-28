@@ -522,11 +522,11 @@ const Header = ({ onContactClick }: HeaderProps) => {
                                 )}
 
                                 {/* 2. Text with micro-animation on hover */}
-                                <div className="absolute bottom-0 left-0 right-0 p-3.5 transition-transform duration-400 ease-out group-hover/item:-translate-y-1">
-                                  <p className="text-white font-bold text-[14px] uppercase tracking-[0.08em] mb-1 drop-shadow-lg transition-colors duration-500 group-hover/item:text-[hsl(11,81%,57%)]">
+                                <div className="absolute bottom-0 left-0 right-0 p-2.5 transition-transform duration-400 ease-out group-hover/item:-translate-y-1">
+                                  <p className="text-white font-bold text-[12px] uppercase tracking-[0.08em] mb-0.5 drop-shadow-lg transition-colors duration-500 group-hover/item:text-[hsl(11,81%,57%)]">
                                     {dropItem.label}
                                   </p>
-                                  <p className="text-white/60 text-[12px] tracking-wide line-clamp-2 group-hover/item:text-white/80 transition-colors duration-500">
+                                  <p className="text-white/60 text-[10.5px] tracking-wide line-clamp-2 group-hover/item:text-white/80 transition-colors duration-500">
                                     {dropItem.description}
                                   </p>
                                 </div>
