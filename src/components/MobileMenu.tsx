@@ -287,75 +287,28 @@ const useMobileMenu = ({ items, isOnline, onContactClick, onQuizOpen }: MobileMe
                                             ) : (
                                               <img src={sub.image} alt={sub.label} className="absolute inset-0 w-full h-full object-cover" />
                                             )}
-                                            <div className="absolute inset-0 z-[1]" style={{ background: "linear-gradient(to top, hsl(0 0% 0% / 0.9) 0%, hsl(0 0% 0% / 0.4) 40%, hsl(0 0% 0% / 0.1) 100%)" }} />
+                                            <div className="absolute inset-0 z-[1]" style={{ background: "linear-gradient(to top, hsl(0 0% 0% / 0.95) 0%, hsl(0 0% 0% / 0.55) 45%, hsl(0 0% 0% / 0.08) 100%)" }} />
                                             {sub.badge && (
                                               <span className="absolute top-2 right-2 z-[3] px-2 py-[3px] rounded-full text-[8px] font-bold uppercase tracking-[0.1em] text-white" style={{ background: "linear-gradient(135deg, hsl(11 81% 57% / 0.85), hsl(11 90% 65% / 0.85))", backdropFilter: "blur(8px)", border: "1px solid hsl(11 81% 57% / 0.3)", boxShadow: "0 2px 8px hsl(11 81% 57% / 0.3)" }}>
                                                 {sub.badge}
                                               </span>
                                             )}
-                                            <div className="absolute bottom-0 left-0 right-0 p-3.5 z-[2]">
-                                              <p className="text-white font-bold text-[12px] uppercase tracking-[0.1em] mb-1 drop-shadow-lg leading-tight">{sub.label}</p>
-                                              <p className="text-white/45 text-[9px] tracking-wide line-clamp-2 leading-relaxed">{sub.description}</p>
+                                            <div className="absolute bottom-0 left-0 right-0 p-3 z-[2]">
+                                              <p className="text-white font-bold text-[11px] uppercase tracking-[0.08em] mb-1 drop-shadow-lg leading-snug line-clamp-1">{sub.label}</p>
+                                              <p className="text-white/60 text-[9px] tracking-wide leading-snug line-clamp-2 min-h-[22px]">{sub.description}</p>
                                             </div>
                                             <div className="absolute bottom-0 left-3 right-3 h-[1.5px] rounded-full opacity-0 group-hover/card:opacity-100 transition-opacity duration-500" style={{ background: "linear-gradient(90deg, transparent, hsl(11 81% 57% / 0.6), transparent)" }} />
                                           </motion.a>
                                         ))}
                                       </div>
-
-                                      {/* Orange scroll-left button */}
-                                      <button
-                                        onClick={() => scrollCarousel(item.label, "left")}
-                                        className="absolute left-2 top-1/2 -translate-y-1/2 z-10 w-8 h-8 rounded-full flex items-center justify-center cursor-pointer active:scale-90"
-                                        style={{
-                                          background: "linear-gradient(135deg, hsl(11 81% 57%), hsl(11 90% 65%))",
-                                          boxShadow: (scrollStates[item.label]?.left ?? 0) > 0.1 ? "0 4px 12px hsl(11 81% 57% / 0.4)" : "none",
-                                          opacity: scrollStates[item.label]?.left ?? 0,
-                                          visibility: (scrollStates[item.label]?.left ?? 0) < 0.01 ? "hidden" : "visible",
-                                          pointerEvents: (scrollStates[item.label]?.left ?? 0) < 0.1 ? "none" : "auto",
-                                          transition: "opacity 0.5s ease-out, visibility 0.5s ease-out, box-shadow 0.5s ease-out",
-                                        }}
-                                        aria-label="Anterior"
-                                      >
-                                        <ArrowLeft className="w-3.5 h-3.5 text-white" />
-                                      </button>
-
-                                      {/* Orange scroll-right button */}
-                                      <button
-                                        onClick={() => scrollCarousel(item.label, "right")}
-                                        className="absolute right-2 top-1/2 -translate-y-1/2 z-10 w-8 h-8 rounded-full flex items-center justify-center cursor-pointer transition-all duration-500 ease-out active:scale-90"
-                                        style={{
-                                          background: "linear-gradient(135deg, hsl(11 81% 57%), hsl(11 90% 65%))",
-                                          boxShadow: "0 4px 12px hsl(11 81% 57% / 0.4)",
-                                          opacity: scrollStates[item.label]?.right ?? 1,
-                                          pointerEvents: (scrollStates[item.label]?.right ?? 1) < 0.1 ? "none" : "auto",
-                                        }}
-                                        aria-label="Próximo"
-                                      >
-                                        <ArrowRight className="w-3.5 h-3.5 text-white" />
-                                      </button>
-                                    </div>
-
-                                    {/* Scroll progress bar */}
-                                    <div className="mt-3 mb-[22px] mx-4 rounded-full overflow-hidden" style={{ height: "4px", background: "hsl(0 0% 100% / 0.08)" }}>
-                                      <div
-                                        className="h-full rounded-full will-change-transform"
-                                        style={{
-                                          background: "linear-gradient(90deg, hsl(11 81% 57%), hsl(11 90% 65%))",
-                                          width: "48%",
-                                          transform: `translateX(${(scrollStates[item.label]?.progress ?? 0) * (100 / 0.48 - 100)}%)`,
-                                          transition: "transform 0.5s cubic-bezier(0.22, 1, 0.36, 1)",
-                                          boxShadow: "0 0 10px hsl(11 81% 57% / 0.5), 0 0 4px hsl(11 81% 57% / 0.3)",
-                                        }}
-                                      />
-                                    </div>
-
+...
                                     {item.hasCta && (
                                       <motion.button
                                         initial={{ opacity: 0, y: 10 }}
                                         animate={{ opacity: 1, y: 0 }}
                                         transition={{ delay: 0.2, duration: 0.35 }}
                                         onClick={() => { closeMenu(); onQuizOpen(); }}
-                                        className="mx-[11px] mb-2 flex items-center gap-2.5 px-2 py-1 rounded-2xl cursor-pointer group/quiz active:scale-[0.98] transition-transform duration-150"
+                                        className="mx-4 mt-1 mb-2 flex items-center gap-2.5 px-2 py-1 rounded-2xl cursor-pointer group/quiz active:scale-[0.98] transition-transform duration-150"
                                         style={{
                                           background: "linear-gradient(135deg, hsl(0 0% 12%), hsl(0 0% 7%))",
                                           border: "1px solid hsl(11 81% 57% / 0.15)",
