@@ -48,12 +48,9 @@ const CategoryCard = ({
   index: number;
   onClose: () => void;
 }) => (
-  <motion.a
+  <a
     href={sub.href}
     onClick={onClose}
-    initial={{ opacity: 0, scale: 0.92, y: 6 }}
-    animate={{ opacity: 1, scale: 1, y: 0 }}
-    transition={{ delay: index * 0.04, duration: 0.3, ease: [0.25, 0.8, 0.25, 1] }}
     className="relative flex-shrink-0 rounded-2xl overflow-hidden snap-center"
     style={{
       width: "196px",
@@ -71,7 +68,7 @@ const CategoryCard = ({
           muted
           loop
           playsInline
-          preload="metadata"
+          preload="auto"
           className="w-full h-full object-cover"
           style={{ position: "relative", zIndex: 0 }}
         />
@@ -79,6 +76,8 @@ const CategoryCard = ({
         <img
           src={sub.image}
           alt={sub.label}
+          loading="eager"
+          decoding="sync"
           className="w-full h-full object-cover"
         />
       ) : null}
@@ -124,7 +123,7 @@ const CategoryCard = ({
         background: "linear-gradient(90deg, transparent, hsl(11 81% 57% / 0.6), transparent)",
       }}
     />
-  </motion.a>
+  </a>
 );
 
 /* ═══════════════════════════════════════════
@@ -191,7 +190,7 @@ const ModelsCarousel = ({
         <div
           ref={(el) => {
             (carouselRef as React.MutableRefObject<HTMLDivElement | null>).current = el;
-            if (el) requestAnimationFrame(updateScroll);
+            if (el) requestAnimationFrame(() => requestAnimationFrame(updateScroll));
           }}
           className="flex gap-2.5 overflow-x-auto px-4 pb-2 snap-x snap-mandatory"
           style={{
