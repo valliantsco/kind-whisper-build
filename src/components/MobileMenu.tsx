@@ -190,7 +190,7 @@ const ModelsCarousel = ({
         <div
           ref={(el) => {
             (carouselRef as React.MutableRefObject<HTMLDivElement | null>).current = el;
-            if (el) requestAnimationFrame(updateScroll);
+            if (el) requestAnimationFrame(() => requestAnimationFrame(updateScroll));
           }}
           className="flex gap-2.5 overflow-x-auto px-4 pb-2 snap-x snap-mandatory"
           style={{
