@@ -96,7 +96,7 @@ const CategoryCard = ({
     {/* Badge — z-[4] above overlay */}
     {sub.badge && (
       <span
-        className="absolute top-2 right-2 z-[4] px-2 py-[3px] rounded-full text-[8px] font-bold uppercase tracking-[0.1em] text-white"
+        className="absolute top-2 right-2 z-[10] px-2 py-[3px] rounded-full text-[8px] font-bold uppercase tracking-[0.1em] text-white"
         style={{
           background: "linear-gradient(135deg, hsl(11 81% 57% / 0.9), hsl(11 90% 65% / 0.9))",
           backdropFilter: "blur(6px)",
@@ -108,7 +108,7 @@ const CategoryCard = ({
     )}
 
     {/* Text content — z-[3] above overlay */}
-    <div className="absolute bottom-0 left-0 right-0 p-3 z-[3]">
+    <div className="absolute bottom-0 left-0 right-0 p-3 z-[10]">
       <p className="text-white font-bold text-[12px] uppercase tracking-[0.06em] leading-tight line-clamp-1 drop-shadow-lg">
         {sub.label}
       </p>
