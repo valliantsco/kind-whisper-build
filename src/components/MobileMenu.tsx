@@ -109,7 +109,7 @@ const CategoryCard = ({
     )}
 
     {/* Text content — z-[3] above overlay */}
-    <div className="absolute bottom-0 left-0 right-0 p-3 z-[10]">
+    <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: "12px", zIndex: 20 }}>
       <p className="text-white font-bold text-[12px] uppercase tracking-[0.06em] leading-tight line-clamp-1 drop-shadow-lg">
         {sub.label}
       </p>
