@@ -289,7 +289,7 @@ const useMobileMenu = ({ items, isOnline, onContactClick, onQuizOpen }: MobileMe
                                             )}
                                             <div className="absolute inset-0 z-[1]" style={{ background: "linear-gradient(to top, hsl(0 0% 0% / 0.9) 0%, hsl(0 0% 0% / 0.4) 40%, hsl(0 0% 0% / 0.1) 100%)" }} />
                                             {sub.badge && (
-                                              <span className="absolute top-2 right-2 z-10 px-2 py-[3px] rounded-full text-[8px] font-bold uppercase tracking-[0.1em] text-white" style={{ background: "linear-gradient(135deg, hsl(11 81% 57% / 0.85), hsl(11 90% 65% / 0.85))", backdropFilter: "blur(8px)", border: "1px solid hsl(11 81% 57% / 0.3)", boxShadow: "0 2px 8px hsl(11 81% 57% / 0.3)" }}>
+                                              <span className="absolute top-2 right-2 z-[3] px-2 py-[3px] rounded-full text-[8px] font-bold uppercase tracking-[0.1em] text-white" style={{ background: "linear-gradient(135deg, hsl(11 81% 57% / 0.85), hsl(11 90% 65% / 0.85))", backdropFilter: "blur(8px)", border: "1px solid hsl(11 81% 57% / 0.3)", boxShadow: "0 2px 8px hsl(11 81% 57% / 0.3)" }}>
                                                 {sub.badge}
                                               </span>
                                             )}
