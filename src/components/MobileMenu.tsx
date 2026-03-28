@@ -10,7 +10,7 @@ import {
   Clock,
   ExternalLink,
   Compass,
-  Play,
+  
   X,
   Zap,
 } from "lucide-react";
@@ -296,11 +296,6 @@ const useMobileMenu = ({ items, isOnline, onContactClick, onQuizOpen }: MobileMe
                                               <span className="absolute top-2 right-2 z-10 px-2 py-[3px] rounded-full text-[8px] font-bold uppercase tracking-[0.1em] text-white" style={{ background: "linear-gradient(135deg, hsl(11 81% 57% / 0.85), hsl(11 90% 65% / 0.85))", backdropFilter: "blur(8px)", border: "1px solid hsl(11 81% 57% / 0.3)", boxShadow: "0 2px 8px hsl(11 81% 57% / 0.3)" }}>
                                                 {sub.badge}
                                               </span>
-                                            )}
-                                            {sub.video && (
-                                              <div className="absolute top-2 left-2 z-10 w-6 h-6 rounded-full flex items-center justify-center" style={{ background: "hsl(0 0% 0% / 0.5)", backdropFilter: "blur(4px)", border: "1px solid hsl(0 0% 100% / 0.1)" }}>
-                                                <Play className="w-2.5 h-2.5 text-white fill-white ml-[1px]" />
-                                              </div>
                                             )}
                                             <div className="absolute bottom-0 left-0 right-0 p-3.5">
                                               <p className="text-white font-bold text-[12px] uppercase tracking-[0.1em] mb-1 drop-shadow-lg leading-tight">{sub.label}</p>
