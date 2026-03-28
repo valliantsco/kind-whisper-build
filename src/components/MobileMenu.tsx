@@ -244,7 +244,7 @@ const useMobileMenu = ({ items, isOnline, onContactClick, onQuizOpen }: MobileMe
                                           carouselRefs.current[item.label] = el;
                                           if (el) requestAnimationFrame(() => handleCarouselScroll(item.label));
                                         }}
-                                        className="flex gap-3 overflow-x-auto pb-3 px-4 snap-x snap-mandatory scrollbar-hide"
+                                        className="flex gap-3 overflow-x-auto pb-3 px-4 snap-x snap-mandatory scrollbar-hide justify-center"
                                         style={{
                                           scrollbarWidth: "none",
                                           msOverflowStyle: "none",
@@ -287,13 +287,13 @@ const useMobileMenu = ({ items, isOnline, onContactClick, onQuizOpen }: MobileMe
                                             ) : (
                                               <img src={sub.image} alt={sub.label} className="absolute inset-0 w-full h-full object-cover" />
                                             )}
-                                            <div className="absolute inset-0" style={{ background: "linear-gradient(to top, hsl(0 0% 0% / 0.9) 0%, hsl(0 0% 0% / 0.4) 40%, hsl(0 0% 0% / 0.1) 100%)" }} />
+                                            <div className="absolute inset-0 z-[1]" style={{ background: "linear-gradient(to top, hsl(0 0% 0% / 0.9) 0%, hsl(0 0% 0% / 0.4) 40%, hsl(0 0% 0% / 0.1) 100%)" }} />
                                             {sub.badge && (
-                                              <span className="absolute top-2 right-2 z-10 px-2 py-[3px] rounded-full text-[8px] font-bold uppercase tracking-[0.1em] text-white" style={{ background: "linear-gradient(135deg, hsl(11 81% 57% / 0.85), hsl(11 90% 65% / 0.85))", backdropFilter: "blur(8px)", border: "1px solid hsl(11 81% 57% / 0.3)", boxShadow: "0 2px 8px hsl(11 81% 57% / 0.3)" }}>
+                                              <span className="absolute top-2 right-2 z-[3] px-2 py-[3px] rounded-full text-[8px] font-bold uppercase tracking-[0.1em] text-white" style={{ background: "linear-gradient(135deg, hsl(11 81% 57% / 0.85), hsl(11 90% 65% / 0.85))", backdropFilter: "blur(8px)", border: "1px solid hsl(11 81% 57% / 0.3)", boxShadow: "0 2px 8px hsl(11 81% 57% / 0.3)" }}>
                                                 {sub.badge}
                                               </span>
                                             )}
-                                            <div className="absolute bottom-0 left-0 right-0 p-3.5">
+                                            <div className="absolute bottom-0 left-0 right-0 p-3.5 z-[2]">
                                               <p className="text-white font-bold text-[12px] uppercase tracking-[0.1em] mb-1 drop-shadow-lg leading-tight">{sub.label}</p>
                                               <p className="text-white/45 text-[9px] tracking-wide line-clamp-2 leading-relaxed">{sub.description}</p>
                                             </div>
