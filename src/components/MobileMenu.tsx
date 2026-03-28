@@ -84,10 +84,12 @@ const CategoryCard = ({
 
     {/* Gradient overlay — z-[2] above media */}
     <div
-      className="absolute inset-0 z-[2]"
       style={{
-        background:
-          "linear-gradient(to top, hsl(0 0% 0% / 0.92) 0%, hsl(0 0% 0% / 0.6) 40%, hsl(0 0% 0% / 0.1) 100%)",
+        position: "absolute",
+        inset: 0,
+        zIndex: 2,
+        pointerEvents: "none",
+        background: "linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.65) 45%, rgba(0,0,0,0.15) 100%)",
       }}
     />
 
