@@ -68,7 +68,7 @@ const CategoryCard = ({
           muted
           loop
           playsInline
-          preload="metadata"
+          preload="auto"
           className="w-full h-full object-cover"
           style={{ position: "relative", zIndex: 0 }}
         />
