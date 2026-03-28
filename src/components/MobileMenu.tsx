@@ -42,6 +42,21 @@ const useMobileMenu = ({ items, isOnline, onContactClick, onQuizOpen }: MobileMe
   const [open, setOpen] = useState(false);
   const [expandedItem, setExpandedItem] = useState<string | null>(null);
   const carouselRefs = useRef<Record<string, HTMLDivElement | null>>({});
+  const [scrollStates, setScrollStates] = useState<Record<string, { left: number; right: number }>>({});
+
+  const handleCarouselScroll = useCallback((label: string) => {
+    const el = carouselRefs.current[label];
+    if (!el) return;
+    const max = el.scrollWidth - el.clientWidth;
+    if (max <= 0) {
+      setScrollStates(prev => ({ ...prev, [label]: { left: 0, right: 0 } }));
+      return;
+    }
+    const progress = el.scrollLeft / max;
+    const leftOpacity = progress > 0.15 ? 1 : Math.max(0, progress / 0.15);
+    const rightOpacity = progress < 0.85 ? 1 : Math.max(0, 1 - (progress - 0.85) / 0.15);
+    setScrollStates(prev => ({ ...prev, [label]: { left: leftOpacity, right: rightOpacity } }));
+  }, []);
 
   const toggleMenu = () => {
     setOpen((v) => {
