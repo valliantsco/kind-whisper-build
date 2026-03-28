@@ -180,12 +180,8 @@ const useMobileMenu = ({ items, isOnline, onContactClick, onQuizOpen }: MobileMe
                           onClick={() => toggleExpand(item.label)}
                           className="w-full flex items-center justify-between py-3.5 px-4 rounded-2xl cursor-pointer transition-all duration-300"
                           style={{
-                            background: expandedItem === item.label
-                              ? "linear-gradient(135deg, hsl(11 81% 57% / 0.08), hsl(0 0% 100% / 0.03))"
-                              : "transparent",
-                            border: expandedItem === item.label
-                              ? "1px solid hsl(11 81% 57% / 0.12)"
-                              : "1px solid transparent",
+                            background: "transparent",
+                            border: "1px solid transparent",
                           }}
                         >
                           <span
