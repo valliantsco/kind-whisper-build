@@ -58,26 +58,30 @@ const CategoryCard = ({
       width: "160px",
       height: "210px",
       border: "1px solid hsl(0 0% 100% / 0.08)",
+      isolation: "isolate",
     }}
   >
-    {/* Media — z-[1] ensures it stays behind overlay */}
-    {sub.video ? (
-      <video
-        src={sub.video}
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="metadata"
-        className="absolute inset-0 w-full h-full object-cover z-[1]"
-      />
-    ) : sub.image ? (
-      <img
-        src={sub.image}
-        alt={sub.label}
-        className="absolute inset-0 w-full h-full object-cover z-[1]"
-      />
-    ) : null}
+    {/* Media — wrapped in its own div to contain stacking */}
+    <div className="absolute inset-0 z-[1]">
+      {sub.video ? (
+        <video
+          src={sub.video}
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          className="w-full h-full object-cover"
+          style={{ position: "relative", zIndex: 0 }}
+        />
+      ) : sub.image ? (
+        <img
+          src={sub.image}
+          alt={sub.label}
+          className="w-full h-full object-cover"
+        />
+      ) : null}
+    </div>
 
     {/* Gradient overlay — z-[2] above media */}
     <div
