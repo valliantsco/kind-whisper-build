@@ -94,6 +94,8 @@ const CategoryCard = ({
         zIndex: 2,
         pointerEvents: "none",
         background: "linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.65) 45%, rgba(0,0,0,0.15) 100%)",
+        WebkitTransform: "translateZ(0)",
+        transform: "translateZ(0)",
       }}
     />
 
