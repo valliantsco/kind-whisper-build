@@ -297,11 +297,6 @@ const useMobileMenu = ({ items, isOnline, onContactClick, onQuizOpen }: MobileMe
                                                 {sub.badge}
                                               </span>
                                             )}
-                                            {sub.video && (
-                                              <div className="absolute top-2 left-2 z-10 w-6 h-6 rounded-full flex items-center justify-center" style={{ background: "hsl(0 0% 0% / 0.5)", backdropFilter: "blur(4px)", border: "1px solid hsl(0 0% 100% / 0.1)" }}>
-                                                <Play className="w-2.5 h-2.5 text-white fill-white ml-[1px]" />
-                                              </div>
-                                            )}
                                             <div className="absolute bottom-0 left-0 right-0 p-3.5">
                                               <p className="text-white font-bold text-[12px] uppercase tracking-[0.1em] mb-1 drop-shadow-lg leading-tight">{sub.label}</p>
                                               <p className="text-white/45 text-[9px] tracking-wide line-clamp-2 leading-relaxed">{sub.description}</p>
