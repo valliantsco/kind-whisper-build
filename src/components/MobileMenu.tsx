@@ -162,7 +162,7 @@ const useMobileMenu = ({ items, isOnline, onContactClick, onQuizOpen }: MobileMe
 
             <div
               className="overflow-y-auto relative"
-              style={{ maxHeight: "calc(100dvh - 80px)" }}
+              style={{ maxHeight: "calc(100dvh - 160px)" }}
             >
               {/* Nav items */}
               <div className="px-3 pt-3 pb-2 space-y-1">
