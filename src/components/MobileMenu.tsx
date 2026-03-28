@@ -56,7 +56,6 @@ const CategoryCard = ({
       width: "196px",
       height: "257px",
       border: "1px solid hsl(0 0% 100% / 0.08)",
-      isolation: "isolate",
     }}
   >
     {/* Media — wrapped in its own div to contain stacking */}
