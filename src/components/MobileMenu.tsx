@@ -76,6 +76,8 @@ const CategoryCard = ({
         <img
           src={sub.image}
           alt={sub.label}
+          loading="eager"
+          decoding="sync"
           className="w-full h-full object-cover"
         />
       ) : null}
