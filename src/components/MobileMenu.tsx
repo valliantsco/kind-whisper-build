@@ -248,11 +248,11 @@ const ModelsCarousel = ({
             position: "absolute",
             top: 0,
             right: 0,
-            width: "80px",
+            width: "120px",
             height: "100%",
             zIndex: 5,
             pointerEvents: "none",
-            background: "linear-gradient(to left, hsl(0 0% 8%) 0%, hsl(0 0% 8% / 0.6) 40%, transparent 100%)",
+            background: "linear-gradient(to left, hsl(0 0% 8%) 0%, hsl(0 0% 8%) 25%, hsl(0 0% 8% / 0.85) 50%, hsl(0 0% 8% / 0.4) 75%, transparent 100%)",
           }}
         />
       </div>
