@@ -220,11 +220,11 @@ const ModelsCarousel = ({
             position: "absolute",
             top: 0,
             right: 0,
-            width: "48px",
+            width: "32px",
             height: "100%",
             zIndex: 5,
             pointerEvents: "none",
-            background: "linear-gradient(to left, hsl(0 0% 8% / 0.75) 0%, transparent 100%)",
+            background: "linear-gradient(to left, hsl(0 0% 8% / 0.4) 0%, transparent 100%)",
           }}
         />
 
@@ -235,11 +235,11 @@ const ModelsCarousel = ({
               position: "absolute",
               top: 0,
               left: 0,
-              width: "48px",
+              width: "32px",
               height: "100%",
               zIndex: 5,
               pointerEvents: "none",
-              background: "linear-gradient(to right, hsl(0 0% 8% / 0.75) 0%, transparent 100%)",
+              background: "linear-gradient(to right, hsl(0 0% 8% / 0.4) 0%, transparent 100%)",
             }}
           />
         )}
