@@ -206,6 +206,8 @@ const ModelsCarousel = ({
             msOverflowStyle: "none",
             scrollSnapType: "x mandatory",
             WebkitOverflowScrolling: "touch",
+            maskImage: "linear-gradient(to right, black 0%, black 75%, transparent 100%)",
+            WebkitMaskImage: "linear-gradient(to right, black 0%, black 75%, transparent 100%)",
           }}
           onScroll={updateScroll}
         >
@@ -241,20 +243,6 @@ const ModelsCarousel = ({
             <ArrowRight className="w-3 h-3 text-white" />
           </button>
         )}
-
-        {/* Fade direita */}
-        <div
-          style={{
-            position: "absolute",
-            top: 0,
-            right: 0,
-            width: "120px",
-            height: "100%",
-            zIndex: 5,
-            pointerEvents: "none",
-            background: "linear-gradient(to left, hsl(0 0% 8%) 0%, hsl(0 0% 8%) 25%, hsl(0 0% 8% / 0.85) 50%, hsl(0 0% 8% / 0.4) 75%, transparent 100%)",
-          }}
-        />
       </div>
 
       {/* Scroll progress bar */}
