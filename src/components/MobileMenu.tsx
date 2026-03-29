@@ -214,6 +214,36 @@ const ModelsCarousel = ({
           ))}
         </div>
 
+        {/* Fade direita */}
+        <div
+          style={{
+            position: "absolute",
+            top: 0,
+            right: 0,
+            width: "72px",
+            height: "100%",
+            zIndex: 5,
+            pointerEvents: "none",
+            background: "linear-gradient(to left, hsl(0 0% 8%) 0%, transparent 100%)",
+          }}
+        />
+
+        {/* Fade esquerda — só aparece quando há scroll */}
+        {canScrollLeft && (
+          <div
+            style={{
+              position: "absolute",
+              top: 0,
+              left: 0,
+              width: "72px",
+              height: "100%",
+              zIndex: 5,
+              pointerEvents: "none",
+              background: "linear-gradient(to right, hsl(0 0% 8%) 0%, transparent 100%)",
+            }}
+          />
+        )}
+
         {/* Nav arrows */}
         {canScrollLeft && (
           <button
