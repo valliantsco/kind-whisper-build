@@ -206,6 +206,8 @@ const ModelsCarousel = ({
             msOverflowStyle: "none",
             scrollSnapType: "x mandatory",
             WebkitOverflowScrolling: "touch",
+            maskImage: "linear-gradient(to right, black 0%, black 75%, transparent 100%)",
+            WebkitMaskImage: "linear-gradient(to right, black 0%, black 75%, transparent 100%)",
           }}
           onScroll={updateScroll}
         >
