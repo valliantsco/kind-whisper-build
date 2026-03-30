@@ -23,7 +23,7 @@ const parseVimeoMessage = (data: unknown) => {
   }
 };
 
-const InfluencerPreviewMedia = ({ videos, name, scale = 1.2 }: InfluencerPreviewMediaProps) => {
+const InfluencerPreviewMedia = ({ videos, name, scale = 1.2, onReady }: InfluencerPreviewMediaProps) => {
   const [current, setCurrent] = useState(0);
   const iframeRef = useRef<HTMLIFrameElement>(null);
 
