@@ -329,7 +329,7 @@ const VisitUsSection = ({
         style={{ background: "linear-gradient(180deg, hsl(11 81% 57%), hsl(11 90% 65%))" }}
       />
       <span
-        className="text-[10px] font-bold uppercase tracking-[0.1em]"
+        className="text-[11px] font-bold uppercase tracking-[0.1em]"
         style={{ color: "hsl(11 81% 57% / 0.7)" }}
       >
         Nossa Localização
