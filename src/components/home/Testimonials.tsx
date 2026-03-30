@@ -189,10 +189,14 @@ const Testimonials = () => {
                     <div className="flex items-center gap-2.5 mb-1.5">
                       {/* Avatar ring */}
                       <div className="w-9 h-9 rounded-full p-[2px] bg-gradient-to-tr from-primary to-orange-400 shrink-0">
-                        <div className="w-full h-full rounded-full bg-foreground flex items-center justify-center">
-                          <span className="text-[10px] font-bold text-primary-foreground/70">
-                            {inf.name.split(" ").map(n => n[0]).join("")}
-                          </span>
+                        <div className="w-full h-full rounded-full bg-foreground flex items-center justify-center overflow-hidden">
+                          {"avatarImg" in inf && inf.avatarImg ? (
+                            <img src={inf.avatarImg} alt={inf.name} className="w-full h-full object-cover rounded-full" />
+                          ) : (
+                            <span className="text-[10px] font-bold text-primary-foreground/70">
+                              {inf.name.split(" ").map(n => n[0]).join("")}
+                            </span>
+                          )}
                         </div>
                       </div>
                       <div className="min-w-0">
