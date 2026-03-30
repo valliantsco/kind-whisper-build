@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Star, Play, ChevronLeft, ChevronRight, Eye } from "lucide-react";
-import { useRef } from "react";
+import { useRef, useState } from "react";
+import InfluencerVideoModal, { type VideoSource } from "./InfluencerVideoModal";
 import rafaKalimannAvatar from "@/assets/influencers/rafa-kalimann.png";
 import tataEstanieckiAvatar from "@/assets/influencers/tata-estaniecki.jpg";
 import enzoRabeloAvatar from "@/assets/influencers/enzo-rabelo.jpg";
@@ -19,15 +20,22 @@ const TESTIMONIALS = [
   { name: "Fernanda R.", city: "Uberlândia, MG", text: "Atendimento consultivo de verdade. Me ajudaram a escolher o modelo ideal com o quiz. Saí da loja com a Bliss e estou apaixonada!", stars: 5 },
 ];
 
-const INFLUENCERS = [
-  { name: "Rafa Kalimann", handle: "@rafakalimann", views: "22M seguidores", gradient: "from-primary/40 to-primary/10", avatarImg: rafaKalimannAvatar },
-  { name: "Julio Cocielo", handle: "@cocielo", views: "14M seguidores", gradient: "from-orange-500/40 to-primary/10", avatarImg: cocieloAvatar },
-  { name: "Jacques Vanier", handle: "@jacquesvanier", views: "6.4M seguidores", gradient: "from-primary/50 to-orange-400/10", avatarImg: jacquesVanierAvatar },
-  { name: "Tata Estaniecki", handle: "@tata", views: "5.7M seguidores", gradient: "from-orange-600/40 to-amber-500/10", avatarImg: tataEstanieckiAvatar },
-  { name: "Bruno Felix", handle: "@brunodobem", views: "3.3M seguidores", gradient: "from-primary/30 to-red-600/10", avatarImg: brunoDoBemAvatar },
-  { name: "Jhonathan Coelho", handle: "@jhonathancoelho", views: "2.5M seguidores", gradient: "from-red-500/30 to-orange-600/10", avatarImg: jhonathanCoelhoAvatar },
-  { name: "Enzo Rabelo", handle: "@enzorabelooficial", views: "1.5M seguidores", gradient: "from-amber-500/30 to-primary/10", avatarImg: enzoRabeloAvatar },
-  { name: "Gustavo Melo", handle: "@gustavomeloof", views: "1M seguidores", gradient: "from-green-500/30 to-primary/10", avatarImg: gustavoMeloAvatar },
+const INFLUENCERS: {
+  name: string;
+  handle: string;
+  views: string;
+  gradient: string;
+  avatarImg: string;
+  videos: VideoSource[];
+}[] = [
+  { name: "Rafa Kalimann", handle: "@rafakalimann", views: "22M seguidores", gradient: "from-primary/40 to-primary/10", avatarImg: rafaKalimannAvatar, videos: [{ type: "vimeo", id: "1178576414" }] },
+  { name: "Julio Cocielo", handle: "@cocielo", views: "14M seguidores", gradient: "from-orange-500/40 to-primary/10", avatarImg: cocieloAvatar, videos: [] },
+  { name: "Jacques Vanier", handle: "@jacquesvanier", views: "6.4M seguidores", gradient: "from-primary/50 to-orange-400/10", avatarImg: jacquesVanierAvatar, videos: [] },
+  { name: "Tata Estaniecki", handle: "@tata", views: "5.7M seguidores", gradient: "from-orange-600/40 to-amber-500/10", avatarImg: tataEstanieckiAvatar, videos: [] },
+  { name: "Bruno Felix", handle: "@brunodobem", views: "3.3M seguidores", gradient: "from-primary/30 to-red-600/10", avatarImg: brunoDoBemAvatar, videos: [] },
+  { name: "Jhonathan Coelho", handle: "@jhonathancoelho", views: "2.5M seguidores", gradient: "from-red-500/30 to-orange-600/10", avatarImg: jhonathanCoelhoAvatar, videos: [{ type: "mp4", src: "/influencers/jhonathan-coelho-1.mp4" }, { type: "mp4", src: "/influencers/jhonathan-coelho-2.mp4" }, { type: "mp4", src: "/influencers/jhonathan-coelho-3.mp4" }] },
+  { name: "Enzo Rabelo", handle: "@enzorabelooficial", views: "1.5M seguidores", gradient: "from-amber-500/30 to-primary/10", avatarImg: enzoRabeloAvatar, videos: [] },
+  { name: "Gustavo Melo", handle: "@gustavomeloof", views: "1M seguidores", gradient: "from-green-500/30 to-primary/10", avatarImg: gustavoMeloAvatar, videos: [] },
 ];
 
 const fadeUp = {
@@ -41,6 +49,7 @@ const fadeUp = {
 
 const Testimonials = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
+  const [activeInfluencer, setActiveInfluencer] = useState<number | null>(null);
 
   const scroll = (dir: "left" | "right") => {
     if (!scrollRef.current) return;
@@ -170,7 +179,8 @@ const Testimonials = () => {
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.07, duration: 0.4 }}
                   whileHover={{ scale: 1.03, y: -6 }}
-                  className="relative min-w-[220px] w-[220px] aspect-[9/16] snap-start rounded-2xl overflow-hidden cursor-pointer group shrink-0"
+                  onClick={() => inf.videos.length > 0 && setActiveInfluencer(i)}
+                  className={`relative min-w-[220px] w-[220px] aspect-[9/16] snap-start rounded-2xl overflow-hidden group shrink-0 ${inf.videos.length > 0 ? "cursor-pointer" : "cursor-default"}`}
                 >
                   {/* Background gradient placeholder (replace with real thumbnails later) */}
                   <div className={`absolute inset-0 bg-gradient-to-br ${inf.gradient} bg-foreground`} />
@@ -230,6 +240,15 @@ const Testimonials = () => {
             </div>
           </div>
         </div>
+
+        {activeInfluencer !== null && (
+          <InfluencerVideoModal
+            open
+            onOpenChange={(open) => { if (!open) setActiveInfluencer(null); }}
+            videos={INFLUENCERS[activeInfluencer].videos}
+            name={INFLUENCERS[activeInfluencer].name}
+          />
+        )}
       </section>
     </>
   );
