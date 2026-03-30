@@ -78,7 +78,7 @@ const InfluencerPreviewMedia = ({ videos, name, scale = 1.2, onReady }: Influenc
         allowFullScreen
         referrerPolicy="strict-origin-when-cross-origin"
         title={name}
-        onLoad={registerVimeoEvents}
+        onLoad={() => { registerVimeoEvents(); onReady?.(); }}
         className="absolute inset-0 h-full w-full pointer-events-none"
         style={{ border: "none", transform: `scale(${scale})`, transformOrigin: "center" }}
       />
