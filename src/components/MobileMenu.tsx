@@ -3,15 +3,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import msShieldLogo from "@/assets/ms-shield-logo.png";
 
 import {
-  ChevronDown,
-  ArrowRight,
-  ArrowLeft,
-  MapPin,
-  Phone,
-  Clock,
-  ExternalLink,
-  
-  Zap,
+  ChevronDown, ArrowRight, ArrowLeft,
+  MapPin, Phone, Clock, ExternalLink, Zap,
 } from "lucide-react";
 
 interface MobileMenuItem {
@@ -42,17 +35,15 @@ interface MobileMenuProps {
    ═══════════════════════════════════════════ */
 const CategoryCard = ({
   sub,
-  index,
   onClose,
 }: {
   sub: MobileMenuItem["dropdownItems"][number];
-  index: number;
   onClose: () => void;
 }) => (
   <a
     href={sub.href}
     onClick={onClose}
-    className="relative flex-shrink-0 rounded-2xl overflow-hidden snap-center"
+    className="relative flex-shrink-0 rounded-2xl overflow-hidden snap-center active:scale-[0.98] transition-transform duration-150"
     style={{
       width: "176px",
       height: "284px",
@@ -117,21 +108,19 @@ const CategoryCard = ({
 
     {/* Text content — z-[3] above overlay */}
     <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: "12px", zIndex: 20, WebkitTransform: "translateZ(0)", transform: "translateZ(0)" }}>
-      <p className="text-white font-bold text-[13px] uppercase tracking-[0.04em] leading-tight line-clamp-1 drop-shadow-lg">
+      <p
+        className="text-white font-bold text-[13px] uppercase tracking-[0.06em] leading-tight line-clamp-1"
+        style={{ textShadow: "0 2px 8px rgba(0,0,0,0.8)" }}
+      >
         {sub.label}
       </p>
-      <p className="text-white/75 text-[10.5px] tracking-wide leading-snug mt-1 line-clamp-2 drop-shadow-md">
+      <p
+        className="text-white/75 text-[10.5px] tracking-wide leading-snug mt-1 line-clamp-2"
+        style={{ textShadow: "0 1px 4px rgba(0,0,0,0.6)" }}
+      >
         {sub.description}
       </p>
     </div>
-
-    {/* Hover accent line */}
-    <div
-      className="absolute bottom-0 left-2 right-2 h-[1.5px] rounded-full z-[3] opacity-0"
-      style={{
-        background: "linear-gradient(90deg, transparent, hsl(11 81% 57% / 0.6), transparent)",
-      }}
-    />
   </a>
 );
 
@@ -150,7 +139,7 @@ const ModelsCarousel = ({
   const carouselRef = useRef<HTMLDivElement>(null);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
-  const [canScrollRight, setCanScrollRight] = useState(true);
+  const [canScrollRight, setCanScrollRight] = useState(false);
 
   const updateScroll = useCallback(() => {
     const el = carouselRef.current;
@@ -201,19 +190,17 @@ const ModelsCarousel = ({
             (carouselRef as React.MutableRefObject<HTMLDivElement | null>).current = el;
             if (el) requestAnimationFrame(() => requestAnimationFrame(updateScroll));
           }}
-          className="flex gap-2.5 overflow-x-auto px-4 pb-2 snap-x snap-mandatory"
+          className="flex gap-3 overflow-x-auto px-4 pb-3 snap-x snap-mandatory"
           style={{
             scrollbarWidth: "none",
             msOverflowStyle: "none",
             scrollSnapType: "x mandatory",
             WebkitOverflowScrolling: "touch",
-            maskImage: `linear-gradient(to right, ${canScrollLeft ? 'transparent' : 'black'} 0%, black ${canScrollLeft ? '25%' : '0%'}, black ${canScrollRight ? '75%' : '100%'}, ${canScrollRight ? 'transparent' : 'black'} 100%)`,
-            WebkitMaskImage: `linear-gradient(to right, ${canScrollLeft ? 'transparent' : 'black'} 0%, black ${canScrollLeft ? '25%' : '0%'}, black ${canScrollRight ? '75%' : '100%'}, ${canScrollRight ? 'transparent' : 'black'} 100%)`,
           }}
           onScroll={updateScroll}
         >
-          {(item.dropdownItems || []).map((sub, j) => (
-            <CategoryCard key={sub.label} sub={sub} index={j} onClose={onClose} />
+          {(item.dropdownItems || []).map((sub) => (
+            <CategoryCard key={sub.label} sub={sub} onClose={onClose} />
           ))}
         </div>
 
@@ -244,6 +231,18 @@ const ModelsCarousel = ({
             <ArrowRight className="w-3 h-3 text-white" />
           </button>
         )}
+
+        {/* Right fade overlay */}
+        {canScrollRight && (
+          <div
+            className="absolute top-0 right-0 h-full pointer-events-none"
+            style={{
+              width: "48px",
+              zIndex: 6,
+              background: "linear-gradient(to left, hsl(0 0% 8% / 0.85) 0%, transparent 100%)",
+            }}
+          />
+        )}
       </div>
 
       {/* Scroll progress bar */}
@@ -271,7 +270,7 @@ const ModelsCarousel = ({
             onClose();
             onQuizOpen();
           }}
-          className="mx-4 w-[calc(100%-2rem)] mt-2 flex items-center gap-2.5 px-3 py-2.5 rounded-2xl cursor-pointer active:scale-[0.98] transition-transform duration-150"
+          className="mx-4 w-[calc(100%-2rem)] mt-2 flex items-center gap-2.5 px-3 py-2.5 rounded-2xl cursor-pointer overflow-hidden active:scale-[0.98] transition-transform duration-150"
           style={{
             background: "linear-gradient(135deg, hsl(0 0% 11%), hsl(0 0% 7%))",
             border: "1px solid hsl(11 81% 57% / 0.15)",
@@ -291,7 +290,7 @@ const ModelsCarousel = ({
             <p className="text-white/90 font-bold text-[10px] uppercase tracking-[0.08em]">
               Não sabe qual escolher?
             </p>
-            <p className="text-white/35 text-[8px] tracking-wide mt-0.5">
+            <p className="text-white/50 text-[8px] tracking-wide mt-0.5">
               Responda 4 perguntas e descubra
             </p>
           </div>
@@ -315,13 +314,11 @@ const ModelsCarousel = ({
    Visit-Us Expanded Section
    ═══════════════════════════════════════════ */
 const VisitUsSection = ({
-  item,
   onClose,
 }: {
-  item: MobileMenuItem;
   onClose: () => void;
 }) => (
-  <div className="px-2 pt-1 pb-2">
+  <div className="px-2 pt-1 pb-3">
     {/* Header */}
     <div className="flex items-center gap-2 px-2 mb-3">
       <div
@@ -332,7 +329,7 @@ const VisitUsSection = ({
         className="text-[11px] font-bold uppercase tracking-[0.1em]"
         style={{ color: "hsl(11 81% 57% / 0.7)" }}
       >
-        Nossa Localização
+        Onde Estamos
       </span>
     </div>
 
@@ -344,14 +341,6 @@ const VisitUsSection = ({
         border: "1px solid hsl(0 0% 100% / 0.06)",
       }}
     >
-      {/* Faixa topo laranja */}
-      <div
-        className="h-[2px] w-full"
-        style={{
-          background: "linear-gradient(90deg, transparent, hsl(11 81% 57% / 0.8), transparent)",
-        }}
-      />
-
       {/* Mapa */}
       <div
         className="relative overflow-hidden cursor-pointer"
@@ -409,24 +398,29 @@ const VisitUsSection = ({
         </div>
         <div
           className="absolute bottom-2 right-2 z-[6] flex items-center gap-1.5 px-2 py-1 rounded-full pointer-events-none"
-          style={{ background: "hsl(0 0% 0% / 0.6)", backdropFilter: "blur(12px)", border: "1px solid hsl(0 0% 100% / 0.1)" }}
+          style={{
+            background: "hsl(0 0% 0% / 0.6)",
+            backdropFilter: "blur(12px)",
+            WebkitBackdropFilter: "blur(12px)",
+            border: "1px solid hsl(0 0% 100% / 0.1)",
+          }}
         >
           <Zap className="w-2 h-2" style={{ color: "hsl(11 81% 57%)" }} />
-          <span className="text-[7px] font-bold uppercase tracking-[0.12em] text-white/70">Clique para navegar</span>
+          <span className="text-[7px] font-bold uppercase tracking-[0.12em] text-white/70">Toque para navegar</span>
         </div>
       </div>
 
-      <div className="px-4 py-4 space-y-3">
+      <div className="px-4 py-3 space-y-3">
         {/* Endereço */}
         <div className="flex items-start gap-3">
           <div
-            className="w-8 h-8 rounded-xl flex items-center justify-center shrink-0"
+            className="w-7 h-7 rounded-xl flex items-center justify-center shrink-0"
             style={{
               background: "linear-gradient(135deg, hsl(11 81% 57% / 0.15), hsl(11 81% 57% / 0.05))",
               border: "1px solid hsl(11 81% 57% / 0.2)",
             }}
           >
-            <MapPin className="w-3.5 h-3.5" style={{ color: "hsl(11 81% 57%)" }} />
+            <MapPin className="w-3 h-3" style={{ color: "hsl(11 81% 57%)" }} />
           </div>
           <div>
             <p className="text-white/40 text-[9px] uppercase tracking-[0.1em] mb-0.5">Endereço</p>
@@ -435,18 +429,18 @@ const VisitUsSection = ({
           </div>
         </div>
 
-        <div className="h-px" style={{ background: "hsl(0 0% 100% / 0.05)" }} />
+        <div className="h-px" style={{ background: "hsl(0 0% 100% / 0.08)" }} />
 
         {/* Telefone */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-start gap-3">
           <div
-            className="w-8 h-8 rounded-xl flex items-center justify-center shrink-0"
+            className="w-7 h-7 rounded-xl flex items-center justify-center shrink-0"
             style={{
               background: "linear-gradient(135deg, hsl(11 81% 57% / 0.15), hsl(11 81% 57% / 0.05))",
               border: "1px solid hsl(11 81% 57% / 0.2)",
             }}
           >
-            <Phone className="w-3.5 h-3.5" style={{ color: "hsl(11 81% 57%)" }} />
+            <Phone className="w-3 h-3" style={{ color: "hsl(11 81% 57%)" }} />
           </div>
           <div>
             <p className="text-white/40 text-[9px] uppercase tracking-[0.1em] mb-0.5">Telefone</p>
@@ -456,18 +450,18 @@ const VisitUsSection = ({
           </div>
         </div>
 
-        <div className="h-px" style={{ background: "hsl(0 0% 100% / 0.05)" }} />
+        <div className="h-px" style={{ background: "hsl(0 0% 100% / 0.08)" }} />
 
         {/* Horários */}
         <div className="flex items-start gap-3">
           <div
-            className="w-8 h-8 rounded-xl flex items-center justify-center shrink-0"
+            className="w-7 h-7 rounded-xl flex items-center justify-center shrink-0"
             style={{
               background: "linear-gradient(135deg, hsl(11 81% 57% / 0.15), hsl(11 81% 57% / 0.05))",
               border: "1px solid hsl(11 81% 57% / 0.2)",
             }}
           >
-            <Clock className="w-3.5 h-3.5" style={{ color: "hsl(11 81% 57%)" }} />
+            <Clock className="w-3 h-3" style={{ color: "hsl(11 81% 57%)" }} />
           </div>
           <div className="flex-1">
             <p className="text-white/40 text-[9px] uppercase tracking-[0.1em] mb-1">Horários</p>
@@ -490,15 +484,18 @@ const VisitUsSection = ({
       </div>
 
       <button
-        onClick={() => window.open("https://maps.app.goo.gl/7iwuPGQuN4rAhqRf8", "_blank")}
-        className="w-full flex items-center justify-center gap-2 py-3 text-[10px] font-bold uppercase tracking-[0.12em] text-white cursor-pointer active:scale-[0.98] transition-transform"
+        onClick={() => {
+          onClose();
+          window.open("https://maps.app.goo.gl/7iwuPGQuN4rAhqRf8", "_blank");
+        }}
+        className="w-full flex items-center justify-center gap-2 py-3 text-[10px] font-bold uppercase tracking-[0.12em] text-white cursor-pointer active:scale-[0.98] transition-transform rounded-b-2xl"
         style={{
           background: "linear-gradient(135deg, hsl(11 81% 57%), hsl(11 90% 65%))",
           boxShadow: "0 -4px 16px hsl(11 81% 57% / 0.15)",
         }}
       >
         <ExternalLink className="w-3 h-3" />
-        Abrir no Google Maps
+        Ver no Google Maps
       </button>
     </div>
   </div>
@@ -587,7 +584,7 @@ const useMobileMenu = ({ items, isOnline, onContactClick, onQuizOpen }: MobileMe
               style={{ maxHeight: "calc(100dvh - 140px)" }}
             >
               {/* Nav items */}
-              <div className="px-3 pt-2 pb-1 space-y-0.5">
+              <div className="px-3 pt-2 pb-1 space-y-1">
                 {items.map((item, i) => (
                   <motion.div
                     key={item.label}
@@ -604,6 +601,7 @@ const useMobileMenu = ({ items, isOnline, onContactClick, onQuizOpen }: MobileMe
                         {/* Accordion header */}
                         <button
                           onClick={() => toggleExpand(item.label)}
+                          aria-expanded={expandedItem === item.label}
                           className="w-full flex items-center justify-between py-3 px-4 rounded-xl cursor-pointer transition-colors duration-200"
                           style={{ background: "transparent" }}
                         >
@@ -651,7 +649,7 @@ const useMobileMenu = ({ items, isOnline, onContactClick, onQuizOpen }: MobileMe
                                   onQuizOpen={onQuizOpen}
                                 />
                               ) : (
-                                <VisitUsSection item={item} onClose={closeMenu} />
+                                <VisitUsSection onClose={closeMenu} />
                               )}
                             </motion.div>
                           )}
@@ -700,7 +698,7 @@ const useMobileMenu = ({ items, isOnline, onContactClick, onQuizOpen }: MobileMe
                     closeMenu();
                     onContactClick?.();
                   }}
-                  className="w-full relative flex items-center justify-center gap-3 rounded-2xl px-5 py-3.5 text-white cursor-pointer overflow-hidden active:scale-[0.97] transition-transform duration-150"
+                  className="w-full relative flex items-center justify-center gap-3 rounded-2xl px-5 py-3.5 text-white cursor-pointer overflow-hidden active:scale-[0.98] transition-transform duration-150"
                   style={{
                     background: "linear-gradient(135deg, hsl(11 81% 57%), hsl(11 90% 65%))",
                     boxShadow:
@@ -740,7 +738,7 @@ const useMobileMenu = ({ items, isOnline, onContactClick, onQuizOpen }: MobileMe
                       {isOnline ? "Atendimento Online" : "Atendimento Offline"}
                     </span>
                     <span className="text-[8px] font-medium opacity-75 tracking-wider uppercase">
-                      {isOnline ? "Fale conosco agora" : "Deixe sua mensagem"}
+                      {isOnline ? "Tire suas dúvidas" : "Envie uma mensagem"}
                     </span>
                   </span>
                 </motion.button>
