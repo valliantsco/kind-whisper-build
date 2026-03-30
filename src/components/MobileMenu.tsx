@@ -326,7 +326,7 @@ const VisitUsSection = ({
 
     {/* Card principal */}
     <div
-      className="rounded-2xl overflow-hidden"
+      className="mx-4 rounded-2xl overflow-hidden"
       style={{
         background: "linear-gradient(160deg, hsl(0 0% 11%), hsl(0 0% 7%))",
         border: "1px solid hsl(0 0% 100% / 0.06)",
