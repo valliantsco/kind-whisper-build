@@ -28,11 +28,12 @@ interface Influencer {
   avatarImg: string;
   badge?: string;
   videos: VideoSource[];
+  previewScale?: number;
 }
 
 const INFLUENCERS: Influencer[] = [
   { name: "Rafa Kalimann", handle: "@rafakalimann", views: "22M seguidores", description: "Apresentadora e influenciadora digital", avatarImg: rafaKalimannAvatar, badge: "Destaque", videos: [{ type: "vimeo", id: "1178576414" }, { type: "vimeo", id: "1178576533" }, { type: "vimeo", id: "1178576464" }, { type: "vimeo", id: "1178576373" }, { type: "vimeo", id: "1178576288" }] },
-  { name: "Júlio Cocielo", handle: "@cocielo", views: "14M seguidores", description: "Criador de conteúdo e youtuber", avatarImg: cocieloAvatar, videos: [{ type: "vimeo", id: "1178577473" }] },
+  { name: "Júlio Cocielo", handle: "@cocielo", views: "14M seguidores", description: "Criador de conteúdo e youtuber", avatarImg: cocieloAvatar, videos: [{ type: "vimeo", id: "1178577473" }], previewScale: 1.35 },
   { name: "Jacques Vanier", handle: "@jacquesvanier", views: "6.4M seguidores", description: "Comediante e criador de conteúdo", avatarImg: jacquesVanierAvatar, videos: [] },
   { name: "Tata Estaniecki", handle: "@tata", views: "5.7M seguidores", description: "Influenciadora e empresária", avatarImg: tataEstanieckiAvatar, videos: [] },
   { name: "Bruno Felix", handle: "@brunodobem", views: "3.3M seguidores", description: "Criador de conteúdo digital", avatarImg: brunoDoBemAvatar, videos: [] },
@@ -204,7 +205,7 @@ const Testimonials = () => {
                         referrerPolicy="strict-origin-when-cross-origin"
                         title={inf.name}
                         className="absolute inset-0 w-full h-full"
-                        style={{ border: "none", transform: "scale(1.2)", transformOrigin: "center" }}
+                        style={{ border: "none", transform: `scale(${inf.previewScale ?? 1.2})`, transformOrigin: "center" }}
                       />
                     ) : (
                       <img
