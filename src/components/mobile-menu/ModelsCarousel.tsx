@@ -80,7 +80,6 @@ const ModelsCarousel: React.FC<ModelsCarouselProps> = ({
       >
         Explore por categoria
       </p>
-      </div>
       <p
         className="px-4 mb-3 text-[11px]"
         style={{ color: "hsl(var(--mm-text-secondary))", paddingLeft: "calc(1rem + 10px)" }}
