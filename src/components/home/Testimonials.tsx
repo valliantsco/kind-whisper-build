@@ -268,12 +268,15 @@ const Testimonials = () => {
             </div>
 
             {/* Progress bar */}
-            <div className="mt-6 md:mx-10 h-[3px] rounded-full bg-border/30 overflow-hidden">
+            <div className="mt-6 md:mx-10 h-[3px] rounded-full overflow-hidden" style={{ background: "hsl(0 0% 100% / 0.06)" }}>
               <div
-                className="h-full rounded-full transition-all duration-200 ease-out"
+                className="h-full rounded-full"
                 style={{
-                  width: `${Math.max(5, scrollProgress * 100)}%`,
                   background: "linear-gradient(90deg, hsl(var(--primary)), hsl(var(--primary-glow)))",
+                  width: "40%",
+                  transform: `translateX(${scrollProgress * (100 / 0.4 - 100)}%)`,
+                  transition: "transform 0.4s cubic-bezier(0.22, 1, 0.36, 1)",
+                  boxShadow: "0 0 8px hsl(var(--primary) / 0.4)",
                 }}
               />
             </div>
