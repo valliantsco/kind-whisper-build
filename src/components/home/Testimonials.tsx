@@ -179,8 +179,7 @@ const Testimonials = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.06, duration: 0.35 }}
-                  onClick={() => inf.videos.length > 0 && setActiveInfluencer(i)}
-                  className={`relative flex-shrink-0 snap-center rounded-2xl overflow-hidden group ${inf.videos.length > 0 ? "cursor-pointer" : "cursor-default"}`}
+                  className="relative flex-shrink-0 snap-center rounded-2xl overflow-hidden group cursor-default"
                   style={{
                     width: "clamp(180px, 42vw, 220px)",
                     aspectRatio: "9/16",
