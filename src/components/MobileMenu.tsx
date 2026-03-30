@@ -116,9 +116,9 @@ const useMobileMenu = ({ items, isOnline, onContactClick, onQuizOpen }: MobileMe
             <div className="relative">
               {/* Bottom dissolve fade */}
               <div
-                className="absolute bottom-0 left-0 right-0 h-8 z-10 pointer-events-none"
+                className="absolute bottom-0 left-0 right-0 h-5 z-10 pointer-events-none"
                 style={{
-                  background: "linear-gradient(to top, hsl(var(--mm-surface-deep)), transparent)",
+                  background: "linear-gradient(to top, hsl(0 0% 0% / 0.25), transparent)",
                 }}
               />
               <div
