@@ -165,7 +165,7 @@ const LazyMap: React.FC = () => {
 const VisitUsSection: React.FC<VisitUsSectionProps> = ({ onClose }) => (
   <div className="pt-1 pb-3">
     {/* Header */}
-    <div className="flex items-center gap-2 px-4 mb-3">
+    <div className="flex items-center gap-2 px-4 mb-1">
       <div
         className="w-0.5 h-3 rounded-full"
         style={{
@@ -176,9 +176,15 @@ const VisitUsSection: React.FC<VisitUsSectionProps> = ({ onClose }) => (
         className="text-[11px] font-bold uppercase tracking-[0.1em]"
         style={{ color: "hsl(var(--primary) / 0.7)" }}
       >
-        Onde Estamos
+        Venha nos Visitar
       </span>
     </div>
+    <p
+      className="px-4 mb-3 text-[11px]"
+      style={{ color: "hsl(var(--mm-text-secondary))", paddingLeft: "calc(1rem + 10px)" }}
+    >
+      Transformando a mobilidade urbana desde 2015
+    </p>
 
     {/* Main card */}
     <div
