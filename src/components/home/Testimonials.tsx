@@ -164,13 +164,13 @@ const Testimonials = () => {
             className="text-center mb-14"
           >
             <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-[11px] font-bold uppercase tracking-[0.18em] mb-4 bg-primary/10 text-primary border border-primary/25">
-              Parcerias especiais
+              Parcerias de marca
             </span>
             <h2 className="font-display font-black text-3xl md:text-4xl lg:text-5xl text-primary-foreground uppercase tracking-tight leading-[1]">
-              Presença que <span className="gradient-text">gera reconhecimento</span>
+              Presença que <span className="gradient-text">amplia desejo</span>
             </h2>
             <p className="text-primary-foreground/40 mt-4 max-w-lg mx-auto text-sm">
-              Em colaborações com nomes de grande alcance, nossos produtos aparecem em cena com naturalidade e força visual. Mesmo sem áudio, o preview comunica o essencial: desejo, presença e credibilidade de marca.
+              Em colaborações com nomes de grande alcance, a MS Eletric ganha repertório cultural, força de imagem e reconhecimento além da categoria — reforçando uma marca que circula com naturalidade em diferentes universos.
             </p>
           </motion.div>
 
