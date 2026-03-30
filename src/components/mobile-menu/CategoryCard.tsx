@@ -10,7 +10,7 @@ const CategoryCard: React.FC<CategoryCardProps> = ({ sub, onClose }) => (
   <a
     href={sub.href}
     onClick={onClose}
-    className="relative flex-shrink-0 rounded-2xl overflow-hidden snap-center active:scale-[0.98] transition-transform duration-150"
+    className="relative flex-shrink-0 rounded-2xl overflow-hidden snap-center active:scale-[0.98]"
     style={{
       width: "clamp(176px, 56vw, 220px)",
       height: "284px",
