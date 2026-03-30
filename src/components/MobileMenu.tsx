@@ -470,19 +470,19 @@ const VisitUsSection = ({
             <Clock className="w-3.5 h-3.5" style={{ color: "hsl(11 81% 57%)" }} />
           </div>
           <div className="flex-1">
-            <p className="text-white/40 text-[8px] uppercase tracking-[0.1em] mb-1">Horários</p>
+            <p className="text-white/40 text-[9px] uppercase tracking-[0.1em] mb-1">Horários</p>
             <div className="space-y-0.5">
               <div className="flex justify-between">
-                <p className="text-white/50 text-[9px]">Seg – Sex</p>
-                <p className="text-white/80 text-[9px] font-medium">08h – 18h</p>
+                <p className="text-white/50 text-[10.5px]">Seg – Sex</p>
+                <p className="text-white/80 text-[10.5px] font-medium">08h – 18h</p>
               </div>
               <div className="flex justify-between">
-                <p className="text-white/50 text-[9px]">Sábado</p>
-                <p className="text-white/80 text-[9px] font-medium">08h – 12h</p>
+                <p className="text-white/50 text-[10.5px]">Sábado</p>
+                <p className="text-white/80 text-[10.5px] font-medium">08h – 12h</p>
               </div>
               <div className="flex justify-between">
-                <p className="text-white/50 text-[9px]">Domingo</p>
-                <p className="text-[9px] font-medium italic" style={{ color: "hsl(11 81% 57% / 0.6)" }}>Fechado</p>
+                <p className="text-white/50 text-[10.5px]">Domingo</p>
+                <p className="text-[10.5px] font-medium italic" style={{ color: "hsl(11 81% 57% / 0.6)" }}>Fechado</p>
               </div>
             </div>
           </div>
