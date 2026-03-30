@@ -196,6 +196,8 @@ const ModelsCarousel = ({
             msOverflowStyle: "none",
             scrollSnapType: "x mandatory",
             WebkitOverflowScrolling: "touch",
+            maskImage: `linear-gradient(to right, ${canScrollLeft ? 'transparent' : 'black'} 0%, black ${canScrollLeft ? '8%' : '0%'}, black ${canScrollRight ? '85%' : '100%'}, ${canScrollRight ? 'transparent' : 'black'} 100%)`,
+            WebkitMaskImage: `linear-gradient(to right, ${canScrollLeft ? 'transparent' : 'black'} 0%, black ${canScrollLeft ? '8%' : '0%'}, black ${canScrollRight ? '85%' : '100%'}, ${canScrollRight ? 'transparent' : 'black'} 100%)`,
           }}
           onScroll={updateScroll}
         >
@@ -232,17 +234,6 @@ const ModelsCarousel = ({
           </button>
         )}
 
-        {/* Right fade overlay */}
-        {canScrollRight && (
-          <div
-            className="absolute top-0 right-0 h-full pointer-events-none"
-            style={{
-              width: "48px",
-              zIndex: 6,
-              background: "linear-gradient(to left, hsl(0 0% 8% / 0.85) 0%, transparent 100%)",
-            }}
-          />
-        )}
       </div>
 
       {/* Scroll progress bar */}
