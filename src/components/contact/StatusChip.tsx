@@ -134,8 +134,8 @@ const StatusChip = ({ isOnline, offlineMessage }: StatusChipProps) => {
                         <span
                         className="text-[11px] font-semibold tabular-nums"
                         style={{
-                          color: isClosed ?
-                          "hsl(0 0% 100% / 0.35)" :
+                        color: isClosed ?
+                          "hsl(0 0% 100% / 0.7)" :
                           isToday ?
                           "hsl(0 0% 100%)" :
                           "hsl(0 0% 100% / 0.7)",
