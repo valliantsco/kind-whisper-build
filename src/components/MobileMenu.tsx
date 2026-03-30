@@ -449,8 +449,8 @@ const VisitUsSection = ({
             <Phone className="w-3.5 h-3.5" style={{ color: "hsl(11 81% 57%)" }} />
           </div>
           <div>
-            <p className="text-white/40 text-[8px] uppercase tracking-[0.1em] mb-0.5">Telefone</p>
-            <a href="tel:+553432196628" className="text-white/90 text-[11px] font-semibold">
+            <p className="text-white/40 text-[9px] uppercase tracking-[0.1em] mb-0.5">Telefone</p>
+            <a href="tel:+553432196628" className="text-white/90 text-[13px] font-semibold">
               (34) 3219-6628
             </a>
           </div>
