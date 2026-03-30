@@ -21,12 +21,12 @@ const TESTIMONIALS = [
 
 const INFLUENCERS = [
   { name: "Rafa Kalimann", handle: "@rafakalimann", views: "22M seguidores", gradient: "from-primary/40 to-primary/10", avatarImg: rafaKalimannAvatar },
+  { name: "Julio Cocielo", handle: "@cocielo", views: "14M seguidores", gradient: "from-orange-500/40 to-primary/10", avatarImg: cocieloAvatar },
+  { name: "Jacques Vanier", handle: "@jacquesvanier", views: "6.4M seguidores", gradient: "from-primary/50 to-orange-400/10", avatarImg: jacquesVanierAvatar },
   { name: "Tata Estaniecki", handle: "@tata", views: "5.7M seguidores", gradient: "from-orange-600/40 to-amber-500/10", avatarImg: tataEstanieckiAvatar },
   { name: "Bruno Felix", handle: "@brunodobem", views: "3.3M seguidores", gradient: "from-primary/30 to-red-600/10", avatarImg: brunoDoBemAvatar },
-  { name: "Enzo Rabelo", handle: "@enzorabelooficial", views: "1.5M seguidores", gradient: "from-amber-500/30 to-primary/10", avatarImg: enzoRabeloAvatar },
   { name: "Jhonathan Coelho", handle: "@jhonathancoelho", views: "2.5M seguidores", gradient: "from-red-500/30 to-orange-600/10", avatarImg: jhonathanCoelhoAvatar },
-  { name: "Jacques Vanier", handle: "@jacquesvanier", views: "6.4M seguidores", gradient: "from-primary/50 to-orange-400/10", avatarImg: jacquesVanierAvatar },
-  { name: "Julio Cocielo", handle: "@cocielo", views: "14M seguidores", gradient: "from-orange-500/40 to-primary/10", avatarImg: cocieloAvatar },
+  { name: "Enzo Rabelo", handle: "@enzorabelooficial", views: "1.5M seguidores", gradient: "from-amber-500/30 to-primary/10", avatarImg: enzoRabeloAvatar },
   { name: "Gustavo Melo", handle: "@gustavomeloof", views: "1M seguidores", gradient: "from-green-500/30 to-primary/10", avatarImg: gustavoMeloAvatar },
 ];
 
