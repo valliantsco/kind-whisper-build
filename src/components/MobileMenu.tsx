@@ -271,7 +271,7 @@ const ModelsCarousel = ({
             onClose();
             onQuizOpen();
           }}
-          className="mx-4 mt-2 flex items-center gap-2.5 px-3 py-2.5 rounded-2xl cursor-pointer active:scale-[0.98] transition-transform duration-150"
+          className="mx-4 w-[calc(100%-2rem)] mt-2 flex items-center gap-2.5 px-3 py-2.5 rounded-2xl cursor-pointer active:scale-[0.98] transition-transform duration-150"
           style={{
             background: "linear-gradient(135deg, hsl(0 0% 11%), hsl(0 0% 7%))",
             border: "1px solid hsl(11 81% 57% / 0.15)",
