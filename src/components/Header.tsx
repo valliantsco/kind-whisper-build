@@ -37,6 +37,7 @@ interface NavItem {
   hasDropdown?: boolean;
   dropdownItems?: DropdownItem[];
   hasCta?: boolean;
+  sectionType?: "models" | "visit-us";
 }
 
 const NAV_ITEMS: NavItem[] = [
