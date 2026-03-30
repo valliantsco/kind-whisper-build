@@ -1,5 +1,6 @@
 import React, { useState, useRef, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import msShieldLogo from "@/assets/ms-shield-logo.png";
 
 import {
   ChevronDown,
@@ -430,9 +431,78 @@ const VisitUsSection = ({
             </div>
           </div>
         </div>
-      </div>
+        </div>
 
-      {/* Botão Maps */}
+        {/* Mapa */}
+        <div
+          className="relative rounded-xl overflow-hidden cursor-pointer"
+          style={{ height: "150px", border: "1px solid hsl(0 0% 100% / 0.08)" }}
+          onClick={() => window.open("https://maps.app.goo.gl/7iwuPGQuN4rAhqRf8", "_blank")}
+        >
+          <div className="absolute inset-0 overflow-hidden rounded-xl">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d2250!2d-48.26122457146234!3d-18.892441917718067!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1spt-BR!2sbr!4v1700000000000!5m2!1spt-BR!2sbr"
+              className="absolute border-0 pointer-events-none"
+              style={{
+                top: "-60px",
+                left: "-20px",
+                width: "calc(100% + 40px)",
+                height: "calc(100% + 120px)",
+                filter: "invert(1) hue-rotate(180deg) brightness(0.95) contrast(1.1) saturate(0.3)",
+              }}
+              allowFullScreen={false}
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="MS Eletric - Uberlândia"
+            />
+          </div>
+
+          {/* Pin personalizado MS Eletric */}
+          <div className="absolute z-[5] pointer-events-none" style={{ top: "calc(44% + 20px)", left: "calc(48% + 30px)", transform: "translate(-50%, -100%)" }}>
+            <div className="absolute -bottom-1 left-1/2 -translate-x-1/2">
+              <div className="w-8 h-8 rounded-full animate-ping" style={{ background: "hsl(11 81% 57% / 0.2)", animationDuration: "2.5s" }} />
+            </div>
+            <div className="absolute -bottom-1 left-1/2 -translate-x-1/2">
+              <div className="w-5 h-5 rounded-full" style={{ background: "hsl(11 81% 57% / 0.35)" }} />
+            </div>
+            <div className="relative flex flex-col items-center" style={{ filter: "drop-shadow(0 6px 16px hsl(11 81% 57% / 0.6)) drop-shadow(0 2px 4px hsl(0 0% 0% / 0.5))" }}>
+              <svg width="28" height="48" viewBox="0 0 34 58" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="pinGradMobile" x1="0" y1="0" x2="0.5" y2="1">
+                    <stop offset="0%" stopColor="hsl(11, 81%, 64%)" />
+                    <stop offset="50%" stopColor="hsl(11, 81%, 54%)" />
+                    <stop offset="100%" stopColor="hsl(11, 81%, 38%)" />
+                  </linearGradient>
+                  <radialGradient id="pinShineMobile" cx="0.35" cy="0.25" r="0.6">
+                    <stop offset="0%" stopColor="white" stopOpacity="0.25" />
+                    <stop offset="100%" stopColor="white" stopOpacity="0" />
+                  </radialGradient>
+                </defs>
+                <path d="M17 0C9.5 0 0 6 0 15c0 13.5 15 37.8 16.1 39.5a1.1 1.1 0 001.8 0C19 54.8 34 28.5 34 15 34 6 24.5 0 17 0z" fill="url(#pinGradMobile)" />
+                <path d="M17 0C9.5 0 0 6 0 15c0 13.5 15 37.8 16.1 39.5a1.1 1.1 0 001.8 0C19 54.8 34 28.5 34 15 34 6 24.5 0 17 0z" fill="url(#pinShineMobile)" />
+              </svg>
+              <img
+                src={msShieldLogo}
+                alt="MS Eletric"
+                className="absolute object-contain"
+                style={{ top: "8px", left: "50%", transform: "translateX(-50%)", width: "20px", height: "20px", filter: "brightness(0) invert(1) drop-shadow(0 1px 2px hsl(0 0% 0% / 0.3))" }}
+              />
+            </div>
+            <div className="w-5 h-[3px] rounded-full mx-auto -mt-0.5" style={{ background: "hsl(0 0% 0% / 0.45)", filter: "blur(3px)" }} />
+          </div>
+
+          {/* Label clique para navegar */}
+          <div
+            className="absolute bottom-2 right-2 z-[6] flex items-center gap-1.5 px-2 py-1 rounded-full pointer-events-none"
+            style={{ background: "hsl(0 0% 0% / 0.6)", backdropFilter: "blur(12px)", border: "1px solid hsl(0 0% 100% / 0.1)" }}
+          >
+            <Zap className="w-2 h-2" style={{ color: "hsl(11 81% 57%)" }} />
+            <span className="text-[7px] font-bold uppercase tracking-[0.12em] text-white/70">Clique para navegar</span>
+          </div>
+        </div>
+
+        <div className="h-px" style={{ background: "hsl(0 0% 100% / 0.05)" }} />
+
       <button
         onClick={() => window.open("https://maps.app.goo.gl/7iwuPGQuN4rAhqRf8", "_blank")}
         className="w-full flex items-center justify-center gap-2 py-3 text-[9px] font-bold uppercase tracking-[0.12em] text-white cursor-pointer active:scale-[0.98] transition-transform"
