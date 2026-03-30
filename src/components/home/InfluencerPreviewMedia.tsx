@@ -10,6 +10,7 @@ interface InfluencerPreviewMediaProps {
   videos: PreviewVideoSource[];
   name: string;
   scale?: number;
+  onReady?: () => void;
 }
 
 const parseVimeoMessage = (data: unknown) => {
@@ -22,7 +23,7 @@ const parseVimeoMessage = (data: unknown) => {
   }
 };
 
-const InfluencerPreviewMedia = ({ videos, name, scale = 1.2 }: InfluencerPreviewMediaProps) => {
+const InfluencerPreviewMedia = ({ videos, name, scale = 1.2, onReady }: InfluencerPreviewMediaProps) => {
   const [current, setCurrent] = useState(0);
   const iframeRef = useRef<HTMLIFrameElement>(null);
 
@@ -77,7 +78,7 @@ const InfluencerPreviewMedia = ({ videos, name, scale = 1.2 }: InfluencerPreview
         allowFullScreen
         referrerPolicy="strict-origin-when-cross-origin"
         title={name}
-        onLoad={registerVimeoEvents}
+        onLoad={() => { registerVimeoEvents(); onReady?.(); }}
         className="absolute inset-0 h-full w-full pointer-events-none"
         style={{ border: "none", transform: `scale(${scale})`, transformOrigin: "center" }}
       />
@@ -94,6 +95,7 @@ const InfluencerPreviewMedia = ({ videos, name, scale = 1.2 }: InfluencerPreview
       playsInline
       preload="metadata"
       onEnded={hasMultiple ? next : undefined}
+      onCanPlay={() => onReady?.()}
       className="h-full w-full object-cover pointer-events-none"
     />
   );
