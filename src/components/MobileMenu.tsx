@@ -86,7 +86,7 @@ const useMobileMenu = ({ items, isOnline, onContactClick, onQuizOpen }: MobileMe
         <>
           {/* Click-away overlay */}
           <div
-            className="fixed inset-0 z-[48]"
+            className="fixed inset-0 z-[60]"
             onClick={closeMenu}
             role="presentation"
             aria-hidden="true"
@@ -102,7 +102,7 @@ const useMobileMenu = ({ items, isOnline, onContactClick, onQuizOpen }: MobileMe
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.35, ease: [0.25, 0.8, 0.25, 1] }}
-            className="lg:hidden overflow-hidden relative z-[49] outline-none"
+            className="lg:hidden overflow-hidden relative z-[61] outline-none"
           >
             {/* Top separator */}
             <div
