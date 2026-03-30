@@ -50,7 +50,7 @@ const useMobileMenu = ({ items, isOnline, onContactClick, onQuizOpen }: MobileMe
   const triggerButton = (
     <button
       onClick={toggleMenu}
-      className="md:hidden relative grid h-10 w-10 place-items-center cursor-pointer active:scale-95 transition-transform duration-150"
+      className="lg:hidden relative grid h-10 w-10 place-items-center cursor-pointer active:scale-95 transition-transform duration-150"
       style={{ background: "transparent", border: "none" }}
       aria-label={open ? "Fechar menu" : "Abrir menu"}
       aria-expanded={open}
