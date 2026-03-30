@@ -3,6 +3,7 @@ import { Star, Play, ChevronLeft, ChevronRight, Eye } from "lucide-react";
 import { useRef } from "react";
 import rafaKalimannAvatar from "@/assets/influencers/rafa-kalimann.png";
 import tataEstanieckiAvatar from "@/assets/influencers/tata-estaniecki.jpg";
+import enzoRabeloAvatar from "@/assets/influencers/enzo-rabelo.jpg";
 
 const TESTIMONIALS = [
   { name: "João P.", city: "Uberlândia, MG", text: "Comprei a S3K e estou impressionado com a autonomia. Faço 40km por dia e ainda sobra bateria. O atendimento da MS Eletric foi impecável.", stars: 5 },
@@ -17,7 +18,7 @@ const INFLUENCERS = [
   { name: "Rafa Kalimann", handle: "@rafakalimann", views: "22M seguidores", gradient: "from-primary/40 to-primary/10", avatarImg: rafaKalimannAvatar },
   { name: "Tata Estaniecki", handle: "@tata", views: "5.7M seguidores", gradient: "from-orange-600/40 to-amber-500/10", avatarImg: tataEstanieckiAvatar },
   { name: "Roberto Lima", handle: "@robertolima", views: "15.2k", gradient: "from-primary/30 to-red-600/10" },
-  { name: "Carla Santos", handle: "@carlasantos", views: "22.1k", gradient: "from-amber-500/30 to-primary/10" },
+  { name: "Enzo Rabelo", handle: "@enzorabelooficial", views: "1.5M seguidores", gradient: "from-amber-500/30 to-primary/10", avatarImg: enzoRabeloAvatar },
   { name: "Pedro Alves", handle: "@pedroalves", views: "9.8k", gradient: "from-red-500/30 to-orange-600/10" },
   { name: "Mariana Duarte", handle: "@mariduarte", views: "31.5k", gradient: "from-primary/50 to-orange-400/10" },
 ];
