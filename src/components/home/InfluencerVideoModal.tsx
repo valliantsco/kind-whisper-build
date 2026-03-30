@@ -87,34 +87,38 @@ const InfluencerVideoModal = ({ open, onOpenChange, videos, name }: InfluencerVi
           </div>
         )}
 
-        {/* Player */}
-        {video.type === "vimeo" ? (
-          <div className="absolute inset-0" style={{ padding: "177.5% 0 0 0", position: "relative" }}>
-            <iframe
-              ref={iframeRef}
-              key={video.id}
-              src={`https://player.vimeo.com/video/${video.id}?autoplay=1&loop=${hasMultiple ? 0 : 1}&badge=0&title=0&byline=0&portrait=0&autopause=0&controls=0&dnt=1`}
-              allow="autoplay; fullscreen"
-              allowFullScreen
-              referrerPolicy="strict-origin-when-cross-origin"
-              title={name}
-              onLoad={registerVimeoEvents}
-              style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", border: "none" }}
-            />
-          </div>
-        ) : (
-          <video
-            key={video.src}
-            src={video.src}
-            className="absolute inset-0 w-full h-full object-cover"
-            autoPlay
-            loop={!hasMultiple}
-            playsInline
-            controlsList="nodownload nofullscreen noremoteplayback"
-            disablePictureInPicture
-            onContextMenu={(e) => e.preventDefault()}
-            onEnded={hasMultiple ? next : undefined}
-          />
+        {/* Player — only mounted when open to guarantee autoplay & cleanup */}
+        {open && (
+          <>
+            {video.type === "vimeo" ? (
+              <div className="absolute inset-0" style={{ padding: "177.5% 0 0 0", position: "relative" }}>
+                <iframe
+                  ref={iframeRef}
+                  key={video.id}
+                  src={`https://player.vimeo.com/video/${video.id}?autoplay=1&muted=0&autopause=0&loop=${hasMultiple ? 0 : 1}&badge=0&title=0&byline=0&portrait=0&controls=0&dnt=1`}
+                  allow="autoplay; fullscreen"
+                  allowFullScreen
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  title={name}
+                  onLoad={registerVimeoEvents}
+                  style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", border: "none" }}
+                />
+              </div>
+            ) : (
+              <video
+                key={video.src}
+                src={video.src}
+                className="absolute inset-0 w-full h-full object-cover"
+                autoPlay
+                loop={!hasMultiple}
+                playsInline
+                controlsList="nodownload nofullscreen noremoteplayback"
+                disablePictureInPicture
+                onContextMenu={(e) => e.preventDefault()}
+                onEnded={hasMultiple ? next : undefined}
+              />
+            )}
+          </>
         )}
 
         {/* Nav arrows */}
