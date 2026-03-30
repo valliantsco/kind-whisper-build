@@ -10,6 +10,7 @@ interface InfluencerPreviewMediaProps {
   videos: PreviewVideoSource[];
   name: string;
   scale?: number;
+  onReady?: () => void;
 }
 
 const parseVimeoMessage = (data: unknown) => {
