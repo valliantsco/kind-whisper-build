@@ -65,7 +65,7 @@ const useMobileMenu = ({ items, isOnline, onContactClick, onQuizOpen }: MobileMe
         />
         <motion.span
           className="h-[2px] rounded-full"
-          style={{ background: open ? "hsl(var(--primary))" : "#f5f5f5" }}
+          style={{ background: open ? "hsl(var(--primary))" : "#a1a1a1" }}
           animate={{ opacity: open ? 0 : 1, scaleX: open ? 0 : 1 }}
           transition={{ duration: 0.2, ease: [0.4, 0, 0.2, 1] }}
         />
