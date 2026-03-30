@@ -173,20 +173,32 @@ const Testimonials = () => {
 
           <div className="relative">
             {/* Navigation arrows */}
-            <button
-              onClick={() => scroll("left")}
-              className={`hidden md:flex absolute -left-2 top-1/2 -translate-y-1/2 z-10 w-10 h-10 items-center justify-center rounded-full border border-border bg-foreground/90 backdrop-blur-sm shadow-lg hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all ${!canScrollLeft ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}
-              aria-label="Anterior"
-            >
-              <ChevronLeft className="w-5 h-5" />
-            </button>
-            <button
-              onClick={() => scroll("right")}
-              className={`hidden md:flex absolute -right-2 top-1/2 -translate-y-1/2 z-10 w-10 h-10 items-center justify-center rounded-full border border-border bg-foreground/90 backdrop-blur-sm shadow-lg hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all ${!canScrollRight ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}
-              aria-label="Próximo"
-            >
-              <ChevronRight className="w-5 h-5" />
-            </button>
+            {canScrollLeft && (
+              <button
+                onClick={() => scroll("left")}
+                className="hidden md:flex absolute -left-2 top-1/2 -translate-y-1/2 z-10 w-10 h-10 items-center justify-center rounded-full cursor-pointer active:scale-90 transition-transform"
+                style={{
+                  background: "linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)))",
+                  boxShadow: "0 4px 14px hsl(var(--primary) / 0.4)",
+                }}
+                aria-label="Anterior"
+              >
+                <ChevronLeft className="w-5 h-5 text-primary-foreground" />
+              </button>
+            )}
+            {canScrollRight && (
+              <button
+                onClick={() => scroll("right")}
+                className="hidden md:flex absolute -right-2 top-1/2 -translate-y-1/2 z-10 w-10 h-10 items-center justify-center rounded-full cursor-pointer active:scale-90 transition-transform"
+                style={{
+                  background: "linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)))",
+                  boxShadow: "0 4px 14px hsl(var(--primary) / 0.4)",
+                }}
+                aria-label="Próximo"
+              >
+                <ChevronRight className="w-5 h-5 text-primary-foreground" />
+              </button>
+            )}
 
             <div
               ref={scrollRef}
