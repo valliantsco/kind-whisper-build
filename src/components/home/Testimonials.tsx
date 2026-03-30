@@ -57,6 +57,7 @@ const Testimonials = () => {
   const [activeInfluencer, setActiveInfluencer] = useState<number | null>(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
+  const [scrollProgress, setScrollProgress] = useState(0);
 
   const updateScroll = useCallback(() => {
     const el = scrollRef.current;
