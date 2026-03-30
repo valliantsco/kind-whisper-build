@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
-import { Star, ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
-import { useRef, useState } from "react";
+import { Star, ChevronLeft, ChevronRight } from "lucide-react";
+import { useRef, useState, useCallback, useEffect } from "react";
 import InfluencerVideoModal, { type VideoSource } from "./InfluencerVideoModal";
 import InfluencerPreviewMedia from "./InfluencerPreviewMedia";
 import rafaKalimannAvatar from "@/assets/influencers/rafa-kalimann.png";
