@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Star, Play, ChevronLeft, ChevronRight, Eye } from "lucide-react";
 import { useRef } from "react";
+import rafaKalimannAvatar from "@/assets/influencers/rafa-kalimann.png";
 
 const TESTIMONIALS = [
   { name: "João P.", city: "Uberlândia, MG", text: "Comprei a S3K e estou impressionado com a autonomia. Faço 40km por dia e ainda sobra bateria. O atendimento da MS Eletric foi impecável.", stars: 5 },
@@ -12,7 +13,7 @@ const TESTIMONIALS = [
 ];
 
 const INFLUENCERS = [
-  { name: "Rafa Kalimann", handle: "@rafakalimann", views: "22M seguidores", gradient: "from-primary/40 to-primary/10", avatar: "https://instagram.fsdu8-1.fna.fbcdn.net/v/t51.2885-19/44884218_345707102882519_2446069589734326272_n.jpg?_nc_ht=instagram.fsdu8-1.fna.fbcdn.net&_nc_cat=1&_nc_ohc=placeholder&edm=placeholder&oh=placeholder&oe=placeholder" },
+  { name: "Rafa Kalimann", handle: "@rafakalimann", views: "22M seguidores", gradient: "from-primary/40 to-primary/10", avatarImg: rafaKalimannAvatar },
   { name: "Ana Costa", handle: "@anacosta", views: "8.7k", gradient: "from-orange-600/40 to-amber-500/10" },
   { name: "Roberto Lima", handle: "@robertolima", views: "15.2k", gradient: "from-primary/30 to-red-600/10" },
   { name: "Carla Santos", handle: "@carlasantos", views: "22.1k", gradient: "from-amber-500/30 to-primary/10" },
@@ -172,12 +173,6 @@ const Testimonials = () => {
                     <span className="text-[11px] font-bold text-white/90">{inf.views}</span>
                   </div>
 
-                  {/* Story ring indicator — top right */}
-                  <div className="absolute top-3 right-3 z-10">
-                    <span className="px-2 py-0.5 rounded-full text-[9px] font-bold uppercase tracking-wider bg-primary text-primary-foreground">
-                      Reels
-                    </span>
-                  </div>
 
                   {/* Play button — center */}
                   <div className="absolute inset-0 flex items-center justify-center z-10">
@@ -194,10 +189,14 @@ const Testimonials = () => {
                     <div className="flex items-center gap-2.5 mb-1.5">
                       {/* Avatar ring */}
                       <div className="w-9 h-9 rounded-full p-[2px] bg-gradient-to-tr from-primary to-orange-400 shrink-0">
-                        <div className="w-full h-full rounded-full bg-foreground flex items-center justify-center">
-                          <span className="text-[10px] font-bold text-primary-foreground/70">
-                            {inf.name.split(" ").map(n => n[0]).join("")}
-                          </span>
+                        <div className="w-full h-full rounded-full bg-foreground flex items-center justify-center overflow-hidden">
+                          {"avatarImg" in inf && inf.avatarImg ? (
+                            <img src={inf.avatarImg} alt={inf.name} className="w-full h-full object-cover rounded-full" />
+                          ) : (
+                            <span className="text-[10px] font-bold text-primary-foreground/70">
+                              {inf.name.split(" ").map(n => n[0]).join("")}
+                            </span>
+                          )}
                         </div>
                       </div>
                       <div className="min-w-0">
