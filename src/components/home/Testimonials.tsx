@@ -5,6 +5,7 @@ import rafaKalimannAvatar from "@/assets/influencers/rafa-kalimann.png";
 import tataEstanieckiAvatar from "@/assets/influencers/tata-estaniecki.jpg";
 import enzoRabeloAvatar from "@/assets/influencers/enzo-rabelo.jpg";
 import jhonathanCoelhoAvatar from "@/assets/influencers/jhonathan-coelho.jpg";
+import jacquesVanierAvatar from "@/assets/influencers/jacques-vanier.jpg";
 
 const TESTIMONIALS = [
   { name: "João P.", city: "Uberlândia, MG", text: "Comprei a S3K e estou impressionado com a autonomia. Faço 40km por dia e ainda sobra bateria. O atendimento da MS Eletric foi impecável.", stars: 5 },
