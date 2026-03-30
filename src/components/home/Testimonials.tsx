@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Star, Play, ChevronLeft, ChevronRight, Eye } from "lucide-react";
+import { Star, Play, ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
 import { useRef, useState } from "react";
 import InfluencerVideoModal, { type VideoSource } from "./InfluencerVideoModal";
 import rafaKalimannAvatar from "@/assets/influencers/rafa-kalimann.png";
@@ -20,22 +20,25 @@ const TESTIMONIALS = [
   { name: "Fernanda R.", city: "Uberlândia, MG", text: "Atendimento consultivo de verdade. Me ajudaram a escolher o modelo ideal com o quiz. Saí da loja com a Bliss e estou apaixonada!", stars: 5 },
 ];
 
-const INFLUENCERS: {
+interface Influencer {
   name: string;
   handle: string;
   views: string;
-  gradient: string;
+  description: string;
   avatarImg: string;
+  badge?: string;
   videos: VideoSource[];
-}[] = [
-  { name: "Rafa Kalimann", handle: "@rafakalimann", views: "22M seguidores", gradient: "from-primary/40 to-primary/10", avatarImg: rafaKalimannAvatar, videos: [{ type: "vimeo", id: "1178576414" }] },
-  { name: "Julio Cocielo", handle: "@cocielo", views: "14M seguidores", gradient: "from-orange-500/40 to-primary/10", avatarImg: cocieloAvatar, videos: [] },
-  { name: "Jacques Vanier", handle: "@jacquesvanier", views: "6.4M seguidores", gradient: "from-primary/50 to-orange-400/10", avatarImg: jacquesVanierAvatar, videos: [] },
-  { name: "Tata Estaniecki", handle: "@tata", views: "5.7M seguidores", gradient: "from-orange-600/40 to-amber-500/10", avatarImg: tataEstanieckiAvatar, videos: [] },
-  { name: "Bruno Felix", handle: "@brunodobem", views: "3.3M seguidores", gradient: "from-primary/30 to-red-600/10", avatarImg: brunoDoBemAvatar, videos: [] },
-  { name: "Jhonathan Coelho", handle: "@jhonathancoelho", views: "2.5M seguidores", gradient: "from-red-500/30 to-orange-600/10", avatarImg: jhonathanCoelhoAvatar, videos: [{ type: "mp4", src: "/influencers/jhonathan-coelho-1.mp4" }, { type: "mp4", src: "/influencers/jhonathan-coelho-2.mp4" }, { type: "mp4", src: "/influencers/jhonathan-coelho-3.mp4" }] },
-  { name: "Enzo Rabelo", handle: "@enzorabelooficial", views: "1.5M seguidores", gradient: "from-amber-500/30 to-primary/10", avatarImg: enzoRabeloAvatar, videos: [] },
-  { name: "Gustavo Melo", handle: "@gustavomeloof", views: "1M seguidores", gradient: "from-green-500/30 to-primary/10", avatarImg: gustavoMeloAvatar, videos: [] },
+}
+
+const INFLUENCERS: Influencer[] = [
+  { name: "Rafa Kalimann", handle: "@rafakalimann", views: "22M seguidores", description: "Apresentadora e influenciadora digital", avatarImg: rafaKalimannAvatar, badge: "Destaque", videos: [{ type: "vimeo", id: "1178576414" }] },
+  { name: "Julio Cocielo", handle: "@cocielo", views: "14M seguidores", description: "Criador de conteúdo e youtuber", avatarImg: cocieloAvatar, videos: [] },
+  { name: "Jacques Vanier", handle: "@jacquesvanier", views: "6.4M seguidores", description: "Comediante e criador de conteúdo", avatarImg: jacquesVanierAvatar, videos: [] },
+  { name: "Tata Estaniecki", handle: "@tata", views: "5.7M seguidores", description: "Influenciadora e empresária", avatarImg: tataEstanieckiAvatar, videos: [] },
+  { name: "Bruno Felix", handle: "@brunodobem", views: "3.3M seguidores", description: "Criador de conteúdo digital", avatarImg: brunoDoBemAvatar, videos: [] },
+  { name: "Jhonathan Coelho", handle: "@jhonathancoelho", views: "2.5M seguidores", description: "Influenciador e entusiasta de mobilidade", avatarImg: jhonathanCoelhoAvatar, videos: [{ type: "mp4", src: "/influencers/jhonathan-coelho-1.mp4" }, { type: "mp4", src: "/influencers/jhonathan-coelho-2.mp4" }, { type: "mp4", src: "/influencers/jhonathan-coelho-3.mp4" }] },
+  { name: "Enzo Rabelo", handle: "@enzorabelooficial", views: "1.5M seguidores", description: "Cantor sertanejo", avatarImg: enzoRabeloAvatar, videos: [] },
+  { name: "Gustavo Melo", handle: "@gustavomeloof", views: "1M seguidores", description: "Criador de conteúdo e motociclista", avatarImg: gustavoMeloAvatar, videos: [] },
 ];
 
 const fadeUp = {
@@ -125,13 +128,8 @@ const Testimonials = () => {
         </div>
       </section>
 
-      {/* ── INFLUENCERS — INSTAGRAM STORIES STYLE ── */}
-      <section className="py-20 md:py-28 bg-foreground overflow-hidden">
-        <div
-          className="absolute left-0 right-0 h-[1px]"
-          style={{ background: "linear-gradient(90deg, transparent, hsl(0 0% 100% / 0.04), transparent)" }}
-        />
-
+      {/* ── INFLUENCERS — CATEGORY CARD STYLE ── */}
+      <section className="relative py-20 md:py-28 bg-foreground overflow-hidden">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -151,16 +149,17 @@ const Testimonials = () => {
           </motion.div>
 
           <div className="relative">
+            {/* Navigation arrows */}
             <button
               onClick={() => scroll("left")}
-              className="absolute -left-2 md:left-0 top-1/2 -translate-y-1/2 z-10 bg-foreground/90 backdrop-blur-sm rounded-full p-2.5 border border-border shadow-lg hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all"
+              className="hidden md:flex absolute -left-2 top-1/2 -translate-y-1/2 z-10 w-10 h-10 items-center justify-center rounded-full border border-border bg-foreground/90 backdrop-blur-sm shadow-lg hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all"
               aria-label="Anterior"
             >
               <ChevronLeft className="w-5 h-5" />
             </button>
             <button
               onClick={() => scroll("right")}
-              className="absolute -right-2 md:right-0 top-1/2 -translate-y-1/2 z-10 bg-foreground/90 backdrop-blur-sm rounded-full p-2.5 border border-border shadow-lg hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all"
+              className="hidden md:flex absolute -right-2 top-1/2 -translate-y-1/2 z-10 w-10 h-10 items-center justify-center rounded-full border border-border bg-foreground/90 backdrop-blur-sm shadow-lg hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all"
               aria-label="Próximo"
             >
               <ChevronRight className="w-5 h-5" />
@@ -168,75 +167,124 @@ const Testimonials = () => {
 
             <div
               ref={scrollRef}
-              className="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-4 px-10"
+              className="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-4 md:px-10"
               style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
             >
               {INFLUENCERS.map((inf, i) => (
                 <motion.div
                   key={inf.name}
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: i * 0.07, duration: 0.4 }}
-                  whileHover={{ scale: 1.03, y: -6 }}
+                  transition={{ delay: i * 0.06, duration: 0.35 }}
                   onClick={() => inf.videos.length > 0 && setActiveInfluencer(i)}
-                  className={`relative min-w-[220px] w-[220px] aspect-[9/16] snap-start rounded-2xl overflow-hidden group shrink-0 ${inf.videos.length > 0 ? "cursor-pointer" : "cursor-default"}`}
+                  className={`relative flex-shrink-0 snap-center rounded-2xl overflow-hidden group ${inf.videos.length > 0 ? "cursor-pointer" : "cursor-default"}`}
+                  style={{
+                    width: "clamp(200px, 48vw, 240px)",
+                    height: "320px",
+                    border: "1px solid hsl(0 0% 100% / 0.08)",
+                  }}
                 >
-                  {/* Background gradient placeholder (replace with real thumbnails later) */}
-                  <div className={`absolute inset-0 bg-gradient-to-br ${inf.gradient} bg-foreground`} />
-                  <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/80" />
-
-                  {/* Views count — top left */}
-                  <div className="absolute top-3 left-3 flex items-center gap-1.5 z-10">
-                    <Eye className="w-3.5 h-3.5 text-white/80" />
-                    <span className="text-[11px] font-bold text-white/90">{inf.views}</span>
+                  {/* Avatar as background */}
+                  <div className="absolute inset-0" style={{ zIndex: 1 }}>
+                    <img
+                      src={inf.avatarImg}
+                      alt={inf.name}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      loading="lazy"
+                      decoding="async"
+                    />
                   </div>
 
+                  {/* Gradient overlay */}
+                  <div
+                    className="absolute inset-0 pointer-events-none"
+                    style={{
+                      zIndex: 2,
+                      background: "linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.55) 50%, rgba(0,0,0,0.15) 100%)",
+                    }}
+                  />
 
-                  {/* Play button — center */}
-                  <div className="absolute inset-0 flex items-center justify-center z-10">
-                    <motion.div
-                      whileHover={{ scale: 1.15 }}
-                      className="w-14 h-14 rounded-full bg-white/15 backdrop-blur-md border border-white/20 flex items-center justify-center opacity-80 group-hover:opacity-100 transition-opacity"
+                  {/* Play button — top left */}
+                  <div className="absolute top-3 left-3 z-10">
+                    <div className="w-9 h-9 rounded-full bg-black/40 backdrop-blur-sm border border-white/15 flex items-center justify-center">
+                      <Play className="w-4 h-4 text-white ml-0.5" fill="white" />
+                    </div>
+                  </div>
+
+                  {/* Badge */}
+                  {inf.badge && (
+                    <span
+                      className="absolute top-3 right-3 px-2.5 py-[3px] rounded-full text-[9px] font-bold uppercase tracking-[0.1em] text-primary-foreground"
+                      style={{
+                        zIndex: 30,
+                        background: "linear-gradient(135deg, hsl(var(--primary) / 0.9), hsl(11 90% 65% / 0.9))",
+                        border: "1px solid hsl(var(--primary) / 0.3)",
+                      }}
                     >
-                      <Play className="w-6 h-6 text-white ml-0.5" fill="white" />
-                    </motion.div>
-                  </div>
+                      {inf.badge}
+                    </span>
+                  )}
 
-                  {/* Influencer info — bottom */}
-                  <div className="absolute bottom-0 left-0 right-0 p-4 z-10">
-                    <div className="flex items-center gap-2.5 mb-1.5">
-                      {/* Avatar ring */}
-                      <div className="w-9 h-9 rounded-full p-[2px] bg-gradient-to-tr from-primary to-orange-400 shrink-0">
-                        <div className="w-full h-full rounded-full bg-foreground flex items-center justify-center overflow-hidden">
-                          {"avatarImg" in inf && inf.avatarImg ? (
-                            <img src={inf.avatarImg} alt={inf.name} className="w-full h-full object-cover rounded-full" />
-                          ) : (
-                            <span className="text-[10px] font-bold text-primary-foreground/70">
-                              {inf.name.split(" ").map(n => n[0]).join("")}
-                            </span>
-                          )}
-                        </div>
-                      </div>
-                      <div className="min-w-0">
-                        <p className="text-xs font-bold text-white truncate">{inf.name}</p>
-                        <p className="text-[10px] text-white/50">{inf.handle}</p>
-                      </div>
-                    </div>
-                  </div>
+                  {/* Hover glow */}
+                  <div
+                    className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+                    style={{
+                      zIndex: 3,
+                      boxShadow: "inset 0 0 0 1.5px hsl(var(--primary) / 0.6), 0 0 20px hsl(var(--primary) / 0.15)",
+                    }}
+                  />
 
-                  {/* Story progress bar — very top */}
-                  <div className="absolute top-0 left-0 right-0 h-[3px] z-20 flex gap-0.5 px-2 pt-1">
-                    <div className="flex-1 rounded-full bg-white/30 overflow-hidden">
-                      <div className="h-full w-full bg-white rounded-full" />
-                    </div>
-                    <div className="flex-1 rounded-full bg-white/30 overflow-hidden">
-                      <div className="h-full w-1/2 bg-white/60 rounded-full" />
-                    </div>
-                    <div className="flex-1 rounded-full bg-white/20" />
+                  {/* Text content — bottom */}
+                  <div className="absolute bottom-0 left-0 right-0 p-4" style={{ zIndex: 20 }}>
+                    <p
+                      className="text-primary-foreground font-bold text-[13px] uppercase tracking-[0.06em] leading-tight"
+                      style={{ textShadow: "0 2px 8px rgba(0,0,0,0.8)" }}
+                    >
+                      {inf.name}
+                    </p>
+                    <p
+                      className="text-primary-foreground/70 text-[10.5px] tracking-wide leading-snug mt-0.5"
+                      style={{ textShadow: "0 1px 4px rgba(0,0,0,0.6)" }}
+                    >
+                      {inf.handle} · {inf.views}
+                    </p>
+                    <p
+                      className="text-primary-foreground/50 text-[10px] tracking-wide leading-snug mt-1 line-clamp-2"
+                      style={{ textShadow: "0 1px 4px rgba(0,0,0,0.6)" }}
+                    >
+                      {inf.description}
+                    </p>
                   </div>
                 </motion.div>
               ))}
+
+              {/* CTA scroll arrow card */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: INFLUENCERS.length * 0.06, duration: 0.35 }}
+                className="flex-shrink-0 snap-center rounded-2xl overflow-hidden flex items-center justify-center"
+                style={{
+                  width: "80px",
+                  height: "320px",
+                  border: "1px solid hsl(0 0% 100% / 0.08)",
+                  background: "hsl(0 0% 8%)",
+                }}
+              >
+                <button
+                  onClick={() => scroll("right")}
+                  className="w-12 h-12 rounded-full flex items-center justify-center transition-all"
+                  style={{
+                    background: "linear-gradient(135deg, hsl(var(--primary)), hsl(11 90% 65%))",
+                    boxShadow: "0 4px 16px hsl(var(--primary) / 0.4)",
+                  }}
+                  aria-label="Ver mais"
+                >
+                  <ArrowRight className="w-5 h-5 text-white" />
+                </button>
+              </motion.div>
             </div>
           </div>
         </div>
