@@ -10,7 +10,7 @@ import {
   Phone,
   Clock,
   ExternalLink,
-  Compass,
+  
   Zap,
 } from "lucide-react";
 
@@ -55,7 +55,7 @@ const CategoryCard = ({
     className="relative flex-shrink-0 rounded-2xl overflow-hidden snap-center"
     style={{
       width: "196px",
-      height: "257px",
+      height: "220px",
       border: "1px solid hsl(0 0% 100% / 0.08)",
       transform: "translateZ(0)",
       WebkitTransform: "translateZ(0)",
@@ -94,7 +94,7 @@ const CategoryCard = ({
         inset: 0,
         zIndex: 2,
         pointerEvents: "none",
-        background: "linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.65) 45%, rgba(0,0,0,0.15) 100%)",
+        background: "linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.65) 60%, rgba(0,0,0,0.1) 100%)",
         WebkitTransform: "translateZ(0)",
         transform: "translateZ(0)",
       }}
@@ -117,7 +117,7 @@ const CategoryCard = ({
 
     {/* Text content — z-[3] above overlay */}
     <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: "12px", zIndex: 20, WebkitTransform: "translateZ(0)", transform: "translateZ(0)" }}>
-      <p className="text-white font-bold text-[12px] uppercase tracking-[0.06em] leading-tight line-clamp-1 drop-shadow-lg">
+      <p className="text-white font-bold text-[13px] uppercase tracking-[0.04em] leading-tight line-clamp-1 drop-shadow-lg">
         {sub.label}
       </p>
       <p className="text-white/75 text-[10.5px] tracking-wide leading-snug mt-1 line-clamp-2 drop-shadow-md">
@@ -189,7 +189,7 @@ const ModelsCarousel = ({
           className="text-[11px] font-bold uppercase tracking-[0.1em]"
           style={{ color: "hsl(11 81% 57% / 0.7)" }}
         >
-          Nossos Veículos Elétricos
+          Explore por Categoria
         </span>
       </div>
 
@@ -249,7 +249,7 @@ const ModelsCarousel = ({
       {/* Scroll progress bar */}
       <div
         className="mx-4 mt-2 rounded-full overflow-hidden"
-        style={{ height: "3px", background: "hsl(0 0% 100% / 0.06)" }}
+        style={{ height: "4px", background: "hsl(0 0% 100% / 0.10)" }}
       >
         <div
           className="h-full rounded-full will-change-transform"
@@ -271,7 +271,7 @@ const ModelsCarousel = ({
             onClose();
             onQuizOpen();
           }}
-          className="mx-4 mt-3 flex items-center gap-2.5 w-[calc(100%-2rem)] px-3 py-2.5 rounded-2xl cursor-pointer active:scale-[0.98] transition-transform duration-150"
+          className="mx-4 mt-2 flex items-center gap-2.5 w-[calc(100%-2rem)] px-3 py-2.5 rounded-2xl cursor-pointer active:scale-[0.98] transition-transform duration-150"
           style={{
             background: "linear-gradient(135deg, hsl(0 0% 11%), hsl(0 0% 7%))",
             border: "1px solid hsl(11 81% 57% / 0.15)",
@@ -285,14 +285,14 @@ const ModelsCarousel = ({
               border: "1px solid hsl(11 81% 57% / 0.2)",
             }}
           >
-            <Compass className="w-4 h-4" style={{ color: "hsl(11 81% 57%)" }} />
+            <Zap className="w-4 h-4" style={{ color: "hsl(11 81% 57%)" }} />
           </div>
           <div className="text-left flex-1 min-w-0">
             <p className="text-white/90 font-bold text-[10px] uppercase tracking-[0.08em]">
               Não sabe qual escolher?
             </p>
             <p className="text-white/35 text-[8px] tracking-wide mt-0.5">
-              Descubra em 1 min com o quiz
+              Responda 3 perguntas e descubra
             </p>
           </div>
           <div
