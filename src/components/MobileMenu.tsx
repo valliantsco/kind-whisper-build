@@ -113,10 +113,18 @@ const useMobileMenu = ({ items, isOnline, onContactClick, onQuizOpen }: MobileMe
               }}
             />
 
-            <div
-              className="overflow-y-auto relative"
-              style={{ maxHeight: "calc(100dvh - 140px)" }}
-            >
+            <div className="relative">
+              {/* Bottom dissolve fade */}
+              <div
+                className="absolute bottom-0 left-0 right-0 h-8 z-10 pointer-events-none"
+                style={{
+                  background: "linear-gradient(to top, hsl(var(--mm-surface-deep)), transparent)",
+                }}
+              />
+              <div
+                className="overflow-y-auto relative"
+                style={{ maxHeight: "calc(100dvh - 140px)" }}
+              >
               {/* Nav items */}
               <div className="px-3 pt-2 pb-1 space-y-1">
                 {items.map((item, i) => (
