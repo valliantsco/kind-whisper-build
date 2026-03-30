@@ -45,7 +45,7 @@ const CategoryCard = ({
     onClick={onClose}
     className="relative flex-shrink-0 rounded-2xl overflow-hidden snap-center active:scale-[0.98] transition-transform duration-150"
     style={{
-      width: "176px",
+      width: "211px",
       height: "284px",
       border: "1px solid hsl(0 0% 100% / 0.08)",
       transform: "translateZ(0)",
