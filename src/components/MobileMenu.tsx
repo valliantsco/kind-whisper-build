@@ -301,6 +301,7 @@ const useMobileMenu = ({ items, isOnline, onContactClick, onQuizOpen }: MobileMe
                 </motion.button>
               </div>
             </div>
+            </div>
           </motion.div>
         </>
       )}
