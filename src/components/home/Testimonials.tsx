@@ -15,7 +15,7 @@ const TESTIMONIALS = [
 
 const INFLUENCERS = [
   { name: "Rafa Kalimann", handle: "@rafakalimann", views: "22M seguidores", gradient: "from-primary/40 to-primary/10", avatarImg: rafaKalimannAvatar },
-  { name: "Ana Costa", handle: "@anacosta", views: "8.7k", gradient: "from-orange-600/40 to-amber-500/10" },
+  { name: "Tata Estaniecki", handle: "@tata", views: "5.7M seguidores", gradient: "from-orange-600/40 to-amber-500/10", avatarImg: tataEstanieckiAvatar },
   { name: "Roberto Lima", handle: "@robertolima", views: "15.2k", gradient: "from-primary/30 to-red-600/10" },
   { name: "Carla Santos", handle: "@carlasantos", views: "22.1k", gradient: "from-amber-500/30 to-primary/10" },
   { name: "Pedro Alves", handle: "@pedroalves", views: "9.8k", gradient: "from-red-500/30 to-orange-600/10" },
