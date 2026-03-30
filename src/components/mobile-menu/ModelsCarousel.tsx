@@ -189,7 +189,7 @@ const ModelsCarousel: React.FC<ModelsCarouselProps> = ({
               Não sabe qual escolher?
             </p>
             <p className="text-[8px] tracking-wide mt-0.5" style={{ color: "hsl(0 0% 100% / 0.5)" }}>
-              Responda 4 perguntas e descubra
+              Responda em 1 min e descubra o modelo ideal
             </p>
           </div>
           <div
