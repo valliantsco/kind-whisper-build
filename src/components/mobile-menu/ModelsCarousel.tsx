@@ -60,7 +60,7 @@ const ModelsCarousel: React.FC<ModelsCarouselProps> = ({
   return (
     <div className="pt-1 pb-3">
       {/* Section label */}
-      <div className="flex items-center gap-2 px-4 mb-3">
+      <div className="flex items-center gap-2 px-4 mb-1">
         <div
           className="w-0.5 h-3 rounded-full"
           style={{
@@ -74,6 +74,12 @@ const ModelsCarousel: React.FC<ModelsCarouselProps> = ({
           Explore por Categoria
         </span>
       </div>
+      <p
+        className="px-4 mb-3 text-[11px]"
+        style={{ color: "hsl(var(--mm-text-secondary))", paddingLeft: "calc(1rem + 10px)" }}
+      >
+        Mobilidade elétrica para cada estilo de vida
+      </p>
 
       {/* Carousel */}
       <div
