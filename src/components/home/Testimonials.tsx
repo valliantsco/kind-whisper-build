@@ -266,6 +266,17 @@ const Testimonials = () => {
                 </motion.div>
               ))}
             </div>
+
+            {/* Progress bar */}
+            <div className="mt-6 mx-auto max-w-xs h-[3px] rounded-full bg-border/30 overflow-hidden">
+              <div
+                className="h-full rounded-full transition-all duration-200 ease-out"
+                style={{
+                  width: `${Math.max(5, scrollProgress * 100)}%`,
+                  background: "linear-gradient(90deg, hsl(var(--primary)), hsl(var(--primary-glow)))",
+                }}
+              />
+            </div>
           </div>
         </div>
 
