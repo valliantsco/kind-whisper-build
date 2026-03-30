@@ -701,12 +701,9 @@ const Header = ({ onContactClick }: HeaderProps) => {
                                 style={{ background: "linear-gradient(180deg, hsl(11 81% 57%), hsl(11 90% 65%))" }}
                               />
                               <span className="text-[9px] font-bold uppercase tracking-[0.2em]" style={{ color: "hsl(11 81% 57%)" }}>
-                                Nossa Localização
+                                Venha nos Visitar
                               </span>
                             </div>
-                            <h3 className="text-white text-[15px] font-semibold tracking-wide leading-snug">
-                              Venha nos visitar
-                            </h3>
                             <p className="text-white/35 text-[11px] mt-0.5 leading-relaxed">
                               Transformando a mobilidade urbana desde 2015
                             </p>
