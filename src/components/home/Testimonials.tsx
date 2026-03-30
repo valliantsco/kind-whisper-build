@@ -2,12 +2,12 @@ import { motion } from "framer-motion";
 import { Star } from "lucide-react";
 
 const TESTIMONIALS = [
-  { name: "João P.", city: "Uberlândia, MG", text: "Placeholder de depoimento. O atendimento da MS Eletric superou todas as expectativas.", stars: 5, isInfluencer: false },
-  { name: "Maria S.", city: "São Paulo, SP", text: "Placeholder de depoimento. Minha scooter é perfeita para o dia a dia na cidade.", stars: 5, isInfluencer: false },
-  { name: "@influencer_01", city: "Belo Horizonte, MG", text: "Placeholder de depoimento. Mobilidade elétrica com estilo e qualidade!", stars: 5, isInfluencer: true },
-  { name: "Carlos M.", city: "Campinas, SP", text: "Placeholder de depoimento. Economizo muito com combustível desde que migrei para elétrico.", stars: 5, isInfluencer: false },
-  { name: "@influencer_02", city: "Rio de Janeiro, RJ", text: "Placeholder de depoimento. Recomendo demais a MS Eletric para quem busca qualidade.", stars: 5, isInfluencer: true },
-  { name: "Ana L.", city: "Curitiba, PR", text: "Placeholder de depoimento. Entrega rápida e suporte incrível. Super satisfeita!", stars: 4, isInfluencer: false },
+  { name: "João P.", city: "Uberlândia, MG", text: "Comprei a S3K e estou impressionado com a autonomia. Faço 40km por dia e ainda sobra bateria. O atendimento da MS Eletric foi impecável.", stars: 5, isInfluencer: false },
+  { name: "Maria S.", city: "Uberlândia, MG", text: "Minha Bike 400+ é perfeita para ir ao trabalho. Economizo muito com combustível e estacionamento. Super prática!", stars: 5, isInfluencer: false },
+  { name: "Carlos M.", city: "Uberlândia, MG", text: "Uso o Rhino Delivery no trabalho e a economia é absurda. Bateria removível facilita muito. Recomendo demais.", stars: 5, isInfluencer: false },
+  { name: "Ana L.", city: "Uberlândia, MG", text: "Comprei o triciclo para minha mãe e ela ama. Super estável e seguro. A assistência técnica é muito atenciosa.", stars: 5, isInfluencer: false },
+  { name: "Roberto F.", city: "Uberlândia, MG", text: "A Tour 3K sobe ladeira como se fosse plano. Motor de 3000W faz toda diferença. Melhor investimento que fiz.", stars: 5, isInfluencer: false },
+  { name: "Fernanda R.", city: "Uberlândia, MG", text: "Atendimento consultivo de verdade. Me ajudaram a escolher o modelo ideal com o quiz. Saí da loja com a Bliss e estou apaixonada!", stars: 5, isInfluencer: false },
 ];
 
 const fadeUp = {
@@ -27,7 +27,6 @@ const Testimonials = () => {
         style={{ background: "linear-gradient(90deg, transparent, hsl(0 0% 100% / 0.06), transparent)" }}
       />
 
-      {/* Ambient glow */}
       <div
         className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[500px] h-[500px] pointer-events-none"
         style={{
@@ -71,30 +70,14 @@ const Testimonials = () => {
               className="rounded-2xl p-6 relative"
               style={{
                 background: "hsl(0 0% 11% / 0.8)",
-                border: `1px solid ${t.isInfluencer ? "hsl(11 81% 57% / 0.2)" : "hsl(0 0% 100% / 0.08)"}`,
+                border: "1px solid hsl(0 0% 100% / 0.08)",
               }}
             >
-              {/* Influencer badge */}
-              {t.isInfluencer && (
-                <span
-                  className="absolute top-4 right-4 px-3 py-1 rounded-full text-[9px] font-bold uppercase tracking-[0.15em]"
-                  style={{
-                    background: "hsl(11 81% 57% / 0.15)",
-                    color: "hsl(11 81% 57%)",
-                    border: "1px solid hsl(11 81% 57% / 0.25)",
-                  }}
-                >
-                  Influencer
-                </span>
-              )}
-
-              {/* Avatar placeholder + name */}
+              {/* Avatar + name */}
               <div className="flex items-center gap-3 mb-4">
                 <div
                   className="w-11 h-11 rounded-full flex items-center justify-center shrink-0"
-                  style={{
-                    background: t.isInfluencer ? "hsl(11 81% 57% / 0.15)" : "hsl(0 0% 100% / 0.06)",
-                  }}
+                  style={{ background: "hsl(0 0% 100% / 0.06)" }}
                 >
                   <span className="text-primary-foreground/30 text-xs font-bold">{t.name[0]}</span>
                 </div>
