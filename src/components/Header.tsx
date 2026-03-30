@@ -60,11 +60,6 @@ const NAV_ITEMS: NavItem[] = [
   {
     label: "Visite-nos",
     href: "#contato",
-    hasDropdown: true,
-    dropdownItems: [
-      { label: "Nossa história", description: "Desde 2015 transformando a mobilidade urbana no Brasil com veículos elétricos acessíveis, seguros e sustentáveis.", href: "#sobre", icon: Building2 },
-      { label: "Localização", description: "Av. João Pinheiro, 3747 — Uberlândia, MG", href: "#contato", icon: MapPin },
-    ],
   },
 ];
 
