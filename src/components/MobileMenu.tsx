@@ -467,7 +467,7 @@ const VisitUsSection = ({
               </div>
               <div className="flex justify-between">
                 <p className="text-white/50 text-[10.5px]">Domingo</p>
-                <p className="text-[10.5px] font-medium italic" style={{ color: "hsl(11 81% 57% / 0.6)" }}>Fechado</p>
+                <p className="text-[10.5px] font-medium italic text-neutral-500">Fechado</p>
               </div>
             </div>
           </div>
