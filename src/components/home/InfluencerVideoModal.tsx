@@ -44,13 +44,17 @@ const InfluencerVideoModal = ({ open, onOpenChange, videos, name }: InfluencerVi
 
         {/* Player */}
         {video.type === "vimeo" ? (
-          <iframe
-            src={`https://player.vimeo.com/video/${video.id}?autoplay=1&loop=1&badge=0&title=0&byline=0&portrait=0`}
-            className="absolute inset-0 w-full h-full"
-            allow="autoplay; fullscreen"
-            allowFullScreen
-            title={name}
-          />
+          <div className="absolute inset-0" style={{ padding: "177.5% 0 0 0", position: "relative" }}>
+            <iframe
+              key={video.id}
+              src={`https://player.vimeo.com/video/${video.id}?autoplay=1&loop=1&badge=0&title=0&byline=0&portrait=0&autopause=0`}
+              allow="autoplay; fullscreen"
+              allowFullScreen
+              referrerPolicy="strict-origin-when-cross-origin"
+              title={name}
+              style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", border: "none" }}
+            />
+          </div>
         ) : (
           <video
             key={video.src}
