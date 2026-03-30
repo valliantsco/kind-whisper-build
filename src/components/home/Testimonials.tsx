@@ -268,7 +268,7 @@ const Testimonials = () => {
             </div>
 
             {/* Progress bar */}
-            <div className="mt-6 mx-auto max-w-xs h-[3px] rounded-full bg-border/30 overflow-hidden">
+            <div className="mt-6 md:mx-10 h-[3px] rounded-full bg-border/30 overflow-hidden">
               <div
                 className="h-full rounded-full transition-all duration-200 ease-out"
                 style={{
