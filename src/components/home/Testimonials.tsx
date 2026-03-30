@@ -31,7 +31,7 @@ interface Influencer {
 }
 
 const INFLUENCERS: Influencer[] = [
-  { name: "Rafa Kalimann", handle: "@rafakalimann", views: "22M seguidores", description: "Apresentadora e influenciadora digital", avatarImg: rafaKalimannAvatar, badge: "Destaque", videos: [{ type: "vimeo", id: "1178576414" }] },
+  { name: "Rafa Kalimann", handle: "@rafakalimann", views: "22M seguidores", description: "Apresentadora e influenciadora digital", avatarImg: rafaKalimannAvatar, badge: "Destaque", videos: [{ type: "vimeo", id: "1178576414" }, { type: "vimeo", id: "1178576533" }, { type: "vimeo", id: "1178576464" }, { type: "vimeo", id: "1178576373" }, { type: "vimeo", id: "1178576288" }] },
   { name: "Julio Cocielo", handle: "@cocielo", views: "14M seguidores", description: "Criador de conteúdo e youtuber", avatarImg: cocieloAvatar, videos: [] },
   { name: "Jacques Vanier", handle: "@jacquesvanier", views: "6.4M seguidores", description: "Comediante e criador de conteúdo", avatarImg: jacquesVanierAvatar, videos: [] },
   { name: "Tata Estaniecki", handle: "@tata", views: "5.7M seguidores", description: "Influenciadora e empresária", avatarImg: tataEstanieckiAvatar, videos: [] },
@@ -180,13 +180,12 @@ const Testimonials = () => {
                   onClick={() => inf.videos.length > 0 && setActiveInfluencer(i)}
                   className={`relative flex-shrink-0 snap-center rounded-2xl overflow-hidden group ${inf.videos.length > 0 ? "cursor-pointer" : "cursor-default"}`}
                   style={{
-                    width: "clamp(200px, 48vw, 240px)",
-                    height: "320px",
-                    border: "1px solid hsl(0 0% 100% / 0.08)",
+                    width: "clamp(180px, 42vw, 220px)",
+                    aspectRatio: "9/16",
                   }}
                 >
                   {/* Video or avatar background — fills card */}
-                  <div className="absolute inset-0 overflow-hidden" style={{ zIndex: 1 }}>
+                  <div className="absolute inset-0 overflow-hidden bg-black" style={{ zIndex: 1 }}>
                     {inf.videos.length > 0 && inf.videos[0].type === "mp4" ? (
                       <video
                         src={inf.videos[0].src}
@@ -198,13 +197,14 @@ const Testimonials = () => {
                         className="w-full h-full object-cover"
                       />
                     ) : inf.videos.length > 0 && inf.videos[0].type === "vimeo" ? (
-                      <div className="absolute inset-[-4px]">
+                      <div style={{ padding: "177.5% 0 0 0", position: "relative" }}>
                         <iframe
-                          src={`https://player.vimeo.com/video/${inf.videos[0].id}?autoplay=1&loop=1&muted=1&badge=0&title=0&byline=0&portrait=0&background=1`}
-                          className="w-full h-full"
-                          style={{ border: "none", transform: "scale(1.05)", transformOrigin: "center" }}
-                          allow="autoplay"
+                          src={`https://player.vimeo.com/video/${inf.videos[0].id}?autoplay=1&loop=1&muted=1&badge=0&title=0&byline=0&portrait=0&autopause=0&background=1`}
+                          allow="autoplay; fullscreen"
+                          allowFullScreen
+                          referrerPolicy="strict-origin-when-cross-origin"
                           title={inf.name}
+                          style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", border: "none" }}
                         />
                       </div>
                     ) : (
