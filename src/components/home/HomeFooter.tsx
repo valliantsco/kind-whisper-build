@@ -1,15 +1,14 @@
 import { Instagram, Facebook, Youtube, MapPin, Phone, Clock } from "lucide-react";
 import msLogo from "@/assets/ms-eletric-logo-white.png";
 
-const modelLinks = ["Scooters", "Bikes Elétricas", "Autopropelidos", "Triciclos", "Utilitários", "Infantis", "Patinetes", "Acessórios"];
-const institutionalLinks = ["Sobre a MS Eletric", "Nossa história", "Parceria AIMA", "Trabalhe conosco"];
-const supportLinks = ["Assistência técnica", "Garantia", "Peças de reposição", "Manual do usuário"];
-const policyLinks = ["Política de privacidade", "Termos de uso", "Política de troca"];
+const modelLinks = ["Scooters Elétricas", "Autopropelidos", "Bicicletas Elétricas", "Triciclos Elétricos", "Utilitários", "Linha Infantil", "Patinetes", "Acessórios"];
+const institutionalLinks = ["Sobre a MS Eletric", "Parceria AIMA", "Associada ABVE"];
+const supportLinks = ["Assistência técnica", "Garantia de fábrica", "Peças de reposição", "Condições de pagamento"];
+const policyLinks = ["Política de privacidade", "Termos de uso"];
 
 const HomeFooter = () => {
   return (
     <footer id="contato" className="bg-foreground text-primary-foreground relative overflow-hidden">
-      {/* Top accent */}
       <div
         className="h-[1px]"
         style={{
@@ -17,7 +16,6 @@ const HomeFooter = () => {
         }}
       />
 
-      {/* Decorative glow */}
       <div
         className="absolute top-0 left-1/3 w-96 h-96 opacity-[0.04] pointer-events-none"
         style={{ background: "radial-gradient(circle, hsl(11 81% 57%) 0%, transparent 60%)" }}
@@ -29,18 +27,18 @@ const HomeFooter = () => {
           <div className="lg:col-span-2">
             <img src={msLogo} alt="MS Eletric" className="h-[3.2rem] w-auto mb-5" />
             <p className="text-primary-foreground/50 text-sm leading-relaxed max-w-xs mb-6">
-              Mobilidade 100% elétrica com atendimento consultivo, portfólio completo e suporte do início ao pós-venda.
+              Revendedora autorizada AIMA. Mobilidade 100% elétrica com atendimento consultivo, portfólio completo e suporte do início ao pós-venda.
             </p>
 
             {/* Contact info */}
             <div className="space-y-3 mb-6">
               <div className="flex items-start gap-2.5">
                 <MapPin className="w-4 h-4 mt-0.5 shrink-0" style={{ color: "hsl(11 81% 57%)" }} />
-                <span className="text-sm text-primary-foreground/50">Av. Placeholder, 1234 — Uberlândia, MG</span>
+                <span className="text-sm text-primary-foreground/50">Uberlândia, MG — Brasil</span>
               </div>
               <div className="flex items-center gap-2.5">
                 <Phone className="w-4 h-4 shrink-0" style={{ color: "hsl(11 81% 57%)" }} />
-                <span className="text-sm text-primary-foreground/50">(34) 0000-0000</span>
+                <span className="text-sm text-primary-foreground/50">(11) 5199-6628</span>
               </div>
               <div className="flex items-center gap-2.5">
                 <Clock className="w-4 h-4 shrink-0" style={{ color: "hsl(11 81% 57%)" }} />
@@ -97,7 +95,7 @@ const HomeFooter = () => {
             <ul className="space-y-2.5">
               {institutionalLinks.map((link) => (
                 <li key={link}>
-                  <a href="#" className="text-sm text-primary-foreground/40 hover:text-primary hover:translate-x-1 transition-all inline-block">
+                  <a href="#sobre" className="text-sm text-primary-foreground/40 hover:text-primary hover:translate-x-1 transition-all inline-block">
                     {link}
                   </a>
                 </li>
@@ -113,7 +111,7 @@ const HomeFooter = () => {
             <ul className="space-y-2.5 mb-8">
               {supportLinks.map((link) => (
                 <li key={link}>
-                  <a href="#" className="text-sm text-primary-foreground/40 hover:text-primary hover:translate-x-1 transition-all inline-block">
+                  <a href="#contato" className="text-sm text-primary-foreground/40 hover:text-primary hover:translate-x-1 transition-all inline-block">
                     {link}
                   </a>
                 </li>
@@ -132,20 +130,6 @@ const HomeFooter = () => {
                 </li>
               ))}
             </ul>
-          </div>
-        </div>
-
-        {/* Location badge placeholder */}
-        <div className="mt-16 flex justify-center">
-          <div
-            className="inline-flex items-center gap-3 px-6 py-3 rounded-2xl"
-            style={{
-              background: "hsl(0 0% 100% / 0.03)",
-              border: "1px solid hsl(0 0% 100% / 0.06)",
-            }}
-          >
-            <MapPin className="w-5 h-5" style={{ color: "hsl(11 81% 57%)" }} />
-            <span className="text-sm text-primary-foreground/40">Uberlândia, MG — Mapa placeholder</span>
           </div>
         </div>
       </div>

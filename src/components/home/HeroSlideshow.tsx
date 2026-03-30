@@ -8,31 +8,31 @@ interface Slide {
   badge: string;
   headline: string;
   subheadline: string;
-  primaryCta: string;
-  secondaryCta: string;
+  primaryCta: { text: string; href: string };
+  secondaryCta: { text: string; href: string };
 }
 
 const SLIDES: Slide[] = [
   {
-    badge: "NOVIDADE",
-    headline: "O FUTURO DA\nMOBILIDADE ELÉTRICA",
-    subheadline: "Descubra a linha completa de veículos elétricos com tecnologia de ponta e design inovador.",
-    primaryCta: "Conhecer modelo",
-    secondaryCta: "Ver todos os modelos",
+    badge: "LANÇAMENTO",
+    headline: "S3K — PERFORMANCE\nE AUTONOMIA MÁXIMA",
+    subheadline: "Motor de 3.500W, até 80km/h e 85km de autonomia. A scooter elétrica mais completa da linha AIMA.",
+    primaryCta: { text: "Conhecer a S3K", href: "#modelos" },
+    secondaryCta: { text: "Ver todos os modelos", href: "#modelos" },
   },
   {
     badge: "MAIS VENDIDO",
-    headline: "POTÊNCIA E\nAUTONOMIA JUNTAS",
-    subheadline: "Até 85km de autonomia e velocidade de até 80km/h. Performance que transforma sua rotina.",
-    primaryCta: "Conhecer modelo",
-    secondaryCta: "Ver todos os modelos",
+    headline: "MOBILIDADE\n100% ELÉTRICA",
+    subheadline: "Autopropelidos, scooters, bicicletas e triciclos elétricos. Mais de 19 modelos para cada estilo de vida.",
+    primaryCta: { text: "Explorar catálogo", href: "#modelos" },
+    secondaryCta: { text: "Fazer o quiz", href: "#quiz" },
   },
   {
-    badge: "LANÇAMENTO",
-    headline: "MOBILIDADE\nSEM LIMITES",
-    subheadline: "Do trabalho ao lazer, do delivery à aventura. Encontre o veículo ideal para cada momento.",
-    primaryCta: "Conhecer modelo",
-    secondaryCta: "Ver todos os modelos",
+    badge: "NOVIDADE",
+    headline: "TOUR 3K — POTÊNCIA\nPARA SUBIDAS",
+    subheadline: "Motor de 3.000W e velocidade de até 75km/h. Bateria de lítio removível e design esportivo.",
+    primaryCta: { text: "Conhecer a Tour 3K", href: "#modelos" },
+    secondaryCta: { text: "Ver todos os modelos", href: "#modelos" },
   },
 ];
 
@@ -62,7 +62,7 @@ const HeroSlideshow = () => {
 
   return (
     <section className="relative min-h-[90vh] flex items-center overflow-hidden">
-      {/* Placeholder background */}
+      {/* Background placeholder */}
       <div className="absolute inset-0 bg-foreground" />
       <div
         className="absolute inset-0"
@@ -135,7 +135,7 @@ const HeroSlideshow = () => {
             {/* CTAs */}
             <div className="flex items-center gap-4 flex-wrap">
               <motion.a
-                href="#modelos"
+                href={slide.primaryCta.href}
                 className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.12em] px-8 py-4 rounded-2xl text-white"
                 style={{
                   background: "linear-gradient(135deg, hsl(11 81% 57%), hsl(11 90% 65%))",
@@ -144,17 +144,17 @@ const HeroSlideshow = () => {
                 whileHover={{ scale: 1.03, boxShadow: "0 0 30px hsl(11 81% 57% / 0.5)" }}
                 whileTap={{ scale: 0.97 }}
               >
-                {slide.primaryCta}
+                {slide.primaryCta.text}
                 <ArrowRight className="w-4 h-4" />
               </motion.a>
               <a
-                href="#modelos"
+                href={slide.secondaryCta.href}
                 className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.12em] px-8 py-4 rounded-2xl text-primary-foreground/70 hover:text-primary-foreground transition-colors"
                 style={{
                   border: "1px solid hsl(0 0% 100% / 0.15)",
                 }}
               >
-                {slide.secondaryCta}
+                {slide.secondaryCta.text}
               </a>
             </div>
           </motion.div>

@@ -1,6 +1,15 @@
 import { motion } from "framer-motion";
 
-const PARTNERS = Array.from({ length: 8 }, (_, i) => `Parceiro ${i + 1}`);
+const PARTNERS = [
+  "AIMA — Líder Mundial",
+  "ABVE",
+  "Bosch",
+  "Certificação INMETRO",
+  "ISO 9001",
+  "Garantia de Fábrica",
+  "Assistência Autorizada",
+  "Peças Originais",
+];
 
 const SocialProofBadges = () => {
   return (
@@ -14,7 +23,6 @@ const SocialProofBadges = () => {
       />
 
       <div className="relative flex overflow-hidden">
-        {/* Double marquee for seamless loop */}
         {[0, 1].map((copy) => (
           <motion.div
             key={copy}

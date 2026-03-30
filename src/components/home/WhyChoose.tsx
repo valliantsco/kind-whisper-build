@@ -2,10 +2,10 @@ import { motion } from "framer-motion";
 import { Shield, Wrench, Clock, Award } from "lucide-react";
 
 const PILLARS = [
-  { icon: Shield, title: "Garantia", stat: "2 anos", description: "Garantia de fábrica em todos os veículos da linha AIMA, com suporte direto e assistência local." },
-  { icon: Wrench, title: "Assistência Especializada", stat: "100%", description: "Equipe técnica treinada e peças de reposição originais para manutenção completa." },
-  { icon: Clock, title: "Anos de Mercado", stat: "10+", description: "Mais de uma década de experiência em mobilidade elétrica no Brasil." },
-  { icon: Award, title: "Produtos de Qualidade", stat: "AIMA", description: "Parceira oficial da maior fabricante de veículos elétricos do mundo." },
+  { icon: Shield, title: "Garantia de Fábrica", stat: "2 anos", description: "Todos os veículos AIMA contam com 2 anos de garantia de fábrica, com suporte direto e assistência técnica local em Uberlândia." },
+  { icon: Wrench, title: "Assistência Especializada", stat: "100%", description: "Equipe técnica treinada pela AIMA com peças de reposição originais. Manutenção preventiva e corretiva completa." },
+  { icon: Clock, title: "Experiência de Mercado", stat: "AIMA", description: "Revendedora autorizada da AIMA, líder mundial em veículos elétricos com mais de 8 bases de produção certificadas ISO 9001." },
+  { icon: Award, title: "Atendimento Consultivo", stat: "19+", description: "Mais de 19 modelos no portfólio. Atendimento personalizado para encontrar o veículo ideal para seu perfil de uso." },
 ];
 
 const fadeUp = {
@@ -19,8 +19,7 @@ const fadeUp = {
 
 const WhyChoose = () => {
   return (
-    <section className="relative bg-foreground py-28 overflow-hidden">
-      {/* Top accent */}
+    <section id="por-que" className="relative bg-foreground py-28 overflow-hidden">
       <div
         className="absolute top-0 left-0 right-0 h-[1px]"
         style={{
@@ -66,7 +65,6 @@ const WhyChoose = () => {
                 border: "1px solid hsl(0 0% 100% / 0.08)",
               }}
             >
-              {/* Icon */}
               <div
                 className="w-12 h-12 rounded-xl flex items-center justify-center mb-5"
                 style={{
@@ -77,7 +75,6 @@ const WhyChoose = () => {
                 <pillar.icon className="w-5 h-5" style={{ color: "hsl(11 81% 57%)" }} />
               </div>
 
-              {/* Stat */}
               <p className="font-display font-black text-3xl mb-2 gradient-text">
                 {pillar.stat}
               </p>
