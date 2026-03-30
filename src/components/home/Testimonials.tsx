@@ -7,6 +7,7 @@ import enzoRabeloAvatar from "@/assets/influencers/enzo-rabelo.jpg";
 import jhonathanCoelhoAvatar from "@/assets/influencers/jhonathan-coelho.jpg";
 import jacquesVanierAvatar from "@/assets/influencers/jacques-vanier.jpg";
 import brunoDoBemAvatar from "@/assets/influencers/bruno-do-bem.jpg";
+import cocieloAvatar from "@/assets/influencers/cocielo.jpg";
 
 const TESTIMONIALS = [
   { name: "João P.", city: "Uberlândia, MG", text: "Comprei a S3K e estou impressionado com a autonomia. Faço 40km por dia e ainda sobra bateria. O atendimento da MS Eletric foi impecável.", stars: 5 },
@@ -24,6 +25,7 @@ const INFLUENCERS = [
   { name: "Enzo Rabelo", handle: "@enzorabelooficial", views: "1.5M seguidores", gradient: "from-amber-500/30 to-primary/10", avatarImg: enzoRabeloAvatar },
   { name: "Jhonathan Coelho", handle: "@jhonathancoelho", views: "2.5M seguidores", gradient: "from-red-500/30 to-orange-600/10", avatarImg: jhonathanCoelhoAvatar },
   { name: "Jacques Vanier", handle: "@jacquesvanier", views: "6.4M seguidores", gradient: "from-primary/50 to-orange-400/10", avatarImg: jacquesVanierAvatar },
+  { name: "Julio Cocielo", handle: "@cocielo", views: "14M seguidores", gradient: "from-orange-500/40 to-primary/10", avatarImg: cocieloAvatar },
 ];
 
 const fadeUp = {
