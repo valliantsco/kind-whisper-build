@@ -173,12 +173,6 @@ const Testimonials = () => {
                     <span className="text-[11px] font-bold text-white/90">{inf.views}</span>
                   </div>
 
-                  {/* Story ring indicator — top right */}
-                  <div className="absolute top-3 right-3 z-10">
-                    <span className="px-2 py-0.5 rounded-full text-[9px] font-bold uppercase tracking-wider bg-primary text-primary-foreground">
-                      Reels
-                    </span>
-                  </div>
 
                   {/* Play button — center */}
                   <div className="absolute inset-0 flex items-center justify-center z-10">
