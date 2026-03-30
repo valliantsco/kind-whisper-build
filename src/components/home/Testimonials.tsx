@@ -218,11 +218,12 @@ const Testimonials = () => {
                   </div>
 
                   {/* Subtle bottom gradient for text readability */}
+                  {/* Vignette — dark gray border glow inward */}
                   <div
-                    className="absolute inset-x-0 bottom-0 h-24 pointer-events-none"
+                    className="absolute inset-0 pointer-events-none rounded-2xl"
                     style={{
                       zIndex: 2,
-                      background: "linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 100%)",
+                      boxShadow: "inset 0 0 40px 15px hsl(0 0% 27% / 0.85), inset 0 0 80px 30px hsl(0 0% 27% / 0.4)",
                     }}
                   />
 
