@@ -164,13 +164,13 @@ const Testimonials = () => {
             className="text-center mb-14"
           >
             <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-[11px] font-bold uppercase tracking-[0.18em] mb-4 bg-primary/10 text-primary border border-primary/25">
-              Influenciadores
+              Quem usa, aprova
             </span>
             <h2 className="font-display font-black text-3xl md:text-4xl lg:text-5xl text-primary-foreground uppercase tracking-tight leading-[1]">
-              Testado e aprovado <span className="gradient-text">na prática</span>
+              Fora do óbvio, <span className="gradient-text">dentro do rolê</span>
             </h2>
             <p className="text-primary-foreground/40 mt-4 max-w-lg mx-auto text-sm">
-              Veja o que influenciadores e especialistas estão falando sobre nossos veículos elétricos.
+              Cantores, youtubers e comediantes que não têm nada a ver com mobilidade elétrica — mas que não largam mais os nossos veículos. Dá o play silencioso e confere.
             </p>
           </motion.div>
 
