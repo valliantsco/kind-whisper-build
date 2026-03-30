@@ -630,7 +630,7 @@ const Header = ({ onContactClick }: HeaderProps) => {
                                 animate={{ scale: [1, 1.06, 1] }}
                                 transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
                               >
-                                <Compass className="w-5 h-5 text-[hsl(11,81%,57%)]" />
+                                <HelpCircle className="w-5 h-5 text-[hsl(11,81%,57%)]" />
                               </motion.div>
 
                               {/* Copy */}
