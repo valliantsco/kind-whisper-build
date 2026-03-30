@@ -249,7 +249,7 @@ const ModelsCarousel = ({
       {/* Scroll progress bar */}
       <div
         className="mx-4 mt-2 rounded-full overflow-hidden"
-        style={{ height: "3px", background: "hsl(0 0% 100% / 0.06)" }}
+        style={{ height: "4px", background: "hsl(0 0% 100% / 0.10)" }}
       >
         <div
           className="h-full rounded-full will-change-transform"
