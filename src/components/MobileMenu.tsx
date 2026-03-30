@@ -50,7 +50,7 @@ const useMobileMenu = ({ items, isOnline, onContactClick, onQuizOpen }: MobileMe
   const triggerButton = (
     <button
       onClick={toggleMenu}
-      className="md:hidden relative grid h-10 w-10 place-items-center cursor-pointer active:scale-95 transition-transform duration-150"
+      className="lg:hidden relative grid h-10 w-10 place-items-center cursor-pointer active:scale-95 transition-transform duration-150"
       style={{ background: "transparent", border: "none" }}
       aria-label={open ? "Fechar menu" : "Abrir menu"}
       aria-expanded={open}
@@ -102,7 +102,7 @@ const useMobileMenu = ({ items, isOnline, onContactClick, onQuizOpen }: MobileMe
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.35, ease: [0.25, 0.8, 0.25, 1] }}
-            className="md:hidden overflow-hidden relative z-[49] outline-none"
+            className="lg:hidden overflow-hidden relative z-[49] outline-none"
           >
             {/* Top separator */}
             <div

@@ -192,7 +192,7 @@ const Header = ({ onContactClick }: HeaderProps) => {
               <img src={logoWhite} alt="MS Eletric" className="w-auto" style={{ height: "2.53rem" }} />
             </a>
 
-            <nav className="hidden md:flex items-center gap-4 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+            <nav className="hidden lg:flex items-center gap-4 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
               {NAV_ITEMS.map((item) => (
                 <div
                   key={item.label}
@@ -242,7 +242,7 @@ const Header = ({ onContactClick }: HeaderProps) => {
             </nav>
 
             {/* CTA — desktop only */}
-            <div className="relative group hidden md:block">
+            <div className="relative group hidden lg:block">
               <span
                 className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-700 ease-out pointer-events-none"
                 style={{ boxShadow: "0 4px 24px hsla(11, 81%, 57%, 0.4)" }}
