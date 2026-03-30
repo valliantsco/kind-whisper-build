@@ -86,7 +86,7 @@ const useMobileMenu = ({ items, isOnline, onContactClick, onQuizOpen }: MobileMe
         <>
           {/* Click-away overlay */}
           <div
-            className="fixed inset-0 z-[48]"
+            className="fixed inset-0 z-[60]"
             onClick={closeMenu}
             role="presentation"
             aria-hidden="true"
