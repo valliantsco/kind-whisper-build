@@ -185,8 +185,8 @@ const Testimonials = () => {
                     border: "1px solid hsl(0 0% 100% / 0.08)",
                   }}
                 >
-                  {/* Video or avatar background — no overlays */}
-                  <div className="absolute inset-0" style={{ zIndex: 1 }}>
+                  {/* Video or avatar background — fills card */}
+                  <div className="absolute inset-0 overflow-hidden" style={{ zIndex: 1 }}>
                     {inf.videos.length > 0 && inf.videos[0].type === "mp4" ? (
                       <video
                         src={inf.videos[0].src}
@@ -198,13 +198,15 @@ const Testimonials = () => {
                         className="w-full h-full object-cover"
                       />
                     ) : inf.videos.length > 0 && inf.videos[0].type === "vimeo" ? (
-                      <iframe
-                        src={`https://player.vimeo.com/video/${inf.videos[0].id}?autoplay=1&loop=1&muted=1&badge=0&title=0&byline=0&portrait=0&background=1`}
-                        className="w-full h-full"
-                        style={{ border: "none" }}
-                        allow="autoplay"
-                        title={inf.name}
-                      />
+                      <div className="absolute inset-[-4px]">
+                        <iframe
+                          src={`https://player.vimeo.com/video/${inf.videos[0].id}?autoplay=1&loop=1&muted=1&badge=0&title=0&byline=0&portrait=0&background=1`}
+                          className="w-full h-full"
+                          style={{ border: "none", transform: "scale(1.05)", transformOrigin: "center" }}
+                          allow="autoplay"
+                          title={inf.name}
+                        />
+                      </div>
                     ) : (
                       <img
                         src={inf.avatarImg}
