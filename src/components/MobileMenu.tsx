@@ -45,7 +45,7 @@ const CategoryCard = ({
     onClick={onClose}
     className="relative flex-shrink-0 rounded-2xl overflow-hidden snap-center active:scale-[0.98] transition-transform duration-150"
     style={{
-      width: "176px",
+      width: "211px",
       height: "284px",
       border: "1px solid hsl(0 0% 100% / 0.08)",
       transform: "translateZ(0)",
@@ -109,7 +109,7 @@ const CategoryCard = ({
     {/* Text content — z-[3] above overlay */}
     <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: "12px", zIndex: 20, WebkitTransform: "translateZ(0)", transform: "translateZ(0)" }}>
       <p
-        className="text-white font-bold text-[13px] uppercase tracking-[0.06em] leading-tight line-clamp-1"
+        className="text-white font-bold text-[13px] uppercase tracking-[0.06em] leading-tight"
         style={{ textShadow: "0 2px 8px rgba(0,0,0,0.8)" }}
       >
         {sub.label}
