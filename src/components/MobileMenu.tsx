@@ -285,7 +285,7 @@ const ModelsCarousel = ({
               border: "1px solid hsl(11 81% 57% / 0.2)",
             }}
           >
-            <Compass className="w-4 h-4" style={{ color: "hsl(11 81% 57%)" }} />
+            <Zap className="w-4 h-4" style={{ color: "hsl(11 81% 57%)" }} />
           </div>
           <div className="text-left flex-1 min-w-0">
             <p className="text-white/90 font-bold text-[10px] uppercase tracking-[0.08em]">
