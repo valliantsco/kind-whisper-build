@@ -93,7 +93,7 @@ const InfluencerVideoModal = ({ open, onOpenChange, videos, name }: InfluencerVi
             <iframe
               ref={iframeRef}
               key={video.id}
-              src={`https://player.vimeo.com/video/${video.id}?autoplay=1&loop=${hasMultiple ? 0 : 1}&badge=0&title=0&byline=0&portrait=0&autopause=0`}
+              src={`https://player.vimeo.com/video/${video.id}?autoplay=1&loop=${hasMultiple ? 0 : 1}&badge=0&title=0&byline=0&portrait=0&autopause=0&controls=0&dnt=1`}
               allow="autoplay; fullscreen"
               allowFullScreen
               referrerPolicy="strict-origin-when-cross-origin"
@@ -110,7 +110,9 @@ const InfluencerVideoModal = ({ open, onOpenChange, videos, name }: InfluencerVi
             autoPlay
             loop={!hasMultiple}
             playsInline
-            controls
+            controlsList="nodownload nofullscreen noremoteplayback"
+            disablePictureInPicture
+            onContextMenu={(e) => e.preventDefault()}
             onEnded={hasMultiple ? next : undefined}
           />
         )}
