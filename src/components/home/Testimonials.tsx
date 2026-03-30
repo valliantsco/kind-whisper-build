@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
-import { Star, ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
-import { useRef, useState } from "react";
+import { Star, ChevronLeft, ChevronRight } from "lucide-react";
+import { useRef, useState, useCallback, useEffect } from "react";
 import InfluencerVideoModal, { type VideoSource } from "./InfluencerVideoModal";
 import InfluencerPreviewMedia from "./InfluencerPreviewMedia";
 import rafaKalimannAvatar from "@/assets/influencers/rafa-kalimann.png";
@@ -55,6 +55,27 @@ const fadeUp = {
 const Testimonials = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [activeInfluencer, setActiveInfluencer] = useState<number | null>(null);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(true);
+
+  const updateScroll = useCallback(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+    setCanScrollLeft(el.scrollLeft > 10);
+    setCanScrollRight(el.scrollLeft < el.scrollWidth - el.clientWidth - 10);
+  }, []);
+
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+    updateScroll();
+    el.addEventListener("scroll", updateScroll, { passive: true });
+    window.addEventListener("resize", updateScroll);
+    return () => {
+      el.removeEventListener("scroll", updateScroll);
+      window.removeEventListener("resize", updateScroll);
+    };
+  }, [updateScroll]);
 
   const scroll = (dir: "left" | "right") => {
     if (!scrollRef.current) return;
@@ -151,10 +172,31 @@ const Testimonials = () => {
           </motion.div>
 
           <div className="relative">
+            {/* Navigation arrows */}
+            <button
+              onClick={() => scroll("left")}
+              className={`hidden md:flex absolute -left-2 top-1/2 -translate-y-1/2 z-10 w-10 h-10 items-center justify-center rounded-full border border-border bg-foreground/90 backdrop-blur-sm shadow-lg hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all ${!canScrollLeft ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}
+              aria-label="Anterior"
+            >
+              <ChevronLeft className="w-5 h-5" />
+            </button>
+            <button
+              onClick={() => scroll("right")}
+              className={`hidden md:flex absolute -right-2 top-1/2 -translate-y-1/2 z-10 w-10 h-10 items-center justify-center rounded-full border border-border bg-foreground/90 backdrop-blur-sm shadow-lg hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all ${!canScrollRight ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}
+              aria-label="Próximo"
+            >
+              <ChevronRight className="w-5 h-5" />
+            </button>
+
             <div
               ref={scrollRef}
               className="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-4 md:px-10"
-              style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+              style={{
+                scrollbarWidth: "none",
+                msOverflowStyle: "none",
+                maskImage: `linear-gradient(to right, ${canScrollLeft ? "transparent" : "black"} 0%, black ${canScrollLeft ? "8%" : "0%"}, black ${canScrollRight ? "88%" : "100%"}, ${canScrollRight ? "transparent" : "black"} 100%)`,
+                WebkitMaskImage: `linear-gradient(to right, ${canScrollLeft ? "transparent" : "black"} 0%, black ${canScrollLeft ? "8%" : "0%"}, black ${canScrollRight ? "88%" : "100%"}, ${canScrollRight ? "transparent" : "black"} 100%)`,
+              }}
             >
               {INFLUENCERS.map((inf, i) => (
                 <motion.div
@@ -169,7 +211,6 @@ const Testimonials = () => {
                     aspectRatio: "9/16",
                   }}
                 >
-                  {/* Video or avatar background — fills card */}
                   <div className="absolute inset-0 overflow-hidden bg-black" style={{ zIndex: 1 }}>
                     {inf.videos.length > 0 ? (
                       <InfluencerPreviewMedia videos={inf.videos} name={inf.name} scale={inf.previewScale} />
@@ -184,8 +225,6 @@ const Testimonials = () => {
                     )}
                   </div>
 
-                  {/* Subtle bottom gradient for text readability */}
-                  {/* Vignette — dark gray border glow inward */}
                   <div
                     className="absolute inset-0 pointer-events-none rounded-2xl"
                     style={{
@@ -194,7 +233,6 @@ const Testimonials = () => {
                     }}
                   />
 
-                  {/* Avatar bubble — bottom left */}
                   <div className="absolute bottom-3 left-3 flex items-center gap-2" style={{ zIndex: 20 }}>
                     <div className="w-9 h-9 rounded-full p-[2px] bg-gradient-to-tr from-primary to-orange-400 shrink-0">
                       <div className="w-full h-full rounded-full overflow-hidden">
@@ -212,33 +250,6 @@ const Testimonials = () => {
                   </div>
                 </motion.div>
               ))}
-
-              {/* CTA scroll arrow card */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: INFLUENCERS.length * 0.06, duration: 0.35 }}
-                className="flex-shrink-0 snap-center rounded-2xl overflow-hidden flex items-center justify-center"
-                style={{
-                  width: "80px",
-                  height: "320px",
-                  border: "1px solid hsl(0 0% 100% / 0.08)",
-                  background: "hsl(0 0% 8%)",
-                }}
-              >
-                <button
-                  onClick={() => scroll("right")}
-                  className="w-12 h-12 rounded-full flex items-center justify-center transition-all"
-                  style={{
-                    background: "linear-gradient(135deg, hsl(var(--primary)), hsl(11 90% 65%))",
-                    boxShadow: "0 4px 16px hsl(var(--primary) / 0.4)",
-                  }}
-                  aria-label="Ver mais"
-                >
-                  <ArrowRight className="w-5 h-5 text-white" />
-                </button>
-              </motion.div>
             </div>
           </div>
         </div>
