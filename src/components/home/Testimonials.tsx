@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Star, Play, ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
+import { Star, ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
 import { useRef, useState } from "react";
 import InfluencerVideoModal, { type VideoSource } from "./InfluencerVideoModal";
 import rafaKalimannAvatar from "@/assets/influencers/rafa-kalimann.png";
@@ -185,76 +185,61 @@ const Testimonials = () => {
                     border: "1px solid hsl(0 0% 100% / 0.08)",
                   }}
                 >
-                  {/* Avatar as background */}
+                  {/* Video or avatar background — no overlays */}
                   <div className="absolute inset-0" style={{ zIndex: 1 }}>
-                    <img
-                      src={inf.avatarImg}
-                      alt={inf.name}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                      loading="lazy"
-                      decoding="async"
-                    />
+                    {inf.videos.length > 0 && inf.videos[0].type === "mp4" ? (
+                      <video
+                        src={inf.videos[0].src}
+                        autoPlay
+                        muted
+                        loop
+                        playsInline
+                        preload="metadata"
+                        className="w-full h-full object-cover"
+                      />
+                    ) : inf.videos.length > 0 && inf.videos[0].type === "vimeo" ? (
+                      <iframe
+                        src={`https://player.vimeo.com/video/${inf.videos[0].id}?autoplay=1&loop=1&muted=1&badge=0&title=0&byline=0&portrait=0&background=1`}
+                        className="w-full h-full"
+                        style={{ border: "none" }}
+                        allow="autoplay"
+                        title={inf.name}
+                      />
+                    ) : (
+                      <img
+                        src={inf.avatarImg}
+                        alt={inf.name}
+                        className="w-full h-full object-cover"
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    )}
                   </div>
 
-                  {/* Gradient overlay */}
+                  {/* Subtle bottom gradient for text readability */}
                   <div
-                    className="absolute inset-0 pointer-events-none"
+                    className="absolute inset-x-0 bottom-0 h-24 pointer-events-none"
                     style={{
                       zIndex: 2,
-                      background: "linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.55) 50%, rgba(0,0,0,0.15) 100%)",
+                      background: "linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 100%)",
                     }}
                   />
 
-                  {/* Play button — top left */}
-                  <div className="absolute top-3 left-3 z-10">
-                    <div className="w-9 h-9 rounded-full bg-black/40 backdrop-blur-sm border border-white/15 flex items-center justify-center">
-                      <Play className="w-4 h-4 text-white ml-0.5" fill="white" />
+                  {/* Avatar bubble — bottom left */}
+                  <div className="absolute bottom-3 left-3 flex items-center gap-2" style={{ zIndex: 20 }}>
+                    <div className="w-9 h-9 rounded-full p-[2px] bg-gradient-to-tr from-primary to-orange-400 shrink-0">
+                      <div className="w-full h-full rounded-full overflow-hidden">
+                        <img src={inf.avatarImg} alt={inf.name} className="w-full h-full object-cover rounded-full" />
+                      </div>
                     </div>
-                  </div>
-
-                  {/* Badge */}
-                  {inf.badge && (
-                    <span
-                      className="absolute top-3 right-3 px-2.5 py-[3px] rounded-full text-[9px] font-bold uppercase tracking-[0.1em] text-primary-foreground"
-                      style={{
-                        zIndex: 30,
-                        background: "linear-gradient(135deg, hsl(var(--primary) / 0.9), hsl(11 90% 65% / 0.9))",
-                        border: "1px solid hsl(var(--primary) / 0.3)",
-                      }}
-                    >
-                      {inf.badge}
-                    </span>
-                  )}
-
-                  {/* Hover glow */}
-                  <div
-                    className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
-                    style={{
-                      zIndex: 3,
-                      boxShadow: "inset 0 0 0 1.5px hsl(var(--primary) / 0.6), 0 0 20px hsl(var(--primary) / 0.15)",
-                    }}
-                  />
-
-                  {/* Text content — bottom */}
-                  <div className="absolute bottom-0 left-0 right-0 p-4" style={{ zIndex: 20 }}>
-                    <p
-                      className="text-primary-foreground font-bold text-[13px] uppercase tracking-[0.06em] leading-tight"
-                      style={{ textShadow: "0 2px 8px rgba(0,0,0,0.8)" }}
-                    >
-                      {inf.name}
-                    </p>
-                    <p
-                      className="text-primary-foreground/70 text-[10.5px] tracking-wide leading-snug mt-0.5"
-                      style={{ textShadow: "0 1px 4px rgba(0,0,0,0.6)" }}
-                    >
-                      {inf.handle} · {inf.views}
-                    </p>
-                    <p
-                      className="text-primary-foreground/50 text-[10px] tracking-wide leading-snug mt-1 line-clamp-2"
-                      style={{ textShadow: "0 1px 4px rgba(0,0,0,0.6)" }}
-                    >
-                      {inf.description}
-                    </p>
+                    <div className="min-w-0">
+                      <p className="text-[11px] font-bold text-white truncate leading-tight" style={{ textShadow: "0 1px 4px rgba(0,0,0,0.8)" }}>
+                        {inf.name}
+                      </p>
+                      <p className="text-[9px] text-white/60 truncate" style={{ textShadow: "0 1px 3px rgba(0,0,0,0.6)" }}>
+                        {inf.views}
+                      </p>
+                    </div>
                   </div>
                 </motion.div>
               ))}
