@@ -491,7 +491,7 @@ const VisitUsSection = ({
 
       <button
         onClick={() => window.open("https://maps.app.goo.gl/7iwuPGQuN4rAhqRf8", "_blank")}
-        className="w-full flex items-center justify-center gap-2 py-3 text-[9px] font-bold uppercase tracking-[0.12em] text-white cursor-pointer active:scale-[0.98] transition-transform"
+        className="w-full flex items-center justify-center gap-2 py-3 text-[10px] font-bold uppercase tracking-[0.12em] text-white cursor-pointer active:scale-[0.98] transition-transform"
         style={{
           background: "linear-gradient(135deg, hsl(11 81% 57%), hsl(11 90% 65%))",
           boxShadow: "0 -4px 16px hsl(11 81% 57% / 0.15)",
