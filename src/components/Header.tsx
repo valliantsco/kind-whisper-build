@@ -46,6 +46,7 @@ const NAV_ITEMS: NavItem[] = [
     href: "#modelos",
     hasDropdown: true,
     hasCta: true,
+    sectionType: "models" as const,
     dropdownItems: [
       { label: "Bicicletas Elétricas", description: "Conforto, autonomia e liberdade para o dia a dia", href: "#modelos", image: categoryBike, video: "https://ppmoesqgmficvajqbamr.supabase.co/storage/v1/object/public/videos/bicicletas-eletricas.mp4", badge: "Novidade" },
       { label: "Autopropelidos", description: "Mobilidade urbana prática, econômica e compacta", href: "#modelos", image: categoryAutopropelido, video: "https://ppmoesqgmficvajqbamr.supabase.co/storage/v1/object/public/videos/autopropelido-v2.mp4", badge: "Mais vendidos" },
@@ -61,6 +62,7 @@ const NAV_ITEMS: NavItem[] = [
     label: "Visite-nos",
     href: "#contato",
     hasDropdown: true,
+    sectionType: "visit-us" as const,
     dropdownItems: [],
   },
 ];
