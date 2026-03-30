@@ -309,9 +309,9 @@ const VisitUsSection = ({
 }: {
   onClose: () => void;
 }) => (
-  <div className="px-2 pt-1 pb-3">
+  <div className="pt-1 pb-3">
     {/* Header */}
-    <div className="flex items-center gap-2 px-2 mb-3">
+    <div className="flex items-center gap-2 px-4 mb-3">
       <div
         className="w-0.5 h-3 rounded-full"
         style={{ background: "linear-gradient(180deg, hsl(11 81% 57%), hsl(11 90% 65%))" }}
@@ -326,7 +326,7 @@ const VisitUsSection = ({
 
     {/* Card principal */}
     <div
-      className="rounded-2xl overflow-hidden"
+      className="mx-4 rounded-2xl overflow-hidden"
       style={{
         background: "linear-gradient(160deg, hsl(0 0% 11%), hsl(0 0% 7%))",
         border: "1px solid hsl(0 0% 100% / 0.06)",
