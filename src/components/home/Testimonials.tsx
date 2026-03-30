@@ -12,7 +12,7 @@ const TESTIMONIALS = [
 ];
 
 const INFLUENCERS = [
-  { name: "Lucas Moreira", handle: "@lucasmoreira", views: "12.4k", gradient: "from-primary/40 to-primary/10" },
+  { name: "Rafa Kalimann", handle: "@rafakalimann", views: "22M seguidores", gradient: "from-primary/40 to-primary/10", avatar: "https://instagram.fsdu8-1.fna.fbcdn.net/v/t51.2885-19/44884218_345707102882519_2446069589734326272_n.jpg?_nc_ht=instagram.fsdu8-1.fna.fbcdn.net&_nc_cat=1&_nc_ohc=placeholder&edm=placeholder&oh=placeholder&oe=placeholder" },
   { name: "Ana Costa", handle: "@anacosta", views: "8.7k", gradient: "from-orange-600/40 to-amber-500/10" },
   { name: "Roberto Lima", handle: "@robertolima", views: "15.2k", gradient: "from-primary/30 to-red-600/10" },
   { name: "Carla Santos", handle: "@carlasantos", views: "22.1k", gradient: "from-amber-500/30 to-primary/10" },
