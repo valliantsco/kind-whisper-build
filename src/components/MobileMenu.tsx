@@ -502,7 +502,6 @@ const VisitUsSection = ({
         </div>
 
         <div className="h-px" style={{ background: "hsl(0 0% 100% / 0.05)" }} />
-      </div>
 
       <button
         onClick={() => window.open("https://maps.app.goo.gl/7iwuPGQuN4rAhqRf8", "_blank")}
