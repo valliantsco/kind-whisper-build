@@ -1,5 +1,6 @@
 import React, { useState, useRef, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import msShieldLogo from "@/assets/ms-shield-logo.png";
 
 import {
   ChevronDown,
