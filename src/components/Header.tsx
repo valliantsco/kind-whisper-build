@@ -334,7 +334,7 @@ const Header = ({ onContactClick }: HeaderProps) => {
                           className="w-1 h-4 rounded-full shrink-0"
                           style={{ background: "linear-gradient(180deg, hsl(11 81% 57%), hsl(11 90% 65%))" }}
                         />
-                        <span className="text-[9px] font-bold uppercase tracking-[0.2em]" style={{ color: "hsl(11 81% 57%)" }}>
+                        <span className="text-[15px] font-semibold tracking-wide" style={{ color: "hsl(11 81% 57%)" }}>
                           Explore por Categoria
                         </span>
                       </div>
