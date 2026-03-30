@@ -60,6 +60,8 @@ const NAV_ITEMS: NavItem[] = [
   {
     label: "Visite-nos",
     href: "#contato",
+    hasDropdown: true,
+    dropdownItems: [],
   },
 ];
 
