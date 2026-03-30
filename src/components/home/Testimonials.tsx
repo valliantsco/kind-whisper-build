@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Star, ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
 import { useRef, useState } from "react";
 import InfluencerVideoModal, { type VideoSource } from "./InfluencerVideoModal";
+import InfluencerPreviewMedia from "./InfluencerPreviewMedia";
 import rafaKalimannAvatar from "@/assets/influencers/rafa-kalimann.png";
 import tataEstanieckiAvatar from "@/assets/influencers/tata-estaniecki.jpg";
 import enzoRabeloAvatar from "@/assets/influencers/enzo-rabelo.jpg";
@@ -188,25 +189,9 @@ const Testimonials = () => {
                   {/* Video or avatar background — fills card */}
                   <div className="absolute inset-0 overflow-hidden bg-black" style={{ zIndex: 1 }}>
                     {inf.videos.length > 0 && inf.videos[0].type === "mp4" ? (
-                      <video
-                        src={inf.videos[0].src}
-                        autoPlay
-                        muted
-                        loop
-                        playsInline
-                        preload="metadata"
-                        className="w-full h-full object-cover"
-                      />
+                      <InfluencerPreviewMedia videos={inf.videos} name={inf.name} scale={inf.previewScale} />
                     ) : inf.videos.length > 0 && inf.videos[0].type === "vimeo" ? (
-                      <iframe
-                        src={`https://player.vimeo.com/video/${inf.videos[0].id}?autoplay=1&loop=1&muted=1&badge=0&title=0&byline=0&portrait=0&autopause=0&background=1`}
-                        allow="autoplay; fullscreen"
-                        allowFullScreen
-                        referrerPolicy="strict-origin-when-cross-origin"
-                        title={inf.name}
-                        className="absolute inset-0 w-full h-full"
-                        style={{ border: "none", transform: `scale(${inf.previewScale ?? 1.2})`, transformOrigin: "center" }}
-                      />
+                      <InfluencerPreviewMedia videos={inf.videos} name={inf.name} scale={inf.previewScale} />
                     ) : (
                       <img
                         src={inf.avatarImg}
