@@ -10,7 +10,7 @@ import {
   Phone,
   Clock,
   ExternalLink,
-  Compass,
+  
   Zap,
 } from "lucide-react";
 
