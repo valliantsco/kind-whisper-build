@@ -167,10 +167,13 @@ const Testimonials = () => {
               Parcerias de marca
             </span>
             <h2 className="font-display font-black text-3xl md:text-4xl lg:text-5xl text-primary-foreground uppercase tracking-tight leading-[1]">
-              Presença que <span className="gradient-text">amplia desejo</span>
+              Credibilidade que se torna <span className="gradient-text">referência</span>
             </h2>
-            <p className="text-primary-foreground/40 mt-4 max-w-lg mx-auto text-sm">
-              Em colaborações com nomes de grande alcance, a MS Eletric ganha repertório cultural, força de imagem e reconhecimento além da categoria — reforçando uma marca que circula com naturalidade em diferentes universos.
+            <p className="text-primary-foreground/40 mt-4 max-w-xl mx-auto text-sm leading-relaxed">
+              A MS Electric vem construindo uma marca em que as pessoas confiam. A presença ao lado de nomes de grande alcance reforça essa percepção e mostra que a marca desperta interesse real, conexão e desejo.
+            </p>
+            <p className="text-primary-foreground/40 mt-2 max-w-xl mx-auto text-sm leading-relaxed">
+              Mais do que ampliar visibilidade, essas associações ajudam a consolidar a MS Electric como uma marca atual, confiável e cada vez mais relevante no universo da mobilidade elétrica.
             </p>
           </motion.div>
 
