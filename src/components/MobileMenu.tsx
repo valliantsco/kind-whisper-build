@@ -320,113 +320,98 @@ const VisitUsSection = ({
   item: MobileMenuItem;
   onClose: () => void;
 }) => (
-  <div className="px-2 pt-1 pb-2">
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ delay: 0.06, duration: 0.35 }}
-      className="rounded-2xl overflow-hidden"
-      style={{
-        background: "linear-gradient(160deg, hsl(0 0% 10%), hsl(0 0% 6%))",
-        border: "1px solid hsl(0 0% 100% / 0.05)",
-      }}
-    >
-      <div className="px-4 pt-4 pb-3 space-y-3">
-        {/* Section header */}
-        <div>
-          <div className="flex items-center gap-2 mb-1.5">
-            <div
-              className="w-0.5 h-3 rounded-full"
-              style={{
-                background: "linear-gradient(180deg, hsl(11 81% 57%), hsl(11 90% 65%))",
-              }}
-            />
-            <span
-              className="text-[11px] font-bold uppercase tracking-[0.1em]"
-              style={{ color: "hsl(11 81% 57% / 0.7)" }}
-            >
-              Nossa Localização
-            </span>
-          </div>
-          <p className="text-white/90 text-[14px] font-bold tracking-wide">Venha nos visitar</p>
-          <p className="text-white/35 text-[10px] mt-0.5">Transformando a mobilidade urbana desde 2015</p>
-        </div>
-
-        {/* Endereço */}
-        <div className="flex items-start gap-3">
-          <div
-            className="w-8 h-8 rounded-xl flex items-center justify-center shrink-0 mt-0.5"
-            style={{
-              background: "linear-gradient(135deg, hsl(11 81% 57% / 0.12), hsl(11 81% 57% / 0.04))",
-              border: "1px solid hsl(11 81% 57% / 0.15)",
-            }}
-          >
-            <MapPin className="w-3.5 h-3.5" style={{ color: "hsl(11 81% 57%)" }} />
-          </div>
-          <div>
-            <p className="text-white/35 text-[8px] font-bold uppercase tracking-[0.1em] mb-0.5">Endereço</p>
-            <p className="text-white/90 text-[11px] font-semibold">Av. João Pinheiro, 3747</p>
-            <p className="text-white/35 text-[9px] mt-0.5">Uberlândia — MG, 38408-168</p>
-          </div>
-        </div>
-
-        <div className="h-px" style={{ background: "hsl(0 0% 100% / 0.04)" }} />
-
-        {/* Telefone */}
-        <div className="flex items-center gap-3">
-          <div
-            className="w-8 h-8 rounded-xl flex items-center justify-center shrink-0"
-            style={{
-              background: "linear-gradient(135deg, hsl(11 81% 57% / 0.12), hsl(11 81% 57% / 0.04))",
-              border: "1px solid hsl(11 81% 57% / 0.15)",
-            }}
-          >
-            <Phone className="w-3.5 h-3.5" style={{ color: "hsl(11 81% 57%)" }} />
-          </div>
-          <div>
-            <p className="text-white/35 text-[8px] font-bold uppercase tracking-[0.1em] mb-0.5">Telefone</p>
-            <a href="tel:+553432196628" className="text-white/90 text-[11px] font-semibold">(34) 3219-6628</a>
-          </div>
-        </div>
-
-        <div className="h-px" style={{ background: "hsl(0 0% 100% / 0.04)" }} />
-
-        {/* Horários */}
-        <div className="flex items-start gap-3">
-          <Clock className="w-3.5 h-3.5 mt-0.5 shrink-0" style={{ color: "hsl(11 81% 57% / 0.6)" }} />
-          <div className="flex-1">
-            <p className="text-white/35 text-[8px] font-bold uppercase tracking-[0.1em] mb-1">Horários</p>
-            <div className="space-y-1 text-[10px]">
-              <div className="flex justify-between">
-                <span className="text-white/50">Seg – Sex</span>
-                <span className="text-white/80 font-medium">08h – 18h</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-white/50">Sábado</span>
-                <span className="text-white/80 font-medium">08h – 12h</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-white/50">Domingo</span>
-                <span className="text-white/40 italic">Fechado</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <button
-        onClick={() => {
-          window.open("https://maps.app.goo.gl/7iwuPGQuN4rAhqRf8", "_blank");
+  <div className="pt-1 pb-2">
+    {/* Section label */}
+    <div className="flex items-center gap-2 px-4 mb-3">
+      <div
+        className="w-0.5 h-3 rounded-full"
+        style={{
+          background: "linear-gradient(180deg, hsl(11 81% 57%), hsl(11 90% 65%))",
         }}
-        className="w-full flex items-center justify-center gap-2 py-3 text-[9px] font-bold uppercase tracking-[0.12em] text-white cursor-pointer active:scale-[0.98] transition-transform"
+      />
+      <span
+        className="text-[11px] font-bold uppercase tracking-[0.1em]"
+        style={{ color: "hsl(11 81% 57% / 0.7)" }}
+      >
+        Nossa Localização
+      </span>
+    </div>
+
+    {/* Items */}
+    <div className="space-y-1.5 px-2">
+      {/* Endereço */}
+      <motion.a
+        href="https://maps.app.goo.gl/7iwuPGQuN4rAhqRf8"
+        target="_blank"
+        rel="noopener noreferrer"
+        initial={{ opacity: 0, x: 12 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ delay: 0, duration: 0.3, ease: [0.25, 0.8, 0.25, 1] }}
+        className="flex items-center gap-3 px-3.5 py-3 rounded-2xl active:scale-[0.98] transition-transform"
+        style={{
+          background: "linear-gradient(135deg, hsl(0 0% 100% / 0.04), hsl(0 0% 100% / 0.01))",
+          border: "1px solid hsl(0 0% 100% / 0.05)",
+        }}
+      >
+        <div
+          className="w-9 h-9 rounded-xl flex items-center justify-center shrink-0"
+          style={{
+            background: "linear-gradient(135deg, hsl(11 81% 57% / 0.12), hsl(11 81% 57% / 0.04))",
+            border: "1px solid hsl(11 81% 57% / 0.15)",
+          }}
+        >
+          <MapPin className="w-4 h-4" style={{ color: "hsl(11 81% 57%)" }} />
+        </div>
+        <div className="min-w-0 flex-1">
+          <p className="text-white/90 text-[11px] font-semibold tracking-wide">Av. João Pinheiro, 3747</p>
+          <p className="text-white/30 text-[9px] mt-0.5 leading-relaxed">Uberlândia — MG, 38408-168</p>
+        </div>
+        <ArrowRight className="w-3 h-3 text-white/15 shrink-0" />
+      </motion.a>
+
+      {/* Telefone */}
+      <motion.a
+        href="tel:+553432196628"
+        initial={{ opacity: 0, x: 12 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ delay: 0.05, duration: 0.3, ease: [0.25, 0.8, 0.25, 1] }}
+        className="flex items-center gap-3 px-3.5 py-3 rounded-2xl active:scale-[0.98] transition-transform"
+        style={{
+          background: "linear-gradient(135deg, hsl(0 0% 100% / 0.04), hsl(0 0% 100% / 0.01))",
+          border: "1px solid hsl(0 0% 100% / 0.05)",
+        }}
+      >
+        <div
+          className="w-9 h-9 rounded-xl flex items-center justify-center shrink-0"
+          style={{
+            background: "linear-gradient(135deg, hsl(11 81% 57% / 0.12), hsl(11 81% 57% / 0.04))",
+            border: "1px solid hsl(11 81% 57% / 0.15)",
+          }}
+        >
+          <Phone className="w-4 h-4" style={{ color: "hsl(11 81% 57%)" }} />
+        </div>
+        <div className="min-w-0 flex-1">
+          <p className="text-white/90 text-[11px] font-semibold tracking-wide">(34) 3219-6628</p>
+          <p className="text-white/30 text-[9px] mt-0.5 leading-relaxed">Seg – Sex 08h–18h · Sáb 08h–12h</p>
+        </div>
+        <ArrowRight className="w-3 h-3 text-white/15 shrink-0" />
+      </motion.a>
+
+      {/* Google Maps CTA */}
+      <motion.button
+        onClick={() => window.open("https://maps.app.goo.gl/7iwuPGQuN4rAhqRf8", "_blank")}
+        initial={{ opacity: 0, x: 12 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ delay: 0.1, duration: 0.3, ease: [0.25, 0.8, 0.25, 1] }}
+        className="w-full flex items-center justify-center gap-2 py-3 rounded-2xl text-[9px] font-bold uppercase tracking-[0.12em] text-white cursor-pointer active:scale-[0.98] transition-transform"
         style={{
           background: "linear-gradient(135deg, hsl(11 81% 57%), hsl(11 90% 65%))",
         }}
       >
         <ExternalLink className="w-3 h-3" />
         Abrir no Google Maps
-      </button>
-    </motion.div>
+      </motion.button>
+    </div>
   </div>
 );
 
