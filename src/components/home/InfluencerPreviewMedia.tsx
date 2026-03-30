@@ -95,6 +95,7 @@ const InfluencerPreviewMedia = ({ videos, name, scale = 1.2, onReady }: Influenc
       playsInline
       preload="metadata"
       onEnded={hasMultiple ? next : undefined}
+      onCanPlay={() => onReady?.()}
       className="h-full w-full object-cover pointer-events-none"
     />
   );
