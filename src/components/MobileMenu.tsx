@@ -292,7 +292,7 @@ const ModelsCarousel = ({
               Não sabe qual escolher?
             </p>
             <p className="text-white/35 text-[8px] tracking-wide mt-0.5">
-              Descubra em 1 min com o quiz
+              Responda 3 perguntas e descubra
             </p>
           </div>
           <div
