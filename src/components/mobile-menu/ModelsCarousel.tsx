@@ -71,9 +71,15 @@ const ModelsCarousel: React.FC<ModelsCarouselProps> = ({
           className="text-[11px] font-bold uppercase tracking-[0.1em]"
           style={{ color: "hsl(var(--primary) / 0.7)" }}
         >
-          Explore por Categoria
+          Nossos Veículos Elétricos
         </span>
       </div>
+      <p
+        className="text-[13px] font-semibold tracking-wide px-4 mb-1"
+        style={{ color: "hsl(var(--mm-text-primary))", paddingLeft: "calc(1rem + 10px)" }}
+      >
+        Explore por categoria
+      </p>
       <p
         className="px-4 mb-3 text-[11px]"
         style={{ color: "hsl(var(--mm-text-secondary))", paddingLeft: "calc(1rem + 10px)" }}
