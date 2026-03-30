@@ -204,7 +204,7 @@ const Testimonials = () => {
                         referrerPolicy="strict-origin-when-cross-origin"
                         title={inf.name}
                         className="absolute inset-0 w-full h-full"
-                        style={{ border: "none", objectFit: "cover" }}
+                        style={{ border: "none", transform: "scale(1.1)", transformOrigin: "center" }}
                       />
                     ) : (
                       <img
