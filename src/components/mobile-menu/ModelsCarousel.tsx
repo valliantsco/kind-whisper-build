@@ -182,7 +182,7 @@ const ModelsCarousel: React.FC<ModelsCarouselProps> = ({
               border: "1px solid hsl(var(--mm-border-accent))",
             }}
           >
-            <Zap className="w-4 h-4 text-primary" />
+            <HelpCircle className="w-4 h-4 text-primary" />
           </div>
           <div className="text-left flex-1 min-w-0">
             <p style={{ color: "hsl(var(--mm-text-primary))" }} className="font-bold text-[10px] uppercase tracking-[0.08em]">
