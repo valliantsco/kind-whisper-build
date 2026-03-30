@@ -242,7 +242,7 @@ const Header = ({ onContactClick }: HeaderProps) => {
             </nav>
 
             {/* CTA — desktop only */}
-            <div className="relative group hidden md:block">
+            <div className="relative group hidden lg:block">
               <span
                 className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-700 ease-out pointer-events-none"
                 style={{ boxShadow: "0 4px 24px hsla(11, 81%, 57%, 0.4)" }}
