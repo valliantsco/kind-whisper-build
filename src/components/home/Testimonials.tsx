@@ -151,22 +151,6 @@ const Testimonials = () => {
           </motion.div>
 
           <div className="relative">
-            {/* Navigation arrows */}
-            <button
-              onClick={() => scroll("left")}
-              className="hidden md:flex absolute -left-2 top-1/2 -translate-y-1/2 z-10 w-10 h-10 items-center justify-center rounded-full border border-border bg-foreground/90 backdrop-blur-sm shadow-lg hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all"
-              aria-label="Anterior"
-            >
-              <ChevronLeft className="w-5 h-5" />
-            </button>
-            <button
-              onClick={() => scroll("right")}
-              className="hidden md:flex absolute -right-2 top-1/2 -translate-y-1/2 z-10 w-10 h-10 items-center justify-center rounded-full border border-border bg-foreground/90 backdrop-blur-sm shadow-lg hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all"
-              aria-label="Próximo"
-            >
-              <ChevronRight className="w-5 h-5" />
-            </button>
-
             <div
               ref={scrollRef}
               className="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-4 md:px-10"
