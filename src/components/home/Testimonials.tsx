@@ -223,7 +223,7 @@ const Testimonials = () => {
                     className="absolute inset-0 pointer-events-none rounded-2xl"
                     style={{
                       zIndex: 2,
-                      boxShadow: "inset 0 0 40px 15px hsl(0 0% 27% / 0.85), inset 0 0 80px 30px hsl(0 0% 27% / 0.4)",
+                      boxShadow: "inset 0 0 40px 15px hsl(0 0% 10% / 0.9), inset 0 0 80px 30px hsl(0 0% 10% / 0.5)",
                     }}
                   />
 
