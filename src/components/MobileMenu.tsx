@@ -429,9 +429,9 @@ const VisitUsSection = ({
             <MapPin className="w-3.5 h-3.5" style={{ color: "hsl(11 81% 57%)" }} />
           </div>
           <div>
-            <p className="text-white/40 text-[8px] uppercase tracking-[0.1em] mb-0.5">Endereço</p>
-            <p className="text-white/90 text-[11px] font-semibold">Av. João Pinheiro, 3747</p>
-            <p className="text-white/30 text-[9px] mt-0.5">Uberlândia — MG, 38408-168</p>
+            <p className="text-white/40 text-[9px] uppercase tracking-[0.1em] mb-0.5">Endereço</p>
+            <p className="text-white/90 text-[13px] font-semibold">Av. João Pinheiro, 3747</p>
+            <p className="text-white/30 text-[10.5px] mt-0.5">Uberlândia — MG, 38408-168</p>
           </div>
         </div>
 
