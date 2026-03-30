@@ -176,7 +176,7 @@ const ModelsCarousel = ({
   };
 
   return (
-    <div className="pt-1 pb-1">
+    <div className="pt-1 pb-3">
       {/* Section label */}
       <div className="flex items-center gap-2 px-4 mb-3">
         <div
