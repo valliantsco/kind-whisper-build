@@ -27,6 +27,7 @@ const INFLUENCERS = [
   { name: "Jhonathan Coelho", handle: "@jhonathancoelho", views: "2.5M seguidores", gradient: "from-red-500/30 to-orange-600/10", avatarImg: jhonathanCoelhoAvatar },
   { name: "Jacques Vanier", handle: "@jacquesvanier", views: "6.4M seguidores", gradient: "from-primary/50 to-orange-400/10", avatarImg: jacquesVanierAvatar },
   { name: "Julio Cocielo", handle: "@cocielo", views: "14M seguidores", gradient: "from-orange-500/40 to-primary/10", avatarImg: cocieloAvatar },
+  { name: "Gustavo Melo", handle: "@gustavomeloof", views: "1M seguidores", gradient: "from-green-500/30 to-primary/10", avatarImg: gustavoMeloAvatar },
 ];
 
 const fadeUp = {
