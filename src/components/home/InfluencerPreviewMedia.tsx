@@ -72,7 +72,7 @@ const InfluencerPreviewMedia = ({ videos, name, scale = 1.2 }: InfluencerPreview
       <iframe
         ref={iframeRef}
         key={video.id}
-        src={`https://player.vimeo.com/video/${video.id}?autoplay=1&muted=1&loop=${hasMultiple ? 0 : 1}&badge=0&title=0&byline=0&portrait=0&autopause=0&background=1`}
+        src={`https://player.vimeo.com/video/${video.id}?autoplay=1&muted=1&loop=${hasMultiple ? 0 : 1}&badge=0&title=0&byline=0&portrait=0&autopause=0&controls=0&dnt=1&quality=auto`}
         allow="autoplay; fullscreen"
         allowFullScreen
         referrerPolicy="strict-origin-when-cross-origin"
