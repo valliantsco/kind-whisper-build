@@ -197,16 +197,15 @@ const Testimonials = () => {
                         className="w-full h-full object-cover"
                       />
                     ) : inf.videos.length > 0 && inf.videos[0].type === "vimeo" ? (
-                      <div style={{ padding: "177.5% 0 0 0", position: "relative" }}>
-                        <iframe
-                          src={`https://player.vimeo.com/video/${inf.videos[0].id}?autoplay=1&loop=1&muted=1&badge=0&title=0&byline=0&portrait=0&autopause=0&background=1`}
-                          allow="autoplay; fullscreen"
-                          allowFullScreen
-                          referrerPolicy="strict-origin-when-cross-origin"
-                          title={inf.name}
-                          style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", border: "none" }}
-                        />
-                      </div>
+                      <iframe
+                        src={`https://player.vimeo.com/video/${inf.videos[0].id}?autoplay=1&loop=1&muted=1&badge=0&title=0&byline=0&portrait=0&autopause=0&background=1`}
+                        allow="autoplay; fullscreen"
+                        allowFullScreen
+                        referrerPolicy="strict-origin-when-cross-origin"
+                        title={inf.name}
+                        className="absolute inset-0 w-full h-full"
+                        style={{ border: "none", objectFit: "cover" }}
+                      />
                     ) : (
                       <img
                         src={inf.avatarImg}
