@@ -1,6 +1,6 @@
 import React, { useRef, useState, useCallback, useEffect } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, ArrowLeft, Zap } from "lucide-react";
+import { ArrowRight, ArrowLeft, HelpCircle } from "lucide-react";
 import CategoryCard from "./CategoryCard";
 import type { MobileMenuItem } from "./types";
 
