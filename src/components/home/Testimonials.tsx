@@ -188,9 +188,7 @@ const Testimonials = () => {
                 >
                   {/* Video or avatar background — fills card */}
                   <div className="absolute inset-0 overflow-hidden bg-black" style={{ zIndex: 1 }}>
-                    {inf.videos.length > 0 && inf.videos[0].type === "mp4" ? (
-                      <InfluencerPreviewMedia videos={inf.videos} name={inf.name} scale={inf.previewScale} />
-                    ) : inf.videos.length > 0 && inf.videos[0].type === "vimeo" ? (
+                    {inf.videos.length > 0 ? (
                       <InfluencerPreviewMedia videos={inf.videos} name={inf.name} scale={inf.previewScale} />
                     ) : (
                       <img

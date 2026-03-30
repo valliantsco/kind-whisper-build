@@ -29,8 +29,6 @@ const InfluencerVideoModal = ({ open, onOpenChange, videos, name }: InfluencerVi
   const [current, setCurrent] = useState(0);
   const iframeRef = useRef<HTMLIFrameElement>(null);
 
-  if (!videos.length) return null;
-
   const video = videos[current];
   const hasMultiple = videos.length > 1;
 
@@ -43,7 +41,7 @@ const InfluencerVideoModal = ({ open, onOpenChange, videos, name }: InfluencerVi
   }, [open, videos]);
 
   useEffect(() => {
-    if (!open || !hasMultiple || video.type !== "vimeo") return;
+    if (!open || !hasMultiple || video?.type !== "vimeo") return;
 
     const handleMessage = (event: MessageEvent) => {
       if (event.origin !== VIMEO_ORIGIN) return;
@@ -61,13 +59,15 @@ const InfluencerVideoModal = ({ open, onOpenChange, videos, name }: InfluencerVi
   }, [hasMultiple, next, open, video]);
 
   const registerVimeoEvents = () => {
-    if (!hasMultiple || video.type !== "vimeo" || !iframeRef.current?.contentWindow) return;
+    if (!hasMultiple || video?.type !== "vimeo" || !iframeRef.current?.contentWindow) return;
 
     iframeRef.current.contentWindow.postMessage(
       JSON.stringify({ method: "addEventListener", value: "ended" }),
       VIMEO_ORIGIN,
     );
   };
+
+  if (!video) return null;
 
   return (
     <Dialog open={open} onOpenChange={(v) => { onOpenChange(v); if (!v) setCurrent(0); }}>
