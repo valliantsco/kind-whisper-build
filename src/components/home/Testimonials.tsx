@@ -268,11 +268,7 @@ const Testimonials = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.06, duration: 0.35 }}
-                onClick={() => setActiveInfluencer(i)}
-                onKeyDown={(e) => e.key === "Enter" && setActiveInfluencer(i)}
-                tabIndex={0}
-                aria-label={`Assistir vídeo de ${inf.name}`}
-                className="relative flex-shrink-0 snap-center rounded-2xl overflow-hidden group cursor-pointer transition-transform duration-300 ease-out hover:scale-105"
+                className="relative flex-shrink-0 snap-center rounded-2xl overflow-hidden group cursor-default transition-transform duration-300 ease-out hover:scale-105"
                 style={{
                   width: "clamp(180px, 42vw, 220px)",
                   aspectRatio: "9/16",
