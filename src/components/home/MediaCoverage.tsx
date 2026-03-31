@@ -98,7 +98,7 @@ const MediaCoverage = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
-          className="mb-12 md:mb-16"
+          className="mb-12 md:mb-16 text-right"
         >
           <div className="flex items-center gap-3 mb-6">
             <div className="w-8 h-px bg-primary" />
