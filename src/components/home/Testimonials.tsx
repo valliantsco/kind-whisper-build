@@ -141,15 +141,14 @@ const Testimonials = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
-            className="text-center"
+            className=""
           >
             {/* Accent line + label */}
-            <div className="flex items-center justify-center gap-3 mb-6">
+            <div className="flex items-center gap-3 mb-6">
               <div className="w-8 h-px bg-primary" />
               <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-primary">
                 Parcerias de marca
               </span>
-              <div className="w-8 h-px bg-primary" />
             </div>
 
             <h2 className="font-display font-black text-4xl md:text-5xl lg:text-6xl text-primary-foreground uppercase tracking-tight leading-[0.95]">
@@ -162,7 +161,7 @@ const Testimonials = () => {
               </span>
             </h2>
 
-            <p className="text-sm md:text-base text-primary-foreground/55 leading-relaxed mt-5 max-w-2xl mx-auto">
+            <p className="text-sm md:text-base text-primary-foreground/55 leading-relaxed mt-5 max-w-lg">
               A presença ao lado de nomes de grande alcance reforça a percepção de uma marca atual, confiável e cada vez mais relevante no universo da mobilidade elétrica.
             </p>
           </motion.div>
