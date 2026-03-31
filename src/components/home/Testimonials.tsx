@@ -119,18 +119,42 @@ const Testimonials = () => {
 
   return (
     <section className="relative py-24 md:py-32 bg-foreground overflow-hidden">
-      {/* ── Decorative ambient glow ── */}
+      {/* ── Layered background ── */}
+      {/* Radial primary glow — top center */}
       <div
-        className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] pointer-events-none"
+        className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[500px] pointer-events-none"
         style={{
-          background: "radial-gradient(ellipse at center, hsl(var(--primary) / 0.06) 0%, transparent 70%)",
+          background: "radial-gradient(ellipse at center, hsl(var(--primary) / 0.07) 0%, transparent 65%)",
+          filter: "blur(100px)",
+        }}
+      />
+      {/* Secondary glow — bottom right */}
+      <div
+        className="absolute bottom-0 right-0 w-[600px] h-[600px] pointer-events-none"
+        style={{
+          background: "radial-gradient(circle at 80% 80%, hsl(var(--primary) / 0.04) 0%, transparent 60%)",
           filter: "blur(80px)",
+        }}
+      />
+      {/* Subtle dot grid pattern */}
+      <div
+        className="absolute inset-0 pointer-events-none opacity-[0.03]"
+        style={{
+          backgroundImage: "radial-gradient(circle, hsl(0 0% 100%) 1px, transparent 1px)",
+          backgroundSize: "32px 32px",
+        }}
+      />
+      {/* Diagonal subtle gradient overlay */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: "linear-gradient(160deg, hsl(0 0% 100% / 0.02) 0%, transparent 40%, hsl(var(--primary) / 0.02) 100%)",
         }}
       />
       {/* Top light strip */}
       <div
         className="absolute top-0 left-0 right-0 h-px"
-        style={{ background: "linear-gradient(90deg, transparent 10%, hsl(var(--primary) / 0.15) 50%, transparent 90%)" }}
+        style={{ background: "linear-gradient(90deg, transparent 10%, hsl(var(--primary) / 0.2) 50%, transparent 90%)" }}
       />
 
       <div className="container mx-auto px-4 relative">
