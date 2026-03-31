@@ -35,7 +35,7 @@ const INFLUENCERS: Influencer[] = [
 
 const STATS = [
   { value: "56M+", label: "Alcance total" },
-  { value: "8", label: "Parceiros" },
+  { value: "8+", label: "Parceiros" },
   { value: "100M+", label: "Visualizações" },
 ];
 
@@ -254,7 +254,7 @@ const Testimonials = () => {
                   aspectRatio: "9/16",
                 }}
               >
-                <div className="absolute inset-0 overflow-hidden bg-foreground" style={{ zIndex: 1 }}>
+                <div className="absolute inset-0 overflow-hidden rounded-2xl bg-foreground" style={{ zIndex: 1 }}>
                   {inf.videos.length > 0 ? (
                     <InfluencerPreviewMedia videos={inf.videos} name={inf.name} scale={inf.previewScale} />
                   ) : (
