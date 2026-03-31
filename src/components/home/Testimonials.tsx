@@ -326,7 +326,7 @@ const Testimonials = () => {
             />
           </div>
         </div>
-
+      </div>
 
       {activeInfluencer !== null && (
         <InfluencerVideoModal
