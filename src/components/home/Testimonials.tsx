@@ -118,7 +118,7 @@ const Testimonials = () => {
   };
 
   return (
-    <section className="relative py-20 md:py-24 bg-foreground overflow-hidden">
+    <section className="relative py-14 md:py-16 bg-foreground overflow-hidden">
       {/* ── Layered background ── */}
       {/* Radial primary glow — top center */}
       <div
