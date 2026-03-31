@@ -279,17 +279,13 @@ const Testimonials = () => {
                 }}
               >
                 <div className="absolute inset-0 overflow-hidden rounded-2xl bg-foreground" style={{ zIndex: 1 }}>
-                  {inf.videos.length > 0 ? (
-                    <InfluencerPreviewMedia videos={inf.videos} name={inf.name} scale={inf.previewScale} />
-                  ) : (
-                    <img
-                      src={inf.avatarImg}
-                      alt={inf.name}
-                      className="w-full h-full object-cover"
-                      loading="lazy"
-                      decoding="async"
-                    />
-                  )}
+                  <img
+                    src={inf.avatarImg}
+                    alt={inf.name}
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                    decoding="async"
+                  />
                 </div>
 
                 {/* Vignette */}
