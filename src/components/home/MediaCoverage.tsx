@@ -52,7 +52,7 @@ const ARTICLES: MediaArticle[] = [
 
 const MediaCoverage = () => {
   return (
-    <section className="relative py-14 md:py-20 bg-foreground overflow-hidden">
+    <section className="relative py-14 md:py-20 overflow-hidden" style={{ background: "hsl(0 0% 4%)" }}>
       {/* ── Layered background ── */}
       {/* Radial primary glow — top center */}
       <div
