@@ -184,57 +184,36 @@ const MediaCoverage = () => {
               className="group block"
             >
               <div
-                className="h-full rounded-xl overflow-hidden transition-all duration-300 group-hover:-translate-y-1"
+                className="h-full rounded-xl overflow-hidden transition-all duration-300 group-hover:-translate-y-1 p-5"
                 style={{
                   background: "hsl(0 0% 100% / 0.025)",
                   border: "1px solid hsl(0 0% 100% / 0.06)",
                 }}
               >
-                {/* Card image */}
-                <div className="relative aspect-[16/10] overflow-hidden">
-                  <img
-                    src={article.image}
-                    alt={article.headline}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                    loading="lazy"
-                    width={768}
-                    height={512}
-                  />
-                  <div
-                    className="absolute inset-0"
-                    style={{
-                      background: "linear-gradient(to top, hsl(0 0% 6% / 0.7) 0%, transparent 50%)",
-                    }}
-                  />
-                  {/* Source badge */}
-                  <div className="absolute top-3 left-3">
-                    <span
-                      className="px-2.5 py-1 rounded-md text-[9px] font-bold uppercase tracking-wider text-primary-foreground/80"
-                      style={{ background: "hsl(0 0% 0% / 0.5)", backdropFilter: "blur(8px)" }}
-                    >
-                      {article.source}
-                    </span>
-                  </div>
+                <span className="text-[10px] text-primary-foreground/25 uppercase tracking-wider">
+                  {article.date}
+                </span>
+
+                <div className="flex items-center gap-2 mt-2 mb-3">
+                  <span
+                    className="px-2.5 py-0.5 rounded-md text-[9px] font-bold uppercase tracking-wider text-primary"
+                    style={{ background: "hsl(var(--primary) / 0.1)" }}
+                  >
+                    {article.source}
+                  </span>
                 </div>
 
-                {/* Card content */}
-                <div className="p-4 md:p-5">
-                  <span className="text-[10px] text-primary-foreground/25 uppercase tracking-wider">
-                    {article.date}
-                  </span>
+                <h4 className="text-sm font-semibold text-primary-foreground/85 leading-snug mb-2 line-clamp-2 group-hover:text-primary-foreground transition-colors">
+                  {article.headline}
+                </h4>
 
-                  <h4 className="text-sm font-semibold text-primary-foreground/85 leading-snug mt-1.5 mb-2 line-clamp-2 group-hover:text-primary-foreground transition-colors">
-                    {article.headline}
-                  </h4>
+                <p className="text-xs text-primary-foreground/35 leading-relaxed line-clamp-2">
+                  {article.excerpt}
+                </p>
 
-                  <p className="text-xs text-primary-foreground/35 leading-relaxed line-clamp-2">
-                    {article.excerpt}
-                  </p>
-
-                  <div className="flex items-center gap-1 mt-3 text-primary opacity-0 group-hover:opacity-100 transition-all duration-200 translate-y-1 group-hover:translate-y-0">
-                    <span className="text-[11px] font-semibold">Ler mais</span>
-                    <ExternalLink className="w-3 h-3" />
-                  </div>
+                <div className="flex items-center gap-1 mt-4 text-primary opacity-0 group-hover:opacity-100 transition-all duration-200 translate-y-1 group-hover:translate-y-0">
+                  <span className="text-[11px] font-semibold">Ler mais</span>
+                  <ExternalLink className="w-3 h-3" />
                 </div>
               </div>
             </motion.a>
