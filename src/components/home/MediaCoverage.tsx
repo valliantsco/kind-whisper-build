@@ -1,97 +1,75 @@
 import { motion } from "framer-motion";
-import { ExternalLink, Newspaper, TrendingUp, Award } from "lucide-react";
-import { useRef, useState, useCallback, useEffect } from "react";
+import { ExternalLink, ArrowUpRight } from "lucide-react";
+import mediaFeatured from "@/assets/media/media-featured.jpg";
+import mediaConsumers from "@/assets/media/media-consumers.jpg";
+import mediaProduction from "@/assets/media/media-production.jpg";
+import mediaSustainability from "@/assets/media/media-sustainability.jpg";
 
 interface MediaArticle {
   source: string;
-  sourceIcon: "newspaper" | "trending" | "award";
   headline: string;
   excerpt: string;
   date: string;
   url: string;
-  featured?: boolean;
+  image: string;
 }
+
+const FEATURED: MediaArticle = {
+  source: "Canal VE",
+  headline: "Autarquia de Uberlândia adota 10 novas motos elétricas da MS Eletric na frota",
+  excerpt: "O DMAE investiu R$ 240 mil em motos elétricas que devem reduzir 9,8 toneladas de CO2 por ano, equivalente à preservação de 42 árvores.",
+  date: "Dez 2023",
+  url: "https://canalve.com.br/autarquia-de-uberlandia-adota-10-novas-motos-eletricas-na-frota/",
+  image: mediaFeatured,
+};
 
 const ARTICLES: MediaArticle[] = [
   {
-    source: "Canal VE",
-    sourceIcon: "newspaper",
-    headline: "Autarquia de Uberlândia adota 10 novas motos elétricas da MS Eletric na frota",
-    excerpt: "O DMAE investiu R$ 240 mil em motos elétricas que devem reduzir 9,8 toneladas de CO2 por ano, equivalente à preservação de 42 árvores.",
-    date: "Dez 2023",
-    url: "https://canalve.com.br/autarquia-de-uberlandia-adota-10-novas-motos-eletricas-na-frota/",
-    featured: true,
-  },
-  {
     source: "Diário de Uberlândia",
-    sourceIcon: "trending",
     headline: "Motos elétricas conquistam consumidores em Uberlândia",
     excerpt: "Crescimento da procura por veículos elétricos na cidade reflete tendência nacional de mobilidade sustentável.",
     date: "2024",
     url: "https://diariodeuberlandia.com.br/noticia/29455/motos-eletricas-conquistam-consumidores-em-uberlandia",
+    image: mediaConsumers,
   },
   {
     source: "Diário do Comércio",
-    sourceIcon: "award",
     headline: "MS Eletric produzirá veículo de duas rodas",
     excerpt: "Empresa mineira expande operação e anuncia produção própria de veículos elétricos de duas rodas para o mercado brasileiro.",
     date: "Set 2021",
     url: "https://diariodocomercio.com.br/economia/ms-eletric-produzira-veiculo-de-duas-rodas/",
+    image: mediaProduction,
   },
   {
     source: "Portal Comunique-se",
-    sourceIcon: "trending",
     headline: "Alto número de veículos poluentes no Brasil chama atenção para a eletromobilidade",
-    excerpt: "Segundo a Diretora da MS Eletric, a grande quantidade de veículos poluentes traz à tona a importância da inovação e sustentabilidade na mobilidade urbana.",
+    excerpt: "A grande quantidade de veículos poluentes traz à tona a importância da inovação e sustentabilidade na mobilidade urbana.",
     date: "Set 2021",
     url: "https://portal.comunique-se.com.br/262085-alto-numero-de-veiculos-poluentes-no-brasil-chama-atencao-para-eletromobilidade/",
+    image: mediaSustainability,
   },
 ];
 
-const iconMap = {
-  newspaper: Newspaper,
-  trending: TrendingUp,
-  award: Award,
-};
-
 const MediaCoverage = () => {
-  const scrollRef = useRef<HTMLDivElement>(null);
-  const [scrollProgress, setScrollProgress] = useState(0);
-
-  const updateScroll = useCallback(() => {
-    const el = scrollRef.current;
-    if (!el) return;
-    const maxScroll = el.scrollWidth - el.clientWidth;
-    setScrollProgress(maxScroll > 0 ? el.scrollLeft / maxScroll : 0);
-  }, []);
-
-  useEffect(() => {
-    const el = scrollRef.current;
-    if (!el) return;
-    updateScroll();
-    el.addEventListener("scroll", updateScroll, { passive: true });
-    return () => el.removeEventListener("scroll", updateScroll);
-  }, [updateScroll]);
-
   return (
-    <section className="relative py-14 md:py-16 bg-foreground overflow-hidden">
-      {/* ── Background layers ── */}
+    <section className="relative py-14 md:py-20 bg-foreground overflow-hidden">
+      {/* ── Background ── */}
       <div
         className="absolute top-0 left-0 right-0 h-px"
         style={{ background: "linear-gradient(90deg, transparent, hsl(0 0% 100% / 0.06), transparent)" }}
       />
       <div
-        className="absolute bottom-0 right-0 w-[500px] h-[500px] pointer-events-none"
+        className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] pointer-events-none"
         style={{
-          background: "radial-gradient(circle at 90% 90%, hsl(var(--primary) / 0.05) 0%, transparent 60%)",
-          filter: "blur(80px)",
+          background: "radial-gradient(ellipse at center, hsl(var(--primary) / 0.04) 0%, transparent 65%)",
+          filter: "blur(100px)",
         }}
       />
       <div
-        className="absolute inset-0 pointer-events-none opacity-[0.02]"
+        className="absolute inset-0 pointer-events-none opacity-[0.015]"
         style={{
           backgroundImage: "radial-gradient(circle, hsl(0 0% 100%) 1px, transparent 1px)",
-          backgroundSize: "40px 40px",
+          backgroundSize: "48px 48px",
         }}
       />
 
@@ -102,7 +80,7 @@ const MediaCoverage = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
-          className="mb-12"
+          className="mb-12 md:mb-16"
         >
           <div className="flex items-center gap-3 mb-6">
             <div className="w-8 h-px bg-primary" />
@@ -111,132 +89,141 @@ const MediaCoverage = () => {
             </span>
           </div>
 
-          <div className="grid md:grid-cols-[1fr_auto] gap-6 md:gap-16 items-end">
-            <h2 className="font-display font-black text-4xl md:text-5xl lg:text-6xl text-primary-foreground uppercase tracking-tight leading-[0.95]">
-              Quem fala da{" "}
-              <span
-                className="bg-clip-text text-transparent"
-                style={{ backgroundImage: "linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)))" }}
-              >
-                MS Electric
-              </span>
-            </h2>
-
-            <p className="text-sm md:text-base text-primary-foreground/50 leading-relaxed max-w-sm">
-              A marca que os principais veículos de comunicação do Brasil estão acompanhando.
-            </p>
-          </div>
+          <h2 className="font-display font-black text-4xl md:text-5xl lg:text-6xl text-primary-foreground uppercase tracking-tight leading-[0.95]">
+            Quem fala da{" "}
+            <span
+              className="bg-clip-text text-transparent"
+              style={{ backgroundImage: "linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)))" }}
+            >
+              MS Electric
+            </span>
+          </h2>
+          <p className="text-sm md:text-base text-primary-foreground/45 leading-relaxed mt-4 max-w-lg">
+            A marca que os principais veículos de comunicação do Brasil estão acompanhando.
+          </p>
         </motion.div>
 
-        {/* ── Featured article ── */}
-        {ARTICLES.filter((a) => a.featured).map((article, i) => {
-          const Icon = iconMap[article.sourceIcon];
-          return (
+        {/* ── Featured article — magazine hero ── */}
+        <motion.a
+          href={FEATURED.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="block mb-6 group"
+        >
+          <div className="relative rounded-2xl overflow-hidden">
+            {/* Image */}
+            <div className="relative aspect-[16/7] md:aspect-[21/9] overflow-hidden">
+              <img
+                src={FEATURED.image}
+                alt={FEATURED.headline}
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                loading="lazy"
+                width={960}
+                height={540}
+              />
+              {/* Gradient overlay */}
+              <div
+                className="absolute inset-0"
+                style={{
+                  background: "linear-gradient(to top, hsl(0 0% 4% / 0.95) 0%, hsl(0 0% 4% / 0.6) 40%, hsl(0 0% 4% / 0.2) 70%, transparent 100%)",
+                }}
+              />
+              {/* Subtle primary glow */}
+              <div
+                className="absolute bottom-0 left-0 w-[400px] h-[200px] pointer-events-none"
+                style={{
+                  background: "radial-gradient(ellipse at bottom left, hsl(var(--primary) / 0.15), transparent 70%)",
+                }}
+              />
+            </div>
+
+            {/* Content overlay */}
+            <div className="absolute bottom-0 left-0 right-0 p-5 md:p-8">
+              <div className="flex items-center gap-3 mb-3">
+                <span
+                  className="px-3 py-1 rounded-md text-[10px] font-bold uppercase tracking-wider text-primary"
+                  style={{ background: "hsl(var(--primary) / 0.15)", backdropFilter: "blur(8px)" }}
+                >
+                  {FEATURED.source}
+                </span>
+                <span className="text-[11px] text-primary-foreground/35">{FEATURED.date}</span>
+              </div>
+
+              <h3 className="text-lg md:text-2xl lg:text-3xl font-bold text-primary-foreground leading-snug max-w-3xl mb-2 group-hover:text-primary transition-colors duration-300">
+                {FEATURED.headline}
+              </h3>
+
+              <p className="text-sm text-primary-foreground/45 leading-relaxed max-w-2xl hidden md:block">
+                {FEATURED.excerpt}
+              </p>
+
+              <div className="flex items-center gap-1.5 mt-4 text-primary">
+                <span className="text-xs font-semibold tracking-wide uppercase">Ler matéria completa</span>
+                <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </div>
+            </div>
+          </div>
+        </motion.a>
+
+        {/* ── Article grid — editorial cards ── */}
+        <div className="grid md:grid-cols-3 gap-4 md:gap-5">
+          {ARTICLES.map((article, i) => (
             <motion.a
-              key={`featured-${i}`}
+              key={i}
               href={article.url}
               target="_blank"
               rel="noopener noreferrer"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              className="block mb-8 group"
+              transition={{ delay: i * 0.1, duration: 0.5 }}
+              className="group block"
             >
               <div
-                className="relative rounded-2xl p-6 md:p-8 overflow-hidden transition-all duration-300 group-hover:-translate-y-0.5"
+                className="h-full rounded-xl overflow-hidden transition-all duration-300 group-hover:-translate-y-1"
                 style={{
-                  background: "linear-gradient(135deg, hsl(var(--primary) / 0.08) 0%, hsl(0 0% 100% / 0.03) 100%)",
-                  border: "1px solid hsl(var(--primary) / 0.15)",
+                  background: "hsl(0 0% 100% / 0.025)",
+                  border: "1px solid hsl(0 0% 100% / 0.06)",
                 }}
               >
-                {/* Glow accent */}
-                <div
-                  className="absolute top-0 right-0 w-[300px] h-[200px] pointer-events-none"
-                  style={{
-                    background: "radial-gradient(circle at top right, hsl(var(--primary) / 0.08), transparent 70%)",
-                  }}
-                />
-
-                <div className="relative flex flex-col md:flex-row md:items-start gap-4 md:gap-8">
-                  <div className="flex-1 min-w-0">
-                    <div className="flex items-center gap-2.5 mb-3">
-                      <div
-                        className="w-8 h-8 rounded-lg flex items-center justify-center"
-                        style={{ background: "hsl(var(--primary) / 0.15)" }}
-                      >
-                        <Icon className="w-4 h-4 text-primary" />
-                      </div>
-                      <span className="text-xs font-bold uppercase tracking-wider text-primary">
-                        {article.source}
-                      </span>
-                      <span className="text-[11px] text-primary-foreground/25 ml-auto md:ml-4">
-                        {article.date}
-                      </span>
-                    </div>
-
-                    <h3 className="text-lg md:text-xl font-bold text-primary-foreground/90 leading-snug mb-2 group-hover:text-primary-foreground transition-colors">
-                      {article.headline}
-                    </h3>
-
-                    <p className="text-sm text-primary-foreground/40 leading-relaxed max-w-2xl">
-                      {article.excerpt}
-                    </p>
-                  </div>
-
-                  <div className="flex items-center gap-1.5 text-primary opacity-0 group-hover:opacity-100 transition-opacity duration-200 shrink-0 self-end md:self-center">
-                    <span className="text-xs font-semibold">Ler mais</span>
-                    <ExternalLink className="w-3.5 h-3.5" />
-                  </div>
-                </div>
-              </div>
-            </motion.a>
-          );
-        })}
-
-        {/* ── Article cards carousel ── */}
-        <div
-          ref={scrollRef}
-          className="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-4"
-          style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
-        >
-          {ARTICLES.filter((a) => !a.featured).map((article, i) => {
-            const Icon = iconMap[article.sourceIcon];
-            return (
-              <motion.a
-                key={i}
-                href={article.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.08, duration: 0.4 }}
-                className="flex-shrink-0 snap-start group w-[280px] md:w-[320px]"
-              >
-                <div
-                  className="h-full rounded-xl p-5 transition-all duration-300 group-hover:-translate-y-0.5"
-                  style={{
-                    background: "hsl(0 0% 100% / 0.03)",
-                    border: "1px solid hsl(0 0% 100% / 0.06)",
-                  }}
-                >
-                  <div className="flex items-center gap-2 mb-4">
-                    <div
-                      className="w-7 h-7 rounded-md flex items-center justify-center"
-                      style={{ background: "hsl(var(--primary) / 0.1)" }}
+                {/* Card image */}
+                <div className="relative aspect-[16/10] overflow-hidden">
+                  <img
+                    src={article.image}
+                    alt={article.headline}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    loading="lazy"
+                    width={768}
+                    height={512}
+                  />
+                  <div
+                    className="absolute inset-0"
+                    style={{
+                      background: "linear-gradient(to top, hsl(0 0% 6% / 0.7) 0%, transparent 50%)",
+                    }}
+                  />
+                  {/* Source badge */}
+                  <div className="absolute top-3 left-3">
+                    <span
+                      className="px-2.5 py-1 rounded-md text-[9px] font-bold uppercase tracking-wider text-primary-foreground/80"
+                      style={{ background: "hsl(0 0% 0% / 0.5)", backdropFilter: "blur(8px)" }}
                     >
-                      <Icon className="w-3.5 h-3.5 text-primary" />
-                    </div>
-                    <span className="text-[11px] font-bold uppercase tracking-wider text-primary-foreground/50">
                       {article.source}
                     </span>
-                    <span className="text-[10px] text-primary-foreground/20 ml-auto">
-                      {article.date}
-                    </span>
                   </div>
+                </div>
 
-                  <h4 className="text-sm font-semibold text-primary-foreground/80 leading-snug mb-2 line-clamp-3 group-hover:text-primary-foreground/95 transition-colors">
+                {/* Card content */}
+                <div className="p-4 md:p-5">
+                  <span className="text-[10px] text-primary-foreground/25 uppercase tracking-wider">
+                    {article.date}
+                  </span>
+
+                  <h4 className="text-sm font-semibold text-primary-foreground/85 leading-snug mt-1.5 mb-2 line-clamp-2 group-hover:text-primary-foreground transition-colors">
                     {article.headline}
                   </h4>
 
@@ -244,28 +231,14 @@ const MediaCoverage = () => {
                     {article.excerpt}
                   </p>
 
-                  <div className="flex items-center gap-1 mt-4 text-primary opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                  <div className="flex items-center gap-1 mt-3 text-primary opacity-0 group-hover:opacity-100 transition-all duration-200 translate-y-1 group-hover:translate-y-0">
                     <span className="text-[11px] font-semibold">Ler mais</span>
                     <ExternalLink className="w-3 h-3" />
                   </div>
                 </div>
-              </motion.a>
-            );
-          })}
-        </div>
-
-        {/* Progress bar */}
-        <div className="mt-4 h-[2px] rounded-full overflow-hidden" style={{ background: "hsl(0 0% 100% / 0.04)" }}>
-          <div
-            className="h-full rounded-full"
-            style={{
-              background: "linear-gradient(90deg, hsl(var(--primary)), hsl(var(--primary-glow)))",
-              width: "35%",
-              transform: `translateX(${scrollProgress * (100 / 0.35 - 100)}%)`,
-              transition: "transform 0.4s cubic-bezier(0.22, 1, 0.36, 1)",
-              boxShadow: "0 0 6px hsl(var(--primary) / 0.3)",
-            }}
-          />
+              </div>
+            </motion.a>
+          ))}
         </div>
       </div>
     </section>
