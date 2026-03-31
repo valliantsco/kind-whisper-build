@@ -8,6 +8,7 @@ import QuizCta from "@/components/home/QuizCta";
 import ProductCarousel from "@/components/home/ProductCarousel";
 import WhyChoose from "@/components/home/WhyChoose";
 import Testimonials from "@/components/home/Testimonials";
+import MediaCoverage from "@/components/home/MediaCoverage";
 import HomeFooter from "@/components/home/HomeFooter";
 
 const Index = () => {
@@ -22,6 +23,7 @@ const Index = () => {
       <ProductCarousel />
       <WhyChoose />
       <Testimonials />
+      <MediaCoverage />
       <HomeFooter />
       <FloatingWhatsApp />
       <PopUpContato01 isOpen={contactOpen} onClose={() => setContactOpen(false)} />
