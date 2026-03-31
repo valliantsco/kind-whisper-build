@@ -52,7 +52,7 @@ const ARTICLES: MediaArticle[] = [
 
 const MediaCoverage = () => {
   return (
-    <section className="relative py-14 md:py-20 bg-foreground overflow-hidden">
+    <section className="relative py-14 md:py-20 overflow-hidden" style={{ background: "hsl(0 0% 4%)" }}>
       {/* ── Layered background ── */}
       {/* Radial primary glow — top center */}
       <div
@@ -98,9 +98,9 @@ const MediaCoverage = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
-          className="mb-12 md:mb-16"
+          className="mb-12 md:mb-16 text-right"
         >
-          <div className="flex items-center gap-3 mb-6">
+          <div className="flex items-center gap-3 mb-6 justify-end">
             <div className="w-8 h-px bg-primary" />
             <span className="text-[13px] font-bold uppercase tracking-[0.2em] text-primary">
               MS na Mídia
@@ -116,7 +116,7 @@ const MediaCoverage = () => {
               MS Electric
             </span>
           </h2>
-          <p className="text-sm md:text-base text-primary-foreground/45 leading-relaxed mt-4 max-w-lg">
+          <p className="text-sm md:text-base text-primary-foreground/45 leading-relaxed mt-4 max-w-lg ml-auto">
             A marca que os principais veículos de comunicação do Brasil estão acompanhando.
           </p>
         </motion.div>
