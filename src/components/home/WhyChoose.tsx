@@ -16,37 +16,59 @@ const WhyChoose = () => {
     <section
       id="por-que"
       className="relative py-14 md:py-20 overflow-hidden"
-      style={{ background: "hsl(0 0% 7%)" }}
+      style={{
+        background: "linear-gradient(180deg, hsl(0 0% 4%) 0%, hsl(0 0% 7%) 40%, hsl(0 0% 5%) 100%)",
+      }}
     >
       {/* ── Background effects ── */}
+      {/* Primary glow — top center */}
       <div
-        className="absolute top-0 left-1/2 -translate-x-1/2 w-[1100px] h-[600px] pointer-events-none"
+        className="absolute top-[-200px] left-1/2 -translate-x-1/2 w-[1200px] h-[700px] pointer-events-none"
         style={{
-          background: "radial-gradient(ellipse at center, hsl(var(--primary) / 0.06) 0%, transparent 60%)",
-          filter: "blur(120px)",
-        }}
-      />
-      <div
-        className="absolute bottom-0 right-0 w-[600px] h-[600px] pointer-events-none"
-        style={{
-          background: "radial-gradient(circle at 80% 100%, hsl(var(--primary) / 0.04) 0%, transparent 55%)",
+          background: "radial-gradient(ellipse 70% 50% at center, hsl(var(--primary) / 0.07) 0%, transparent 70%)",
           filter: "blur(100px)",
         }}
       />
+      {/* Secondary glow — bottom right */}
       <div
-        className="absolute inset-0 pointer-events-none opacity-[0.02]"
+        className="absolute bottom-[-100px] right-[-100px] w-[700px] h-[700px] pointer-events-none"
         style={{
-          backgroundImage: "radial-gradient(circle, hsl(0 0% 100%) 1px, transparent 1px)",
-          backgroundSize: "40px 40px",
+          background: "radial-gradient(circle at 70% 70%, hsl(var(--primary) / 0.05) 0%, transparent 60%)",
+          filter: "blur(120px)",
         }}
       />
+      {/* Tertiary glow — left */}
       <div
-        className="absolute top-0 left-0 w-[300px] md:w-[500px] h-[3px]"
-        style={{ background: "linear-gradient(90deg, hsl(var(--primary) / 0.6), transparent)" }}
+        className="absolute top-1/2 -translate-y-1/2 left-[-150px] w-[500px] h-[500px] pointer-events-none"
+        style={{
+          background: "radial-gradient(circle, hsl(var(--primary) / 0.03) 0%, transparent 65%)",
+          filter: "blur(100px)",
+        }}
       />
+      {/* Dot pattern */}
       <div
-        className="absolute bottom-0 right-0 w-[300px] md:w-[500px] h-[3px]"
-        style={{ background: "linear-gradient(270deg, hsl(var(--primary) / 0.6), transparent)" }}
+        className="absolute inset-0 pointer-events-none opacity-[0.025]"
+        style={{
+          backgroundImage: "radial-gradient(circle, hsl(0 0% 100%) 0.8px, transparent 0.8px)",
+          backgroundSize: "32px 32px",
+        }}
+      />
+      {/* Noise texture overlay */}
+      <div
+        className="absolute inset-0 pointer-events-none opacity-[0.03]"
+        style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E")`,
+        }}
+      />
+      {/* Top accent line */}
+      <div
+        className="absolute top-0 left-0 w-[300px] md:w-[500px] h-px"
+        style={{ background: "linear-gradient(90deg, hsl(var(--primary) / 0.5), transparent)" }}
+      />
+      {/* Bottom accent line */}
+      <div
+        className="absolute bottom-0 right-0 w-[300px] md:w-[500px] h-px"
+        style={{ background: "linear-gradient(270deg, hsl(var(--primary) / 0.5), transparent)" }}
       />
 
       <div className="container mx-auto px-4 relative">
