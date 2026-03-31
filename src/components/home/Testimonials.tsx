@@ -275,7 +275,7 @@ const Testimonials = () => {
             {/* Accent line + label */}
             <div className="flex items-center gap-3 mb-6">
               <div className="w-8 h-px bg-primary" />
-              <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-primary">
+              <span className="text-[13px] font-bold uppercase tracking-[0.2em] text-primary">
                 Parcerias de marca
               </span>
             </div>
