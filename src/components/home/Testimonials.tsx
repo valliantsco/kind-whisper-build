@@ -141,35 +141,30 @@ const Testimonials = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
-            className="grid md:grid-cols-[1fr_auto] gap-8 md:gap-16 items-end"
+            className="text-center"
           >
-            {/* Left: title block */}
-            <div>
-              {/* Accent line + label */}
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-8 h-px bg-primary" />
-                <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-primary">
-                  Parcerias de marca
-                </span>
-              </div>
-
-              <h2 className="font-display font-black text-4xl md:text-5xl lg:text-6xl text-primary-foreground uppercase tracking-tight leading-[0.95]">
-                Credibilidade<br className="hidden md:block" /> que se torna{" "}
-                <span
-                  className="bg-clip-text text-transparent"
-                  style={{ backgroundImage: "linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)))" }}
-                >
-                  referência
-                </span>
-              </h2>
+            {/* Accent line + label */}
+            <div className="flex items-center justify-center gap-3 mb-6">
+              <div className="w-8 h-px bg-primary" />
+              <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-primary">
+                Parcerias de marca
+              </span>
+              <div className="w-8 h-px bg-primary" />
             </div>
 
-            {/* Right: description */}
-            <div className="max-w-sm">
-              <p className="text-sm text-primary-foreground/45 leading-relaxed">
-                A presença ao lado de nomes de grande alcance reforça a percepção de uma marca atual, confiável e cada vez mais relevante no universo da mobilidade elétrica.
-              </p>
-            </div>
+            <h2 className="font-display font-black text-4xl md:text-5xl lg:text-6xl text-primary-foreground uppercase tracking-tight leading-[0.95]">
+              Credibilidade que se torna{" "}
+              <span
+                className="bg-clip-text text-transparent"
+                style={{ backgroundImage: "linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)))" }}
+              >
+                referência
+              </span>
+            </h2>
+
+            <p className="text-sm md:text-base text-primary-foreground/55 leading-relaxed mt-5 max-w-2xl mx-auto">
+              A presença ao lado de nomes de grande alcance reforça a percepção de uma marca atual, confiável e cada vez mais relevante no universo da mobilidade elétrica.
+            </p>
           </motion.div>
 
           {/* ── Stat bar ── */}
