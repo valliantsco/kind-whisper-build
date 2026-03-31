@@ -36,7 +36,7 @@ const WhyChoose = () => {
       ref={sectionRef}
       id="por-que"
       className="relative overflow-hidden"
-      style={{ background: "hsl(0 0% 7%)", height: "250vh" }}
+      style={{ background: "hsl(0 0% 7%)", height: "180vh" }}
     >
       <div className="sticky top-0 h-screen overflow-hidden flex flex-col justify-center">
         {/* ── Layered background effects ── */}
