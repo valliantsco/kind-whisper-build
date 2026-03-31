@@ -317,17 +317,17 @@ const Testimonials = () => {
                 </div>
 
                 {/* Bottom info */}
-                <div className="absolute bottom-3 left-3 flex items-center gap-2" style={{ zIndex: 20 }}>
-                  <div className="w-9 h-9 rounded-full p-[2px] shrink-0" style={{ background: "linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)))" }}>
+                <div className="absolute bottom-3.5 left-3.5 flex items-center gap-2.5" style={{ zIndex: 20 }}>
+                  <div className="w-11 h-11 rounded-full p-[2px] shrink-0" style={{ background: "linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)))" }}>
                     <div className="w-full h-full rounded-full overflow-hidden">
                       <img src={inf.avatarImg} alt={inf.name} className="w-full h-full object-cover rounded-full" />
                     </div>
                   </div>
                   <div className="min-w-0">
-                    <p className="text-xs font-bold text-primary-foreground truncate leading-tight" style={{ textShadow: "0 1px 6px hsl(0 0% 0% / 0.9)" }}>
+                    <p className="text-sm font-bold text-primary-foreground truncate leading-tight" style={{ textShadow: "0 1px 6px hsl(0 0% 0% / 0.9)" }}>
                       {inf.name}
                     </p>
-                    <p className="text-[11px] text-primary-foreground/50 truncate" style={{ textShadow: "0 1px 4px hsl(0 0% 0% / 0.7)" }}>
+                    <p className="text-xs text-primary-foreground/50 truncate" style={{ textShadow: "0 1px 4px hsl(0 0% 0% / 0.7)" }}>
                       {inf.views}
                     </p>
                   </div>
