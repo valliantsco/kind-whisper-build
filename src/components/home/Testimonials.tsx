@@ -160,23 +160,23 @@ const Testimonials = () => {
       {/* ── Floating animated badges ── */}
       {/* Pulsing stars */}
       {[
-        { top: "8%", left: "5%", size: 14, delay: 0, opacity: 0.12 },
-        { top: "18%", right: "8%", size: 10, delay: 1.2, opacity: 0.08 },
-        { top: "65%", left: "3%", size: 12, delay: 0.6, opacity: 0.1 },
-        { top: "75%", right: "12%", size: 16, delay: 1.8, opacity: 0.07 },
-        { top: "40%", right: "4%", size: 8, delay: 2.4, opacity: 0.1 },
-        { top: "90%", left: "15%", size: 10, delay: 0.3, opacity: 0.09 },
+        { top: "8%", left: "5%", size: 18, delay: 0, opacity: 0.3 },
+        { top: "18%", right: "8%", size: 14, delay: 1.2, opacity: 0.22 },
+        { top: "65%", left: "3%", size: 16, delay: 0.6, opacity: 0.25 },
+        { top: "75%", right: "12%", size: 20, delay: 1.8, opacity: 0.2 },
+        { top: "40%", right: "4%", size: 12, delay: 2.4, opacity: 0.25 },
+        { top: "90%", left: "15%", size: 14, delay: 0.3, opacity: 0.22 },
       ].map((s, i) => (
         <motion.div
           key={`star-${i}`}
           className="absolute pointer-events-none text-primary"
           style={{ top: s.top, left: s.left, right: s.right }}
           animate={{
-            opacity: [s.opacity * 0.4, s.opacity, s.opacity * 0.4],
-            scale: [0.8, 1.1, 0.8],
+            opacity: [s.opacity * 0.2, s.opacity, s.opacity * 0.2],
+            scale: [0.6, 1.2, 0.6],
           }}
           transition={{
-            duration: 3,
+            duration: 2.2,
             repeat: Infinity,
             delay: s.delay,
             ease: "easeInOut",
@@ -188,9 +188,9 @@ const Testimonials = () => {
 
       {/* Sparkle accents */}
       {[
-        { top: "12%", left: "20%", size: 12, delay: 0.8, opacity: 0.08 },
-        { top: "55%", right: "6%", size: 14, delay: 2.0, opacity: 0.06 },
-        { top: "30%", left: "8%", size: 10, delay: 1.5, opacity: 0.09 },
+        { top: "12%", left: "20%", size: 16, delay: 0.8, opacity: 0.2 },
+        { top: "55%", right: "6%", size: 18, delay: 2.0, opacity: 0.18 },
+        { top: "30%", left: "8%", size: 14, delay: 1.5, opacity: 0.22 },
       ].map((s, i) => (
         <motion.div
           key={`sparkle-${i}`}
@@ -199,9 +199,10 @@ const Testimonials = () => {
           animate={{
             opacity: [0, s.opacity, 0],
             rotate: [0, 180],
+            scale: [0.7, 1.15, 0.7],
           }}
           transition={{
-            duration: 4,
+            duration: 3,
             repeat: Infinity,
             delay: s.delay,
             ease: "easeInOut",
@@ -213,8 +214,8 @@ const Testimonials = () => {
 
       {/* Floating energy bolts */}
       {[
-        { top: "25%", right: "18%", size: 11, delay: 0.5, opacity: 0.07 },
-        { top: "80%", left: "22%", size: 9, delay: 1.0, opacity: 0.06 },
+        { top: "25%", right: "18%", size: 15, delay: 0.5, opacity: 0.18 },
+        { top: "80%", left: "22%", size: 13, delay: 1.0, opacity: 0.16 },
       ].map((s, i) => (
         <motion.div
           key={`zap-${i}`}
@@ -222,10 +223,11 @@ const Testimonials = () => {
           style={{ top: s.top, left: s.left, right: s.right }}
           animate={{
             opacity: [0, s.opacity, 0],
-            y: [0, -8, 0],
+            y: [0, -14, 0],
+            scale: [0.8, 1.2, 0.8],
           }}
           transition={{
-            duration: 2.5,
+            duration: 2,
             repeat: Infinity,
             delay: s.delay,
             ease: "easeInOut",
@@ -237,21 +239,22 @@ const Testimonials = () => {
 
       {/* Floating orbs */}
       {[
-        { top: "15%", left: "45%", w: 4, delay: 0, opacity: 0.15 },
-        { top: "50%", left: "92%", w: 3, delay: 1.4, opacity: 0.12 },
-        { top: "70%", left: "35%", w: 5, delay: 2.2, opacity: 0.1 },
-        { top: "35%", left: "75%", w: 3, delay: 0.7, opacity: 0.13 },
+        { top: "15%", left: "45%", w: 6, delay: 0, opacity: 0.3 },
+        { top: "50%", left: "92%", w: 5, delay: 1.4, opacity: 0.25 },
+        { top: "70%", left: "35%", w: 7, delay: 2.2, opacity: 0.22 },
+        { top: "35%", left: "75%", w: 5, delay: 0.7, opacity: 0.28 },
       ].map((o, i) => (
         <motion.div
           key={`orb-${i}`}
           className="absolute pointer-events-none rounded-full bg-primary"
           style={{ top: o.top, left: o.left, width: o.w, height: o.w }}
           animate={{
-            opacity: [o.opacity * 0.3, o.opacity, o.opacity * 0.3],
-            y: [0, -6, 0],
+            opacity: [o.opacity * 0.15, o.opacity, o.opacity * 0.15],
+            y: [0, -12, 0],
+            scale: [0.8, 1.3, 0.8],
           }}
           transition={{
-            duration: 3.5,
+            duration: 2.8,
             repeat: Infinity,
             delay: o.delay,
             ease: "easeInOut",
