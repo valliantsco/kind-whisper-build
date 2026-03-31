@@ -101,10 +101,10 @@ const MediaCoverage = () => {
           background: "linear-gradient(160deg, hsl(0 0% 100% / 0.015) 0%, transparent 35%, hsl(var(--primary) / 0.025) 100%)",
         }}
       />
-      {/* Top light strip */}
+      {/* Top light strip — thicker */}
       <div
-        className="absolute top-0 left-0 right-0 h-px"
-        style={{ background: "linear-gradient(90deg, transparent 10%, hsl(var(--primary) / 0.25) 50%, transparent 90%)" }}
+        className="absolute top-0 left-0 right-0 h-[3px]"
+        style={{ background: "linear-gradient(90deg, transparent 5%, hsl(var(--primary) / 0.6) 50%, transparent 95%)" }}
       />
       {/* Bottom light strip for smooth exit */}
       <div
