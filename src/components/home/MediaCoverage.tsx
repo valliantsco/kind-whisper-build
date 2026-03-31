@@ -101,15 +101,15 @@ const MediaCoverage = () => {
           background: "linear-gradient(160deg, hsl(0 0% 100% / 0.015) 0%, transparent 35%, hsl(var(--primary) / 0.025) 100%)",
         }}
       />
-      {/* Top light strip — thicker */}
+      {/* Top-left accent line */}
       <div
-        className="absolute top-0 left-0 right-0 h-[3px]"
-        style={{ background: "linear-gradient(90deg, transparent 5%, hsl(var(--primary) / 0.6) 50%, transparent 95%)" }}
+        className="absolute top-0 left-0 w-[300px] md:w-[500px] h-[3px]"
+        style={{ background: "linear-gradient(90deg, hsl(var(--primary) / 0.6), transparent)" }}
       />
-      {/* Bottom light strip for smooth exit */}
+      {/* Bottom-right accent line */}
       <div
-        className="absolute bottom-0 left-0 right-0 h-px"
-        style={{ background: "linear-gradient(90deg, transparent, hsl(0 0% 100% / 0.04), transparent)" }}
+        className="absolute bottom-0 right-0 w-[300px] md:w-[500px] h-[3px]"
+        style={{ background: "linear-gradient(270deg, hsl(var(--primary) / 0.6), transparent)" }}
       />
 
       {/* ── Floating animated elements ── */}
