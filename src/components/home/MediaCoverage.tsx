@@ -116,7 +116,7 @@ const MediaCoverage = () => {
               MS Electric
             </span>
           </h2>
-          <p className="text-sm md:text-base text-primary-foreground/45 leading-relaxed mt-4 max-w-lg">
+          <p className="text-sm md:text-base text-primary-foreground/45 leading-relaxed mt-4 max-w-lg ml-auto">
             A marca que os principais veículos de comunicação do Brasil estão acompanhando.
           </p>
         </motion.div>
