@@ -275,13 +275,17 @@ const Testimonials = () => {
                 }}
               >
                 <div className="absolute inset-0 overflow-hidden rounded-2xl bg-foreground" style={{ zIndex: 1 }}>
-                  <img
-                    src={inf.avatarImg}
-                    alt={inf.name}
-                    className="w-full h-full object-cover"
-                    loading="lazy"
-                    decoding="async"
-                  />
+                  {inf.videos.length > 0 ? (
+                    <InfluencerPreviewMedia videos={inf.videos} name={inf.name} scale={inf.previewScale} />
+                  ) : (
+                    <img
+                      src={inf.avatarImg}
+                      alt={inf.name}
+                      className="w-full h-full object-cover"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  )}
                 </div>
 
                 {/* Vignette */}
@@ -292,21 +296,6 @@ const Testimonials = () => {
                     boxShadow: "inset 0 0 40px 15px hsl(0 0% 6% / 0.9), inset 0 0 80px 30px hsl(0 0% 6% / 0.5)",
                   }}
                 />
-
-                {/* Play overlay on hover */}
-                <div
-                  className="absolute inset-0 flex items-center justify-center transition-all duration-200 pointer-events-none"
-                  style={{ zIndex: 3, background: "transparent" }}
-                >
-                  <div
-                    className="w-12 h-12 rounded-full flex items-center justify-center opacity-0 scale-75 group-hover:opacity-100 group-hover:scale-100 transition-all duration-200"
-                    style={{ background: "hsl(0 0% 100% / 0.9)" }}
-                  >
-                    <svg width="18" height="20" viewBox="0 0 18 20" fill="none">
-                      <path d="M2 1.5L16 10L2 18.5V1.5Z" fill="hsl(0 0% 10%)" />
-                    </svg>
-                  </div>
-                </div>
 
                 {/* Bottom info */}
                 <div className="absolute bottom-3.5 left-3.5 flex items-center gap-2.5" style={{ zIndex: 20 }}>
