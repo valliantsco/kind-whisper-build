@@ -137,15 +137,6 @@ const MediaCoverage = () => {
         </motion.div>
       ))}
 
-      {/* Animated horizontal scan line */}
-      <motion.div
-        className="absolute left-0 right-0 h-[1px] pointer-events-none"
-        style={{
-          background: "linear-gradient(90deg, transparent, hsl(var(--primary) / 0.08), transparent)",
-        }}
-        animate={{ top: ["10%", "90%", "10%"] }}
-        transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-      />
 
       <div className="container mx-auto px-4 relative">
         {/* ── Header ── */}
