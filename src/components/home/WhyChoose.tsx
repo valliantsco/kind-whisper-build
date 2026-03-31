@@ -21,12 +21,12 @@ const WhyChoose = () => {
   });
 
   // Map scroll progress to shooting star line width (0% to 100%)
-  const lineWidth = useTransform(scrollYProgress, [0.15, 0.85], ["0%", "100%"]);
-  const glowX = useTransform(scrollYProgress, [0.15, 0.85], ["0%", "100%"]);
+  const lineWidth = useTransform(scrollYProgress, [0.05, 0.9], ["0%", "100%"]);
+  const glowX = useTransform(scrollYProgress, [0.05, 0.9], ["0%", "100%"]);
 
   // Track which card the line has reached
   useMotionValueEvent(scrollYProgress, "change", (v) => {
-    const progress = (v - 0.15) / 0.7; // normalize to 0-1
+    const progress = (v - 0.05) / 0.85; // normalize to 0-1
     const cardIdx = Math.floor(progress * 4);
     setActiveCard(Math.min(cardIdx, 3));
   });
