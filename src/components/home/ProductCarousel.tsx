@@ -1,8 +1,15 @@
-import { useRef, useState } from "react";
+import { useRef, useState, useCallback, useEffect } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, ChevronLeft, ChevronRight, Zap, Gauge, Weight } from "lucide-react";
+import {
+  ArrowRight,
+  ChevronLeft,
+  ChevronRight,
+  Zap,
+  Gauge,
+  Weight,
+  Sparkles,
+} from "lucide-react";
 
-// Real MS Eletric catalog
 import modelS3k from "@/assets/models/model-s3k.png";
 import modelTour3k from "@/assets/models/model-tour-3k.png";
 import modelBliss from "@/assets/models/model-bliss-new.png";
@@ -14,7 +21,17 @@ import modelTricycle from "@/assets/models/model-tricycle-new.png";
 import modelBigSur from "@/assets/models/model-big-sur-new.png";
 import modelLibertyUltra from "@/assets/models/model-liberty-ultra.png";
 
-const PRODUCTS = [
+interface Product {
+  name: string;
+  category: string;
+  image: string;
+  autonomy: string;
+  speed: string;
+  load: string;
+  price: string;
+}
+
+const PRODUCTS: Product[] = [
   { name: "S3K", category: "Scooter", image: modelS3k, autonomy: "85km", speed: "80km/h", load: "120kg", price: "R$ 19.990" },
   { name: "Tour 3K", category: "Scooter", image: modelTour3k, autonomy: "40km", speed: "75km/h", load: "120kg", price: "R$ 16.990" },
   { name: "New Holiday", category: "Scooter", image: modelNewHoliday, autonomy: "50km", speed: "50km/h", load: "150kg", price: "R$ 15.990" },
@@ -27,172 +44,403 @@ const PRODUCTS = [
   { name: "Triciclo Elétrico", category: "Triciclo", image: modelTricycle, autonomy: "60km", speed: "32km/h", load: "150kg", price: "R$ 15.990" },
 ];
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" as const } },
-};
+const FLOATING_ACCENTS = [
+  { top: "6%", right: "8%", size: 14, delay: 0.3, opacity: 0.2 },
+  { top: "50%", left: "3%", size: 16, delay: 1.8, opacity: 0.18 },
+  { top: "85%", right: "5%", size: 12, delay: 2.5, opacity: 0.22 },
+];
 
 const ProductCarousel = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [scrollProgress, setScrollProgress] = useState(0);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(true);
 
-  const scroll = (dir: number) => {
-    const el = scrollRef.current;
-    if (!el) return;
-    el.scrollBy({ left: dir * 340, behavior: "smooth" });
-  };
-
-  const handleScroll = () => {
+  const updateScroll = useCallback(() => {
     const el = scrollRef.current;
     if (!el) return;
     const max = el.scrollWidth - el.clientWidth;
     setScrollProgress(max > 0 ? el.scrollLeft / max : 0);
+    setCanScrollLeft(el.scrollLeft > 10);
+    setCanScrollRight(el.scrollLeft < max - 10);
+  }, []);
+
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+    updateScroll();
+    el.addEventListener("scroll", updateScroll, { passive: true });
+    window.addEventListener("resize", updateScroll);
+    return () => {
+      el.removeEventListener("scroll", updateScroll);
+      window.removeEventListener("resize", updateScroll);
+    };
+  }, [updateScroll]);
+
+  const scroll = (dir: number) => {
+    scrollRef.current?.scrollBy({ left: dir * 320, behavior: "smooth" });
   };
 
   return (
-    <section id="modelos" className="relative bg-foreground py-28 overflow-hidden">
-      <div className="container mx-auto px-4">
+    <section
+      id="modelos"
+      className="relative py-14 md:py-20 overflow-hidden"
+      style={{ background: "hsl(0 0% 4%)" }}
+    >
+      {/* ── Layered background ── */}
+      <div
+        className="absolute -top-20 left-[15%] w-[1000px] h-[600px] pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(ellipse at center, hsl(var(--primary) / 0.08) 0%, transparent 60%)",
+          filter: "blur(120px)",
+        }}
+      />
+      <div
+        className="absolute bottom-0 right-0 w-[700px] h-[700px] pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(circle at 80% 80%, hsl(var(--primary) / 0.05) 0%, transparent 55%)",
+          filter: "blur(100px)",
+        }}
+      />
+      <div
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(ellipse at center, hsl(var(--primary) / 0.03) 0%, transparent 70%)",
+          filter: "blur(80px)",
+        }}
+      />
+      {/* Dot grid */}
+      <div
+        className="absolute inset-0 pointer-events-none opacity-[0.025]"
+        style={{
+          backgroundImage:
+            "radial-gradient(circle, hsl(0 0% 100%) 1px, transparent 1px)",
+          backgroundSize: "28px 28px",
+        }}
+      />
+      {/* Diagonal overlay */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background:
+            "linear-gradient(160deg, hsl(0 0% 100% / 0.015) 0%, transparent 35%, hsl(var(--primary) / 0.025) 100%)",
+        }}
+      />
+      {/* Top-left accent line */}
+      <div
+        className="absolute top-0 left-0 w-[300px] md:w-[500px] h-[3px]"
+        style={{
+          background:
+            "linear-gradient(90deg, hsl(var(--primary) / 0.6), transparent)",
+        }}
+      />
+      {/* Bottom-right accent line */}
+      <div
+        className="absolute bottom-0 right-0 w-[300px] md:w-[500px] h-[3px]"
+        style={{
+          background:
+            "linear-gradient(270deg, hsl(var(--primary) / 0.6), transparent)",
+        }}
+      />
+
+      {/* Floating elements */}
+      {FLOATING_ACCENTS.map((el, i) => (
         <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={fadeUp}
+          key={i}
+          className="absolute pointer-events-none"
+          style={{
+            top: el.top,
+            left: (el as any).left,
+            right: (el as any).right,
+          }}
+          animate={{
+            y: [0, -12, 0],
+            opacity: [el.opacity, el.opacity * 1.6, el.opacity],
+          }}
+          transition={{
+            duration: 4,
+            repeat: Infinity,
+            delay: el.delay,
+            ease: "easeInOut",
+          }}
         >
-          {/* Header */}
-          <div className="flex items-end justify-between mb-12">
-            <div>
+          {i % 2 === 0 ? (
+            <Sparkles
+              className="text-primary"
+              style={{ width: el.size, height: el.size }}
+            />
+          ) : (
+            <Zap
+              className="text-primary"
+              style={{ width: el.size, height: el.size }}
+            />
+          )}
+        </motion.div>
+      ))}
+
+      <div className="container mx-auto px-4 relative">
+        {/* ── Header — editorial left-aligned ── */}
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-12 md:mb-16 gap-6">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+          >
+            <div className="flex items-center gap-3 mb-5">
+              <div className="w-8 h-px bg-primary" />
+              <span className="text-[13px] font-bold uppercase tracking-[0.2em] text-primary">
+                Catálogo completo
+              </span>
+            </div>
+
+            <h2 className="font-display font-black text-4xl md:text-5xl lg:text-6xl text-primary-foreground uppercase tracking-tight leading-[0.95]">
+              Nossos{" "}
               <span
-                className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-[11px] font-bold uppercase tracking-[0.18em] mb-4"
+                className="bg-clip-text text-transparent"
                 style={{
-                  background: "hsl(11 81% 57% / 0.12)",
-                  color: "hsl(11 81% 57%)",
-                  border: "1px solid hsl(11 81% 57% / 0.25)",
+                  backgroundImage:
+                    "linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)))",
                 }}
               >
-                Catálogo Completo
+                Modelos
               </span>
-              <h2 className="font-display font-black text-3xl md:text-4xl lg:text-5xl text-primary-foreground uppercase tracking-tight leading-[1]">
-                Nossos <span className="gradient-text">Modelos</span>
-              </h2>
-              <p className="text-primary-foreground/40 text-base mt-3 max-w-md">
-                Mais de 19 modelos de veículos 100% elétricos para cada necessidade.
-              </p>
-            </div>
+            </h2>
 
-            {/* Nav arrows */}
-            <div className="hidden md:flex items-center gap-2">
-              <button
-                onClick={() => scroll(-1)}
-                className="w-11 h-11 rounded-2xl flex items-center justify-center text-primary-foreground/40 hover:text-primary-foreground transition-colors"
-                style={{ background: "hsl(0 0% 100% / 0.05)", border: "1px solid hsl(0 0% 100% / 0.08)" }}
-              >
-                <ChevronLeft className="w-5 h-5" />
-              </button>
-              <button
-                onClick={() => scroll(1)}
-                className="w-11 h-11 rounded-2xl flex items-center justify-center text-primary-foreground/40 hover:text-primary-foreground transition-colors"
-                style={{ background: "hsl(0 0% 100% / 0.05)", border: "1px solid hsl(0 0% 100% / 0.08)" }}
-              >
-                <ChevronRight className="w-5 h-5" />
-              </button>
-            </div>
-          </div>
+            <p className="text-sm md:text-base text-primary-foreground/45 leading-relaxed mt-4 max-w-md">
+              Mais de 19 veículos 100% elétricos projetados para cada perfil de
+              uso. Encontre o seu.
+            </p>
+          </motion.div>
 
-          {/* Carousel */}
+          {/* Navigation arrows */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.3 }}
+            className="hidden md:flex items-center gap-2"
+          >
+            <button
+              onClick={() => scroll(-1)}
+              className="w-10 h-10 rounded-full flex items-center justify-center transition-all duration-200 active:scale-90 cursor-pointer"
+              style={{
+                background: canScrollLeft
+                  ? "linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)))"
+                  : "hsl(0 0% 100% / 0.05)",
+                border: `1px solid ${
+                  canScrollLeft
+                    ? "hsl(var(--primary) / 0.4)"
+                    : "hsl(0 0% 100% / 0.08)"
+                }`,
+                boxShadow: canScrollLeft
+                  ? "0 4px 14px hsl(var(--primary) / 0.3)"
+                  : "none",
+                opacity: canScrollLeft ? 1 : 0.4,
+              }}
+              aria-label="Anterior"
+            >
+              <ChevronLeft className="w-5 h-5 text-primary-foreground" />
+            </button>
+            <button
+              onClick={() => scroll(1)}
+              className="w-10 h-10 rounded-full flex items-center justify-center transition-all duration-200 active:scale-90 cursor-pointer"
+              style={{
+                background: canScrollRight
+                  ? "linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)))"
+                  : "hsl(0 0% 100% / 0.05)",
+                border: `1px solid ${
+                  canScrollRight
+                    ? "hsl(var(--primary) / 0.4)"
+                    : "hsl(0 0% 100% / 0.08)"
+                }`,
+                boxShadow: canScrollRight
+                  ? "0 4px 14px hsl(var(--primary) / 0.3)"
+                  : "none",
+                opacity: canScrollRight ? 1 : 0.4,
+              }}
+              aria-label="Próximo"
+            >
+              <ChevronRight className="w-5 h-5 text-primary-foreground" />
+            </button>
+          </motion.div>
+        </div>
+
+        {/* ── Carousel ── */}
+        <div className="relative">
           <div
             ref={scrollRef}
-            onScroll={handleScroll}
-            className="flex gap-5 overflow-x-auto scrollbar-hide pb-4 snap-x snap-mandatory"
+            className="flex gap-4 md:gap-5 overflow-x-auto snap-x snap-mandatory pb-4 scrollbar-hide"
+            style={{
+              maskImage: `linear-gradient(to right, ${
+                canScrollLeft ? "transparent" : "black"
+              } 0%, black ${canScrollLeft ? "6%" : "0%"}, black ${
+                canScrollRight ? "90%" : "100%"
+              }, ${canScrollRight ? "transparent" : "black"} 100%)`,
+              WebkitMaskImage: `linear-gradient(to right, ${
+                canScrollLeft ? "transparent" : "black"
+              } 0%, black ${canScrollLeft ? "6%" : "0%"}, black ${
+                canScrollRight ? "90%" : "100%"
+              }, ${canScrollRight ? "transparent" : "black"} 100%)`,
+            }}
           >
             {PRODUCTS.map((product, i) => (
               <motion.div
-                key={i}
-                className="shrink-0 w-[300px] rounded-2xl overflow-hidden group snap-start"
-                style={{
-                  background: "hsl(0 0% 11% / 0.8)",
-                  border: "1px solid hsl(0 0% 100% / 0.08)",
-                }}
-                whileHover={{ y: -4 }}
-                transition={{ duration: 0.3 }}
+                key={product.name}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.06, duration: 0.4 }}
+                className="group shrink-0 snap-start"
+                style={{ width: "clamp(260px, 38vw, 290px)" }}
               >
-                {/* Product image */}
-                <div className="relative h-48 bg-white flex items-center justify-center overflow-hidden p-4">
-                  <img
-                    src={product.image}
-                    alt={product.name}
-                    className="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-500"
-                    loading="lazy"
-                  />
-                  {/* Category badge */}
-                  <span
-                    className="absolute top-3 left-3 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-[0.15em]"
-                    style={{
-                      background: "hsl(11 81% 57% / 0.15)",
-                      color: "hsl(11 81% 57%)",
-                      border: "1px solid hsl(11 81% 57% / 0.25)",
-                    }}
-                  >
-                    {product.category}
-                  </span>
-                </div>
-
-                <div className="p-5">
-                  <h3 className="font-display font-bold text-lg text-primary-foreground mb-1 uppercase tracking-wide">
-                    {product.name}
-                  </h3>
-                  <p className="text-xs font-semibold mb-3" style={{ color: "hsl(11 81% 57%)" }}>
-                    {product.price}
-                  </p>
-
-                  {/* Specs */}
-                  <div className="flex items-center gap-3 mb-4">
-                    {[
-                      { icon: Zap, value: product.autonomy, label: "Autonomia" },
-                      { icon: Gauge, value: product.speed, label: "Vel. máx." },
-                      { icon: Weight, value: product.load, label: "Carga" },
-                    ].map((spec, j) => (
-                      <div key={j} className="flex-1 text-center">
-                        <spec.icon className="w-3.5 h-3.5 mx-auto mb-1" style={{ color: "hsl(11 81% 57%)" }} />
-                        <p className="text-xs font-bold text-primary-foreground/80">{spec.value}</p>
-                        <p className="text-[9px] text-primary-foreground/30 uppercase tracking-wider">{spec.label}</p>
-                      </div>
-                    ))}
+                <div
+                  className="h-full rounded-xl overflow-hidden transition-all duration-300 group-hover:-translate-y-1"
+                  style={{
+                    background: "hsl(0 0% 100% / 0.025)",
+                    border: "1px solid hsl(0 0% 100% / 0.06)",
+                  }}
+                >
+                  {/* Image area */}
+                  <div className="relative h-44 bg-white flex items-center justify-center overflow-hidden p-4">
+                    <img
+                      src={product.image}
+                      alt={product.name}
+                      className="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-500"
+                      loading="lazy"
+                    />
+                    {/* Category badge */}
+                    <span
+                      className="absolute top-3 left-3 px-2.5 py-0.5 rounded-md text-[9px] font-bold uppercase tracking-wider text-primary"
+                      style={{
+                        background: "hsl(var(--primary) / 0.12)",
+                        border: "1px solid hsl(var(--primary) / 0.2)",
+                      }}
+                    >
+                      {product.category}
+                    </span>
+                    {/* Bottom gradient fade into card */}
+                    <div
+                      className="absolute bottom-0 left-0 right-0 h-6 pointer-events-none"
+                      style={{
+                        background:
+                          "linear-gradient(to top, hsl(0 0% 8%), transparent)",
+                      }}
+                    />
                   </div>
 
-                  <a
-                    href="#contato"
-                    className="flex items-center justify-center gap-2 w-full py-2.5 rounded-xl text-xs font-semibold uppercase tracking-[0.12em] text-primary-foreground/70 hover:text-primary transition-colors"
-                    style={{ border: "1px solid hsl(0 0% 100% / 0.1)" }}
-                  >
-                    Saiba mais
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </a>
+                  {/* Content */}
+                  <div className="p-5 pt-4">
+                    <div className="flex items-baseline justify-between mb-3">
+                      <h3 className="font-display font-bold text-base text-primary-foreground uppercase tracking-wide">
+                        {product.name}
+                      </h3>
+                      <span className="text-xs font-bold text-primary">
+                        {product.price}
+                      </span>
+                    </div>
+
+                    {/* Specs row */}
+                    <div
+                      className="flex items-center gap-0 mb-4 py-3 rounded-lg"
+                      style={{
+                        background: "hsl(0 0% 100% / 0.03)",
+                        border: "1px solid hsl(0 0% 100% / 0.04)",
+                      }}
+                    >
+                      {[
+                        {
+                          icon: Zap,
+                          value: product.autonomy,
+                          label: "Autonomia",
+                        },
+                        {
+                          icon: Gauge,
+                          value: product.speed,
+                          label: "Vel. máx.",
+                        },
+                        {
+                          icon: Weight,
+                          value: product.load,
+                          label: "Carga",
+                        },
+                      ].map((spec, j) => (
+                        <div
+                          key={j}
+                          className="flex-1 text-center relative"
+                        >
+                          {j > 0 && (
+                            <div
+                              className="absolute left-0 top-1/2 -translate-y-1/2 w-px h-5"
+                              style={{
+                                background: "hsl(0 0% 100% / 0.08)",
+                              }}
+                            />
+                          )}
+                          <spec.icon
+                            className="w-3 h-3 mx-auto mb-1 text-primary"
+                          />
+                          <p className="text-[11px] font-bold text-primary-foreground/80 tabular-nums">
+                            {spec.value}
+                          </p>
+                          <p className="text-[8px] text-primary-foreground/30 uppercase tracking-wider mt-0.5">
+                            {spec.label}
+                          </p>
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* CTA */}
+                    <a
+                      href="#contato"
+                      className="flex items-center justify-center gap-2 w-full py-2.5 rounded-lg text-[11px] font-semibold uppercase tracking-[0.12em] text-primary-foreground/50 hover:text-primary hover:border-primary/30 transition-all duration-200"
+                      style={{
+                        border: "1px solid hsl(0 0% 100% / 0.08)",
+                      }}
+                    >
+                      Saiba mais
+                      <ArrowRight className="w-3.5 h-3.5" />
+                    </a>
+                  </div>
                 </div>
               </motion.div>
             ))}
           </div>
+        </div>
 
-          {/* Progress bar */}
-          <div className="mt-6 mx-auto max-w-xs h-[2px] rounded-full overflow-hidden" style={{ background: "hsl(0 0% 100% / 0.08)" }}>
-            <div
-              className="h-full rounded-full transition-all duration-200"
-              style={{
-                width: `${Math.max(10, scrollProgress * 100)}%`,
-                background: "linear-gradient(90deg, hsl(11 81% 57%), hsl(11 90% 65%))",
-              }}
-            />
-          </div>
+        {/* Progress bar */}
+        <div
+          className="mt-8 mx-auto max-w-[200px] h-[2px] rounded-full overflow-hidden"
+          style={{ background: "hsl(0 0% 100% / 0.06)" }}
+        >
+          <div
+            className="h-full rounded-full transition-all duration-200"
+            style={{
+              width: `${Math.max(10, scrollProgress * 100)}%`,
+              background:
+                "linear-gradient(90deg, hsl(var(--primary)), hsl(var(--primary-glow)))",
+            }}
+          />
+        </div>
 
-          {/* Secondary CTA */}
-          <div className="mt-10 text-center">
-            <a
-              href="#modelos"
-              className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.12em] text-primary-foreground/50 hover:text-primary transition-colors"
-            >
-              Ver todos os modelos e comparar
-              <ArrowRight className="w-4 h-4" />
-            </a>
-          </div>
+        {/* Secondary CTA */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.4 }}
+          className="mt-8 text-center"
+        >
+          <a
+            href="#modelos"
+            className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.15em] text-primary-foreground/40 hover:text-primary transition-colors duration-200"
+          >
+            Ver todos os modelos e comparar
+            <ArrowRight className="w-3.5 h-3.5" />
+          </a>
         </motion.div>
       </div>
     </section>
