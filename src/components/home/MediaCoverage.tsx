@@ -60,13 +60,6 @@ const FLOATING_ELEMENTS = [
 const MediaCoverage = () => {
   return (
     <section className="relative py-14 md:py-20 overflow-hidden" style={{ background: "hsl(0 0% 4%)" }}>
-      {/* ── Smooth transition from previous section ── */}
-      <div
-        className="absolute -top-1 left-0 right-0 h-24 pointer-events-none"
-        style={{
-          background: "linear-gradient(to bottom, hsl(var(--foreground)) 0%, hsl(0 0% 4%) 100%)",
-        }}
-      />
 
       {/* ── Layered background ── */}
       {/* Radial primary glow — top right (asymmetric for dynamism) */}
