@@ -36,10 +36,15 @@ const WhyChoose = () => {
           backgroundSize: "40px 40px",
         }}
       />
-      {/* Top separator */}
+      {/* Top-left accent line */}
       <div
-        className="absolute top-0 left-0 right-0 h-px"
-        style={{ background: "linear-gradient(90deg, transparent 10%, hsl(var(--primary) / 0.15) 50%, transparent 90%)" }}
+        className="absolute top-0 left-0 w-[300px] md:w-[500px] h-[3px]"
+        style={{ background: "linear-gradient(90deg, hsl(var(--primary) / 0.6), transparent)" }}
+      />
+      {/* Bottom-right accent line */}
+      <div
+        className="absolute bottom-0 right-0 w-[300px] md:w-[500px] h-[3px]"
+        style={{ background: "linear-gradient(270deg, hsl(var(--primary) / 0.6), transparent)" }}
       />
 
       <div className="container mx-auto px-4 relative">
