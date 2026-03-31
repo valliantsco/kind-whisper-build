@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ExternalLink, ArrowUpRight } from "lucide-react";
+import { ExternalLink, ArrowUpRight, Sparkles, Zap } from "lucide-react";
 import mediaFeatured from "@/assets/media/media-featured.jpg";
 import mediaConsumers from "@/assets/media/media-consumers.jpg";
 import mediaProduction from "@/assets/media/media-production.jpg";
@@ -50,45 +50,108 @@ const ARTICLES: MediaArticle[] = [
   },
 ];
 
+const FLOATING_ELEMENTS = [
+  { top: "10%", right: "6%", size: 16, delay: 0, opacity: 0.25 },
+  { top: "60%", right: "4%", size: 14, delay: 1.5, opacity: 0.2 },
+  { top: "30%", left: "4%", size: 12, delay: 0.8, opacity: 0.18 },
+  { top: "75%", left: "8%", size: 18, delay: 2, opacity: 0.22 },
+];
+
 const MediaCoverage = () => {
   return (
     <section className="relative py-14 md:py-20 overflow-hidden" style={{ background: "hsl(0 0% 4%)" }}>
-      {/* ── Layered background ── */}
-      {/* Radial primary glow — top center */}
+      {/* ── Smooth transition from previous section ── */}
       <div
-        className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[500px] pointer-events-none"
+        className="absolute -top-1 left-0 right-0 h-24 pointer-events-none"
         style={{
-          background: "radial-gradient(ellipse at center, hsl(var(--primary) / 0.07) 0%, transparent 65%)",
+          background: "linear-gradient(to bottom, hsl(var(--foreground)) 0%, hsl(0 0% 4%) 100%)",
+        }}
+      />
+
+      {/* ── Layered background ── */}
+      {/* Radial primary glow — top right (asymmetric for dynamism) */}
+      <div
+        className="absolute -top-20 right-[10%] w-[1000px] h-[600px] pointer-events-none"
+        style={{
+          background: "radial-gradient(ellipse at center, hsl(var(--primary) / 0.08) 0%, transparent 60%)",
+          filter: "blur(120px)",
+        }}
+      />
+      {/* Secondary glow — bottom left */}
+      <div
+        className="absolute bottom-0 left-0 w-[700px] h-[700px] pointer-events-none"
+        style={{
+          background: "radial-gradient(circle at 20% 80%, hsl(var(--primary) / 0.05) 0%, transparent 55%)",
           filter: "blur(100px)",
         }}
       />
-      {/* Secondary glow — bottom right */}
+      {/* Mid glow — center */}
       <div
-        className="absolute bottom-0 right-0 w-[600px] h-[600px] pointer-events-none"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] pointer-events-none"
         style={{
-          background: "radial-gradient(circle at 80% 80%, hsl(var(--primary) / 0.04) 0%, transparent 60%)",
+          background: "radial-gradient(ellipse at center, hsl(var(--primary) / 0.03) 0%, transparent 70%)",
           filter: "blur(80px)",
         }}
       />
       {/* Subtle dot grid pattern */}
       <div
-        className="absolute inset-0 pointer-events-none opacity-[0.03]"
+        className="absolute inset-0 pointer-events-none opacity-[0.025]"
         style={{
           backgroundImage: "radial-gradient(circle, hsl(0 0% 100%) 1px, transparent 1px)",
-          backgroundSize: "32px 32px",
+          backgroundSize: "28px 28px",
         }}
       />
       {/* Diagonal subtle gradient overlay */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
-          background: "linear-gradient(160deg, hsl(0 0% 100% / 0.02) 0%, transparent 40%, hsl(var(--primary) / 0.02) 100%)",
+          background: "linear-gradient(160deg, hsl(0 0% 100% / 0.015) 0%, transparent 35%, hsl(var(--primary) / 0.025) 100%)",
         }}
       />
       {/* Top light strip */}
       <div
         className="absolute top-0 left-0 right-0 h-px"
-        style={{ background: "linear-gradient(90deg, transparent 10%, hsl(var(--primary) / 0.2) 50%, transparent 90%)" }}
+        style={{ background: "linear-gradient(90deg, transparent 10%, hsl(var(--primary) / 0.25) 50%, transparent 90%)" }}
+      />
+      {/* Bottom light strip for smooth exit */}
+      <div
+        className="absolute bottom-0 left-0 right-0 h-px"
+        style={{ background: "linear-gradient(90deg, transparent, hsl(0 0% 100% / 0.04), transparent)" }}
+      />
+
+      {/* ── Floating animated elements ── */}
+      {FLOATING_ELEMENTS.map((el, i) => (
+        <motion.div
+          key={i}
+          className="absolute pointer-events-none"
+          style={{ top: el.top, left: el.left, right: el.right }}
+          animate={{
+            y: [0, -12, 0],
+            opacity: [el.opacity, el.opacity * 1.6, el.opacity],
+          }}
+          transition={{
+            duration: 4,
+            repeat: Infinity,
+            delay: el.delay,
+            ease: "easeInOut",
+          }}
+        >
+          {i % 2 === 0 ? (
+            <Sparkles className="text-primary" style={{ width: el.size, height: el.size }} />
+          ) : (
+            <Zap className="text-primary" style={{ width: el.size, height: el.size }} />
+          )}
+        </motion.div>
+      ))}
+
+      {/* Animated horizontal scan line */}
+      <motion.div
+        className="absolute left-0 right-0 h-[1px] pointer-events-none"
+        style={{
+          background: "linear-gradient(90deg, transparent, hsl(var(--primary) / 0.08), transparent)",
+        }}
+        animate={{ top: ["10%", "90%", "10%"] }}
+        transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
       />
 
       <div className="container mx-auto px-4 relative">
@@ -101,10 +164,10 @@ const MediaCoverage = () => {
           className="mb-12 md:mb-16 text-right"
         >
           <div className="flex items-center gap-3 mb-6 justify-end">
-            <div className="w-8 h-px bg-primary" />
             <span className="text-[13px] font-bold uppercase tracking-[0.2em] text-primary">
               MS na Mídia
             </span>
+            <div className="w-8 h-px bg-primary" />
           </div>
 
           <h2 className="font-display font-black text-4xl md:text-5xl lg:text-6xl text-primary-foreground uppercase tracking-tight leading-[0.95]">
