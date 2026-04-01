@@ -281,28 +281,30 @@ const ProductCarousel = () => {
                   style={{ width: "clamp(260px, 38vw, 290px)" }}
                 >
                   <div
-                    className="h-full rounded-xl overflow-hidden transition-all duration-300 relative"
+                    className="h-full rounded-xl transition-all duration-300 relative"
                     style={{
                       background: "hsl(0 0% 100% / 0.025)",
                       border: `1px solid ${isHovered ? "hsl(var(--primary) / 0.25)" : "hsl(0 0% 100% / 0.06)"}`,
                       transform: isHovered ? "translateY(-4px)" : "translateY(0)",
-                      boxShadow: isHovered ? "0 20px 50px -15px hsl(var(--primary) / 0.12)" : "none",
+                      boxShadow: isHovered
+                        ? "0 20px 50px -15px hsl(var(--primary) / 0.15), inset 0 -1px 0 hsl(var(--primary) / 0.15)"
+                        : "none",
                     }}
                   >
-                    {/* Hover glow overlay (matching WhyChoose) */}
+                    {/* Hover glow overlay */}
                     <div
-                      className="absolute inset-0 pointer-events-none rounded-xl transition-opacity duration-500"
+                      className="absolute inset-0 pointer-events-none rounded-xl transition-opacity duration-500 z-[1]"
                       style={{
                         background: "radial-gradient(ellipse at 30% 20%, hsl(var(--primary) / 0.06) 0%, transparent 70%)",
                         opacity: isHovered ? 1 : 0,
                       }}
                     />
 
-                    {/* Top accent line (matching WhyChoose) */}
+                    {/* Top accent line — outside overflow-hidden area */}
                     <div
-                      className="absolute top-0 left-0 right-0 h-[2px] transition-all duration-500"
+                      className="absolute top-0 left-2 right-2 h-[2px] rounded-full transition-all duration-500 z-[2]"
                       style={{
-                        background: `linear-gradient(90deg, transparent, hsl(var(--primary) / ${isHovered ? 0.6 : 0.05}), transparent)`,
+                        background: `linear-gradient(90deg, transparent, hsl(var(--primary) / ${isHovered ? 0.7 : 0.05}), transparent)`,
                       }}
                     />
 
