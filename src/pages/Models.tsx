@@ -524,7 +524,7 @@ const Models = () => {
 
 
 
-        <HomeFooter />
+        <HomeFooter onContactClick={() => setContactOpen(true)} />
       </div>
 
       {/* ── Floating Compare Bar ── */}

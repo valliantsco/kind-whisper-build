@@ -108,7 +108,7 @@ const ProductDetail = () => {
           related={related}
           content={{ headline: "", subheadline: "", supportText: "", idealFor: [], whyChoose: [], dailyBenefits: [], urbanContext: { title: "", body: "", highlights: [] }, specContexts: {}, differentials: { title: "", body: "" }, comparisonTip: "", faq: [], finalCta: { title: "", subtitle: "" } }}
         />
-        <HomeFooter />
+        <HomeFooter onContactClick={() => setContactOpen(true)} />
       </div>
       <FloatingWhatsApp />
       <PopUpContato01 isOpen={contactOpen} onClose={() => setContactOpen(false)} />

@@ -651,7 +651,7 @@ export default function About() {
           </motion.div>
         </Section>
 
-        <HomeFooter />
+        <HomeFooter onContactClick={() => setContactOpen(true)} />
       </div>
       <FloatingWhatsApp />
       <PopUpContato01 isOpen={contactOpen} onClose={() => setContactOpen(false)} />
