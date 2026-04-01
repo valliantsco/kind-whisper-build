@@ -208,17 +208,8 @@ const Models = () => {
             </div>
           </div>
         </section>
-                  border: "1px solid hsl(var(--primary) / 0.12)",
-                }}
-              >
-                <BarChart3 className="w-3 h-3 text-primary" />
-                <span className="text-[10px] text-primary/80 font-medium uppercase tracking-wider">
-                  Clique em <span className="font-bold text-primary">"Comparar"</span> nos cards para selecionar
-                </span>
-              </div>
-            </div>
-          </motion.div>
-        </div>
+
+
 
         {/* Product grid */}
         <section className="pb-12">
