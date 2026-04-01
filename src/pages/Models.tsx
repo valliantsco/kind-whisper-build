@@ -175,15 +175,37 @@ const SearchableFilterBar = ({
 };
 
 
+const SLUG_TO_CATEGORY: Record<string, CategoryFilter> = {
+  "autopropelidos": "Autopropelidos",
+  "bicicletas-eletricas": "Bicicletas Elétricas",
+  "scooters-eletricas": "Scooters Elétricas",
+  "triciclos-eletricos": "Triciclos Elétricos",
+  "utilitarios": "Utilitários",
+  "infantil": "Infantil",
+  "patinetes": "Patinetes",
+};
+
 const Models = () => {
+  const [searchParams] = useSearchParams();
   const [contactOpen, setContactOpen] = useState(false);
   const [contactSubject, setContactSubject] = useState<string | undefined>();
-  const [activeCategory, setActiveCategory] = useState<CategoryFilter>("Todos");
+  const [activeCategory, setActiveCategory] = useState<CategoryFilter>(() => {
+    const slug = searchParams.get("categoria");
+    return slug && SLUG_TO_CATEGORY[slug] ? SLUG_TO_CATEGORY[slug] : "Todos";
+  });
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedSlugs, setSelectedSlugs] = useState<string[]>([]);
   const [compareOpen, setCompareOpen] = useState(false);
   const [quizOpen, setQuizOpen] = useState(false);
   const [sortBy, setSortBy] = useState<SortOption>("relevance");
+
+  // Sync category from URL when navigating from other pages
+  useEffect(() => {
+    const slug = searchParams.get("categoria");
+    if (slug && SLUG_TO_CATEGORY[slug]) {
+      setActiveCategory(SLUG_TO_CATEGORY[slug]);
+    }
+  }, [searchParams]);
 
   const filtered = useMemo(() => {
     let items = [...PRODUCTS];
