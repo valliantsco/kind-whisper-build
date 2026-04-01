@@ -2112,4 +2112,147 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
         "Fale com um especialista da MS Electric e descubra como a Rhino Delivery pode transformar a eficiência e a economia da sua rotina de entregas e operação.",
     },
   },
+
+  "cargo": {
+    headline: "Capacidade de carga e eficiência elétrica para operações reais",
+    subheadline:
+      "O Cargo é o utilitário elétrico de maior capacidade da MS Electric. Com até 500 kg de carga, motor de 1.500W e 60 km de autonomia, ele resolve demandas profissionais de transporte com economia, robustez e aplicação prática.",
+    supportText:
+      "Se a sua operação precisa mover carga de verdade — com eficiência, baixo custo e sem complicação — o Cargo foi projetado exatamente para isso.",
+    idealFor: [
+      {
+        icon: "weight",
+        title: "Transporte de carga pesada",
+        desc: "Até 500 kg de capacidade para transportar materiais, mercadorias e equipamentos com segurança e eficiência.",
+      },
+      {
+        icon: "building",
+        title: "Operações internas",
+        desc: "Ideal para condomínios, hospitais, campus, fábricas e centros logísticos que precisam de transporte interno elétrico.",
+      },
+      {
+        icon: "wrench",
+        title: "Manutenção e apoio",
+        desc: "Perfeito para equipes de manutenção, zeladoria e apoio operacional que precisam mover ferramentas e materiais.",
+      },
+      {
+        icon: "piggyBank",
+        title: "Redução de custo operacional",
+        desc: "Sem combustível, sem IPVA e com manutenção mínima. Economia real que impacta diretamente o resultado da operação.",
+      },
+    ],
+    whyChoose: [
+      {
+        title: "Até 500 kg de capacidade — o maior da linha",
+        desc: "A maior capacidade de carga do portfólio MS Electric. Projetado para demandas que exigem transporte real e robusto.",
+      },
+      {
+        title: "60 km de autonomia operacional",
+        desc: "Autonomia pensada para rotinas de trabalho completas, cobrindo deslocamentos internos e rotas operacionais com tranquilidade.",
+      },
+      {
+        title: "Motor de 1.500W para trabalho com carga",
+        desc: "Potência dimensionada para operar carregado com eficiência, mantendo o ritmo que a operação exige.",
+      },
+      {
+        title: "Custo operacional mínimo",
+        desc: "Recarga na tomada por centavos. Sem combustível, sem IPVA e com manutenção simplificada. Economia que se acumula.",
+      },
+      {
+        title: "Suporte profissional MS Electric",
+        desc: "Assistência técnica especializada e atendimento consultivo para quem usa o veículo como ferramenta de trabalho diária.",
+      },
+    ],
+    dailyBenefits: [
+      {
+        title: "Transporte de carga sem complicação",
+        desc: "Carregar e deslocar materiais pesados com um veículo elétrico silencioso, prático e fácil de operar.",
+      },
+      {
+        title: "Operação mais eficiente e econômica",
+        desc: "Menos custo por deslocamento, menos paradas para manutenção e mais tempo produtivo na operação.",
+      },
+      {
+        title: "Silêncio que faz diferença",
+        desc: "Motor elétrico silencioso permite operação em qualquer horário e ambiente — hospitais, condomínios, áreas residenciais.",
+      },
+      {
+        title: "Robustez para uso profissional diário",
+        desc: "Estrutura pensada para aguentar o ritmo do trabalho real, com capacidade e resistência para uso recorrente.",
+      },
+      {
+        title: "Investimento que se paga",
+        desc: "A economia em combustível e manutenção faz o Cargo se pagar ao longo do uso. É ferramenta, não despesa.",
+      },
+    ],
+    urbanContext: {
+      title: "Feito para mover carga de verdade",
+      body: "O Cargo foi desenvolvido para operações que precisam de capacidade real de transporte. Com até 500 kg de carga útil, ele atende demandas de logística interna, manutenção predial, apoio operacional e transporte de materiais com a economia e a praticidade que só a mobilidade elétrica oferece. É o veículo de trabalho mais robusto da linha MS Electric.",
+      highlights: [
+        "Até 500 kg de capacidade de carga útil",
+        "60 km de autonomia para rotinas completas",
+        "Motor de 1.500W para operação carregada",
+        "Operação silenciosa para qualquer ambiente",
+        "Custo operacional drasticamente menor",
+        "Estrutura robusta para uso profissional diário",
+      ],
+    },
+    specContexts: {
+      autonomy:
+        "60 km por carga — autonomia pensada para acompanhar rotinas de trabalho e deslocamentos operacionais com carga.",
+      speed:
+        "Até 25 km/h — velocidade adequada para operação segura com carga pesada em ambientes internos e urbanos.",
+      motor:
+        "Motor de 1.500W — potência dimensionada para operar carregado com eficiência e constância no dia a dia.",
+      recharge:
+        "6 a 8 horas na tomada convencional. Recarregue à noite e tenha o veículo pronto para a operação seguinte.",
+      load:
+        "300 a 500 kg de capacidade — o pilar central do Cargo, reforçando sua aplicação real para transporte pesado e trabalho.",
+    },
+    differentials: {
+      title: "Onde o Cargo se destaca",
+      body: "O Cargo é o utilitário elétrico de maior capacidade da linha MS Electric. Com até 500 kg de carga, ele ocupa um espaço único no portfólio: é o veículo para quem precisa transportar peso de verdade com economia elétrica. Enquanto a Rhino Delivery foca em entregas com agilidade, o Cargo foca em volume e capacidade. Se a sua operação exige mover materiais, equipamentos ou mercadorias pesadas, o Cargo é a solução mais funcional e robusta da linha.",
+    },
+    comparisonTip:
+      "O Cargo é o utilitário de maior capacidade da linha, com até 500 kg de carga — ideal para transporte pesado e operações internas. Se você precisa de mais agilidade para entregas urbanas, a Rhino Delivery oferece 120 km de autonomia com 250 kg de capacidade. Para mobilidade pessoal, as scooters e triciclos da linha atendem outros perfis de uso.",
+    faq: [
+      {
+        q: "O Cargo é indicado para qual tipo de operação?",
+        a: "Para transporte de carga, logística interna, manutenção predial, apoio operacional e qualquer rotina profissional que precise mover materiais pesados com eficiência.",
+      },
+      {
+        q: "Esse modelo faz sentido para transporte de carga no dia a dia?",
+        a: "Sim — é exatamente a proposta dele. Com até 500 kg de capacidade, ele foi projetado para demandas reais de transporte profissional.",
+      },
+      {
+        q: "Qual o diferencial dele em relação à Rhino Delivery?",
+        a: "O Cargo foca em capacidade de carga maior (até 500 kg) para transporte pesado e operações internas. A Rhino Delivery é mais ágil e voltada a entregas urbanas com 250 kg de capacidade e 120 km de autonomia.",
+      },
+      {
+        q: "Ele é uma boa escolha para empresas e rotinas profissionais?",
+        a: "Sim. Se a operação exige mover carga pesada com frequência, a economia em combustível e manutenção torna o Cargo uma escolha financeiramente inteligente.",
+      },
+      {
+        q: "Como funciona a recarga?",
+        a: "Basta conectar na tomada convencional. A carga completa leva de 6 a 8 horas — ideal para recarregar à noite e ter o veículo pronto para o trabalho.",
+      },
+      {
+        q: "Como é a manutenção?",
+        a: "Simples e econômica. Veículos elétricos têm menos peças móveis, reduzindo custos e frequência de manutenção. A MS Electric oferece suporte técnico especializado.",
+      },
+      {
+        q: "Como funciona a garantia?",
+        a: "A MS Electric oferece garantia de fábrica com suporte técnico direto. Consulte um especialista para conhecer os termos e condições de cobertura.",
+      },
+      {
+        q: "Para quem o Cargo é a melhor escolha dentro do portfólio?",
+        a: "Para quem precisa de capacidade máxima de carga. Se a sua operação é mover peso com economia e praticidade elétrica, o Cargo é o modelo feito para isso.",
+      },
+    ],
+    finalCta: {
+      title: "Precisa de capacidade real para a sua operação?",
+      subtitle:
+        "Fale com um especialista da MS Electric e descubra como o Cargo pode transformar a eficiência e a economia do transporte de carga na sua rotina profissional.",
+    },
+  },
 };
