@@ -89,7 +89,7 @@ const CategoryPills = ({
       <div
         ref={scrollRef}
         onScroll={check}
-        className="flex items-center gap-1.5 overflow-x-auto scrollbar-hide pb-0.5 flex-1 px-1"
+        className={`flex items-center gap-1.5 overflow-x-auto scrollbar-hide pb-0.5 flex-1 transition-all ${canLeft ? "pl-9" : "pl-1"} ${canRight ? "pr-9" : "pr-1"}`}
         style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
       >
         {categories.map((cat) => {
