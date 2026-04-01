@@ -145,7 +145,7 @@ const SearchableFilterBar = ({
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="flex items-center gap-2"
+            className="flex items-center gap-2 pl-[3px]"
           >
             <button
               onClick={openSearch}
