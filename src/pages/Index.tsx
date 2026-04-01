@@ -70,7 +70,7 @@ const Index = () => {
         <WhyChoose />
         <Testimonials />
         <MediaCoverage />
-        <HomeFooter />
+        <HomeFooter onContactClick={() => setContactOpen(true)} />
       </div>
 
       <FloatingWhatsApp />
