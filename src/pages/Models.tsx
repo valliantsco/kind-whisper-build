@@ -1,10 +1,11 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Zap, Gauge, Weight, Battery, Clock, ArrowRight, Search, SlidersHorizontal } from "lucide-react";
+import { Zap, Gauge, Weight, Battery, Clock, ArrowRight, Search, SlidersHorizontal, CheckCircle2, X, BarChart3 } from "lucide-react";
 import Header from "@/components/Header";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 import PopUpContato01 from "@/components/PopUpContato01";
 import HomeFooter from "@/components/home/HomeFooter";
+import CompareModal from "@/components/models/CompareModal";
 import { PRODUCTS, CATEGORIES, type CategoryFilter, type Product } from "@/data/products";
 
 const SPECS = [
@@ -15,10 +16,14 @@ const SPECS = [
   { icon: Weight, key: "load" as const, label: "Carga" },
 ];
 
+const MAX_COMPARE = 3;
+
 const Models = () => {
   const [contactOpen, setContactOpen] = useState(false);
   const [activeCategory, setActiveCategory] = useState<CategoryFilter>("Todos");
   const [searchQuery, setSearchQuery] = useState("");
+  const [selectedSlugs, setSelectedSlugs] = useState<string[]>([]);
+  const [compareOpen, setCompareOpen] = useState(false);
 
   const filtered = useMemo(() => {
     let items = PRODUCTS;
@@ -41,9 +46,22 @@ const Models = () => {
       ? PRODUCTS.length
       : PRODUCTS.filter((p) => p.category === cat).length;
 
+  const toggleSelect = useCallback((slug: string) => {
+    setSelectedSlugs((prev) => {
+      if (prev.includes(slug)) return prev.filter((s) => s !== slug);
+      if (prev.length >= MAX_COMPARE) return prev;
+      return [...prev, slug];
+    });
+  }, []);
+
+  const selectedProducts = useMemo(
+    () => PRODUCTS.filter((p) => selectedSlugs.includes(p.slug)),
+    [selectedSlugs]
+  );
+
   return (
     <div className="min-h-screen relative" style={{ background: "hsl(0 0% 4%)" }}>
-      {/* Background effects — reuse from home */}
+      {/* Background effects */}
       <div
         className="fixed inset-0 pointer-events-none opacity-[0.02] z-0"
         style={{
@@ -153,15 +171,19 @@ const Models = () => {
           </div>
         </section>
 
-        {/* Results count */}
-        <div className="container mx-auto px-4 pt-6 pb-2">
+        {/* Results count + compare hint */}
+        <div className="container mx-auto px-4 pt-6 pb-2 flex items-center justify-between">
           <p className="text-[11px] uppercase tracking-[0.15em] text-primary-foreground/30 font-medium">
             {filtered.length} {filtered.length === 1 ? "modelo encontrado" : "modelos encontrados"}
+          </p>
+          <p className="text-[10px] uppercase tracking-[0.12em] text-primary-foreground/20 font-medium hidden md:block">
+            <BarChart3 className="w-3 h-3 inline mr-1 -mt-0.5" />
+            Selecione até {MAX_COMPARE} modelos para comparar
           </p>
         </div>
 
         {/* Product grid */}
-        <section className="pb-20">
+        <section className="pb-28">
           <div className="container mx-auto px-4">
             <AnimatePresence mode="wait">
               <motion.div
@@ -173,7 +195,14 @@ const Models = () => {
                 className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5"
               >
                 {filtered.map((product, i) => (
-                  <ProductCard key={product.slug} product={product} index={i} />
+                  <ProductCard
+                    key={product.slug}
+                    product={product}
+                    index={i}
+                    isSelected={selectedSlugs.includes(product.slug)}
+                    canSelect={selectedSlugs.length < MAX_COMPARE}
+                    onToggleSelect={toggleSelect}
+                  />
                 ))}
               </motion.div>
             </AnimatePresence>
@@ -196,14 +225,86 @@ const Models = () => {
         <HomeFooter />
       </div>
 
+      {/* ── Floating Compare Bar ── */}
+      <AnimatePresence>
+        {selectedSlugs.length >= 2 && (
+          <motion.div
+            initial={{ y: 100, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={{ y: 100, opacity: 0 }}
+            transition={{ type: "spring", damping: 25, stiffness: 300 }}
+            className="fixed bottom-6 left-1/2 -translate-x-1/2 z-40 flex items-center gap-3 px-5 py-3.5 rounded-2xl"
+            style={{
+              background: "hsl(0 0% 8% / 0.95)",
+              border: "1px solid hsl(0 0% 100% / 0.1)",
+              backdropFilter: "blur(16px)",
+              boxShadow: "0 20px 60px -15px hsl(0 0% 0% / 0.7)",
+            }}
+          >
+            {/* Selected thumbnails */}
+            <div className="flex items-center -space-x-2">
+              {selectedProducts.map((p) => (
+                <div
+                  key={p.slug}
+                  className="w-10 h-10 rounded-lg bg-white flex items-center justify-center p-1 relative"
+                  style={{ border: "2px solid hsl(var(--primary) / 0.4)" }}
+                >
+                  <img src={p.image} alt={p.name} className="max-h-full max-w-full object-contain" />
+                  <button
+                    onClick={() => toggleSelect(p.slug)}
+                    className="absolute -top-1.5 -right-1.5 w-4 h-4 rounded-full flex items-center justify-center cursor-pointer"
+                    style={{ background: "hsl(0 0% 20%)", border: "1px solid hsl(0 0% 100% / 0.15)" }}
+                  >
+                    <X className="w-2.5 h-2.5 text-primary-foreground/60" />
+                  </button>
+                </div>
+              ))}
+            </div>
+
+            <span className="text-[11px] text-primary-foreground/40 uppercase tracking-wider font-medium hidden sm:block">
+              {selectedSlugs.length}/{MAX_COMPARE}
+            </span>
+
+            <button
+              onClick={() => setCompareOpen(true)}
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-[11px] font-semibold uppercase tracking-[0.12em] text-primary-foreground cursor-pointer transition-all hover:scale-[1.03] active:scale-[0.97]"
+              style={{
+                background: "linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)))",
+              }}
+            >
+              <BarChart3 className="w-3.5 h-3.5" />
+              Comparar
+            </button>
+
+            <button
+              onClick={() => setSelectedSlugs([])}
+              className="w-8 h-8 rounded-full flex items-center justify-center cursor-pointer transition-colors"
+              style={{ background: "hsl(0 0% 100% / 0.06)" }}
+              title="Limpar seleção"
+            >
+              <X className="w-3.5 h-3.5 text-primary-foreground/40" />
+            </button>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       <FloatingWhatsApp />
       <PopUpContato01 isOpen={contactOpen} onClose={() => setContactOpen(false)} />
+      <CompareModal open={compareOpen} onClose={() => setCompareOpen(false)} products={selectedProducts} />
     </div>
   );
 };
 
 /* ── Product Card ── */
-const ProductCard = ({ product, index }: { product: Product; index: number }) => {
+interface ProductCardProps {
+  product: Product;
+  index: number;
+  isSelected: boolean;
+  canSelect: boolean;
+  onToggleSelect: (slug: string) => void;
+}
+
+const ProductCard = ({ product, index, isSelected, canSelect, onToggleSelect }: ProductCardProps) => {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
@@ -219,7 +320,8 @@ const ProductCard = ({ product, index }: { product: Product; index: number }) =>
         className="h-full rounded-xl overflow-hidden transition-all duration-300 relative"
         style={{
           background: "hsl(0 0% 100% / 0.025)",
-          border: `1px solid ${isHovered ? "hsl(var(--primary) / 0.25)" : "hsl(0 0% 100% / 0.06)"}`,
+          border: `1px solid ${isSelected ? "hsl(var(--primary) / 0.5)" : isHovered ? "hsl(var(--primary) / 0.25)" : "hsl(0 0% 100% / 0.06)"}`,
+          boxShadow: isSelected ? "0 0 20px -5px hsl(var(--primary) / 0.15)" : "none",
         }}
       >
         {/* Hover glow */}
@@ -227,7 +329,7 @@ const ProductCard = ({ product, index }: { product: Product; index: number }) =>
           className="absolute inset-0 pointer-events-none rounded-xl transition-opacity duration-500 z-[1]"
           style={{
             background: "radial-gradient(ellipse at 30% 20%, hsl(var(--primary) / 0.06) 0%, transparent 70%)",
-            opacity: isHovered ? 1 : 0,
+            opacity: isHovered || isSelected ? 1 : 0,
           }}
         />
 
@@ -235,9 +337,35 @@ const ProductCard = ({ product, index }: { product: Product; index: number }) =>
         <div
           className="absolute top-0 left-2 right-2 h-[2px] rounded-full transition-all duration-500 z-[2]"
           style={{
-            background: `linear-gradient(90deg, transparent, hsl(var(--primary) / ${isHovered ? 0.7 : 0.05}), transparent)`,
+            background: `linear-gradient(90deg, transparent, hsl(var(--primary) / ${isSelected ? 0.8 : isHovered ? 0.7 : 0.05}), transparent)`,
           }}
         />
+
+        {/* Selection checkbox */}
+        <button
+          onClick={(e) => {
+            e.stopPropagation();
+            if (!isSelected && !canSelect) return;
+            onToggleSelect(product.slug);
+          }}
+          className={`absolute top-3 right-3 z-10 w-7 h-7 rounded-lg flex items-center justify-center transition-all duration-200 cursor-pointer ${
+            !isSelected && !canSelect ? "opacity-30 cursor-not-allowed" : ""
+          }`}
+          style={{
+            background: isSelected
+              ? "linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)))"
+              : "hsl(0 0% 0% / 0.5)",
+            border: `1px solid ${isSelected ? "hsl(var(--primary) / 0.6)" : "hsl(0 0% 100% / 0.15)"}`,
+            backdropFilter: "blur(4px)",
+          }}
+          title={isSelected ? "Remover da comparação" : canSelect ? "Adicionar à comparação" : "Máximo de 3 modelos"}
+        >
+          {isSelected ? (
+            <CheckCircle2 className="w-4 h-4 text-primary-foreground" />
+          ) : (
+            <BarChart3 className="w-3 h-3 text-primary-foreground/50" />
+          )}
+        </button>
 
         {/* Image */}
         <div className="relative h-48 bg-white flex items-center justify-center overflow-hidden rounded-t-xl p-5">
@@ -258,7 +386,7 @@ const ProductCard = ({ product, index }: { product: Product; index: number }) =>
             {product.category}
           </span>
           {/* Special badge */}
-          {product.badge && (
+          {product.badge && !isSelected && (
             <span
               className="absolute top-3 right-3 px-2.5 py-0.5 rounded-md text-[8px] font-bold uppercase tracking-[0.1em] text-primary-foreground"
               style={{
@@ -290,7 +418,6 @@ const ProductCard = ({ product, index }: { product: Product; index: number }) =>
               {product.price}
             </span>
           </div>
-
 
           <div
             className="h-px mb-4 transition-all duration-500"
