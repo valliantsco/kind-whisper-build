@@ -141,7 +141,7 @@ const ProductCarousel = () => {
             </h2>
 
             <p className="text-sm md:text-base text-primary-foreground/45 leading-relaxed mt-4 max-w-lg">
-              Mais de 19 veículos 100% elétricos projetados para cada perfil de uso. Encontre o seu.
+              Um portfólio pensado para diferentes perfis de uso, estilos de vida e objetivos. Da mobilidade urbana ao uso profissional, a MS Electric reúne veículos 100% elétricos que unem tecnologia, economia e praticidade em cada trajeto.
             </p>
           </motion.div>
 
@@ -369,10 +369,10 @@ const ProductCarousel = () => {
             <div className="relative text-center md:text-left">
               <h3 className="font-display font-bold text-lg md:text-xl text-primary-foreground uppercase tracking-wide mb-1">
                 Ainda em dúvida?{" "}
-                <span className="text-primary">Compare modelos lado a lado.</span>
+                <span className="text-primary">Compare modelos lado a lado</span>
               </h3>
               <p className="text-sm text-primary-foreground/40 max-w-md">
-                Explore todos os veículos, filtre por categoria e compare especificações para escolher o ideal.
+                Visualize especificações, diferenciais e aplicações de forma simples para entender qual modelo combina melhor com a sua necessidade.
               </p>
             </div>
 
@@ -384,7 +384,7 @@ const ProductCarousel = () => {
                 boxShadow: "0 4px 20px hsl(var(--primary) / 0.3)",
               }}
             >
-              Ver catálogo completo
+              Comparar modelos
               <ArrowRight className="w-4 h-4" />
             </a>
           </div>

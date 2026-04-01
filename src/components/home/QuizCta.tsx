@@ -8,17 +8,17 @@ const STEPS = [
   {
     icon: MessageCircle,
     title: "Responda perguntas rápidas",
-    detail: "Sobre seu perfil de uso, necessidades e preferências — leva menos de 1 minuto.",
+    detail: "Conte como será o uso do veículo, quais características são mais importantes para você e o que espera da sua experiência com mobilidade elétrica.",
   },
   {
     icon: Brain,
-    title: "A IA analisa seu cenário",
-    detail: "Nossa inteligência artificial cruza suas respostas com todo o portfólio para encontrar o match ideal.",
+    title: "Analisamos o seu perfil",
+    detail: "Nossa inteligência cruza suas respostas com o portfólio da MS Electric para entender qual modelo se encaixa melhor no seu cenário, objetivo e rotina.",
   },
   {
     icon: CheckCircle,
     title: "Receba sua recomendação",
-    detail: "O modelo perfeito para você, com especificações completas, direto no seu WhatsApp.",
+    detail: "Em instantes, você visualiza as opções mais indicadas para o seu caso e já pode seguir para comparar modelos ou falar com nosso time.",
   },
 ];
 
@@ -94,7 +94,7 @@ const QuizCta = () => {
           >
             <div className="flex items-center gap-3 mb-6 justify-end">
               <span className="text-[13px] font-bold uppercase tracking-[0.2em] text-primary">
-                Recomendação por IA
+                Recomendação Inteligente
               </span>
               <div className="w-8 h-px bg-primary" />
             </div>
@@ -114,7 +114,7 @@ const QuizCta = () => {
             </h2>
 
             <p className="text-sm md:text-base text-primary-foreground/45 leading-relaxed mt-4 max-w-lg ml-auto">
-              Nossa inteligência artificial analisa seu perfil e encontra o veículo ideal entre mais de 19 modelos — em segundos.
+              A MS Electric ajuda você a encontrar o veículo ideal com mais clareza e menos dúvida. Em poucos passos, nossa recomendação inteligente analisa seu perfil, sua rotina e suas prioridades para indicar o modelo que realmente faz sentido para o seu uso.
             </p>
           </motion.div>
 
@@ -200,12 +200,12 @@ const QuizCta = () => {
                 }}
               />
               <Sparkles className="w-4 h-4 relative z-10" />
-              <span className="relative z-10">Fazer o quiz agora</span>
+              <span className="relative z-10">Descobrir meu modelo ideal</span>
               <ArrowRight className="w-4 h-4 relative z-10 transition-transform group-hover:translate-x-0.5" />
             </motion.button>
 
             <span className="text-[11px] text-primary-foreground/25 tracking-wide uppercase">
-              Menos de 60 segundos · Resultado na hora
+              Leva menos de 2 minutos e pode facilitar muito a sua escolha.
             </span>
           </motion.div>
         </div>

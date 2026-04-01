@@ -34,9 +34,9 @@ const INFLUENCERS: Influencer[] = [
 ];
 
 const STATS = [
-  { value: "56M+", label: "Alcance total" },
-  { value: "8+", label: "Parceiros" },
-  { value: "100M+", label: "Visualizações" },
+  { value: "31M+", label: "Alcance acumulado" },
+  { value: "4+", label: "Colaborações e parcerias" },
+  { value: "56M+", label: "Visualizações geradas" },
 ];
 
 /* ── Animated counter ── */
@@ -160,7 +160,7 @@ const Testimonials = () => {
             <div className="flex items-center gap-3 mb-6">
               <div className="w-8 h-px bg-primary" />
               <span className="text-[13px] font-bold uppercase tracking-[0.2em] text-primary">
-                Parcerias de marca
+                Credibilidade de Marca
               </span>
             </div>
 
@@ -175,7 +175,7 @@ const Testimonials = () => {
             </h2>
 
             <p className="text-sm md:text-base text-primary-foreground/55 leading-relaxed mt-5 max-w-lg">
-              A presença ao lado de nomes de grande alcance reforça a percepção de uma marca atual, confiável e cada vez mais relevante no universo da mobilidade elétrica.
+              A presença da MS Electric ao lado de nomes de grande alcance fortalece algo que a marca já constrói na prática: visibilidade, confiança e relevância em um mercado que não para de crescer.
             </p>
           </motion.div>
 
