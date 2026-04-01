@@ -46,7 +46,7 @@ const SLIDES: Slide[] = [
   },
   {
     badge: "NOVIDADE",
-    headline: ["TOUR 3K —", "POTÊNCIA", "PARA SUBIDAS"],
+    headline: ["TOUR 3K", "POTÊNCIA", "PARA SUBIDAS"],
     highlightLine: 1,
     subheadline:
       "Motor de 3.000W e velocidade de até 75km/h. Bateria de lítio removível e design esportivo.",
