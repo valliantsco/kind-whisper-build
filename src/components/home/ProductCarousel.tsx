@@ -300,7 +300,7 @@ const ProductCarousel = () => {
                       }}
                     />
 
-                    {/* Top accent line — outside overflow-hidden area */}
+                    {/* Top accent line */}
                     <div
                       className="absolute top-0 left-2 right-2 h-[2px] rounded-full transition-all duration-500 z-[2]"
                       style={{
