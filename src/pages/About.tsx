@@ -100,7 +100,7 @@ export default function About() {
               </motion.p>
 
               <motion.p variants={fadeUp} custom={3}
-                className="text-primary-foreground/40 text-base leading-relaxed max-w-2xl mb-10">
+                className="text-primary-foreground/40 text-sm md:text-base leading-relaxed max-w-2xl mb-8 md:mb-10">
                 Com operação em Uberlândia, presença física e atendimento online, a MS Eletric une tecnologia, praticidade e confiança para tornar a eletromobilidade mais acessível, mais clara e mais presente no dia a dia de quem busca uma nova forma de se mover.
               </motion.p>
 
