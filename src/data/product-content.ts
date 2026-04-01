@@ -2398,4 +2398,147 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
         "Fale com um especialista da MS Electric e descubra como a Moto Cross Infantil pode transformar o lazer da criança em momentos de diversão memoráveis.",
     },
   },
+
+  "drift-eletrico-350": {
+    headline: "Diversão garantida com estilo e segurança para os pequenos",
+    subheadline:
+      "O Drift Elétrico 350 é o veículo recreativo infantil mais acessível da MS Electric. Com motor de 350W, velocidade controlada de até 12 km/h e visual chamativo, ele proporciona uma experiência de lazer divertida e supervisionada.",
+    supportText:
+      "Pensado para momentos de diversão em ambientes controlados, ele é ideal para quintais, condomínios, chácaras e áreas recreativas — sempre com acompanhamento de um adulto responsável.",
+    idealFor: [
+      {
+        icon: "smile",
+        title: "Diversão supervisionada",
+        desc: "Lazer recreativo para crianças em ambientes controlados, com velocidade adequada e uso acompanhado por adultos.",
+      },
+      {
+        icon: "gift",
+        title: "Presente acessível e marcante",
+        desc: "Um presente que encanta pelo visual e pela diversão — com o melhor preço da categoria infantil MS Electric.",
+      },
+      {
+        icon: "home",
+        title: "Quintais e condomínios",
+        desc: "Perfeito para espaços onde a criança pode brincar com segurança e supervisão adequada.",
+      },
+      {
+        icon: "shield",
+        title: "Velocidade controlada",
+        desc: "Até 12 km/h — velocidade pensada para oferecer diversão com mais tranquilidade para pais e responsáveis.",
+      },
+    ],
+    whyChoose: [
+      {
+        title: "O mais acessível da linha infantil",
+        desc: "Entrada inteligente na categoria recreativa da MS Electric, com preço que cabe no bolso e diversão que não decepciona.",
+      },
+      {
+        title: "Velocidade segura de até 12 km/h",
+        desc: "Pensada para uso recreativo infantil, oferecendo diversão real sem ultrapassar limites adequados para a faixa etária.",
+      },
+      {
+        title: "Visual chamativo e divertido",
+        desc: "Design que desperta entusiasmo imediato. A criança se encanta antes mesmo de dar a primeira volta.",
+      },
+      {
+        title: "Recarga rápida de 3 a 5 horas",
+        desc: "A recarga mais rápida da categoria infantil. Menos espera, mais tempo de diversão.",
+      },
+      {
+        title: "Respaldo MS Electric",
+        desc: "Mesmo sendo o modelo mais acessível, conta com todo o suporte técnico e atendimento consultivo da marca.",
+      },
+    ],
+    dailyBenefits: [
+      {
+        title: "Diversão imediata e sem complicação",
+        desc: "Simples de usar e de recarregar. Conecte na tomada, aguarde poucas horas e a diversão está pronta.",
+      },
+      {
+        title: "Presente que encanta de verdade",
+        desc: "O tipo de presente que gera reação instantânea. O visual e a experiência fazem os olhos da criança brilharem.",
+      },
+      {
+        title: "Lazer ao ar livre com propósito",
+        desc: "Uma forma divertida de tirar a criança das telas e proporcionar momentos de entretenimento ao ar livre.",
+      },
+      {
+        title: "Tranquilidade para os pais",
+        desc: "Com velocidade controlada de até 12 km/h, os responsáveis acompanham a brincadeira com mais serenidade.",
+      },
+      {
+        title: "Investimento acessível em diversão",
+        desc: "O menor investimento da categoria infantil MS Electric com uma experiência recreativa que vale cada centavo.",
+      },
+    ],
+    urbanContext: {
+      title: "Entretenimento lúdico para momentos especiais",
+      body: "O Drift Elétrico 350 foi criado para transformar momentos de lazer em experiências divertidas e memoráveis. Com motor elétrico silencioso, velocidade controlada e visual que encanta, ele oferece diversão supervisionada em ambientes adequados — quintais, chácaras, condomínios e áreas recreativas. É o produto que une acessibilidade, entretenimento e momentos especiais em família.",
+      highlights: [
+        "Visual divertido e chamativo",
+        "Motor de 350W para diversão lúdica",
+        "Velocidade controlada de até 12 km/h",
+        "Recarga rápida de 3 a 5 horas",
+        "Motor elétrico silencioso e sem emissões",
+        "Uso supervisionado em ambientes apropriados",
+      ],
+    },
+    specContexts: {
+      autonomy:
+        "Autonomia pensada para sessões de lazer supervisionado com diversão prolongada.",
+      speed:
+        "Até 12 km/h — velocidade controlada e adequada para a proposta recreativa infantil do modelo.",
+      motor:
+        "Motor de 350W — potência dimensionada para oferecer uma experiência lúdica divertida e segura.",
+      recharge:
+        "3 a 5 horas na tomada convencional — a recarga mais rápida da categoria infantil. Menos espera, mais diversão.",
+      load:
+        "Capacidade de até 80 kg — compatível com a faixa de uso recreativo prevista para o produto.",
+    },
+    differentials: {
+      title: "Onde o Drift Elétrico 350 se destaca",
+      body: "O Drift Elétrico 350 é a porta de entrada na categoria infantil da MS Electric. Com o menor preço, a recarga mais rápida e velocidade controlada de até 12 km/h, ele oferece uma experiência recreativa divertida com mais acessibilidade e tranquilidade para os pais. Enquanto a Moto Cross Infantil entrega mais potência e visual esportivo, o Drift Elétrico 350 foca em diversão lúdica com velocidade mais adequada para faixas etárias menores ou uso mais controlado.",
+    },
+    comparisonTip:
+      "O Drift Elétrico 350 é a opção mais acessível e com velocidade mais controlada da categoria infantil — ideal para crianças menores ou pais que preferem mais tranquilidade. Se você busca mais potência e visual de motocross, a Moto Cross Infantil oferece 800W e 35 km de autonomia. Para mobilidade urbana leve, o Patinete 350 atende outro perfil de uso.",
+    faq: [
+      {
+        q: "O Drift Elétrico 350 é indicado para qual tipo de uso?",
+        a: "Para lazer recreativo supervisionado em ambientes controlados, como quintais, condomínios, chácaras e áreas recreativas. Sempre com acompanhamento de um adulto.",
+      },
+      {
+        q: "Esse modelo faz sentido para quais ambientes?",
+        a: "Para espaços abertos e controlados onde a criança possa brincar com segurança. Não é indicado para vias públicas.",
+      },
+      {
+        q: "Qual o diferencial dele em relação à Moto Cross Infantil?",
+        a: "O Drift Elétrico 350 tem velocidade mais controlada (12 km/h), recarga mais rápida (3-5h) e preço mais acessível. A Moto Cross Infantil oferece mais potência (800W) e visual esportivo mais marcante.",
+      },
+      {
+        q: "Ele é uma boa escolha para presentear?",
+        a: "Sim. É o presente recreativo mais acessível da linha MS Electric, com visual chamativo e diversão garantida para a criança.",
+      },
+      {
+        q: "Como funciona a recarga?",
+        a: "Basta conectar na tomada convencional. A carga completa leva de 3 a 5 horas — a mais rápida da categoria infantil.",
+      },
+      {
+        q: "Como é a manutenção?",
+        a: "Simples e econômica. Veículos elétricos têm menos peças móveis, reduzindo custos e frequência de manutenção. A MS Electric oferece suporte técnico.",
+      },
+      {
+        q: "Como funciona a garantia?",
+        a: "A MS Electric oferece garantia de fábrica com suporte técnico direto. Consulte um especialista para conhecer os termos completos.",
+      },
+      {
+        q: "Para quem o Drift Elétrico 350 é a melhor escolha?",
+        a: "Para pais e responsáveis que querem uma opção recreativa acessível, divertida e com velocidade controlada — ideal para crianças menores ou para quem prefere mais tranquilidade no uso supervisionado.",
+      },
+    ],
+    finalCta: {
+      title: "Quer diversão acessível e segura para a criança?",
+      subtitle:
+        "Fale com um especialista da MS Electric e descubra como o Drift Elétrico 350 pode transformar o lazer dos pequenos em momentos de diversão memoráveis.",
+    },
+  },
 };
