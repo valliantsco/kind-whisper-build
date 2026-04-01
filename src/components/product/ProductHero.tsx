@@ -4,9 +4,10 @@ import {
   MessageCircle, Sparkles,
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import { useRef } from "react";
-import type { Product } from "@/data/products";
+import { useRef, useState, useCallback } from "react";
+import type { Product, ProductColor } from "@/data/products";
 import type { ProductContent } from "@/data/product-content";
+import ColorSelector from "@/components/product/ColorSelector";
 
 const SPEC_ICONS = { autonomy: Zap, speed: Gauge, motor: Battery, recharge: Clock, load: Weight } as const;
 const SPEC_LABELS: Record<string, string> = {
