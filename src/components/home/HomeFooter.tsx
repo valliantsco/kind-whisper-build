@@ -1,4 +1,5 @@
 import { Instagram, Facebook, Youtube, MapPin, Phone, Clock } from "lucide-react";
+import { Link } from "react-router-dom";
 import msLogo from "@/assets/ms-eletric-logo-white.png";
 
 const modelLinks = ["Scooters Elétricas", "Autopropelidos", "Bicicletas Elétricas", "Triciclos Elétricos", "Utilitários", "Linha Infantil", "Patinetes"];
