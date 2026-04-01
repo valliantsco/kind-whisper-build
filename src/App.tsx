@@ -9,6 +9,8 @@ import Models from "./pages/Models";
 import ProductDetail from "./pages/ProductDetail";
 import About from "./pages/About";
 import ABVE from "./pages/ABVE";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import TermsOfUse from "./pages/TermsOfUse";
 import NotFound from "./pages/NotFound";
 import ScrollToTop from "./components/ScrollToTop";
 
@@ -27,6 +29,8 @@ const App = () => (
           <Route path="/modelos/:slug" element={<ProductDetail />} />
           <Route path="/sobre" element={<About />} />
           <Route path="/abve" element={<ABVE />} />
+          <Route path="/politica-de-privacidade" element={<PrivacyPolicy />} />
+          <Route path="/termos-de-uso" element={<TermsOfUse />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
