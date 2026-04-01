@@ -283,10 +283,10 @@ const ProductCarousel = () => {
                   <div
                     className="h-full rounded-xl overflow-hidden transition-all duration-300 relative"
                     style={{
-                      background: "hsl(0 0% 100% / 0.025)",
-                      border: `1px solid ${isHovered ? "hsl(var(--primary) / 0.25)" : "hsl(0 0% 100% / 0.06)"}`,
+                      background: isHovered ? "hsl(0 0% 100% / 0.045)" : "hsl(0 0% 100% / 0.025)",
+                      border: `1px solid ${isHovered ? "hsl(var(--primary) / 0.35)" : "hsl(0 0% 100% / 0.06)"}`,
                       boxShadow: isHovered
-                        ? "0 20px 50px -15px hsl(var(--primary) / 0.15), inset 0 -1px 0 hsl(var(--primary) / 0.15)"
+                        ? "0 0 25px hsl(var(--primary) / 0.2), 0 0 60px hsl(var(--primary) / 0.1), 0 20px 50px -15px hsl(var(--primary) / 0.15), inset 0 -1px 0 hsl(var(--primary) / 0.15)"
                         : "none",
                     }}
                   >
