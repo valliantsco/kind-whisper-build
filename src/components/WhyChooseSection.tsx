@@ -89,7 +89,7 @@ const WhyChooseSection = () => {
             Conte com assistência técnica, peças de reposição e suporte dedicado. Sua compra é protegida do início ao pós-venda.
           </p>
           <motion.a
-            href="https://wa.me/5500000000000?text=Olá! Gostaria de saber sobre garantia e suporte."
+            href="https://wa.me/551151996628?text=Olá! Gostaria de saber sobre garantia e suporte."
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center justify-center gap-2.5 text-[11px] sm:text-sm font-bold uppercase tracking-[0.14em] px-8 md:px-10 py-3.5 md:py-4 rounded-xl text-white overflow-visible"

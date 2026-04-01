@@ -22,6 +22,7 @@ import modelLibertyUltra from "@/assets/models/model-liberty-ultra.webp";
 
 interface Product {
   name: string;
+  slug: string;
   category: string;
   image: string;
   autonomy: string;
@@ -31,16 +32,16 @@ interface Product {
 }
 
 const PRODUCTS: Product[] = [
-  { name: "S3K", category: "Scooters Elétricas", image: modelS3k, autonomy: "85km", speed: "80km/h", load: "120kg", price: "R$ 19.990" },
-  { name: "Tour 3K", category: "Scooters Elétricas", image: modelTour3k, autonomy: "40km", speed: "75km/h", load: "120kg", price: "R$ 16.990" },
-  { name: "New Holiday", category: "Scooters Elétricas", image: modelNewHoliday, autonomy: "50km", speed: "50km/h", load: "150kg", price: "R$ 15.990" },
-  { name: "Bliss", category: "Autopropelidos", image: modelBliss, autonomy: "70km", speed: "32km/h", load: "150kg", price: "R$ 15.990" },
-  { name: "Rhino Delivery", category: "Utilitários", image: modelRhino, autonomy: "75km", speed: "65km/h", load: "150kg", price: "R$ 18.990" },
-  { name: "Liberty Ultra", category: "Autopropelidos", image: modelLibertyUltra, autonomy: "70km", speed: "32km/h", load: "150kg", price: "R$ 12.990" },
-  { name: "Santa Monica", category: "Bicicletas Elétricas", image: modelSantaMonica, autonomy: "60km", speed: "32km/h", load: "150kg", price: "Consulte" },
-  { name: "Bike 400+", category: "Autopropelidos", image: modelBike400, autonomy: "50km", speed: "32km/h", load: "100kg", price: "R$ 10.990" },
-  { name: "Big Sur", category: "Bicicletas Elétricas", image: modelBigSur, autonomy: "60km", speed: "32km/h", load: "150kg", price: "Consulte" },
-  { name: "Triciclo Elétrico", category: "Triciclos Elétricos", image: modelTricycle, autonomy: "60km", speed: "32km/h", load: "150kg", price: "R$ 15.990" },
+  { name: "S3K", slug: "s3k", category: "Scooters Elétricas", image: modelS3k, autonomy: "85km", speed: "80km/h", load: "120kg", price: "R$ 19.990" },
+  { name: "Tour 3K", slug: "tour-3k", category: "Scooters Elétricas", image: modelTour3k, autonomy: "40km", speed: "75km/h", load: "120kg", price: "R$ 16.990" },
+  { name: "New Holiday", slug: "new-holiday", category: "Scooters Elétricas", image: modelNewHoliday, autonomy: "50km", speed: "50km/h", load: "150kg", price: "R$ 15.990" },
+  { name: "Bliss", slug: "bliss", category: "Autopropelidos", image: modelBliss, autonomy: "70km", speed: "32km/h", load: "150kg", price: "R$ 15.990" },
+  { name: "Rhino Delivery", slug: "rhino-delivery", category: "Utilitários", image: modelRhino, autonomy: "75km", speed: "65km/h", load: "150kg", price: "R$ 18.990" },
+  { name: "Liberty Ultra", slug: "liberty-ultra", category: "Autopropelidos", image: modelLibertyUltra, autonomy: "70km", speed: "32km/h", load: "150kg", price: "R$ 12.990" },
+  { name: "Santa Monica", slug: "santa-monica", category: "Bicicletas Elétricas", image: modelSantaMonica, autonomy: "60km", speed: "32km/h", load: "150kg", price: "Consulte" },
+  { name: "Bike 400+", slug: "bike-400", category: "Autopropelidos", image: modelBike400, autonomy: "50km", speed: "32km/h", load: "100kg", price: "R$ 10.990" },
+  { name: "Big Sur", slug: "big-sur", category: "Bicicletas Elétricas", image: modelBigSur, autonomy: "60km", speed: "32km/h", load: "150kg", price: "Consulte" },
+  { name: "Triciclo Elétrico", slug: "triciclo-eletrico", category: "Triciclos Elétricos", image: modelTricycle, autonomy: "60km", speed: "32km/h", load: "150kg", price: "R$ 15.990" },
 ];
 
 const SPECS = [
@@ -317,7 +318,7 @@ const ProductCarousel = () => {
                       </div>
 
                       <a
-                        href="#contato"
+                        href={`/modelos/${product.slug}`}
                         className="flex items-center justify-center gap-2 w-full py-2.5 rounded-lg text-[11px] font-semibold uppercase tracking-[0.12em] text-primary-foreground/50 hover:text-primary hover:border-primary/30 transition-all duration-200"
                         style={{ border: "1px solid hsl(0 0% 100% / 0.08)" }}
                       >
@@ -377,7 +378,7 @@ const ProductCarousel = () => {
             </div>
 
             <a
-              href="#modelos"
+              href="/modelos"
               className="relative shrink-0 inline-flex items-center gap-2.5 text-sm font-semibold uppercase tracking-[0.12em] px-8 py-4 rounded-xl text-primary-foreground cursor-pointer transition-all duration-200 hover:scale-[1.03] active:scale-[0.97]"
               style={{
                 background: "linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)))",

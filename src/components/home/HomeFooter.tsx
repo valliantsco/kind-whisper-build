@@ -2,8 +2,19 @@ import { Instagram, Facebook, Youtube, MapPin, Phone, Clock } from "lucide-react
 import { Link } from "react-router-dom";
 import msLogo from "@/assets/ms-eletric-logo-white.png";
 
-const modelLinks = ["Scooters Elétricas", "Autopropelidos", "Bicicletas Elétricas", "Triciclos Elétricos", "Utilitários", "Linha Infantil", "Patinetes"];
-const institutionalLinks = ["Sobre a MS Eletric", "Associada ABVE"];
+const modelLinks = [
+  { label: "Scooters Elétricas", href: "/modelos?categoria=scooters-eletricas" },
+  { label: "Autopropelidos", href: "/modelos?categoria=autopropelidos" },
+  { label: "Bicicletas Elétricas", href: "/modelos?categoria=bicicletas-eletricas" },
+  { label: "Triciclos Elétricos", href: "/modelos?categoria=triciclos-eletricos" },
+  { label: "Utilitários", href: "/modelos?categoria=utilitarios" },
+  { label: "Linha Infantil", href: "/modelos?categoria=infantil" },
+  { label: "Patinetes", href: "/modelos?categoria=patinetes" },
+];
+const institutionalLinks = [
+  { label: "Sobre a MS Eletric", href: "/sobre" },
+  { label: "Associada ABVE", href: "/abve" },
+];
 const supportLinks = ["Assistência técnica", "Garantia de fábrica", "Peças de reposição", "Condições de pagamento"];
 const policyLinks = [
   { label: "Política de privacidade", href: "/politica-de-privacidade" },
@@ -52,7 +63,7 @@ const HomeFooter = ({ onContactClick, onSupportClick }: HomeFooterProps) => {
               </button>
               <div className="flex items-center gap-2.5">
                 <Phone className="w-4 h-4 shrink-0" style={{ color: "hsl(11 81% 57%)" }} />
-                <span className="text-sm text-primary-foreground/50">(34) 3222-8899</span>
+                <a href="tel:+553432228899" className="text-sm text-primary-foreground/50 hover:text-primary transition-colors">(34) 3222-8899</a>
               </div>
               <div className="flex items-center gap-2.5">
                 <Clock className="w-4 h-4 shrink-0" style={{ color: "hsl(11 81% 57%)" }} />
@@ -92,10 +103,10 @@ const HomeFooter = ({ onContactClick, onSupportClick }: HomeFooterProps) => {
             </h4>
             <ul className="space-y-2.5">
               {modelLinks.map((link) => (
-                <li key={link}>
-                  <a href="#modelos" className="text-sm text-primary-foreground/40 hover:text-primary hover:translate-x-1 transition-all inline-block">
-                    {link}
-                  </a>
+                <li key={link.label}>
+                  <Link to={link.href} className="text-sm text-primary-foreground/40 hover:text-primary hover:translate-x-1 transition-all inline-block">
+                    {link.label}
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -108,10 +119,10 @@ const HomeFooter = ({ onContactClick, onSupportClick }: HomeFooterProps) => {
             </h4>
             <ul className="space-y-2.5">
               {institutionalLinks.map((link) => (
-                <li key={link}>
-                  <a href="#sobre" className="text-sm text-primary-foreground/40 hover:text-primary hover:translate-x-1 transition-all inline-block">
-                    {link}
-                  </a>
+                <li key={link.label}>
+                  <Link to={link.href} className="text-sm text-primary-foreground/40 hover:text-primary hover:translate-x-1 transition-all inline-block">
+                    {link.label}
+                  </Link>
                 </li>
               ))}
             </ul>

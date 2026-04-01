@@ -21,8 +21,8 @@ const SLIDES: Slide[] = [
     highlightLine: 1,
     subheadline:
       "Motor de 3.500W, até 80km/h e 85km de autonomia. A scooter elétrica mais completa da linha AIMA.",
-    primaryCta: { text: "Conhecer a S3K", href: "#modelos" },
-    secondaryCta: { text: "Ver todos os modelos", href: "#modelos" },
+    primaryCta: { text: "Conhecer a S3K", href: "/modelos/s3k" },
+    secondaryCta: { text: "Ver todos os modelos", href: "/modelos" },
     stats: [
       { icon: Zap, value: "3.500W", label: "Motor" },
       { icon: Gauge, value: "80km/h", label: "Velocidade" },
@@ -35,7 +35,7 @@ const SLIDES: Slide[] = [
     highlightLine: 1,
     subheadline:
       "Autopropelidos, scooters, bicicletas e triciclos elétricos. Mais de 19 modelos para cada estilo de vida.",
-    primaryCta: { text: "Explorar catálogo", href: "#modelos" },
+    primaryCta: { text: "Explorar catálogo", href: "/modelos" },
     secondaryCta: { text: "Fazer o quiz", href: "#quiz" },
   },
   {
@@ -44,8 +44,8 @@ const SLIDES: Slide[] = [
     highlightLine: 1,
     subheadline:
       "Motor de 3.000W e velocidade de até 75km/h. Bateria de lítio removível e design esportivo.",
-    primaryCta: { text: "Conhecer a Tour 3K", href: "#modelos" },
-    secondaryCta: { text: "Ver todos os modelos", href: "#modelos" },
+    primaryCta: { text: "Conhecer a Tour 3K", href: "/modelos/tour-3k" },
+    secondaryCta: { text: "Ver todos os modelos", href: "/modelos" },
     stats: [
       { icon: Zap, value: "3.000W", label: "Motor" },
       { icon: Gauge, value: "75km/h", label: "Velocidade" },
