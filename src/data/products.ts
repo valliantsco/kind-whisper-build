@@ -347,6 +347,9 @@ export const PRODUCTS: Product[] = [
     recharge: "6–7h",
     price: "R$ 28.990",
     description: "Capacidade bruta de 400 kg para transporte pesado. A solução elétrica para logística e comércio.",
+    colors: [
+      { name: "Preto", hex: "#111111" },
+    ],
   },
 
   // ── Infantil ──
