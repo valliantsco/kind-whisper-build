@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
+import AnimatedBackground from "@/components/home/AnimatedBackground";
 import Header from "@/components/Header";
 import PopUpContato01 from "@/components/PopUpContato01";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
@@ -60,6 +61,9 @@ const Index = () => {
             "linear-gradient(160deg, hsl(0 0% 100% / 0.01) 0%, transparent 35%, hsl(var(--primary) / 0.015) 100%)",
         }}
       />
+
+      {/* Animated thematic elements */}
+      <AnimatedBackground />
 
       {/* Content — above background */}
       <div className="relative z-10">
