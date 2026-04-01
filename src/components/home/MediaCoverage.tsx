@@ -181,36 +181,52 @@ const MediaCoverage = () => {
               className="group block"
             >
               <div
-                className="h-full rounded-xl overflow-hidden transition-all duration-300 group-hover:-translate-y-1 p-5"
+                className="h-full rounded-xl overflow-hidden transition-all duration-300 group-hover:-translate-y-1 flex flex-col"
                 style={{
                   background: "hsl(0 0% 100% / 0.025)",
                   border: "1px solid hsl(0 0% 100% / 0.06)",
                 }}
               >
-                <span className="text-[10px] text-primary-foreground/25 uppercase tracking-wider">
-                  {article.date}
-                </span>
-
-                <div className="flex items-center gap-2 mt-2 mb-3">
-                  <span
-                    className="px-2.5 py-0.5 rounded-md text-[9px] font-bold uppercase tracking-wider text-primary"
-                    style={{ background: "hsl(var(--primary) / 0.1)" }}
-                  >
-                    {article.source}
-                  </span>
+                {/* Image — visible on mobile */}
+                <div className="relative aspect-[16/9] md:aspect-[16/10] overflow-hidden">
+                  <img
+                    src={article.image}
+                    alt={article.headline}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    loading="lazy"
+                  />
+                  <div
+                    className="absolute inset-0"
+                    style={{ background: "linear-gradient(to top, hsl(0 0% 4% / 0.6) 0%, transparent 60%)" }}
+                  />
                 </div>
 
-                <h4 className="text-sm font-semibold text-primary-foreground/85 leading-snug mb-2 line-clamp-2 group-hover:text-primary-foreground transition-colors">
-                  {article.headline}
-                </h4>
+                <div className="p-5 flex flex-col flex-1">
+                  <span className="text-[10px] text-primary-foreground/25 uppercase tracking-wider">
+                    {article.date}
+                  </span>
 
-                <p className="text-xs text-primary-foreground/35 leading-relaxed line-clamp-2">
-                  {article.excerpt}
-                </p>
+                  <div className="flex items-center gap-2 mt-2 mb-3">
+                    <span
+                      className="px-2.5 py-0.5 rounded-md text-[9px] font-bold uppercase tracking-wider text-primary"
+                      style={{ background: "hsl(var(--primary) / 0.1)" }}
+                    >
+                      {article.source}
+                    </span>
+                  </div>
 
-                <div className="flex items-center gap-1 mt-4 text-primary opacity-0 group-hover:opacity-100 transition-all duration-200 translate-y-1 group-hover:translate-y-0">
-                  <span className="text-[11px] font-semibold">Ler mais</span>
-                  <ExternalLink className="w-3 h-3" />
+                  <h4 className="text-sm font-semibold text-primary-foreground/85 leading-snug mb-2 line-clamp-2 group-hover:text-primary-foreground transition-colors">
+                    {article.headline}
+                  </h4>
+
+                  <p className="text-xs text-primary-foreground/35 leading-relaxed line-clamp-2">
+                    {article.excerpt}
+                  </p>
+
+                  <div className="flex items-center gap-1 mt-4 text-primary opacity-0 group-hover:opacity-100 transition-all duration-200 translate-y-1 group-hover:translate-y-0">
+                    <span className="text-[11px] font-semibold">Ler mais</span>
+                    <ExternalLink className="w-3 h-3" />
+                  </div>
                 </div>
               </div>
             </motion.a>
