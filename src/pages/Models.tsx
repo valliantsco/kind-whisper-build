@@ -22,6 +22,16 @@ const SPECS = [
   { icon: Weight, key: "load" as const, label: "Carga" },
 ];
 
+type SortOption = "relevance" | "price-asc" | "price-desc" | "name-asc" | "autonomy-desc" | "speed-desc";
+const SORT_OPTIONS: { value: SortOption; label: string }[] = [
+  { value: "relevance", label: "Relevância" },
+  { value: "price-asc", label: "Menor preço" },
+  { value: "price-desc", label: "Maior preço" },
+  { value: "name-asc", label: "A → Z" },
+  { value: "autonomy-desc", label: "Maior autonomia" },
+  { value: "speed-desc", label: "Maior velocidade" },
+];
+
 const MAX_COMPARE = 3;
 
 /* ── Category Pills (swipe only) ── */
