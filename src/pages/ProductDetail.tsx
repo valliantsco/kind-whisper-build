@@ -93,6 +93,8 @@ const ProductDetail = () => {
             finalCta: { title: "Fale com um especialista", subtitle: "Tire suas dúvidas e descubra as melhores condições." },
           }}
           onContact={() => setProductContactOpen(true)}
+          selectedColor={selectedColor}
+          onColorChange={handleColorChange}
         />
         <ProductSpecs
           product={product}
