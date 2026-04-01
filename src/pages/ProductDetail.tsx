@@ -6,6 +6,7 @@ import HomeFooter from "@/components/home/HomeFooter";
 import { PRODUCTS, type Product } from "@/data/products";
 import { PRODUCT_CONTENT } from "@/data/product-content";
 import { useState, useMemo } from "react";
+import { WHATSAPP_NUMBER } from "@/utils/form-helpers";
 
 import ProductHero from "@/components/product/ProductHero";
 import ProductWhyChoose from "@/components/product/ProductWhyChoose";
