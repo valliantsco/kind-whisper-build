@@ -108,7 +108,7 @@ const ProductDetail = () => {
       </div>
       <FloatingWhatsApp />
       <PopUpContato01 isOpen={contactOpen} onClose={() => setContactOpen(false)} />
-      <PopUpContatoProduto isOpen={productContactOpen} onClose={() => setProductContactOpen(false)} product={product} />
+      <PopUpContatoProduto isOpen={productContactOpen} onClose={() => setProductContactOpen(false)} product={product} selectedColor={selectedColor} />
     </div>
   );
 };
