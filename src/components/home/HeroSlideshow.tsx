@@ -133,7 +133,7 @@ const HeroSlideshow = () => {
       </div>
 
       {/* ── Content ── */}
-      <div className="relative z-10 container mx-auto px-4 pb-20 md:pb-28">
+      <div className="relative z-10 container mx-auto px-4 pb-12 md:pb-20 mt-auto">
         <AnimatePresence mode="wait">
           <motion.div
             key={current}
