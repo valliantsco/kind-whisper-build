@@ -4,7 +4,7 @@ import {
   Sparkles,
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import { useRef, useState, useCallback } from "react";
+import { useRef } from "react";
 import type { Product, ProductColor } from "@/data/products";
 import type { ProductContent } from "@/data/product-content";
 import ColorSelector from "@/components/product/ColorSelector";
