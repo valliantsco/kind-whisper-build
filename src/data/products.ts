@@ -68,6 +68,11 @@ export const PRODUCTS: Product[] = [
     recharge: "7–8h",
     price: "R$ 7.990",
     description: "Compacta e acessível, ideal para deslocamentos urbanos curtos com praticidade e economia no dia a dia.",
+    colors: [
+      { name: "Preto", hex: "#111111" },
+      { name: "Branco", hex: "#F5F5F5" },
+      { name: "Azul", hex: "#1D4ED8" },
+    ],
   },
   {
     name: "Bike 400+",
