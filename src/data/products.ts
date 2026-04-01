@@ -263,8 +263,9 @@ export const PRODUCTS: Product[] = [
     highlight: "Custom / Chopper",
     description: "Visual custom chopper com motor de 3.000W e 75 km/h. Para quem quer estilo e potência elétrica.",
     colors: [
-      { name: "Preto Fosco", hex: "#1A1A1A" },
-      { name: "Cromado", hex: "#C0C0C0" },
+      { name: "Preto", hex: "#111111" },
+      { name: "Azul", hex: "#1D4ED8" },
+      { name: "Vermelho", hex: "#DC2626" },
     ],
   },
   {
