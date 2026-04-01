@@ -58,7 +58,7 @@ const ProductDetail = () => {
         <AnimatedBackground />
         <div className="relative z-10">
           <Header onContactClick={() => setContactOpen(true)} />
-          <ProductHero product={product} content={content} onContact={() => setProductContactOpen(true)} />
+          <ProductHero product={product} content={content} onContact={() => setProductContactOpen(true)} selectedColor={selectedColor} onColorChange={handleColorChange} />
           <ProductWhyChoose content={content} />
           <ProductDailyBenefits content={content} />
           <ProductUrbanContext content={content} />
