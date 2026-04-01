@@ -567,4 +567,143 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
         "Fale com um especialista da MS Electric e receba orientação personalizada sobre o modelo ideal para o seu dia a dia.",
     },
   },
+  "bliss": {
+    headline: "Mobilidade urbana com design que marca presença",
+    subheadline:
+      "A Bliss é o modelo mais vendido da MS Electric por um motivo: ela une praticidade urbana, motor potente de 800W e um design moderno que transforma cada deslocamento em uma experiência com mais estilo.",
+    supportText:
+      "Se você quer mais do que apenas ir do ponto A ao ponto B, a Bliss entrega personalidade, conforto e presença visual. Uma escolha para quem vê a mobilidade elétrica também como expressão de estilo de vida.",
+    idealFor: [
+      {
+        icon: "sparkles",
+        title: "Quem valoriza design",
+        desc: "Para quem escolhe com os olhos e quer um veículo que combine com seu estilo pessoal e sua identidade urbana.",
+      },
+      {
+        icon: "route",
+        title: "Mobilidade urbana com presença",
+        desc: "70 km de autonomia e visual marcante para quem quer se deslocar pela cidade com mais personalidade.",
+      },
+      {
+        icon: "city",
+        title: "Lifestyle urbano moderno",
+        desc: "Ideal para quem vive a cidade de forma ativa e quer um veículo que reflita um estilo de vida contemporâneo.",
+      },
+      {
+        icon: "piggyBank",
+        title: "Premium sem exagero",
+        desc: "Mais sofisticação e mais entrega do que modelos básicos, com economia real no uso diário.",
+      },
+    ],
+    whyChoose: [
+      {
+        title: "Design que diferencia",
+        desc: "A Bliss tem um visual moderno e marcante que se destaca em qualquer cenário urbano. Não é apenas um veículo — é uma escolha de estilo.",
+      },
+      {
+        title: "O mais vendido da MS Electric",
+        desc: "Não é por acaso. A Bliss combina o melhor equilíbrio entre design, potência, autonomia e preço dentro do portfólio.",
+      },
+      {
+        title: "Motor de 800W",
+        desc: "Mais potência para uma condução mais firme, mais confortável e mais confiável — em qualquer situação urbana.",
+      },
+      {
+        title: "70 km de autonomia",
+        desc: "Liberdade para rodar sem contar quilômetros. A Bliss acompanha rotinas intensas com folga.",
+      },
+      {
+        title: "Suporte MS Electric",
+        desc: "Garantia de fábrica, assistência técnica e peças de reposição. A segurança de comprar de uma marca que acompanha você.",
+      },
+    ],
+    dailyBenefits: [
+      {
+        title: "Mais prazer em cada trajeto",
+        desc: "Pilotar um veículo bonito muda a experiência. A Bliss transforma deslocamentos comuns em momentos mais agradáveis.",
+      },
+      {
+        title: "Presença que chama atenção",
+        desc: "Design moderno que gera comentários, olhares e elogios. Uma escolha que valoriza quem usa.",
+      },
+      {
+        title: "Potência para o dia a dia",
+        desc: "800W entregam uma condução fluida, segura e consistente — subidas, arrancadas e trânsito sem esforço.",
+      },
+      {
+        title: "Autonomia de verdade",
+        desc: "70 km por carga significam ir e voltar, resolver tarefas e ainda ter bateria — sem ansiedade.",
+      },
+      {
+        title: "Economia invisível",
+        desc: "Sem combustível, sem IPVA, manutenção mínima. A economia acontece automaticamente, todo mês.",
+      },
+      {
+        title: "Recarregue sem complicação",
+        desc: "6 a 7 horas na tomada comum. Conecte à noite, use pela manhã. Simples e prático.",
+      },
+    ],
+    urbanContext: {
+      title: "Sua identidade, em movimento",
+      body: "A Bliss foi criada para quem entende que mobilidade também é expressão. Ela não é apenas um meio de transporte — é uma extensão do seu estilo, da sua personalidade e da forma como você escolhe viver a cidade.",
+      highlights: [
+        "Design moderno que se destaca no cenário urbano",
+        "O modelo mais vendido da MS Electric",
+        "70 km de autonomia + motor de 800W",
+        "Praticidade com personalidade e presença",
+      ],
+    },
+    specContexts: {
+      autonomy: "Faixa pensada para acompanhar uma rotina urbana ativa com praticidade",
+      speed: "Boa relação para deslocamentos na cidade com conforto e segurança",
+      motor: "Entrega alinhada à proposta premium urbana do modelo",
+      recharge: "Rotina simples para encaixar o uso no dia a dia sem complicação",
+      load: "Compatível com a proposta funcional e elegante do produto",
+    },
+    differentials: {
+      title: "Onde a Bliss se destaca na linha MS Electric",
+      body: "A Bliss é a escolha certa para quem quer mais do que mobilidade elétrica funcional. Ela combina praticidade urbana com design marcante, mais personalidade e uma experiência visualmente mais premium. É o modelo mais vendido da marca — e isso reflete a capacidade dela de unir desejo e razão em uma única escolha.",
+    },
+    comparisonTip:
+      "Se você busca uma opção mais acessível e funcional, os modelos da família Bike atendem bem. Se quer mais robustez pura, a Liberty Ultra pode ser o caminho. Mas se design, presença visual e uma experiência mais premium são prioridade, a Bliss é a escolha que mais entrega nessa direção — e não é à toa que é a mais vendida.",
+    faq: [
+      {
+        q: "A Bliss é indicada para qual tipo de uso?",
+        a: "Para uso urbano diário com mais estilo e presença. Com 70 km de autonomia e motor de 800W, ela acompanha rotinas intensas sem limitações — e com muito mais personalidade.",
+      },
+      {
+        q: "Esse modelo faz sentido para quem usa no dia a dia?",
+        a: "Sim. A Bliss é o modelo mais vendido da MS Electric justamente porque combina praticidade para o uso diário com um design que valoriza quem usa.",
+      },
+      {
+        q: "Qual o diferencial dela em relação a modelos mais básicos?",
+        a: "Design mais marcante, motor de 800W (vs 350–600W), maior capacidade de carga (até 150 kg) e uma experiência de uso mais premium e mais prazerosa.",
+      },
+      {
+        q: "A Bliss é uma opção para quem valoriza design?",
+        a: "Com certeza. A Bliss foi projetada para quem vê o veículo também como extensão de estilo. Seu visual moderno se destaca em qualquer cenário urbano.",
+      },
+      {
+        q: "Como funciona a recarga?",
+        a: "Tomada comum (110V ou 220V), de 6 a 7 horas para carga completa. Conecte à noite e tenha o veículo pronto pela manhã.",
+      },
+      {
+        q: "Como é a manutenção?",
+        a: "Simples e barata. 100% elétrica, sem troca de óleo, sem velas, sem embreagem. Manutenção mínima e muito menos frequente.",
+      },
+      {
+        q: "Como funciona a garantia?",
+        a: "A MS Electric oferece garantia de fábrica com suporte técnico e peças de reposição. Consulte um especialista para conhecer as condições.",
+      },
+      {
+        q: "Para quem a Bliss é a melhor escolha dentro do portfólio?",
+        a: "Para quem quer unir praticidade, potência e design em uma única escolha. Se estilo e presença visual importam tanto quanto funcionalidade, a Bliss é a resposta.",
+      },
+    ],
+    finalCta: {
+      title: "Descubra se a Bliss combina com o seu estilo e a sua rotina",
+      subtitle:
+        "Fale com um especialista da MS Electric e receba orientação personalizada sobre o modelo ideal para você.",
+    },
+  },
 };
