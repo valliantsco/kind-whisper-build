@@ -278,7 +278,25 @@ const Testimonials = () => {
 
         {/* ── CAROUSEL ── */}
         <div className="relative">
-          {/* Navigation arrows — always visible on desktop, opacity change */}
+          {/* Mobile arrows — glassmorphism orange */}
+          <button
+            onClick={() => scroll("left")}
+            className={`absolute left-1 top-1/2 -translate-y-1/2 z-20 md:hidden w-9 h-9 rounded-full flex items-center justify-center transition-opacity ${canScrollLeft ? "opacity-100" : "opacity-0 pointer-events-none"}`}
+            style={{ background: "hsl(var(--primary) / 0.15)", backdropFilter: "blur(12px)", WebkitBackdropFilter: "blur(12px)", border: "1px solid hsl(var(--primary) / 0.25)", boxShadow: "0 4px 12px hsl(0 0% 0% / 0.3)" }}
+            aria-label="Anterior"
+          >
+            <ChevronLeft className="w-4 h-4 text-primary" />
+          </button>
+          <button
+            onClick={() => scroll("right")}
+            className={`absolute right-1 top-1/2 -translate-y-1/2 z-20 md:hidden w-9 h-9 rounded-full flex items-center justify-center transition-opacity ${canScrollRight ? "opacity-100" : "opacity-0 pointer-events-none"}`}
+            style={{ background: "hsl(var(--primary) / 0.15)", backdropFilter: "blur(12px)", WebkitBackdropFilter: "blur(12px)", border: "1px solid hsl(var(--primary) / 0.25)", boxShadow: "0 4px 12px hsl(0 0% 0% / 0.3)" }}
+            aria-label="Próximo"
+          >
+            <ChevronRight className="w-4 h-4 text-primary" />
+          </button>
+
+          {/* Desktop arrows */}
           <button
             onClick={() => scroll("left")}
             className="hidden md:flex absolute -left-2 top-1/2 -translate-y-1/2 z-10 w-10 h-10 items-center justify-center rounded-full cursor-pointer active:scale-90 transition-all duration-200"
