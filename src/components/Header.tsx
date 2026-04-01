@@ -230,7 +230,7 @@ const Header = ({ onContactClick }: HeaderProps) => {
                         }`}
                       />
                     )}
-                  </a>
+                  </button>
                 </div>
               ))}
             </nav>
