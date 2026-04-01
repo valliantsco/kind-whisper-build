@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, ChevronLeft, ChevronRight, Zap, Battery, Gauge } from "lucide-react";
 
-const SLIDE_DURATION = 6000;
+const SLIDE_DURATION = 20000;
 
 interface Slide {
   badge: string;
