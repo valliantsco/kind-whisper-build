@@ -1,5 +1,5 @@
 import { motion, useMotionValue, useTransform } from "framer-motion";
-import { ChevronLeft, ChevronRight, ExternalLink, Star, Sparkles, Zap } from "lucide-react";
+import { ChevronLeft, ChevronRight, ExternalLink, Star } from "lucide-react";
 import { useRef, useState, useCallback, useEffect, useMemo } from "react";
 import InfluencerVideoModal, { type VideoSource } from "./InfluencerVideoModal";
 import InfluencerPreviewMedia from "./InfluencerPreviewMedia";
