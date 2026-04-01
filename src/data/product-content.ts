@@ -428,4 +428,143 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
         "Fale com um especialista da MS Electric e receba orientação personalizada sobre o modelo ideal para o seu dia a dia.",
     },
   },
+  "bike-ms-600": {
+    headline: "A escolha mais completa da família Bike para o seu dia a dia",
+    subheadline:
+      "Com 70 km de autonomia e motor de 600W, a Bike MS 600 é o modelo mais preparado da linha para quem usa a mobilidade elétrica com frequência e quer mais liberdade na rotina urbana.",
+    supportText:
+      "Se autonomia é prioridade e você quer um veículo elétrico que acompanhe a sua rotina sem limitações, a Bike MS 600 entrega o que os outros modelos da família não alcançam. Mais quilômetros por carga, mais potência e mais tranquilidade para usar todos os dias.",
+    idealFor: [
+      {
+        icon: "route",
+        title: "Deslocamentos urbanos frequentes",
+        desc: "70 km de autonomia para cobrir ida, volta e imprevistos — sem precisar se preocupar com a bateria no meio do caminho.",
+      },
+      {
+        icon: "sparkles",
+        title: "Quem valoriza autonomia",
+        desc: "Para quem não quer ficar calculando distância. A Bike MS 600 dá liberdade real para rodar mais.",
+      },
+      {
+        icon: "piggyBank",
+        title: "Uso diário com economia",
+        desc: "Centavos de energia por dia, sem IPVA, sem combustível. A economia é ainda mais significativa para quem usa com constância.",
+      },
+      {
+        icon: "city",
+        title: "Rotina urbana ativa",
+        desc: "Ideal para quem tem uma vida dinâmica na cidade e precisa de um veículo confiável para acompanhar o ritmo.",
+      },
+    ],
+    whyChoose: [
+      {
+        title: "Maior autonomia da linha Bike",
+        desc: "70 km por carga — quase o dobro da entrada. A Bike MS 600 é o modelo que mais entrega para quem roda com frequência.",
+      },
+      {
+        title: "Motor de 600W",
+        desc: "Mais potência para uma condução mais firme, mais segura e mais consistente em qualquer situação urbana.",
+      },
+      {
+        title: "Liberdade para a rotina",
+        desc: "Menos preocupação com recarga, mais liberdade para usar quando e quanto precisar. A autonomia muda a experiência.",
+      },
+      {
+        title: "Economia amplificada",
+        desc: "Quanto mais você usa, mais economiza. Para quem roda todos os dias, a diferença em relação a um veículo a combustão é enorme.",
+      },
+      {
+        title: "Suporte MS Electric",
+        desc: "Garantia de fábrica, assistência técnica e peças de reposição. Segurança na compra e acompanhamento real.",
+      },
+    ],
+    dailyBenefits: [
+      {
+        title: "Rode mais, recarregue menos",
+        desc: "70 km significam que muitos usuários passam dias sem precisar recarregar. Menos paradas, mais continuidade.",
+      },
+      {
+        title: "Mais confiança em cada trajeto",
+        desc: "A sensação de ter autonomia de sobra muda completamente a experiência de uso diário.",
+      },
+      {
+        title: "Condução firme e estável",
+        desc: "O motor de 600W entrega respostas mais consistentes — subidas, arrancadas e trânsito urbano com mais segurança.",
+      },
+      {
+        title: "Praticidade sem concessão",
+        desc: "Sem marcha, sem embreagem, sem complicação. A mesma simplicidade dos modelos menores, com muito mais entrega.",
+      },
+      {
+        title: "Economia que se multiplica",
+        desc: "Para quem usa com frequência, o custo por km é quase insignificante comparado a qualquer alternativa a combustão.",
+      },
+      {
+        title: "Recarregue com tranquilidade",
+        desc: "7 a 8 horas na tomada comum. Conecte à noite e tenha o veículo pronto pela manhã — sempre.",
+      },
+    ],
+    urbanContext: {
+      title: "Liberdade de verdade para quem vive a cidade",
+      body: "A Bike MS 600 nasceu para quem não quer contar quilômetros. Se a sua rotina exige deslocamentos frequentes, compromissos espalhados e a necessidade de ter um veículo sempre pronto, esse é o modelo que entrega mais liberdade dentro da família Bike.",
+      highlights: [
+        "70 km de autonomia — a maior da linha Bike",
+        "Motor de 600W para mais firmeza e estabilidade",
+        "Ideal para quem usa diariamente sem restrição",
+        "Proposta completa para mobilidade urbana constante",
+      ],
+    },
+    specContexts: {
+      autonomy: "Faixa pensada para acompanhar uma rotina urbana mais recorrente sem limitações",
+      speed: "Boa relação para deslocamentos eficientes e seguros na cidade",
+      motor: "Entrega alinhada à proposta de uso urbano mais constante e mais exigente",
+      recharge: "Rotina simples para manter o uso organizado no dia a dia",
+      load: "Compatível com a proposta funcional e completa do modelo",
+    },
+    differentials: {
+      title: "Onde a Bike MS 600 se destaca na linha MS Electric",
+      body: "A Bike MS 600 é a escolha certa para quem quer uma mobilidade elétrica mais consistente no dia a dia, com mais sensação de autonomia, mais liberdade de uso e uma proposta urbana mais completa. É o topo da família Bike — o modelo que mais entrega para quem realmente usa a mobilidade elétrica como parte da rotina.",
+    },
+    comparisonTip:
+      "Se você busca o menor investimento, a Bike 350 é a porta de entrada. Se quer equilíbrio, a Bike 400+ atende bem. Se precisa de mais robustez, a Bike 500 é forte. Mas se autonomia e liberdade de uso são a prioridade, a Bike MS 600 é a escolha mais completa da família — e a que mais entrega para quem usa com frequência.",
+    faq: [
+      {
+        q: "A Bike MS 600 é indicada para qual tipo de uso?",
+        a: "Para uso urbano frequente e constante — deslocamentos diários, rotas mais longas e rotinas que exigem mais autonomia. Com 70 km por carga, ela acompanha os dias mais intensos sem limitações.",
+      },
+      {
+        q: "Esse modelo faz sentido para quem utiliza todos os dias?",
+        a: "Sim. A Bike MS 600 foi pensada exatamente para o uso diário. A maior autonomia da linha Bike significa menos recargas, mais continuidade e mais tranquilidade na rotina.",
+      },
+      {
+        q: "Qual o diferencial dela dentro da linha Bike?",
+        a: "Autonomia de 70 km e motor de 600W — a maior entrega da família. É o modelo para quem quer o máximo de liberdade e consistência dentro da proposta compacta da linha Bike.",
+      },
+      {
+        q: "A autonomia dela favorece uma rotina mais recorrente?",
+        a: "Com certeza. 70 km por carga cobrem a maioria das rotinas urbanas com folga, permitindo uso por dias seguidos sem necessidade de recarga em muitos casos.",
+      },
+      {
+        q: "Como funciona a recarga?",
+        a: "Tomada comum (110V ou 220V), de 7 a 8 horas para carga completa. Conecte à noite e tenha o veículo pronto pela manhã.",
+      },
+      {
+        q: "Como é a manutenção?",
+        a: "Simples e barata. 100% elétrica, sem troca de óleo, sem velas, sem embreagem. A manutenção é mínima e muito menos frequente do que em veículos a combustão.",
+      },
+      {
+        q: "Como funciona a garantia?",
+        a: "A MS Electric oferece garantia de fábrica com suporte técnico e peças de reposição. Consulte um especialista para conhecer as condições completas.",
+      },
+      {
+        q: "Para quem a Bike MS 600 é a melhor escolha dentro do portfólio?",
+        a: "Para quem valoriza autonomia acima de tudo e quer o modelo mais completo da família Bike. Se liberdade de uso e constância são prioridade, a Bike MS 600 é a resposta.",
+      },
+    ],
+    finalCta: {
+      title: "Descubra se a Bike MS 600 combina com a sua rotina",
+      subtitle:
+        "Fale com um especialista da MS Electric e receba orientação personalizada sobre o modelo ideal para o seu dia a dia.",
+    },
+  },
 };
