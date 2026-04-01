@@ -1,4 +1,4 @@
-import { Instagram, Facebook, Youtube, MapPin, Phone, Clock } from "lucide-react";
+import { Instagram, Facebook, Youtube, MapPin, Phone, Clock, MessageCircle } from "lucide-react";
 import msLogo from "@/assets/ms-eletric-logo-white.png";
 
 const modelLinks = ["Scooters Elétricas", "Autopropelidos", "Bicicletas Elétricas", "Triciclos Elétricos", "Utilitários", "Linha Infantil", "Patinetes", "Acessórios"];
