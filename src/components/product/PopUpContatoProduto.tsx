@@ -81,7 +81,7 @@ export default function PopUpContatoProduto({ isOpen, onClose, product, selected
     if (!validate()) return;
     setIsLoading(true);
 
-    const message = [
+    const messageParts = [
       `*Por favor, para que seu atendimento prossiga, não apague esta mensagem antes de enviar!*`,
       ``,
       `*Nome:* ${name.trim()}`,
@@ -91,9 +91,15 @@ export default function PopUpContatoProduto({ isOpen, onClose, product, selected
       `*Cidade:* ${city.trim()}`,
       ``,
       `*Modelo de interesse:* ${product.name} (${product.category})`,
-      ``,
-      `*Assunto:* Quero saber mais sobre o modelo ${product.name}`,
-    ].join("\n");
+    ];
+
+    if (selectedColor) {
+      messageParts.push(``, `*Cor selecionada:* ${selectedColor.name}`);
+    }
+
+    messageParts.push(``, `*Assunto:* Quero saber mais sobre o modelo ${product.name}`);
+
+    const message = messageParts.join("\n");
 
     window.open(
       `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`,
