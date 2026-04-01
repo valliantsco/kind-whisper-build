@@ -1826,4 +1826,147 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
         "Fale com um especialista da MS Electric e descubra por que a S3K é a escolha definitiva para quem quer potência, autonomia e uma experiência premium de mobilidade elétrica.",
     },
   },
+
+  "triciclo-eletrico": {
+    headline: "Estabilidade, conforto e confiança para o seu dia a dia",
+    subheadline:
+      "O Triciclo Elétrico da MS Electric é a escolha inteligente para quem quer mobilidade com mais equilíbrio, mais segurança percebida e mais tranquilidade na condução — sem abrir mão da praticidade elétrica.",
+    supportText:
+      "Com três rodas, motor elétrico de 1.000W e até 60 km de autonomia, ele entrega uma experiência de condução mais estável e confortável, ideal para quem prioriza confiança e facilidade no dia a dia.",
+    idealFor: [
+      {
+        icon: "shield",
+        title: "Quem prioriza estabilidade",
+        desc: "Três rodas significam mais equilíbrio e mais confiança. Ideal para quem quer se sentir seguro em cada deslocamento.",
+      },
+      {
+        icon: "heart",
+        title: "Quem valoriza conforto",
+        desc: "Condução mais tranquila, posição mais natural e sensação de mais controle. Um veículo pensado para o bem-estar.",
+      },
+      {
+        icon: "route",
+        title: "Deslocamentos cotidianos",
+        desc: "Perfeito para trajetos do dia a dia com praticidade, economia e sem a preocupação de equilibrar duas rodas.",
+      },
+      {
+        icon: "accessibility",
+        title: "Quem busca acessibilidade",
+        desc: "Uma opção mais acessível de condução para quem quer independência e mobilidade sem complicação.",
+      },
+    ],
+    whyChoose: [
+      {
+        title: "Três rodas, mais equilíbrio",
+        desc: "A configuração de três rodas oferece estabilidade natural que transmite confiança desde o primeiro momento — especialmente em paradas e baixas velocidades.",
+      },
+      {
+        title: "Condução mais tranquila e segura",
+        desc: "Sem a preocupação de manter o equilíbrio em duas rodas. Você se concentra no trajeto, não na pilotagem.",
+      },
+      {
+        title: "60 km de autonomia para a rotina",
+        desc: "Autonomia generosa para deslocamentos cotidianos com tranquilidade. Ida e volta sem ansiedade de recarga.",
+      },
+      {
+        title: "Praticidade elétrica completa",
+        desc: "Recarga na tomada, sem combustível, sem IPVA e com manutenção simplificada. Economia real no dia a dia.",
+      },
+      {
+        title: "Suporte MS Electric de confiança",
+        desc: "Todo o respaldo de uma marca especializada: assistência técnica, peças disponíveis e atendimento consultivo e acolhedor.",
+      },
+    ],
+    dailyBenefits: [
+      {
+        title: "Mais confiança em cada trajeto",
+        desc: "A estabilidade das três rodas muda a experiência. Você sai de casa sabendo que vai se sentir seguro do início ao fim.",
+      },
+      {
+        title: "Conforto que faz diferença",
+        desc: "A condução mais tranquila reduz o cansaço e torna cada deslocamento mais agradável e menos estressante.",
+      },
+      {
+        title: "Independência no dia a dia",
+        desc: "Se deslocar por conta própria, com facilidade e sem depender de transporte público ou de outras pessoas.",
+      },
+      {
+        title: "Economia que se sente no bolso",
+        desc: "Centavos por recarga, sem combustível e sem custos ocultos. A mobilidade elétrica mais econômica e prática.",
+      },
+      {
+        title: "Rotina mais leve e prática",
+        desc: "Para ir ao mercado, à farmácia, ao médico ou passear pelo bairro com total tranquilidade e praticidade.",
+      },
+    ],
+    urbanContext: {
+      title: "Mobilidade com equilíbrio para a sua rotina",
+      body: "O Triciclo Elétrico foi projetado para quem enxerga a mobilidade como parte essencial do dia a dia — e quer viver isso com mais calma, mais segurança e mais conforto. Com sua base de três rodas e motor elétrico silencioso, ele transforma deslocamentos cotidianos em experiências mais tranquilas e acessíveis, sem abrir mão da praticidade e da economia que só a mobilidade elétrica oferece.",
+      highlights: [
+        "Três rodas para mais estabilidade natural",
+        "Motor elétrico silencioso e suave",
+        "60 km de autonomia para a rotina completa",
+        "Condução acessível e sem complicação",
+        "Capacidade de carga de 120 a 150 kg",
+        "Recarga simples na tomada convencional",
+      ],
+    },
+    specContexts: {
+      autonomy:
+        "60 km por carga — faixa pensada para deslocamentos cotidianos com praticidade e sem preocupação com recarga frequente.",
+      speed:
+        "Até 32 km/h — velocidade adequada para uma experiência de condução mais tranquila, segura e confortável.",
+      motor:
+        "Motor de 1.000W — entrega alinhada à proposta funcional e estável do modelo, com torque suficiente para o dia a dia.",
+      recharge:
+        "6 a 8 horas na tomada convencional. Carregue durante a noite e tenha o triciclo pronto pela manhã.",
+      load:
+        "Capacidade de 120 a 150 kg — compatível com a proposta cotidiana e confortável do veículo, com margem para o uso real.",
+    },
+    differentials: {
+      title: "Onde o Triciclo Elétrico se destaca",
+      body: "O Triciclo Elétrico ocupa um espaço único no portfólio da MS Electric: é a opção para quem quer mobilidade elétrica com mais estabilidade, mais conforto e mais confiança na condução. Enquanto as scooters oferecem agilidade e performance, o triciclo entrega tranquilidade, equilíbrio e uma experiência de uso mais acessível. É a escolha certa para quem prioriza segurança percebida, facilidade e uma rotina de deslocamentos mais serena — sem abrir mão da economia e da praticidade elétrica.",
+    },
+    comparisonTip:
+      "Se você prioriza estabilidade, conforto e uma condução mais segura, o Triciclo Elétrico é a escolha ideal com suas três rodas e proposta tranquila. Se prefere mais agilidade e velocidade em duas rodas, as scooters da linha — como a Holiday 1000 para entrada prática ou a MS 2500 para mais presença — podem ser mais adequadas. O triciclo é para quem quer equilíbrio e confiança acima de tudo.",
+    faq: [
+      {
+        q: "O Triciclo Elétrico é indicado para qual tipo de uso?",
+        a: "Para deslocamentos cotidianos de quem quer mais estabilidade, conforto e confiança. Ideal para trajetos pelo bairro, idas ao mercado, consultas e passeios com tranquilidade.",
+      },
+      {
+        q: "Esse modelo faz sentido para quem prioriza estabilidade?",
+        a: "Sim — é exatamente a proposta dele. As três rodas oferecem equilíbrio natural, eliminando a preocupação de manter o balanço em duas rodas.",
+      },
+      {
+        q: "Qual o diferencial dele em relação às scooters da linha?",
+        a: "A principal diferença é a estabilidade. Enquanto as scooters oferecem mais agilidade e velocidade, o triciclo entrega mais equilíbrio, mais conforto e uma condução mais acessível.",
+      },
+      {
+        q: "Ele é uma boa escolha para quem busca mais conforto e segurança?",
+        a: "Sim. O triciclo foi projetado para oferecer uma experiência de condução mais tranquila e mais confiante, ideal para quem valoriza segurança percebida acima de performance.",
+      },
+      {
+        q: "Como funciona a recarga?",
+        a: "Basta conectar na tomada convencional. A carga completa leva de 6 a 8 horas — ideal para carregar à noite e ter o triciclo pronto pela manhã.",
+      },
+      {
+        q: "Como é a manutenção?",
+        a: "Simples e econômica. Veículos elétricos têm menos peças móveis, o que reduz custos e frequência de manutenção. A MS Electric oferece suporte técnico especializado.",
+      },
+      {
+        q: "Como funciona a garantia?",
+        a: "A MS Electric oferece garantia de fábrica com suporte técnico direto. Consulte um especialista para conhecer os termos completos e as condições de cobertura.",
+      },
+      {
+        q: "Para quem o Triciclo Elétrico é a melhor escolha dentro do portfólio?",
+        a: "Para quem quer mobilidade elétrica com mais equilíbrio, mais conforto e mais confiança. Se estabilidade e segurança são prioridade, o triciclo é o modelo feito para você.",
+      },
+    ],
+    finalCta: {
+      title: "Quer mobilidade com mais equilíbrio e confiança?",
+      subtitle:
+        "Fale com um especialista da MS Electric e descubra por que o Triciclo Elétrico é a escolha certa para quem prioriza estabilidade, conforto e praticidade no dia a dia.",
+    },
+  },
 };
