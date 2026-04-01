@@ -109,10 +109,10 @@ const ProductDetail = () => {
           related={related}
           content={{ headline: "", subheadline: "", supportText: "", idealFor: [], whyChoose: [], dailyBenefits: [], urbanContext: { title: "", body: "", highlights: [] }, specContexts: {}, differentials: { title: "", body: "" }, comparisonTip: "", faq: [], finalCta: { title: "", subtitle: "" } }}
         />
-        <HomeFooter onContactClick={() => setContactOpen(true)} />
+        <HomeFooter onContactClick={() => setContactOpen(true)} onSupportClick={(s) => { setContactSubject(s); setContactOpen(true); }} />
       </div>
       <FloatingWhatsApp />
-      <PopUpContato01 isOpen={contactOpen} onClose={() => setContactOpen(false)} />
+      <PopUpContato01 isOpen={contactOpen} onClose={() => { setContactOpen(false); setContactSubject(undefined); }} initialSubject={contactSubject} />
       <PopUpContatoProduto isOpen={productContactOpen} onClose={() => setProductContactOpen(false)} product={product} selectedColor={selectedColor} />
     </div>
   );
