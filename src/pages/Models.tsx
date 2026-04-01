@@ -193,9 +193,10 @@ const Models = () => {
   const [selectedSlugs, setSelectedSlugs] = useState<string[]>([]);
   const [compareOpen, setCompareOpen] = useState(false);
   const [quizOpen, setQuizOpen] = useState(false);
+  const [sortBy, setSortBy] = useState<SortOption>("relevance");
 
   const filtered = useMemo(() => {
-    let items = PRODUCTS;
+    let items = [...PRODUCTS];
     if (activeCategory !== "Todos") {
       items = items.filter((p) => p.category === activeCategory);
     }
@@ -207,8 +208,26 @@ const Models = () => {
           p.category.toLowerCase().includes(q)
       );
     }
+    const parseNum = (v: string) => parseFloat(v.replace(/[^\d.]/g, "")) || 0;
+    switch (sortBy) {
+      case "price-asc":
+        items.sort((a, b) => (a.price ?? Infinity) - (b.price ?? Infinity));
+        break;
+      case "price-desc":
+        items.sort((a, b) => (b.price ?? 0) - (a.price ?? 0));
+        break;
+      case "name-asc":
+        items.sort((a, b) => a.name.localeCompare(b.name));
+        break;
+      case "autonomy-desc":
+        items.sort((a, b) => parseNum(b.autonomy) - parseNum(a.autonomy));
+        break;
+      case "speed-desc":
+        items.sort((a, b) => parseNum(b.speed) - parseNum(a.speed));
+        break;
+    }
     return items;
-  }, [activeCategory, searchQuery]);
+  }, [activeCategory, searchQuery, sortBy]);
 
   const categoryCount = (cat: CategoryFilter) =>
     cat === "Todos"
