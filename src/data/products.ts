@@ -383,6 +383,10 @@ export const PRODUCTS: Product[] = [
     recharge: "3–5h",
     price: "R$ 1.999",
     description: "Drift kart elétrico para crianças. Seguro, divertido e perfeito para brincar em áreas planas.",
+    colors: [
+      { name: "Preto", hex: "#111111" },
+      { name: "Vermelho", hex: "#DC2626" },
+    ],
   },
 
   // ── Patinetes ──
