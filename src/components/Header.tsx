@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import logoWhite from "@/assets/ms-eletric-logo-white.png";
 import msShieldLogo from "@/assets/ms-shield-logo.png";
-import ctaRider from "@/assets/cta-rider.jpg";
+import ctaRider from "@/assets/cta-rider.webp";
 import { useBusinessHours } from "@/hooks/useBusinessHours";
 import { AnimatePresence, motion } from "framer-motion";
 import { ChevronDown, ArrowRight, ArrowLeft, Compass, BarChart3, BookOpen, HelpCircle, Wrench, ShieldCheck, Play, MapPin, Building2, Navigation, Phone, Clock, ExternalLink, Zap } from "lucide-react";
