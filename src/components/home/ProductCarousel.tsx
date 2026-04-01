@@ -184,18 +184,18 @@ const ProductCarousel = () => {
           <button
             onClick={() => scroll(-1)}
             className={`absolute left-1 top-1/2 -translate-y-1/2 z-20 md:hidden w-9 h-9 rounded-full flex items-center justify-center transition-opacity ${canScrollLeft ? "opacity-100" : "opacity-0 pointer-events-none"}`}
-            style={{ background: "hsl(0 0% 100% / 0.08)", border: "1px solid hsl(0 0% 100% / 0.1)" }}
+            style={{ background: "hsl(var(--primary) / 0.15)", backdropFilter: "blur(12px)", WebkitBackdropFilter: "blur(12px)", border: "1px solid hsl(var(--primary) / 0.25)", boxShadow: "0 4px 12px hsl(0 0% 0% / 0.3)" }}
             aria-label="Anterior"
           >
-            <ChevronLeft className="w-4 h-4 text-primary-foreground" />
+            <ChevronLeft className="w-4 h-4 text-primary" />
           </button>
           <button
             onClick={() => scroll(1)}
             className={`absolute right-1 top-1/2 -translate-y-1/2 z-20 md:hidden w-9 h-9 rounded-full flex items-center justify-center transition-opacity ${canScrollRight ? "opacity-100" : "opacity-0 pointer-events-none"}`}
-            style={{ background: "hsl(0 0% 100% / 0.08)", border: "1px solid hsl(0 0% 100% / 0.1)" }}
+            style={{ background: "hsl(var(--primary) / 0.15)", backdropFilter: "blur(12px)", WebkitBackdropFilter: "blur(12px)", border: "1px solid hsl(var(--primary) / 0.25)", boxShadow: "0 4px 12px hsl(0 0% 0% / 0.3)" }}
             aria-label="Próximo"
           >
-            <ChevronRight className="w-4 h-4 text-primary-foreground" />
+            <ChevronRight className="w-4 h-4 text-primary" />
           </button>
 
           <div
