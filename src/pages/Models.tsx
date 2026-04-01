@@ -445,7 +445,7 @@ const Models = () => {
                     </div>
 
                     <h3 className="font-display font-black text-[17px] text-primary-foreground uppercase tracking-tight leading-tight mb-2.5">
-                      Não sabe qual{" "}
+                      Não sabe qual modelo{" "}
                       <span className="text-primary">escolher?</span>
                     </h3>
 
