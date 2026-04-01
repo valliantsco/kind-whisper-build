@@ -1401,4 +1401,143 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
         "Fale com um especialista da MS Electric e receba orientação personalizada sobre o modelo ideal para o seu dia a dia.",
     },
   },
+  "holiday-1000": {
+    headline: "Sua porta de entrada no mundo das scooters elétricas",
+    subheadline:
+      "A Holiday 1000 é uma scooter elétrica acessível com motor de 1.000W, 45 km de autonomia e 32 km/h — pensada para quem quer mobilidade urbana prática, econômica e descomplicada.",
+    supportText:
+      "Compacta, funcional e fácil de usar. A Holiday 1000 é a scooter ideal para quem quer começar na mobilidade elétrica com investimento mais acessível, sem abrir mão de conforto, economia e praticidade real no dia a dia.",
+    idealFor: [
+      {
+        icon: "route",
+        title: "Deslocamentos urbanos leves",
+        desc: "Trajetos de até 45 km na cidade — trabalho, estudo, compras e tarefas do dia a dia com praticidade.",
+      },
+      {
+        icon: "sparkles",
+        title: "Primeira scooter elétrica",
+        desc: "Entrada acessível e descomplicada para quem quer experimentar a mobilidade elétrica em formato scooter.",
+      },
+      {
+        icon: "piggyBank",
+        title: "Economia no dia a dia",
+        desc: "Sem combustível, sem IPVA, manutenção mínima. O menor custo de uso entre as scooters da linha.",
+      },
+      {
+        icon: "city",
+        title: "Rotina urbana simples",
+        desc: "Para quem quer uma solução direta, fácil de usar e fácil de incorporar à rotina sem complicação.",
+      },
+    ],
+    whyChoose: [
+      {
+        title: "O melhor preço entre as scooters",
+        desc: "R$ 10.490 — o menor investimento para ter uma scooter elétrica completa da MS Electric com motor de 1.000W.",
+      },
+      {
+        title: "Simplicidade de uso",
+        desc: "Ligue e saia. Sem marcha, sem embreagem, sem complicação. A Holiday 1000 é feita para ser fácil.",
+      },
+      {
+        title: "Conforto e economia",
+        desc: "Banco confortável, posição ergonômica e custo operacional que cabe em qualquer orçamento.",
+      },
+      {
+        title: "Capacidade para 150 kg",
+        desc: "Estrutura sólida que suporta até 150 kg — espaço de sobra para você e suas coisas do dia a dia.",
+      },
+      {
+        title: "Suporte MS Electric",
+        desc: "Garantia de fábrica, assistência técnica e peças de reposição. Segurança na compra e suporte real.",
+      },
+    ],
+    dailyBenefits: [
+      {
+        title: "Mobilidade sem complicação",
+        desc: "A Holiday 1000 é tão simples quanto uma bicicleta, mas com o conforto e a praticidade de uma scooter.",
+      },
+      {
+        title: "Economia que você sente",
+        desc: "Centavos de energia por dia. Sem gasolina, sem IPVA. A diferença no bolso aparece já no primeiro mês.",
+      },
+      {
+        title: "Compacta e ágil",
+        desc: "Fácil de manobrar, fácil de estacionar e ágil o suficiente para circular pela cidade com praticidade.",
+      },
+      {
+        title: "Silenciosa e limpa",
+        desc: "Sem barulho, sem fumaça. Uma experiência de condução mais agradável para você e para a cidade.",
+      },
+      {
+        title: "Conforto para o cotidiano",
+        desc: "Banco ergonômico e posição natural de condução. Pensada para uso frequente sem desconforto.",
+      },
+      {
+        title: "Recarregue na tomada",
+        desc: "8 a 10 horas na tomada comum. Conecte à noite e tenha a scooter pronta pela manhã.",
+      },
+    ],
+    urbanContext: {
+      title: "Mobilidade elétrica acessível para a cidade",
+      body: "A Holiday 1000 foi pensada para quem quer entrar no mundo das scooters elétricas sem grande investimento. Se você busca praticidade, economia e uma forma mais inteligente de se deslocar pela cidade, esse é o modelo que abre essa porta.",
+      highlights: [
+        "O menor investimento entre as scooters MS Electric",
+        "Motor de 1.000W para deslocamentos urbanos práticos",
+        "45 km de autonomia para cobrir a rotina",
+        "Capacidade para 150 kg — estrutura sólida",
+      ],
+    },
+    specContexts: {
+      autonomy: "Faixa pensada para deslocamentos urbanos leves e cotidianos",
+      speed: "Boa relação para uma mobilidade prática e segura na cidade",
+      motor: "Entrega alinhada à proposta compacta e funcional do modelo",
+      recharge: "Pensada para carregar durante a noite e usar durante o dia",
+      load: "Capacidade compatível com uso real e cotidiano",
+    },
+    differentials: {
+      title: "Onde a Holiday 1000 se destaca na linha MS Electric",
+      body: "A Holiday 1000 é a porta de entrada mais acessível no universo das scooters elétricas MS Electric. Ela cumpre o papel de modelo inicial — funcional, econômico e descomplicado. Para quem quer mobilidade elétrica em formato scooter sem grande investimento, ela entrega exatamente o necessário para começar.",
+    },
+    comparisonTip:
+      "Se você quer mais potência e velocidade para o trânsito, a New Holiday e a MS 2500 sobem de nível. Mas se praticidade, economia e o menor investimento possível em uma scooter são prioridade, a Holiday 1000 é a escolha mais direta e mais acessível da linha.",
+    faq: [
+      {
+        q: "A Holiday 1000 é indicada para qual tipo de uso?",
+        a: "Para deslocamentos urbanos leves e frequentes — trajetos curtos e médios na cidade, como ir ao trabalho, faculdade, mercado ou resolver tarefas do dia a dia.",
+      },
+      {
+        q: "Essa scooter elétrica faz sentido para deslocamentos diários?",
+        a: "Sim. Com 45 km de autonomia, a Holiday 1000 cobre a maioria das rotinas urbanas leves com praticidade e economia.",
+      },
+      {
+        q: "Qual o diferencial dela em relação a outros modelos da linha?",
+        a: "É a scooter mais acessível do portfólio — R$ 10.490 com motor de 1.000W e 150 kg de capacidade. A entrada mais econômica no formato scooter.",
+      },
+      {
+        q: "Ela é uma boa escolha para quem quer uma proposta mais compacta e prática?",
+        a: "Com certeza. A Holiday 1000 é feita para quem quer simplicidade, facilidade de uso e mobilidade urbana sem complicação.",
+      },
+      {
+        q: "Como funciona a recarga?",
+        a: "Tomada comum (110V ou 220V), de 8 a 10 horas para carga completa. Conecte à noite e use pela manhã.",
+      },
+      {
+        q: "Como é a manutenção?",
+        a: "Simples e barata. 100% elétrica, sem troca de óleo, sem velas, sem embreagem. Manutenção mínima.",
+      },
+      {
+        q: "Como funciona a garantia?",
+        a: "A MS Electric oferece garantia de fábrica com suporte técnico e peças de reposição. Consulte um especialista para conhecer as condições.",
+      },
+      {
+        q: "Para quem a Holiday 1000 é a melhor escolha dentro do portfólio?",
+        a: "Para quem quer a entrada mais acessível em scooters elétricas. Se economia, simplicidade e praticidade são prioridade, a Holiday 1000 é a resposta.",
+      },
+    ],
+    finalCta: {
+      title: "Descubra se a Holiday 1000 combina com a sua rotina",
+      subtitle:
+        "Fale com um especialista da MS Electric e receba orientação personalizada sobre o modelo ideal para o seu dia a dia.",
+    },
+  },
 };
