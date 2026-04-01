@@ -4,9 +4,10 @@ import {
   MessageCircle, Sparkles,
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import { useRef } from "react";
-import type { Product } from "@/data/products";
+import { useRef, useState, useCallback } from "react";
+import type { Product, ProductColor } from "@/data/products";
 import type { ProductContent } from "@/data/product-content";
+import ColorSelector from "@/components/product/ColorSelector";
 
 const SPEC_ICONS = { autonomy: Zap, speed: Gauge, motor: Battery, recharge: Clock, load: Weight } as const;
 const SPEC_LABELS: Record<string, string> = {
@@ -25,6 +26,16 @@ export default function ProductHero({ product, content, onContact }: Props) {
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
   const imageY = useTransform(scrollYProgress, [0, 1], [0, 60]);
   const imageScale = useTransform(scrollYProgress, [0, 1], [1, 0.95]);
+  const [selectedColor, setSelectedColor] = useState<ProductColor | null>(
+    product.colors?.[0] ?? null
+  );
+
+  const handleColorChange = useCallback((color: ProductColor) => {
+    setSelectedColor(color);
+  }, []);
+
+  // Use color-specific image if available, otherwise default
+  const displayImage = selectedColor?.image ?? product.image;
 
   return (
     <section ref={heroRef} className="relative pb-16 md:pb-24 overflow-hidden">
@@ -70,7 +81,7 @@ export default function ProductHero({ product, content, onContact }: Props) {
             >
               <div className="p-10 md:p-16">
                 <img
-                  src={product.image}
+                  src={displayImage}
                   alt={product.name}
                   className="w-full h-auto object-contain max-h-[400px] mx-auto transition-transform duration-700 group-hover:scale-[1.03]"
                 />
@@ -157,6 +168,11 @@ export default function ProductHero({ product, content, onContact }: Props) {
                 {content.supportText}
               </p>
             </motion.div>
+
+            {/* ── Color Selector ── */}
+            {product.colors && product.colors.length > 0 && (
+              <ColorSelector colors={product.colors} onColorChange={handleColorChange} />
+            )}
 
             {/* ── Specs Strip ── */}
             <motion.div
