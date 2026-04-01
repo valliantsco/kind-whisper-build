@@ -250,9 +250,30 @@ const Testimonials = () => {
               WebkitMaskImage: `linear-gradient(to right, ${canScrollLeft ? "transparent" : "black"} 0%, black ${canScrollLeft ? "8%" : "0%"}, black ${canScrollRight ? "88%" : "100%"}, ${canScrollRight ? "transparent" : "black"} 100%)`,
             }}
           >
-            {INFLUENCERS.map((inf, i) => (
+            {INFLUENCERS.map((inf, i) => {
+              const cardRef = useRef<HTMLDivElement>(null);
+              const [isVisible, setIsVisible] = useState(false);
+
+              useEffect(() => {
+                const el = cardRef.current;
+                if (!el) return;
+                const obs = new IntersectionObserver(
+                  ([entry]) => {
+                    if (entry.isIntersecting) {
+                      setIsVisible(true);
+                      obs.disconnect();
+                    }
+                  },
+                  { rootMargin: "200px" },
+                );
+                obs.observe(el);
+                return () => obs.disconnect();
+              }, []);
+
+              return (
               <motion.div
                 key={inf.name}
+                ref={cardRef}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -264,7 +285,7 @@ const Testimonials = () => {
                 }}
               >
                 <div className="absolute inset-0 overflow-hidden rounded-2xl bg-foreground" style={{ zIndex: 1 }}>
-                  {inf.videos.length > 0 ? (
+                  {isVisible && inf.videos.length > 0 ? (
                     <InfluencerPreviewMedia videos={inf.videos} name={inf.name} scale={inf.previewScale} />
                   ) : (
                     <img
