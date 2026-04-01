@@ -110,7 +110,7 @@ export default function PopUpContatoProduto({ isOpen, onClose, product, selected
     setName(""); setPhone(""); setCity(""); setCityValidated(false); setErrors({});
     setIsLoading(false);
     onClose();
-  }, [name, phone, city, product, validate, onClose]);
+  }, [name, phone, city, product, selectedColor, validate, onClose]);
 
   return (
     <AnimatePresence>
