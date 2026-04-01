@@ -180,6 +180,11 @@ export const PRODUCTS: Product[] = [
     price: "Consulte",
     badge: "Novidade",
     description: "E-bike estilosa com visual retrô e performance moderna. Pedala com assistência ou acelera sem esforço.",
+    colors: [
+      { name: "Preto", hex: "#111111" },
+      { name: "Areia", hex: "#C2B280" },
+      { name: "Verde Oliva", hex: "#556B2F" },
+    ],
   },
   {
     name: "Big Sur",
