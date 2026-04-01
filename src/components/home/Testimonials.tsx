@@ -34,9 +34,9 @@ const INFLUENCERS: Influencer[] = [
 ];
 
 const STATS = [
-  { value: "56M+", label: "Alcance total" },
-  { value: "8+", label: "Parceiros" },
-  { value: "100M+", label: "Visualizações" },
+  { value: "31M+", label: "Alcance acumulado" },
+  { value: "4+", label: "Colaborações e parcerias" },
+  { value: "56M+", label: "Visualizações geradas" },
 ];
 
 /* ── Animated counter ── */
