@@ -189,6 +189,7 @@ const SearchableFilterBar = ({
         </div>
       </div>
 
+      {selectedCount > 0 && (
         <div className="hidden md:flex items-center gap-2 shrink-0">
           <div
             className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[10px] font-semibold uppercase tracking-wider"
