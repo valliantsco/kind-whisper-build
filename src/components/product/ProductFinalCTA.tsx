@@ -37,13 +37,6 @@ export default function ProductFinalCTA({ content, onContact, whatsAppLink }: Pr
             >
               <MessageCircle className="w-4 h-4" /> Falar com especialista
             </a>
-            <button
-              onClick={onContact}
-              className="inline-flex items-center justify-center gap-2.5 px-8 py-3.5 rounded-xl text-[12px] font-semibold uppercase tracking-[0.14em] transition-all duration-200 hover:border-primary/30 hover:text-primary cursor-pointer"
-              style={{ border: "1px solid hsl(0 0% 100% / 0.1)", color: "hsl(0 0% 100% / 0.6)" }}
-            >
-              Solicitar contato
-            </button>
           </div>
 
           <Link
