@@ -37,9 +37,10 @@ interface Props {
   isOpen: boolean;
   onClose: () => void;
   product: Product;
+  selectedColor?: ProductColor | null;
 }
 
-export default function PopUpContatoProduto({ isOpen, onClose, product }: Props) {
+export default function PopUpContatoProduto({ isOpen, onClose, product, selectedColor }: Props) {
   const { isOnline, offlineMessage } = useBusinessStatus();
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
