@@ -146,10 +146,8 @@ export const PRODUCTS: Product[] = [
     badge: "Mais vendido",
     description: "O mais vendido da MS. Design moderno, motor potente de 800W e alta capacidade para uso versátil.",
     colors: [
-      { name: "Preto", hex: "#111111" },
-      { name: "Branco", hex: "#F5F5F5" },
-      { name: "Cinza Grafite", hex: "#4B5563" },
-      { name: "Verde Militar", hex: "#3F5F3F" },
+      { name: "Creme", hex: "#FFFDD0" },
+      { name: "Verde Claro", hex: "#86EFAC" },
     ],
   },
   {
