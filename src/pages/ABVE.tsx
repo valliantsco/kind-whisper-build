@@ -147,7 +147,7 @@ export default function ABVE() {
                   { label: "Sustentabilidade real", icon: Leaf },
                   { label: "Crescimento no setor", icon: Globe },
                 ].map(({ label, icon: Icon }) => (
-                  <div key={label} className="flex items-center gap-2.5 text-primary-foreground/50 text-sm">
+                  <div key={label} className="flex items-center gap-2 md:gap-2.5 text-primary-foreground/50 text-xs md:text-sm">
                     <div className="w-8 h-8 rounded-lg flex items-center justify-center"
                       style={{ background: "hsl(var(--primary) / 0.1)", border: "1px solid hsl(var(--primary) / 0.15)" }}>
                       <Icon className="w-4 h-4 text-primary" />

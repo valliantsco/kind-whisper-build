@@ -111,7 +111,7 @@ export default function About() {
                   { label: "Portfólio para diferentes perfis", icon: Store },
                   { label: "Experiência do início ao pós-venda", icon: Shield },
                 ].map(({ label, icon: Icon }) => (
-                  <div key={label} className="flex items-center gap-2.5 text-primary-foreground/50 text-sm">
+                  <div key={label} className="flex items-center gap-2 md:gap-2.5 text-primary-foreground/50 text-xs md:text-sm">
                     <div className="w-8 h-8 rounded-lg flex items-center justify-center"
                       style={{ background: "hsl(var(--primary) / 0.1)", border: "1px solid hsl(var(--primary) / 0.15)" }}>
                       <Icon className="w-4 h-4 text-primary" />
