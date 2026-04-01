@@ -49,9 +49,9 @@ const HomeFooter = () => {
             {/* Social */}
             <div className="flex gap-3">
               {[
-                { icon: Instagram, label: "Instagram", href: "https://instagram.com/mseletricbr" },
-                { icon: Facebook, label: "Facebook", href: "#" },
-                { icon: Youtube, label: "YouTube", href: "#" },
+                { icon: Instagram, label: "Instagram", href: "https://www.instagram.com/mseletricbr" },
+                { icon: Facebook, label: "Facebook", href: "https://www.facebook.com/mseletricbr" },
+                { icon: Youtube, label: "YouTube", href: "https://www.youtube.com/@mseletric" },
               ].map((s) => (
                 <a
                   key={s.label}
