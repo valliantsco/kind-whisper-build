@@ -1,7 +1,7 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import {
   ArrowLeft, ChevronRight, Zap, Gauge, Weight, Battery, Clock,
-  MessageCircle, Sparkles,
+  Sparkles,
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useRef, useState, useCallback } from "react";
