@@ -79,7 +79,7 @@ const CategoryPills = ({
 
 /* ── Searchable Filter Bar ── */
 const SearchableFilterBar = ({
-  searchQuery, setSearchQuery, categories, activeCategory, setActiveCategory, categoryCount, selectedCount, maxCompare,
+  searchQuery, setSearchQuery, categories, activeCategory, setActiveCategory, categoryCount, selectedCount, maxCompare, sortBy, setSortBy,
 }: {
   searchQuery: string;
   setSearchQuery: (v: string) => void;
