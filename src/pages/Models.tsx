@@ -450,7 +450,7 @@ const Models = () => {
                     </h3>
 
                     <p className="text-[12px] text-primary-foreground/35 leading-relaxed mb-5">
-                      Responda algumas perguntas rápidas e nossa IA recomenda o modelo ideal para o seu perfil, rotina e orçamento.
+                      Responda poucas perguntas e descubra qual modelo combina melhor com o seu perfil, sua rotina e o tipo de uso que você procura.
                     </p>
 
                     {/* CTA button */}
