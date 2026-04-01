@@ -416,7 +416,7 @@ const ProductCarousel = () => {
           className="mt-14 md:mt-16"
         >
           <div
-            className="relative rounded-2xl overflow-hidden px-6 py-8 md:px-10 md:py-10 flex flex-col md:flex-row items-center justify-between gap-6"
+            className="relative rounded-2xl px-6 py-8 md:px-10 md:py-10 flex flex-col md:flex-row items-center justify-between gap-6"
             style={{
               background: "hsl(0 0% 100% / 0.025)",
               border: "1px solid hsl(0 0% 100% / 0.06)",
