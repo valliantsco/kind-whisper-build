@@ -175,7 +175,7 @@ const HeroSlideshow = () => {
 
             {/* Subheadline */}
             <motion.p
-              className="text-sm md:text-base text-primary-foreground/45 mb-6 md:mb-8 max-w-xl leading-relaxed tracking-wide"
+              className="text-xs md:text-sm text-primary-foreground/45 mb-5 md:mb-6 max-w-lg leading-relaxed tracking-wide"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.4, duration: 0.5 }}
