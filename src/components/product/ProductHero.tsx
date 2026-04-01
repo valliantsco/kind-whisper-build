@@ -17,7 +17,6 @@ interface Props {
   product: Product;
   content: ProductContent;
   onContact: () => void;
-  whatsAppLink: string;
 }
 
 export default function ProductHero({ product, content, onContact, whatsAppLink }: Props) {
