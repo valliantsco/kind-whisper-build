@@ -3,13 +3,15 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import {
   Zap, Gauge, Weight, Battery, Clock, ArrowRight, Search,
-  SlidersHorizontal, CheckCircle2, X, BarChart3, Eye,
+  SlidersHorizontal, X, BarChart3, Eye, Sparkles,
 } from "lucide-react";
 import Header from "@/components/Header";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 import PopUpContato01 from "@/components/PopUpContato01";
 import HomeFooter from "@/components/home/HomeFooter";
 import CompareModal from "@/components/models/CompareModal";
+import QuizEngine from "@/components/quiz/QuizEngine";
+import { msEletricQuizConfig } from "@/components/QuizSection";
 import { PRODUCTS, CATEGORIES, type CategoryFilter, type Product } from "@/data/products";
 
 const SPECS = [
@@ -28,6 +30,7 @@ const Models = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedSlugs, setSelectedSlugs] = useState<string[]>([]);
   const [compareOpen, setCompareOpen] = useState(false);
+  const [quizOpen, setQuizOpen] = useState(false);
 
   const filtered = useMemo(() => {
     let items = PRODUCTS;
@@ -65,22 +68,37 @@ const Models = () => {
 
   return (
     <div className="min-h-screen relative" style={{ background: "hsl(0 0% 4%)" }}>
-      {/* Background effects */}
+      {/* ── Unified background (same as Index) ── */}
       <div
-        className="fixed inset-0 pointer-events-none opacity-[0.015] z-0"
+        className="fixed inset-0 pointer-events-none opacity-[0.02] z-0"
         style={{
           backgroundImage: "radial-gradient(circle, hsl(0 0% 100%) 1px, transparent 1px)",
-          backgroundSize: "32px 32px",
+          backgroundSize: "28px 28px",
         }}
       />
       <motion.div
         className="fixed top-0 right-0 w-[1200px] h-[800px] pointer-events-none z-0"
         style={{
-          background: "radial-gradient(ellipse at center, hsl(var(--primary) / 0.05) 0%, transparent 60%)",
+          background: "radial-gradient(ellipse at center, hsl(var(--primary) / 0.06) 0%, transparent 60%)",
           filter: "blur(140px)",
         }}
         animate={{ x: [0, -200, 0], y: [0, 100, 0] }}
         transition={{ duration: 30, repeat: Infinity, ease: "easeInOut" }}
+      />
+      <motion.div
+        className="fixed bottom-0 left-0 w-[1000px] h-[700px] pointer-events-none z-0"
+        style={{
+          background: "radial-gradient(ellipse at center, hsl(var(--primary) / 0.04) 0%, transparent 55%)",
+          filter: "blur(120px)",
+        }}
+        animate={{ x: [0, 150, 0], y: [0, -80, 0] }}
+        transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
+      />
+      <div
+        className="fixed inset-0 pointer-events-none z-0"
+        style={{
+          background: "linear-gradient(160deg, hsl(0 0% 100% / 0.01) 0%, transparent 35%, hsl(var(--primary) / 0.015) 100%)",
+        }}
       />
 
       <div className="relative z-10">
@@ -118,14 +136,14 @@ const Models = () => {
           </div>
         </section>
 
-        {/* Filters */}
-        <section
-          className="sticky top-[72px] z-30 py-3"
+        {/* ── Fixed Filter Bar ── */}
+        <div
+          className="fixed top-[72px] left-0 right-0 z-30 py-3"
           style={{
-            background: "hsl(0 0% 4% / 0.88)",
-            backdropFilter: "blur(20px)",
-            WebkitBackdropFilter: "blur(20px)",
-            borderBottom: "1px solid hsl(0 0% 100% / 0.04)",
+            background: "hsl(0 0% 4% / 0.92)",
+            backdropFilter: "blur(24px)",
+            WebkitBackdropFilter: "blur(24px)",
+            borderBottom: "1px solid hsl(0 0% 100% / 0.05)",
           }}
         >
           <div className="container mx-auto px-4">
@@ -147,7 +165,7 @@ const Models = () => {
               </div>
 
               {/* Category pills */}
-              <div className="flex items-center gap-1.5 overflow-x-auto scrollbar-hide pb-0.5">
+              <div className="flex items-center gap-1.5 overflow-x-auto scrollbar-hide pb-0.5 flex-1">
                 <SlidersHorizontal className="w-3.5 h-3.5 text-primary-foreground/25 shrink-0 mr-1 hidden md:block" />
                 {CATEGORIES.map((cat) => {
                   const isActive = activeCategory === cat;
@@ -170,23 +188,60 @@ const Models = () => {
                   );
                 })}
               </div>
+
+              {/* Compare counter (desktop) */}
+              {selectedSlugs.length > 0 && (
+                <div className="hidden md:flex items-center gap-2 shrink-0">
+                  <div
+                    className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[10px] font-semibold uppercase tracking-wider"
+                    style={{
+                      background: "hsl(var(--primary) / 0.12)",
+                      border: "1px solid hsl(var(--primary) / 0.25)",
+                      color: "hsl(var(--primary))",
+                    }}
+                  >
+                    <BarChart3 className="w-3 h-3" />
+                    {selectedSlugs.length}/{MAX_COMPARE} selecionados
+                  </div>
+                </div>
+              )}
             </div>
           </div>
-        </section>
+        </div>
 
-        {/* Results count + compare hint */}
-        <div className="container mx-auto px-4 pt-5 pb-2 flex items-center justify-between">
-          <p className="text-[10px] uppercase tracking-[0.15em] text-primary-foreground/25 font-medium">
-            {filtered.length} {filtered.length === 1 ? "modelo" : "modelos"}
-          </p>
-          <p className="text-[10px] uppercase tracking-[0.12em] text-primary-foreground/18 font-medium hidden md:flex items-center gap-1.5">
-            <BarChart3 className="w-3 h-3" />
-            Selecione até {MAX_COMPARE} para comparar
-          </p>
+        {/* Spacer for fixed filter bar */}
+        <div className="h-[52px] md:h-[52px]" />
+
+        {/* ── Compare instruction banner ── */}
+        <div className="container mx-auto px-4 pt-5 pb-2">
+          <motion.div
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3 }}
+            className="flex items-center justify-between"
+          >
+            <p className="text-[10px] uppercase tracking-[0.15em] text-primary-foreground/25 font-medium">
+              {filtered.length} {filtered.length === 1 ? "modelo" : "modelos"}
+            </p>
+            <div className="flex items-center gap-2">
+              <div
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-full"
+                style={{
+                  background: "hsl(var(--primary) / 0.06)",
+                  border: "1px solid hsl(var(--primary) / 0.12)",
+                }}
+              >
+                <BarChart3 className="w-3 h-3 text-primary" />
+                <span className="text-[10px] text-primary/80 font-medium uppercase tracking-wider">
+                  Clique em <span className="font-bold text-primary">"Comparar"</span> nos cards para selecionar
+                </span>
+              </div>
+            </div>
+          </motion.div>
         </div>
 
         {/* Product grid */}
-        <section className="pb-28">
+        <section className="pb-12">
           <div className="container mx-auto px-4">
             <AnimatePresence mode="wait">
               <motion.div
@@ -225,6 +280,59 @@ const Models = () => {
           </div>
         </section>
 
+        {/* ── Quiz CTA Section ── */}
+        <section className="py-12 md:py-16">
+          <div className="container mx-auto px-4">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="relative rounded-2xl overflow-hidden p-6 md:p-10"
+              style={{
+                background: "hsl(0 0% 100% / 0.02)",
+                border: "1px solid hsl(0 0% 100% / 0.06)",
+              }}
+            >
+              {/* Glow */}
+              <div
+                className="absolute inset-0 pointer-events-none"
+                style={{
+                  background: "radial-gradient(ellipse at 30% 50%, hsl(var(--primary) / 0.06) 0%, transparent 60%)",
+                }}
+              />
+              <div className="relative z-10 flex flex-col md:flex-row items-center gap-6 md:gap-10">
+                <div className="flex-1">
+                  <div className="flex items-center gap-2 mb-3">
+                    <Sparkles className="w-4 h-4 text-primary" />
+                    <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-primary">
+                      Quiz inteligente
+                    </span>
+                  </div>
+                  <h3 className="font-display font-black text-xl md:text-2xl text-primary-foreground uppercase tracking-tight mb-2">
+                    Não sabe qual{" "}
+                    <span className="text-primary">escolher?</span>
+                  </h3>
+                  <p className="text-[13px] text-primary-foreground/40 leading-relaxed max-w-md">
+                    Responda algumas perguntas rápidas e nossa IA recomenda o modelo ideal para o seu perfil, rotina e orçamento.
+                  </p>
+                </div>
+                <button
+                  onClick={() => setQuizOpen(true)}
+                  className="shrink-0 inline-flex items-center gap-2.5 px-7 py-3.5 rounded-xl text-[11px] font-semibold uppercase tracking-[0.14em] text-primary-foreground cursor-pointer transition-all hover:scale-[1.03] active:scale-[0.97]"
+                  style={{
+                    background: "linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)))",
+                    boxShadow: "0 8px 24px -6px hsl(var(--primary) / 0.35)",
+                  }}
+                >
+                  <Sparkles className="w-4 h-4" />
+                  Fazer o quiz
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </button>
+              </div>
+            </motion.div>
+          </div>
+        </section>
+
         <HomeFooter />
       </div>
 
@@ -236,19 +344,19 @@ const Models = () => {
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: 100, opacity: 0 }}
             transition={{ type: "spring", damping: 25, stiffness: 300 }}
-            className="fixed bottom-6 left-1/2 -translate-x-1/2 z-40 flex items-center gap-3 px-4 py-3 rounded-2xl"
+            className="fixed bottom-6 left-1/2 -translate-x-1/2 z-40 flex items-center gap-3 px-5 py-3.5 rounded-2xl"
             style={{
               background: "hsl(0 0% 6% / 0.95)",
-              border: "1px solid hsl(0 0% 100% / 0.08)",
+              border: "1px solid hsl(var(--primary) / 0.2)",
               backdropFilter: "blur(20px)",
-              boxShadow: "0 24px 80px -16px hsl(0 0% 0% / 0.7), 0 0 0 1px hsl(0 0% 100% / 0.03) inset",
+              boxShadow: "0 24px 80px -16px hsl(0 0% 0% / 0.7), 0 0 40px -8px hsl(var(--primary) / 0.1)",
             }}
           >
             <div className="flex items-center -space-x-2">
               {selectedProducts.map((p) => (
                 <div
                   key={p.slug}
-                  className="w-9 h-9 rounded-lg bg-white flex items-center justify-center p-1 relative"
+                  className="w-10 h-10 rounded-lg bg-white flex items-center justify-center p-1 relative"
                   style={{ border: "2px solid hsl(var(--primary) / 0.4)" }}
                 >
                   <img src={p.image} alt={p.name} className="max-h-full max-w-full object-contain" />
@@ -263,19 +371,20 @@ const Models = () => {
               ))}
             </div>
 
-            <span className="text-[10px] text-primary-foreground/35 uppercase tracking-wider font-medium hidden sm:block">
+            <span className="text-[10px] text-primary-foreground/40 uppercase tracking-wider font-medium">
               {selectedSlugs.length}/{MAX_COMPARE}
             </span>
 
             <button
               onClick={() => setCompareOpen(true)}
-              className="inline-flex items-center gap-2 px-5 py-2 rounded-xl text-[10px] font-semibold uppercase tracking-[0.14em] text-primary-foreground cursor-pointer transition-all hover:scale-[1.03] active:scale-[0.97]"
+              className="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl text-[10px] font-semibold uppercase tracking-[0.14em] text-primary-foreground cursor-pointer transition-all hover:scale-[1.03] active:scale-[0.97]"
               style={{
                 background: "linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)))",
+                boxShadow: "0 4px 16px -4px hsl(var(--primary) / 0.4)",
               }}
             >
               <BarChart3 className="w-3.5 h-3.5" />
-              Comparar
+              Comparar agora
             </button>
 
             <button
@@ -293,11 +402,12 @@ const Models = () => {
       <FloatingWhatsApp />
       <PopUpContato01 isOpen={contactOpen} onClose={() => setContactOpen(false)} />
       <CompareModal open={compareOpen} onClose={() => setCompareOpen(false)} products={selectedProducts} />
+      <QuizEngine config={msEletricQuizConfig} open={quizOpen} onOpenChange={setQuizOpen} />
     </div>
   );
 };
 
-/* ── Product Card (redesigned) ── */
+/* ── Product Card ── */
 interface ProductCardProps {
   product: Product;
   index: number;
@@ -319,11 +429,9 @@ const ProductCard = ({ product, index, isSelected, canSelect, onToggleSelect }: 
       className="group relative"
     >
       <div
-        className="h-full rounded-2xl overflow-hidden transition-all duration-400 relative"
+        className="h-full rounded-2xl overflow-hidden transition-all duration-400 relative flex flex-col"
         style={{
-          background: isHovered
-            ? "hsl(0 0% 100% / 0.04)"
-            : "hsl(0 0% 100% / 0.02)",
+          background: isHovered ? "hsl(0 0% 100% / 0.04)" : "hsl(0 0% 100% / 0.02)",
           border: `1px solid ${isSelected ? "hsl(var(--primary) / 0.5)" : isHovered ? "hsl(0 0% 100% / 0.12)" : "hsl(0 0% 100% / 0.05)"}`,
           boxShadow: isSelected
             ? "0 0 24px -6px hsl(var(--primary) / 0.15), 0 0 0 1px hsl(var(--primary) / 0.1) inset"
@@ -339,33 +447,6 @@ const ProductCard = ({ product, index, isSelected, canSelect, onToggleSelect }: 
             background: `linear-gradient(90deg, transparent, hsl(var(--primary) / ${isSelected ? 0.7 : isHovered ? 0.5 : 0}), transparent)`,
           }}
         />
-
-        {/* Selection checkbox */}
-        <button
-          onClick={(e) => {
-            e.stopPropagation();
-            e.preventDefault();
-            if (!isSelected && !canSelect) return;
-            onToggleSelect(product.slug);
-          }}
-          className={`absolute top-3 right-3 z-20 w-6 h-6 rounded-lg flex items-center justify-center transition-all duration-200 cursor-pointer ${
-            !isSelected && !canSelect ? "opacity-20 cursor-not-allowed" : "opacity-0 group-hover:opacity-100"
-          } ${isSelected ? "!opacity-100" : ""}`}
-          style={{
-            background: isSelected
-              ? "linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)))"
-              : "hsl(0 0% 0% / 0.6)",
-            border: `1px solid ${isSelected ? "hsl(var(--primary) / 0.6)" : "hsl(0 0% 100% / 0.12)"}`,
-            backdropFilter: "blur(4px)",
-          }}
-          title={isSelected ? "Remover da comparação" : canSelect ? "Comparar" : "Máximo de 3"}
-        >
-          {isSelected ? (
-            <CheckCircle2 className="w-3.5 h-3.5 text-primary-foreground" />
-          ) : (
-            <BarChart3 className="w-2.5 h-2.5 text-primary-foreground/50" />
-          )}
-        </button>
 
         {/* Image section */}
         <Link to={`/modelos/${product.slug}`} className="block">
@@ -407,8 +488,8 @@ const ProductCard = ({ product, index, isSelected, canSelect, onToggleSelect }: 
         </Link>
 
         {/* Content */}
-        <div className="p-4 pt-3">
-          <div className="flex items-baseline justify-between mb-2.5">
+        <div className="p-4 pt-3 flex-1 flex flex-col">
+          <div className="flex items-baseline justify-between mb-1.5">
             <Link to={`/modelos/${product.slug}`} className="group/name">
               <h3 className="font-display font-bold text-[13px] text-primary-foreground/90 uppercase tracking-[0.1em] group-hover/name:text-primary transition-colors">
                 {product.name}
@@ -423,6 +504,11 @@ const ProductCard = ({ product, index, isSelected, canSelect, onToggleSelect }: 
               {product.price}
             </span>
           </div>
+
+          {/* Description */}
+          <p className="text-[11px] text-primary-foreground/35 leading-relaxed mb-3 line-clamp-3">
+            {product.description}
+          </p>
 
           {/* Specs mini-grid */}
           <div
@@ -462,26 +548,45 @@ const ProductCard = ({ product, index, isSelected, canSelect, onToggleSelect }: 
             ))}
           </div>
 
-          {/* CTA */}
-          <Link
-            to={`/modelos/${product.slug}`}
-            className="flex items-center justify-center gap-2 w-full py-2 rounded-lg text-[10px] font-semibold uppercase tracking-[0.14em] transition-all duration-300"
-            style={{
-              border: `1px solid ${isHovered ? "hsl(var(--primary) / 0.3)" : "hsl(0 0% 100% / 0.06)"}`,
-              color: isHovered ? "hsl(var(--primary))" : "hsl(0 0% 100% / 0.45)",
-              background: isHovered ? "hsl(var(--primary) / 0.06)" : "transparent",
-            }}
-          >
-            <Eye className="w-3 h-3" />
-            Ver detalhes
-            <motion.span
-              initial={{ opacity: 0, x: -6 }}
-              animate={isHovered ? { opacity: 1, x: 0 } : { opacity: 0, x: -6 }}
-              transition={{ duration: 0.25 }}
+          {/* Action buttons */}
+          <div className="mt-auto flex gap-2">
+            {/* View details CTA */}
+            <Link
+              to={`/modelos/${product.slug}`}
+              className="flex-1 flex items-center justify-center gap-2 py-2 rounded-lg text-[10px] font-semibold uppercase tracking-[0.14em] transition-all duration-300"
+              style={{
+                border: `1px solid ${isHovered ? "hsl(var(--primary) / 0.3)" : "hsl(0 0% 100% / 0.06)"}`,
+                color: isHovered ? "hsl(var(--primary))" : "hsl(0 0% 100% / 0.45)",
+                background: isHovered ? "hsl(var(--primary) / 0.06)" : "transparent",
+              }}
             >
-              <ArrowRight className="w-3 h-3" />
-            </motion.span>
-          </Link>
+              <Eye className="w-3 h-3" />
+              Ver detalhes
+            </Link>
+
+            {/* Compare button — EXPLICIT */}
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                if (!isSelected && !canSelect) return;
+                onToggleSelect(product.slug);
+              }}
+              className={`flex items-center gap-1.5 px-3 py-2 rounded-lg text-[10px] font-semibold uppercase tracking-[0.1em] transition-all duration-300 cursor-pointer ${
+                !isSelected && !canSelect ? "opacity-30 cursor-not-allowed" : ""
+              }`}
+              style={{
+                background: isSelected
+                  ? "linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)))"
+                  : "hsl(0 0% 100% / 0.04)",
+                border: `1px solid ${isSelected ? "hsl(var(--primary) / 0.5)" : "hsl(0 0% 100% / 0.08)"}`,
+                color: isSelected ? "hsl(0 0% 100%)" : "hsl(0 0% 100% / 0.5)",
+              }}
+              title={isSelected ? "Remover da comparação" : canSelect ? "Adicionar à comparação" : "Máximo de 3"}
+            >
+              <BarChart3 className="w-3 h-3" />
+              {isSelected ? "✓" : "Comparar"}
+            </button>
+          </div>
         </div>
       </div>
     </motion.div>
