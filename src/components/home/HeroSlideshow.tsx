@@ -19,7 +19,7 @@ interface Slide {
 const SLIDES: Slide[] = [
   {
     badge: "LANÇAMENTO",
-    headline: ["S3K —", "PERFORMANCE", "E AUTONOMIA", "MÁXIMA"],
+    headline: ["S3K", "PERFORMANCE", "E AUTONOMIA", "MÁXIMA"],
     highlightLine: 1,
     subheadline:
       "Motor de 3.500W, até 80km/h e 85km de autonomia. A scooter elétrica mais completa da linha AIMA.",
@@ -46,7 +46,7 @@ const SLIDES: Slide[] = [
   },
   {
     badge: "NOVIDADE",
-    headline: ["TOUR 3K —", "POTÊNCIA", "PARA SUBIDAS"],
+    headline: ["TOUR 3K", "POTÊNCIA", "PARA SUBIDAS"],
     highlightLine: 1,
     subheadline:
       "Motor de 3.000W e velocidade de até 75km/h. Bateria de lítio removível e design esportivo.",
@@ -143,23 +143,9 @@ const HeroSlideshow = () => {
             transition={{ duration: 0.5, ease: "easeOut" }}
             className="max-w-4xl"
           >
-            {/* Badge */}
-            <motion.span
-              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-[11px] font-bold uppercase tracking-[0.18em] mb-6"
-              style={{
-                background: "hsl(var(--primary) / 0.12)",
-                color: "hsl(var(--primary))",
-                border: "1px solid hsl(var(--primary) / 0.25)",
-              }}
-              initial={{ opacity: 0, x: -16 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.1, duration: 0.4 }}
-            >
-              {slide.badge}
-            </motion.span>
 
             {/* Headline */}
-            <h1 className="font-display font-black text-[clamp(2.5rem,8vw,6rem)] text-primary-foreground leading-[0.92] mb-5 md:mb-6 uppercase tracking-tight">
+            <h1 className="font-display font-black text-[clamp(2.5rem,8vw,6rem)] text-primary-foreground leading-[1.05] mb-5 md:mb-6 uppercase tracking-tight">
               {slide.headline.map((line, i) => (
                 <motion.span
                   key={i}
