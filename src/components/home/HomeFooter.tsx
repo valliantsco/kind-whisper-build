@@ -2,8 +2,19 @@ import { Instagram, Facebook, Youtube, MapPin, Phone, Clock } from "lucide-react
 import { Link } from "react-router-dom";
 import msLogo from "@/assets/ms-eletric-logo-white.png";
 
-const modelLinks = ["Scooters Elétricas", "Autopropelidos", "Bicicletas Elétricas", "Triciclos Elétricos", "Utilitários", "Linha Infantil", "Patinetes"];
-const institutionalLinks = ["Sobre a MS Eletric", "Associada ABVE"];
+const modelLinks = [
+  { label: "Scooters Elétricas", href: "/modelos?categoria=scooters-eletricas" },
+  { label: "Autopropelidos", href: "/modelos?categoria=autopropelidos" },
+  { label: "Bicicletas Elétricas", href: "/modelos?categoria=bicicletas-eletricas" },
+  { label: "Triciclos Elétricos", href: "/modelos?categoria=triciclos-eletricos" },
+  { label: "Utilitários", href: "/modelos?categoria=utilitarios" },
+  { label: "Linha Infantil", href: "/modelos?categoria=infantil" },
+  { label: "Patinetes", href: "/modelos?categoria=patinetes" },
+];
+const institutionalLinks = [
+  { label: "Sobre a MS Eletric", href: "/sobre" },
+  { label: "Associada ABVE", href: "/abve" },
+];
 const supportLinks = ["Assistência técnica", "Garantia de fábrica", "Peças de reposição", "Condições de pagamento"];
 const policyLinks = [
   { label: "Política de privacidade", href: "/politica-de-privacidade" },
