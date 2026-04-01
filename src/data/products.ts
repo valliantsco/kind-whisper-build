@@ -60,6 +60,7 @@ export const PRODUCTS: Product[] = [
     motor: "350W",
     recharge: "7–8h",
     price: "R$ 7.990",
+    description: "Compacta e acessível, ideal para deslocamentos urbanos curtos com praticidade e economia no dia a dia.",
   },
   {
     name: "Bike 400+",
@@ -72,6 +73,7 @@ export const PRODUCTS: Product[] = [
     motor: "400W",
     recharge: "7–8h",
     price: "R$ 10.990",
+    description: "Mais autonomia e potência que a 350, perfeita para quem busca conforto em trajetos médios pela cidade.",
   },
   {
     name: "Bike 500",
@@ -84,6 +86,7 @@ export const PRODUCTS: Product[] = [
     motor: "500W",
     recharge: "7–8h",
     price: "R$ 10.990",
+    description: "Motor de 500W e maior capacidade de carga — excelente custo-benefício para uso diário intenso.",
   },
   {
     name: "Bike MS 600",
@@ -96,6 +99,7 @@ export const PRODUCTS: Product[] = [
     motor: "600W",
     recharge: "7–8h",
     price: "R$ 11.990",
+    description: "Top de linha da família Bike com 70 km de autonomia, ideal para quem roda longas distâncias diariamente.",
   },
   {
     name: "Bliss",
@@ -109,6 +113,7 @@ export const PRODUCTS: Product[] = [
     recharge: "6–7h",
     price: "R$ 15.990",
     badge: "Mais vendido",
+    description: "O mais vendido da MS. Design moderno, motor potente de 800W e alta capacidade para uso versátil.",
   },
   {
     name: "Liberty Ultra",
@@ -122,6 +127,7 @@ export const PRODUCTS: Product[] = [
     recharge: "5–6h",
     price: "R$ 12.990",
     badge: "Mais vendido",
+    description: "Motor de 1.000W com recarga rápida e carga de 150 kg — robustez e desempenho em um só veículo.",
   },
 
   // ── Bicicletas Elétricas ──
@@ -137,6 +143,7 @@ export const PRODUCTS: Product[] = [
     recharge: "5h",
     price: "Consulte",
     badge: "Novidade",
+    description: "E-bike estilosa com visual retrô e performance moderna. Pedala com assistência ou acelera sem esforço.",
   },
   {
     name: "Big Sur",
@@ -150,6 +157,7 @@ export const PRODUCTS: Product[] = [
     recharge: "5h",
     price: "Consulte",
     badge: "Novidade",
+    description: "Pneus largos fat bike com motor elétrico de 500W. Conforto extremo e presença marcante em qualquer terreno.",
   },
 
   // ── Scooters Elétricas ──
@@ -164,6 +172,7 @@ export const PRODUCTS: Product[] = [
     motor: "2.500W",
     recharge: "6–7h",
     price: "R$ 14.990",
+    description: "Scooter potente de 2.500W para quem precisa de velocidade real no trânsito urbano com zero emissão.",
   },
   {
     name: "New Holiday",
@@ -176,6 +185,7 @@ export const PRODUCTS: Product[] = [
     motor: "2.000W",
     recharge: "6–8h",
     price: "R$ 15.990",
+    description: "Design clássico com tecnologia moderna. Uma scooter completa para substituir a moto no dia a dia.",
   },
   {
     name: "Holiday 1000",
@@ -188,6 +198,7 @@ export const PRODUCTS: Product[] = [
     motor: "1.000W",
     recharge: "8–10h",
     price: "R$ 10.490",
+    description: "Entrada acessível no mundo das scooters elétricas com conforto, economia e manutenção simples.",
   },
   {
     name: "Tour 3K",
@@ -201,6 +212,7 @@ export const PRODUCTS: Product[] = [
     recharge: "6–8h",
     price: "R$ 16.990",
     highlight: "Custom / Chopper",
+    description: "Visual custom chopper com motor de 3.000W e 75 km/h. Para quem quer estilo e potência elétrica.",
   },
   {
     name: "S3K",
@@ -214,6 +226,7 @@ export const PRODUCTS: Product[] = [
     recharge: "6–8h",
     price: "R$ 19.990",
     highlight: "Performance esportiva",
+    description: "A mais rápida do portfólio: 80 km/h, 85 km de autonomia e visual esportivo. Performance máxima.",
   },
 
   // ── Triciclos Elétricos ──
@@ -228,6 +241,7 @@ export const PRODUCTS: Product[] = [
     motor: "650W",
     recharge: "6–7h",
     price: "R$ 15.990",
+    description: "Estabilidade total com três rodas. Ideal para quem busca segurança e praticidade com motor elétrico.",
   },
 
   // ── Utilitários ──
@@ -242,6 +256,7 @@ export const PRODUCTS: Product[] = [
     motor: "2.000W",
     recharge: "6–8h",
     price: "R$ 18.990",
+    description: "Feita para entregas profissionais. Motor potente, alta autonomia e velocidade para otimizar suas rotas.",
   },
   {
     name: "Cargo",
@@ -254,6 +269,7 @@ export const PRODUCTS: Product[] = [
     motor: "1.000W",
     recharge: "6–7h",
     price: "R$ 28.990",
+    description: "Capacidade bruta de 400 kg para transporte pesado. A solução elétrica para logística e comércio.",
   },
 
   // ── Infantil ──
@@ -268,6 +284,7 @@ export const PRODUCTS: Product[] = [
     motor: "800W",
     recharge: "6h",
     price: "R$ 5.990",
+    description: "Diversão off-road para os pequenos com motor de 800W, autonomia de 35 km e muita adrenalina elétrica.",
   },
   {
     name: "Drift Elétrico 350",
@@ -280,6 +297,7 @@ export const PRODUCTS: Product[] = [
     motor: "350W",
     recharge: "3–5h",
     price: "R$ 1.999",
+    description: "Drift kart elétrico para crianças. Seguro, divertido e perfeito para brincar em áreas planas.",
   },
 
   // ── Patinetes ──
@@ -294,5 +312,6 @@ export const PRODUCTS: Product[] = [
     motor: "350W",
     recharge: "5–6h",
     price: "R$ 2.800",
+    description: "Leve e dobrável, ideal para a última milha. Leve no metrô, no carro ou guarde em qualquer canto.",
   },
 ];
