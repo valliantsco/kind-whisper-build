@@ -13,7 +13,7 @@ import {
 } from "@/utils/form-helpers";
 import StatusChip from "@/components/contact/StatusChip";
 import CityAutocomplete from "@/components/contact/CityAutocomplete";
-import type { Product } from "@/data/products";
+import type { Product, ProductColor } from "@/data/products";
 
 const WhatsAppIcon = ({ className = "w-5 h-5" }: { className?: string }) => (
   <svg viewBox="0 0 24 24" fill="currentColor" className={className}>
