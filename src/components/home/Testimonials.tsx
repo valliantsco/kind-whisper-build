@@ -218,7 +218,7 @@ const Testimonials = () => {
 
       <div className="container mx-auto px-4 relative">
         {/* ── HEADER — Editorial asymmetric layout ── */}
-        <div className="mb-16 md:mb-20">
+        <div className="mb-12 md:mb-20">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
