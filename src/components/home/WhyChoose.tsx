@@ -85,7 +85,7 @@ const WhyChoose = () => {
             <div className="w-8 h-px bg-primary" />
           </div>
 
-          <h2 className="font-display font-black text-4xl md:text-5xl lg:text-6xl text-primary-foreground uppercase tracking-tight leading-[0.95]">
+          <h2 className="font-display font-black text-3xl md:text-5xl lg:text-6xl text-primary-foreground uppercase tracking-tight leading-[0.95]">
             Por que escolher a{" "}
             <span
               className="bg-clip-text text-transparent"

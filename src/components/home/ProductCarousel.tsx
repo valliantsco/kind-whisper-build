@@ -129,7 +129,7 @@ const ProductCarousel = () => {
               </span>
             </div>
 
-            <h2 className="font-display font-black text-4xl md:text-5xl lg:text-6xl text-primary-foreground uppercase tracking-tight leading-[0.95]">
+            <h2 className="font-display font-black text-3xl md:text-5xl lg:text-6xl text-primary-foreground uppercase tracking-tight leading-[0.95]">
               Nossos{" "}
               <span
                 className="bg-clip-text text-transparent"
