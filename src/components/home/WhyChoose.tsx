@@ -8,28 +8,28 @@ const PILLARS = [
     title: "Garantia de Fábrica",
     stat: "2 anos",
     description:
-      "Todos os veículos AIMA contam com 2 anos de garantia de fábrica, com suporte direto e assistência técnica local em Uberlândia.",
+      "Mais tranquilidade para comprar com confiança. Trabalhamos com garantia de fábrica para reforçar a segurança e a credibilidade de cada escolha.",
   },
   {
     icon: Wrench,
     title: "Assistência Especializada",
     stat: "100%",
     description:
-      "Equipe técnica treinada pela AIMA com peças de reposição originais. Manutenção preventiva e corretiva completa.",
+      "Nosso atendimento vai além da venda. Você conta com suporte especializado para tirar dúvidas, entender melhor os modelos e comprar com mais segurança.",
   },
   {
     icon: Clock,
-    title: "Experiência de Mercado",
-    stat: "AIMA",
+    title: "Em Expansão",
+    stat: "PORTFÓLIO",
     description:
-      "Revendedora autorizada da AIMA, líder mundial em veículos elétricos com mais de 8 bases de produção certificadas ISO 9001.",
+      "A MS Electric acompanha a evolução do mercado para oferecer soluções cada vez mais alinhadas às novas demandas da mobilidade elétrica no Brasil.",
   },
   {
     icon: Award,
-    title: "Atendimento Consultivo",
-    stat: "19+",
+    title: "Consultivo de Verdade",
+    stat: "ATENDIMENTO",
     description:
-      "Mais de 19 modelos no portfólio. Atendimento personalizado para encontrar o veículo ideal para seu perfil de uso.",
+      "Aqui, a escolha do modelo não é genérica. Entendemos seu contexto para indicar a opção mais adequada ao seu perfil, uso e expectativa.",
   },
 ];
 
