@@ -8,6 +8,7 @@ import Index from "./pages/Index";
 import Models from "./pages/Models";
 import ProductDetail from "./pages/ProductDetail";
 import NotFound from "./pages/NotFound";
+import ScrollToTop from "./components/ScrollToTop";
 
 const queryClient = new QueryClient();
 
