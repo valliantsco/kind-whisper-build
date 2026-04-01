@@ -13,6 +13,7 @@ import CompareModal from "@/components/models/CompareModal";
 import QuizEngine from "@/components/quiz/QuizEngine";
 import { msEletricQuizConfig } from "@/components/QuizSection";
 import { PRODUCTS, CATEGORIES, type CategoryFilter, type Product } from "@/data/products";
+import AnimatedBackground from "@/components/home/AnimatedBackground";
 
 const SPECS = [
   { icon: Zap, key: "autonomy" as const, label: "Autonomia" },
