@@ -84,11 +84,11 @@ const Index = () => {
         <WhyChoose />
         <Testimonials />
         <MediaCoverage />
-        <HomeFooter onContactClick={() => setContactOpen(true)} />
+        <HomeFooter onContactClick={() => setContactOpen(true)} onSupportClick={handleSupportClick} />
       </div>
 
       <FloatingWhatsApp />
-      <PopUpContato01 isOpen={contactOpen} onClose={() => setContactOpen(false)} />
+      <PopUpContato01 isOpen={contactOpen} onClose={handleContactClose} initialSubject={contactSubject} />
     </div>
   );
 };
