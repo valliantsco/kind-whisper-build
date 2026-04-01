@@ -108,8 +108,10 @@ export const PRODUCTS: Product[] = [
     price: "R$ 10.990",
     description: "Motor de 500W e maior capacidade de carga — excelente custo-benefício para uso diário intenso.",
     colors: [
+      { name: "Vermelho", hex: "#DC2626" },
       { name: "Preto", hex: "#111111" },
-      { name: "Azul", hex: "#1D4ED8" },
+      { name: "Laranja", hex: "#F97316" },
+      { name: "Verde Claro", hex: "#86EFAC" },
     ],
   },
   {
