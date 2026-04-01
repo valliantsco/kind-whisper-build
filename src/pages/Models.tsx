@@ -149,7 +149,7 @@ const SearchableFilterBar = ({
           >
             <button
               onClick={openSearch}
-              className="flex items-center justify-center w-8 h-8 rounded-xl shrink-0 cursor-pointer transition-colors hover:bg-primary-foreground/5"
+              className="flex items-center gap-1.5 px-3 h-8 rounded-xl shrink-0 cursor-pointer transition-colors hover:bg-primary-foreground/5"
               style={{
                 background: "hsl(0 0% 100% / 0.04)",
                 border: "1px solid hsl(0 0% 100% / 0.06)",
@@ -157,6 +157,7 @@ const SearchableFilterBar = ({
               aria-label="Buscar"
             >
               <Search className="w-3.5 h-3.5 text-primary-foreground/40" />
+              <span className="text-[10px] font-semibold uppercase tracking-[0.12em] text-primary-foreground/40">Buscar</span>
             </button>
             <CategoryPills
               categories={categories}
