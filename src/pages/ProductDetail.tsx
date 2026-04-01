@@ -6,6 +6,7 @@ import HomeFooter from "@/components/home/HomeFooter";
 import { PRODUCTS, type Product } from "@/data/products";
 import { PRODUCT_CONTENT } from "@/data/product-content";
 import { useState, useMemo } from "react";
+import { WHATSAPP_NUMBER } from "@/utils/form-helpers";
 
 import ProductHero from "@/components/product/ProductHero";
 import ProductWhyChoose from "@/components/product/ProductWhyChoose";
@@ -22,7 +23,7 @@ function getWhatsAppLink(product: Product) {
   const msg = encodeURIComponent(
     `Olá! Tenho interesse no modelo *${product.name}* (${product.category}). Gostaria de mais informações sobre disponibilidade e condições de pagamento.`
   );
-  return `https://wa.me/5511999999999?text=${msg}`;
+  return `https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`;
 }
 
 const ProductDetail = () => {
