@@ -1,223 +1,176 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Sparkles, ArrowRight, CircleDot, Route, Zap } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import QuizEngine from "@/components/quiz/QuizEngine";
 import { msEletricQuizConfig } from "@/components/QuizSection";
-
-const STEPS = [
-  {
-    num: "01",
-    icon: CircleDot,
-    title: "Perfil",
-    desc: "Conte como pretende usar",
-  },
-  {
-    num: "02",
-    icon: Route,
-    title: "Rotina",
-    desc: "Distância, terreno e orçamento",
-  },
-  {
-    num: "03",
-    icon: Zap,
-    title: "Resultado",
-    desc: "Modelo ideal em segundos",
-  },
-];
 
 const QuizCta = () => {
   const [quizOpen, setQuizOpen] = useState(false);
 
   return (
     <>
-      <section
-        className="relative py-20 md:py-28 overflow-hidden"
-        style={{ background: "hsl(0 0% 3%)" }}
-      >
-        {/* ── Ambient glow ── */}
+      <section className="relative py-24 md:py-32 overflow-hidden bg-foreground">
+        {/* Subtle grid texture */}
         <div
-          className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[500px] pointer-events-none"
+          className="absolute inset-0 pointer-events-none opacity-[0.03]"
           style={{
-            background:
-              "radial-gradient(ellipse at center, hsl(var(--primary) / 0.07) 0%, transparent 65%)",
-            filter: "blur(100px)",
+            backgroundImage:
+              "linear-gradient(hsl(0 0% 100%) 1px, transparent 1px), linear-gradient(90deg, hsl(0 0% 100%) 1px, transparent 1px)",
+            backgroundSize: "60px 60px",
           }}
         />
 
-        {/* Horizontal rule top */}
+        {/* Accent line left */}
         <div
-          className="absolute top-0 left-1/2 -translate-x-1/2 w-[60%] h-px"
+          className="absolute left-0 top-[15%] bottom-[15%] w-px hidden lg:block"
           style={{
             background:
-              "linear-gradient(90deg, transparent, hsl(0 0% 100% / 0.06), transparent)",
+              "linear-gradient(180deg, transparent, hsl(var(--primary) / 0.4), transparent)",
           }}
         />
 
         <div className="container mx-auto px-4 relative">
-          {/* ── Centered layout ── */}
-          <div className="max-w-3xl mx-auto text-center">
-            {/* Badge */}
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+            {/* Left — Visual / abstract element */}
             <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
+              transition={{ duration: 0.7 }}
+              className="relative hidden lg:flex items-center justify-center"
             >
-              <span
-                className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-[0.2em] mb-8"
-                style={{
-                  color: "hsl(var(--primary))",
-                  background: "hsl(var(--primary) / 0.08)",
-                  border: "1px solid hsl(var(--primary) / 0.15)",
-                }}
-              >
-                <Sparkles className="w-3 h-3" />
-                Quiz · 1 min
-              </span>
+              <div className="relative w-full max-w-md aspect-square">
+                {/* Concentric rings */}
+                {[1, 2, 3].map((ring) => (
+                  <div
+                    key={ring}
+                    className="absolute inset-0 rounded-full"
+                    style={{
+                      border: `1px solid hsl(var(--primary) / ${0.08 * ring})`,
+                      transform: `scale(${0.5 + ring * 0.18})`,
+                    }}
+                  />
+                ))}
+
+                {/* Center glow */}
+                <div
+                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-28 h-28 rounded-full"
+                  style={{
+                    background:
+                      "radial-gradient(circle, hsl(var(--primary) / 0.15), transparent 70%)",
+                    filter: "blur(20px)",
+                  }}
+                />
+
+                {/* Floating data points */}
+                {[
+                  { label: "4 perguntas", top: "18%", left: "10%" },
+                  { label: "IA analisa", top: "72%", left: "8%" },
+                  { label: "Resultado", top: "45%", left: "75%" },
+                ].map((point, i) => (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: 0.3 + i * 0.15 }}
+                    className="absolute px-3 py-1.5 rounded-full text-[10px] font-semibold uppercase tracking-[0.15em]"
+                    style={{
+                      top: point.top,
+                      left: point.left,
+                      color: "hsl(var(--primary))",
+                      background: "hsl(var(--primary) / 0.06)",
+                      border: "1px solid hsl(var(--primary) / 0.12)",
+                    }}
+                  >
+                    {point.label}
+                  </motion.div>
+                ))}
+
+                {/* Center number */}
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center">
+                  <span
+                    className="block font-display font-black text-6xl tracking-tighter"
+                    style={{ color: "hsl(var(--primary) / 0.12)" }}
+                  >
+                    60s
+                  </span>
+                  <span className="block text-[10px] uppercase tracking-[0.25em] text-primary-foreground/25 mt-1">
+                    tempo médio
+                  </span>
+                </div>
+              </div>
             </motion.div>
 
-            {/* Heading */}
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              className="font-display font-black text-3xl md:text-4xl lg:text-[3.25rem] text-primary-foreground uppercase tracking-tight leading-[1.05] mb-4"
-            >
-              Qual veículo combina
-              <br />
-              <span
-                className="bg-clip-text text-transparent"
-                style={{
-                  backgroundImage:
-                    "linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)))",
-                }}
+            {/* Right — Copy & CTA */}
+            <div className="text-left lg:text-right">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+                className="space-y-6"
               >
-                com a sua rotina?
-              </span>
-            </motion.h2>
+                {/* Eyebrow */}
+                <span
+                  className="inline-block text-[10px] font-bold uppercase tracking-[0.25em] px-3 py-1 rounded-sm"
+                  style={{
+                    color: "hsl(var(--primary))",
+                    borderLeft: "2px solid hsl(var(--primary))",
+                    background: "hsl(var(--primary) / 0.04)",
+                  }}
+                >
+                  Quiz inteligente
+                </span>
 
-            {/* Sub */}
-            <motion.p
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="text-primary-foreground/40 text-sm md:text-base leading-relaxed max-w-md mx-auto mb-12"
-            >
-              Três perguntas rápidas e a IA encontra o modelo certo
-              para o seu perfil de uso e orçamento.
-            </motion.p>
+                {/* Heading */}
+                <h2 className="font-display font-black text-3xl md:text-4xl lg:text-[2.75rem] text-primary-foreground uppercase tracking-tight leading-[1.1]">
+                  Encontre o veículo
+                  <br />
+                  <span
+                    className="bg-clip-text text-transparent"
+                    style={{
+                      backgroundImage:
+                        "linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)))",
+                    }}
+                  >
+                    certo pra você
+                  </span>
+                </h2>
 
-            {/* ── Steps row ── */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.25 }}
-              className="grid grid-cols-3 gap-3 md:gap-5 mb-12 max-w-xl mx-auto"
-            >
-              {STEPS.map((step, i) => (
-                <div key={i} className="relative group">
-                  {/* Connector line */}
-                  {i < STEPS.length - 1 && (
-                    <div
-                      className="hidden md:block absolute top-5 left-[calc(50%+20px)] w-[calc(100%-20px)] h-px"
+                {/* Body */}
+                <p className="text-primary-foreground/45 text-sm md:text-[15px] leading-relaxed max-w-md lg:ml-auto">
+                  Perfil de uso, habilitação e orçamento — a IA cruza tudo e
+                  indica o modelo ideal em segundos. Sem cadastro.
+                </p>
+
+                {/* CTA */}
+                <div className="pt-2">
+                  <motion.button
+                    onClick={() => setQuizOpen(true)}
+                    className="group inline-flex items-center gap-3 text-sm font-bold uppercase tracking-[0.12em] cursor-pointer"
+                    whileHover={{ x: 4 }}
+                    whileTap={{ scale: 0.97 }}
+                  >
+                    <span
+                      className="flex items-center justify-center w-12 h-12 rounded-full transition-all duration-300"
                       style={{
                         background:
-                          "linear-gradient(90deg, hsl(var(--primary) / 0.25), hsl(0 0% 100% / 0.04))",
-                      }}
-                    />
-                  )}
-
-                  <div className="flex flex-col items-center gap-2.5">
-                    <div
-                      className="w-10 h-10 rounded-full flex items-center justify-center"
-                      style={{
-                        background:
-                          i === 2
-                            ? "linear-gradient(135deg, hsl(var(--primary) / 0.2), hsl(var(--primary) / 0.08))"
-                            : "hsl(0 0% 100% / 0.04)",
-                        border: `1px solid ${
-                          i === 2
-                            ? "hsl(var(--primary) / 0.3)"
-                            : "hsl(0 0% 100% / 0.06)"
-                        }`,
+                          "linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)))",
+                        boxShadow: "0 4px 20px hsl(var(--primary) / 0.3)",
                       }}
                     >
-                      <step.icon
-                        className="w-4 h-4"
-                        style={{
-                          color:
-                            i === 2
-                              ? "hsl(var(--primary))"
-                              : "hsl(0 0% 100% / 0.35)",
-                        }}
-                      />
-                    </div>
-
-                    <div className="text-center">
-                      <span
-                        className="block text-[9px] font-bold uppercase tracking-[0.2em] mb-0.5"
-                        style={{
-                          color:
-                            i === 2
-                              ? "hsl(var(--primary) / 0.7)"
-                              : "hsl(0 0% 100% / 0.2)",
-                        }}
-                      >
-                        {step.num}
-                      </span>
-                      <p className="text-[11px] md:text-xs font-semibold text-primary-foreground/70">
-                        {step.title}
-                      </p>
-                      <p className="text-[10px] text-primary-foreground/30 mt-0.5 hidden md:block">
-                        {step.desc}
-                      </p>
-                    </div>
-                  </div>
+                      <ArrowRight className="w-5 h-5 text-primary-foreground" />
+                    </span>
+                    <span className="text-primary-foreground/80 group-hover:text-primary-foreground transition-colors">
+                      Começar agora
+                    </span>
+                  </motion.button>
                 </div>
-              ))}
-            </motion.div>
-
-            {/* CTA */}
-            <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.35 }}
-            >
-              <motion.button
-                onClick={() => setQuizOpen(true)}
-                className="inline-flex items-center gap-2.5 text-sm font-semibold uppercase tracking-[0.12em] px-10 py-4 rounded-xl text-primary-foreground cursor-pointer"
-                style={{
-                  background:
-                    "linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)))",
-                  boxShadow:
-                    "0 4px 24px hsl(var(--primary) / 0.3), 0 1px 0 inset hsl(0 0% 100% / 0.1)",
-                }}
-                whileHover={{ scale: 1.03 }}
-                whileTap={{ scale: 0.97 }}
-              >
-                Começar agora
-                <ArrowRight className="w-4 h-4" />
-              </motion.button>
-
-              <p className="text-[11px] text-primary-foreground/25 mt-4 tracking-wide">
-                Sem cadastro · resultado imediato
-              </p>
-            </motion.div>
+              </motion.div>
+            </div>
           </div>
         </div>
-
-        {/* Horizontal rule bottom */}
-        <div
-          className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[60%] h-px"
-          style={{
-            background:
-              "linear-gradient(90deg, transparent, hsl(0 0% 100% / 0.06), transparent)",
-          }}
-        />
       </section>
 
       <QuizEngine
