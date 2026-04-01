@@ -335,11 +335,11 @@ export default function AnimatedProductBackground({ slug }: Props) {
             position: "absolute",
             left: glow.x,
             top: glow.y,
-            width: isMobile ? `calc(${glow.size} * 0.6)` : glow.size,
-            height: isMobile ? `calc(${glow.size} * 0.6)` : glow.size,
+            width: isMobile ? `calc(${glow.size} * 0.7)` : glow.size,
+            height: isMobile ? `calc(${glow.size} * 0.7)` : glow.size,
             transform: "translate(-50%, -50%)",
-            background: `radial-gradient(ellipse at center, hsl(${glow.color} / ${glow.opacity}) 0%, transparent 70%)`,
-            filter: "blur(80px)",
+            background: `radial-gradient(ellipse at center, hsl(${glow.color} / ${glow.opacity * 6}) 0%, transparent 70%)`,
+            filter: "blur(60px)",
           }}
         />
       ))}
