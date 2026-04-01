@@ -406,35 +406,58 @@ const ProductCarousel = () => {
           </div>
         </div>
 
-        {/* Progress bar */}
-        <div
-          className="mt-8 mx-auto max-w-[200px] h-[2px] rounded-full overflow-hidden"
-          style={{ background: "hsl(0 0% 100% / 0.06)" }}
+        {/* ── CTA Block ── */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.3, duration: 0.6 }}
+          className="mt-14 md:mt-16"
         >
           <div
-            className="h-full rounded-full transition-all duration-200"
+            className="relative rounded-2xl overflow-hidden px-6 py-8 md:px-10 md:py-10 flex flex-col md:flex-row items-center justify-between gap-6"
             style={{
-              width: `${Math.max(10, scrollProgress * 100)}%`,
-              background: "linear-gradient(90deg, hsl(var(--primary)), hsl(var(--primary-glow)))",
+              background: "hsl(0 0% 100% / 0.025)",
+              border: "1px solid hsl(0 0% 100% / 0.06)",
             }}
-          />
-        </div>
-
-        {/* Secondary CTA */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.4 }}
-          className="mt-8 text-center"
-        >
-          <a
-            href="#modelos"
-            className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.15em] text-primary-foreground/40 hover:text-primary transition-colors duration-200"
           >
-            Ver todos os modelos e comparar
-            <ArrowRight className="w-3.5 h-3.5" />
-          </a>
+            {/* Glow behind CTA */}
+            <div
+              className="absolute inset-0 pointer-events-none"
+              style={{
+                background: "radial-gradient(ellipse at 60% 50%, hsl(var(--primary) / 0.06) 0%, transparent 70%)",
+              }}
+            />
+            {/* Top accent */}
+            <div
+              className="absolute top-0 left-0 right-0 h-[2px]"
+              style={{
+                background: "linear-gradient(90deg, transparent, hsl(var(--primary) / 0.5), transparent)",
+              }}
+            />
+
+            <div className="relative text-center md:text-left">
+              <h3 className="font-display font-bold text-lg md:text-xl text-primary-foreground uppercase tracking-wide mb-1">
+                Ainda em dúvida?{" "}
+                <span className="text-primary">Compare modelos lado a lado.</span>
+              </h3>
+              <p className="text-sm text-primary-foreground/40 max-w-md">
+                Explore todos os veículos, filtre por categoria e compare especificações para escolher o ideal.
+              </p>
+            </div>
+
+            <a
+              href="#modelos"
+              className="relative shrink-0 inline-flex items-center gap-2.5 text-sm font-semibold uppercase tracking-[0.12em] px-8 py-4 rounded-xl text-primary-foreground cursor-pointer transition-all duration-200 hover:scale-[1.03] active:scale-[0.97]"
+              style={{
+                background: "linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)))",
+                boxShadow: "0 4px 20px hsl(var(--primary) / 0.3)",
+              }}
+            >
+              Ver catálogo completo
+              <ArrowRight className="w-4 h-4" />
+            </a>
+          </div>
         </motion.div>
       </div>
     </section>
