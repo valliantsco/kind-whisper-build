@@ -58,7 +58,27 @@ const CategoryPills = ({
   }, []);
 
   const scroll = (dir: "left" | "right") => {
-    scrollRef.current?.scrollBy({ left: dir === "left" ? -160 : 160, behavior: "smooth" });
+    const container = scrollRef.current;
+    if (!container) return;
+    const pills = Array.from(container.children) as HTMLElement[];
+    const { scrollLeft, clientWidth } = container;
+
+    if (dir === "right") {
+      const target = pills.find(
+        (el) => el.offsetLeft + el.offsetWidth > scrollLeft + clientWidth + 1
+      );
+      if (target) {
+        container.scrollTo({ left: target.offsetLeft, behavior: "smooth" });
+      }
+    } else {
+      const target = [...pills].reverse().find((el) => el.offsetLeft < scrollLeft - 1);
+      if (target) {
+        const dest = target.offsetLeft + target.offsetWidth - clientWidth;
+        container.scrollTo({ left: Math.max(0, dest), behavior: "smooth" });
+      } else {
+        container.scrollTo({ left: 0, behavior: "smooth" });
+      }
+    }
     setTimeout(check, 350);
   };
 
