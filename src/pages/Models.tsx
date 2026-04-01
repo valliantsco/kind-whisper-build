@@ -221,32 +221,82 @@ const Models = () => {
         {/* Hero header */}
         <section className="pt-32 pb-6 md:pt-40 md:pb-10">
           <div className="container mx-auto px-4">
-            <motion.div
-              initial={{ opacity: 0, y: 24 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7 }}
-            >
-              <div className="flex items-center gap-3 mb-5">
-                <div className="w-8 h-px bg-primary" />
-                <span className="text-[11px] font-bold uppercase tracking-[0.25em] text-primary">
-                  Catálogo completo
-                </span>
-              </div>
-              <h1 className="font-display font-black text-4xl md:text-5xl lg:text-6xl text-primary-foreground uppercase tracking-tight leading-[0.95] mb-3">
-                Nossos{" "}
-                <span
-                  className="bg-clip-text text-transparent"
+            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-8">
+              {/* Left – title */}
+              <motion.div
+                initial={{ opacity: 0, y: 24 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7 }}
+                className="flex-1"
+              >
+                <div className="flex items-center gap-3 mb-5">
+                  <div className="w-8 h-px bg-primary" />
+                  <span className="text-[11px] font-bold uppercase tracking-[0.25em] text-primary">
+                    Catálogo completo
+                  </span>
+                </div>
+                <h1 className="font-display font-black text-4xl md:text-5xl lg:text-6xl text-primary-foreground uppercase tracking-tight leading-[0.95] mb-3">
+                  Nossos{" "}
+                  <span
+                    className="bg-clip-text text-transparent"
+                    style={{
+                      backgroundImage: "linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)))",
+                    }}
+                  >
+                    Modelos
+                  </span>
+                </h1>
+                <p className="text-sm md:text-base text-primary-foreground/40 leading-relaxed max-w-xl">
+                  Veículos 100% elétricos que unem tecnologia, economia e praticidade — da mobilidade urbana ao uso profissional.
+                </p>
+              </motion.div>
+
+              {/* Right – Quiz CTA card */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 0.2 }}
+                className="relative rounded-2xl overflow-hidden p-5 md:p-7 md:max-w-md w-full shrink-0"
+                style={{
+                  background: "hsl(0 0% 100% / 0.02)",
+                  border: "1px solid hsl(0 0% 100% / 0.06)",
+                }}
+              >
+                <div
+                  className="absolute inset-0 pointer-events-none"
                   style={{
-                    backgroundImage: "linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)))",
+                    background: "radial-gradient(ellipse at 30% 50%, hsl(var(--primary) / 0.06) 0%, transparent 60%)",
                   }}
-                >
-                  Modelos
-                </span>
-              </h1>
-              <p className="text-sm md:text-base text-primary-foreground/40 leading-relaxed max-w-xl">
-                Veículos 100% elétricos que unem tecnologia, economia e praticidade — da mobilidade urbana ao uso profissional.
-              </p>
-            </motion.div>
+                />
+                <div className="relative z-10">
+                  <div className="flex items-center gap-2 mb-3">
+                    <Sparkles className="w-4 h-4 text-primary" />
+                    <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-primary">
+                      Quiz inteligente
+                    </span>
+                  </div>
+                  <h3 className="font-display font-black text-lg md:text-xl text-primary-foreground uppercase tracking-tight mb-2">
+                    Não sabe qual{" "}
+                    <span className="text-primary">escolher?</span>
+                  </h3>
+                  <p className="text-[13px] text-primary-foreground/40 leading-relaxed mb-5">
+                    Responda algumas perguntas rápidas e nossa IA recomenda o modelo ideal para o seu perfil, rotina e orçamento.
+                  </p>
+                  <button
+                    onClick={() => setQuizOpen(true)}
+                    className="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-xl text-[11px] font-semibold uppercase tracking-[0.14em] text-primary-foreground cursor-pointer transition-all hover:scale-[1.03] active:scale-[0.97]"
+                    style={{
+                      background: "linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)))",
+                      boxShadow: "0 8px 24px -6px hsl(var(--primary) / 0.35)",
+                    }}
+                  >
+                    <Sparkles className="w-4 h-4" />
+                    Fazer o quiz
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </button>
+                </div>
+              </motion.div>
+            </div>
           </div>
         </section>
 
