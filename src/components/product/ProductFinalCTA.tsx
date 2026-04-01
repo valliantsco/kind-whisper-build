@@ -11,40 +11,53 @@ interface Props {
 
 export default function ProductFinalCTA({ content, onContact, whatsAppLink }: Props) {
   return (
-    <section className="py-16 md:py-24" style={{ borderTop: "1px solid hsl(0 0% 100% / 0.04)" }}>
+    <section className="py-20 md:py-32 relative overflow-hidden">
+      <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent 0%, hsl(var(--primary) / 0.12) 50%, transparent 100%)" }} />
+
+      {/* Large ambient glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] pointer-events-none" style={{ background: "radial-gradient(ellipse at center, hsl(var(--primary) / 0.06) 0%, transparent 60%)", filter: "blur(100px)" }} />
+
       <div className="container mx-auto px-4">
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="max-w-2xl mx-auto text-center"
+          transition={{ duration: 0.7 }}
+          className="max-w-2xl mx-auto text-center relative z-10"
         >
-          <div className="w-10 h-[2px] rounded-full bg-primary mx-auto mb-6" />
-          <h2 className="font-display font-black text-2xl md:text-3xl text-primary-foreground uppercase tracking-tight mb-4">
+          <div className="w-16 h-[2px] rounded-full mx-auto mb-8" style={{ background: "linear-gradient(90deg, transparent, hsl(var(--primary) / 0.5), transparent)" }} />
+
+          <h2 className="font-display font-black text-3xl md:text-4xl lg:text-5xl text-primary-foreground uppercase tracking-tight mb-5 leading-tight">
             {content.finalCta.title}
           </h2>
-          <p className="text-[13px] text-primary-foreground/40 leading-relaxed mb-8 max-w-lg mx-auto">
+          <p className="text-[14px] text-primary-foreground/45 leading-relaxed mb-10 max-w-lg mx-auto">
             {content.finalCta.subtitle}
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <a
-              href={whatsAppLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2.5 px-8 py-3.5 rounded-xl text-[12px] font-semibold uppercase tracking-[0.14em] text-primary-foreground transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]"
-              style={{ background: "linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)))", boxShadow: "0 8px 24px -6px hsl(var(--primary) / 0.35)" }}
-            >
-              <MessageCircle className="w-4 h-4" /> Falar com especialista
-            </a>
-          </div>
-
-          <Link
-            to="/modelos"
-            className="inline-flex items-center gap-1.5 mt-6 text-[10px] font-semibold uppercase tracking-[0.14em] text-primary-foreground/30 hover:text-primary transition-colors"
+          <a
+            href={whatsAppLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="relative inline-flex items-center justify-center gap-2.5 px-10 py-4 rounded-xl text-[12px] font-semibold uppercase tracking-[0.14em] text-primary-foreground transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] overflow-hidden group"
+            style={{
+              background: "linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)))",
+              boxShadow: "0 16px 40px -10px hsl(var(--primary) / 0.45), inset 0 1px 0 hsl(0 0% 100% / 0.1)",
+            }}
           >
-            Comparar com outros modelos <ArrowRight className="w-3 h-3" />
-          </Link>
+            <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" style={{ background: "linear-gradient(135deg, hsl(var(--primary-glow)), hsl(var(--primary)))" }} />
+            <MessageCircle className="w-4 h-4 relative z-10" />
+            <span className="relative z-10">Falar com especialista</span>
+          </a>
+
+          <div className="mt-8">
+            <Link
+              to="/modelos"
+              className="inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.14em] text-primary-foreground/30 hover:text-primary transition-colors group"
+            >
+              Comparar com outros modelos
+              <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+            </Link>
+          </div>
         </motion.div>
       </div>
     </section>
