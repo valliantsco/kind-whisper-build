@@ -96,7 +96,7 @@ const MediaCoverage = () => {
             </span>
           </h2>
           <p className="text-sm md:text-base text-primary-foreground/45 leading-relaxed mt-4 max-w-lg ml-auto">
-            A marca que os principais veículos de comunicação do Brasil estão acompanhando.
+            A força da marca também aparece na imprensa. A MS Electric vem ganhando espaço em veículos de comunicação que ajudam a ampliar sua autoridade e reforçar sua presença no setor.
           </p>
         </motion.div>
 
