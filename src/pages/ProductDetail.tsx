@@ -71,7 +71,7 @@ const ProductDetail = () => {
           <ProductComparison related={related} content={content} />
           <ProductFAQ content={content} />
           <ProductFinalCTA content={content} onContact={() => setProductContactOpen(true)} />
-          <HomeFooter />
+          <HomeFooter onContactClick={() => setContactOpen(true)} />
         </div>
         <FloatingWhatsApp />
         <PopUpContato01 isOpen={contactOpen} onClose={() => setContactOpen(false)} />
