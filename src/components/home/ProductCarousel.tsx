@@ -258,7 +258,7 @@ const ProductCarousel = () => {
 
           <div
             ref={scrollRef}
-            className="flex gap-4 md:gap-5 overflow-x-auto snap-x snap-mandatory pb-20 scrollbar-hide"
+            className="flex gap-4 md:gap-5 overflow-x-auto snap-x snap-mandatory pb-6 scrollbar-hide"
             style={{
               scrollbarWidth: "none",
               msOverflowStyle: "none",
