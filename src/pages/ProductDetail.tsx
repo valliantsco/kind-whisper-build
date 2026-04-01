@@ -59,11 +59,7 @@ const ProductDetail = () => {
   if (content) {
     return (
       <div className="min-h-screen relative" style={{ background: "hsl(0 0% 4%)" }}>
-        {/* Background glow */}
-        <div
-          className="fixed top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] pointer-events-none z-0"
-          style={{ background: "radial-gradient(ellipse at center, hsl(var(--primary) / 0.04) 0%, transparent 65%)", filter: "blur(120px)" }}
-        />
+        <AnimatedProductBackground slug={product.slug} />
 
         <div className="relative z-10">
           <Header onContactClick={() => setContactOpen(true)} />
