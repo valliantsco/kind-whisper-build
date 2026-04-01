@@ -8,6 +8,7 @@ const policyLinks = ["Política de privacidade", "Termos de uso"];
 
 interface HomeFooterProps {
   onContactClick?: () => void;
+  onSupportClick?: (subject: string) => void;
 }
 
 const HomeFooter = ({ onContactClick }: HomeFooterProps) => {
