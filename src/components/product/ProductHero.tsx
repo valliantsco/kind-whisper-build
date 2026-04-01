@@ -17,10 +17,9 @@ interface Props {
   product: Product;
   content: ProductContent;
   onContact: () => void;
-  whatsAppLink: string;
 }
 
-export default function ProductHero({ product, content, onContact, whatsAppLink }: Props) {
+export default function ProductHero({ product, content, onContact }: Props) {
   const navigate = useNavigate();
   const heroRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
@@ -197,11 +196,9 @@ export default function ProductHero({ product, content, onContact, whatsAppLink 
               transition={{ delay: 0.5 }}
               className="mb-10"
             >
-              <a
-                href={whatsAppLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="relative w-full inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-xl text-[12px] font-semibold uppercase tracking-[0.14em] text-primary-foreground transition-all duration-300 hover:scale-[1.01] active:scale-[0.98] overflow-hidden group/cta"
+              <button
+                onClick={onContact}
+                className="relative w-full inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-xl text-[12px] font-semibold uppercase tracking-[0.14em] text-primary-foreground transition-all duration-300 hover:scale-[1.01] active:scale-[0.98] overflow-hidden group/cta cursor-pointer"
                 style={{
                   background: "linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)))",
                   boxShadow: "0 12px 32px -8px hsl(var(--primary) / 0.4), inset 0 1px 0 hsl(0 0% 100% / 0.1)",
@@ -210,7 +207,7 @@ export default function ProductHero({ product, content, onContact, whatsAppLink 
                 <div className="absolute inset-0 opacity-0 group-hover/cta:opacity-100 transition-opacity duration-500" style={{ background: "linear-gradient(135deg, hsl(var(--primary-glow)), hsl(var(--primary)))" }} />
                 <MessageCircle className="w-4 h-4 relative z-10" />
                 <span className="relative z-10">Falar com consultor</span>
-              </a>
+              </button>
             </motion.div>
 
             {/* ── Ideal para ── */}
