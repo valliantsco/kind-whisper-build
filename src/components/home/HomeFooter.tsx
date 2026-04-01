@@ -6,7 +6,11 @@ const institutionalLinks = ["Sobre a MS Eletric", "Parceria AIMA", "Associada AB
 const supportLinks = ["Assistência técnica", "Garantia de fábrica", "Peças de reposição", "Condições de pagamento"];
 const policyLinks = ["Política de privacidade", "Termos de uso"];
 
-const HomeFooter = () => {
+interface HomeFooterProps {
+  onContactClick?: () => void;
+}
+
+const HomeFooter = ({ onContactClick }: HomeFooterProps) => {
   return (
     <footer id="contato" className="text-primary-foreground relative overflow-hidden">
       {/* Top accent line */}
