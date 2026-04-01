@@ -133,7 +133,7 @@ const HeroSlideshow = () => {
       </div>
 
       {/* ── Content ── */}
-      <div className="relative z-10 container mx-auto px-4 pb-20 md:pb-28">
+      <div className="relative z-10 container mx-auto px-4 pb-12 md:pb-20 mt-auto">
         <AnimatePresence mode="wait">
           <motion.div
             key={current}
@@ -145,7 +145,7 @@ const HeroSlideshow = () => {
           >
 
             {/* Headline */}
-            <h1 className="font-display font-black text-[clamp(2.5rem,8vw,6rem)] text-primary-foreground leading-[1.05] mb-5 md:mb-6 uppercase tracking-tight">
+            <h1 className="font-display font-black text-[clamp(2rem,6.4vw,4.8rem)] text-primary-foreground leading-[1.05] mb-4 md:mb-5 uppercase tracking-tight">
               {slide.headline.map((line, i) => (
                 <motion.span
                   key={i}
@@ -175,7 +175,7 @@ const HeroSlideshow = () => {
 
             {/* Subheadline */}
             <motion.p
-              className="text-sm md:text-base text-primary-foreground/45 mb-6 md:mb-8 max-w-xl leading-relaxed tracking-wide"
+              className="text-xs md:text-sm text-primary-foreground/45 mb-5 md:mb-6 max-w-lg leading-relaxed tracking-wide"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.4, duration: 0.5 }}
