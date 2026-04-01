@@ -309,7 +309,7 @@ const ProductCarousel = () => {
                     />
 
                     {/* Image area */}
-                    <div className="relative h-44 bg-white flex items-center justify-center overflow-hidden p-4">
+                    <div className="relative h-44 bg-white flex items-center justify-center overflow-hidden rounded-t-[11px] p-4">
                       <img
                         src={product.image}
                         alt={product.name}
@@ -326,10 +326,10 @@ const ProductCarousel = () => {
                       >
                         {product.category}
                       </span>
-                      {/* Bottom gradient fade */}
+                      {/* Bottom gradient fade — matches card dark bg */}
                       <div
-                        className="absolute bottom-0 left-0 right-0 h-6 pointer-events-none"
-                        style={{ background: "linear-gradient(to top, hsl(0 0% 8%), transparent)" }}
+                        className="absolute bottom-0 left-0 right-0 h-8 pointer-events-none"
+                        style={{ background: "linear-gradient(to top, hsl(0 0% 5% / 0.95), transparent)" }}
                       />
                     </div>
 
