@@ -424,13 +424,16 @@ const ChargingBatteries = () => {
 
 /* ── Main Export ── */
 const AnimatedBackground = () => {
+  // Reduce animated elements on mobile for performance
+  const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
+
   return (
     <div className="fixed inset-0 pointer-events-none z-[1] overflow-hidden">
       <CircuitTraces />
-      <LightningBolts />
+      {!isMobile && <LightningBolts />}
       <EnergyParticles />
-      <RotatingGears />
-      <PulseWaves />
+      {!isMobile && <RotatingGears />}
+      {!isMobile && <PulseWaves />}
       <ChargingBatteries />
     </div>
   );
