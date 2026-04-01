@@ -401,83 +401,54 @@ const Models = () => {
                 </motion.div>
               </motion.div>
 
-              {/* Right – Quiz CTA Card */}
+              {/* Right – Quiz panel (integrated) */}
               <motion.div
-                initial={{ opacity: 0, y: 24, scale: 0.97 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
+                initial={{ opacity: 0, y: 24 }}
+                animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-                className="relative group"
+                className="rounded-xl self-start"
+                style={{
+                  background: "hsl(0 0% 100% / 0.025)",
+                  border: "1px solid hsl(0 0% 100% / 0.06)",
+                }}
               >
-                {/* Glow behind card */}
-                <div
-                  className="absolute -inset-4 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
-                  style={{
-                    background: "radial-gradient(ellipse at 50% 50%, hsl(var(--primary) / 0.08) 0%, transparent 70%)",
-                    filter: "blur(30px)",
-                  }}
-                />
-
-                <div
-                  className="relative rounded-2xl overflow-hidden"
-                  style={{
-                    background: "linear-gradient(145deg, hsl(0 0% 100% / 0.04), hsl(0 0% 100% / 0.015))",
-                    border: "1px solid hsl(0 0% 100% / 0.07)",
-                    boxShadow: "0 20px 60px -15px hsl(0 0% 0% / 0.4), inset 0 1px 0 hsl(0 0% 100% / 0.04)",
-                  }}
-                >
-                  {/* Top accent bar */}
-                  <div
-                    className="h-[2px] w-full"
-                    style={{
-                      background: "linear-gradient(90deg, transparent, hsl(var(--primary) / 0.6), hsl(var(--primary-glow) / 0.4), transparent)",
-                    }}
-                  />
-
-                  <div className="p-6 flex flex-col justify-center h-full">
-                    {/* Badge */}
-                    <div
-                      className="inline-flex items-center gap-2 px-3 py-1 rounded-full mb-4"
-                      style={{
-                        background: "hsl(var(--primary) / 0.08)",
-                        border: "1px solid hsl(var(--primary) / 0.15)",
-                      }}
-                    >
-                      <CircleHelp className="w-3 h-3 text-primary" />
-                      <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-primary">
-                        Quiz inteligente
-                      </span>
-                    </div>
-
-                    <h3 className="font-display font-black text-[17px] text-primary-foreground uppercase tracking-tight leading-tight mb-2.5">
-                      Não sabe qual modelo{" "}
-                      <span className="text-primary">escolher?</span>
-                    </h3>
-
-                    <p className="text-[12px] text-primary-foreground/35 leading-relaxed mb-5">
-                      Responda poucas perguntas e descubra qual modelo combina melhor com o seu perfil, sua rotina e o tipo de uso que você procura.
-                    </p>
-
-                    {/* CTA button */}
-                    <motion.button
-                      onClick={() => setQuizOpen(true)}
-                      className="w-full inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-xl text-[11px] font-bold uppercase tracking-[0.14em] text-primary-foreground cursor-pointer transition-all"
-                      style={{
-                        background: "linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)))",
-                        boxShadow: "0 8px 28px -6px hsl(var(--primary) / 0.4), inset 0 1px 0 hsl(0 0% 100% / 0.12)",
-                      }}
-                      whileHover={{ scale: 1.02, boxShadow: "0 12px 36px -6px hsl(var(--primary) / 0.5)" }}
-                      whileTap={{ scale: 0.98 }}
-                    >
-                      <CircleHelp className="w-4 h-4" />
-                      Fazer o quiz
-                      <ArrowRight className="w-3.5 h-3.5" />
-                    </motion.button>
-
-                    {/* Micro trust */}
-                    <p className="text-[10px] text-primary-foreground/20 text-center mt-3 tracking-wide">
-                      Resultado em menos de 1 minuto
-                    </p>
+                <div className="p-5 md:p-6">
+                  {/* Inline label */}
+                  <div className="flex items-center gap-2 mb-4">
+                    <CircleHelp className="w-3.5 h-3.5 text-primary/70" />
+                    <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-primary-foreground/30">
+                      Recomendação inteligente
+                    </span>
                   </div>
+
+                  <h3 className="font-display font-bold text-[15px] text-primary-foreground leading-snug mb-2">
+                    Não sabe qual modelo{" "}
+                    <span className="text-primary">escolher?</span>
+                  </h3>
+
+                  <p className="text-[11px] text-primary-foreground/30 leading-relaxed mb-5">
+                    Responda poucas perguntas e descubra quais modelos fazem mais sentido para sua rotina.
+                  </p>
+
+                  {/* CTA */}
+                  <motion.button
+                    onClick={() => setQuizOpen(true)}
+                    className="w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl text-[10px] font-bold uppercase tracking-[0.14em] cursor-pointer transition-all"
+                    style={{
+                      background: "linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)))",
+                      color: "hsl(0 0% 100%)",
+                      boxShadow: "0 6px 20px -6px hsl(var(--primary) / 0.35), inset 0 1px 0 hsl(0 0% 100% / 0.1)",
+                    }}
+                    whileTap={{ scale: 0.98 }}
+                  >
+                    <Sparkles className="w-3.5 h-3.5" />
+                    Descobrir meu modelo ideal
+                    <ArrowRight className="w-3 h-3" />
+                  </motion.button>
+
+                  <p className="text-[9px] text-primary-foreground/18 text-center mt-2.5 tracking-wide">
+                    Resultado em menos de 1 minuto
+                  </p>
                 </div>
               </motion.div>
             </div>
