@@ -88,9 +88,11 @@ export const PRODUCTS: Product[] = [
     price: "R$ 10.990",
     description: "Mais autonomia e potência que a 350, perfeita para quem busca conforto em trajetos médios pela cidade.",
     colors: [
-      { name: "Preto", hex: "#111111" },
-      { name: "Branco", hex: "#F5F5F5" },
+      { name: "Verde Claro", hex: "#86EFAC" },
       { name: "Vermelho", hex: "#DC2626" },
+      { name: "Branco", hex: "#F5F5F5" },
+      { name: "Azul Claro", hex: "#7DD3FC" },
+      { name: "Rosa", hex: "#F472B6" },
     ],
   },
   {
