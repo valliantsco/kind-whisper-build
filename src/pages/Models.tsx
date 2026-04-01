@@ -438,7 +438,7 @@ const Models = () => {
                         border: "1px solid hsl(var(--primary) / 0.15)",
                       }}
                     >
-                      <Sparkles className="w-3 h-3 text-primary" />
+                      <CircleHelp className="w-3 h-3 text-primary" />
                       <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-primary">
                         Quiz inteligente
                       </span>
