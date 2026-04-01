@@ -520,7 +520,7 @@ const Header = ({ onContactClick }: HeaderProps) => {
                                     {dropItem.description}
                                   </p>
                                 </div>
-                              </a>
+                              </button>
                             </div>
 
                             {/* 6. Separator between cards */}
