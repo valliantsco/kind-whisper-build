@@ -14,14 +14,53 @@ const QuizCta = () => {
 
   return (
     <>
-      <section className="relative bg-foreground py-28 overflow-hidden">
-        {/* Ambient glow */}
+      <section className="relative py-28 overflow-hidden" style={{ background: "hsl(0 0% 4%)" }}>
+        {/* ── Layered background (matching WhyChoose) ── */}
         <div
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] pointer-events-none"
+          className="absolute -top-20 left-[20%] w-[1000px] h-[600px] pointer-events-none"
           style={{
-            background: "radial-gradient(circle, hsl(11 81% 57% / 0.06) 0%, transparent 60%)",
-            filter: "blur(60px)",
+            background: "radial-gradient(ellipse at center, hsl(var(--primary) / 0.08) 0%, transparent 60%)",
+            filter: "blur(120px)",
           }}
+        />
+        <div
+          className="absolute bottom-0 right-[5%] w-[700px] h-[700px] pointer-events-none"
+          style={{
+            background: "radial-gradient(circle at 80% 80%, hsl(var(--primary) / 0.05) 0%, transparent 55%)",
+            filter: "blur(100px)",
+          }}
+        />
+        <div
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] pointer-events-none"
+          style={{
+            background: "radial-gradient(ellipse at center, hsl(var(--primary) / 0.03) 0%, transparent 70%)",
+            filter: "blur(80px)",
+          }}
+        />
+        {/* Dot grid */}
+        <div
+          className="absolute inset-0 pointer-events-none opacity-[0.025]"
+          style={{
+            backgroundImage: "radial-gradient(circle, hsl(0 0% 100%) 1px, transparent 1px)",
+            backgroundSize: "28px 28px",
+          }}
+        />
+        {/* Diagonal gradient overlay */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background: "linear-gradient(160deg, hsl(0 0% 100% / 0.015) 0%, transparent 35%, hsl(var(--primary) / 0.025) 100%)",
+          }}
+        />
+        {/* Top-left accent line */}
+        <div
+          className="absolute top-0 left-0 w-[300px] md:w-[500px] h-[3px]"
+          style={{ background: "linear-gradient(90deg, hsl(var(--primary) / 0.6), transparent)" }}
+        />
+        {/* Bottom-right accent line */}
+        <div
+          className="absolute bottom-0 right-0 w-[300px] md:w-[500px] h-[3px]"
+          style={{ background: "linear-gradient(270deg, hsl(var(--primary) / 0.6), transparent)" }}
         />
 
         <div className="container mx-auto px-4">
