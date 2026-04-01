@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import {
   Zap, Gauge, Weight, Battery, Clock, ArrowRight, Search,
-  SlidersHorizontal, X, BarChart3, Eye, Sparkles, ChevronLeft, ChevronRight, ArrowUpDown,
+  SlidersHorizontal, X, BarChart3, Eye, Sparkles, ChevronLeft, ChevronRight, ArrowUpDown, CircleHelp,
 } from "lucide-react";
 import Header from "@/components/Header";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
@@ -438,7 +438,7 @@ const Models = () => {
                         border: "1px solid hsl(var(--primary) / 0.15)",
                       }}
                     >
-                      <Sparkles className="w-3 h-3 text-primary" />
+                      <CircleHelp className="w-3 h-3 text-primary" />
                       <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-primary">
                         Quiz inteligente
                       </span>
@@ -464,7 +464,7 @@ const Models = () => {
                       whileHover={{ scale: 1.02, boxShadow: "0 12px 36px -6px hsl(var(--primary) / 0.5)" }}
                       whileTap={{ scale: 0.98 }}
                     >
-                      <Sparkles className="w-4 h-4" />
+                      <CircleHelp className="w-4 h-4" />
                       Fazer o quiz
                       <ArrowRight className="w-3.5 h-3.5" />
                     </motion.button>
