@@ -143,11 +143,11 @@ export default function AnimatedProductBackground({ slug }: Props) {
       const g = theme.grid;
       const offset = (time * (g.drift ?? 0)) % g.spacing;
 
-      ctx.strokeStyle = `rgba(255,255,255,${g.opacity})`;
+      ctx.strokeStyle = `rgba(255,255,255,${g.opacity * 3})`;
       ctx.lineWidth = 0.5;
 
       if (g.type === "dots") {
-        ctx.fillStyle = `rgba(255,255,255,${g.opacity})`;
+        ctx.fillStyle = `rgba(255,255,255,${g.opacity * 3})`;
         for (let x = offset; x < w; x += g.spacing) {
           for (let y = offset; y < h; y += g.spacing) {
             ctx.beginPath();
@@ -179,7 +179,7 @@ export default function AnimatedProductBackground({ slug }: Props) {
         }
         ctx.stroke();
       } else if (g.type === "hexagonal") {
-        ctx.fillStyle = `rgba(255,255,255,${g.opacity})`;
+        ctx.fillStyle = `rgba(255,255,255,${g.opacity * 3})`;
         const s = g.spacing;
         for (let row = 0; row < h / s + 1; row++) {
           for (let col = 0; col < w / s + 1; col++) {
@@ -198,7 +198,7 @@ export default function AnimatedProductBackground({ slug }: Props) {
       ctx.save();
       ctx.translate(el.x, el.y);
       ctx.rotate(el.rotation);
-      ctx.globalAlpha = el.opacity * (0.7 + 0.3 * Math.sin(time * 0.001 + el.x));
+      ctx.globalAlpha = el.opacity * 3 * (0.7 + 0.3 * Math.sin(time * 0.001 + el.x));
 
       if (el.blur > 0) {
         ctx.filter = `blur(${el.blur}px)`;
@@ -301,7 +301,7 @@ export default function AnimatedProductBackground({ slug }: Props) {
 
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(255,255,255,${p.opacity * fade})`;
+        ctx.fillStyle = `rgba(255,255,255,${p.opacity * fade * 2.5})`;
         ctx.fill();
       }
 
@@ -335,11 +335,11 @@ export default function AnimatedProductBackground({ slug }: Props) {
             position: "absolute",
             left: glow.x,
             top: glow.y,
-            width: isMobile ? `calc(${glow.size} * 0.6)` : glow.size,
-            height: isMobile ? `calc(${glow.size} * 0.6)` : glow.size,
+            width: isMobile ? `calc(${glow.size} * 0.7)` : glow.size,
+            height: isMobile ? `calc(${glow.size} * 0.7)` : glow.size,
             transform: "translate(-50%, -50%)",
-            background: `radial-gradient(ellipse at center, hsl(${glow.color} / ${glow.opacity}) 0%, transparent 70%)`,
-            filter: "blur(80px)",
+            background: `radial-gradient(ellipse at center, hsl(${glow.color} / ${glow.opacity * 6}) 0%, transparent 70%)`,
+            filter: "blur(60px)",
           }}
         />
       ))}
