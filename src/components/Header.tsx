@@ -188,7 +188,7 @@ const Header = ({ onContactClick }: HeaderProps) => {
 
           {/* Header bar */}
           <div className="relative flex items-center justify-between px-5 py-3">
-            <a href="#">
+            <a href="/">
               <img src={logoWhite} alt="MS Eletric" className="w-auto" style={{ height: "2.53rem" }} />
             </a>
 
