@@ -1123,4 +1123,143 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
         "Fale com um especialista da MS Electric e receba orientação personalizada sobre o modelo ideal para você.",
     },
   },
+  "ms-2500": {
+    headline: "Mais força e mais presença para a sua mobilidade urbana",
+    subheadline:
+      "A MS 2500 é uma scooter elétrica de 2.500W com 52 km/h de velocidade máxima e 50 km de autonomia — pensada para quem quer se deslocar pela cidade com mais potência, mais confiança e mais impacto.",
+    supportText:
+      "Se você quer uma scooter que acompanhe o ritmo real do trânsito urbano, a MS 2500 entrega velocidade, robustez e presença visual em um modelo pensado para uso frequente. Mais do que um meio de transporte — uma evolução na forma como você se move pela cidade.",
+    idealFor: [
+      {
+        icon: "route",
+        title: "Trânsito urbano real",
+        desc: "52 km/h de velocidade máxima para acompanhar o fluxo do trânsito com segurança e sem ficar para trás.",
+      },
+      {
+        icon: "sparkles",
+        title: "Quem quer mais potência",
+        desc: "2.500W de motor para arrancadas firmes, subidas sem esforço e uma condução mais confiante na cidade.",
+      },
+      {
+        icon: "city",
+        title: "Uso urbano frequente",
+        desc: "Para quem depende do veículo diariamente e quer uma scooter com mais estrutura e mais presença.",
+      },
+      {
+        icon: "piggyBank",
+        title: "Economia com desempenho",
+        desc: "Zero combustível, zero IPVA, manutenção mínima — com a potência de quem não abre mão de performance urbana.",
+      },
+    ],
+    whyChoose: [
+      {
+        title: "Motor de 2.500W",
+        desc: "Potência real para o trânsito urbano. Arrancadas firmes, subidas sem hesitação e uma condução que transmite mais confiança.",
+      },
+      {
+        title: "52 km/h de velocidade",
+        desc: "Velocidade suficiente para acompanhar o fluxo do trânsito da cidade, sem ficar limitado a vias secundárias.",
+      },
+      {
+        title: "Presença visual marcante",
+        desc: "Design robusto e encorpado que transmite força e personalidade. Uma scooter que se destaca por onde passa.",
+      },
+      {
+        title: "Capacidade para 150 kg",
+        desc: "Estrutura sólida e preparada para o uso real — com espaço para você e para a sua rotina.",
+      },
+      {
+        title: "Suporte MS Electric",
+        desc: "Garantia de fábrica, assistência técnica e peças de reposição. Segurança na compra e acompanhamento real.",
+      },
+    ],
+    dailyBenefits: [
+      {
+        title: "Acompanhe o trânsito de verdade",
+        desc: "Com 52 km/h, você não fica preso ao ritmo lento. A MS 2500 se integra ao fluxo da cidade com naturalidade.",
+      },
+      {
+        title: "Arrancadas com confiança",
+        desc: "2.500W entregam respostas imediatas — semáforos, ultrapassagens e mudanças de ritmo sem hesitação.",
+      },
+      {
+        title: "Presença que impõe respeito",
+        desc: "No trânsito, presença visual importa. A MS 2500 transmite robustez e faz você ser mais notado.",
+      },
+      {
+        title: "Economia brutal",
+        desc: "Centavos de energia por dia, sem IPVA, sem combustível. A economia é ainda mais significativa comparada a motos a combustão.",
+      },
+      {
+        title: "Silenciosa e limpa",
+        desc: "Toda a potência de 2.500W sem barulho e sem emissão. Uma experiência mais agradável para você e para a cidade.",
+      },
+      {
+        title: "Recarregue na tomada",
+        desc: "6 a 7 horas na tomada comum. Conecte à noite, use pela manhã — sem filas, sem postos.",
+      },
+    ],
+    urbanContext: {
+      title: "Potência elétrica para quem vive o trânsito",
+      body: "A MS 2500 foi projetada para quem precisa de mais do que uma mobilidade elétrica básica. Se a sua rotina exige velocidade real, potência nas arrancadas e presença no trânsito, essa é a scooter que entrega tudo isso com zero emissão e custo operacional mínimo.",
+      highlights: [
+        "2.500W de potência para o trânsito urbano real",
+        "52 km/h para acompanhar o fluxo da cidade",
+        "50 km de autonomia para cobrir a rotina",
+        "Capacidade para 150 kg — estrutura sólida",
+      ],
+    },
+    specContexts: {
+      autonomy: "Faixa pensada para acompanhar uma rotina urbana com mais confiança",
+      speed: "Velocidade real para se integrar ao fluxo do trânsito da cidade",
+      motor: "Entrega alinhada à proposta mais forte e mais robusta do modelo",
+      recharge: "Rotina simples para encaixar o uso no dia a dia",
+      load: "Compatível com a proposta urbana mais completa e mais sólida do produto",
+    },
+    differentials: {
+      title: "Onde a MS 2500 se destaca na linha MS Electric",
+      body: "A MS 2500 é a escolha certa para quem quer uma scooter elétrica com mais presença, mais potência e uma proposta urbana mais completa. Com 2.500W e 52 km/h, ela se posiciona como a opção para quem quer velocidade real no trânsito urbano sem abrir mão da economia e praticidade da mobilidade elétrica.",
+    },
+    comparisonTip:
+      "Se você busca uma scooter mais acessível para começar, a Holiday 1000 é uma boa porta de entrada. Se quer um visual clássico com boa potência, a New Holiday atende bem. Mas se velocidade real no trânsito, mais potência e mais presença são prioridade, a MS 2500 é a scooter que mais entrega nessa faixa.",
+    faq: [
+      {
+        q: "A MS 2500 é indicada para qual tipo de uso?",
+        a: "Para uso urbano frequente com mais potência e velocidade. Com 2.500W e 52 km/h, ela acompanha o fluxo real do trânsito e entrega uma experiência de condução mais forte e mais confiante.",
+      },
+      {
+        q: "Essa scooter elétrica faz sentido para uso diário?",
+        a: "Sim. A MS 2500 foi pensada para quem depende do veículo no dia a dia. 50 km de autonomia cobrem a maioria das rotinas urbanas com folga.",
+      },
+      {
+        q: "Qual o diferencial dela em relação a modelos mais básicos?",
+        a: "Motor de 2.500W (vs 1.000–2.000W em modelos mais básicos) e velocidade de 52 km/h. Mais potência, mais velocidade e mais presença para o trânsito urbano.",
+      },
+      {
+        q: "Ela é uma boa escolha para quem quer mais robustez e mais presença?",
+        a: "Com certeza. A MS 2500 tem design encorpado, motor potente e estrutura para 150 kg — transmite força e confiança no trânsito.",
+      },
+      {
+        q: "Como funciona a recarga?",
+        a: "Tomada comum (110V ou 220V), de 6 a 7 horas para carga completa. Conecte à noite e tenha a scooter pronta pela manhã.",
+      },
+      {
+        q: "Como é a manutenção?",
+        a: "Simples e barata. 100% elétrica, sem troca de óleo, sem velas, sem embreagem. Manutenção mínima e muito menos frequente.",
+      },
+      {
+        q: "Como funciona a garantia?",
+        a: "A MS Electric oferece garantia de fábrica com suporte técnico e peças de reposição. Consulte um especialista para conhecer as condições.",
+      },
+      {
+        q: "Para quem a MS 2500 é a melhor escolha dentro do portfólio?",
+        a: "Para quem quer velocidade real no trânsito, mais potência e mais presença. Se robustez e desempenho urbano são prioridade, a MS 2500 é a resposta.",
+      },
+    ],
+    finalCta: {
+      title: "Descubra se a MS 2500 combina com a sua rotina",
+      subtitle:
+        "Fale com um especialista da MS Electric e receba orientação personalizada sobre o modelo ideal para o seu dia a dia.",
+    },
+  },
 };
