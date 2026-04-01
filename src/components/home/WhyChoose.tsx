@@ -172,7 +172,7 @@ const WhyChoose = () => {
             </span>
           </h2>
 
-          <p className="text-sm md:text-base text-primary-foreground/45 leading-relaxed mt-4 max-w-lg">
+          <p className="text-sm md:text-base text-primary-foreground/45 leading-relaxed mt-4 max-w-lg ml-auto">
             Compromisso com qualidade, suporte e inovação em cada detalhe.
           </p>
         </motion.div>
