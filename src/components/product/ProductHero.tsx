@@ -166,7 +166,7 @@ export default function ProductHero({ product, content, onContact, selectedColor
 
             {/* ── Color Selector ── */}
             {product.colors && product.colors.length > 0 && (
-              <ColorSelector colors={product.colors} onColorChange={handleColorChange} />
+              <ColorSelector colors={product.colors} onColorChange={onColorChange} />
             )}
 
             {/* ── Specs Strip ── */}
