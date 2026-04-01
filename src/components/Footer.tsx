@@ -4,7 +4,7 @@ import msLogo from "@/assets/ms-eletric-logo-white.png";
 
 const modelLinks = [
   "Motos & Scooters", "Bike Elétrica", "Triciclos", "Autopropelidos",
-  "Motocross", "Quadriciclos", "Infantis", "Acessórios",
+  "Motocross", "Quadriciclos", "Infantis",
 ];
 
 const Footer = () => {
