@@ -16,6 +16,7 @@ import ProductDifferentials from "@/components/product/ProductDifferentials";
 import ProductComparison from "@/components/product/ProductComparison";
 import ProductFAQ from "@/components/product/ProductFAQ";
 import ProductFinalCTA from "@/components/product/ProductFinalCTA";
+import AnimatedProductBackground from "@/components/product/AnimatedProductBackground";
 
 function getWhatsAppLink(product: Product) {
   const msg = encodeURIComponent(

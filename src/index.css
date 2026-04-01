@@ -274,3 +274,20 @@ html {
 .quiz-scrollbar:hover::-webkit-scrollbar-thumb:hover {
   background: hsl(0 0% 100% / 0.22);
 }
+
+/* ── Product Background Glow Animations ── */
+@keyframes breatheGlow {
+  0%, 100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+  50% { opacity: 0.6; transform: translate(-50%, -50%) scale(1.08); }
+}
+@keyframes driftGlow {
+  0% { transform: translate(-50%, -50%) translate(0, 0); }
+  25% { transform: translate(-50%, -50%) translate(15px, -10px); }
+  50% { transform: translate(-50%, -50%) translate(-10px, 15px); }
+  75% { transform: translate(-50%, -50%) translate(10px, 10px); }
+  100% { transform: translate(-50%, -50%) translate(0, 0); }
+}
+@keyframes pulseGlow {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
