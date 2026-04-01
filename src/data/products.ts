@@ -365,6 +365,11 @@ export const PRODUCTS: Product[] = [
     recharge: "6h",
     price: "R$ 5.990",
     description: "Diversão off-road para os pequenos com motor de 800W, autonomia de 35 km e muita adrenalina elétrica.",
+    colors: [
+      { name: "Verde", hex: "#16A34A" },
+      { name: "Vermelho", hex: "#DC2626" },
+      { name: "Azul", hex: "#2563EB" },
+    ],
   },
   {
     name: "Drift Elétrico 350",
