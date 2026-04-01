@@ -89,6 +89,8 @@ const SearchableFilterBar = ({
   categoryCount: (c: CategoryFilter) => number;
   selectedCount: number;
   maxCompare: number;
+  sortBy: SortOption;
+  setSortBy: (v: SortOption) => void;
 }) => {
   const [searchOpen, setSearchOpen] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
