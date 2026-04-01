@@ -33,6 +33,10 @@ const ProductDetail = () => {
   const product = useMemo(() => PRODUCTS.find((p) => p.slug === slug), [slug]);
   const content = useMemo(() => (slug ? PRODUCT_CONTENT[slug] : undefined), [slug]);
 
+  useEffect(() => {
+    setSelectedColor(product?.colors?.[0] ?? null);
+  }, [product]);
+
   const related = useMemo(() => {
     if (!product) return [];
     return PRODUCTS.filter((p) => p.slug !== product.slug && p.category === product.category).slice(0, 3);
