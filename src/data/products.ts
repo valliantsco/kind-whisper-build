@@ -337,7 +337,8 @@ export const PRODUCTS: Product[] = [
     price: "R$ 28.990",
     description: "Capacidade bruta de 400 kg para transporte pesado. A solução elétrica para logística e comércio.",
     colors: [
-      { name: "Preto", hex: "#111111" },
+      { name: "Verde Menta", hex: "#98D8C8" },
+      { name: "Bege", hex: "#D4C5A9" },
     ],
   },
 
