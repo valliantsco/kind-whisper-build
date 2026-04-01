@@ -23,7 +23,7 @@ const HomeFooter = () => {
           <div className="lg:col-span-2">
             <img src={msLogo} alt="MS Eletric" className="h-[3.2rem] w-auto mb-5" />
             <p className="text-primary-foreground/50 text-sm leading-relaxed max-w-xs mb-6">
-              A MS Eletric é referência em mobilidade elétrica, com atendimento consultivo, portfólio completo e suporte em todas as etapas da jornada — da escolha do modelo ao pós-venda. Tecnologia, praticidade e confiança para quem busca uma nova forma de se mover.
+              Somos referência em mobilidade elétrica, com atendimento consultivo, portfólio completo e suporte em todas as etapas da jornada, da escolha do modelo ao pós-venda. Tecnologia, praticidade e confiança para quem busca uma nova forma de se mover.
             </p>
 
             {/* Contact info */}
