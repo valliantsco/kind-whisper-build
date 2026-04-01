@@ -274,15 +274,11 @@ const ProductCarousel = () => {
                   initial={{ opacity: 0 }}
                   whileInView={{ opacity: 1 }}
                   viewport={{ once: true }}
-                  transition={{
-                    opacity: { delay: i * 0.06, duration: 0.5 },
-                    y: { duration: 0.3, ease: "easeOut" },
-                  }}
-                  animate={{ y: isHovered ? -4 : 0 }}
+                  transition={{ opacity: { delay: i * 0.06, duration: 0.5 } }}
                   onMouseEnter={() => setHoveredIdx(i)}
                   onMouseLeave={() => setHoveredIdx(null)}
                   className="group shrink-0 snap-start"
-                  style={{ width: "clamp(260px, 38vw, 290px)", willChange: "transform" }}
+                  style={{ width: "clamp(260px, 38vw, 290px)" }}
                 >
                   <div
                     className="h-full rounded-xl overflow-hidden transition-all duration-300 relative"
