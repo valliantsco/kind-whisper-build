@@ -67,6 +67,115 @@ const CategoryPills = ({
 );
 
 
+/* ── Searchable Filter Bar ── */
+const SearchableFilterBar = ({
+  searchQuery, setSearchQuery, categories, activeCategory, setActiveCategory, categoryCount, selectedCount, maxCompare,
+}: {
+  searchQuery: string;
+  setSearchQuery: (v: string) => void;
+  categories: readonly CategoryFilter[];
+  activeCategory: CategoryFilter;
+  setActiveCategory: (c: CategoryFilter) => void;
+  categoryCount: (c: CategoryFilter) => number;
+  selectedCount: number;
+  maxCompare: number;
+}) => {
+  const [searchOpen, setSearchOpen] = useState(false);
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  const openSearch = () => {
+    setSearchOpen(true);
+    setTimeout(() => inputRef.current?.focus(), 50);
+  };
+
+  const closeSearch = () => {
+    if (!searchQuery.trim()) {
+      setSearchOpen(false);
+      setSearchQuery("");
+    }
+  };
+
+  return (
+    <div className="flex items-center gap-3">
+      <AnimatePresence mode="wait">
+        {searchOpen ? (
+          <motion.div
+            key="search-input"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="relative flex-1"
+          >
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-primary-foreground/25" />
+            <input
+              ref={inputRef}
+              type="text"
+              placeholder="Buscar modelo..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              onBlur={closeSearch}
+              className="w-full pl-10 pr-9 py-2 rounded-xl text-sm text-primary-foreground placeholder:text-primary-foreground/20 outline-none transition-all focus:ring-1 focus:ring-primary/30"
+              style={{
+                background: "hsl(0 0% 100% / 0.04)",
+                border: "1px solid hsl(0 0% 100% / 0.06)",
+              }}
+            />
+            <button
+              onClick={() => { setSearchQuery(""); setSearchOpen(false); }}
+              className="absolute right-2.5 top-1/2 -translate-y-1/2 text-primary-foreground/30 hover:text-primary-foreground/60 cursor-pointer"
+            >
+              <X className="w-3.5 h-3.5" />
+            </button>
+          </motion.div>
+        ) : (
+          <motion.div
+            key="pills"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="flex items-center gap-2 flex-1 min-w-0"
+          >
+            <button
+              onClick={openSearch}
+              className="flex items-center justify-center w-8 h-8 rounded-xl shrink-0 cursor-pointer transition-colors hover:bg-primary-foreground/5"
+              style={{
+                background: "hsl(0 0% 100% / 0.04)",
+                border: "1px solid hsl(0 0% 100% / 0.06)",
+              }}
+              aria-label="Buscar"
+            >
+              <Search className="w-3.5 h-3.5 text-primary-foreground/40" />
+            </button>
+            <CategoryPills
+              categories={categories}
+              activeCategory={activeCategory}
+              onSelect={setActiveCategory}
+              categoryCount={categoryCount}
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {selectedCount > 0 && (
+        <div className="hidden md:flex items-center gap-2 shrink-0">
+          <div
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[10px] font-semibold uppercase tracking-wider"
+            style={{
+              background: "hsl(var(--primary) / 0.12)",
+              border: "1px solid hsl(var(--primary) / 0.25)",
+              color: "hsl(var(--primary))",
+            }}
+          >
+            <BarChart3 className="w-3 h-3" />
+            {selectedCount}/{maxCompare} selecionados
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
+
+
 const Models = () => {
   const [contactOpen, setContactOpen] = useState(false);
   const [activeCategory, setActiveCategory] = useState<CategoryFilter>("Todos");
@@ -239,52 +348,19 @@ const Models = () => {
                 border: "1px solid hsl(0 0% 100% / 0.06)",
               }}
             >
-              <div className="flex flex-col md:flex-row md:items-center gap-3">
-                {/* Search */}
-                <div className="relative md:w-64 shrink-0">
-                  <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-primary-foreground/25" />
-                  <input
-                    type="text"
-                    placeholder="Buscar modelo..."
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                    className="w-full pl-10 pr-4 py-2 rounded-xl text-sm text-primary-foreground placeholder:text-primary-foreground/20 outline-none transition-all focus:ring-1 focus:ring-primary/30"
-                    style={{
-                      background: "hsl(0 0% 100% / 0.04)",
-                      border: "1px solid hsl(0 0% 100% / 0.06)",
-                    }}
-                  />
-                </div>
-
-                {/* Category pills with scroll indicators */}
-                <CategoryPills
-                  categories={CATEGORIES}
-                  activeCategory={activeCategory}
-                  onSelect={setActiveCategory}
-                  categoryCount={categoryCount}
-                />
-
-                {/* Compare counter (desktop) */}
-                {selectedSlugs.length > 0 && (
-                  <div className="hidden md:flex items-center gap-2 shrink-0">
-                    <div
-                      className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[10px] font-semibold uppercase tracking-wider"
-                      style={{
-                        background: "hsl(var(--primary) / 0.12)",
-                        border: "1px solid hsl(var(--primary) / 0.25)",
-                        color: "hsl(var(--primary))",
-                      }}
-                    >
-                      <BarChart3 className="w-3 h-3" />
-                      {selectedSlugs.length}/{MAX_COMPARE} selecionados
-                    </div>
-                  </div>
-                )}
-              </div>
+              <SearchableFilterBar
+                searchQuery={searchQuery}
+                setSearchQuery={setSearchQuery}
+                categories={CATEGORIES}
+                activeCategory={activeCategory}
+                setActiveCategory={setActiveCategory}
+                categoryCount={categoryCount}
+                selectedCount={selectedSlugs.length}
+                maxCompare={MAX_COMPARE}
+              />
             </div>
           </div>
         </section>
-
 
 
         {/* Product grid */}
