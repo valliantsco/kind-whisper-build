@@ -94,7 +94,7 @@ const QuizCta = () => {
           >
             <div className="flex items-center gap-3 mb-6 justify-end">
               <span className="text-[13px] font-bold uppercase tracking-[0.2em] text-primary">
-                Recomendação por IA
+                Recomendação Inteligente
               </span>
               <div className="w-8 h-px bg-primary" />
             </div>
