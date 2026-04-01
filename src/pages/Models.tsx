@@ -136,109 +136,80 @@ const Models = () => {
           </div>
         </section>
 
-        {/* ── Fixed Filter Bar ── */}
-        <div
-          className="fixed top-[72px] left-0 right-0 z-30 py-3"
-          style={{
-            background: "hsl(0 0% 4% / 0.92)",
-            backdropFilter: "blur(24px)",
-            WebkitBackdropFilter: "blur(24px)",
-            borderBottom: "1px solid hsl(0 0% 100% / 0.05)",
-          }}
-        >
+        {/* ── Inline Filter Bar ── */}
+        <section className="pb-6">
           <div className="container mx-auto px-4">
-            <div className="flex flex-col md:flex-row md:items-center gap-3">
-              {/* Search */}
-              <div className="relative md:w-64 shrink-0">
-                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-primary-foreground/25" />
-                <input
-                  type="text"
-                  placeholder="Buscar modelo..."
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-10 pr-4 py-2 rounded-xl text-sm text-primary-foreground placeholder:text-primary-foreground/20 outline-none transition-all focus:ring-1 focus:ring-primary/30"
-                  style={{
-                    background: "hsl(0 0% 100% / 0.04)",
-                    border: "1px solid hsl(0 0% 100% / 0.06)",
-                  }}
-                />
-              </div>
+            <div
+              className="rounded-xl py-3 px-4"
+              style={{
+                background: "hsl(0 0% 100% / 0.03)",
+                border: "1px solid hsl(0 0% 100% / 0.06)",
+              }}
+            >
+              <div className="flex flex-col md:flex-row md:items-center gap-3">
+                {/* Search */}
+                <div className="relative md:w-64 shrink-0">
+                  <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-primary-foreground/25" />
+                  <input
+                    type="text"
+                    placeholder="Buscar modelo..."
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    className="w-full pl-10 pr-4 py-2 rounded-xl text-sm text-primary-foreground placeholder:text-primary-foreground/20 outline-none transition-all focus:ring-1 focus:ring-primary/30"
+                    style={{
+                      background: "hsl(0 0% 100% / 0.04)",
+                      border: "1px solid hsl(0 0% 100% / 0.06)",
+                    }}
+                  />
+                </div>
 
-              {/* Category pills */}
-              <div className="flex items-center gap-1.5 overflow-x-auto scrollbar-hide pb-0.5 flex-1">
-                <SlidersHorizontal className="w-3.5 h-3.5 text-primary-foreground/25 shrink-0 mr-1 hidden md:block" />
-                {CATEGORIES.map((cat) => {
-                  const isActive = activeCategory === cat;
-                  return (
-                    <button
-                      key={cat}
-                      onClick={() => setActiveCategory(cat)}
-                      className="shrink-0 px-3.5 py-1.5 rounded-full text-[10px] font-semibold uppercase tracking-[0.12em] transition-all duration-200 cursor-pointer whitespace-nowrap"
+                {/* Category pills */}
+                <div className="flex items-center gap-1.5 overflow-x-auto scrollbar-hide pb-0.5 flex-1">
+                  <SlidersHorizontal className="w-3.5 h-3.5 text-primary-foreground/25 shrink-0 mr-1 hidden md:block" />
+                  {CATEGORIES.map((cat) => {
+                    const isActive = activeCategory === cat;
+                    return (
+                      <button
+                        key={cat}
+                        onClick={() => setActiveCategory(cat)}
+                        className="shrink-0 px-3.5 py-1.5 rounded-full text-[10px] font-semibold uppercase tracking-[0.12em] transition-all duration-200 cursor-pointer whitespace-nowrap"
+                        style={{
+                          background: isActive
+                            ? "linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)))"
+                            : "hsl(0 0% 100% / 0.03)",
+                          border: `1px solid ${isActive ? "hsl(var(--primary) / 0.4)" : "hsl(0 0% 100% / 0.05)"}`,
+                          color: isActive ? "hsl(0 0% 100%)" : "hsl(0 0% 100% / 0.45)",
+                        }}
+                      >
+                        {cat}
+                        <span className="ml-1 opacity-50">{categoryCount(cat)}</span>
+                      </button>
+                    );
+                  })}
+                </div>
+
+                {/* Compare counter (desktop) */}
+                {selectedSlugs.length > 0 && (
+                  <div className="hidden md:flex items-center gap-2 shrink-0">
+                    <div
+                      className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[10px] font-semibold uppercase tracking-wider"
                       style={{
-                        background: isActive
-                          ? "linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)))"
-                          : "hsl(0 0% 100% / 0.03)",
-                        border: `1px solid ${isActive ? "hsl(var(--primary) / 0.4)" : "hsl(0 0% 100% / 0.05)"}`,
-                        color: isActive ? "hsl(0 0% 100%)" : "hsl(0 0% 100% / 0.45)",
+                        background: "hsl(var(--primary) / 0.12)",
+                        border: "1px solid hsl(var(--primary) / 0.25)",
+                        color: "hsl(var(--primary))",
                       }}
                     >
-                      {cat}
-                      <span className="ml-1 opacity-50">{categoryCount(cat)}</span>
-                    </button>
-                  );
-                })}
-              </div>
-
-              {/* Compare counter (desktop) */}
-              {selectedSlugs.length > 0 && (
-                <div className="hidden md:flex items-center gap-2 shrink-0">
-                  <div
-                    className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[10px] font-semibold uppercase tracking-wider"
-                    style={{
-                      background: "hsl(var(--primary) / 0.12)",
-                      border: "1px solid hsl(var(--primary) / 0.25)",
-                      color: "hsl(var(--primary))",
-                    }}
-                  >
-                    <BarChart3 className="w-3 h-3" />
-                    {selectedSlugs.length}/{MAX_COMPARE} selecionados
+                      <BarChart3 className="w-3 h-3" />
+                      {selectedSlugs.length}/{MAX_COMPARE} selecionados
+                    </div>
                   </div>
-                </div>
-              )}
+                )}
+              </div>
             </div>
           </div>
-        </div>
+        </section>
 
-        {/* Spacer for fixed filter bar */}
-        <div className="h-[52px] md:h-[52px]" />
 
-        {/* ── Compare instruction banner ── */}
-        <div className="container mx-auto px-4 pt-5 pb-2">
-          <motion.div
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3 }}
-            className="flex items-center justify-between"
-          >
-            <p className="text-[10px] uppercase tracking-[0.15em] text-primary-foreground/25 font-medium">
-              {filtered.length} {filtered.length === 1 ? "modelo" : "modelos"}
-            </p>
-            <div className="flex items-center gap-2">
-              <div
-                className="flex items-center gap-1.5 px-3 py-1.5 rounded-full"
-                style={{
-                  background: "hsl(var(--primary) / 0.06)",
-                  border: "1px solid hsl(var(--primary) / 0.12)",
-                }}
-              >
-                <BarChart3 className="w-3 h-3 text-primary" />
-                <span className="text-[10px] text-primary/80 font-medium uppercase tracking-wider">
-                  Clique em <span className="font-bold text-primary">"Comparar"</span> nos cards para selecionar
-                </span>
-              </div>
-            </div>
-          </motion.div>
-        </div>
 
         {/* Product grid */}
         <section className="pb-12">
