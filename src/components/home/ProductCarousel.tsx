@@ -378,7 +378,7 @@ const ProductCarousel = () => {
             </div>
 
             <a
-              href="#modelos"
+              href="/modelos"
               className="relative shrink-0 inline-flex items-center gap-2.5 text-sm font-semibold uppercase tracking-[0.12em] px-8 py-4 rounded-xl text-primary-foreground cursor-pointer transition-all duration-200 hover:scale-[1.03] active:scale-[0.97]"
               style={{
                 background: "linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)))",
