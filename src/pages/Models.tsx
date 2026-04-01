@@ -291,11 +291,6 @@ const ProductCard = ({ product, index }: { product: Product; index: number }) =>
             </span>
           </div>
 
-          {product.highlight && (
-            <p className="text-[10px] text-primary/80 uppercase tracking-[0.12em] font-medium mb-3">
-              {product.highlight}
-            </p>
-          )}
 
           <div
             className="h-px mb-4 transition-all duration-500"
