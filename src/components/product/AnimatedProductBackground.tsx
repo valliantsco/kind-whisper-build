@@ -301,7 +301,7 @@ export default function AnimatedProductBackground({ slug }: Props) {
 
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(255,255,255,${p.opacity * fade})`;
+        ctx.fillStyle = `rgba(255,255,255,${p.opacity * fade * 2.5})`;
         ctx.fill();
       }
 
