@@ -104,6 +104,10 @@ export const PRODUCTS: Product[] = [
     recharge: "7–8h",
     price: "R$ 10.990",
     description: "Motor de 500W e maior capacidade de carga — excelente custo-benefício para uso diário intenso.",
+    colors: [
+      { name: "Preto", hex: "#111111" },
+      { name: "Azul", hex: "#1D4ED8" },
+    ],
   },
   {
     name: "Bike MS 600",
