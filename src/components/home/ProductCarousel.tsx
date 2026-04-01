@@ -271,22 +271,24 @@ const ProductCarousel = () => {
               return (
                 <motion.div
                   key={product.name}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
                   viewport={{ once: true }}
-                  transition={{ delay: i * 0.06, duration: 0.5 }}
+                  transition={{
+                    opacity: { delay: i * 0.06, duration: 0.5 },
+                    y: { duration: 0.3, ease: "easeOut" },
+                  }}
+                  animate={{ y: isHovered ? -4 : 0 }}
                   onMouseEnter={() => setHoveredIdx(i)}
                   onMouseLeave={() => setHoveredIdx(null)}
                   className="group shrink-0 snap-start"
-                  style={{ width: "clamp(260px, 38vw, 290px)" }}
+                  style={{ width: "clamp(260px, 38vw, 290px)", willChange: "transform" }}
                 >
                   <div
-                    className="h-full rounded-xl transition-all duration-300 relative overflow-hidden isolate will-change-transform"
+                    className="h-full rounded-xl overflow-hidden transition-all duration-300 relative"
                     style={{
                       background: "hsl(0 0% 100% / 0.025)",
                       border: `1px solid ${isHovered ? "hsl(var(--primary) / 0.25)" : "hsl(0 0% 100% / 0.06)"}`,
-                      WebkitTransform: isHovered ? "translateY(-4px) translateZ(0)" : "translateY(0) translateZ(0)",
-                      transform: isHovered ? "translateY(-4px) translateZ(0)" : "translateY(0) translateZ(0)",
                       boxShadow: isHovered
                         ? "0 20px 50px -15px hsl(var(--primary) / 0.15), inset 0 -1px 0 hsl(var(--primary) / 0.15)"
                         : "none",
