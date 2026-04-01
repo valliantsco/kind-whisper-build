@@ -58,7 +58,7 @@ const NAV_ITEMS: NavItem[] = [
       { label: "Patinetes", description: "Leves, ágeis e práticos para curtas distâncias", href: "/modelos?categoria=patinetes", image: categoryScooter, video: "https://ppmoesqgmficvajqbamr.supabase.co/storage/v1/object/public/videos/patinetes.mp4" },
     ],
   },
-  { label: "Sobre nós", href: "#sobre" },
+  { label: "Sobre nós", href: "/sobre" },
   {
     label: "Visite-nos",
     href: "#contato",
