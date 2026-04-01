@@ -62,6 +62,9 @@ const Index = () => {
         }}
       />
 
+      {/* Animated thematic elements */}
+      <AnimatedBackground />
+
       {/* Content — above background */}
       <div className="relative z-10">
         <Header onContactClick={() => setContactOpen(true)} />
