@@ -32,16 +32,16 @@ interface Product {
 }
 
 const PRODUCTS: Product[] = [
-  { name: "S3K", category: "Scooter", image: modelS3k, autonomy: "85km", speed: "80km/h", load: "120kg", price: "R$ 19.990" },
-  { name: "Tour 3K", category: "Scooter", image: modelTour3k, autonomy: "40km", speed: "75km/h", load: "120kg", price: "R$ 16.990" },
-  { name: "New Holiday", category: "Scooter", image: modelNewHoliday, autonomy: "50km", speed: "50km/h", load: "150kg", price: "R$ 15.990" },
-  { name: "Bliss", category: "Autopropelido", image: modelBliss, autonomy: "70km", speed: "32km/h", load: "150kg", price: "R$ 15.990" },
-  { name: "Rhino Delivery", category: "Utilitário", image: modelRhino, autonomy: "75km", speed: "65km/h", load: "150kg", price: "R$ 18.990" },
-  { name: "Liberty Ultra", category: "Autopropelido", image: modelLibertyUltra, autonomy: "70km", speed: "32km/h", load: "150kg", price: "R$ 12.990" },
-  { name: "Santa Monica", category: "Bike Elétrica", image: modelSantaMonica, autonomy: "60km", speed: "32km/h", load: "150kg", price: "Consulte" },
-  { name: "Bike 400+", category: "Autopropelido", image: modelBike400, autonomy: "50km", speed: "32km/h", load: "100kg", price: "R$ 10.990" },
-  { name: "Big Sur", category: "Bike Elétrica", image: modelBigSur, autonomy: "60km", speed: "32km/h", load: "150kg", price: "Consulte" },
-  { name: "Triciclo Elétrico", category: "Triciclo", image: modelTricycle, autonomy: "60km", speed: "32km/h", load: "150kg", price: "R$ 15.990" },
+  { name: "S3K", category: "Scooters Elétricas", image: modelS3k, autonomy: "85km", speed: "80km/h", load: "120kg", price: "R$ 19.990" },
+  { name: "Tour 3K", category: "Scooters Elétricas", image: modelTour3k, autonomy: "40km", speed: "75km/h", load: "120kg", price: "R$ 16.990" },
+  { name: "New Holiday", category: "Scooters Elétricas", image: modelNewHoliday, autonomy: "50km", speed: "50km/h", load: "150kg", price: "R$ 15.990" },
+  { name: "Bliss", category: "Autopropelidos", image: modelBliss, autonomy: "70km", speed: "32km/h", load: "150kg", price: "R$ 15.990" },
+  { name: "Rhino Delivery", category: "Utilitários", image: modelRhino, autonomy: "75km", speed: "65km/h", load: "150kg", price: "R$ 18.990" },
+  { name: "Liberty Ultra", category: "Autopropelidos", image: modelLibertyUltra, autonomy: "70km", speed: "32km/h", load: "150kg", price: "R$ 12.990" },
+  { name: "Santa Monica", category: "Bicicletas Elétricas", image: modelSantaMonica, autonomy: "60km", speed: "32km/h", load: "150kg", price: "Consulte" },
+  { name: "Bike 400+", category: "Autopropelidos", image: modelBike400, autonomy: "50km", speed: "32km/h", load: "100kg", price: "R$ 10.990" },
+  { name: "Big Sur", category: "Bicicletas Elétricas", image: modelBigSur, autonomy: "60km", speed: "32km/h", load: "150kg", price: "Consulte" },
+  { name: "Triciclo Elétrico", category: "Triciclos Elétricos", image: modelTricycle, autonomy: "60km", speed: "32km/h", load: "150kg", price: "R$ 15.990" },
 ];
 
 const SPECS = [
