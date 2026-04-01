@@ -198,7 +198,6 @@ export const PRODUCTS: Product[] = [
     badge: "Novidade",
     description: "Pneus largos fat bike com motor elétrico de 500W. Conforto extremo e presença marcante em qualquer terreno.",
     colors: [
-      { name: "Preto", hex: "#111111" },
       { name: "Branco", hex: "#F5F5F5" },
     ],
   },
