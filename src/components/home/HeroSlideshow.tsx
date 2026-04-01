@@ -19,7 +19,7 @@ interface Slide {
 const SLIDES: Slide[] = [
   {
     badge: "LANÇAMENTO",
-    headline: ["S3K —", "PERFORMANCE", "E AUTONOMIA", "MÁXIMA"],
+    headline: ["S3K", "PERFORMANCE", "E AUTONOMIA", "MÁXIMA"],
     highlightLine: 1,
     subheadline:
       "Motor de 3.500W, até 80km/h e 85km de autonomia. A scooter elétrica mais completa da linha AIMA.",
