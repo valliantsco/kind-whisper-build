@@ -31,6 +31,7 @@ export interface Product {
   price: string;
   highlight?: string;
   badge?: string;
+  description: string;
 }
 
 export const CATEGORIES = [
