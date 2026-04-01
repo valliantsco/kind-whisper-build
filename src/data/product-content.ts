@@ -706,4 +706,143 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
         "Fale com um especialista da MS Electric e receba orientação personalizada sobre o modelo ideal para você.",
     },
   },
+  "liberty-ultra": {
+    headline: "Conforto e praticidade para quem usa de verdade",
+    subheadline:
+      "A Liberty Ultra combina motor de 1.000W, recarga mais rápida e capacidade para 150 kg em um modelo pensado para quem quer mobilidade elétrica urbana com mais conforto, mais estabilidade e mais conveniência no dia a dia.",
+    supportText:
+      "Se conforto e praticidade são tão importantes quanto desempenho, a Liberty Ultra é a escolha mais equilibrada. Ela foi projetada para quem quer usar todos os dias com tranquilidade, sem abrir mão de potência e capacidade real.",
+    idealFor: [
+      {
+        icon: "route",
+        title: "Uso urbano frequente e confortável",
+        desc: "70 km de autonomia e motor de 1.000W para deslocamentos diários com mais estabilidade e menos esforço.",
+      },
+      {
+        icon: "sparkles",
+        title: "Quem valoriza conforto",
+        desc: "Para quem quer uma experiência de uso mais madura, mais confortável e mais conveniente no cotidiano.",
+      },
+      {
+        icon: "piggyBank",
+        title: "Economia com mais entrega",
+        desc: "Recarga mais rápida (5–6h), maior capacidade e custo operacional mínimo. Mais valor pelo que você investe.",
+      },
+      {
+        icon: "city",
+        title: "Rotina sem concessões",
+        desc: "Para quem precisa de um veículo elétrico que funcione de verdade no dia a dia — com conforto, praticidade e confiança.",
+      },
+    ],
+    whyChoose: [
+      {
+        title: "Motor de 1.000W",
+        desc: "A maior potência entre os autopropelidos. Mais firmeza na condução, mais segurança em subidas e mais confiança no trânsito urbano.",
+      },
+      {
+        title: "Recarga mais rápida",
+        desc: "5 a 6 horas para carga completa — a mais rápida da categoria. Menos tempo parado, mais tempo rodando.",
+      },
+      {
+        title: "Capacidade para 150 kg",
+        desc: "A maior capacidade de carga da linha de autopropelidos. Mais espaço para você e para a realidade do uso diário.",
+      },
+      {
+        title: "Conforto como prioridade",
+        desc: "Um modelo pensado para quem valoriza conveniência e estabilidade, não apenas velocidade ou potência bruta.",
+      },
+      {
+        title: "Suporte MS Electric",
+        desc: "Garantia de fábrica, assistência técnica e peças de reposição. Segurança na compra e acompanhamento real.",
+      },
+    ],
+    dailyBenefits: [
+      {
+        title: "Mais conforto em cada trajeto",
+        desc: "A Liberty Ultra foi projetada para tornar o uso diário mais agradável — menos vibração, mais estabilidade, mais prazer.",
+      },
+      {
+        title: "Recarga que encaixa na rotina",
+        desc: "5 a 6 horas é tempo de uma noite de sono curta. Conecte ao chegar, use pela manhã — sem ajustes na rotina.",
+      },
+      {
+        title: "Potência quando você precisa",
+        desc: "1.000W entregam respostas firmes em qualquer situação — subidas, arrancadas e mudanças de ritmo no trânsito.",
+      },
+      {
+        title: "Capacidade para o uso real",
+        desc: "150 kg de carga significam que você não precisa se preocupar com peso. O veículo acompanha a sua realidade.",
+      },
+      {
+        title: "Economia consistente",
+        desc: "Centavos de energia por dia, sem IPVA, sem combustível. A economia é ainda maior para quem usa com constância.",
+      },
+      {
+        title: "Praticidade total",
+        desc: "Sem marcha, sem embreagem, sem complicação. A mesma simplicidade de sempre, com muito mais entrega.",
+      },
+    ],
+    urbanContext: {
+      title: "Praticidade que você sente no dia a dia",
+      body: "A Liberty Ultra foi pensada para quem não quer concessões. Se a sua rotina exige um veículo confortável, potente e prático para usar todos os dias, esse é o modelo que entrega a experiência mais completa dentro da linha de autopropelidos.",
+      highlights: [
+        "Motor de 1.000W — o mais potente da categoria",
+        "Recarga em 5–6h — a mais rápida da linha",
+        "Capacidade para 150 kg — uso real sem restrição",
+        "70 km de autonomia para cobrir a rotina com folga",
+      ],
+    },
+    specContexts: {
+      autonomy: "Faixa pensada para acompanhar uma rotina urbana com praticidade e folga",
+      speed: "Boa relação para deslocamentos frequentes na cidade com conforto",
+      motor: "A maior entrega de potência entre os autopropelidos da linha",
+      recharge: "A recarga mais rápida da categoria — encaixa facilmente na rotina",
+      load: "A maior capacidade de carga da linha, pensada para uso real",
+    },
+    differentials: {
+      title: "Onde a Liberty Ultra se destaca na linha MS Electric",
+      body: "A Liberty Ultra é a escolha certa para quem quer mobilidade elétrica urbana com mais conforto, mais praticidade e uma experiência de uso mais completa para a rotina do dia a dia. Com o motor mais potente, a recarga mais rápida e a maior capacidade de carga entre os autopropelidos, ela ocupa o topo da linha em entrega funcional — sem perder a simplicidade de uso.",
+    },
+    comparisonTip:
+      "Se você busca uma opção mais acessível, a família Bike oferece modelos a partir de R$ 7.990. Se design e presença visual são prioridade, a Bliss pode ser a escolha. Mas se conforto, potência, capacidade de carga e recarga rápida são o que importa, a Liberty Ultra é a mais completa da linha — e a que mais entrega para quem usa com frequência.",
+    faq: [
+      {
+        q: "A Liberty Ultra é indicada para qual tipo de uso?",
+        a: "Para uso urbano frequente e confortável — deslocamentos diários com mais potência, mais estabilidade e mais capacidade. É o modelo mais completo entre os autopropelidos.",
+      },
+      {
+        q: "Esse modelo faz sentido para quem usa no dia a dia?",
+        a: "Sim. A Liberty Ultra foi projetada para uso constante. Motor de 1.000W, recarga rápida e 150 kg de capacidade tornam ela a opção mais preparada para o cotidiano.",
+      },
+      {
+        q: "Qual o diferencial dela em relação a outras opções urbanas da linha?",
+        a: "Motor mais potente (1.000W), recarga mais rápida (5–6h) e maior capacidade de carga (150 kg). A Liberty Ultra entrega mais em todos os critérios funcionais.",
+      },
+      {
+        q: "A Liberty Ultra é uma boa escolha para quem busca mais conforto?",
+        a: "Sim. Ela foi pensada para quem valoriza conforto e conveniência como critérios de decisão — não apenas potência ou preço.",
+      },
+      {
+        q: "Como funciona a recarga?",
+        a: "Tomada comum (110V ou 220V), de 5 a 6 horas para carga completa — a mais rápida entre os autopropelidos. Conecte ao chegar em casa e use pela manhã.",
+      },
+      {
+        q: "Como é a manutenção?",
+        a: "Simples e barata. 100% elétrica, sem troca de óleo, sem velas, sem embreagem. Manutenção mínima e muito menos frequente.",
+      },
+      {
+        q: "Como funciona a garantia?",
+        a: "A MS Electric oferece garantia de fábrica com suporte técnico e peças de reposição. Consulte um especialista para conhecer as condições.",
+      },
+      {
+        q: "Para quem a Liberty Ultra é a melhor escolha dentro do portfólio?",
+        a: "Para quem quer o autopropelido mais completo da linha: mais potência, mais capacidade, recarga mais rápida e mais conforto. Se uso real e conveniência são prioridade, a Liberty Ultra é a resposta.",
+      },
+    ],
+    finalCta: {
+      title: "Descubra se a Liberty Ultra combina com a sua rotina",
+      subtitle:
+        "Fale com um especialista da MS Electric e receba orientação personalizada sobre o modelo ideal para o seu dia a dia.",
+    },
+  },
 };
