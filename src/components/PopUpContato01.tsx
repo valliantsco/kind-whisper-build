@@ -71,6 +71,13 @@ const PopUpContato01 = ({ isOpen, onClose, initialSubject }: PopUpContato01Props
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isLoading, setIsLoading] = useState(false);
 
+  // Pre-fill details when initialSubject changes
+  useEffect(() => {
+    if (isOpen && initialSubject) {
+      setDetails(initialSubject);
+    }
+  }, [isOpen, initialSubject]);
+
   // Lock body scroll
   useEffect(() => {
     if (isOpen) {
