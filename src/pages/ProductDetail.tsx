@@ -74,7 +74,6 @@ const ProductDetail = () => {
           <ProductFinalCTA content={content} onContact={() => setProductContactOpen(true)} />
           <HomeFooter onContactClick={() => setContactOpen(true)} onSupportClick={(s) => { setContactSubject(s); setContactOpen(true); }} />
         </div>
-        <FloatingWhatsApp />
         <PopUpContato01 isOpen={contactOpen} onClose={() => { setContactOpen(false); setContactSubject(undefined); }} initialSubject={contactSubject} />
         <PopUpContatoProduto isOpen={productContactOpen} onClose={() => setProductContactOpen(false)} product={product} selectedColor={selectedColor} />
       </div>
@@ -111,7 +110,6 @@ const ProductDetail = () => {
         />
         <HomeFooter onContactClick={() => setContactOpen(true)} onSupportClick={(s) => { setContactSubject(s); setContactOpen(true); }} />
       </div>
-      <FloatingWhatsApp />
       <PopUpContato01 isOpen={contactOpen} onClose={() => { setContactOpen(false); setContactSubject(undefined); }} initialSubject={contactSubject} />
       <PopUpContatoProduto isOpen={productContactOpen} onClose={() => setProductContactOpen(false)} product={product} selectedColor={selectedColor} />
     </div>

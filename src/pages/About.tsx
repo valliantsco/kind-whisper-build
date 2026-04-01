@@ -657,7 +657,6 @@ export default function About() {
 
         <HomeFooter onContactClick={() => setContactOpen(true)} onSupportClick={(s) => { setContactSubject(s); setContactOpen(true); }} />
       </div>
-      <FloatingWhatsApp />
       <PopUpContato01 isOpen={contactOpen} onClose={() => { setContactOpen(false); setContactSubject(undefined); }} initialSubject={contactSubject} />
     </div>
   );

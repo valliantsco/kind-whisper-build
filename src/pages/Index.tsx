@@ -87,7 +87,6 @@ const Index = () => {
         <HomeFooter onContactClick={() => setContactOpen(true)} onSupportClick={handleSupportClick} />
       </div>
 
-      <FloatingWhatsApp />
       <PopUpContato01 isOpen={contactOpen} onClose={handleContactClose} initialSubject={contactSubject} />
     </div>
   );
