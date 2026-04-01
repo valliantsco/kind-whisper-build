@@ -246,25 +246,9 @@ const Models = () => {
                 activeCategory={activeCategory}
                 setActiveCategory={setActiveCategory}
                 categoryCount={categoryCount}
+                selectedCount={selectedSlugs.length}
+                maxCompare={MAX_COMPARE}
               />
-
-                {/* Compare counter (desktop) */}
-                {selectedSlugs.length > 0 && (
-                  <div className="hidden md:flex items-center gap-2 shrink-0">
-                    <div
-                      className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[10px] font-semibold uppercase tracking-wider"
-                      style={{
-                        background: "hsl(var(--primary) / 0.12)",
-                        border: "1px solid hsl(var(--primary) / 0.25)",
-                        color: "hsl(var(--primary))",
-                      }}
-                    >
-                      <BarChart3 className="w-3 h-3" />
-                      {selectedSlugs.length}/{MAX_COMPARE} selecionados
-                    </div>
-                  </div>
-                )}
-              </div>
             </div>
           </div>
         </section>
