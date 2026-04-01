@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
+import AnimatedBackground from "@/components/home/AnimatedBackground";
 import Header from "@/components/Header";
 import PopUpContato01 from "@/components/PopUpContato01";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
