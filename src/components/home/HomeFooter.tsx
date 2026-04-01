@@ -1,4 +1,4 @@
-import { Instagram, Facebook, Youtube, MapPin, Phone, Clock } from "lucide-react";
+import { Instagram, Facebook, Youtube, MapPin, Phone, Clock, MessageCircle } from "lucide-react";
 import msLogo from "@/assets/ms-eletric-logo-white.png";
 
 const modelLinks = ["Scooters Elétricas", "Autopropelidos", "Bicicletas Elétricas", "Triciclos Elétricos", "Utilitários", "Linha Infantil", "Patinetes", "Acessórios"];
@@ -23,22 +23,26 @@ const HomeFooter = () => {
           <div className="lg:col-span-2">
             <img src={msLogo} alt="MS Eletric" className="h-[3.2rem] w-auto mb-5" />
             <p className="text-primary-foreground/50 text-sm leading-relaxed max-w-xs mb-6">
-              Revendedora autorizada AIMA. Mobilidade 100% elétrica com atendimento consultivo, portfólio completo e suporte do início ao pós-venda.
+              A MS Eletric é referência em mobilidade elétrica, com atendimento consultivo, portfólio completo e suporte em todas as etapas da jornada — da escolha do modelo ao pós-venda. Tecnologia, praticidade e confiança para quem busca uma nova forma de se mover.
             </p>
 
             {/* Contact info */}
             <div className="space-y-3 mb-6">
               <div className="flex items-start gap-2.5">
                 <MapPin className="w-4 h-4 mt-0.5 shrink-0" style={{ color: "hsl(11 81% 57%)" }} />
-                <span className="text-sm text-primary-foreground/50">Uberlândia, MG — Brasil</span>
+                <span className="text-sm text-primary-foreground/50">Av. João Pinheiro, 3747 - Brasil, Uberlândia - MG, 38400-714</span>
+              </div>
+              <div className="flex items-center gap-2.5">
+                <MessageCircle className="w-4 h-4 shrink-0" style={{ color: "hsl(11 81% 57%)" }} />
+                <span className="text-sm text-primary-foreground/50">(34) 99284-9900</span>
               </div>
               <div className="flex items-center gap-2.5">
                 <Phone className="w-4 h-4 shrink-0" style={{ color: "hsl(11 81% 57%)" }} />
-                <span className="text-sm text-primary-foreground/50">(11) 5199-6628</span>
+                <span className="text-sm text-primary-foreground/50">(34) 3222-8899</span>
               </div>
               <div className="flex items-center gap-2.5">
                 <Clock className="w-4 h-4 shrink-0" style={{ color: "hsl(11 81% 57%)" }} />
-                <span className="text-sm text-primary-foreground/50">Seg–Sex: 9h–18h | Sáb: 9h–13h</span>
+                <span className="text-sm text-primary-foreground/50">Seg–Sex: 9h às 18h | Sáb: 9h às 12h</span>
               </div>
             </div>
 
