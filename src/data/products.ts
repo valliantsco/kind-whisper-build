@@ -236,6 +236,11 @@ export const PRODUCTS: Product[] = [
     recharge: "6–8h",
     price: "R$ 15.990",
     description: "Design clássico com tecnologia moderna. Uma scooter completa para substituir a moto no dia a dia.",
+    colors: [
+      { name: "Preto", hex: "#111111" },
+      { name: "Branco", hex: "#F5F5F5" },
+      { name: "Vermelho", hex: "#DC2626" },
+    ],
   },
   {
     name: "Holiday 1000",
