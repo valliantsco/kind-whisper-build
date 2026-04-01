@@ -254,6 +254,10 @@ export const PRODUCTS: Product[] = [
     recharge: "8–10h",
     price: "R$ 10.490",
     description: "Entrada acessível no mundo das scooters elétricas com conforto, economia e manutenção simples.",
+    colors: [
+      { name: "Preto", hex: "#111111" },
+      { name: "Branco", hex: "#F5F5F5" },
+    ],
   },
   {
     name: "Tour 3K",
