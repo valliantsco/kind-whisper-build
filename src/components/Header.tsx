@@ -412,10 +412,9 @@ const Header = ({ onContactClick }: HeaderProps) => {
                               className="group/item relative flex-shrink-0 rounded-xl overflow-hidden"
                               style={{ width: "198px", aspectRatio: "3/4", scrollSnapAlign: "start" }}
                             >
-                              <a
-                                href={dropItem.href}
-                                className="relative block w-full h-full"
-                                onClick={(e) => { if (isDraggingCards.current) { e.preventDefault(); return; } setActiveDropdown(null); }}
+                              <button
+                                className="relative block w-full h-full bg-transparent border-none p-0 cursor-pointer text-left"
+                                onClick={() => { if (isDraggingCards.current) return; setActiveDropdown(null); navigate(dropItem.href); }}
                               >
                                 {dropItem.youtubeId ? (
                                   <motion.div
