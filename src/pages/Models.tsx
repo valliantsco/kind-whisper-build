@@ -308,7 +308,8 @@ const Models = () => {
         }}
       />
 
-      <div className="relative z-10">
+      {/* Animated thematic elements */}
+      <AnimatedBackground />
         <Header onContactClick={() => setContactOpen(true)} />
 
         {/* ══ HERO ══ */}
