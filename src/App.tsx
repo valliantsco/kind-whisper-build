@@ -26,6 +26,7 @@ const App = () => (
           <Route path="/modelos" element={<Models />} />
           <Route path="/modelos/:slug" element={<ProductDetail />} />
           <Route path="/sobre" element={<About />} />
+          <Route path="/abve" element={<ABVE />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
