@@ -127,8 +127,9 @@ export const PRODUCTS: Product[] = [
     price: "R$ 11.990",
     description: "Top de linha da família Bike com 70 km de autonomia, ideal para quem roda longas distâncias diariamente.",
     colors: [
-      { name: "Preto", hex: "#111111" },
       { name: "Branco", hex: "#F5F5F5" },
+      { name: "Preto", hex: "#111111" },
+      { name: "Vermelho", hex: "#DC2626" },
     ],
   },
   {
