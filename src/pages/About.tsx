@@ -104,7 +104,7 @@ export default function About() {
                 Com operação em Uberlândia, presença física e atendimento online, a MS Eletric une tecnologia, praticidade e confiança para tornar a eletromobilidade mais acessível, mais clara e mais presente no dia a dia de quem busca uma nova forma de se mover.
               </motion.p>
 
-              <motion.div variants={fadeUp} custom={4} className="flex flex-wrap gap-6">
+              <motion.div variants={fadeUp} custom={4} className="grid grid-cols-2 md:flex md:flex-wrap gap-4 md:gap-6">
                 {[
                   { label: "Mobilidade elétrica com propósito", icon: Zap },
                   { label: "Atendimento consultivo", icon: HeartHandshake },
