@@ -18,6 +18,8 @@ interface Props {
   product: Product;
   content: ProductContent;
   onContact: () => void;
+  selectedColor: ProductColor | null;
+  onColorChange: (color: ProductColor) => void;
 }
 
 export default function ProductHero({ product, content, onContact }: Props) {
