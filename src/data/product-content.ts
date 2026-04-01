@@ -2255,4 +2255,147 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
         "Fale com um especialista da MS Electric e descubra como o Cargo pode transformar a eficiência e a economia do transporte de carga na sua rotina profissional.",
     },
   },
+
+  "motocross-infantil": {
+    headline: "A diversão que toda criança merece — com estilo de verdade",
+    subheadline:
+      "A Moto Cross Infantil da MS Electric é o presente que transforma o lazer. Com visual esportivo, motor de 800W e 35 km de autonomia, ela oferece uma experiência recreativa marcante para uso supervisionado em ambientes adequados.",
+    supportText:
+      "Pensada para proporcionar diversão com responsabilidade, ela é ideal para chácaras, condomínios, quintais amplos e áreas de recreação — sempre com acompanhamento de um adulto.",
+    idealFor: [
+      {
+        icon: "smile",
+        title: "Lazer infantil supervisionado",
+        desc: "Diversão para crianças em ambientes controlados, como chácaras, quintais amplos e áreas recreativas adequadas.",
+      },
+      {
+        icon: "gift",
+        title: "Presente marcante",
+        desc: "Um presente que encanta pelo visual esportivo e pela experiência — muito além de um brinquedo comum.",
+      },
+      {
+        icon: "home",
+        title: "Condomínios e áreas de lazer",
+        desc: "Ideal para espaços onde a criança pode brincar com segurança, sempre acompanhada por um adulto responsável.",
+      },
+      {
+        icon: "users",
+        title: "Momentos em família",
+        desc: "Transforma o fim de semana em algo mais divertido e memorável, criando experiências que a criança não esquece.",
+      },
+    ],
+    whyChoose: [
+      {
+        title: "Visual esportivo que encanta",
+        desc: "Design de motocross que chama atenção e faz a criança se sentir pilotando de verdade. O impacto visual é imediato.",
+      },
+      {
+        title: "Motor de 800W para diversão real",
+        desc: "Potência dimensionada para oferecer uma experiência recreativa envolvente, com sensação de pilotagem que diverte de verdade.",
+      },
+      {
+        title: "35 km de autonomia para brincar bastante",
+        desc: "Autonomia generosa para longas sessões de diversão sem interrupção — horas de lazer com uma única carga.",
+      },
+      {
+        title: "Experiência recreativa memorável",
+        desc: "Não é um brinquedo qualquer. É uma experiência que marca a infância e cria memórias especiais em família.",
+      },
+      {
+        title: "Respaldo MS Electric",
+        desc: "Todo o suporte de uma marca especializada em mobilidade elétrica: assistência técnica, peças e atendimento consultivo.",
+      },
+    ],
+    dailyBenefits: [
+      {
+        title: "Diversão que dura horas",
+        desc: "Com 35 km de autonomia, a brincadeira não acaba rápido. A criança aproveita muito antes de precisar recarregar.",
+      },
+      {
+        title: "Presente com impacto emocional",
+        desc: "O tipo de presente que a criança lembra para sempre. O visual, a experiência e a emoção ficam na memória.",
+      },
+      {
+        title: "Lazer ao ar livre com propósito",
+        desc: "Uma forma de tirar a criança das telas e colocá-la para brincar ao ar livre com algo que realmente empolga.",
+      },
+      {
+        title: "Fins de semana mais especiais",
+        desc: "Chácaras, sítios e condomínios ganham um atrativo a mais. A Moto Cross Infantil transforma o lazer da família.",
+      },
+      {
+        title: "Recarga simples na tomada",
+        desc: "Sem combustível, sem complicação. Conecte na tomada, aguarde 6 horas e está pronta para mais diversão.",
+      },
+    ],
+    urbanContext: {
+      title: "Diversão de verdade para os pequenos",
+      body: "A Moto Cross Infantil foi criada para oferecer uma experiência recreativa com estilo e emoção. Com motor elétrico silencioso e visual esportivo autêntico, ela transforma momentos de lazer em aventuras memoráveis — sempre com supervisão de um adulto e em ambientes adequados. É o tipo de produto que une encantamento visual, diversão real e momentos especiais em família.",
+      highlights: [
+        "Visual de motocross autêntico e marcante",
+        "Motor de 800W para diversão envolvente",
+        "35 km de autonomia para brincar bastante",
+        "Motor elétrico silencioso e sem emissões",
+        "Ideal para chácaras, quintais e condomínios",
+        "Uso supervisionado para mais tranquilidade",
+      ],
+    },
+    specContexts: {
+      autonomy:
+        "35 km por carga — autonomia pensada para longas sessões de lazer supervisionado sem interrupção.",
+      speed:
+        "Até 32 km/h — velocidade que entrega diversão com a supervisão adequada de um adulto responsável.",
+      motor:
+        "Motor de 800W — potência dimensionada para oferecer uma experiência recreativa envolvente e divertida.",
+      recharge:
+        "6 horas na tomada convencional. Recarregue à noite e tenha a moto pronta para a próxima sessão de diversão.",
+      load:
+        "Capacidade de até 55 kg — compatível com a faixa de uso infantil prevista para o produto.",
+    },
+    differentials: {
+      title: "Onde a Moto Cross Infantil se destaca",
+      body: "A Moto Cross Infantil ocupa um espaço único na linha MS Electric: é o produto recreativo infantil com maior apelo visual e experiência mais envolvente. Com design de motocross autêntico, motor de 800W e 35 km de autonomia, ela vai muito além de um brinquedo convencional. É a escolha para quem quer proporcionar uma experiência marcante, divertida e memorável — com a responsabilidade do uso supervisionado em ambientes adequados.",
+    },
+    comparisonTip:
+      "A Moto Cross Infantil é o modelo recreativo com mais potência (800W) e visual esportivo mais marcante da categoria infantil. Se você busca uma opção de lazer com perfil diferente, como o Drift Elétrico 350, ele oferece uma experiência de drift mais lúdica e com velocidade mais baixa. Para patinetes elétricos, o Patinete 350 é a opção mais urbana e leve.",
+    faq: [
+      {
+        q: "A Moto Cross Infantil é indicada para qual tipo de uso?",
+        a: "Para lazer recreativo supervisionado em ambientes adequados, como chácaras, condomínios, quintais amplos e áreas de recreação. Sempre com acompanhamento de um adulto.",
+      },
+      {
+        q: "Esse modelo faz sentido para quais ambientes?",
+        a: "Para espaços abertos e controlados, como chácaras, sítios, quintais amplos e áreas recreativas de condomínios. Não é indicado para vias públicas.",
+      },
+      {
+        q: "Qual o diferencial dela em relação a outros modelos infantis?",
+        a: "O visual de motocross autêntico, o motor de 800W e a autonomia de 35 km fazem dela a opção mais envolvente e marcante da categoria infantil.",
+      },
+      {
+        q: "Ela é uma boa escolha para presentear?",
+        a: "Sim. É o tipo de presente que encanta pelo visual e pela experiência. Muito além de um brinquedo convencional — é algo que a criança lembra para sempre.",
+      },
+      {
+        q: "Como funciona a recarga?",
+        a: "Basta conectar na tomada convencional. A carga completa leva cerca de 6 horas — ideal para recarregar à noite ou entre sessões de diversão.",
+      },
+      {
+        q: "Como é a manutenção?",
+        a: "Simples e econômica. Veículos elétricos têm menos peças móveis, o que reduz custos e frequência de manutenção. A MS Electric oferece suporte técnico.",
+      },
+      {
+        q: "Como funciona a garantia?",
+        a: "A MS Electric oferece garantia de fábrica com suporte técnico direto. Consulte um especialista para conhecer os termos completos.",
+      },
+      {
+        q: "Para quem a Moto Cross Infantil é a melhor escolha?",
+        a: "Para pais e responsáveis que querem proporcionar uma experiência recreativa marcante, divertida e com forte apelo visual — sempre com supervisão e em ambientes adequados.",
+      },
+    ],
+    finalCta: {
+      title: "Quer proporcionar uma experiência inesquecível?",
+      subtitle:
+        "Fale com um especialista da MS Electric e descubra como a Moto Cross Infantil pode transformar o lazer da criança em momentos de diversão memoráveis.",
+    },
+  },
 };
