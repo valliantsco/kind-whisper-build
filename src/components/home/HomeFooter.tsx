@@ -37,8 +37,8 @@ const HomeFooter = ({ onContactClick, onSupportClick }: HomeFooterProps) => {
         }}
       />
 
-      <div className="container mx-auto px-4 py-20">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10">
+      <div className="container mx-auto px-4 py-12 md:py-20">
+        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-5 gap-8 md:gap-10">
           {/* Brand */}
           <div className="lg:col-span-2">
             <img src={msLogo} alt="MS Eletric" className="h-[3.2rem] w-auto mb-5" />
