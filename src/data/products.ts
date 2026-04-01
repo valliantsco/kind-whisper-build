@@ -282,9 +282,8 @@ export const PRODUCTS: Product[] = [
     highlight: "Performance esportiva",
     description: "A mais rápida do portfólio: 80 km/h, 85 km de autonomia e visual esportivo. Performance máxima.",
     colors: [
+      { name: "Branco", hex: "#F5F5F5" },
       { name: "Preto", hex: "#111111" },
-      { name: "Vermelho Racing", hex: "#B91C1C" },
-      { name: "Azul Metálico", hex: "#1E40AF" },
     ],
   },
 
