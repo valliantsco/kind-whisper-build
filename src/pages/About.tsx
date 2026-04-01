@@ -7,7 +7,7 @@ import {
 } from "lucide-react";
 import Header from "@/components/Header";
 import HomeFooter from "@/components/home/HomeFooter";
-import FloatingWhatsApp from "@/components/FloatingWhatsApp";
+
 import PopUpContato01 from "@/components/PopUpContato01";
 import AnimatedBackground from "@/components/home/AnimatedBackground";
 
@@ -657,7 +657,6 @@ export default function About() {
 
         <HomeFooter onContactClick={() => setContactOpen(true)} onSupportClick={(s) => { setContactSubject(s); setContactOpen(true); }} />
       </div>
-      <FloatingWhatsApp />
       <PopUpContato01 isOpen={contactOpen} onClose={() => { setContactOpen(false); setContactSubject(undefined); }} initialSubject={contactSubject} />
     </div>
   );

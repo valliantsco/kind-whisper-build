@@ -1,6 +1,6 @@
 import { useParams, Link } from "react-router-dom";
 import Header from "@/components/Header";
-import FloatingWhatsApp from "@/components/FloatingWhatsApp";
+
 import PopUpContato01 from "@/components/PopUpContato01";
 import PopUpContatoProduto from "@/components/product/PopUpContatoProduto";
 import HomeFooter from "@/components/home/HomeFooter";
@@ -74,7 +74,6 @@ const ProductDetail = () => {
           <ProductFinalCTA content={content} onContact={() => setProductContactOpen(true)} />
           <HomeFooter onContactClick={() => setContactOpen(true)} onSupportClick={(s) => { setContactSubject(s); setContactOpen(true); }} />
         </div>
-        <FloatingWhatsApp />
         <PopUpContato01 isOpen={contactOpen} onClose={() => { setContactOpen(false); setContactSubject(undefined); }} initialSubject={contactSubject} />
         <PopUpContatoProduto isOpen={productContactOpen} onClose={() => setProductContactOpen(false)} product={product} selectedColor={selectedColor} />
       </div>
@@ -111,7 +110,6 @@ const ProductDetail = () => {
         />
         <HomeFooter onContactClick={() => setContactOpen(true)} onSupportClick={(s) => { setContactSubject(s); setContactOpen(true); }} />
       </div>
-      <FloatingWhatsApp />
       <PopUpContato01 isOpen={contactOpen} onClose={() => { setContactOpen(false); setContactSubject(undefined); }} initialSubject={contactSubject} />
       <PopUpContatoProduto isOpen={productContactOpen} onClose={() => setProductContactOpen(false)} product={product} selectedColor={selectedColor} />
     </div>
