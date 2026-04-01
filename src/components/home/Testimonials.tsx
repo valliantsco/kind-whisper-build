@@ -34,9 +34,9 @@ const INFLUENCERS: Influencer[] = [
 ];
 
 const STATS = [
-  { value: "31M+", label: "Alcance acumulado" },
+  { value: "29M+", label: "Alcance acumulado" },
   { value: "4+", label: "Colaborações e parcerias" },
-  { value: "56M+", label: "Visualizações geradas" },
+  { value: "52M+", label: "Visualizações geradas" },
 ];
 
 /* ── Animated counter ── */
@@ -235,7 +235,7 @@ const Testimonials = () => {
             </div>
 
             <h2 className="font-display font-black text-4xl md:text-5xl lg:text-6xl text-primary-foreground uppercase tracking-tight leading-[0.95]">
-              Credibilidade que se torna{" "}
+              Credibilidade que virou{" "}
               <span
                 className="bg-clip-text text-transparent"
                 style={{ backgroundImage: "linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)))" }}
@@ -245,7 +245,7 @@ const Testimonials = () => {
             </h2>
 
             <p className="text-sm md:text-base text-primary-foreground/55 leading-relaxed mt-5 max-w-lg">
-              A presença da MS Electric ao lado de nomes de grande alcance fortalece algo que a marca já constrói na prática: visibilidade, confiança e relevância em um mercado que não para de crescer.
+              A presença da MS Eletric ao lado de nomes de grande alcance reforça algo que a marca vem construindo todos os dias: confiança, visibilidade e relevância em um mercado que segue crescendo.
             </p>
           </motion.div>
 
