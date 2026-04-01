@@ -1,10 +1,14 @@
 import { Instagram, Facebook, Youtube, MapPin, Phone, Clock } from "lucide-react";
+import { Link } from "react-router-dom";
 import msLogo from "@/assets/ms-eletric-logo-white.png";
 
 const modelLinks = ["Scooters Elétricas", "Autopropelidos", "Bicicletas Elétricas", "Triciclos Elétricos", "Utilitários", "Linha Infantil", "Patinetes"];
 const institutionalLinks = ["Sobre a MS Eletric", "Parceria AIMA", "Associada ABVE"];
 const supportLinks = ["Assistência técnica", "Garantia de fábrica", "Peças de reposição", "Condições de pagamento"];
-const policyLinks = ["Política de privacidade", "Termos de uso"];
+const policyLinks = [
+  { label: "Política de privacidade", href: "/politica-de-privacidade" },
+  { label: "Termos de uso", href: "/termos-de-uso" },
+];
 
 interface HomeFooterProps {
   onContactClick?: () => void;
@@ -136,10 +140,10 @@ const HomeFooter = ({ onContactClick, onSupportClick }: HomeFooterProps) => {
             </h4>
             <ul className="space-y-2.5">
               {policyLinks.map((link) => (
-                <li key={link}>
-                  <a href="#" className="text-sm text-primary-foreground/40 hover:text-primary hover:translate-x-1 transition-all inline-block">
-                    {link}
-                  </a>
+                <li key={link.label}>
+                  <Link to={link.href} className="text-sm text-primary-foreground/40 hover:text-primary hover:translate-x-1 transition-all inline-block">
+                    {link.label}
+                  </Link>
                 </li>
               ))}
             </ul>
