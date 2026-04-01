@@ -121,9 +121,12 @@ const HomeFooter = ({ onContactClick, onSupportClick }: HomeFooterProps) => {
             <ul className="space-y-2.5 mb-8">
               {supportLinks.map((link) => (
                 <li key={link}>
-                  <a href="#contato" className="text-sm text-primary-foreground/40 hover:text-primary hover:translate-x-1 transition-all inline-block">
+                  <button
+                    onClick={() => onSupportClick?.(link)}
+                    className="text-sm text-primary-foreground/40 hover:text-primary hover:translate-x-1 transition-all inline-block cursor-pointer bg-transparent border-none p-0 text-left"
+                  >
                     {link}
-                  </a>
+                  </button>
                 </li>
               ))}
             </ul>
