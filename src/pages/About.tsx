@@ -82,7 +82,7 @@ export default function About() {
           <motion.div style={{ opacity: heroOpacity }} className="container mx-auto px-4 pt-32 pb-20 relative z-10">
             <motion.div initial="hidden" animate="visible" variants={stagger} className="max-w-4xl">
               <motion.div variants={fadeUp}>
-                <SectionLabel>Sobre a MS Eletric</SectionLabel>
+                <SectionLabel>Sobre a marca</SectionLabel>
               </motion.div>
 
               <motion.h1 variants={fadeUp} custom={1}
@@ -96,20 +96,20 @@ export default function About() {
 
               <motion.p variants={fadeUp} custom={2}
                 className="text-primary-foreground/70 text-lg md:text-xl leading-relaxed max-w-3xl mb-6">
-                A MS Eletric nasceu da convicção de que a mobilidade elétrica não é uma tendência passageira — é uma mudança definitiva na forma como nos deslocamos, trabalhamos e vivemos. Desde o primeiro dia, nosso propósito foi claro: aproximar as pessoas de soluções elétricas reais, práticas e confiáveis, eliminando a distância entre a tecnologia do futuro e a rotina do presente.
+                A MS Eletric nasceu para aproximar a mobilidade elétrica da vida real. Mais do que oferecer veículos, a marca foi construída para entregar uma experiência completa, com atendimento próximo, orientação consultiva e soluções que fazem sentido para diferentes rotinas de uso.
               </motion.p>
 
               <motion.p variants={fadeUp} custom={3}
                 className="text-primary-foreground/40 text-base leading-relaxed max-w-2xl mb-10">
-                Com sede em Uberlândia – MG, somos referência em eletromobilidade no Brasil, oferecendo um portfólio completo de veículos elétricos, atendimento consultivo especializado e uma experiência de marca que começa muito antes da compra — e se estende muito além dela.
+                Com operação em Uberlândia, presença física e atendimento online, a MS Eletric une tecnologia, praticidade e confiança para tornar a eletromobilidade mais acessível, mais clara e mais presente no dia a dia de quem busca uma nova forma de se mover.
               </motion.p>
 
               <motion.div variants={fadeUp} custom={4} className="flex flex-wrap gap-6">
                 {[
-                  { label: "Showroom físico", icon: Store },
+                  { label: "Mobilidade elétrica com propósito", icon: Zap },
                   { label: "Atendimento consultivo", icon: HeartHandshake },
-                  { label: "Portfólio completo", icon: Zap },
-                  { label: "Pós-venda dedicado", icon: Shield },
+                  { label: "Portfólio para diferentes perfis", icon: Store },
+                  { label: "Experiência do início ao pós-venda", icon: Shield },
                 ].map(({ label, icon: Icon }) => (
                   <div key={label} className="flex items-center gap-2.5 text-primary-foreground/50 text-sm">
                     <div className="w-8 h-8 rounded-lg flex items-center justify-center"
@@ -148,13 +148,16 @@ export default function About() {
               </motion.h2>
               <motion.div variants={fadeUp} custom={2} className="space-y-5 text-primary-foreground/55 text-[15px] leading-[1.8]">
                 <p>
-                  A MS Eletric surgiu em um momento em que o mercado brasileiro de mobilidade elétrica ainda era dominado por desconfiança e falta de informação. Enquanto a maioria das pessoas enxergava veículos elétricos como objetos distantes da realidade cotidiana, nós enxergamos uma oportunidade de construir algo diferente: uma marca que transformasse curiosidade em confiança e tecnologia em experiência palpável.
+                  A MS Eletric entra no mercado com uma proposta clara: tornar a mobilidade elétrica mais próxima, mais prática e mais confiável para quem busca inovação sem abrir mão de atendimento, suporte e segurança na escolha.
                 </p>
                 <p>
-                  Desde o início, nossa abordagem foi oposta à do mercado convencional. Em vez de vender produtos em vitrines frias e catálogos impessoais, decidimos criar um espaço onde o cliente pudesse ver, tocar, comparar e entender cada modelo antes de tomar qualquer decisão. Esse compromisso com a experiência real deu origem ao nosso showroom em Uberlândia — um espaço que não é apenas um ponto de venda, mas um centro de vivência da eletromobilidade.
+                  Desde o início, a marca foi pensada para ir além da simples exposição de produtos. A ideia sempre foi construir uma experiência mais completa, em que o cliente possa entender melhor cada categoria, comparar modelos, tirar dúvidas com clareza e encontrar uma solução que realmente combine com sua rotina.
                 </p>
                 <p>
-                  Com o passar do tempo, a MS Eletric se consolidou não apenas como uma referência comercial, mas como uma voz ativa na educação do mercado. Nosso time se especializou em entender perfis de uso, recomendar soluções adequadas e acompanhar cada cliente do primeiro contato até muito depois da entrega — porque acreditamos que mobilidade elétrica é uma relação, não uma transação.
+                  Com showroom físico em Uberlândia e operação preparada para atender também online, a MS Eletric conecta presença real, tecnologia e atendimento consultivo em uma jornada de compra mais próxima e mais segura.
+                </p>
+                <p>
+                  Esse posicionamento faz com que a marca não seja percebida apenas como uma loja de veículos elétricos, mas como uma empresa que acompanha a evolução da mobilidade e ajuda a traduzi-la para a vida prática das pessoas e das empresas.
                 </p>
               </motion.div>
             </div>
@@ -196,7 +199,7 @@ export default function About() {
         <Section>
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={stagger}
             className="max-w-4xl mx-auto text-center">
-            <motion.div variants={fadeUp}><SectionLabel>O que nos define</SectionLabel></motion.div>
+            <motion.div variants={fadeUp}><SectionLabel>Nosso posicionamento</SectionLabel></motion.div>
             <motion.h2 variants={fadeUp} custom={1}
               className="font-display font-black text-3xl md:text-5xl text-primary-foreground uppercase tracking-tight leading-[0.95] mb-8">
               Mais do que veículos elétricos.{" "}
@@ -206,10 +209,10 @@ export default function About() {
               </span>
             </motion.h2>
             <motion.p variants={fadeUp} custom={2} className="text-primary-foreground/55 text-[15px] leading-[1.8] mb-6">
-              A MS Eletric não é uma revenda comum. Somos uma marca construída sobre três pilares que nos diferenciam de tudo o que o mercado oferecia: <strong className="text-primary-foreground/80">tecnologia acessível</strong>, <strong className="text-primary-foreground/80">experiência consultiva</strong> e <strong className="text-primary-foreground/80">compromisso com o cliente</strong>. Acreditamos que a transição para a mobilidade elétrica exige mais do que produtos — exige orientação, confiança e acompanhamento real.
+              A MS Eletric acredita que mobilidade elétrica não se resume a ficha técnica. Ela envolve rotina, contexto de uso, confiança na decisão e suporte ao longo da jornada. Por isso, a marca se posiciona como uma ponte entre inovação e experiência real.
             </motion.p>
             <motion.p variants={fadeUp} custom={3} className="text-primary-foreground/40 text-[14px] leading-[1.8]">
-              Enquanto outros vendem especificações, nós apresentamos soluções. Enquanto outros entregam produtos, nós construímos relações. A MS Eletric existe para que cada pessoa encontre o veículo elétrico certo para sua rotina — com segurança, clareza e a certeza de que fez a melhor escolha.
+              Nosso papel é tornar essa transição mais simples, mais clara e mais segura para quem quer entrar no universo elétrico com a sensação de que está fazendo uma escolha bem orientada.
             </motion.p>
           </motion.div>
 
@@ -219,15 +222,15 @@ export default function About() {
             {[
               {
                 icon: Lightbulb, title: "Tecnologia com propósito",
-                desc: "Cada modelo do nosso portfólio é selecionado por sua aplicação real. Não trabalhamos com tendências vazias — trabalhamos com soluções que funcionam no dia a dia, nas ruas do Brasil, para pessoas reais.",
+                desc: "Acreditamos em inovação aplicada ao cotidiano. Tecnologia, para nós, precisa resolver, facilitar e melhorar a experiência de quem usa.",
               },
               {
-                icon: HeartHandshake, title: "Experiência consultiva",
-                desc: "Nosso time não vende — orienta. Entendemos o perfil de cada cliente, mapeamos suas necessidades e recomendamos a solução que faz mais sentido. Cada atendimento é uma conversa, não um discurso de vendas.",
+                icon: HeartHandshake, title: "Qualidade com visão de futuro",
+                desc: "Trabalhamos com soluções que acompanham a evolução da mobilidade e respondem a um mercado que busca mais eficiência, praticidade e consciência.",
               },
               {
-                icon: Shield, title: "Compromisso de ponta a ponta",
-                desc: "Do primeiro contato ao pós-venda, a MS Eletric acompanha cada etapa. Garantia, assistência técnica, suporte e orientação contínua fazem parte do que entregamos — porque confiança se constrói com presença.",
+                icon: Shield, title: "Uma experiência que acompanha você",
+                desc: "Da primeira conversa ao pós-venda, a experiência com a MS Eletric é pensada para gerar segurança, clareza e confiança em cada etapa.",
               },
             ].map(({ icon: Icon, title, desc }, i) => (
               <motion.div key={title} variants={fadeUp} custom={i}
@@ -257,7 +260,7 @@ export default function About() {
         <Section>
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={stagger}
             className="text-center mb-16">
-            <motion.div variants={fadeUp}><SectionLabel>Missão, Visão & Valores</SectionLabel></motion.div>
+            <motion.div variants={fadeUp}><SectionLabel>Nossos fundamentos</SectionLabel></motion.div>
             <motion.h2 variants={fadeUp} custom={1}
               className="font-display font-black text-3xl md:text-5xl text-primary-foreground uppercase tracking-tight leading-[0.95]">
               Os alicerces que sustentam{" "}
@@ -274,11 +277,11 @@ export default function About() {
             {[
               {
                 icon: Target, label: "Missão",
-                text: "Tornar a mobilidade elétrica mais prática, acessível e confiável para cada perfil de cliente. Atuamos como ponte entre a tecnologia e o cotidiano, entregando soluções reais que simplificam a rotina, reduzem custos e contribuem para um futuro mais sustentável — com atendimento humano, orientação especializada e suporte contínuo em cada etapa da jornada.",
+                text: "Tornar a mobilidade elétrica mais prática, acessível, confiável e presente na vida das pessoas e das empresas, conectando tecnologia, atendimento e experiência em uma jornada de compra mais clara e mais segura.",
               },
               {
                 icon: Eye, label: "Visão",
-                text: "Ser a principal referência nacional em experiência de compra e confiança no segmento de mobilidade elétrica. Queremos que cada pessoa que procure um veículo elétrico pense na MS Eletric — não apenas pela qualidade dos produtos, mas pela forma como apresentamos, orientamos e acompanhamos cada cliente em sua transição para a eletromobilidade.",
+                text: "Ser referência em mobilidade elétrica não apenas pelos produtos que oferecemos, mas pela forma como orientamos, atendemos e construímos valor em cada ponto de contato com o cliente.",
               },
             ].map(({ icon: Icon, label, text }, i) => (
               <motion.div key={label} variants={fadeUp} custom={i}
@@ -306,16 +309,16 @@ export default function About() {
             className="max-w-5xl mx-auto">
             <motion.h3 variants={fadeUp}
               className="text-center text-[10px] font-bold uppercase tracking-[0.2em] text-primary mb-8 flex items-center justify-center gap-3">
-              <span className="w-8 h-[1px] bg-primary/30" />Nossos Valores<span className="w-8 h-[1px] bg-primary/30" />
+              <span className="w-8 h-[1px] bg-primary/30" />Valores que guiam a marca<span className="w-8 h-[1px] bg-primary/30" />
             </motion.h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
               {[
-                { icon: Sparkles, title: "Inovação com aplicação real", desc: "Não perseguimos novidades por si só. Toda inovação que adotamos precisa resolver um problema concreto, melhorar uma experiência ou simplificar a rotina do cliente." },
-                { icon: HeartHandshake, title: "Atendimento consultivo", desc: "Cada cliente é único. Por isso, ouvimos antes de falar, entendemos antes de recomendar e acompanhamos antes de encerrar. Nosso atendimento é orientação, não pressão." },
-                { icon: Shield, title: "Confiança como base", desc: "Transparência nos preços, clareza nas informações, honestidade nas recomendações. A confiança do cliente é o ativo mais valioso que construímos." },
-                { icon: Leaf, title: "Sustentabilidade consciente", desc: "Zero emissão, recarga na tomada, silêncio urbano. Cada veículo que colocamos na rua é uma contribuição real para cidades mais limpas e um planeta mais saudável." },
-                { icon: Award, title: "Excelência na experiência", desc: "Do showroom ao pós-venda, cada ponto de contato com a marca é pensado para ser memorável. Experiência não é detalhe — é nossa estratégia principal." },
-                { icon: TrendingUp, title: "Evolução contínua", desc: "O mercado muda, a tecnologia avança e as necessidades se transformam. Nos comprometemos a evoluir junto — atualizando portfólio, conhecimento e processos continuamente." },
+                { icon: Sparkles, title: "Inovação com aplicação real", desc: "A tecnologia precisa fazer sentido no cotidiano. Inovar é aproximar o futuro de uma experiência concreta e útil." },
+                { icon: HeartHandshake, title: "Atendimento consultivo", desc: "Cada cliente tem uma necessidade diferente. Escutar, orientar e recomendar com clareza faz parte da essência da marca." },
+                { icon: Shield, title: "Confiança em cada etapa", desc: "Queremos construir relações sustentadas por transparência, suporte e segurança do primeiro contato ao pós-venda." },
+                { icon: Award, title: "Excelência na experiência", desc: "Cada detalhe importa. A forma como recebemos, apresentamos e acompanhamos o cliente também comunica o que a marca é." },
+                { icon: TrendingUp, title: "Evolução contínua", desc: "O mercado muda, a mobilidade evolui e o comportamento do consumidor acompanha esse movimento. Crescer com consistência faz parte do nosso caminho." },
+                { icon: Lightbulb, title: "Visão de futuro", desc: "Acreditamos em uma mobilidade mais inteligente, mais eficiente e cada vez mais integrada à vida real das pessoas e das empresas." },
               ].map(({ icon: Icon, title, desc }, i) => (
                 <motion.div key={title} variants={fadeUp} custom={i}
                   className="flex gap-4 p-5 rounded-xl group hover:bg-primary-foreground/[0.02] transition-colors duration-300"
@@ -341,7 +344,7 @@ export default function About() {
         ══════════════════════════════════════════════════════════ */}
         <Section>
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={stagger}>
-            <motion.div variants={fadeUp}><SectionLabel>Por que a MS Eletric</SectionLabel></motion.div>
+            <motion.div variants={fadeUp}><SectionLabel>Diferenciais da marca</SectionLabel></motion.div>
             <motion.h2 variants={fadeUp} custom={1}
               className="font-display font-black text-3xl md:text-5xl text-primary-foreground uppercase tracking-tight leading-[0.95] mb-6 max-w-3xl">
               O que nos torna{" "}
@@ -352,7 +355,7 @@ export default function About() {
             </motion.h2>
             <motion.p variants={fadeUp} custom={2}
               className="text-primary-foreground/45 text-[15px] leading-[1.8] max-w-2xl mb-14">
-              Em um mercado onde a maioria das marcas se limita a listar especificações e publicar fotos, a MS Eletric escolheu um caminho radicalmente diferente. Cada um dos nossos diferenciais existe por uma razão: facilitar a vida de quem quer migrar para a mobilidade elétrica com segurança e clareza.
+              A MS Eletric busca construir uma experiência que vá além da venda. Nosso diferencial está em unir portfólio, atendimento, presença física e suporte em uma jornada que ajuda o cliente a escolher melhor e comprar com mais confiança.
             </motion.p>
           </motion.div>
 
@@ -360,28 +363,28 @@ export default function About() {
             className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {[
               {
-                icon: HeartHandshake, title: "Atendimento consultivo real",
-                desc: "Nosso time é treinado para entender perfis de uso, não para empurrar o modelo mais caro. Cada recomendação é baseada na rotina, na necessidade e no orçamento do cliente. Atendemos quem nunca dirigiu um veículo elétrico e quem já está na segunda unidade — com a mesma atenção.",
+                icon: HeartHandshake, title: "Atendimento que orienta de verdade",
+                desc: "Mais do que apresentar modelos, buscamos entender a necessidade de cada cliente para indicar a solução mais adequada ao seu perfil.",
               },
               {
-                icon: Store, title: "Showroom para vivenciar",
-                desc: "Acreditamos que a decisão de compra fica mais fácil quando o cliente pode ver, tocar, sentar e comparar. Nosso showroom em Uberlândia foi projetado para isso: um ambiente onde a mobilidade elétrica sai da tela e se torna tangível.",
+                icon: Store, title: "Showroom que aproxima",
+                desc: "Ver os modelos de perto, comparar categorias e entender melhor o produto faz diferença. A experiência presencial reforça segurança e confiança na decisão.",
               },
               {
-                icon: Shield, title: "Suporte do início ao pós-venda",
-                desc: "A relação com a MS Eletric não termina na entrega. Oferecemos garantia, assistência técnica especializada, orientação de uso e suporte contínuo. Porque um cliente bem acompanhado é um cliente que volta e recomenda.",
+                icon: Zap, title: "Portfólio para diferentes necessidades",
+                desc: "Da mobilidade urbana ao uso profissional, a marca reúne opções para diferentes rotinas, objetivos e contextos de uso.",
               },
               {
-                icon: Users, title: "Capacidade de orientar perfis diferentes",
-                desc: "Do profissional que precisa de um veículo utilitário ao jovem que quer uma solução urbana ágil. Da família que busca lazer ao entregador que precisa de autonomia e robustez. Temos solução — e conhecimento — para cada cenário.",
+                icon: Shield, title: "Suporte ao longo da jornada",
+                desc: "A relação com o cliente não termina na escolha do modelo. O acompanhamento continua com suporte, orientação e proximidade.",
               },
               {
-                icon: Zap, title: "Portfólio completo e diversificado",
-                desc: "Autopropelidos, bicicletas elétricas, scooters, triciclos, utilitários, veículos infantis e patinetes. Mais de 19 modelos pensados para cobrir da mobilidade individual ao transporte profissional, sem depender de combustível fóssil.",
+                icon: CheckCircle2, title: "Experiência de compra mais clara",
+                desc: "Nosso objetivo é tornar a decisão menos confusa e mais segura, com comunicação clara e atendimento preparado para explicar cada etapa.",
               },
               {
-                icon: CheckCircle2, title: "Transparência em cada etapa",
-                desc: "Preços claros, informações honestas, prazos reais e comunicação direta. Na MS Eletric, o cliente nunca fica no escuro. A transparência é o que sustenta a confiança — e a confiança é o que sustenta a marca.",
+                icon: Users, title: "Presença real que gera confiança",
+                desc: "Ter estrutura física, operação organizada e atendimento próximo fortalece a credibilidade da marca e da experiência oferecida.",
               },
             ].map(({ icon: Icon, title, desc }, i) => (
               <motion.div key={title} variants={fadeUp} custom={i}
@@ -426,18 +429,22 @@ export default function About() {
                 </span>
               </motion.h2>
               <motion.p variants={fadeUp} custom={2}
-                className="text-primary-foreground/50 text-[15px] leading-[1.8] max-w-3xl mx-auto">
-                O showroom da MS Eletric em Uberlândia não é apenas um ponto de venda. É um ambiente projetado para que o cliente viva a experiência da mobilidade elétrica antes de tomar qualquer decisão. Um espaço onde modelos se tornam tangíveis, dúvidas se transformam em respostas e a escolha ganha segurança.
+                className="text-primary-foreground/50 text-[15px] leading-[1.8] max-w-3xl mx-auto mb-4">
+                O showroom da MS Eletric foi pensado para transformar curiosidade em experiência real. É nesse espaço que o cliente pode conhecer melhor os modelos, perceber diferenças entre categorias, entender propostas de uso e se sentir mais seguro para escolher.
+              </motion.p>
+              <motion.p variants={fadeUp} custom={3}
+                className="text-primary-foreground/40 text-[14px] leading-[1.8] max-w-3xl mx-auto">
+                Mais do que um ponto de venda, esse ambiente reforça um dos pilares da marca: tornar a mobilidade elétrica próxima, acessível e tangível para quem quer enxergar essa mudança de perto.
               </motion.p>
             </div>
 
-            <motion.div variants={fadeUp} custom={3}
+            <motion.div variants={fadeUp} custom={4}
               className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
               {[
-                { icon: Eye, title: "Veja de perto", desc: "Cada modelo exposto para você analisar acabamento, proporções e detalhes que nenhuma foto consegue transmitir." },
-                { icon: Users, title: "Atendimento presencial", desc: "Consultores especializados prontos para ouvir, entender seu perfil e recomendar a solução mais adequada." },
-                { icon: Zap, title: "Compare categorias", desc: "Autopropelidos, scooters, bicicletas elétricas e mais. Veja lado a lado e entenda as diferenças na prática." },
-                { icon: Shield, title: "Confiança na decisão", desc: "A compra de um veículo elétrico fica mais segura quando você pode experimentar a marca pessoalmente." },
+                { icon: Eye, title: "Ver de perto faz diferença", desc: "A experiência presencial ajuda o cliente a comparar e entender melhor o que faz sentido para sua rotina." },
+                { icon: Users, title: "Atendimento próximo e consultivo", desc: "O showroom amplia a qualidade da conversa e torna o processo de escolha mais claro e mais confiante." },
+                { icon: Zap, title: "Portfólio organizado por proposta de uso", desc: "A apresentação dos modelos ajuda a traduzir melhor as diferenças entre categorias, estilos e objetivos." },
+                { icon: Shield, title: "Estrutura que reforça credibilidade", desc: "A presença física fortalece a percepção de marca séria, preparada e conectada a uma experiência real." },
               ].map(({ icon: Icon, title, desc }, i) => (
                 <motion.div key={title} variants={fadeUp} custom={i}
                   className="rounded-xl p-6 text-center relative overflow-hidden"
@@ -456,7 +463,7 @@ export default function About() {
             </motion.div>
 
             {/* Location highlight */}
-            <motion.div variants={fadeUp} custom={4}
+            <motion.div variants={fadeUp} custom={5}
               className="mt-10 rounded-xl p-6 flex flex-col sm:flex-row items-center justify-between gap-4"
               style={{
                 background: "linear-gradient(135deg, hsl(var(--primary) / 0.06), hsl(var(--primary) / 0.02))",
@@ -465,15 +472,15 @@ export default function About() {
               <div className="flex items-center gap-3">
                 <MapPin className="w-5 h-5 text-primary shrink-0" />
                 <div>
-                  <p className="text-primary-foreground/80 text-sm font-semibold">Uberlândia – MG</p>
-                  <p className="text-primary-foreground/40 text-[12px]">Showroom aberto para visitação • Atendimento presencial e online</p>
+                  <p className="text-primary-foreground/80 text-sm font-semibold">Showroom em Uberlândia</p>
+                  <p className="text-primary-foreground/40 text-[12px]">Av. João Pinheiro, 3747, Bairro Brasil, Uberlândia, MG</p>
                 </div>
               </div>
-              <button onClick={() => setContactOpen(true)}
+              <a href="https://maps.google.com/?q=Av.+João+Pinheiro,+3747,+Bairro+Brasil,+Uberlândia,+MG" target="_blank" rel="noopener noreferrer"
                 className="flex items-center gap-2 px-5 py-2.5 rounded-lg text-[11px] font-semibold uppercase tracking-wider text-primary-foreground cursor-pointer shrink-0"
                 style={{ background: "linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)))" }}>
-                Agendar visita <ArrowRight className="w-3.5 h-3.5" />
-              </button>
+                Ver no mapa <ArrowRight className="w-3.5 h-3.5" />
+              </a>
             </motion.div>
           </motion.div>
         </Section>
@@ -497,19 +504,19 @@ export default function About() {
             </motion.h2>
             <motion.p variants={fadeUp} custom={2}
               className="text-primary-foreground/50 text-[15px] leading-[1.8] max-w-3xl mx-auto">
-              A MS Eletric entende que mobilidade elétrica não é uma solução única. Cada pessoa, cada rotina e cada necessidade exigem um veículo diferente. Por isso, construímos um portfólio diverso e uma equipe capaz de orientar cada perfil com a mesma profundidade.
+              A MS Eletric atende diferentes formas de uso porque a mobilidade elétrica já não se limita a um único perfil. O que muda é a necessidade de cada cliente. O que permanece é o compromisso da marca com orientação, suporte e experiência.
             </motion.p>
           </motion.div>
 
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.1 }} variants={stagger}
             className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 max-w-5xl mx-auto">
             {[
-              { title: "Mobilidade urbana", desc: "Para quem busca agilidade no trânsito, economia no deslocamento diário e praticidade para ir e vir sem depender de combustível." },
-              { title: "Lazer e bem-estar", desc: "Para quem quer explorar a cidade, pedalar com assistência ou curtir um passeio no fim de semana de forma leve e sustentável." },
-              { title: "Uso profissional", desc: "Para entregadores, operadores logísticos e profissionais que precisam de autonomia, robustez e economia operacional." },
-              { title: "Primeira experiência elétrica", desc: "Para quem nunca dirigiu um veículo elétrico e quer começar com orientação, suporte e um modelo adequado ao seu perfil." },
-              { title: "Famílias", desc: "Para quem busca opções de mobilidade para diferentes membros da família — do adulto à criança, do urbano ao recreativo." },
-              { title: "Operações utilitárias", desc: "Para negócios que precisam de veículos de carga, transporte pesado ou soluções específicas para operação comercial." },
+              { title: "Mobilidade urbana", desc: "Para quem busca mais praticidade, economia e agilidade no dia a dia da cidade." },
+              { title: "Lazer e estilo de vida", desc: "Para quem quer unir mobilidade, liberdade e experiências mais leves fora da lógica tradicional." },
+              { title: "Uso profissional", desc: "Para operações e atividades que exigem praticidade, eficiência e aplicação real no cotidiano." },
+              { title: "Primeira experiência no universo elétrico", desc: "Para quem está entrando nesse mercado agora e precisa de clareza para entender melhor as opções." },
+              { title: "Portfólio completo e flexível", desc: "A variedade de categorias permite atender rotinas, expectativas e necessidades diferentes com mais precisão." },
+              { title: "Escolhas mais bem orientadas", desc: "Nosso papel é ajudar cada cliente a encontrar o modelo certo para o seu contexto, sem indicação genérica." },
             ].map(({ title, desc }, i) => (
               <motion.div key={title} variants={fadeUp} custom={i}
                 className="rounded-xl p-6 group hover:bg-primary-foreground/[0.02] transition-colors duration-300"
@@ -530,7 +537,7 @@ export default function About() {
         <Section>
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={stagger}
             className="max-w-4xl mx-auto">
-            <motion.div variants={fadeUp}><SectionLabel>Olhando para frente</SectionLabel></motion.div>
+            <motion.div variants={fadeUp}><SectionLabel>Visão de futuro</SectionLabel></motion.div>
             <motion.h2 variants={fadeUp} custom={1}
               className="font-display font-black text-3xl md:text-5xl text-primary-foreground uppercase tracking-tight leading-[0.95] mb-8">
               Construindo o futuro da{" "}
@@ -541,13 +548,10 @@ export default function About() {
             </motion.h2>
             <motion.div variants={fadeUp} custom={2} className="space-y-5 text-primary-foreground/55 text-[15px] leading-[1.8]">
               <p>
-                A transição energética não é uma promessa distante — ela já está acontecendo. E a MS Eletric escolheu estar na linha de frente dessa transformação, não como espectadora, mas como protagonista. Cada veículo que colocamos nas ruas brasileiras é uma demonstração concreta de que a mobilidade elétrica funciona, é viável e está pronta para substituir modelos baseados em combustível fóssil.
+                A mobilidade está mudando e a MS Eletric acredita que essa mudança precisa ser vivida de forma prática, acessível e bem acompanhada. O avanço do setor não depende apenas de tecnologia. Ele também depende de marcas capazes de traduzir inovação em experiência real.
               </p>
               <p>
-                Mas nosso compromisso vai além de vender veículos elétricos. Trabalhamos ativamente para educar o mercado, desmistificar preconceitos e mostrar que a eletromobilidade é mais simples, mais econômica e mais acessível do que a maioria das pessoas imagina. Cada cliente que convertemos é um agente de mudança — alguém que comprova, no próprio dia a dia, que é possível se mover de forma mais inteligente.
-              </p>
-              <p>
-                Acreditamos que o futuro da mobilidade urbana é silencioso, limpo e inteligente. E acreditamos que esse futuro não precisa esperar — ele pode começar agora, com escolhas práticas, orientação adequada e uma marca que acompanha essa jornada de perto.
+                Por isso, nosso compromisso é aproximar a eletromobilidade das pessoas e das empresas com mais clareza, mais suporte e mais confiança. Queremos participar ativamente dessa transformação, ajudando a tornar esse novo momento cada vez mais presente no cotidiano.
               </p>
             </motion.div>
 
@@ -556,7 +560,7 @@ export default function About() {
               className="mt-10 pl-6 relative"
               style={{ borderLeft: "3px solid hsl(var(--primary) / 0.5)" }}>
               <p className="text-primary-foreground/70 text-lg md:text-xl font-medium italic leading-relaxed">
-                "A mobilidade elétrica não é sobre substituir um veículo. É sobre repensar como nos movemos — e fazer isso de forma mais consciente, eficiente e conectada com o futuro."
+                "A mobilidade elétrica não é mais apenas uma ideia. É uma resposta cada vez mais real para um futuro mais inteligente, mais leve e conectado ao presente."
               </p>
             </motion.blockquote>
           </motion.div>
@@ -583,19 +587,19 @@ export default function About() {
                 Por que confiar na MS Eletric
               </h2>
               <p className="text-primary-foreground/50 text-[14px] max-w-2xl mx-auto">
-                Cada um desses pontos não é um argumento de venda — é uma promessa que cumprimos todos os dias.
+                Cada ponto de contato da marca foi pensado para transmitir clareza, estrutura e confiança.
               </p>
             </motion.div>
 
             <motion.div variants={stagger}
               className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {[
-                { icon: Headphones, text: "Atendimento especializado e consultivo" },
-                { icon: Store, text: "Showroom físico em Uberlândia – MG" },
-                { icon: Shield, text: "Suporte do primeiro contato ao pós-venda" },
-                { icon: HeartHandshake, text: "Orientação personalizada para cada perfil" },
-                { icon: Clock, text: "Entrega imediata e garantia de fábrica" },
-                { icon: CheckCircle2, text: "Experiência de compra segura e transparente" },
+                { icon: Headphones, text: "Atendimento próximo e consultivo" },
+                { icon: Store, text: "Showroom físico em Uberlândia" },
+                { icon: Zap, text: "Portfólio para diferentes perfis" },
+                { icon: Shield, text: "Suporte do início ao pós-venda" },
+                { icon: Clock, text: "Estrutura real de operação" },
+                { icon: CheckCircle2, text: "Experiência mais segura na escolha" },
               ].map(({ icon: Icon, text }, i) => (
                 <motion.div key={text} variants={fadeUp} custom={i}
                   className="flex items-center gap-3">
@@ -618,7 +622,6 @@ export default function About() {
         <Section className="pb-8">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }} variants={stagger}
             className="max-w-3xl mx-auto text-center">
-            <motion.div variants={fadeUp}><SectionLabel>Comece agora</SectionLabel></motion.div>
             <motion.h2 variants={fadeUp} custom={1}
               className="font-display font-black text-3xl md:text-5xl text-primary-foreground uppercase tracking-tight leading-[0.95] mb-6">
               Sua próxima forma de se mover{" "}
@@ -629,7 +632,7 @@ export default function About() {
             </motion.h2>
             <motion.p variants={fadeUp} custom={2}
               className="text-primary-foreground/50 text-[15px] leading-[1.8] mb-10 max-w-2xl mx-auto">
-              Visite nosso showroom em Uberlândia, converse com nosso time de especialistas, conheça os modelos de perto e descubra qual veículo elétrico se encaixa perfeitamente na sua rotina. A mobilidade do futuro é mais simples do que você imagina — e estamos prontos para provar isso.
+              Se você quer conhecer melhor a MS Eletric, entender qual modelo faz mais sentido para sua rotina ou viver essa experiência de perto, nosso time está pronto para te atender.
             </motion.p>
             <motion.div variants={fadeUp} custom={3} className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <button onClick={() => setContactOpen(true)}
@@ -641,7 +644,7 @@ export default function About() {
                 <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
                   style={{ background: "linear-gradient(135deg, hsl(var(--primary-glow)), hsl(var(--primary)))" }} />
                 <svg className="w-4 h-4 relative z-10" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.943 11.943 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75c-2.33 0-4.49-.744-6.255-2.01l-.438-.328-3.205 1.074 1.074-3.205-.328-.438A9.71 9.71 0 012.25 12 9.75 9.75 0 0112 2.25 9.75 9.75 0 0121.75 12 9.75 9.75 0 0112 21.75z"/></svg>
-                <span className="relative z-10">Falar com um especialista</span>
+                <span className="relative z-10">Falar com a MS Eletric</span>
               </button>
               <a href="/modelos"
                 className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl text-[12px] font-semibold uppercase tracking-[0.12em] text-primary-foreground/70 hover:text-primary-foreground transition-colors"
