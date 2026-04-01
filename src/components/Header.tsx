@@ -202,15 +202,15 @@ const Header = ({ onContactClick }: HeaderProps) => {
                   onMouseEnter={() => item.hasDropdown && handleEnter(item.label)}
                   onMouseLeave={handleLeave}
                 >
-                  <a
-                    href={item.href}
-                    onClick={(e) => {
+                  <button
+                    onClick={() => {
                       if (item.hasDropdown) {
-                        e.preventDefault();
                         setActiveDropdown(activeDropdown === item.label ? null : item.label);
+                      } else {
+                        navigate(item.href);
                       }
                     }}
-                    className={`relative text-sm font-medium transition-all duration-300 ease-out py-1.5 px-2 rounded-md group flex items-center gap-1 ${
+                    className={`relative text-sm font-medium transition-all duration-300 ease-out py-1.5 px-2 rounded-md group flex items-center gap-1 bg-transparent border-none cursor-pointer ${
                       activeDropdown === item.label ? "text-white/95" : "text-white/50 hover:text-white/95"
                     }`}
                   >
