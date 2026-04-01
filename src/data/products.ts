@@ -218,6 +218,11 @@ export const PRODUCTS: Product[] = [
     recharge: "6–7h",
     price: "R$ 14.990",
     description: "Scooter potente de 2.500W para quem precisa de velocidade real no trânsito urbano com zero emissão.",
+    colors: [
+      { name: "Preto", hex: "#111111" },
+      { name: "Branco", hex: "#F5F5F5" },
+      { name: "Prata", hex: "#A8A9AD" },
+    ],
   },
   {
     name: "New Holiday",
