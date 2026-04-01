@@ -26,6 +26,16 @@ export default function ProductHero({ product, content, onContact }: Props) {
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
   const imageY = useTransform(scrollYProgress, [0, 1], [0, 60]);
   const imageScale = useTransform(scrollYProgress, [0, 1], [1, 0.95]);
+  const [selectedColor, setSelectedColor] = useState<ProductColor | null>(
+    product.colors?.[0] ?? null
+  );
+
+  const handleColorChange = useCallback((color: ProductColor) => {
+    setSelectedColor(color);
+  }, []);
+
+  // Use color-specific image if available, otherwise default
+  const displayImage = selectedColor?.image ?? product.image;
 
   return (
     <section ref={heroRef} className="relative pb-16 md:pb-24 overflow-hidden">
