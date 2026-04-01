@@ -33,11 +33,9 @@ export default function ProductFinalCTA({ content, onContact }: Props) {
             {content.finalCta.subtitle}
           </p>
 
-          <a
-            href={whatsAppLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="relative inline-flex items-center justify-center gap-2.5 px-10 py-4 rounded-xl text-[12px] font-semibold uppercase tracking-[0.14em] text-primary-foreground transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] overflow-hidden group"
+          <button
+            onClick={onContact}
+            className="relative inline-flex items-center justify-center gap-2.5 px-10 py-4 rounded-xl text-[12px] font-semibold uppercase tracking-[0.14em] text-primary-foreground transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] overflow-hidden group cursor-pointer"
             style={{
               background: "linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)))",
               boxShadow: "0 16px 40px -10px hsl(var(--primary) / 0.45), inset 0 1px 0 hsl(0 0% 100% / 0.1)",
@@ -46,7 +44,7 @@ export default function ProductFinalCTA({ content, onContact }: Props) {
             <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" style={{ background: "linear-gradient(135deg, hsl(var(--primary-glow)), hsl(var(--primary)))" }} />
             <MessageCircle className="w-4 h-4 relative z-10" />
             <span className="relative z-10">Falar com especialista</span>
-          </a>
+          </button>
 
           <div className="mt-8">
             <Link
