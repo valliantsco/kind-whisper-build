@@ -208,13 +208,14 @@ const Models = () => {
           p.category.toLowerCase().includes(q)
       );
     }
+    const parsePrice = (p: string) => { const n = parseFloat(p.replace(/[^\d]/g, "")); return isNaN(n) ? null : n; };
     const parseNum = (v: string) => parseFloat(v.replace(/[^\d.]/g, "")) || 0;
     switch (sortBy) {
       case "price-asc":
-        items.sort((a, b) => (a.price ?? Infinity) - (b.price ?? Infinity));
+        items.sort((a, b) => (parsePrice(a.price) ?? Infinity) - (parsePrice(b.price) ?? Infinity));
         break;
       case "price-desc":
-        items.sort((a, b) => (b.price ?? 0) - (a.price ?? 0));
+        items.sort((a, b) => (parsePrice(b.price) ?? 0) - (parsePrice(a.price) ?? 0));
         break;
       case "name-asc":
         items.sort((a, b) => a.name.localeCompare(b.name));
