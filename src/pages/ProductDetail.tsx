@@ -16,7 +16,7 @@ import ProductDifferentials from "@/components/product/ProductDifferentials";
 import ProductComparison from "@/components/product/ProductComparison";
 import ProductFAQ from "@/components/product/ProductFAQ";
 import ProductFinalCTA from "@/components/product/ProductFinalCTA";
-import AnimatedProductBackground from "@/components/product/AnimatedProductBackground";
+import AnimatedBackground from "@/components/home/AnimatedBackground";
 
 function getWhatsAppLink(product: Product) {
   const msg = encodeURIComponent(
@@ -59,7 +59,7 @@ const ProductDetail = () => {
   if (content) {
     return (
       <div className="min-h-screen relative" style={{ background: "hsl(0 0% 4%)" }}>
-        <AnimatedProductBackground slug={product.slug} />
+        <AnimatedBackground />
 
         <div className="relative z-10">
           <Header onContactClick={() => setContactOpen(true)} />
@@ -84,7 +84,7 @@ const ProductDetail = () => {
   // Fallback: simple layout for products without rich content (legacy)
   return (
     <div className="min-h-screen relative" style={{ background: "hsl(0 0% 4%)" }}>
-      <AnimatedProductBackground slug={product.slug} />
+      <AnimatedBackground />
       <div className="relative z-10">
         <Header onContactClick={() => setContactOpen(true)} />
         <ProductHero
