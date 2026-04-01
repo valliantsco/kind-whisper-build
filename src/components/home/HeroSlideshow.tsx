@@ -35,7 +35,7 @@ const SLIDES: Slide[] = [
     highlightLine: 1,
     subheadline:
       "Autopropelidos, scooters, bicicletas e triciclos elétricos. Mais de 19 modelos para cada estilo de vida.",
-    primaryCta: { text: "Explorar catálogo", href: "#modelos" },
+    primaryCta: { text: "Explorar catálogo", href: "/modelos" },
     secondaryCta: { text: "Fazer o quiz", href: "#quiz" },
   },
   {
