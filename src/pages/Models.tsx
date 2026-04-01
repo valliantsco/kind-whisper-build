@@ -436,7 +436,7 @@ const Models = () => {
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: 100, opacity: 0 }}
             transition={{ type: "spring", damping: 25, stiffness: 300 }}
-            className="fixed bottom-6 left-1/2 -translate-x-1/2 z-40 flex items-center gap-3 px-5 py-3.5 rounded-2xl"
+            className="fixed bottom-6 inset-x-0 mx-auto w-fit z-40 flex items-center gap-3 px-5 py-3.5 rounded-2xl"
             style={{
               background: "hsl(0 0% 6% / 0.95)",
               border: "1px solid hsl(var(--primary) / 0.2)",
