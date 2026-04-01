@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import logoWhite from "@/assets/ms-eletric-logo-white.png";
 import msShieldLogo from "@/assets/ms-shield-logo.png";
 import ctaRider from "@/assets/cta-rider.webp";
@@ -71,6 +72,7 @@ const NAV_ITEMS: NavItem[] = [
 const categoryImages = [categoryScooter, categoryBike, categoryTricycle, categoryMotocross, categoryAutopropelido];
 
 const Header = ({ onContactClick }: HeaderProps) => {
+  const navigate = useNavigate();
   const isOnline = useBusinessHours();
 
   // Preload category images on mount
@@ -188,9 +190,9 @@ const Header = ({ onContactClick }: HeaderProps) => {
 
           {/* Header bar */}
           <div className="relative flex items-center justify-between px-5 py-3">
-            <a href="/">
+            <button onClick={() => navigate("/")} className="cursor-pointer bg-transparent border-none p-0">
               <img src={logoWhite} alt="MS Eletric" className="w-auto" style={{ height: "2.53rem" }} />
-            </a>
+            </button>
 
             <nav className="hidden lg:flex items-center gap-4 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
               {NAV_ITEMS.map((item) => (
@@ -200,15 +202,15 @@ const Header = ({ onContactClick }: HeaderProps) => {
                   onMouseEnter={() => item.hasDropdown && handleEnter(item.label)}
                   onMouseLeave={handleLeave}
                 >
-                  <a
-                    href={item.href}
-                    onClick={(e) => {
+                  <button
+                    onClick={() => {
                       if (item.hasDropdown) {
-                        e.preventDefault();
                         setActiveDropdown(activeDropdown === item.label ? null : item.label);
+                      } else {
+                        navigate(item.href);
                       }
                     }}
-                    className={`relative text-sm font-medium transition-all duration-300 ease-out py-1.5 px-2 rounded-md group flex items-center gap-1 ${
+                    className={`relative text-sm font-medium transition-all duration-300 ease-out py-1.5 px-2 rounded-md group flex items-center gap-1 bg-transparent border-none cursor-pointer ${
                       activeDropdown === item.label ? "text-white/95" : "text-white/50 hover:text-white/95"
                     }`}
                   >
@@ -228,7 +230,7 @@ const Header = ({ onContactClick }: HeaderProps) => {
                         }`}
                       />
                     )}
-                  </a>
+                  </button>
                 </div>
               ))}
             </nav>
@@ -410,10 +412,9 @@ const Header = ({ onContactClick }: HeaderProps) => {
                               className="group/item relative flex-shrink-0 rounded-xl overflow-hidden"
                               style={{ width: "198px", aspectRatio: "3/4", scrollSnapAlign: "start" }}
                             >
-                              <a
-                                href={dropItem.href}
-                                className="relative block w-full h-full"
-                                onClick={(e) => { if (isDraggingCards.current) { e.preventDefault(); return; } setActiveDropdown(null); }}
+                              <button
+                                className="relative block w-full h-full bg-transparent border-none p-0 cursor-pointer text-left"
+                                onClick={() => { if (isDraggingCards.current) return; setActiveDropdown(null); navigate(dropItem.href); }}
                               >
                                 {dropItem.youtubeId ? (
                                   <motion.div
@@ -519,7 +520,7 @@ const Header = ({ onContactClick }: HeaderProps) => {
                                     {dropItem.description}
                                   </p>
                                 </div>
-                              </a>
+                              </button>
                             </div>
 
                             {/* 6. Separator between cards */}
