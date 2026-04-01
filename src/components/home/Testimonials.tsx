@@ -74,7 +74,7 @@ const AnimatedStat = ({ value, label }: { value: string; label: string }) => {
 
   return (
     <div ref={ref} className="flex flex-col items-center gap-1 px-3 md:px-8">
-      <span className="text-2xl md:text-3xl font-black text-primary tabular-nums">
+      <span className="text-xl md:text-3xl font-black text-primary tabular-nums">
         {count}{suffix}
       </span>
       <span className="text-[11px] md:text-xs uppercase tracking-[0.15em] text-primary-foreground/35 font-medium">
