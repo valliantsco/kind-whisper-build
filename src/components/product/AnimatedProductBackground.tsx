@@ -143,11 +143,11 @@ export default function AnimatedProductBackground({ slug }: Props) {
       const g = theme.grid;
       const offset = (time * (g.drift ?? 0)) % g.spacing;
 
-      ctx.strokeStyle = `rgba(255,255,255,${g.opacity})`;
+      ctx.strokeStyle = `rgba(255,255,255,${g.opacity * 3})`;
       ctx.lineWidth = 0.5;
 
       if (g.type === "dots") {
-        ctx.fillStyle = `rgba(255,255,255,${g.opacity})`;
+        ctx.fillStyle = `rgba(255,255,255,${g.opacity * 3})`;
         for (let x = offset; x < w; x += g.spacing) {
           for (let y = offset; y < h; y += g.spacing) {
             ctx.beginPath();
