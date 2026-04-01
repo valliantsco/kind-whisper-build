@@ -96,7 +96,7 @@ const MediaCoverage = () => {
             </span>
           </h2>
           <p className="text-sm md:text-base text-primary-foreground/45 leading-relaxed mt-4 max-w-lg ml-auto">
-            A força da marca também aparece na imprensa. A MS Electric vem ganhando espaço em veículos de comunicação que ajudam a ampliar sua autoridade e reforçar sua presença no setor.
+            A MS Eletric também vem ganhando espaço na imprensa e em canais que acompanham inovação, mobilidade e negócios. É mais um reflexo de uma marca que vem se consolidando com presença, estrutura e credibilidade.
           </p>
         </motion.div>
 

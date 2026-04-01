@@ -99,7 +99,7 @@ const WhyChoose = () => {
           </h2>
 
           <p className="text-sm md:text-base text-primary-foreground/45 leading-relaxed mt-4 max-w-lg ml-auto">
-            Mais do que oferecer veículos elétricos, a MS Electric entrega confiança, suporte e uma experiência de compra consultiva para quem quer investir com mais segurança.
+            Mais do que vender veículos elétricos, a MS Eletric quer facilitar a sua escolha com atendimento próximo, suporte especializado e um portfólio que atende diferentes perfis de uso com mais segurança e clareza.
           </p>
         </motion.div>
 
