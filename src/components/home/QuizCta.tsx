@@ -114,7 +114,7 @@ const QuizCta = () => {
             </h2>
 
             <p className="text-sm md:text-base text-primary-foreground/45 leading-relaxed mt-4 max-w-lg ml-auto">
-              A MS Electric ajuda você a encontrar o veículo ideal com mais clareza e menos dúvida. Em poucos passos, nossa recomendação inteligente analisa seu perfil, sua rotina e suas prioridades para indicar o modelo que realmente faz sentido para o seu uso.
+              Se você ainda está em dúvida, a gente te ajuda. Em poucos passos, o quiz entende seu perfil, o tipo de uso que você procura e mostra os modelos que fazem mais sentido para a sua rotina.
             </p>
           </motion.div>
 
