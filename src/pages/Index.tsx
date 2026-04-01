@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import AnimatedBackground from "@/components/home/AnimatedBackground";
 import Header from "@/components/Header";
 import PopUpContato01 from "@/components/PopUpContato01";
-import FloatingWhatsApp from "@/components/FloatingWhatsApp";
+
 import HeroSlideshow from "@/components/home/HeroSlideshow";
 import QuizCta from "@/components/home/QuizCta";
 import ProductCarousel from "@/components/home/ProductCarousel";

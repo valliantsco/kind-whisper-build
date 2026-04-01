@@ -1,6 +1,6 @@
 import { useParams, Link } from "react-router-dom";
 import Header from "@/components/Header";
-import FloatingWhatsApp from "@/components/FloatingWhatsApp";
+
 import PopUpContato01 from "@/components/PopUpContato01";
 import PopUpContatoProduto from "@/components/product/PopUpContatoProduto";
 import HomeFooter from "@/components/home/HomeFooter";

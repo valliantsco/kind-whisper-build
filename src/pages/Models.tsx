@@ -6,7 +6,7 @@ import {
   SlidersHorizontal, X, BarChart3, Eye, Sparkles, ChevronLeft, ChevronRight, ArrowUpDown, CircleHelp,
 } from "lucide-react";
 import Header from "@/components/Header";
-import FloatingWhatsApp from "@/components/FloatingWhatsApp";
+
 import PopUpContato01 from "@/components/PopUpContato01";
 import HomeFooter from "@/components/home/HomeFooter";
 import CompareModal from "@/components/models/CompareModal";

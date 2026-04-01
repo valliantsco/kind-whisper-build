@@ -7,7 +7,7 @@ import {
 } from "lucide-react";
 import Header from "@/components/Header";
 import HomeFooter from "@/components/home/HomeFooter";
-import FloatingWhatsApp from "@/components/FloatingWhatsApp";
+
 import PopUpContato01 from "@/components/PopUpContato01";
 import AnimatedBackground from "@/components/home/AnimatedBackground";
 import { Link } from "react-router-dom";
