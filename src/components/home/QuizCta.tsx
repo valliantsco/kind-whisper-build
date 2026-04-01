@@ -205,7 +205,7 @@ const QuizCta = () => {
             </motion.button>
 
             <span className="text-[11px] text-primary-foreground/25 tracking-wide uppercase">
-              Menos de 60 segundos · Resultado na hora
+              Leva menos de 2 minutos e pode facilitar muito a sua escolha.
             </span>
           </motion.div>
         </div>

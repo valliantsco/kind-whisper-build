@@ -384,7 +384,7 @@ const ProductCarousel = () => {
                 boxShadow: "0 4px 20px hsl(var(--primary) / 0.3)",
               }}
             >
-              Ver catálogo completo
+              Comparar modelos
               <ArrowRight className="w-4 h-4" />
             </a>
           </div>

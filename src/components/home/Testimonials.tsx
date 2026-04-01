@@ -175,7 +175,7 @@ const Testimonials = () => {
             </h2>
 
             <p className="text-sm md:text-base text-primary-foreground/55 leading-relaxed mt-5 max-w-lg">
-              A presença ao lado de nomes de grande alcance reforça a percepção de uma marca atual, confiável e cada vez mais relevante no universo da mobilidade elétrica.
+              A presença da MS Electric ao lado de nomes de grande alcance fortalece algo que a marca já constrói na prática: visibilidade, confiança e relevância em um mercado que não para de crescer.
             </p>
           </motion.div>
 

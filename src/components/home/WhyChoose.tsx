@@ -86,7 +86,7 @@ const WhyChoose = () => {
           </div>
 
           <h2 className="font-display font-black text-4xl md:text-5xl lg:text-6xl text-primary-foreground uppercase tracking-tight leading-[0.95]">
-            Por que comprar na{" "}
+            Por que escolher a{" "}
             <span
               className="bg-clip-text text-transparent"
               style={{
@@ -94,12 +94,12 @@ const WhyChoose = () => {
                   "linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)))",
               }}
             >
-              MS Eletric
+              MS Electric
             </span>
           </h2>
 
           <p className="text-sm md:text-base text-primary-foreground/45 leading-relaxed mt-4 max-w-lg ml-auto">
-            Compromisso com qualidade, suporte e inovação em cada detalhe.
+            Mais do que oferecer veículos elétricos, a MS Electric entrega confiança, suporte e uma experiência de compra consultiva para quem quer investir com mais segurança.
           </p>
         </motion.div>
 
