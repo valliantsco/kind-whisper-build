@@ -237,37 +237,73 @@ const Models = () => {
   );
 
   return (
-    <div className="min-h-screen relative" style={{ background: "hsl(0 0% 4%)" }}>
-      {/* ── Unified background (same as Index) ── */}
+    <div className="min-h-screen relative" style={{ background: "hsl(0 0% 3.5%)" }}>
+      {/* ── Layered background system ── */}
+
+      {/* Dot grid */}
       <div
-        className="fixed inset-0 pointer-events-none opacity-[0.02] z-0"
+        className="fixed inset-0 pointer-events-none opacity-[0.018] z-0"
         style={{
           backgroundImage: "radial-gradient(circle, hsl(0 0% 100%) 1px, transparent 1px)",
-          backgroundSize: "28px 28px",
+          backgroundSize: "24px 24px",
         }}
       />
-      <motion.div
-        className="fixed top-0 right-0 w-[1200px] h-[800px] pointer-events-none z-0"
+
+      {/* Noise texture overlay */}
+      <div
+        className="fixed inset-0 pointer-events-none z-0 opacity-[0.03] mix-blend-soft-light"
         style={{
-          background: "radial-gradient(ellipse at center, hsl(var(--primary) / 0.06) 0%, transparent 60%)",
-          filter: "blur(140px)",
+          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E")`,
+          backgroundSize: "128px 128px",
         }}
-        animate={{ x: [0, -200, 0], y: [0, 100, 0] }}
-        transition={{ duration: 30, repeat: Infinity, ease: "easeInOut" }}
       />
+
+      {/* Primary glow — top right (animated) */}
       <motion.div
-        className="fixed bottom-0 left-0 w-[1000px] h-[700px] pointer-events-none z-0"
+        className="fixed top-[-200px] right-[-200px] w-[1400px] h-[900px] pointer-events-none z-0"
         style={{
-          background: "radial-gradient(ellipse at center, hsl(var(--primary) / 0.04) 0%, transparent 55%)",
-          filter: "blur(120px)",
+          background: "radial-gradient(ellipse at 60% 40%, hsl(var(--primary) / 0.07) 0%, hsl(var(--primary) / 0.02) 40%, transparent 70%)",
+          filter: "blur(160px)",
         }}
-        animate={{ x: [0, 150, 0], y: [0, -80, 0] }}
-        transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
+        animate={{ x: [0, -180, 0], y: [0, 80, 0] }}
+        transition={{ duration: 35, repeat: Infinity, ease: "easeInOut" }}
       />
+
+      {/* Secondary glow — bottom left (animated) */}
+      <motion.div
+        className="fixed bottom-[-150px] left-[-200px] w-[1100px] h-[750px] pointer-events-none z-0"
+        style={{
+          background: "radial-gradient(ellipse at 40% 60%, hsl(var(--primary) / 0.05) 0%, hsl(var(--primary) / 0.015) 45%, transparent 65%)",
+          filter: "blur(130px)",
+        }}
+        animate={{ x: [0, 130, 0], y: [0, -60, 0] }}
+        transition={{ duration: 28, repeat: Infinity, ease: "easeInOut" }}
+      />
+
+      {/* Center accent glow — mid-page (subtle) */}
+      <motion.div
+        className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[600px] pointer-events-none z-0"
+        style={{
+          background: "radial-gradient(ellipse at center, hsl(var(--primary) / 0.025) 0%, transparent 60%)",
+          filter: "blur(100px)",
+        }}
+        animate={{ scale: [1, 1.15, 1], opacity: [0.6, 1, 0.6] }}
+        transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
+      />
+
+      {/* Diagonal gradient overlay */}
       <div
         className="fixed inset-0 pointer-events-none z-0"
         style={{
-          background: "linear-gradient(160deg, hsl(0 0% 100% / 0.01) 0%, transparent 35%, hsl(var(--primary) / 0.015) 100%)",
+          background: "linear-gradient(160deg, hsl(0 0% 100% / 0.012) 0%, transparent 30%, hsl(var(--primary) / 0.018) 70%, transparent 100%)",
+        }}
+      />
+
+      {/* Vertical depth gradient (non-fixed — scrolls with content) */}
+      <div
+        className="absolute inset-0 pointer-events-none z-0"
+        style={{
+          background: "linear-gradient(180deg, transparent 0%, hsl(0 0% 2% / 0.4) 40%, hsl(0 0% 3.5%) 60%, hsl(0 0% 5% / 0.3) 85%, hsl(0 0% 3.5%) 100%)",
         }}
       />
 
