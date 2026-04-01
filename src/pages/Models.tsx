@@ -436,57 +436,76 @@ const Models = () => {
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: 100, opacity: 0 }}
             transition={{ type: "spring", damping: 25, stiffness: 300 }}
-            className="fixed bottom-6 inset-x-0 mx-auto w-fit z-40 flex items-center gap-3 px-5 py-3.5 rounded-2xl"
+            className="fixed bottom-6 inset-x-0 mx-auto w-fit z-40 rounded-2xl overflow-hidden"
             style={{
-              background: "hsl(0 0% 6% / 0.95)",
-              border: "1px solid hsl(var(--primary) / 0.2)",
-              backdropFilter: "blur(20px)",
-              boxShadow: "0 24px 80px -16px hsl(0 0% 0% / 0.7), 0 0 40px -8px hsl(var(--primary) / 0.1)",
+              background: "hsl(0 0% 7% / 0.97)",
+              border: "1px solid hsl(var(--primary) / 0.25)",
+              backdropFilter: "blur(24px)",
+              boxShadow:
+                "0 32px 100px -20px hsl(0 0% 0% / 0.8), 0 0 60px -12px hsl(var(--primary) / 0.15), 0 0 0 1px hsl(0 0% 100% / 0.04) inset",
             }}
           >
-            <div className="flex items-center -space-x-2">
-              {selectedProducts.map((p) => (
-                <div
-                  key={p.slug}
-                  className="w-10 h-10 rounded-lg bg-white flex items-center justify-center p-1 relative"
-                  style={{ border: "2px solid hsl(var(--primary) / 0.4)" }}
-                >
-                  <img src={p.image} alt={p.name} className="max-h-full max-w-full object-contain" />
-                  <button
-                    onClick={() => toggleSelect(p.slug)}
-                    className="absolute -top-1.5 -right-1.5 w-4 h-4 rounded-full flex items-center justify-center cursor-pointer"
-                    style={{ background: "hsl(0 0% 18%)", border: "1px solid hsl(0 0% 100% / 0.12)" }}
-                  >
-                    <X className="w-2.5 h-2.5 text-primary-foreground/60" />
-                  </button>
-                </div>
-              ))}
+            <div className="flex items-center gap-4 px-5 py-4">
+              {/* Selected products with names */}
+              <div className="flex items-center gap-3">
+                {selectedProducts.map((p, i) => (
+                  <div key={p.slug} className="flex items-center gap-2.5">
+                    {i > 0 && (
+                      <span className="text-[10px] font-bold text-primary uppercase tracking-wider">vs</span>
+                    )}
+                    <div className="flex items-center gap-2 group">
+                      <div
+                        className="w-11 h-11 rounded-xl bg-white flex items-center justify-center p-1 relative shrink-0"
+                        style={{ border: "2px solid hsl(var(--primary) / 0.35)" }}
+                      >
+                        <img src={p.image} alt={p.name} className="max-h-full max-w-full object-contain" />
+                        <button
+                          onClick={() => toggleSelect(p.slug)}
+                          className="absolute -top-1.5 -right-1.5 w-4 h-4 rounded-full flex items-center justify-center cursor-pointer opacity-0 group-hover:opacity-100 transition-opacity"
+                          style={{ background: "hsl(0 0% 15%)", border: "1px solid hsl(0 0% 100% / 0.15)" }}
+                        >
+                          <X className="w-2.5 h-2.5 text-primary-foreground/70" />
+                        </button>
+                      </div>
+                      <span className="text-[11px] font-semibold text-primary-foreground/70 whitespace-nowrap max-w-[100px] truncate">
+                        {p.name}
+                      </span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Divider */}
+              <div className="w-px h-8 shrink-0" style={{ background: "hsl(0 0% 100% / 0.08)" }} />
+
+              {/* Counter */}
+              <span className="text-[10px] text-primary-foreground/35 uppercase tracking-wider font-medium whitespace-nowrap">
+                {selectedSlugs.length}/{MAX_COMPARE}
+              </span>
+
+              {/* CTA */}
+              <button
+                onClick={() => setCompareOpen(true)}
+                className="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl text-[10px] font-semibold uppercase tracking-[0.14em] text-primary-foreground cursor-pointer transition-all hover:scale-[1.03] active:scale-[0.97]"
+                style={{
+                  background: "linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)))",
+                  boxShadow: "0 6px 20px -4px hsl(var(--primary) / 0.45)",
+                }}
+              >
+                <BarChart3 className="w-3.5 h-3.5" />
+                Comparar agora
+              </button>
+
+              {/* Clear */}
+              <button
+                onClick={() => setSelectedSlugs([])}
+                className="w-7 h-7 rounded-full flex items-center justify-center cursor-pointer transition-colors hover:bg-primary-foreground/10"
+                style={{ background: "hsl(0 0% 100% / 0.05)" }}
+                title="Limpar seleção"
+              >
+                <X className="w-3.5 h-3.5 text-primary-foreground/40" />
+              </button>
             </div>
-
-            <span className="text-[10px] text-primary-foreground/40 uppercase tracking-wider font-medium">
-              {selectedSlugs.length}/{MAX_COMPARE}
-            </span>
-
-            <button
-              onClick={() => setCompareOpen(true)}
-              className="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl text-[10px] font-semibold uppercase tracking-[0.14em] text-primary-foreground cursor-pointer transition-all hover:scale-[1.03] active:scale-[0.97]"
-              style={{
-                background: "linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)))",
-                boxShadow: "0 4px 16px -4px hsl(var(--primary) / 0.4)",
-              }}
-            >
-              <BarChart3 className="w-3.5 h-3.5" />
-              Comparar agora
-            </button>
-
-            <button
-              onClick={() => setSelectedSlugs([])}
-              className="w-7 h-7 rounded-full flex items-center justify-center cursor-pointer transition-colors"
-              style={{ background: "hsl(0 0% 100% / 0.05)" }}
-              title="Limpar seleção"
-            >
-              <X className="w-3.5 h-3.5 text-primary-foreground/35" />
-            </button>
           </motion.div>
         )}
       </AnimatePresence>
