@@ -81,9 +81,10 @@ export default function ProductHero({ product, content, onContact }: Props) {
             >
               <div className="p-10 md:p-16">
                 <img
-                  src={product.image}
+                  src={displayImage}
                   alt={product.name}
                   className="w-full h-auto object-contain max-h-[400px] mx-auto transition-transform duration-700 group-hover:scale-[1.03]"
+                />
                 />
               </div>
 
