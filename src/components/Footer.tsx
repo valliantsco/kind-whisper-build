@@ -1,13 +1,23 @@
 import { Instagram, Facebook, Youtube } from "lucide-react";
-import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import msLogo from "@/assets/ms-eletric-logo-white.png";
 
 const modelLinks = [
-  "Motos & Scooters", "Bike Elétrica", "Triciclos", "Autopropelidos",
-  "Motocross", "Quadriciclos", "Infantis",
+  { label: "Scooters Elétricas", href: "/modelos?categoria=scooters-eletricas" },
+  { label: "Autopropelidos", href: "/modelos?categoria=autopropelidos" },
+  { label: "Bicicletas Elétricas", href: "/modelos?categoria=bicicletas-eletricas" },
+  { label: "Triciclos Elétricos", href: "/modelos?categoria=triciclos-eletricos" },
+  { label: "Utilitários", href: "/modelos?categoria=utilitarios" },
+  { label: "Infantil", href: "/modelos?categoria=infantil" },
+  { label: "Patinetes", href: "/modelos?categoria=patinetes" },
 ];
 
-const Footer = () => {
+interface FooterProps {
+  onContactClick?: () => void;
+  onSupportClick?: (subject: string) => void;
+}
+
+const Footer = ({ onContactClick, onSupportClick }: FooterProps) => {
   return (
     <footer id="contato" className="bg-foreground text-primary-foreground relative overflow-hidden">
       {/* Decorative glow */}
@@ -17,15 +27,17 @@ const Footer = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
           {/* Brand */}
           <div>
-            <img src={msLogo} alt="MS Eletric" className="h-[3.2rem] w-auto mb-4" />
+            <Link to="/">
+              <img src={msLogo} alt="MS Eletric" className="h-[3.2rem] w-auto mb-4" />
+            </Link>
             <p className="text-primary-foreground/60 text-sm leading-relaxed">
               Mobilidade 100% elétrica com atendimento consultivo, portfólio completo e suporte do início ao pós-venda.
             </p>
             <div className="flex gap-3 mt-6">
               {[
-                { icon: Instagram, label: "Instagram", href: "https://instagram.com/mseletricbr" },
-                { icon: Facebook, label: "Facebook", href: "#" },
-                { icon: Youtube, label: "YouTube", href: "#" },
+                { icon: Instagram, label: "Instagram", href: "https://www.instagram.com/mseletricbr" },
+                { icon: Facebook, label: "Facebook", href: "https://www.facebook.com/mseletricbr" },
+                { icon: Youtube, label: "YouTube", href: "https://www.youtube.com/@mseletric" },
               ].map((social) => (
                 <a
                   key={social.label}
@@ -46,8 +58,8 @@ const Footer = () => {
             <h4 className="font-display font-bold text-sm uppercase tracking-wider mb-4 text-primary">Nossos modelos</h4>
             <ul className="space-y-2">
               {modelLinks.map((link) => (
-                <li key={link}>
-                  <a href="#modelos" className="text-sm text-primary-foreground/60 hover:text-primary hover:translate-x-1 transition-all inline-block">{link}</a>
+                <li key={link.label}>
+                  <Link to={link.href} className="text-sm text-primary-foreground/60 hover:text-primary hover:translate-x-1 transition-all inline-block">{link.label}</Link>
                 </li>
               ))}
             </ul>
@@ -57,9 +69,30 @@ const Footer = () => {
           <div>
             <h4 className="font-display font-bold text-sm uppercase tracking-wider mb-4 text-primary">Suporte</h4>
             <ul className="space-y-2">
-              <li><a href="#" className="text-sm text-primary-foreground/60 hover:text-primary hover:translate-x-1 transition-all inline-block">Pagamento / Condições</a></li>
-              <li><a href="#por-que" className="text-sm text-primary-foreground/60 hover:text-primary hover:translate-x-1 transition-all inline-block">Garantia</a></li>
-              <li><a href="#contato" className="text-sm text-primary-foreground/60 hover:text-primary hover:translate-x-1 transition-all inline-block">Contato</a></li>
+              <li>
+                <button
+                  onClick={() => onSupportClick?.("Pagamento / Condições")}
+                  className="text-sm text-primary-foreground/60 hover:text-primary hover:translate-x-1 transition-all inline-block cursor-pointer bg-transparent border-none p-0 text-left"
+                >
+                  Pagamento / Condições
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => onSupportClick?.("Garantia de fábrica")}
+                  className="text-sm text-primary-foreground/60 hover:text-primary hover:translate-x-1 transition-all inline-block cursor-pointer bg-transparent border-none p-0 text-left"
+                >
+                  Garantia
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => onContactClick?.()}
+                  className="text-sm text-primary-foreground/60 hover:text-primary hover:translate-x-1 transition-all inline-block cursor-pointer bg-transparent border-none p-0 text-left"
+                >
+                  Contato
+                </button>
+              </li>
             </ul>
           </div>
 
@@ -67,9 +100,16 @@ const Footer = () => {
           <div>
             <h4 className="font-display font-bold text-sm uppercase tracking-wider mb-4 text-primary">MS Eletric</h4>
             <ul className="space-y-2">
-              <li><a href="#sobre" className="text-sm text-primary-foreground/60 hover:text-primary hover:translate-x-1 transition-all inline-block">Sobre</a></li>
-              <li><a href="#onde-estamos" className="text-sm text-primary-foreground/60 hover:text-primary hover:translate-x-1 transition-all inline-block">Onde estamos</a></li>
-              <li><a href="#contato" className="text-sm text-primary-foreground/60 hover:text-primary hover:translate-x-1 transition-all inline-block">Contato</a></li>
+              <li><Link to="/sobre" className="text-sm text-primary-foreground/60 hover:text-primary hover:translate-x-1 transition-all inline-block">Sobre</Link></li>
+              <li><Link to="/abve" className="text-sm text-primary-foreground/60 hover:text-primary hover:translate-x-1 transition-all inline-block">Associada ABVE</Link></li>
+              <li>
+                <button
+                  onClick={() => onContactClick?.()}
+                  className="text-sm text-primary-foreground/60 hover:text-primary hover:translate-x-1 transition-all inline-block cursor-pointer bg-transparent border-none p-0 text-left"
+                >
+                  Contato
+                </button>
+              </li>
             </ul>
           </div>
         </div>
