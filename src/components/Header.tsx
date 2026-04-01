@@ -300,11 +300,11 @@ const Header = ({ onContactClick }: HeaderProps) => {
               transition={{ duration: 0.3, ease: [0.25, 0.8, 0.25, 1] }}
               className="absolute left-0 right-0 mt-2 rounded-[0.9rem] overflow-hidden"
               style={{
-                background: "hsl(0 0% 14% / 0.95)",
-                backdropFilter: "blur(24px)",
-                WebkitBackdropFilter: "blur(24px)",
-                border: "1px solid hsl(0 0% 100% / 0.08)",
-                boxShadow: "0 12px 40px rgba(0,0,0,0.5), 0 4px 12px rgba(0,0,0,0.3)",
+                background: "linear-gradient(135deg, hsl(0 0% 10% / 0.78), hsl(0 0% 14% / 0.72))",
+                backdropFilter: "blur(40px) saturate(1.4)",
+                WebkitBackdropFilter: "blur(40px) saturate(1.4)",
+                border: "1px solid hsl(0 0% 100% / 0.1)",
+                boxShadow: "0 16px 56px rgba(0,0,0,0.6), 0 4px 16px rgba(0,0,0,0.35), inset 0 1px 0 hsl(0 0% 100% / 0.06)",
               }}
               onMouseEnter={() => handleEnter(activeItem.label)}
               onMouseLeave={handleLeave}
