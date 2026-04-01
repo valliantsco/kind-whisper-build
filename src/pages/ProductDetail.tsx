@@ -84,7 +84,7 @@ const ProductDetail = () => {
   // Fallback: simple layout for products without rich content (legacy)
   return (
     <div className="min-h-screen relative" style={{ background: "hsl(0 0% 4%)" }}>
-      <AnimatedProductBackground slug={product.slug} />
+      <AnimatedBackground />
       <div className="relative z-10">
         <Header onContactClick={() => setContactOpen(true)} />
         <ProductHero
