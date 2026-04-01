@@ -1262,4 +1262,143 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
         "Fale com um especialista da MS Electric e receba orientação personalizada sobre o modelo ideal para o seu dia a dia.",
     },
   },
+  "new-holiday": {
+    headline: "Mobilidade elétrica completa para substituir a moto no dia a dia",
+    subheadline:
+      "A New Holiday é uma scooter elétrica de 2.000W com design clássico, 50 km de autonomia e 50 km/h — pensada para quem quer praticidade real na cidade sem abrir mão de conforto e presença.",
+    supportText:
+      "Se você busca uma alternativa elétrica para a moto convencional, a New Holiday entrega tudo o que você precisa: velocidade para o trânsito, autonomia para a rotina e economia brutal no uso diário. Uma scooter completa, funcional e bonita.",
+    idealFor: [
+      {
+        icon: "route",
+        title: "Substituir a moto a combustão",
+        desc: "50 km/h e 50 km de autonomia para cobrir a rotina urbana com a mesma praticidade — e sem gasolina.",
+      },
+      {
+        icon: "sparkles",
+        title: "Design clássico e moderno",
+        desc: "Para quem valoriza um visual elegante e atemporal, que combina bem com qualquer rotina urbana.",
+      },
+      {
+        icon: "piggyBank",
+        title: "Economia real todo mês",
+        desc: "Sem combustível, sem IPVA, manutenção mínima. A diferença no bolso aparece já no primeiro mês.",
+      },
+      {
+        icon: "city",
+        title: "Deslocamentos urbanos completos",
+        desc: "Trabalho, estudo, compromissos e lazer — a New Holiday acompanha a rotina inteira com praticidade.",
+      },
+    ],
+    whyChoose: [
+      {
+        title: "Proposta completa",
+        desc: "2.000W, 50 km/h e 50 km de autonomia. A New Holiday entrega tudo o que uma scooter urbana precisa — sem concessões.",
+      },
+      {
+        title: "Design clássico atemporal",
+        desc: "Visual que combina tecnologia moderna com linhas clássicas. Elegante, discreta e com presença que agrada.",
+      },
+      {
+        title: "Alternativa real à moto",
+        desc: "Velocidade e autonomia suficientes para substituir a moto a combustão na maioria das rotinas urbanas.",
+      },
+      {
+        title: "Economia que se acumula",
+        desc: "Centavos de energia por dia. Sem IPVA, sem combustível, sem troca de óleo. A economia é significativa e constante.",
+      },
+      {
+        title: "Suporte MS Electric",
+        desc: "Garantia de fábrica, assistência técnica e peças de reposição. Compra segura com acompanhamento real.",
+      },
+    ],
+    dailyBenefits: [
+      {
+        title: "Adeus gasolina",
+        desc: "Recarregue na tomada por centavos. Enquanto uma moto consome R$ 10–20 por dia, a New Holiday custa quase nada.",
+      },
+      {
+        title: "Velocidade para o trânsito",
+        desc: "50 km/h permitem acompanhar o fluxo urbano com segurança, sem ficar limitada a vias secundárias.",
+      },
+      {
+        title: "Silenciosa e limpa",
+        desc: "Toda a potência sem barulho e sem emissão. Uma experiência de condução mais agradável e mais civilizada.",
+      },
+      {
+        title: "Conforto para o dia a dia",
+        desc: "Design ergonômico pensado para uso frequente. Banco confortável e posição de condução natural.",
+      },
+      {
+        title: "Manutenção quase zero",
+        desc: "Sem troca de óleo, sem velas, sem correia. A manutenção elétrica é simples, barata e espaçada.",
+      },
+      {
+        title: "Recarregue com simplicidade",
+        desc: "6 a 8 horas na tomada comum. Conecte à noite e tenha a scooter pronta pela manhã.",
+      },
+    ],
+    urbanContext: {
+      title: "A evolução natural da moto urbana",
+      body: "A New Holiday foi criada para quem quer manter a praticidade da moto, mas com a economia e a modernidade da mobilidade elétrica. Se você usa moto para a rotina e está cansado de gasolina, manutenção e barulho, esse é o upgrade que faz sentido.",
+      highlights: [
+        "2.000W de motor para o trânsito urbano",
+        "50 km/h para acompanhar o fluxo da cidade",
+        "50 km de autonomia para cobrir a rotina",
+        "Design clássico com tecnologia moderna",
+      ],
+    },
+    specContexts: {
+      autonomy: "Faixa pensada para cobrir deslocamentos urbanos diários com praticidade",
+      speed: "Velocidade adequada para acompanhar o fluxo real do trânsito da cidade",
+      motor: "Entrega alinhada à proposta funcional e completa do modelo",
+      recharge: "Rotina simples para encaixar o uso no dia a dia",
+      load: "Compatível com a proposta urbana e cotidiana da scooter",
+    },
+    differentials: {
+      title: "Onde a New Holiday se destaca na linha MS Electric",
+      body: "A New Holiday é a scooter elétrica mais equilibrada do portfólio — combina design clássico, potência suficiente para o trânsito e autonomia para a rotina em um único modelo. Ela ocupa o espaço da scooter urbana completa: não é a mais potente, mas é a mais bem resolvida para quem quer substituir a moto a combustão no dia a dia.",
+    },
+    comparisonTip:
+      "Se você busca uma entrada mais acessível nas scooters, a Holiday 1000 oferece um investimento menor. Se quer mais potência e velocidade, a MS 2500 sobe de nível. Mas se o objetivo é uma scooter completa, equilibrada e com design clássico para substituir a moto no dia a dia, a New Holiday é a escolha mais bem resolvida.",
+    faq: [
+      {
+        q: "A New Holiday é indicada para qual tipo de uso?",
+        a: "Para uso urbano diário como alternativa à moto a combustão. Com 2.000W, 50 km/h e 50 km de autonomia, ela cobre a maioria das rotinas urbanas com praticidade.",
+      },
+      {
+        q: "Essa scooter elétrica faz sentido para deslocamentos diários?",
+        a: "Sim. A New Holiday foi pensada exatamente para isso — velocidade para o trânsito, autonomia para a rotina e economia brutal no uso frequente.",
+      },
+      {
+        q: "Qual o diferencial dela em relação a outros modelos da linha?",
+        a: "Design clássico atemporal, proposta equilibrada entre potência e autonomia, e posicionamento como alternativa completa à moto a combustão.",
+      },
+      {
+        q: "Ela é uma boa escolha para quem quer praticidade e simplicidade?",
+        a: "Com certeza. A New Holiday é a scooter mais equilibrada da linha — funcional, bonita e fácil de incorporar na rotina sem complicação.",
+      },
+      {
+        q: "Como funciona a recarga?",
+        a: "Tomada comum (110V ou 220V), de 6 a 8 horas para carga completa. Conecte à noite e use pela manhã.",
+      },
+      {
+        q: "Como é a manutenção?",
+        a: "Simples e barata. 100% elétrica, sem troca de óleo, sem velas, sem embreagem. Manutenção mínima e muito menos frequente.",
+      },
+      {
+        q: "Como funciona a garantia?",
+        a: "A MS Electric oferece garantia de fábrica com suporte técnico e peças de reposição. Consulte um especialista para conhecer as condições.",
+      },
+      {
+        q: "Para quem a New Holiday é a melhor escolha dentro do portfólio?",
+        a: "Para quem quer uma scooter elétrica completa e equilibrada para substituir a moto no dia a dia. Se praticidade, design e economia importam, a New Holiday é a resposta.",
+      },
+    ],
+    finalCta: {
+      title: "Descubra se a New Holiday combina com a sua rotina",
+      subtitle:
+        "Fale com um especialista da MS Electric e receba orientação personalizada sobre o modelo ideal para o seu dia a dia.",
+    },
+  },
 };
