@@ -8,17 +8,17 @@ const STEPS = [
   {
     icon: MessageCircle,
     title: "Responda perguntas rápidas",
-    detail: "Sobre seu perfil de uso, necessidades e preferências — leva menos de 1 minuto.",
+    detail: "Conte como será o uso do veículo, quais características são mais importantes para você e o que espera da sua experiência com mobilidade elétrica.",
   },
   {
     icon: Brain,
-    title: "A IA analisa seu cenário",
-    detail: "Nossa inteligência artificial cruza suas respostas com todo o portfólio para encontrar o match ideal.",
+    title: "Analisamos o seu perfil",
+    detail: "Nossa inteligência cruza suas respostas com o portfólio da MS Electric para entender qual modelo se encaixa melhor no seu cenário, objetivo e rotina.",
   },
   {
     icon: CheckCircle,
     title: "Receba sua recomendação",
-    detail: "O modelo perfeito para você, com especificações completas, direto no seu WhatsApp.",
+    detail: "Em instantes, você visualiza as opções mais indicadas para o seu caso e já pode seguir para comparar modelos ou falar com nosso time.",
   },
 ];
 
