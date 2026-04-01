@@ -155,7 +155,7 @@ const InfluencerCard = ({ inf, index }: { inf: Influencer; index: number }) => {
 
 const Testimonials = () => {
 
-  const [activeInfluencer, setActiveInfluencer] = useState<number | null>(null);
+  const scrollRef = useRef<HTMLDivElement>(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
   const [scrollProgress, setScrollProgress] = useState(0);
