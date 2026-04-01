@@ -22,19 +22,12 @@ interface Props {
   onColorChange: (color: ProductColor) => void;
 }
 
-export default function ProductHero({ product, content, onContact }: Props) {
+export default function ProductHero({ product, content, onContact, selectedColor, onColorChange }: Props) {
   const navigate = useNavigate();
   const heroRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
   const imageY = useTransform(scrollYProgress, [0, 1], [0, 60]);
   const imageScale = useTransform(scrollYProgress, [0, 1], [1, 0.95]);
-  const [selectedColor, setSelectedColor] = useState<ProductColor | null>(
-    product.colors?.[0] ?? null
-  );
-
-  const handleColorChange = useCallback((color: ProductColor) => {
-    setSelectedColor(color);
-  }, []);
 
   // Use color-specific image if available, otherwise default
   const displayImage = selectedColor?.image ?? product.image;
