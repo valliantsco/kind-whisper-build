@@ -169,6 +169,11 @@ export default function ProductHero({ product, content, onContact }: Props) {
               </p>
             </motion.div>
 
+            {/* ── Color Selector ── */}
+            {product.colors && product.colors.length > 0 && (
+              <ColorSelector colors={product.colors} onColorChange={handleColorChange} />
+            )}
+
             {/* ── Specs Strip ── */}
             <motion.div
               initial={{ opacity: 0, y: 10 }}
