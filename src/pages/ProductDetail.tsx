@@ -6,7 +6,8 @@ import PopUpContatoProduto from "@/components/product/PopUpContatoProduto";
 import HomeFooter from "@/components/home/HomeFooter";
 import { PRODUCTS } from "@/data/products";
 import { PRODUCT_CONTENT } from "@/data/product-content";
-import { useState, useMemo } from "react";
+import { useState, useMemo, useCallback, useEffect } from "react";
+import type { ProductColor } from "@/data/products";
 
 import ProductHero from "@/components/product/ProductHero";
 import ProductWhyChoose from "@/components/product/ProductWhyChoose";
@@ -23,9 +24,18 @@ const ProductDetail = () => {
   const { slug } = useParams<{ slug: string }>();
   const [contactOpen, setContactOpen] = useState(false);
   const [productContactOpen, setProductContactOpen] = useState(false);
+  const [selectedColor, setSelectedColor] = useState<ProductColor | null>(null);
+
+  const handleColorChange = useCallback((color: ProductColor) => {
+    setSelectedColor(color);
+  }, []);
 
   const product = useMemo(() => PRODUCTS.find((p) => p.slug === slug), [slug]);
   const content = useMemo(() => (slug ? PRODUCT_CONTENT[slug] : undefined), [slug]);
+
+  useEffect(() => {
+    setSelectedColor(product?.colors?.[0] ?? null);
+  }, [product]);
 
   const related = useMemo(() => {
     if (!product) return [];
@@ -52,7 +62,7 @@ const ProductDetail = () => {
         <AnimatedBackground />
         <div className="relative z-10">
           <Header onContactClick={() => setContactOpen(true)} />
-          <ProductHero product={product} content={content} onContact={() => setProductContactOpen(true)} />
+          <ProductHero product={product} content={content} onContact={() => setProductContactOpen(true)} selectedColor={selectedColor} onColorChange={handleColorChange} />
           <ProductWhyChoose content={content} />
           <ProductDailyBenefits content={content} />
           <ProductUrbanContext content={content} />
@@ -65,7 +75,7 @@ const ProductDetail = () => {
         </div>
         <FloatingWhatsApp />
         <PopUpContato01 isOpen={contactOpen} onClose={() => setContactOpen(false)} />
-        <PopUpContatoProduto isOpen={productContactOpen} onClose={() => setProductContactOpen(false)} product={product} />
+        <PopUpContatoProduto isOpen={productContactOpen} onClose={() => setProductContactOpen(false)} product={product} selectedColor={selectedColor} />
       </div>
     );
   }
@@ -87,6 +97,8 @@ const ProductDetail = () => {
             finalCta: { title: "Fale com um especialista", subtitle: "Tire suas dúvidas e descubra as melhores condições." },
           }}
           onContact={() => setProductContactOpen(true)}
+          selectedColor={selectedColor}
+          onColorChange={handleColorChange}
         />
         <ProductSpecs
           product={product}
@@ -100,7 +112,7 @@ const ProductDetail = () => {
       </div>
       <FloatingWhatsApp />
       <PopUpContato01 isOpen={contactOpen} onClose={() => setContactOpen(false)} />
-      <PopUpContatoProduto isOpen={productContactOpen} onClose={() => setProductContactOpen(false)} product={product} />
+      <PopUpContatoProduto isOpen={productContactOpen} onClose={() => setProductContactOpen(false)} product={product} selectedColor={selectedColor} />
     </div>
   );
 };

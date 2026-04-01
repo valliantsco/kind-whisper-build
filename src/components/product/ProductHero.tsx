@@ -4,7 +4,7 @@ import {
   Sparkles,
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import { useRef, useState, useCallback } from "react";
+import { useRef } from "react";
 import type { Product, ProductColor } from "@/data/products";
 import type { ProductContent } from "@/data/product-content";
 import ColorSelector from "@/components/product/ColorSelector";
@@ -18,21 +18,16 @@ interface Props {
   product: Product;
   content: ProductContent;
   onContact: () => void;
+  selectedColor: ProductColor | null;
+  onColorChange: (color: ProductColor) => void;
 }
 
-export default function ProductHero({ product, content, onContact }: Props) {
+export default function ProductHero({ product, content, onContact, selectedColor, onColorChange }: Props) {
   const navigate = useNavigate();
   const heroRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
   const imageY = useTransform(scrollYProgress, [0, 1], [0, 60]);
   const imageScale = useTransform(scrollYProgress, [0, 1], [1, 0.95]);
-  const [selectedColor, setSelectedColor] = useState<ProductColor | null>(
-    product.colors?.[0] ?? null
-  );
-
-  const handleColorChange = useCallback((color: ProductColor) => {
-    setSelectedColor(color);
-  }, []);
 
   // Use color-specific image if available, otherwise default
   const displayImage = selectedColor?.image ?? product.image;
@@ -171,7 +166,7 @@ export default function ProductHero({ product, content, onContact }: Props) {
 
             {/* ── Color Selector ── */}
             {product.colors && product.colors.length > 0 && (
-              <ColorSelector colors={product.colors} onColorChange={handleColorChange} />
+              <ColorSelector colors={product.colors} onColorChange={onColorChange} />
             )}
 
             {/* ── Specs Strip ── */}

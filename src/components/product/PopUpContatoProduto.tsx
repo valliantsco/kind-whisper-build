@@ -13,7 +13,7 @@ import {
 } from "@/utils/form-helpers";
 import StatusChip from "@/components/contact/StatusChip";
 import CityAutocomplete from "@/components/contact/CityAutocomplete";
-import type { Product } from "@/data/products";
+import type { Product, ProductColor } from "@/data/products";
 
 const WhatsAppIcon = ({ className = "w-5 h-5" }: { className?: string }) => (
   <svg viewBox="0 0 24 24" fill="currentColor" className={className}>
@@ -37,9 +37,10 @@ interface Props {
   isOpen: boolean;
   onClose: () => void;
   product: Product;
+  selectedColor?: ProductColor | null;
 }
 
-export default function PopUpContatoProduto({ isOpen, onClose, product }: Props) {
+export default function PopUpContatoProduto({ isOpen, onClose, product, selectedColor }: Props) {
   const { isOnline, offlineMessage } = useBusinessStatus();
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
@@ -80,7 +81,7 @@ export default function PopUpContatoProduto({ isOpen, onClose, product }: Props)
     if (!validate()) return;
     setIsLoading(true);
 
-    const message = [
+    const messageParts = [
       `*Por favor, para que seu atendimento prossiga, não apague esta mensagem antes de enviar!*`,
       ``,
       `*Nome:* ${name.trim()}`,
@@ -90,9 +91,15 @@ export default function PopUpContatoProduto({ isOpen, onClose, product }: Props)
       `*Cidade:* ${city.trim()}`,
       ``,
       `*Modelo de interesse:* ${product.name} (${product.category})`,
-      ``,
-      `*Assunto:* Quero saber mais sobre o modelo ${product.name}`,
-    ].join("\n");
+    ];
+
+    if (selectedColor) {
+      messageParts.push(``, `*Cor selecionada:* ${selectedColor.name}`);
+    }
+
+    messageParts.push(``, `*Assunto:* Quero saber mais sobre o modelo ${product.name}`);
+
+    const message = messageParts.join("\n");
 
     window.open(
       `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`,
@@ -103,7 +110,7 @@ export default function PopUpContatoProduto({ isOpen, onClose, product }: Props)
     setName(""); setPhone(""); setCity(""); setCityValidated(false); setErrors({});
     setIsLoading(false);
     onClose();
-  }, [name, phone, city, product, validate, onClose]);
+  }, [name, phone, city, product, selectedColor, validate, onClose]);
 
   return (
     <AnimatePresence>
@@ -158,10 +165,25 @@ export default function PopUpContatoProduto({ isOpen, onClose, product }: Props)
               {/* Product badge */}
               <div className="mx-5 mb-3 flex items-center gap-3 rounded-lg px-3.5 py-2.5" style={{ background: "hsl(0 0% 100% / 0.04)", border: "1px solid hsl(0 0% 100% / 0.06)" }}>
                 <img src={product.image} alt={product.name} className="w-12 h-12 object-contain rounded-md bg-white/90 p-1" />
-                <div>
+                <div className="flex-1">
                   <p className="text-[11px] font-semibold text-white/90">{product.name}</p>
                   <p className="text-[10px] text-white/40">{product.category} · {product.price}</p>
                 </div>
+                {selectedColor && (
+                  <div className="flex items-center gap-1.5 shrink-0">
+                    <span
+                      className="w-5 h-5 rounded-full shrink-0"
+                      style={{
+                        background: selectedColor.hex,
+                        border: isLightColor(selectedColor.hex)
+                          ? "1.5px solid hsl(0 0% 100% / 0.25)"
+                          : "1.5px solid hsl(0 0% 100% / 0.1)",
+                        boxShadow: "0 0 8px hsl(var(--primary) / 0.2)",
+                      }}
+                    />
+                    <span className="text-[9px] text-white/50 font-medium">{selectedColor.name}</span>
+                  </div>
+                )}
               </div>
 
               <StatusChip isOnline={isOnline} offlineMessage={offlineMessage} />
@@ -245,4 +267,12 @@ export default function PopUpContatoProduto({ isOpen, onClose, product }: Props)
       )}
     </AnimatePresence>
   );
+}
+
+function isLightColor(hex: string): boolean {
+  const c = hex.replace("#", "");
+  const r = parseInt(c.substring(0, 2), 16);
+  const g = parseInt(c.substring(2, 4), 16);
+  const b = parseInt(c.substring(4, 6), 16);
+  return (r * 299 + g * 587 + b * 114) / 1000 > 160;
 }
