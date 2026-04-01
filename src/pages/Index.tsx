@@ -3,7 +3,7 @@ import Header from "@/components/Header";
 import PopUpContato01 from "@/components/PopUpContato01";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 import HeroSlideshow from "@/components/home/HeroSlideshow";
-import SocialProofBadges from "@/components/home/SocialProofBadges";
+
 import QuizCta from "@/components/home/QuizCta";
 import ProductCarousel from "@/components/home/ProductCarousel";
 import WhyChoose from "@/components/home/WhyChoose";
@@ -18,7 +18,7 @@ const Index = () => {
     <div className="min-h-screen bg-foreground">
       <Header onContactClick={() => setContactOpen(true)} />
       <HeroSlideshow />
-      <SocialProofBadges />
+      
       <QuizCta />
       <ProductCarousel />
       <WhyChoose />
