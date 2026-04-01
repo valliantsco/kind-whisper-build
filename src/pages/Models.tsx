@@ -176,6 +176,7 @@ const SearchableFilterBar = ({
 };
 
 
+const Models = () => {
   const [contactOpen, setContactOpen] = useState(false);
   const [activeCategory, setActiveCategory] = useState<CategoryFilter>("Todos");
   const [searchQuery, setSearchQuery] = useState("");
