@@ -101,11 +101,6 @@ const MediaCoverage = () => {
           background: "linear-gradient(160deg, hsl(0 0% 100% / 0.015) 0%, transparent 35%, hsl(var(--primary) / 0.025) 100%)",
         }}
       />
-      {/* Top-left accent line */}
-      <div
-        className="absolute top-0 left-0 w-[300px] md:w-[500px] h-[3px]"
-        style={{ background: "linear-gradient(90deg, hsl(var(--primary) / 0.6), transparent)" }}
-      />
       {/* Bottom-right accent line */}
       <div
         className="absolute bottom-0 right-0 w-[300px] md:w-[500px] h-[3px]"
