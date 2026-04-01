@@ -86,7 +86,7 @@ export default function About() {
               </motion.div>
 
               <motion.h1 variants={fadeUp} custom={1}
-                className="font-display font-black text-4xl md:text-6xl lg:text-7xl text-primary-foreground uppercase tracking-tight leading-[0.92] mb-8">
+                className="font-display font-black text-3xl md:text-6xl lg:text-7xl text-primary-foreground uppercase tracking-tight leading-[0.92] mb-6 md:mb-8">
                 Tecnologia que move.{" "}
                 <span className="bg-clip-text text-transparent"
                   style={{ backgroundImage: "linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)))" }}>
@@ -95,23 +95,23 @@ export default function About() {
               </motion.h1>
 
               <motion.p variants={fadeUp} custom={2}
-                className="text-primary-foreground/70 text-lg md:text-xl leading-relaxed max-w-3xl mb-6">
+                className="text-primary-foreground/70 text-base md:text-xl leading-relaxed max-w-3xl mb-4 md:mb-6">
                 A MS Eletric nasceu para aproximar a mobilidade elétrica da vida real. Mais do que oferecer veículos, a marca foi construída para entregar uma experiência completa, com atendimento próximo, orientação consultiva e soluções que fazem sentido para diferentes rotinas de uso.
               </motion.p>
 
               <motion.p variants={fadeUp} custom={3}
-                className="text-primary-foreground/40 text-base leading-relaxed max-w-2xl mb-10">
+                className="text-primary-foreground/40 text-sm md:text-base leading-relaxed max-w-2xl mb-8 md:mb-10">
                 Com operação em Uberlândia, presença física e atendimento online, a MS Eletric une tecnologia, praticidade e confiança para tornar a eletromobilidade mais acessível, mais clara e mais presente no dia a dia de quem busca uma nova forma de se mover.
               </motion.p>
 
-              <motion.div variants={fadeUp} custom={4} className="flex flex-wrap gap-6">
+              <motion.div variants={fadeUp} custom={4} className="grid grid-cols-2 md:flex md:flex-wrap gap-4 md:gap-6">
                 {[
                   { label: "Mobilidade elétrica com propósito", icon: Zap },
                   { label: "Atendimento consultivo", icon: HeartHandshake },
                   { label: "Portfólio para diferentes perfis", icon: Store },
                   { label: "Experiência do início ao pós-venda", icon: Shield },
                 ].map(({ label, icon: Icon }) => (
-                  <div key={label} className="flex items-center gap-2.5 text-primary-foreground/50 text-sm">
+                  <div key={label} className="flex items-center gap-2 md:gap-2.5 text-primary-foreground/50 text-xs md:text-sm">
                     <div className="w-8 h-8 rounded-lg flex items-center justify-center"
                       style={{ background: "hsl(var(--primary) / 0.1)", border: "1px solid hsl(var(--primary) / 0.15)" }}>
                       <Icon className="w-4 h-4 text-primary" />

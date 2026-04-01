@@ -41,7 +41,7 @@ const Index = () => {
 
       {/* Slow-moving ambient glow — top */}
       <motion.div
-        className="fixed top-0 right-0 w-[1200px] h-[800px] pointer-events-none z-0"
+        className="fixed top-0 right-0 w-[600px] h-[400px] md:w-[1200px] md:h-[800px] pointer-events-none z-0"
         style={{
           background:
             "radial-gradient(ellipse at center, hsl(var(--primary) / 0.06) 0%, transparent 60%)",
@@ -53,7 +53,7 @@ const Index = () => {
 
       {/* Slow-moving ambient glow — bottom */}
       <motion.div
-        className="fixed bottom-0 left-0 w-[1000px] h-[700px] pointer-events-none z-0"
+        className="fixed bottom-0 left-0 w-[500px] h-[350px] md:w-[1000px] md:h-[700px] pointer-events-none z-0"
         style={{
           background:
             "radial-gradient(ellipse at center, hsl(var(--primary) / 0.04) 0%, transparent 55%)",

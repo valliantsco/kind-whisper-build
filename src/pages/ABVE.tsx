@@ -121,7 +121,7 @@ export default function ABVE() {
               </motion.div>
 
               <motion.h1 variants={fadeUp} custom={1}
-                className="font-display font-black text-4xl md:text-6xl lg:text-7xl text-primary-foreground uppercase tracking-tight leading-[0.92] mb-8">
+                className="font-display font-black text-3xl md:text-6xl lg:text-7xl text-primary-foreground uppercase tracking-tight leading-[0.92] mb-6 md:mb-8">
                 Parte do ecossistema{" "}
                 <span className="bg-clip-text text-transparent"
                   style={{ backgroundImage: "linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)))" }}>
@@ -131,23 +131,23 @@ export default function ABVE() {
               </motion.h1>
 
               <motion.p variants={fadeUp} custom={2}
-                className="text-primary-foreground/70 text-lg md:text-xl leading-relaxed max-w-3xl mb-6">
+                className="text-primary-foreground/70 text-base md:text-xl leading-relaxed max-w-3xl mb-4 md:mb-6">
                 A MS Eletric integra a Associação Brasileira do Veículo Elétrico, uma entidade que reúne empresas, marcas e iniciativas comprometidas com o avanço da mobilidade elétrica no país. Para a marca, essa associação reforça um posicionamento já presente no seu dia a dia: tecnologia aplicada, visão de futuro e compromisso com uma mobilidade mais inteligente.
               </motion.p>
 
               <motion.p variants={fadeUp} custom={3}
-                className="text-primary-foreground/40 text-base leading-relaxed max-w-2xl mb-10">
+                className="text-primary-foreground/40 text-sm md:text-base leading-relaxed max-w-2xl mb-8 md:mb-10">
                 Mais do que um reconhecimento institucional, essa conexão fortalece a presença da MS Eletric dentro de um setor em transformação e reforça sua relação com inovação, sustentabilidade e experiência real de mercado.
               </motion.p>
 
-              <motion.div variants={fadeUp} custom={4} className="flex flex-wrap gap-6">
+              <motion.div variants={fadeUp} custom={4} className="grid grid-cols-2 md:flex md:flex-wrap gap-4 md:gap-6">
                 {[
                   { label: "Credibilidade setorial", icon: BadgeCheck },
                   { label: "Visão de futuro", icon: Lightbulb },
                   { label: "Sustentabilidade real", icon: Leaf },
                   { label: "Crescimento no setor", icon: Globe },
                 ].map(({ label, icon: Icon }) => (
-                  <div key={label} className="flex items-center gap-2.5 text-primary-foreground/50 text-sm">
+                  <div key={label} className="flex items-center gap-2 md:gap-2.5 text-primary-foreground/50 text-xs md:text-sm">
                     <div className="w-8 h-8 rounded-lg flex items-center justify-center"
                       style={{ background: "hsl(var(--primary) / 0.1)", border: "1px solid hsl(var(--primary) / 0.15)" }}>
                       <Icon className="w-4 h-4 text-primary" />

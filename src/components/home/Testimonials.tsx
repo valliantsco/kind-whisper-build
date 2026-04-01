@@ -73,11 +73,11 @@ const AnimatedStat = ({ value, label }: { value: string; label: string }) => {
   }, [numericPart]);
 
   return (
-    <div ref={ref} className="flex flex-col items-center gap-1 px-4 md:px-8">
-      <span className="text-2xl md:text-3xl font-black text-primary tabular-nums">
+    <div ref={ref} className="flex flex-col items-center gap-1 px-3 md:px-8">
+      <span className="text-xl md:text-3xl font-black text-primary tabular-nums">
         {count}{suffix}
       </span>
-      <span className="text-[11px] md:text-xs uppercase tracking-[0.15em] text-primary-foreground/35 font-medium">
+      <span className="text-[9px] md:text-xs uppercase tracking-[0.15em] text-primary-foreground/35 font-medium text-center">
         {label}
       </span>
     </div>
@@ -218,7 +218,7 @@ const Testimonials = () => {
 
       <div className="container mx-auto px-4 relative">
         {/* ── HEADER — Editorial asymmetric layout ── */}
-        <div className="mb-16 md:mb-20">
+        <div className="mb-12 md:mb-20">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -234,7 +234,7 @@ const Testimonials = () => {
               </span>
             </div>
 
-            <h2 className="font-display font-black text-4xl md:text-5xl lg:text-6xl text-primary-foreground uppercase tracking-tight leading-[0.95]">
+            <h2 className="font-display font-black text-3xl md:text-5xl lg:text-6xl text-primary-foreground uppercase tracking-tight leading-[0.95]">
               Credibilidade que virou{" "}
               <span
                 className="bg-clip-text text-transparent"
@@ -244,7 +244,7 @@ const Testimonials = () => {
               </span>
             </h2>
 
-            <p className="text-sm md:text-base text-primary-foreground/55 leading-relaxed mt-5 max-w-lg">
+            <p className="text-xs md:text-base text-primary-foreground/55 leading-relaxed mt-4 md:mt-5 max-w-lg">
               A presença da MS Eletric ao lado de nomes de grande alcance reforça algo que a marca vem construindo todos os dias: confiança, visibilidade e relevância em um mercado que segue crescendo.
             </p>
           </motion.div>
