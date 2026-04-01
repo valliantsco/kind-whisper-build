@@ -112,7 +112,7 @@ const BrandSection = () => {
           className="text-center mt-12"
         >
           <Button variant="outline" size="lg" className="rounded-2xl hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all" asChild>
-            <a href="#modelos">Ver modelos disponíveis</a>
+            <a href="/modelos">Ver modelos disponíveis</a>
           </Button>
         </motion.div>
       </div>

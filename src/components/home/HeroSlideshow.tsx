@@ -44,8 +44,8 @@ const SLIDES: Slide[] = [
     highlightLine: 1,
     subheadline:
       "Motor de 3.000W e velocidade de até 75km/h. Bateria de lítio removível e design esportivo.",
-    primaryCta: { text: "Conhecer a Tour 3K", href: "#modelos" },
-    secondaryCta: { text: "Ver todos os modelos", href: "#modelos" },
+    primaryCta: { text: "Conhecer a Tour 3K", href: "/modelos/tour-3k" },
+    secondaryCta: { text: "Ver todos os modelos", href: "/modelos" },
     stats: [
       { icon: Zap, value: "3.000W", label: "Motor" },
       { icon: Gauge, value: "75km/h", label: "Velocidade" },
