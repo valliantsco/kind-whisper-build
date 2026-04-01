@@ -177,6 +177,7 @@ const SearchableFilterBar = ({
 
 const Models = () => {
   const [contactOpen, setContactOpen] = useState(false);
+  const [contactSubject, setContactSubject] = useState<string | undefined>();
   const [activeCategory, setActiveCategory] = useState<CategoryFilter>("Todos");
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedSlugs, setSelectedSlugs] = useState<string[]>([]);
@@ -524,7 +525,7 @@ const Models = () => {
 
 
 
-        <HomeFooter onContactClick={() => setContactOpen(true)} />
+        <HomeFooter onContactClick={() => setContactOpen(true)} onSupportClick={(s) => { setContactSubject(s); setContactOpen(true); }} />
       </div>
 
       {/* ── Floating Compare Bar ── */}
@@ -610,7 +611,7 @@ const Models = () => {
       </AnimatePresence>
 
       <FloatingWhatsApp />
-      <PopUpContato01 isOpen={contactOpen} onClose={() => setContactOpen(false)} />
+      <PopUpContato01 isOpen={contactOpen} onClose={() => { setContactOpen(false); setContactSubject(undefined); }} initialSubject={contactSubject} />
       <CompareModal open={compareOpen} onClose={() => setCompareOpen(false)} products={selectedProducts} />
       <QuizEngine config={msEletricQuizConfig} open={quizOpen} onOpenChange={setQuizOpen} />
     </div>

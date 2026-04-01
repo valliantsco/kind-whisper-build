@@ -8,9 +8,10 @@ const policyLinks = ["Política de privacidade", "Termos de uso"];
 
 interface HomeFooterProps {
   onContactClick?: () => void;
+  onSupportClick?: (subject: string) => void;
 }
 
-const HomeFooter = ({ onContactClick }: HomeFooterProps) => {
+const HomeFooter = ({ onContactClick, onSupportClick }: HomeFooterProps) => {
   return (
     <footer id="contato" className="text-primary-foreground relative overflow-hidden">
       {/* Top accent line */}
@@ -120,9 +121,12 @@ const HomeFooter = ({ onContactClick }: HomeFooterProps) => {
             <ul className="space-y-2.5 mb-8">
               {supportLinks.map((link) => (
                 <li key={link}>
-                  <a href="#contato" className="text-sm text-primary-foreground/40 hover:text-primary hover:translate-x-1 transition-all inline-block">
+                  <button
+                    onClick={() => onSupportClick?.(link)}
+                    className="text-sm text-primary-foreground/40 hover:text-primary hover:translate-x-1 transition-all inline-block cursor-pointer bg-transparent border-none p-0 text-left"
+                  >
                     {link}
-                  </a>
+                  </button>
                 </li>
               ))}
             </ul>

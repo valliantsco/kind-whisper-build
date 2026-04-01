@@ -58,9 +58,10 @@ const panelVariants = {
 interface PopUpContato01Props {
   isOpen: boolean;
   onClose: () => void;
+  initialSubject?: string;
 }
 
-const PopUpContato01 = ({ isOpen, onClose }: PopUpContato01Props) => {
+const PopUpContato01 = ({ isOpen, onClose, initialSubject }: PopUpContato01Props) => {
   const { isOnline, offlineMessage } = useBusinessStatus();
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
@@ -69,6 +70,13 @@ const PopUpContato01 = ({ isOpen, onClose }: PopUpContato01Props) => {
   const [details, setDetails] = useState("");
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isLoading, setIsLoading] = useState(false);
+
+  // Pre-fill details when initialSubject changes
+  useEffect(() => {
+    if (isOpen && initialSubject) {
+      setDetails(initialSubject);
+    }
+  }, [isOpen, initialSubject]);
 
   // Lock body scroll
   useEffect(() => {

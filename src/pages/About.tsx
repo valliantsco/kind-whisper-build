@@ -58,6 +58,7 @@ function Divider() {
 /* ═══════════════════════════════════════════════════════════════ */
 export default function About() {
   const [contactOpen, setContactOpen] = useState(false);
+  const [contactSubject, setContactSubject] = useState<string | undefined>();
   const heroRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
   const heroOpacity = useTransform(scrollYProgress, [0, 1], [1, 0.3]);
@@ -651,10 +652,10 @@ export default function About() {
           </motion.div>
         </Section>
 
-        <HomeFooter onContactClick={() => setContactOpen(true)} />
+        <HomeFooter onContactClick={() => setContactOpen(true)} onSupportClick={(s) => { setContactSubject(s); setContactOpen(true); }} />
       </div>
       <FloatingWhatsApp />
-      <PopUpContato01 isOpen={contactOpen} onClose={() => setContactOpen(false)} />
+      <PopUpContato01 isOpen={contactOpen} onClose={() => { setContactOpen(false); setContactSubject(undefined); }} initialSubject={contactSubject} />
     </div>
   );
 }

@@ -14,7 +14,17 @@ import HomeFooter from "@/components/home/HomeFooter";
 
 const Index = () => {
   const [contactOpen, setContactOpen] = useState(false);
+  const [contactSubject, setContactSubject] = useState<string | undefined>();
 
+  const handleSupportClick = (subject: string) => {
+    setContactSubject(subject);
+    setContactOpen(true);
+  };
+
+  const handleContactClose = () => {
+    setContactOpen(false);
+    setContactSubject(undefined);
+  };
   return (
     <div className="min-h-screen relative" style={{ background: "hsl(0 0% 4%)" }}>
       {/* ── Unified page background ── */}
@@ -74,11 +84,11 @@ const Index = () => {
         <WhyChoose />
         <Testimonials />
         <MediaCoverage />
-        <HomeFooter onContactClick={() => setContactOpen(true)} />
+        <HomeFooter onContactClick={() => setContactOpen(true)} onSupportClick={handleSupportClick} />
       </div>
 
       <FloatingWhatsApp />
-      <PopUpContato01 isOpen={contactOpen} onClose={() => setContactOpen(false)} />
+      <PopUpContato01 isOpen={contactOpen} onClose={handleContactClose} initialSubject={contactSubject} />
     </div>
   );
 };

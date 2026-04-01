@@ -23,6 +23,7 @@ import AnimatedBackground from "@/components/home/AnimatedBackground";
 const ProductDetail = () => {
   const { slug } = useParams<{ slug: string }>();
   const [contactOpen, setContactOpen] = useState(false);
+  const [contactSubject, setContactSubject] = useState<string | undefined>();
   const [productContactOpen, setProductContactOpen] = useState(false);
   const [selectedColor, setSelectedColor] = useState<ProductColor | null>(null);
 
@@ -71,10 +72,10 @@ const ProductDetail = () => {
           <ProductComparison related={related} content={content} />
           <ProductFAQ content={content} />
           <ProductFinalCTA content={content} onContact={() => setProductContactOpen(true)} />
-          <HomeFooter onContactClick={() => setContactOpen(true)} />
+          <HomeFooter onContactClick={() => setContactOpen(true)} onSupportClick={(s) => { setContactSubject(s); setContactOpen(true); }} />
         </div>
         <FloatingWhatsApp />
-        <PopUpContato01 isOpen={contactOpen} onClose={() => setContactOpen(false)} />
+        <PopUpContato01 isOpen={contactOpen} onClose={() => { setContactOpen(false); setContactSubject(undefined); }} initialSubject={contactSubject} />
         <PopUpContatoProduto isOpen={productContactOpen} onClose={() => setProductContactOpen(false)} product={product} selectedColor={selectedColor} />
       </div>
     );
@@ -108,10 +109,10 @@ const ProductDetail = () => {
           related={related}
           content={{ headline: "", subheadline: "", supportText: "", idealFor: [], whyChoose: [], dailyBenefits: [], urbanContext: { title: "", body: "", highlights: [] }, specContexts: {}, differentials: { title: "", body: "" }, comparisonTip: "", faq: [], finalCta: { title: "", subtitle: "" } }}
         />
-        <HomeFooter onContactClick={() => setContactOpen(true)} />
+        <HomeFooter onContactClick={() => setContactOpen(true)} onSupportClick={(s) => { setContactSubject(s); setContactOpen(true); }} />
       </div>
       <FloatingWhatsApp />
-      <PopUpContato01 isOpen={contactOpen} onClose={() => setContactOpen(false)} />
+      <PopUpContato01 isOpen={contactOpen} onClose={() => { setContactOpen(false); setContactSubject(undefined); }} initialSubject={contactSubject} />
       <PopUpContatoProduto isOpen={productContactOpen} onClose={() => setProductContactOpen(false)} product={product} selectedColor={selectedColor} />
     </div>
   );
