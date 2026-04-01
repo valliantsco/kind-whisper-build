@@ -190,9 +190,9 @@ const Header = ({ onContactClick }: HeaderProps) => {
 
           {/* Header bar */}
           <div className="relative flex items-center justify-between px-5 py-3">
-            <a href="/">
+            <button onClick={() => navigate("/")} className="cursor-pointer bg-transparent border-none p-0">
               <img src={logoWhite} alt="MS Eletric" className="w-auto" style={{ height: "2.53rem" }} />
-            </a>
+            </button>
 
             <nav className="hidden lg:flex items-center gap-4 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
               {NAV_ITEMS.map((item) => (
