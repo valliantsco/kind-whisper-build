@@ -77,7 +77,7 @@ const AnimatedStat = ({ value, label }: { value: string; label: string }) => {
       <span className="text-xl md:text-3xl font-black text-primary tabular-nums">
         {count}{suffix}
       </span>
-      <span className="text-[11px] md:text-xs uppercase tracking-[0.15em] text-primary-foreground/35 font-medium">
+      <span className="text-[9px] md:text-xs uppercase tracking-[0.15em] text-primary-foreground/35 font-medium text-center">
         {label}
       </span>
     </div>
