@@ -150,13 +150,13 @@ const WhyChoose = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
-          className="mb-12 md:mb-16"
+          className="mb-12 md:mb-16 text-right"
         >
-          <div className="flex items-center gap-3 mb-6">
-            <div className="w-8 h-px bg-primary" />
+          <div className="flex items-center gap-3 mb-6 justify-end">
             <span className="text-[13px] font-bold uppercase tracking-[0.2em] text-primary">
               Diferenciais
             </span>
+            <div className="w-8 h-px bg-primary" />
           </div>
 
           <h2 className="font-display font-black text-4xl md:text-5xl lg:text-6xl text-primary-foreground uppercase tracking-tight leading-[0.95]">
@@ -172,7 +172,7 @@ const WhyChoose = () => {
             </span>
           </h2>
 
-          <p className="text-sm md:text-base text-primary-foreground/45 leading-relaxed mt-4 max-w-lg">
+          <p className="text-sm md:text-base text-primary-foreground/45 leading-relaxed mt-4 max-w-lg ml-auto">
             Compromisso com qualidade, suporte e inovação em cada detalhe.
           </p>
         </motion.div>
