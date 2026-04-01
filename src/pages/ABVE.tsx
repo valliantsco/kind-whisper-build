@@ -121,7 +121,7 @@ export default function ABVE() {
               </motion.div>
 
               <motion.h1 variants={fadeUp} custom={1}
-                className="font-display font-black text-4xl md:text-6xl lg:text-7xl text-primary-foreground uppercase tracking-tight leading-[0.92] mb-8">
+                className="font-display font-black text-3xl md:text-6xl lg:text-7xl text-primary-foreground uppercase tracking-tight leading-[0.92] mb-6 md:mb-8">
                 Parte do ecossistema{" "}
                 <span className="bg-clip-text text-transparent"
                   style={{ backgroundImage: "linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)))" }}>
