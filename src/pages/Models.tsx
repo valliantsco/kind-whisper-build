@@ -140,7 +140,7 @@ const Models = () => {
                           : "hsl(0 0% 100% / 0.04)",
                         border: `1px solid ${isActive ? "hsl(var(--primary) / 0.4)" : "hsl(0 0% 100% / 0.06)"}`,
                         color: isActive ? "hsl(0 0% 100%)" : "hsl(0 0% 100% / 0.5)",
-                        boxShadow: isActive ? "0 4px 14px hsl(var(--primary) / 0.25)" : "none",
+                        boxShadow: "none",
                       }}
                     >
                       {cat}
