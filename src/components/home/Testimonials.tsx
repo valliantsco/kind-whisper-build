@@ -3,14 +3,14 @@ import { ChevronLeft, ChevronRight, ExternalLink, Star } from "lucide-react";
 import { useRef, useState, useCallback, useEffect, useMemo } from "react";
 import InfluencerVideoModal, { type VideoSource } from "./InfluencerVideoModal";
 import InfluencerPreviewMedia from "./InfluencerPreviewMedia";
-import rafaKalimannAvatar from "@/assets/influencers/rafa-kalimann.png";
-import tataEstanieckiAvatar from "@/assets/influencers/tata-estaniecki.jpg";
-import enzoRabeloAvatar from "@/assets/influencers/enzo-rabelo.jpg";
-import jhonathanCoelhoAvatar from "@/assets/influencers/jhonathan-coelho.jpg";
-import jacquesVanierAvatar from "@/assets/influencers/jacques-vanier.jpg";
-import brunoDoBemAvatar from "@/assets/influencers/bruno-do-bem.jpg";
-import cocieloAvatar from "@/assets/influencers/cocielo.jpg";
-import gustavoMeloAvatar from "@/assets/influencers/gustavo-melo.png";
+import rafaKalimannAvatar from "@/assets/influencers/rafa-kalimann.webp";
+import tataEstanieckiAvatar from "@/assets/influencers/tata-estaniecki.webp";
+import enzoRabeloAvatar from "@/assets/influencers/enzo-rabelo.webp";
+import jhonathanCoelhoAvatar from "@/assets/influencers/jhonathan-coelho.webp";
+import jacquesVanierAvatar from "@/assets/influencers/jacques-vanier.webp";
+import brunoDoBemAvatar from "@/assets/influencers/bruno-do-bem.webp";
+import cocieloAvatar from "@/assets/influencers/cocielo.webp";
+import gustavoMeloAvatar from "@/assets/influencers/gustavo-melo.webp";
 
 interface Influencer {
   name: string;
@@ -84,7 +84,77 @@ const AnimatedStat = ({ value, label }: { value: string; label: string }) => {
   );
 };
 
+/* ── Lazy-loaded influencer card ── */
+const InfluencerCard = ({ inf, index }: { inf: Influencer; index: number }) => {
+  const cardRef = useRef<HTMLDivElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const el = cardRef.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          obs.disconnect();
+        }
+      },
+      { rootMargin: "200px" },
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
+
+  return (
+    <motion.div
+      ref={cardRef}
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay: index * 0.06, duration: 0.35 }}
+      className="relative flex-shrink-0 snap-center rounded-2xl overflow-hidden group cursor-default transition-transform duration-300 ease-out hover:scale-105"
+      style={{ width: "clamp(180px, 42vw, 220px)", aspectRatio: "9/16" }}
+    >
+      <div className="absolute inset-0 overflow-hidden rounded-2xl bg-foreground" style={{ zIndex: 1 }}>
+        {isVisible && inf.videos.length > 0 ? (
+          <InfluencerPreviewMedia videos={inf.videos} name={inf.name} scale={inf.previewScale} />
+        ) : (
+          <img
+            src={inf.avatarImg}
+            alt={inf.name}
+            className="w-full h-full object-cover"
+            loading="lazy"
+            decoding="async"
+          />
+        )}
+      </div>
+
+      <div
+        className="absolute inset-0 pointer-events-none rounded-2xl"
+        style={{ zIndex: 2, boxShadow: "inset 0 0 40px 15px hsl(0 0% 6% / 0.9), inset 0 0 80px 30px hsl(0 0% 6% / 0.5)" }}
+      />
+
+      <div className="absolute bottom-3.5 left-3.5 flex items-center gap-2.5" style={{ zIndex: 20 }}>
+        <div className="w-11 h-11 rounded-full p-[2px] shrink-0" style={{ background: "linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)))" }}>
+          <div className="w-full h-full rounded-full overflow-hidden">
+            <img src={inf.avatarImg} alt={inf.name} className="w-full h-full object-cover rounded-full" />
+          </div>
+        </div>
+        <div className="min-w-0">
+          <p className="text-sm font-bold text-primary-foreground truncate leading-tight" style={{ textShadow: "0 1px 6px hsl(0 0% 0% / 0.9)" }}>
+            {inf.name}
+          </p>
+          <p className="text-xs text-primary-foreground/50 truncate" style={{ textShadow: "0 1px 4px hsl(0 0% 0% / 0.7)" }}>
+            {inf.views}
+          </p>
+        </div>
+      </div>
+    </motion.div>
+  );
+};
+
 const Testimonials = () => {
+
   const scrollRef = useRef<HTMLDivElement>(null);
   const [activeInfluencer, setActiveInfluencer] = useState<number | null>(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
@@ -251,59 +321,9 @@ const Testimonials = () => {
             }}
           >
             {INFLUENCERS.map((inf, i) => (
-              <motion.div
-                key={inf.name}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.06, duration: 0.35 }}
-                className="relative flex-shrink-0 snap-center rounded-2xl overflow-hidden group cursor-default transition-transform duration-300 ease-out hover:scale-105"
-                style={{
-                  width: "clamp(180px, 42vw, 220px)",
-                  aspectRatio: "9/16",
-                }}
-              >
-                <div className="absolute inset-0 overflow-hidden rounded-2xl bg-foreground" style={{ zIndex: 1 }}>
-                  {inf.videos.length > 0 ? (
-                    <InfluencerPreviewMedia videos={inf.videos} name={inf.name} scale={inf.previewScale} />
-                  ) : (
-                    <img
-                      src={inf.avatarImg}
-                      alt={inf.name}
-                      className="w-full h-full object-cover"
-                      loading="lazy"
-                      decoding="async"
-                    />
-                  )}
-                </div>
-
-                {/* Vignette */}
-                <div
-                  className="absolute inset-0 pointer-events-none rounded-2xl"
-                  style={{
-                    zIndex: 2,
-                    boxShadow: "inset 0 0 40px 15px hsl(0 0% 6% / 0.9), inset 0 0 80px 30px hsl(0 0% 6% / 0.5)",
-                  }}
-                />
-
-                {/* Bottom info */}
-                <div className="absolute bottom-3.5 left-3.5 flex items-center gap-2.5" style={{ zIndex: 20 }}>
-                  <div className="w-11 h-11 rounded-full p-[2px] shrink-0" style={{ background: "linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)))" }}>
-                    <div className="w-full h-full rounded-full overflow-hidden">
-                      <img src={inf.avatarImg} alt={inf.name} className="w-full h-full object-cover rounded-full" />
-                    </div>
-                  </div>
-                  <div className="min-w-0">
-                    <p className="text-sm font-bold text-primary-foreground truncate leading-tight" style={{ textShadow: "0 1px 6px hsl(0 0% 0% / 0.9)" }}>
-                      {inf.name}
-                    </p>
-                    <p className="text-xs text-primary-foreground/50 truncate" style={{ textShadow: "0 1px 4px hsl(0 0% 0% / 0.7)" }}>
-                      {inf.views}
-                    </p>
-                  </div>
-                </div>
-              </motion.div>
+              <InfluencerCard key={inf.name} inf={inf} index={i} />
             ))}
+
           </div>
 
           {/* Progress bar */}

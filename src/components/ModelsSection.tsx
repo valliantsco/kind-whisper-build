@@ -2,11 +2,11 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Bike, Zap, Shield, Package, Mountain, ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
 import { useRef, useState, useEffect } from "react";
-import categoryScooter from "@/assets/category-scooter.jpg";
-import categoryBike from "@/assets/category-bike.jpg";
-import categoryTricycle from "@/assets/category-tricycle.jpg";
-import categoryAutopropelido from "@/assets/category-autopropelido.jpg";
-import categoryMotocross from "@/assets/category-motocross.jpg";
+import categoryScooter from "@/assets/category-scooter.webp";
+import categoryBike from "@/assets/category-bike.webp";
+import categoryTricycle from "@/assets/category-tricycle.webp";
+import categoryAutopropelido from "@/assets/category-autopropelido.webp";
+import categoryMotocross from "@/assets/category-motocross.webp";
 
 const categories = [
   {

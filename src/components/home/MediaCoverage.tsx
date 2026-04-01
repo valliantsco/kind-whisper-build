@@ -1,9 +1,9 @@
 import { motion } from "framer-motion";
 import { ExternalLink, ArrowUpRight } from "lucide-react";
-import mediaFeatured from "@/assets/media/media-featured.jpg";
-import mediaConsumers from "@/assets/media/media-consumers.jpg";
-import mediaProduction from "@/assets/media/media-production.jpg";
-import mediaSustainability from "@/assets/media/media-sustainability.jpg";
+import mediaFeatured from "@/assets/media/media-featured.webp";
+import mediaConsumers from "@/assets/media/media-consumers.webp";
+import mediaProduction from "@/assets/media/media-production.webp";
+import mediaSustainability from "@/assets/media/media-sustainability.webp";
 
 interface MediaArticle {
   source: string;

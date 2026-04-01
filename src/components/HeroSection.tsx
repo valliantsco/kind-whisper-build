@@ -1,7 +1,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { Zap, Leaf, Shield, Pause, Play } from "lucide-react";
 import { useState, useEffect, useCallback, useRef } from "react";
-import heroBg from "@/assets/hero-bg.jpg";
+import heroBg from "@/assets/hero-bg.webp";
 
 const SLIDE_DURATION = 20000;
 
