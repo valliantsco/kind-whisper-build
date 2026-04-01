@@ -168,7 +168,27 @@ const SearchableFilterBar = ({
         )}
       </AnimatePresence>
 
-      {selectedCount > 0 && (
+      {/* Sort dropdown */}
+      <div className="relative shrink-0">
+        <div
+          className="flex items-center gap-1.5 cursor-pointer"
+        >
+          <ArrowUpDown className="w-3.5 h-3.5 text-primary-foreground/40" />
+          <select
+            value={sortBy}
+            onChange={(e) => setSortBy(e.target.value as SortOption)}
+            className="appearance-none bg-transparent text-[10px] font-semibold uppercase tracking-[0.12em] text-primary-foreground/50 outline-none cursor-pointer pr-1"
+            style={{ WebkitAppearance: "none" }}
+          >
+            {SORT_OPTIONS.map((opt) => (
+              <option key={opt.value} value={opt.value} className="bg-card text-foreground">
+                {opt.label}
+              </option>
+            ))}
+          </select>
+        </div>
+      </div>
+
         <div className="hidden md:flex items-center gap-2 shrink-0">
           <div
             className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[10px] font-semibold uppercase tracking-wider"
