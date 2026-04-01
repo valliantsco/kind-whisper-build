@@ -198,7 +198,7 @@ export default function AnimatedProductBackground({ slug }: Props) {
       ctx.save();
       ctx.translate(el.x, el.y);
       ctx.rotate(el.rotation);
-      ctx.globalAlpha = el.opacity * (0.7 + 0.3 * Math.sin(time * 0.001 + el.x));
+      ctx.globalAlpha = el.opacity * 3 * (0.7 + 0.3 * Math.sin(time * 0.001 + el.x));
 
       if (el.blur > 0) {
         ctx.filter = `blur(${el.blur}px)`;
