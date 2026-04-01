@@ -7,7 +7,6 @@ import {
   Zap,
   Gauge,
   Weight,
-  Sparkles,
 } from "lucide-react";
 
 import modelS3k from "@/assets/models/model-s3k.png";
@@ -50,12 +49,6 @@ const SPECS = [
   { icon: Weight, key: "load" as const, label: "CARGA" },
 ];
 
-const FLOATING_ELEMENTS = [
-  { top: "6%", right: "8%", size: 14, delay: 0.3, opacity: 0.2 },
-  { top: "50%", left: "3%", size: 16, delay: 1.8, opacity: 0.18 },
-  { top: "85%", right: "5%", size: 12, delay: 2.5, opacity: 0.22 },
-];
-
 const ProductCarousel = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [scrollProgress, setScrollProgress] = useState(0);
@@ -89,90 +82,38 @@ const ProductCarousel = () => {
   };
 
   return (
-    <section
-      id="modelos"
-      className="relative py-14 md:py-20 overflow-hidden"
-      style={{ background: "hsl(0 0% 4%)" }}
-    >
-      {/* ── Layered background (matching WhyChoose) ── */}
-      <div
-        className="absolute -top-20 right-[10%] w-[1000px] h-[600px] pointer-events-none"
-        style={{
-          background: "radial-gradient(ellipse at center, hsl(var(--primary) / 0.08) 0%, transparent 60%)",
-          filter: "blur(120px)",
-        }}
-      />
-      <div
-        className="absolute bottom-0 left-0 w-[700px] h-[700px] pointer-events-none"
-        style={{
-          background: "radial-gradient(circle at 20% 80%, hsl(var(--primary) / 0.05) 0%, transparent 55%)",
-          filter: "blur(100px)",
-        }}
-      />
-      <div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] pointer-events-none"
-        style={{
-          background: "radial-gradient(ellipse at center, hsl(var(--primary) / 0.03) 0%, transparent 70%)",
-          filter: "blur(80px)",
-        }}
-      />
-      {/* Dot grid */}
-      <div
-        className="absolute inset-0 pointer-events-none opacity-[0.025]"
-        style={{
-          backgroundImage: "radial-gradient(circle, hsl(0 0% 100%) 1px, transparent 1px)",
-          backgroundSize: "28px 28px",
-        }}
-      />
-      {/* Diagonal gradient overlay */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background: "linear-gradient(160deg, hsl(0 0% 100% / 0.015) 0%, transparent 35%, hsl(var(--primary) / 0.025) 100%)",
-        }}
-      />
-      {/* Top-left accent line */}
-      <div
-        className="absolute top-0 left-0 w-[300px] md:w-[500px] h-[3px]"
-        style={{ background: "linear-gradient(90deg, hsl(var(--primary) / 0.6), transparent)" }}
-      />
-      {/* Bottom-right accent line */}
-      <div
-        className="absolute bottom-0 right-0 w-[300px] md:w-[500px] h-[3px]"
-        style={{ background: "linear-gradient(270deg, hsl(var(--primary) / 0.6), transparent)" }}
-      />
-
-      {/* ── Floating animated elements (matching WhyChoose) ── */}
-      {FLOATING_ELEMENTS.map((el, i) => (
+    <section id="modelos" className="relative py-14 md:py-20 overflow-hidden">
+      {/* ── Section-specific effect: speed lines / motion trails ── */}
+      {[15, 35, 55, 75, 90].map((top, i) => (
         <motion.div
           key={i}
-          className="absolute pointer-events-none"
+          className="absolute pointer-events-none h-[1px]"
           style={{
-            top: el.top,
-            left: (el as any).left,
-            right: (el as any).right,
+            top: `${top}%`,
+            left: 0,
+            right: 0,
+            background: `linear-gradient(90deg, transparent, hsl(var(--primary) / ${0.04 + i * 0.01}), transparent)`,
           }}
-          animate={{
-            y: [0, -12, 0],
-            opacity: [el.opacity, el.opacity * 1.6, el.opacity],
-          }}
-          transition={{
-            duration: 4,
-            repeat: Infinity,
-            delay: el.delay,
-            ease: "easeInOut",
-          }}
-        >
-          {i % 2 === 0 ? (
-            <Sparkles className="text-primary" style={{ width: el.size, height: el.size }} />
-          ) : (
-            <Zap className="text-primary" style={{ width: el.size, height: el.size }} />
-          )}
-        </motion.div>
+          initial={{ scaleX: 0, originX: i % 2 === 0 ? 0 : 1 }}
+          whileInView={{ scaleX: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: i * 0.15, duration: 1.2, ease: "easeOut" }}
+        />
       ))}
 
+      {/* Speedometer-like arc glow */}
+      <div
+        className="absolute -right-32 top-1/4 w-[500px] h-[500px] pointer-events-none"
+        style={{
+          background:
+            "conic-gradient(from 180deg, transparent, hsl(var(--primary) / 0.04), transparent)",
+          borderRadius: "50%",
+          filter: "blur(40px)",
+        }}
+      />
+
       <div className="container mx-auto px-4 relative">
-        {/* ── Header (matching WhyChoose) ── */}
+        {/* ── Header ── */}
         <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-12 md:mb-16 gap-6">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
@@ -285,10 +226,8 @@ const ProductCarousel = () => {
                     style={{
                       background: "hsl(0 0% 100% / 0.025)",
                       border: `1px solid ${isHovered ? "hsl(var(--primary) / 0.25)" : "hsl(0 0% 100% / 0.06)"}`,
-                      boxShadow: "none",
                     }}
                   >
-                    {/* Hover glow overlay */}
                     <div
                       className="absolute inset-0 pointer-events-none rounded-xl transition-opacity duration-500 z-[1]"
                       style={{
@@ -297,7 +236,6 @@ const ProductCarousel = () => {
                       }}
                     />
 
-                    {/* Top accent line */}
                     <div
                       className="absolute top-0 left-2 right-2 h-[2px] rounded-full transition-all duration-500 z-[2]"
                       style={{
@@ -313,7 +251,6 @@ const ProductCarousel = () => {
                         className="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-500"
                         loading="lazy"
                       />
-                      {/* Category badge */}
                       <span
                         className="absolute top-3 left-3 px-2.5 py-0.5 rounded-md text-[9px] font-bold uppercase tracking-wider text-primary"
                         style={{
@@ -323,7 +260,6 @@ const ProductCarousel = () => {
                       >
                         {product.category}
                       </span>
-                      {/* Bottom gradient fade — matches card dark bg */}
                       <div
                         className="absolute bottom-0 left-0 right-0 h-8 pointer-events-none"
                         style={{ background: "linear-gradient(to top, hsl(0 0% 5% / 0.95), transparent)" }}
@@ -346,7 +282,6 @@ const ProductCarousel = () => {
                         </span>
                       </div>
 
-                      {/* Divider (matching WhyChoose) */}
                       <div
                         className="h-px mb-4 transition-all duration-500"
                         style={{
@@ -355,7 +290,6 @@ const ProductCarousel = () => {
                         }}
                       />
 
-                      {/* Specs row */}
                       <div
                         className="flex items-center gap-0 mb-4 py-3 rounded-lg"
                         style={{
@@ -382,7 +316,6 @@ const ProductCarousel = () => {
                         ))}
                       </div>
 
-                      {/* CTA (matching WhyChoose hover reveal) */}
                       <a
                         href="#contato"
                         className="flex items-center justify-center gap-2 w-full py-2.5 rounded-lg text-[11px] font-semibold uppercase tracking-[0.12em] text-primary-foreground/50 hover:text-primary hover:border-primary/30 transition-all duration-200"
@@ -420,14 +353,12 @@ const ProductCarousel = () => {
               border: "1px solid hsl(0 0% 100% / 0.06)",
             }}
           >
-            {/* Glow behind CTA */}
             <div
               className="absolute inset-0 pointer-events-none"
               style={{
                 background: "radial-gradient(ellipse at 60% 50%, hsl(var(--primary) / 0.06) 0%, transparent 70%)",
               }}
             />
-            {/* Top accent */}
             <div
               className="absolute top-0 left-0 right-0 h-[2px]"
               style={{
