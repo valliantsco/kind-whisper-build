@@ -23,7 +23,7 @@ function getWhatsAppLink(product: Product) {
   const msg = encodeURIComponent(
     `Olá! Tenho interesse no modelo *${product.name}* (${product.category}). Gostaria de mais informações sobre disponibilidade e condições de pagamento.`
   );
-  return `https://wa.me/5511999999999?text=${msg}`;
+  return `https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`;
 }
 
 const ProductDetail = () => {
