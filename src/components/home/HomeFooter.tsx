@@ -140,10 +140,10 @@ const HomeFooter = ({ onContactClick, onSupportClick }: HomeFooterProps) => {
             </h4>
             <ul className="space-y-2.5">
               {policyLinks.map((link) => (
-                <li key={link}>
-                  <a href="#" className="text-sm text-primary-foreground/40 hover:text-primary hover:translate-x-1 transition-all inline-block">
-                    {link}
-                  </a>
+                <li key={link.label}>
+                  <Link to={link.href} className="text-sm text-primary-foreground/40 hover:text-primary hover:translate-x-1 transition-all inline-block">
+                    {link.label}
+                  </Link>
                 </li>
               ))}
             </ul>
