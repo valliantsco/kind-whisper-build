@@ -402,9 +402,7 @@ const Models = () => {
       <FloatingWhatsApp />
       <PopUpContato01 isOpen={contactOpen} onClose={() => setContactOpen(false)} />
       <CompareModal open={compareOpen} onClose={() => setCompareOpen(false)} products={selectedProducts} />
-      {quizOpen && (
-        <QuizEngine config={msEletricQuizConfig} onClose={() => setQuizOpen(false)} />
-      )}
+      <QuizEngine config={msEletricQuizConfig} open={quizOpen} onOpenChange={setQuizOpen} />
     </div>
   );
 };
