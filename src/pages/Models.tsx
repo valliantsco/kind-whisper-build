@@ -611,7 +611,7 @@ const Models = () => {
       </AnimatePresence>
 
       <FloatingWhatsApp />
-      <PopUpContato01 isOpen={contactOpen} onClose={() => setContactOpen(false)} />
+      <PopUpContato01 isOpen={contactOpen} onClose={() => { setContactOpen(false); setContactSubject(undefined); }} initialSubject={contactSubject} />
       <CompareModal open={compareOpen} onClose={() => setCompareOpen(false)} products={selectedProducts} />
       <QuizEngine config={msEletricQuizConfig} open={quizOpen} onOpenChange={setQuizOpen} />
     </div>

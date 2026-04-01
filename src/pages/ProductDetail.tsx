@@ -23,6 +23,7 @@ import AnimatedBackground from "@/components/home/AnimatedBackground";
 const ProductDetail = () => {
   const { slug } = useParams<{ slug: string }>();
   const [contactOpen, setContactOpen] = useState(false);
+  const [contactSubject, setContactSubject] = useState<string | undefined>();
   const [productContactOpen, setProductContactOpen] = useState(false);
   const [selectedColor, setSelectedColor] = useState<ProductColor | null>(null);
 

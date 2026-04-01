@@ -92,6 +92,7 @@ const STRUCTURE_ITEMS = [
 /* ═══════════════════════════════════════════════════════════════ */
 export default function ABVE() {
   const [contactOpen, setContactOpen] = useState(false);
+  const [contactSubject, setContactSubject] = useState<string | undefined>();
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
   const heroRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
