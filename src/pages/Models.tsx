@@ -13,6 +13,7 @@ import CompareModal from "@/components/models/CompareModal";
 import QuizEngine from "@/components/quiz/QuizEngine";
 import { msEletricQuizConfig } from "@/components/QuizSection";
 import { PRODUCTS, CATEGORIES, type CategoryFilter, type Product } from "@/data/products";
+import AnimatedBackground from "@/components/home/AnimatedBackground";
 
 const SPECS = [
   { icon: Zap, key: "autonomy" as const, label: "Autonomia" },
@@ -306,6 +307,9 @@ const Models = () => {
           background: "linear-gradient(180deg, transparent 0%, hsl(0 0% 2% / 0.4) 40%, hsl(0 0% 3.5%) 60%, hsl(0 0% 5% / 0.3) 85%, hsl(0 0% 3.5%) 100%)",
         }}
       />
+
+      {/* Animated thematic elements */}
+      <AnimatedBackground />
 
       <div className="relative z-10">
         <Header onContactClick={() => setContactOpen(true)} />
