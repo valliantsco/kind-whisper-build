@@ -310,6 +310,11 @@ export const PRODUCTS: Product[] = [
     recharge: "6–7h",
     price: "R$ 15.990",
     description: "Estabilidade total com três rodas. Ideal para quem busca segurança e praticidade com motor elétrico.",
+    colors: [
+      { name: "Preto", hex: "#111111" },
+      { name: "Branco", hex: "#F5F5F5" },
+      { name: "Azul", hex: "#1D4ED8" },
+    ],
   },
 
   // ── Utilitários ──
