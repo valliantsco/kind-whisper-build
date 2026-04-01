@@ -69,9 +69,10 @@ export const PRODUCTS: Product[] = [
     price: "R$ 7.990",
     description: "Compacta e acessível, ideal para deslocamentos urbanos curtos com praticidade e economia no dia a dia.",
     colors: [
+      { name: "Cinza Claro", hex: "#C0C0C0" },
+      { name: "Bege", hex: "#D4C5A9" },
       { name: "Preto", hex: "#111111" },
-      { name: "Branco", hex: "#F5F5F5" },
-      { name: "Azul", hex: "#1D4ED8" },
+      { name: "Rosa", hex: "#F472B6" },
     ],
   },
   {
