@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ExternalLink, ArrowUpRight, Sparkles, Zap } from "lucide-react";
+import { ExternalLink, ArrowUpRight } from "lucide-react";
 import mediaFeatured from "@/assets/media/media-featured.jpg";
 import mediaConsumers from "@/assets/media/media-consumers.jpg";
 import mediaProduction from "@/assets/media/media-production.jpg";
