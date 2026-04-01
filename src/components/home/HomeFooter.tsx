@@ -8,36 +8,12 @@ const policyLinks = ["Política de privacidade", "Termos de uso"];
 
 const HomeFooter = () => {
   return (
-    <footer id="contato" className="text-primary-foreground relative overflow-hidden" style={{ background: "hsl(0 0% 4%)" }}>
+    <footer id="contato" className="text-primary-foreground relative overflow-hidden">
       {/* Top accent line */}
       <div
         className="h-[3px]"
         style={{
           background: "linear-gradient(90deg, transparent, hsl(var(--primary) / 0.6), hsl(var(--primary) / 0.6), transparent)",
-        }}
-      />
-
-      {/* Radial glows */}
-      <div
-        className="absolute top-0 left-1/3 w-[600px] h-[400px] pointer-events-none"
-        style={{
-          background: "radial-gradient(ellipse at center, hsl(var(--primary) / 0.06) 0%, transparent 60%)",
-          filter: "blur(100px)",
-        }}
-      />
-      <div
-        className="absolute bottom-0 right-[10%] w-[500px] h-[400px] pointer-events-none"
-        style={{
-          background: "radial-gradient(ellipse at center, hsl(var(--primary) / 0.04) 0%, transparent 55%)",
-          filter: "blur(80px)",
-        }}
-      />
-      {/* Dot grid */}
-      <div
-        className="absolute inset-0 pointer-events-none opacity-[0.025]"
-        style={{
-          backgroundImage: "radial-gradient(circle, hsl(0 0% 100%) 1px, transparent 1px)",
-          backgroundSize: "28px 28px",
         }}
       />
 
