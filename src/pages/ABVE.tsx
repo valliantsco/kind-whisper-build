@@ -136,7 +136,7 @@ export default function ABVE() {
               </motion.p>
 
               <motion.p variants={fadeUp} custom={3}
-                className="text-primary-foreground/40 text-base leading-relaxed max-w-2xl mb-10">
+                className="text-primary-foreground/40 text-sm md:text-base leading-relaxed max-w-2xl mb-8 md:mb-10">
                 Mais do que um reconhecimento institucional, essa conexão fortalece a presença da MS Eletric dentro de um setor em transformação e reforça sua relação com inovação, sustentabilidade e experiência real de mercado.
               </motion.p>
 
