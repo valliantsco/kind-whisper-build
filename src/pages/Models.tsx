@@ -163,30 +163,13 @@ const Models = () => {
                   />
                 </div>
 
-                {/* Category pills */}
-                <div className="flex items-center gap-1.5 overflow-x-auto scrollbar-hide pb-0.5 flex-1">
-                  <SlidersHorizontal className="w-3.5 h-3.5 text-primary-foreground/25 shrink-0 mr-1 hidden md:block" />
-                  {CATEGORIES.map((cat) => {
-                    const isActive = activeCategory === cat;
-                    return (
-                      <button
-                        key={cat}
-                        onClick={() => setActiveCategory(cat)}
-                        className="shrink-0 px-3.5 py-1.5 rounded-full text-[10px] font-semibold uppercase tracking-[0.12em] transition-all duration-200 cursor-pointer whitespace-nowrap"
-                        style={{
-                          background: isActive
-                            ? "linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)))"
-                            : "hsl(0 0% 100% / 0.03)",
-                          border: `1px solid ${isActive ? "hsl(var(--primary) / 0.4)" : "hsl(0 0% 100% / 0.05)"}`,
-                          color: isActive ? "hsl(0 0% 100%)" : "hsl(0 0% 100% / 0.45)",
-                        }}
-                      >
-                        {cat}
-                        <span className="ml-1 opacity-50">{categoryCount(cat)}</span>
-                      </button>
-                    );
-                  })}
-                </div>
+                {/* Category pills with scroll indicators */}
+                <CategoryPills
+                  categories={CATEGORIES}
+                  activeCategory={activeCategory}
+                  onSelect={setActiveCategory}
+                  categoryCount={categoryCount}
+                />
 
                 {/* Compare counter (desktop) */}
                 {selectedSlugs.length > 0 && (
