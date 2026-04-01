@@ -111,9 +111,15 @@ const MediaCoverage = () => {
           transition={{ duration: 0.6, delay: 0.1 }}
           className="block mb-6 group"
         >
-          <div className="relative rounded-2xl overflow-hidden">
-            {/* Image */}
-            <div className="relative aspect-[16/7] md:aspect-[21/9] overflow-hidden">
+          <div
+            className="rounded-2xl overflow-hidden flex flex-col"
+            style={{
+              background: "hsl(0 0% 100% / 0.025)",
+              border: "1px solid hsl(0 0% 100% / 0.06)",
+            }}
+          >
+            {/* Image — separate block */}
+            <div className="relative aspect-[16/9] md:aspect-[21/9] overflow-hidden">
               <img
                 src={FEATURED.image}
                 alt={FEATURED.headline}
@@ -122,39 +128,30 @@ const MediaCoverage = () => {
                 width={960}
                 height={540}
               />
-              {/* Gradient overlay */}
               <div
-                className="absolute inset-0"
-                style={{
-                  background: "linear-gradient(to top, hsl(0 0% 4% / 0.95) 0%, hsl(0 0% 4% / 0.6) 40%, hsl(0 0% 4% / 0.2) 70%, transparent 100%)",
-                }}
-              />
-              {/* Subtle primary glow */}
-              <div
-                className="absolute bottom-0 left-0 w-[400px] h-[200px] pointer-events-none"
-                style={{
-                  background: "radial-gradient(ellipse at bottom left, hsl(var(--primary) / 0.15), transparent 70%)",
-                }}
+                className="absolute inset-0 pointer-events-none"
+                style={{ background: "linear-gradient(to top, hsl(0 0% 4% / 0.4) 0%, transparent 50%)" }}
               />
             </div>
 
-            {/* Content overlay */}
-            <div className="absolute bottom-0 left-0 right-0 p-5 md:p-8">
-              <div className="flex items-center gap-3 mb-3">
+            {/* Content — below image */}
+            <div className="p-5 md:p-8">
+              <span className="text-[11px] text-primary-foreground/30">{FEATURED.date}</span>
+
+              <div className="flex items-center gap-3 mt-2 mb-3">
                 <span
                   className="px-3 py-1 rounded-md text-[10px] font-bold uppercase tracking-wider text-primary"
-                  style={{ background: "hsl(var(--primary) / 0.15)", backdropFilter: "blur(8px)" }}
+                  style={{ background: "hsl(var(--primary) / 0.1)" }}
                 >
                   {FEATURED.source}
                 </span>
-                <span className="text-[11px] text-primary-foreground/35">{FEATURED.date}</span>
               </div>
 
               <h3 className="text-lg md:text-2xl lg:text-3xl font-bold text-primary-foreground leading-snug max-w-3xl mb-2 group-hover:text-primary transition-colors duration-300">
                 {FEATURED.headline}
               </h3>
 
-              <p className="text-sm text-primary-foreground/45 leading-relaxed max-w-2xl hidden md:block">
+              <p className="text-sm text-primary-foreground/45 leading-relaxed max-w-2xl">
                 {FEATURED.excerpt}
               </p>
 
