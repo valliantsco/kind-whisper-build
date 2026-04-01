@@ -281,7 +281,7 @@ const ProductCarousel = () => {
                   style={{ width: "clamp(260px, 38vw, 290px)" }}
                 >
                   <div
-                    className="h-full rounded-xl transition-all duration-300 relative"
+                    className="h-full rounded-xl overflow-hidden transition-all duration-300 relative"
                     style={{
                       background: "hsl(0 0% 100% / 0.025)",
                       border: `1px solid ${isHovered ? "hsl(var(--primary) / 0.25)" : "hsl(0 0% 100% / 0.06)"}`,
