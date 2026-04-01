@@ -139,6 +139,12 @@ export const PRODUCTS: Product[] = [
     price: "R$ 15.990",
     badge: "Mais vendido",
     description: "O mais vendido da MS. Design moderno, motor potente de 800W e alta capacidade para uso versátil.",
+    colors: [
+      { name: "Preto", hex: "#111111" },
+      { name: "Branco", hex: "#F5F5F5" },
+      { name: "Cinza Grafite", hex: "#4B5563" },
+      { name: "Verde Militar", hex: "#3F5F3F" },
+    ],
   },
   {
     name: "Liberty Ultra",
