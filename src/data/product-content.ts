@@ -289,4 +289,143 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
         "Fale com um especialista da MS Electric e receba orientação personalizada sobre o modelo ideal para o seu dia a dia.",
     },
   },
+  "bike-500": {
+    headline: "Mais força e mais confiança para a sua rotina urbana",
+    subheadline:
+      "A Bike 500 entrega mais potência, mais capacidade de carga e uma proposta mais robusta para quem quer se deslocar pela cidade com mais estrutura e segurança no dia a dia.",
+    supportText:
+      "Se você sente que precisa de um modelo com mais corpo, mais presença e mais entrega real, a Bike 500 é o passo certo. Mais forte que os modelos de entrada, ela foi pensada para quem usa com frequência e não quer abrir mão de robustez.",
+    idealFor: [
+      {
+        icon: "route",
+        title: "Rotina urbana mais exigente",
+        desc: "Trajetos frequentes de até 50 km com mais confiança, mais estabilidade e mais sensação de solidez.",
+      },
+      {
+        icon: "sparkles",
+        title: "Mais robustez no dia a dia",
+        desc: "Para quem quer um veículo elétrico que transmita mais força e mais presença — sem ser excessivo.",
+      },
+      {
+        icon: "piggyBank",
+        title: "Melhor custo-benefício",
+        desc: "Motor de 500W e maior capacidade de carga pelo mesmo investimento da faixa intermediária. Entrega real pelo que você paga.",
+      },
+      {
+        icon: "city",
+        title: "Uso frequente com confiança",
+        desc: "Ideal para quem depende do veículo diariamente e quer mais tranquilidade em cada deslocamento.",
+      },
+    ],
+    whyChoose: [
+      {
+        title: "Proposta mais robusta",
+        desc: "Motor de 500W e capacidade para até 120 kg. A Bike 500 entrega mais força e mais estrutura do que os modelos de entrada — sem complicar o uso.",
+      },
+      {
+        title: "Melhor custo-benefício da faixa",
+        desc: "Mais potência e mais capacidade de carga pelo mesmo preço da Bike 400+. Uma escolha racional para quem compara com atenção.",
+      },
+      {
+        title: "Confiança para uso recorrente",
+        desc: "Um modelo que transmite mais solidez e mais segurança para quem usa todos os dias e precisa de consistência.",
+      },
+      {
+        title: "Manutenção simples",
+        desc: "100% elétrica, sem troca de óleo, sem velas, sem embreagem. A manutenção é mínima e o custo de uso é drasticamente menor.",
+      },
+      {
+        title: "Suporte MS Electric",
+        desc: "Garantia, assistência técnica e peças de reposição. Segurança na compra e acompanhamento real após a aquisição.",
+      },
+    ],
+    dailyBenefits: [
+      {
+        title: "Mais tranquilidade na rotina",
+        desc: "A sensação de pilotar um modelo mais robusto faz diferença para quem depende do veículo todos os dias.",
+      },
+      {
+        title: "Mais capacidade de carga",
+        desc: "Suporta até 120 kg — mais espaço para você, suas coisas e a realidade do uso urbano diário.",
+      },
+      {
+        title: "Motor que responde melhor",
+        desc: "500W entregam uma condução mais firme em subidas leves, arrancadas e situações do trânsito urbano.",
+      },
+      {
+        title: "Economia consistente",
+        desc: "Centavos de energia por dia, sem IPVA, sem combustível. A economia se acumula mês a mês.",
+      },
+      {
+        title: "Praticidade total",
+        desc: "Sem marcha, sem embreagem. Ligue e saia. A simplicidade de uso é a mesma dos modelos mais leves.",
+      },
+      {
+        title: "Recarregue sem sair de casa",
+        desc: "Tomada comum, de 7 a 8 horas. Conecte à noite, use pela manhã — sem filas, sem postos.",
+      },
+    ],
+    urbanContext: {
+      title: "Mais estrutura para quem vive a cidade de verdade",
+      body: "A Bike 500 foi projetada para quem precisa de mais do que o básico. Se a sua rotina exige uso frequente, mais capacidade e mais confiança em cada deslocamento, esse é o modelo que entrega mais sem complicar.",
+      highlights: [
+        "50 km de autonomia para cobrir a rotina com folga",
+        "Motor de 500W para mais firmeza na condução",
+        "Capacidade de até 120 kg para uso real",
+        "Proposta urbana com mais corpo e presença",
+      ],
+    },
+    specContexts: {
+      autonomy: "Faixa alinhada ao uso urbano com praticidade e folga para a rotina",
+      speed: "Boa leitura para deslocamentos frequentes na cidade",
+      motor: "Entrega coerente com a proposta mais robusta do modelo",
+      recharge: "Pensada para encaixar bem na rotina — conecte à noite, use pela manhã",
+      load: "Um dos pontos que reforçam a proposta mais forte do produto",
+    },
+    differentials: {
+      title: "Onde a Bike 500 se destaca na linha MS Electric",
+      body: "A Bike 500 é a escolha ideal para quem quer subir de nível dentro da mobilidade elétrica urbana, com mais força, mais sensação de robustez e mais confiança para o uso recorrente. Ela oferece o mesmo preço da Bike 400+, mas com motor mais potente e maior capacidade de carga — um custo-benefício difícil de ignorar para quem valoriza entrega real.",
+    },
+    comparisonTip:
+      "Se você busca o menor investimento, a Bike 350 é a porta de entrada. Se quer equilíbrio e refinamento, a Bike 400+ é uma opção. Mas se a prioridade é mais força, mais capacidade e melhor custo-benefício nessa faixa, a Bike 500 é a escolha mais racional. Para quem precisa de ainda mais autonomia, a Bike MS 600 leva a proposta ainda mais longe.",
+    faq: [
+      {
+        q: "A Bike 500 é indicada para qual tipo de uso?",
+        a: "Para uso urbano frequente e mais exigente — trajetos diários de até 50 km, com mais confiança, mais capacidade de carga e uma proposta mais robusta do que os modelos de entrada.",
+      },
+      {
+        q: "Qual a principal diferença dela em relação aos modelos mais básicos?",
+        a: "Motor de 500W (vs 350W ou 400W) e capacidade de carga de até 120 kg (vs 90–100 kg). A Bike 500 entrega mais força e mais estrutura pelo mesmo preço da Bike 400+.",
+      },
+      {
+        q: "Esse modelo faz sentido para quem usa todos os dias?",
+        a: "Sim. A Bike 500 foi pensada para uso recorrente. Mais potência e mais capacidade significam mais confiança e mais tranquilidade na rotina diária.",
+      },
+      {
+        q: "Como funciona a recarga?",
+        a: "Tomada comum (110V ou 220V), de 7 a 8 horas para carga completa. Conecte à noite e tenha o veículo pronto pela manhã.",
+      },
+      {
+        q: "A manutenção é cara ou complicada?",
+        a: "Não. 100% elétrica, sem troca de óleo, sem velas, sem embreagem. A manutenção é simples, barata e muito menos frequente do que em veículos a combustão.",
+      },
+      {
+        q: "Ela é indicada para quem busca mais robustez?",
+        a: "Sim. Dentro da linha de autopropelidos, a Bike 500 é o modelo que melhor combina força, capacidade e proposta urbana sólida — sem ser excessiva.",
+      },
+      {
+        q: "Como funciona a garantia?",
+        a: "A MS Electric oferece garantia de fábrica com suporte técnico e peças de reposição. Consulte um especialista para conhecer as condições completas.",
+      },
+      {
+        q: "Para quem a Bike 500 é a melhor escolha dentro da linha?",
+        a: "Para quem compara com atenção e quer a melhor relação entre potência, capacidade e preço. Se robustez e custo-benefício são prioridade, a Bike 500 se destaca.",
+      },
+    ],
+    finalCta: {
+      title: "Descubra se a Bike 500 combina com a sua rotina",
+      subtitle:
+        "Fale com um especialista da MS Electric e receba orientação personalizada sobre o modelo ideal para o seu dia a dia.",
+    },
+  },
 };
