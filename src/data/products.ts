@@ -69,9 +69,10 @@ export const PRODUCTS: Product[] = [
     price: "R$ 7.990",
     description: "Compacta e acessível, ideal para deslocamentos urbanos curtos com praticidade e economia no dia a dia.",
     colors: [
+      { name: "Cinza Claro", hex: "#C0C0C0" },
+      { name: "Bege", hex: "#D4C5A9" },
       { name: "Preto", hex: "#111111" },
-      { name: "Branco", hex: "#F5F5F5" },
-      { name: "Azul", hex: "#1D4ED8" },
+      { name: "Rosa", hex: "#F472B6" },
     ],
   },
   {
@@ -87,9 +88,11 @@ export const PRODUCTS: Product[] = [
     price: "R$ 10.990",
     description: "Mais autonomia e potência que a 350, perfeita para quem busca conforto em trajetos médios pela cidade.",
     colors: [
-      { name: "Preto", hex: "#111111" },
-      { name: "Branco", hex: "#F5F5F5" },
+      { name: "Verde Claro", hex: "#86EFAC" },
       { name: "Vermelho", hex: "#DC2626" },
+      { name: "Branco", hex: "#F5F5F5" },
+      { name: "Azul Claro", hex: "#7DD3FC" },
+      { name: "Rosa", hex: "#F472B6" },
     ],
   },
   {
@@ -105,8 +108,10 @@ export const PRODUCTS: Product[] = [
     price: "R$ 10.990",
     description: "Motor de 500W e maior capacidade de carga — excelente custo-benefício para uso diário intenso.",
     colors: [
+      { name: "Vermelho", hex: "#DC2626" },
       { name: "Preto", hex: "#111111" },
-      { name: "Azul", hex: "#1D4ED8" },
+      { name: "Laranja", hex: "#F97316" },
+      { name: "Verde Claro", hex: "#86EFAC" },
     ],
   },
   {
@@ -122,8 +127,9 @@ export const PRODUCTS: Product[] = [
     price: "R$ 11.990",
     description: "Top de linha da família Bike com 70 km de autonomia, ideal para quem roda longas distâncias diariamente.",
     colors: [
-      { name: "Preto", hex: "#111111" },
       { name: "Branco", hex: "#F5F5F5" },
+      { name: "Preto", hex: "#111111" },
+      { name: "Vermelho", hex: "#DC2626" },
     ],
   },
   {
@@ -140,10 +146,8 @@ export const PRODUCTS: Product[] = [
     badge: "Mais vendido",
     description: "O mais vendido da MS. Design moderno, motor potente de 800W e alta capacidade para uso versátil.",
     colors: [
-      { name: "Preto", hex: "#111111" },
-      { name: "Branco", hex: "#F5F5F5" },
-      { name: "Cinza Grafite", hex: "#4B5563" },
-      { name: "Verde Militar", hex: "#3F5F3F" },
+      { name: "Creme", hex: "#FFFDD0" },
+      { name: "Verde Claro", hex: "#86EFAC" },
     ],
   },
   {
@@ -159,11 +163,7 @@ export const PRODUCTS: Product[] = [
     price: "R$ 12.990",
     badge: "Mais vendido",
     description: "Motor de 1.000W com recarga rápida e carga de 150 kg — robustez e desempenho em um só veículo.",
-    colors: [
-      { name: "Preto", hex: "#111111" },
-      { name: "Branco", hex: "#F5F5F5" },
-      { name: "Vermelho", hex: "#DC2626" },
-    ],
+    colors: [],
   },
 
   // ── Bicicletas Elétricas ──
@@ -181,9 +181,7 @@ export const PRODUCTS: Product[] = [
     badge: "Novidade",
     description: "E-bike estilosa com visual retrô e performance moderna. Pedala com assistência ou acelera sem esforço.",
     colors: [
-      { name: "Preto", hex: "#111111" },
-      { name: "Areia", hex: "#C2B280" },
-      { name: "Verde Oliva", hex: "#556B2F" },
+      { name: "Azul Acinzentado", hex: "#6B7F99" },
     ],
   },
   {
@@ -200,7 +198,6 @@ export const PRODUCTS: Product[] = [
     badge: "Novidade",
     description: "Pneus largos fat bike com motor elétrico de 500W. Conforto extremo e presença marcante em qualquer terreno.",
     colors: [
-      { name: "Preto", hex: "#111111" },
       { name: "Branco", hex: "#F5F5F5" },
     ],
   },
@@ -220,8 +217,8 @@ export const PRODUCTS: Product[] = [
     description: "Scooter potente de 2.500W para quem precisa de velocidade real no trânsito urbano com zero emissão.",
     colors: [
       { name: "Preto", hex: "#111111" },
+      { name: "Azul", hex: "#1D4ED8" },
       { name: "Branco", hex: "#F5F5F5" },
-      { name: "Prata", hex: "#A8A9AD" },
     ],
   },
   {
@@ -236,11 +233,7 @@ export const PRODUCTS: Product[] = [
     recharge: "6–8h",
     price: "R$ 15.990",
     description: "Design clássico com tecnologia moderna. Uma scooter completa para substituir a moto no dia a dia.",
-    colors: [
-      { name: "Preto", hex: "#111111" },
-      { name: "Branco", hex: "#F5F5F5" },
-      { name: "Vermelho", hex: "#DC2626" },
-    ],
+    colors: [],
   },
   {
     name: "Holiday 1000",
@@ -254,10 +247,7 @@ export const PRODUCTS: Product[] = [
     recharge: "8–10h",
     price: "R$ 10.490",
     description: "Entrada acessível no mundo das scooters elétricas com conforto, economia e manutenção simples.",
-    colors: [
-      { name: "Preto", hex: "#111111" },
-      { name: "Branco", hex: "#F5F5F5" },
-    ],
+    colors: [],
   },
   {
     name: "Tour 3K",
@@ -273,8 +263,9 @@ export const PRODUCTS: Product[] = [
     highlight: "Custom / Chopper",
     description: "Visual custom chopper com motor de 3.000W e 75 km/h. Para quem quer estilo e potência elétrica.",
     colors: [
-      { name: "Preto Fosco", hex: "#1A1A1A" },
-      { name: "Cromado", hex: "#C0C0C0" },
+      { name: "Preto", hex: "#111111" },
+      { name: "Azul", hex: "#1D4ED8" },
+      { name: "Vermelho", hex: "#DC2626" },
     ],
   },
   {
@@ -291,9 +282,8 @@ export const PRODUCTS: Product[] = [
     highlight: "Performance esportiva",
     description: "A mais rápida do portfólio: 80 km/h, 85 km de autonomia e visual esportivo. Performance máxima.",
     colors: [
+      { name: "Branco", hex: "#F5F5F5" },
       { name: "Preto", hex: "#111111" },
-      { name: "Vermelho Racing", hex: "#B91C1C" },
-      { name: "Azul Metálico", hex: "#1E40AF" },
     ],
   },
 
@@ -311,9 +301,8 @@ export const PRODUCTS: Product[] = [
     price: "R$ 15.990",
     description: "Estabilidade total com três rodas. Ideal para quem busca segurança e praticidade com motor elétrico.",
     colors: [
-      { name: "Preto", hex: "#111111" },
-      { name: "Branco", hex: "#F5F5F5" },
-      { name: "Azul", hex: "#1D4ED8" },
+      { name: "Creme", hex: "#FFFDD0" },
+      { name: "Verde Claro", hex: "#86EFAC" },
     ],
   },
 
@@ -331,7 +320,7 @@ export const PRODUCTS: Product[] = [
     price: "R$ 18.990",
     description: "Feita para entregas profissionais. Motor potente, alta autonomia e velocidade para otimizar suas rotas.",
     colors: [
-      { name: "Preto", hex: "#111111" },
+      { name: "Amarelo", hex: "#FACC15" },
       { name: "Branco", hex: "#F5F5F5" },
     ],
   },
@@ -348,7 +337,8 @@ export const PRODUCTS: Product[] = [
     price: "R$ 28.990",
     description: "Capacidade bruta de 400 kg para transporte pesado. A solução elétrica para logística e comércio.",
     colors: [
-      { name: "Preto", hex: "#111111" },
+      { name: "Verde Menta", hex: "#98D8C8" },
+      { name: "Bege", hex: "#D4C5A9" },
     ],
   },
 
@@ -366,9 +356,10 @@ export const PRODUCTS: Product[] = [
     price: "R$ 5.990",
     description: "Diversão off-road para os pequenos com motor de 800W, autonomia de 35 km e muita adrenalina elétrica.",
     colors: [
-      { name: "Verde", hex: "#16A34A" },
+      { name: "Verde Claro", hex: "#86EFAC" },
       { name: "Vermelho", hex: "#DC2626" },
       { name: "Azul", hex: "#2563EB" },
+      { name: "Laranja", hex: "#F97316" },
     ],
   },
   {
@@ -383,10 +374,7 @@ export const PRODUCTS: Product[] = [
     recharge: "3–5h",
     price: "R$ 1.999",
     description: "Drift kart elétrico para crianças. Seguro, divertido e perfeito para brincar em áreas planas.",
-    colors: [
-      { name: "Preto", hex: "#111111" },
-      { name: "Vermelho", hex: "#DC2626" },
-    ],
+    colors: [],
   },
 
   // ── Patinetes ──
@@ -402,8 +390,6 @@ export const PRODUCTS: Product[] = [
     recharge: "5–6h",
     price: "R$ 2.800",
     description: "Leve e dobrável, ideal para a última milha. Leve no metrô, no carro ou guarde em qualquer canto.",
-    colors: [
-      { name: "Preto", hex: "#111111" },
-    ],
+    colors: [],
   },
 ];
