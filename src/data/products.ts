@@ -272,6 +272,10 @@ export const PRODUCTS: Product[] = [
     price: "R$ 16.990",
     highlight: "Custom / Chopper",
     description: "Visual custom chopper com motor de 3.000W e 75 km/h. Para quem quer estilo e potência elétrica.",
+    colors: [
+      { name: "Preto Fosco", hex: "#1A1A1A" },
+      { name: "Cromado", hex: "#C0C0C0" },
+    ],
   },
   {
     name: "S3K",
