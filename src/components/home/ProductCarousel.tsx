@@ -318,7 +318,7 @@ const ProductCarousel = () => {
                       </div>
 
                       <a
-                        href="#contato"
+                        href={`/modelos/${product.slug}`}
                         className="flex items-center justify-center gap-2 w-full py-2.5 rounded-lg text-[11px] font-semibold uppercase tracking-[0.12em] text-primary-foreground/50 hover:text-primary hover:border-primary/30 transition-all duration-200"
                         style={{ border: "1px solid hsl(0 0% 100% / 0.08)" }}
                       >
