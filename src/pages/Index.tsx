@@ -18,7 +18,7 @@ const Index = () => {
     <div className="min-h-screen bg-foreground">
       <Header onContactClick={() => setContactOpen(true)} />
       <HeroSlideshow />
-      <SocialProofBadges />
+      
       <QuizCta />
       <ProductCarousel />
       <WhyChoose />
