@@ -41,6 +41,8 @@ const SLIDES: Slide[] = [
       "Autopropelidos, scooters, bicicletas e triciclos elétricos. Mais de 19 modelos para cada estilo de vida.",
     primaryCta: { text: "Explorar catálogo", href: "/modelos" },
     secondaryCta: { text: "Fazer o quiz", href: "#quiz" },
+    youtubeId: "aogNFr_-56w",
+    youtubeStart: 3,
   },
   {
     badge: "NOVIDADE",
