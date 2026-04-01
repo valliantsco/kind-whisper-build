@@ -330,6 +330,10 @@ export const PRODUCTS: Product[] = [
     recharge: "6–8h",
     price: "R$ 18.990",
     description: "Feita para entregas profissionais. Motor potente, alta autonomia e velocidade para otimizar suas rotas.",
+    colors: [
+      { name: "Preto", hex: "#111111" },
+      { name: "Branco", hex: "#F5F5F5" },
+    ],
   },
   {
     name: "Cargo",
