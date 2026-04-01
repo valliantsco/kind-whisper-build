@@ -845,4 +845,143 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
         "Fale com um especialista da MS Electric e receba orientação personalizada sobre o modelo ideal para o seu dia a dia.",
     },
   },
+  "santa-monica": {
+    headline: "Liberdade sobre duas rodas, com assistência elétrica",
+    subheadline:
+      "A Santa Monica é uma e-bike urbana com visual retrô, motor de 500W e 60 km de autonomia — pensada para quem quer pedalar com mais liberdade, menos esforço e mais estilo na cidade.",
+    supportText:
+      "Pedal assistido ou acelerador direto: você escolhe como quer se mover. A Santa Monica combina a experiência natural da bicicleta com a conveniência da assistência elétrica, em um design que chama atenção por onde passa.",
+    idealFor: [
+      {
+        icon: "route",
+        title: "Deslocamentos urbanos leves",
+        desc: "Trajetos de até 60 km com assistência elétrica — trabalho, estudo, lazer e tarefas do dia a dia sem esforço.",
+      },
+      {
+        icon: "sparkles",
+        title: "Mobilidade com lifestyle",
+        desc: "Para quem quer se deslocar com mais estilo, mais leveza e uma experiência mais conectada ao ritmo da cidade.",
+      },
+      {
+        icon: "piggyBank",
+        title: "Economia e bem-estar",
+        desc: "Custo operacional quase zero e a possibilidade de se exercitar no caminho — saúde e economia juntas.",
+      },
+      {
+        icon: "city",
+        title: "Rotina urbana flexível",
+        desc: "Ideal para ciclovias, ruas e caminhos urbanos. Ágil, prática e fácil de integrar a qualquer rotina.",
+      },
+    ],
+    whyChoose: [
+      {
+        title: "Pedal assistido + acelerador",
+        desc: "Escolha entre pedalar com assistência elétrica ou acelerar sem esforço. Dois modos de uso em um único veículo.",
+      },
+      {
+        title: "Design retrô moderno",
+        desc: "Visual que combina nostalgia e modernidade. A Santa Monica é uma e-bike que chama atenção pelo bom gosto.",
+      },
+      {
+        title: "60 km de autonomia",
+        desc: "Liberdade para cobrir a maioria das rotinas urbanas sem se preocupar com a bateria.",
+      },
+      {
+        title: "Recarga em 5 horas",
+        desc: "A recarga mais rápida entre as e-bikes. Menos tempo parada, mais tempo disponível para uso.",
+      },
+      {
+        title: "Suporte MS Electric",
+        desc: "Garantia, assistência técnica e peças de reposição. Compra segura com acompanhamento real.",
+      },
+    ],
+    dailyBenefits: [
+      {
+        title: "Chegue sem suar",
+        desc: "A assistência elétrica elimina o esforço das subidas e dos trajetos mais longos. Você chega fresco ao destino.",
+      },
+      {
+        title: "Mais liberdade na cidade",
+        desc: "Ciclovias, ruas e caminhos alternativos. A Santa Monica amplia suas opções de trajeto e reduz o tempo no trânsito.",
+      },
+      {
+        title: "Exercício quando quiser",
+        desc: "Pedale com ou sem assistência. Nos dias que quiser se exercitar, basta reduzir o nível de assistência elétrica.",
+      },
+      {
+        title: "Estacione em qualquer lugar",
+        desc: "Uma bicicleta elétrica ocupa uma fração do espaço de um carro. Estacione fácil e sem custo.",
+      },
+      {
+        title: "Visual que inspira",
+        desc: "O design retrô moderno da Santa Monica transforma cada trajeto em um momento mais agradável e mais pessoal.",
+      },
+      {
+        title: "Recarregue com praticidade",
+        desc: "5 horas na tomada comum. Conecte ao chegar e tenha a e-bike pronta para a próxima saída.",
+      },
+    ],
+    urbanContext: {
+      title: "Sua cidade, no seu ritmo",
+      body: "A Santa Monica foi criada para quem vê a mobilidade como parte do estilo de vida. Se você quer se mover pela cidade com mais liberdade, mais leveza e mais prazer, essa é a e-bike que transforma deslocamentos em experiências.",
+      highlights: [
+        "E-bike com pedal assistido e acelerador",
+        "60 km de autonomia para cobrir a rotina com folga",
+        "Design retrô moderno que se destaca na cidade",
+        "Recarga em apenas 5 horas",
+      ],
+    },
+    specContexts: {
+      autonomy: "Faixa pensada para acompanhar deslocamentos urbanos com mais liberdade",
+      speed: "Boa relação para uma mobilidade leve e eficiente na cidade",
+      motor: "Entrega coerente com a proposta prática e fluida do modelo",
+      recharge: "A recarga mais rápida entre as e-bikes — encaixa fácil na rotina",
+      load: "Compatível com a proposta funcional e versátil da bicicleta elétrica",
+    },
+    differentials: {
+      title: "Onde a Santa Monica se destaca na linha MS Electric",
+      body: "A Santa Monica é a escolha certa para quem quer uma mobilidade elétrica mais leve, mais livre e mais conectada ao ritmo da cidade. Dentro do portfólio, ela ocupa o espaço da e-bike urbana com personalidade — unindo praticidade, estilo de vida e uso inteligente em um design que marca presença.",
+    },
+    comparisonTip:
+      "Se você busca uma proposta mais robusta com pneus largos e presença off-road, a Big Sur pode ser o caminho. Mas se leveza, versatilidade e um visual retrô moderno são o que importa, a Santa Monica é a e-bike que mais entrega nessa direção.",
+    faq: [
+      {
+        q: "A Santa Monica é indicada para qual tipo de uso?",
+        a: "Para deslocamentos urbanos leves e práticos — trabalho, estudo, lazer e tarefas do dia a dia. Com pedal assistido e acelerador, ela se adapta a diferentes situações e níveis de esforço.",
+      },
+      {
+        q: "Essa bicicleta elétrica faz sentido para deslocamentos urbanos?",
+        a: "Sim. A Santa Monica foi pensada exatamente para isso — 60 km de autonomia, motor de 500W e design compacto para circular com agilidade pela cidade.",
+      },
+      {
+        q: "Qual o diferencial dela em relação a outros modelos da linha?",
+        a: "Ela é uma e-bike com pedal assistido e acelerador, visual retrô moderno e proposta mais leve. Diferente dos autopropelidos, permite pedalar com ou sem assistência elétrica.",
+      },
+      {
+        q: "Ela é uma boa escolha para quem quer mais leveza e praticidade?",
+        a: "Com certeza. A Santa Monica combina a experiência natural da bicicleta com a conveniência da assistência elétrica — mais leve e mais versátil do que um autopropelido.",
+      },
+      {
+        q: "Como funciona a recarga?",
+        a: "Tomada comum (110V ou 220V), em apenas 5 horas para carga completa — a mais rápida da categoria e-bikes. Conecte e use.",
+      },
+      {
+        q: "Como é a manutenção?",
+        a: "Simples. Componentes elétricos com manutenção mínima, combinados com a manutenção convencional de bicicleta (freios, pneus, corrente).",
+      },
+      {
+        q: "Como funciona a garantia?",
+        a: "A MS Electric oferece garantia de fábrica com suporte técnico e peças de reposição. Consulte um especialista para conhecer as condições.",
+      },
+      {
+        q: "Para quem a Santa Monica é a melhor escolha dentro do portfólio?",
+        a: "Para quem quer uma e-bike urbana com personalidade, versatilidade e estilo. Se mobilidade leve, liberdade e lifestyle importam, a Santa Monica é a resposta.",
+      },
+    ],
+    finalCta: {
+      title: "Descubra se a Santa Monica combina com a sua rotina",
+      subtitle:
+        "Fale com um especialista da MS Electric e receba orientação personalizada sobre o modelo ideal para o seu dia a dia.",
+    },
+  },
 };
