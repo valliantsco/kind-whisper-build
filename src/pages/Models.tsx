@@ -24,7 +24,7 @@ const SPECS = [
 
 const MAX_COMPARE = 3;
 
-/* ── Category Pills with scroll arrows ── */
+/* ── Category Pills (swipe only) ── */
 const CategoryPills = ({
   categories,
   activeCategory,
@@ -35,127 +35,36 @@ const CategoryPills = ({
   activeCategory: CategoryFilter;
   onSelect: (cat: CategoryFilter) => void;
   categoryCount: (cat: CategoryFilter) => number;
-}) => {
-  const scrollRef = useRef<HTMLDivElement>(null);
-  const [canLeft, setCanLeft] = useState(false);
-  const [canRight, setCanRight] = useState(false);
-
-  const check = () => {
-    if (!scrollRef.current) return;
-    const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
-    setCanLeft(scrollLeft > 2);
-    setCanRight(scrollLeft + clientWidth < scrollWidth - 2);
-  };
-
-  useEffect(() => {
-    check();
-    const el = scrollRef.current;
-    if (el) {
-      const ro = new ResizeObserver(check);
-      ro.observe(el);
-      return () => ro.disconnect();
-    }
-  }, []);
-
-  const scroll = (dir: "left" | "right") => {
-    const container = scrollRef.current;
-    if (!container) return;
-    const pills = Array.from(container.children) as HTMLElement[];
-    const { scrollLeft, clientWidth } = container;
-
-    if (dir === "right") {
-      const target = pills.find(
-        (el) => el.offsetLeft + el.offsetWidth > scrollLeft + clientWidth + 1
-      );
-      if (target) {
-        container.scrollTo({ left: target.offsetLeft, behavior: "smooth" });
-      }
-    } else {
-      const target = [...pills].reverse().find((el) => el.offsetLeft < scrollLeft - 1);
-      if (target) {
-        const dest = target.offsetLeft + target.offsetWidth - clientWidth;
-        container.scrollTo({ left: Math.max(0, dest), behavior: "smooth" });
-      } else {
-        container.scrollTo({ left: 0, behavior: "smooth" });
-      }
-    }
-    setTimeout(check, 350);
-  };
-
-  return (
-    <div className="relative flex items-center gap-1 flex-1 min-w-0">
-      <SlidersHorizontal className="w-3.5 h-3.5 text-primary-foreground/25 shrink-0 mr-1 hidden md:block" />
-
-      {/* Left arrow */}
-      <AnimatePresence>
-        {canLeft && (
-          <motion.button
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={() => scroll("left")}
-            className="absolute left-0 md:left-5 z-10 flex items-center justify-center w-7 h-7 rounded-full cursor-pointer"
+}) => (
+  <div className="flex items-center gap-1 flex-1 min-w-0">
+    <SlidersHorizontal className="w-3.5 h-3.5 text-primary-foreground/25 shrink-0 mr-1 hidden md:block" />
+    <div
+      className="flex items-center gap-1.5 overflow-x-auto scrollbar-hide pb-0.5 flex-1 px-1"
+      style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+    >
+      {categories.map((cat) => {
+        const isActive = activeCategory === cat;
+        return (
+          <button
+            key={cat}
+            onClick={() => onSelect(cat)}
+            className="shrink-0 px-3.5 py-1.5 rounded-full text-[10px] font-semibold uppercase tracking-[0.12em] transition-all duration-200 cursor-pointer whitespace-nowrap"
             style={{
-              background: "hsl(0 0% 100% / 0.08)",
-              border: "1px solid hsl(0 0% 100% / 0.1)",
+              background: isActive
+                ? "linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)))"
+                : "hsl(0 0% 100% / 0.03)",
+              border: `1px solid ${isActive ? "hsl(var(--primary) / 0.4)" : "hsl(0 0% 100% / 0.05)"}`,
+              color: isActive ? "hsl(0 0% 100%)" : "hsl(0 0% 100% / 0.45)",
             }}
-            aria-label="Categorias anteriores"
           >
-            <ChevronLeft className="w-3.5 h-3.5 text-primary-foreground/60" />
-          </motion.button>
-        )}
-      </AnimatePresence>
-
-      <div
-        ref={scrollRef}
-        onScroll={check}
-        className={`flex items-center gap-1.5 overflow-x-auto scrollbar-hide pb-0.5 flex-1 transition-all ${canLeft ? "pl-9" : "pl-1"} ${canRight ? "pr-9" : "pr-1"}`}
-        style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
-      >
-        {categories.map((cat) => {
-          const isActive = activeCategory === cat;
-          return (
-            <button
-              key={cat}
-              onClick={() => onSelect(cat)}
-              className="shrink-0 px-3.5 py-1.5 rounded-full text-[10px] font-semibold uppercase tracking-[0.12em] transition-all duration-200 cursor-pointer whitespace-nowrap"
-              style={{
-                background: isActive
-                  ? "linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)))"
-                  : "hsl(0 0% 100% / 0.03)",
-                border: `1px solid ${isActive ? "hsl(var(--primary) / 0.4)" : "hsl(0 0% 100% / 0.05)"}`,
-                color: isActive ? "hsl(0 0% 100%)" : "hsl(0 0% 100% / 0.45)",
-              }}
-            >
-              {cat}
-              <span className="ml-1 opacity-50">{categoryCount(cat)}</span>
-            </button>
-          );
-        })}
-      </div>
-
-      {/* Right arrow */}
-      <AnimatePresence>
-        {canRight && (
-          <motion.button
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={() => scroll("right")}
-            className="absolute right-0 z-10 flex items-center justify-center w-7 h-7 rounded-full cursor-pointer"
-            style={{
-              background: "hsl(0 0% 100% / 0.08)",
-              border: "1px solid hsl(0 0% 100% / 0.1)",
-            }}
-            aria-label="Mais categorias"
-          >
-            <ChevronRight className="w-3.5 h-3.5 text-primary-foreground/60" />
-          </motion.button>
-        )}
-      </AnimatePresence>
+            {cat}
+            <span className="ml-1 opacity-50">{categoryCount(cat)}</span>
+          </button>
+        );
+      })}
     </div>
-  );
-};
+  </div>
+);
 
 
 const Models = () => {
