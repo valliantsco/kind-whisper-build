@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import logoWhite from "@/assets/ms-eletric-logo-white.png";
 import msShieldLogo from "@/assets/ms-shield-logo.png";
 import ctaRider from "@/assets/cta-rider.webp";
