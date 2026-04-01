@@ -389,6 +389,8 @@ const Models = () => {
                 categoryCount={categoryCount}
                 selectedCount={selectedSlugs.length}
                 maxCompare={MAX_COMPARE}
+                sortBy={sortBy}
+                setSortBy={setSortBy}
               />
             </div>
           </div>
