@@ -369,10 +369,10 @@ const ProductCarousel = () => {
             <div className="relative text-center md:text-left">
               <h3 className="font-display font-bold text-lg md:text-xl text-primary-foreground uppercase tracking-wide mb-1">
                 Ainda em dúvida?{" "}
-                <span className="text-primary">Compare modelos lado a lado.</span>
+                <span className="text-primary">Compare modelos lado a lado</span>
               </h3>
               <p className="text-sm text-primary-foreground/40 max-w-md">
-                Explore todos os veículos, filtre por categoria e compare especificações para escolher o ideal.
+                Visualize especificações, diferenciais e aplicações de forma simples para entender qual modelo combina melhor com a sua necessidade.
               </p>
             </div>
 
