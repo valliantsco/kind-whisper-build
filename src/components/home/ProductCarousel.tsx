@@ -258,7 +258,7 @@ const ProductCarousel = () => {
 
           <div
             ref={scrollRef}
-            className="flex gap-4 md:gap-5 overflow-x-auto snap-x snap-mandatory pb-4 scrollbar-hide"
+            className="flex gap-4 md:gap-5 overflow-x-auto snap-x snap-mandatory pb-16 scrollbar-hide"
             style={{
               scrollbarWidth: "none",
               msOverflowStyle: "none",
@@ -281,7 +281,7 @@ const ProductCarousel = () => {
                   style={{ width: "clamp(260px, 38vw, 290px)" }}
                 >
                   <div
-                    className="h-full rounded-xl transition-all duration-300 relative"
+                    className="h-full rounded-xl overflow-hidden transition-all duration-300 relative"
                     style={{
                       background: "hsl(0 0% 100% / 0.025)",
                       border: `1px solid ${isHovered ? "hsl(var(--primary) / 0.25)" : "hsl(0 0% 100% / 0.06)"}`,
@@ -300,7 +300,7 @@ const ProductCarousel = () => {
                       }}
                     />
 
-                    {/* Top accent line — outside overflow-hidden area */}
+                    {/* Top accent line */}
                     <div
                       className="absolute top-0 left-2 right-2 h-[2px] rounded-full transition-all duration-500 z-[2]"
                       style={{
@@ -309,7 +309,7 @@ const ProductCarousel = () => {
                     />
 
                     {/* Image area */}
-                    <div className="relative h-44 bg-white flex items-center justify-center overflow-hidden rounded-t-[11px] p-4">
+                    <div className="relative h-44 bg-white flex items-center justify-center overflow-hidden p-4">
                       <img
                         src={product.image}
                         alt={product.name}
