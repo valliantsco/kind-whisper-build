@@ -179,7 +179,7 @@ export default function AnimatedProductBackground({ slug }: Props) {
         }
         ctx.stroke();
       } else if (g.type === "hexagonal") {
-        ctx.fillStyle = `rgba(255,255,255,${g.opacity})`;
+        ctx.fillStyle = `rgba(255,255,255,${g.opacity * 3})`;
         const s = g.spacing;
         for (let row = 0; row < h / s + 1; row++) {
           for (let col = 0; col < w / s + 1; col++) {
