@@ -311,7 +311,7 @@ const Models = () => {
         <Header onContactClick={() => setContactOpen(true)} />
 
         {/* ══ HERO ══ */}
-        <section className="pt-32 pb-8 md:pt-40 md:pb-14 relative overflow-hidden">
+        <section className="pt-24 pb-8 md:pt-28 md:pb-14 relative overflow-hidden">
           {/* Accent line */}
           <motion.div
             className="absolute top-0 left-0 w-full h-px"
