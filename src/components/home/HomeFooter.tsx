@@ -5,7 +5,10 @@ import msLogo from "@/assets/ms-eletric-logo-white.png";
 const modelLinks = ["Scooters Elétricas", "Autopropelidos", "Bicicletas Elétricas", "Triciclos Elétricos", "Utilitários", "Linha Infantil", "Patinetes"];
 const institutionalLinks = ["Sobre a MS Eletric", "Parceria AIMA", "Associada ABVE"];
 const supportLinks = ["Assistência técnica", "Garantia de fábrica", "Peças de reposição", "Condições de pagamento"];
-const policyLinks = ["Política de privacidade", "Termos de uso"];
+const policyLinks = [
+  { label: "Política de privacidade", href: "/politica-de-privacidade" },
+  { label: "Termos de uso", href: "/termos-de-uso" },
+];
 
 interface HomeFooterProps {
   onContactClick?: () => void;
