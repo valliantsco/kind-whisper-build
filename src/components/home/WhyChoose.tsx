@@ -38,20 +38,31 @@ const WhyChoose = () => {
 
   return (
     <section id="por-que" className="relative py-14 md:py-20 overflow-hidden">
-      {/* ── Section-specific effect: shield / trust pattern ── */}
-      {/* Hexagonal grid pattern suggesting security/trust */}
-      <div
-        className="absolute inset-0 pointer-events-none opacity-[0.015]"
-        style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='100'%3E%3Cpath d='M28 66L0 50L0 16L28 0L56 16L56 50L28 66L28 100' fill='none' stroke='white' stroke-width='1'/%3E%3Cpath d='M28 0L28 34L0 50L0 84L28 100L56 84L56 50L28 34' fill='none' stroke='white' stroke-width='1'/%3E%3C/svg%3E")`,
-          backgroundSize: "56px 100px",
-        }}
-      />
+      {/* ── Section-specific effect: concentric shield rings ── */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none">
+        {[280, 420, 560].map((size, i) => (
+          <motion.div
+            key={i}
+            className="absolute rounded-full"
+            style={{
+              width: size,
+              height: size,
+              top: `calc(50% - ${size / 2}px)`,
+              left: `calc(50% - ${size / 2}px)`,
+              border: `1px solid hsl(var(--primary) / ${0.04 - i * 0.01})`,
+            }}
+            initial={{ scale: 0.8, opacity: 0 }}
+            whileInView={{ scale: 1, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: i * 0.2, duration: 1, ease: "easeOut" }}
+          />
+        ))}
+      </div>
 
       {/* Vertical accent line — left side, suggests stability */}
       <motion.div
         className="absolute left-[8%] top-[10%] w-[1px] pointer-events-none"
-        style={{ background: "linear-gradient(to bottom, transparent, hsl(var(--primary) / 0.15), transparent)" }}
+        style={{ background: "linear-gradient(to bottom, transparent, hsl(var(--primary) / 0.12), transparent)" }}
         initial={{ height: 0 }}
         whileInView={{ height: "80%" }}
         viewport={{ once: true }}
