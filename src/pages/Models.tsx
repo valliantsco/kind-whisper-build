@@ -177,6 +177,7 @@ const SearchableFilterBar = ({
 
 const Models = () => {
   const [contactOpen, setContactOpen] = useState(false);
+  const [contactSubject, setContactSubject] = useState<string | undefined>();
   const [activeCategory, setActiveCategory] = useState<CategoryFilter>("Todos");
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedSlugs, setSelectedSlugs] = useState<string[]>([]);
