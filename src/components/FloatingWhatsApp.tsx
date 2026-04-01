@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { MessageCircle } from "lucide-react";
 import { useBusinessHours } from "@/hooks/useBusinessHours";
+import { WHATSAPP_NUMBER } from "@/utils/form-helpers";
 
 interface FloatingWhatsAppProps {
   hidden?: boolean;
