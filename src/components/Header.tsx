@@ -170,12 +170,12 @@ const Header = ({ onContactClick }: HeaderProps) => {
         <div
           className="relative overflow-hidden transition-[border-radius] duration-300"
           style={{
-            background: "hsl(0 0% 14% / 0.92)",
-            backdropFilter: "blur(24px)",
-            WebkitBackdropFilter: "blur(24px)",
-            border: "1px solid hsl(0 0% 100% / 0.08)",
-            boxShadow: "0 6px 24px rgba(0,0,0,0.4), 0 2px 6px rgba(0,0,0,0.25)",
-            borderRadius: mobileMenuOpen ? "0.9rem 0.9rem 0.9rem 0.9rem" : "0.9rem",
+            background: "linear-gradient(135deg, hsl(0 0% 10% / 0.72), hsl(0 0% 14% / 0.68))",
+            backdropFilter: "blur(40px) saturate(1.4)",
+            WebkitBackdropFilter: "blur(40px) saturate(1.4)",
+            border: "1px solid hsl(0 0% 100% / 0.1)",
+            boxShadow: "0 8px 40px rgba(0,0,0,0.55), 0 2px 12px rgba(0,0,0,0.35), inset 0 1px 0 hsl(0 0% 100% / 0.06), inset 0 -1px 0 hsl(0 0% 0% / 0.2)",
+            borderRadius: mobileMenuOpen ? "0.9rem" : "0.9rem",
           }}
         >
           {/* Top accent line */}
