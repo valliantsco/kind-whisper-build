@@ -10,11 +10,11 @@ import { msEletricQuizConfig } from "@/components/QuizSection";
 import useMobileMenu from "@/components/MobileMenu";
 
 
-import categoryScooter from "@/assets/category-scooter.jpg";
-import categoryBike from "@/assets/category-bike.jpg";
-import categoryTricycle from "@/assets/category-tricycle.jpg";
-import categoryMotocross from "@/assets/category-motocross.jpg";
-import categoryAutopropelido from "@/assets/category-autopropelido.jpg";
+import categoryScooter from "@/assets/category-scooter.webp";
+import categoryBike from "@/assets/category-bike.webp";
+import categoryTricycle from "@/assets/category-tricycle.webp";
+import categoryMotocross from "@/assets/category-motocross.webp";
+import categoryAutopropelido from "@/assets/category-autopropelido.webp";
 
 interface HeaderProps {
   onContactClick?: () => void;

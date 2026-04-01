@@ -3,14 +3,14 @@ import { ChevronLeft, ChevronRight, ExternalLink, Star } from "lucide-react";
 import { useRef, useState, useCallback, useEffect, useMemo } from "react";
 import InfluencerVideoModal, { type VideoSource } from "./InfluencerVideoModal";
 import InfluencerPreviewMedia from "./InfluencerPreviewMedia";
-import rafaKalimannAvatar from "@/assets/influencers/rafa-kalimann.png";
-import tataEstanieckiAvatar from "@/assets/influencers/tata-estaniecki.jpg";
-import enzoRabeloAvatar from "@/assets/influencers/enzo-rabelo.jpg";
-import jhonathanCoelhoAvatar from "@/assets/influencers/jhonathan-coelho.jpg";
-import jacquesVanierAvatar from "@/assets/influencers/jacques-vanier.jpg";
-import brunoDoBemAvatar from "@/assets/influencers/bruno-do-bem.jpg";
-import cocieloAvatar from "@/assets/influencers/cocielo.jpg";
-import gustavoMeloAvatar from "@/assets/influencers/gustavo-melo.png";
+import rafaKalimannAvatar from "@/assets/influencers/rafa-kalimann.webp";
+import tataEstanieckiAvatar from "@/assets/influencers/tata-estaniecki.webp";
+import enzoRabeloAvatar from "@/assets/influencers/enzo-rabelo.webp";
+import jhonathanCoelhoAvatar from "@/assets/influencers/jhonathan-coelho.webp";
+import jacquesVanierAvatar from "@/assets/influencers/jacques-vanier.webp";
+import brunoDoBemAvatar from "@/assets/influencers/bruno-do-bem.webp";
+import cocieloAvatar from "@/assets/influencers/cocielo.webp";
+import gustavoMeloAvatar from "@/assets/influencers/gustavo-melo.webp";
 
 interface Influencer {
   name: string;

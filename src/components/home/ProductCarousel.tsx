@@ -9,16 +9,16 @@ import {
   Weight,
 } from "lucide-react";
 
-import modelS3k from "@/assets/models/model-s3k.png";
-import modelTour3k from "@/assets/models/model-tour-3k.png";
-import modelBliss from "@/assets/models/model-bliss-new.png";
-import modelNewHoliday from "@/assets/models/model-new-holiday.png";
-import modelRhino from "@/assets/models/model-rhino-new.png";
-import modelBike400 from "@/assets/models/model-bike-400.png";
-import modelSantaMonica from "@/assets/models/model-santa-monica-new.png";
-import modelTricycle from "@/assets/models/model-tricycle-new.png";
-import modelBigSur from "@/assets/models/model-big-sur-new.png";
-import modelLibertyUltra from "@/assets/models/model-liberty-ultra.png";
+import modelS3k from "@/assets/models/model-s3k.webp";
+import modelTour3k from "@/assets/models/model-tour-3k.webp";
+import modelBliss from "@/assets/models/model-bliss-new.webp";
+import modelNewHoliday from "@/assets/models/model-new-holiday.webp";
+import modelRhino from "@/assets/models/model-rhino-new.webp";
+import modelBike400 from "@/assets/models/model-bike-400.webp";
+import modelSantaMonica from "@/assets/models/model-santa-monica-new.webp";
+import modelTricycle from "@/assets/models/model-tricycle-new.webp";
+import modelBigSur from "@/assets/models/model-big-sur-new.webp";
+import modelLibertyUltra from "@/assets/models/model-liberty-ultra.webp";
 
 interface Product {
   name: string;

@@ -1,9 +1,9 @@
 import { motion, AnimatePresence } from "framer-motion";
-import categoryScooter from "@/assets/category-scooter.jpg";
-import categoryBike from "@/assets/category-bike.jpg";
-import categoryTricycle from "@/assets/category-tricycle.jpg";
-import categoryAutopropelido from "@/assets/category-autopropelido.jpg";
-import categoryMotocross from "@/assets/category-motocross.jpg";
+import categoryScooter from "@/assets/category-scooter.webp";
+import categoryBike from "@/assets/category-bike.webp";
+import categoryTricycle from "@/assets/category-tricycle.webp";
+import categoryAutopropelido from "@/assets/category-autopropelido.webp";
+import categoryMotocross from "@/assets/category-motocross.webp";
 
 export const categories = [
   { label: "Motos & Scooters", desc: "Cidade / Rotina", image: categoryScooter, href: "#modelos" },
