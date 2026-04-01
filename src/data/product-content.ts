@@ -154,4 +154,139 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
         "Fale com um especialista da MS Electric e receba orientação personalizada sobre o modelo ideal para o seu dia a dia.",
     },
   },
+  "bike-400": {
+    headline: "Equilíbrio urbano para quem quer mais do dia a dia",
+    subheadline:
+      "A Bike 400+ combina praticidade, visual e desempenho em um modelo pensado para quem usa a mobilidade elétrica com frequência — e quer uma experiência mais completa na cidade.",
+    supportText:
+      "Mais autonomia e mais potência do que a entrada da linha, sem perder a praticidade que faz da mobilidade elétrica uma escolha inteligente. Se você quer subir de nível no seu deslocamento urbano, a Bike 400+ é o passo certo.",
+    idealFor: [
+      {
+        icon: "route",
+        title: "Uso urbano frequente",
+        desc: "Trajetos recorrentes de até 50 km — trabalho, estudo, compromissos e tarefas espalhadas pela cidade.",
+      },
+      {
+        icon: "sparkles",
+        title: "Mais equilíbrio no dia a dia",
+        desc: "Para quem quer mais do que o básico: mais autonomia, mais potência e uma experiência de uso mais refinada.",
+      },
+      {
+        icon: "piggyBank",
+        title: "Economia com mais presença",
+        desc: "Custo operacional mínimo aliado a um visual e conjunto que valorizam a escolha.",
+      },
+      {
+        icon: "city",
+        title: "Rotina dinâmica na cidade",
+        desc: "Ágil, prática e com presença visual — combina com quem leva uma vida urbana moderna e funcional.",
+      },
+    ],
+    whyChoose: [
+      {
+        title: "Equilíbrio inteligente",
+        desc: "A Bike 400+ entrega mais autonomia e potência do que o modelo de entrada, sem complicar o uso. É o ponto certo entre custo, experiência e praticidade.",
+      },
+      {
+        title: "Experiência mais completa",
+        desc: "Mais conforto, mais fluidez na condução e um conjunto que faz diferença para quem usa com frequência.",
+      },
+      {
+        title: "Visual que valoriza",
+        desc: "Design urbano e contemporâneo. A Bike 400+ tem presença sem exagero — combina com quem valoriza forma e função.",
+      },
+      {
+        title: "Economia real",
+        desc: "Sem combustível, sem IPVA, manutenção simples. A economia aparece todo mês e se acumula rápido.",
+      },
+      {
+        title: "Suporte MS Electric",
+        desc: "Garantia, assistência técnica e peças de reposição. Você compra com segurança e conta com suporte real após a compra.",
+      },
+    ],
+    dailyBenefits: [
+      {
+        title: "Mais autonomia para a rotina",
+        desc: "50 km por carga significam ir e voltar do trabalho, resolver tarefas e ainda sobrar bateria — sem ansiedade.",
+      },
+      {
+        title: "Condução mais fluida",
+        desc: "O motor de 400W entrega respostas mais consistentes, tornando o uso diário mais agradável e confiável.",
+      },
+      {
+        title: "Praticidade sem esforço",
+        desc: "Sem embreagem, sem marcha, sem suar. Você chega ao destino com praticidade e sem complicação.",
+      },
+      {
+        title: "Estacione onde quiser",
+        desc: "Compacta e ágil o suficiente para se encaixar em qualquer vaga — ou simplesmente guardar dentro de casa.",
+      },
+      {
+        title: "Recarregue na tomada",
+        desc: "Tomada comum, de 7 a 8 horas. Conecte à noite, use pela manhã. Simples assim.",
+      },
+      {
+        title: "Menos gasto, mais liberdade",
+        desc: "Enquanto um carro custa R$ 15–30 por trajeto, a Bike 400+ custa centavos de energia por dia.",
+      },
+    ],
+    urbanContext: {
+      title: "Mobilidade que acompanha o seu ritmo",
+      body: "A Bike 400+ foi pensada para quem vive a cidade de verdade — com compromissos, horários e a necessidade de se deslocar com praticidade e estilo. Ela entrega o equilíbrio certo entre desempenho, visual e funcionalidade para quem quer mais do que apenas um meio de transporte.",
+      highlights: [
+        "50 km de autonomia para cobrir a rotina com folga",
+        "Ágil no trânsito e fácil de estacionar",
+        "Visual urbano que combina com uma vida moderna",
+        "Funcional para trabalho, estudo e lazer",
+      ],
+    },
+    specContexts: {
+      autonomy: "Faixa pensada para acompanhar deslocamentos urbanos com praticidade",
+      speed: "Boa relação para uso urbano eficiente e seguro",
+      motor: "Entrega equilibrada para a proposta do modelo",
+      recharge: "Rotina simples — conecte à noite e use pela manhã",
+      load: "Compatível com uma proposta urbana funcional",
+    },
+    differentials: {
+      title: "Onde a Bike 400+ se destaca na linha MS Electric",
+      body: "A Bike 400+ é uma escolha inteligente para quem quer mais equilíbrio, mais presença e uma experiência urbana mais completa — sem sair da proposta prática da mobilidade elétrica. Dentro do portfólio MS Electric, ela ocupa o espaço entre a entrada acessível e os modelos de maior robustez, entregando um conjunto mais refinado para quem usa com frequência e valoriza a qualidade do deslocamento diário.",
+    },
+    comparisonTip:
+      "Se o que você busca é o menor investimento possível, a Bike 350 pode ser a porta de entrada ideal. Mas se você quer mais autonomia, mais potência e uma experiência mais completa para o uso frequente, a Bike 400+ é o passo natural. Para quem precisa de ainda mais robustez, a Bike 500 e a Bike MS 600 ampliam as possibilidades.",
+    faq: [
+      {
+        q: "A Bike 400+ é indicada para qual tipo de uso?",
+        a: "Para uso urbano frequente — deslocamentos diários de até 50 km, como ir ao trabalho, faculdade, compromissos e tarefas pela cidade. Ela entrega mais autonomia e potência do que a entrada da linha, sem perder a praticidade.",
+      },
+      {
+        q: "Esse modelo faz sentido para quem usa todos os dias?",
+        a: "Sim. A Bike 400+ foi pensada exatamente para o uso recorrente. Com 50 km de autonomia e motor de 400W, ela acompanha a rotina urbana com mais folga e conforto do que um modelo mais básico.",
+      },
+      {
+        q: "Qual é a proposta dela em relação a um modelo mais básico?",
+        a: "A Bike 400+ entrega mais autonomia (50 km vs 40 km), mais potência (400W vs 350W) e uma experiência de condução mais refinada. É o passo natural para quem quer mais equilíbrio e confiança no uso diário.",
+      },
+      {
+        q: "Como funciona a recarga?",
+        a: "Basta conectar na tomada comum (110V ou 220V). A carga completa leva de 7 a 8 horas — ideal para carregar durante a noite e usar durante o dia.",
+      },
+      {
+        q: "A manutenção é complicada?",
+        a: "Não. Por ser 100% elétrica, a Bike 400+ não precisa de troca de óleo, velas ou embreagem. A manutenção é simples, barata e muito menos frequente do que em veículos a combustão.",
+      },
+      {
+        q: "Como funciona a garantia?",
+        a: "A MS Electric oferece garantia de fábrica com suporte técnico e peças de reposição. Consulte um especialista para conhecer as condições completas.",
+      },
+      {
+        q: "Para quem a Bike 400+ é a melhor escolha dentro da linha?",
+        a: "Para quem quer mais do que o básico, mas não precisa de um modelo de alta potência. A Bike 400+ é ideal para quem valoriza equilíbrio entre custo, experiência e praticidade no uso urbano frequente.",
+      },
+    ],
+    finalCta: {
+      title: "Descubra se a Bike 400+ combina com a sua rotina",
+      subtitle:
+        "Fale com um especialista da MS Electric e receba orientação personalizada sobre o modelo ideal para o seu dia a dia.",
+    },
+  },
 };
