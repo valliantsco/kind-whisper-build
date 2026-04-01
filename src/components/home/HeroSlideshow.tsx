@@ -145,7 +145,7 @@ const HeroSlideshow = () => {
           >
 
             {/* Headline */}
-            <h1 className="font-display font-black text-[clamp(2.5rem,8vw,6rem)] text-primary-foreground leading-[1.05] mb-5 md:mb-6 uppercase tracking-tight">
+            <h1 className="font-display font-black text-[clamp(2rem,6.4vw,4.8rem)] text-primary-foreground leading-[1.05] mb-4 md:mb-5 uppercase tracking-tight">
               {slide.headline.map((line, i) => (
                 <motion.span
                   key={i}
