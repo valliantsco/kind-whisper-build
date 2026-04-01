@@ -108,7 +108,7 @@ const SearchableFilterBar = ({
   };
 
   return (
-    <div className="flex items-center gap-3">
+    <div className="flex items-center justify-center gap-3">
       <AnimatePresence mode="wait">
         {searchOpen ? (
           <motion.div
