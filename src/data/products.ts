@@ -356,9 +356,10 @@ export const PRODUCTS: Product[] = [
     price: "R$ 5.990",
     description: "Diversão off-road para os pequenos com motor de 800W, autonomia de 35 km e muita adrenalina elétrica.",
     colors: [
-      { name: "Verde", hex: "#16A34A" },
+      { name: "Verde Claro", hex: "#86EFAC" },
       { name: "Vermelho", hex: "#DC2626" },
       { name: "Azul", hex: "#2563EB" },
+      { name: "Laranja", hex: "#F97316" },
     ],
   },
   {
