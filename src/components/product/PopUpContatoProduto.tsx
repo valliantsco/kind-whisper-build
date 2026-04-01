@@ -159,10 +159,25 @@ export default function PopUpContatoProduto({ isOpen, onClose, product, selected
               {/* Product badge */}
               <div className="mx-5 mb-3 flex items-center gap-3 rounded-lg px-3.5 py-2.5" style={{ background: "hsl(0 0% 100% / 0.04)", border: "1px solid hsl(0 0% 100% / 0.06)" }}>
                 <img src={product.image} alt={product.name} className="w-12 h-12 object-contain rounded-md bg-white/90 p-1" />
-                <div>
+                <div className="flex-1">
                   <p className="text-[11px] font-semibold text-white/90">{product.name}</p>
                   <p className="text-[10px] text-white/40">{product.category} · {product.price}</p>
                 </div>
+                {selectedColor && (
+                  <div className="flex items-center gap-1.5 shrink-0">
+                    <span
+                      className="w-5 h-5 rounded-full shrink-0"
+                      style={{
+                        background: selectedColor.hex,
+                        border: isLightColor(selectedColor.hex)
+                          ? "1.5px solid hsl(0 0% 100% / 0.25)"
+                          : "1.5px solid hsl(0 0% 100% / 0.1)",
+                        boxShadow: "0 0 8px hsl(var(--primary) / 0.2)",
+                      }}
+                    />
+                    <span className="text-[9px] text-white/50 font-medium">{selectedColor.name}</span>
+                  </div>
+                )}
               </div>
 
               <StatusChip isOnline={isOnline} offlineMessage={offlineMessage} />
