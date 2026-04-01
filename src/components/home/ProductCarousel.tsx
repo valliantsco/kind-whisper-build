@@ -309,7 +309,7 @@ const ProductCarousel = () => {
                     />
 
                     {/* Image area */}
-                    <div className="relative h-44 bg-white flex items-center justify-center overflow-hidden rounded-t-[11px] p-4">
+                    <div className="relative h-44 bg-white flex items-center justify-center overflow-hidden p-4">
                       <img
                         src={product.image}
                         alt={product.name}
