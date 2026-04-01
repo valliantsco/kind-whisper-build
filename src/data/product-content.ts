@@ -1969,4 +1969,147 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
         "Fale com um especialista da MS Electric e descubra por que o Triciclo Elétrico é a escolha certa para quem prioriza estabilidade, conforto e praticidade no dia a dia.",
     },
   },
+
+  "rhino-delivery": {
+    headline: "O utilitário elétrico que a sua operação precisa",
+    subheadline:
+      "A Rhino Delivery é a solução profissional da MS Electric para entregas, deslocamentos operacionais e rotinas comerciais. Com motor de 2.000W, 120 km de autonomia e capacidade para até 250 kg, ela entrega produtividade real com economia elétrica.",
+    supportText:
+      "Se você precisa de um veículo que trabalhe junto com o seu negócio — com eficiência, robustez e custo operacional muito menor — a Rhino Delivery foi feita para isso.",
+    idealFor: [
+      {
+        icon: "package",
+        title: "Entregas profissionais",
+        desc: "Projetada para operações de delivery urbano com autonomia de 120 km, capacidade de 250 kg e eficiência elétrica.",
+      },
+      {
+        icon: "store",
+        title: "Pequenos negócios",
+        desc: "Ideal para comércios, restaurantes e lojas que precisam de logística própria com baixo custo operacional.",
+      },
+      {
+        icon: "building",
+        title: "Condomínios e operações internas",
+        desc: "Perfeita para deslocamentos operacionais em condomínios, hospitais, campus e centros logísticos.",
+      },
+      {
+        icon: "piggyBank",
+        title: "Quem quer reduzir custos",
+        desc: "Sem combustível, sem IPVA e com manutenção simplificada. Economia real que impacta diretamente a operação.",
+      },
+    ],
+    whyChoose: [
+      {
+        title: "120 km de autonomia operacional",
+        desc: "A maior autonomia da categoria permite rotas mais longas, mais entregas por carga e menos tempo parado para recarregar.",
+      },
+      {
+        title: "250 kg de capacidade de carga",
+        desc: "Capacidade robusta para transportar mercadorias, encomendas e materiais com segurança e eficiência.",
+      },
+      {
+        title: "Motor de 2.000W para trabalho pesado",
+        desc: "Potência suficiente para encarar a rotina de entregas com carga, incluindo subidas e trajetos mais exigentes.",
+      },
+      {
+        title: "Custo operacional drasticamente menor",
+        desc: "Centavos por recarga contra reais por litro de gasolina. No final do mês, a diferença é significativa para qualquer operação.",
+      },
+      {
+        title: "Suporte profissional MS Electric",
+        desc: "Assistência técnica especializada, peças disponíveis e atendimento consultivo pensado para quem usa o veículo como ferramenta de trabalho.",
+      },
+    ],
+    dailyBenefits: [
+      {
+        title: "Mais entregas, menos custo",
+        desc: "A combinação de alta autonomia e custo mínimo de recarga permite mais entregas por dia com margem operacional melhor.",
+      },
+      {
+        title: "Operação silenciosa e eficiente",
+        desc: "Motor elétrico silencioso que funciona sem incomodar — ideal para entregas em horários variados e áreas residenciais.",
+      },
+      {
+        title: "Produtividade que se paga",
+        desc: "A economia em combustível e manutenção faz a Rhino Delivery se pagar ao longo do uso. É investimento, não despesa.",
+      },
+      {
+        title: "Robustez para a rotina real",
+        desc: "Capacidade de 250 kg e estrutura pensada para uso recorrente. Ela aguenta o ritmo do trabalho diário.",
+      },
+      {
+        title: "Menos burocracia, mais agilidade",
+        desc: "Sem IPVA, sem custos ocultos e com manutenção simplificada. Mais tempo na rua produzindo, menos tempo resolvendo problemas.",
+      },
+    ],
+    urbanContext: {
+      title: "Pensada para quem trabalha com entregas",
+      body: "A Rhino Delivery foi desenvolvida para ser uma ferramenta de trabalho — não um brinquedo tecnológico. Com 120 km de autonomia, capacidade para 250 kg e motor de 2.000W, ela atende operações reais de delivery, logística interna e deslocamentos comerciais com eficiência, economia e a confiabilidade que uma rotina profissional exige.",
+      highlights: [
+        "120 km de autonomia para rotas longas",
+        "250 kg de capacidade de carga útil",
+        "Motor de 2.000W para operação com carga",
+        "Custo operacional mínimo por recarga",
+        "Operação silenciosa para qualquer horário",
+        "Estrutura robusta para uso profissional diário",
+      ],
+    },
+    specContexts: {
+      autonomy:
+        "120 km por carga — autonomia pensada para acompanhar rotinas completas de entrega e deslocamentos profissionais sem interrupção.",
+      speed:
+        "Até 50 km/h — velocidade adequada para operação urbana eficiente, com segurança e bom ritmo de entrega.",
+      motor:
+        "Motor de 2.000W — potência alinhada à proposta utilitária, com torque para operar carregado e encarar subidas com carga.",
+      recharge:
+        "6 a 8 horas na tomada convencional. Recarregue à noite e tenha o veículo pronto para a operação do dia seguinte.",
+      load:
+        "Capacidade de até 250 kg — um dos grandes diferenciais do modelo, reforçando sua aplicação real para entregas e trabalho.",
+    },
+    differentials: {
+      title: "Onde a Rhino Delivery se destaca",
+      body: "A Rhino Delivery ocupa um espaço estratégico no portfólio da MS Electric: é o utilitário elétrico pensado para quem precisa de um veículo de trabalho. Com a maior autonomia (120 km), a maior capacidade de carga (250 kg) e motor de 2.000W, ela é a resposta para operações que precisam de eficiência, economia e robustez. Se o seu negócio depende de entregas, logística ou deslocamentos operacionais, a Rhino Delivery é a solução que transforma custo em investimento.",
+    },
+    comparisonTip:
+      "A Rhino Delivery é o utilitário elétrico profissional da linha, com 120 km de autonomia e 250 kg de capacidade. Se você precisa de entrega e operação comercial, ela é a escolha clara. Se busca um utilitário com perfil de triciclo para carga mais leve, o Triciclo Elétrico pode atender. Para uso pessoal urbano, as scooters da linha — Holiday 1000, MS 2500, Tour 3K ou S3K — oferecem propostas diferentes de mobilidade.",
+    faq: [
+      {
+        q: "A Rhino Delivery é indicada para qual tipo de operação?",
+        a: "Para entregas urbanas, logística de pequenos negócios, operações internas de condomínios e campus, e qualquer rotina profissional que precise de mobilidade elétrica com capacidade de carga.",
+      },
+      {
+        q: "Esse modelo faz sentido para entregas profissionais?",
+        a: "Sim — é exatamente a proposta dela. Com 120 km de autonomia, 250 kg de carga e motor de 2.000W, ela foi projetada para operações reais de delivery.",
+      },
+      {
+        q: "Qual o diferencial dela em relação a outros veículos da linha?",
+        a: "A Rhino Delivery é o único modelo da linha focado em uso profissional e comercial. Autonomia, capacidade de carga e estrutura são pensados para trabalho, não para uso pessoal.",
+      },
+      {
+        q: "Ela é uma boa escolha para negócios e uso comercial?",
+        a: "Sim. Se o seu negócio precisa de entregas ou deslocamentos operacionais, a economia em combustível e manutenção faz a Rhino Delivery se pagar rapidamente.",
+      },
+      {
+        q: "Como funciona a recarga?",
+        a: "Basta conectar na tomada convencional. A carga completa leva de 6 a 8 horas — ideal para recarregar à noite e ter o veículo pronto para a operação do dia seguinte.",
+      },
+      {
+        q: "Como é a manutenção?",
+        a: "Simples e econômica. Veículos elétricos têm menos peças móveis, o que reduz custos e frequência de manutenção. A MS Electric oferece suporte técnico especializado para uso profissional.",
+      },
+      {
+        q: "Como funciona a garantia?",
+        a: "A MS Electric oferece garantia de fábrica com suporte técnico direto. Consulte um especialista para conhecer os termos completos e as condições de cobertura para uso comercial.",
+      },
+      {
+        q: "Para quem a Rhino Delivery é a melhor escolha dentro do portfólio?",
+        a: "Para quem precisa de um veículo elétrico de trabalho. Se sua operação depende de entregas, logística ou deslocamentos com carga, a Rhino Delivery é o modelo feito para isso.",
+      },
+    ],
+    finalCta: {
+      title: "Pronto para eletrificar a sua operação?",
+      subtitle:
+        "Fale com um especialista da MS Electric e descubra como a Rhino Delivery pode transformar a eficiência e a economia da sua rotina de entregas e operação.",
+    },
+  },
 };
