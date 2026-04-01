@@ -21,8 +21,8 @@ const SLIDES: Slide[] = [
     highlightLine: 1,
     subheadline:
       "Motor de 3.500W, até 80km/h e 85km de autonomia. A scooter elétrica mais completa da linha AIMA.",
-    primaryCta: { text: "Conhecer a S3K", href: "#modelos" },
-    secondaryCta: { text: "Ver todos os modelos", href: "#modelos" },
+    primaryCta: { text: "Conhecer a S3K", href: "/modelos/s3k" },
+    secondaryCta: { text: "Ver todos os modelos", href: "/modelos" },
     stats: [
       { icon: Zap, value: "3.500W", label: "Motor" },
       { icon: Gauge, value: "80km/h", label: "Velocidade" },
