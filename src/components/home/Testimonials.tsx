@@ -118,7 +118,7 @@ const Testimonials = () => {
   };
 
   return (
-    <section className="relative py-14 md:py-16 bg-foreground overflow-hidden">
+    <section className="relative py-14 md:py-16 overflow-hidden" style={{ background: "hsl(0 0% 4%)" }}>
       {/* ── Layered background ── */}
       {/* Radial primary glow — top center */}
       <div
@@ -138,23 +138,28 @@ const Testimonials = () => {
       />
       {/* Subtle dot grid pattern */}
       <div
-        className="absolute inset-0 pointer-events-none opacity-[0.03]"
+        className="absolute inset-0 pointer-events-none opacity-[0.025]"
         style={{
           backgroundImage: "radial-gradient(circle, hsl(0 0% 100%) 1px, transparent 1px)",
-          backgroundSize: "32px 32px",
+          backgroundSize: "28px 28px",
         }}
       />
       {/* Diagonal subtle gradient overlay */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
-          background: "linear-gradient(160deg, hsl(0 0% 100% / 0.02) 0%, transparent 40%, hsl(var(--primary) / 0.02) 100%)",
+          background: "linear-gradient(160deg, hsl(0 0% 100% / 0.015) 0%, transparent 35%, hsl(var(--primary) / 0.025) 100%)",
         }}
       />
-      {/* Top light strip */}
+      {/* Top-left accent line */}
       <div
-        className="absolute top-0 left-0 right-0 h-px"
-        style={{ background: "linear-gradient(90deg, transparent 10%, hsl(var(--primary) / 0.2) 50%, transparent 90%)" }}
+        className="absolute top-0 left-0 w-[300px] md:w-[500px] h-[3px]"
+        style={{ background: "linear-gradient(90deg, hsl(var(--primary) / 0.6), transparent)" }}
+      />
+      {/* Bottom-right accent line */}
+      <div
+        className="absolute bottom-0 right-0 w-[300px] md:w-[500px] h-[3px]"
+        style={{ background: "linear-gradient(270deg, hsl(var(--primary) / 0.6), transparent)" }}
       />
 
       {/* ── Floating animated badges ── */}

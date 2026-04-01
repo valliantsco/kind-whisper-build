@@ -8,17 +8,37 @@ const policyLinks = ["Política de privacidade", "Termos de uso"];
 
 const HomeFooter = () => {
   return (
-    <footer id="contato" className="bg-foreground text-primary-foreground relative overflow-hidden">
+    <footer id="contato" className="text-primary-foreground relative overflow-hidden" style={{ background: "hsl(0 0% 4%)" }}>
+      {/* Top accent line */}
       <div
-        className="h-[1px]"
+        className="h-[3px]"
         style={{
-          background: "linear-gradient(90deg, transparent, hsl(11 81% 57% / 0.4), hsl(11 90% 65% / 0.4), transparent)",
+          background: "linear-gradient(90deg, transparent, hsl(var(--primary) / 0.6), hsl(var(--primary) / 0.6), transparent)",
         }}
       />
 
+      {/* Radial glows */}
       <div
-        className="absolute top-0 left-1/3 w-96 h-96 opacity-[0.04] pointer-events-none"
-        style={{ background: "radial-gradient(circle, hsl(11 81% 57%) 0%, transparent 60%)" }}
+        className="absolute top-0 left-1/3 w-[600px] h-[400px] pointer-events-none"
+        style={{
+          background: "radial-gradient(ellipse at center, hsl(var(--primary) / 0.06) 0%, transparent 60%)",
+          filter: "blur(100px)",
+        }}
+      />
+      <div
+        className="absolute bottom-0 right-[10%] w-[500px] h-[400px] pointer-events-none"
+        style={{
+          background: "radial-gradient(ellipse at center, hsl(var(--primary) / 0.04) 0%, transparent 55%)",
+          filter: "blur(80px)",
+        }}
+      />
+      {/* Dot grid */}
+      <div
+        className="absolute inset-0 pointer-events-none opacity-[0.025]"
+        style={{
+          backgroundImage: "radial-gradient(circle, hsl(0 0% 100%) 1px, transparent 1px)",
+          backgroundSize: "28px 28px",
+        }}
       />
 
       <div className="container mx-auto px-4 py-20">

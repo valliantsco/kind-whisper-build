@@ -13,7 +13,7 @@ const PARTNERS = [
 
 const SocialProofBadges = () => {
   return (
-    <section className="relative bg-foreground py-8 overflow-hidden">
+    <section className="relative py-8 overflow-hidden" style={{ background: "hsl(0 0% 4%)" }}>
       {/* Top divider */}
       <div
         className="absolute top-0 left-0 right-0 h-[1px]"
