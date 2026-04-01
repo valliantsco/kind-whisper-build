@@ -1,15 +1,8 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Sparkles, Zap, ArrowRight, Brain, MessageCircle, CheckCircle } from "lucide-react";
+import { Sparkles, ArrowRight, Brain, MessageCircle, CheckCircle } from "lucide-react";
 import QuizEngine from "@/components/quiz/QuizEngine";
 import { msEletricQuizConfig } from "@/components/QuizSection";
-
-const FLOATING_ELEMENTS = [
-  { top: "8%", right: "6%", size: 16, delay: 0, opacity: 0.25 },
-  { top: "55%", right: "4%", size: 14, delay: 1.5, opacity: 0.2 },
-  { top: "25%", left: "4%", size: 12, delay: 0.8, opacity: 0.18 },
-  { top: "70%", left: "7%", size: 18, delay: 2, opacity: 0.22 },
-];
 
 const STEPS = [
   {
@@ -34,106 +27,64 @@ const QuizCta = () => {
 
   return (
     <>
-      <section
-        className="relative py-14 md:py-20 overflow-hidden"
-        style={{ background: "hsl(0 0% 4%)" }}
-      >
-        {/* ── Layered background (matching other sections) ── */}
-        <div
-          className="absolute -top-20 right-[10%] w-[1000px] h-[600px] pointer-events-none"
-          style={{
-            background:
-              "radial-gradient(ellipse at center, hsl(var(--primary) / 0.08) 0%, transparent 60%)",
-            filter: "blur(120px)",
-          }}
-        />
-        <div
-          className="absolute bottom-0 left-0 w-[700px] h-[700px] pointer-events-none"
-          style={{
-            background:
-              "radial-gradient(circle at 20% 80%, hsl(var(--primary) / 0.05) 0%, transparent 55%)",
-            filter: "blur(100px)",
-          }}
-        />
-        <div
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] pointer-events-none"
-          style={{
-            background:
-              "radial-gradient(ellipse at center, hsl(var(--primary) / 0.03) 0%, transparent 70%)",
-            filter: "blur(80px)",
-          }}
-        />
-        {/* Dot grid */}
-        <div
-          className="absolute inset-0 pointer-events-none opacity-[0.025]"
-          style={{
-            backgroundImage:
-              "radial-gradient(circle, hsl(0 0% 100%) 1px, transparent 1px)",
-            backgroundSize: "28px 28px",
-          }}
-        />
-        {/* Diagonal gradient overlay */}
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            background:
-              "linear-gradient(160deg, hsl(0 0% 100% / 0.015) 0%, transparent 35%, hsl(var(--primary) / 0.025) 100%)",
-          }}
-        />
-        {/* Top-left accent line */}
-        <div
-          className="absolute top-0 left-0 w-[300px] md:w-[500px] h-[3px]"
-          style={{
-            background:
-              "linear-gradient(90deg, hsl(var(--primary) / 0.6), transparent)",
-          }}
-        />
-        {/* Bottom-right accent line */}
-        <div
-          className="absolute bottom-0 right-0 w-[300px] md:w-[500px] h-[3px]"
-          style={{
-            background:
-              "linear-gradient(270deg, hsl(var(--primary) / 0.6), transparent)",
-          }}
-        />
+      <section className="relative py-14 md:py-20 overflow-hidden">
+        {/* ── Section-specific effect: neural network / AI nodes ── */}
+        <svg
+          className="absolute inset-0 w-full h-full pointer-events-none opacity-[0.04]"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          {/* Animated connection lines suggesting AI/neural pathways */}
+          {[
+            { x1: "10%", y1: "20%", x2: "35%", y2: "45%" },
+            { x1: "35%", y1: "45%", x2: "60%", y2: "25%" },
+            { x1: "60%", y1: "25%", x2: "85%", y2: "55%" },
+            { x1: "85%", y1: "55%", x2: "70%", y2: "80%" },
+            { x1: "20%", y1: "70%", x2: "35%", y2: "45%" },
+            { x1: "50%", y1: "75%", x2: "60%", y2: "25%" },
+          ].map((line, i) => (
+            <motion.line
+              key={i}
+              x1={line.x1} y1={line.y1} x2={line.x2} y2={line.y2}
+              stroke="hsl(11 81% 57%)"
+              strokeWidth="1"
+              initial={{ pathLength: 0, opacity: 0 }}
+              whileInView={{ pathLength: 1, opacity: 0.6 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.15, duration: 1.2, ease: "easeOut" }}
+            />
+          ))}
+          {/* Nodes */}
+          {[
+            { cx: "10%", cy: "20%" }, { cx: "35%", cy: "45%" }, { cx: "60%", cy: "25%" },
+            { cx: "85%", cy: "55%" }, { cx: "70%", cy: "80%" }, { cx: "20%", cy: "70%" },
+            { cx: "50%", cy: "75%" },
+          ].map((node, i) => (
+            <motion.circle
+              key={i}
+              cx={node.cx} cy={node.cy} r="3"
+              fill="hsl(11 81% 57%)"
+              initial={{ scale: 0, opacity: 0 }}
+              whileInView={{ scale: 1, opacity: 0.8 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3 + i * 0.1, duration: 0.4 }}
+            />
+          ))}
+        </svg>
 
-        {/* ── Floating animated elements ── */}
-        {FLOATING_ELEMENTS.map((el, i) => (
-          <motion.div
-            key={i}
-            className="absolute pointer-events-none"
-            style={{
-              top: el.top,
-              left: (el as any).left,
-              right: (el as any).right,
-            }}
-            animate={{
-              y: [0, -12, 0],
-              opacity: [el.opacity, el.opacity * 1.6, el.opacity],
-            }}
-            transition={{
-              duration: 4,
-              repeat: Infinity,
-              delay: el.delay,
-              ease: "easeInOut",
-            }}
-          >
-            {i % 2 === 0 ? (
-              <Sparkles
-                className="text-primary"
-                style={{ width: el.size, height: el.size }}
-              />
-            ) : (
-              <Zap
-                className="text-primary"
-                style={{ width: el.size, height: el.size }}
-              />
-            )}
-          </motion.div>
-        ))}
+        {/* Pulsing AI brain glow — center */}
+        <motion.div
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] pointer-events-none"
+          style={{
+            background:
+              "radial-gradient(circle, hsl(var(--primary) / 0.06) 0%, transparent 50%)",
+            filter: "blur(60px)",
+          }}
+          animate={{ scale: [1, 1.15, 1], opacity: [0.5, 0.8, 0.5] }}
+          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+        />
 
         <div className="container mx-auto px-4 relative">
-          {/* ── Header (matching other sections) ── */}
+          {/* ── Header ── */}
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -167,7 +118,7 @@ const QuizCta = () => {
             </p>
           </motion.div>
 
-          {/* ── Content: steps + CTA ── */}
+          {/* ── Steps ── */}
           <div className="grid md:grid-cols-3 gap-4 md:gap-5 mb-10 md:mb-14">
             {STEPS.map((step, i) => (
               <motion.div
@@ -185,7 +136,6 @@ const QuizCta = () => {
                     border: "1px solid hsl(0 0% 100% / 0.06)",
                   }}
                 >
-                  {/* Hover glow */}
                   <div
                     className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
                     style={{
@@ -193,12 +143,10 @@ const QuizCta = () => {
                         "radial-gradient(ellipse at 50% 0%, hsl(var(--primary) / 0.06) 0%, transparent 60%)",
                     }}
                   />
-
                   <div className="relative">
-                    {/* Step number + icon */}
                     <div className="flex items-center gap-3 mb-4">
                       <div
-                        className="w-10 h-10 rounded-lg flex items-center justify-center transition-colors duration-300"
+                        className="w-10 h-10 rounded-lg flex items-center justify-center"
                         style={{
                           background: "hsl(var(--primary) / 0.1)",
                           border: "1px solid hsl(var(--primary) / 0.2)",
@@ -213,11 +161,9 @@ const QuizCta = () => {
                         Etapa {i + 1}
                       </span>
                     </div>
-
                     <h3 className="font-display font-bold text-sm text-primary-foreground uppercase tracking-wide mb-2">
                       {step.title}
                     </h3>
-
                     <p className="text-[12px] text-primary-foreground/40 leading-relaxed">
                       {step.detail}
                     </p>
@@ -227,7 +173,7 @@ const QuizCta = () => {
             ))}
           </div>
 
-          {/* ── CTA row ── */}
+          {/* ── CTA ── */}
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -246,7 +192,6 @@ const QuizCta = () => {
               }}
               whileTap={{ scale: 0.98 }}
             >
-              {/* Shine effect */}
               <span
                 className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
                 style={{

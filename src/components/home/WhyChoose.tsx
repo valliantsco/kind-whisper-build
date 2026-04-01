@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Shield, Wrench, Clock, Award, ArrowRight, Sparkles, Zap } from "lucide-react";
+import { Shield, Wrench, Clock, Award, ArrowRight } from "lucide-react";
 import { useState } from "react";
 
 const PILLARS = [
@@ -33,115 +33,30 @@ const PILLARS = [
   },
 ];
 
-const FLOATING_ELEMENTS = [
-  { top: "8%", right: "5%", size: 16, delay: 0, opacity: 0.25 },
-  { top: "55%", right: "3%", size: 14, delay: 1.5, opacity: 0.2 },
-  { top: "25%", left: "5%", size: 12, delay: 0.8, opacity: 0.18 },
-  { top: "70%", left: "7%", size: 18, delay: 2, opacity: 0.22 },
-];
-
 const WhyChoose = () => {
   const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
 
   return (
-    <section
-      id="por-que"
-      className="relative py-14 md:py-20 overflow-hidden"
-      style={{ background: "hsl(0 0% 4%)" }}
-    >
-      {/* ── Layered background (matching MediaCoverage) ── */}
+    <section id="por-que" className="relative py-14 md:py-20 overflow-hidden">
+      {/* ── Section-specific effect: shield / trust pattern ── */}
+      {/* Hexagonal grid pattern suggesting security/trust */}
       <div
-        className="absolute -top-20 right-[10%] w-[1000px] h-[600px] pointer-events-none"
+        className="absolute inset-0 pointer-events-none opacity-[0.015]"
         style={{
-          background:
-            "radial-gradient(ellipse at center, hsl(var(--primary) / 0.08) 0%, transparent 60%)",
-          filter: "blur(120px)",
-        }}
-      />
-      <div
-        className="absolute bottom-0 left-0 w-[700px] h-[700px] pointer-events-none"
-        style={{
-          background:
-            "radial-gradient(circle at 20% 80%, hsl(var(--primary) / 0.05) 0%, transparent 55%)",
-          filter: "blur(100px)",
-        }}
-      />
-      <div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] pointer-events-none"
-        style={{
-          background:
-            "radial-gradient(ellipse at center, hsl(var(--primary) / 0.03) 0%, transparent 70%)",
-          filter: "blur(80px)",
-        }}
-      />
-      {/* Dot grid */}
-      <div
-        className="absolute inset-0 pointer-events-none opacity-[0.025]"
-        style={{
-          backgroundImage:
-            "radial-gradient(circle, hsl(0 0% 100%) 1px, transparent 1px)",
-          backgroundSize: "28px 28px",
-        }}
-      />
-      {/* Diagonal gradient overlay */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background:
-            "linear-gradient(160deg, hsl(0 0% 100% / 0.015) 0%, transparent 35%, hsl(var(--primary) / 0.025) 100%)",
-        }}
-      />
-      {/* Top-left accent line */}
-      <div
-        className="absolute top-0 left-0 w-[300px] md:w-[500px] h-[3px]"
-        style={{
-          background:
-            "linear-gradient(90deg, hsl(var(--primary) / 0.6), transparent)",
-        }}
-      />
-      {/* Bottom-right accent line */}
-      <div
-        className="absolute bottom-0 right-0 w-[300px] md:w-[500px] h-[3px]"
-        style={{
-          background:
-            "linear-gradient(270deg, hsl(var(--primary) / 0.6), transparent)",
+          backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='100'%3E%3Cpath d='M28 66L0 50L0 16L28 0L56 16L56 50L28 66L28 100' fill='none' stroke='white' stroke-width='1'/%3E%3Cpath d='M28 0L28 34L0 50L0 84L28 100L56 84L56 50L28 34' fill='none' stroke='white' stroke-width='1'/%3E%3C/svg%3E")`,
+          backgroundSize: "56px 100px",
         }}
       />
 
-      {/* ── Floating animated elements ── */}
-      {FLOATING_ELEMENTS.map((el, i) => (
-        <motion.div
-          key={i}
-          className="absolute pointer-events-none"
-          style={{
-            top: el.top,
-            left: (el as any).left,
-            right: (el as any).right,
-          }}
-          animate={{
-            y: [0, -12, 0],
-            opacity: [el.opacity, el.opacity * 1.6, el.opacity],
-          }}
-          transition={{
-            duration: 4,
-            repeat: Infinity,
-            delay: el.delay,
-            ease: "easeInOut",
-          }}
-        >
-          {i % 2 === 0 ? (
-            <Sparkles
-              className="text-primary"
-              style={{ width: el.size, height: el.size }}
-            />
-          ) : (
-            <Zap
-              className="text-primary"
-              style={{ width: el.size, height: el.size }}
-            />
-          )}
-        </motion.div>
-      ))}
+      {/* Vertical accent line — left side, suggests stability */}
+      <motion.div
+        className="absolute left-[8%] top-[10%] w-[1px] pointer-events-none"
+        style={{ background: "linear-gradient(to bottom, transparent, hsl(var(--primary) / 0.15), transparent)" }}
+        initial={{ height: 0 }}
+        whileInView={{ height: "80%" }}
+        viewport={{ once: true }}
+        transition={{ duration: 1.5, ease: "easeOut" }}
+      />
 
       <div className="container mx-auto px-4 relative">
         {/* ── Header ── */}
@@ -228,7 +143,6 @@ const WhyChoose = () => {
                   />
 
                   <div className="relative">
-                    {/* Icon */}
                     <motion.div
                       className="w-11 h-11 rounded-lg flex items-center justify-center mb-5 relative"
                       style={{
@@ -254,7 +168,6 @@ const WhyChoose = () => {
                       <pillar.icon className="w-5 h-5 relative z-10 text-primary" />
                     </motion.div>
 
-                    {/* Stat */}
                     <motion.p
                       className="font-display font-black text-3xl md:text-4xl mb-1 bg-clip-text text-transparent"
                       style={{
@@ -271,12 +184,10 @@ const WhyChoose = () => {
                       {pillar.stat}
                     </motion.p>
 
-                    {/* Title */}
                     <h3 className="font-display font-bold text-[13px] text-primary-foreground/85 uppercase tracking-[0.12em] mb-3">
                       {pillar.title}
                     </h3>
 
-                    {/* Divider */}
                     <div
                       className="h-px mb-4 transition-all duration-500"
                       style={{
@@ -287,12 +198,10 @@ const WhyChoose = () => {
                       }}
                     />
 
-                    {/* Description */}
                     <p className="text-primary-foreground/35 text-xs leading-relaxed group-hover:text-primary-foreground/50 transition-colors duration-300 line-clamp-3">
                       {pillar.description}
                     </p>
 
-                    {/* CTA hint */}
                     <motion.div
                       className="flex items-center gap-1 mt-4 text-primary"
                       initial={{ opacity: 0, x: -8 }}
