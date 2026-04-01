@@ -326,7 +326,7 @@ const Models = () => {
           />
 
           <div className="container mx-auto px-4">
-            <div className="grid grid-cols-1 lg:grid-cols-[1fr_380px] gap-10 lg:gap-16 items-end">
+            <div className="grid grid-cols-1 lg:grid-cols-[1fr_340px] gap-10 lg:gap-14 items-start">
               {/* Left – Hero copy */}
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
