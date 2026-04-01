@@ -92,15 +92,25 @@ const HeroSlideshow = () => {
       {/* ── Background ── */}
       <div className="absolute inset-0 bg-foreground" />
 
-      {/* Placeholder for hero image/video */}
-      <div
-        className="absolute inset-0"
-        style={{
-          background: `url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080"><rect fill="%23222"/><text x="960" y="540" text-anchor="middle" fill="%23444" font-size="48" font-family="sans-serif">HERO IMAGE / VIDEO ${current + 1}</text></svg>')`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      />
+      {/* YouTube background video */}
+      <div className="absolute inset-0 overflow-hidden">
+        <iframe
+          key={slide.youtubeId}
+          src={`https://www.youtube.com/embed/${slide.youtubeId}?autoplay=1&mute=1&loop=1&playlist=${slide.youtubeId}&controls=0&showinfo=0&modestbranding=1&rel=0&start=${slide.youtubeStart ?? 0}&playsinline=1&enablejsapi=1&iv_load_policy=3&disablekb=1`}
+          allow="autoplay; encrypted-media"
+          allowFullScreen
+          referrerPolicy="strict-origin-when-cross-origin"
+          title={slide.badge}
+          className="absolute top-1/2 left-1/2 pointer-events-none border-0"
+          style={{
+            width: "120vw",
+            height: "120vh",
+            minWidth: "120vw",
+            minHeight: "120vh",
+            transform: "translate(-50%, -50%)",
+          }}
+        />
+      </div>
 
       {/* ── Gradient overlays ── */}
       <div className="absolute inset-0 bg-gradient-to-r from-foreground/95 via-foreground/80 to-foreground/30 z-[2]" />
