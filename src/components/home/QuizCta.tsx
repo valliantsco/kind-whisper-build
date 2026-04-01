@@ -8,17 +8,17 @@ const STEPS = [
   {
     icon: MessageCircle,
     title: "Responda perguntas rápidas",
-    detail: "Conte como será o uso do veículo, quais características são mais importantes para você e o que espera da sua experiência com mobilidade elétrica.",
+    detail: "Conte como pretende usar o veículo, qual é sua prioridade na escolha e o que faz mais sentido para o seu dia a dia.",
   },
   {
     icon: Brain,
     title: "Analisamos o seu perfil",
-    detail: "Nossa inteligência cruza suas respostas com o portfólio da MS Electric para entender qual modelo se encaixa melhor no seu cenário, objetivo e rotina.",
+    detail: "Com base nas suas respostas, cruzamos seu perfil com as categorias e modelos do catálogo para filtrar as opções mais adequadas.",
   },
   {
     icon: CheckCircle,
     title: "Receba sua recomendação",
-    detail: "Em instantes, você visualiza as opções mais indicadas para o seu caso e já pode seguir para comparar modelos ou falar com nosso time.",
+    detail: "No final, você vê quais modelos combinam mais com o seu caso e já pode seguir para comparar ou falar com o nosso time.",
   },
 ];
 
