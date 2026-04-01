@@ -244,7 +244,7 @@ const Testimonials = () => {
               </span>
             </h2>
 
-            <p className="text-sm md:text-base text-primary-foreground/55 leading-relaxed mt-5 max-w-lg">
+            <p className="text-xs md:text-base text-primary-foreground/55 leading-relaxed mt-4 md:mt-5 max-w-lg">
               A presença da MS Eletric ao lado de nomes de grande alcance reforça algo que a marca vem construindo todos os dias: confiança, visibilidade e relevância em um mercado que segue crescendo.
             </p>
           </motion.div>
