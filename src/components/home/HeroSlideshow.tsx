@@ -1,38 +1,56 @@
 import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowRight, ChevronLeft, ChevronRight, Zap, Battery, Gauge } from "lucide-react";
 
-const SLIDE_DURATION = 5000;
+const SLIDE_DURATION = 6000;
 
 interface Slide {
   badge: string;
-  headline: string;
+  headline: string[];
+  highlightLine: number;
   subheadline: string;
   primaryCta: { text: string; href: string };
   secondaryCta: { text: string; href: string };
+  stats?: { icon: typeof Zap; value: string; label: string }[];
 }
 
 const SLIDES: Slide[] = [
   {
     badge: "LANÇAMENTO",
-    headline: "S3K — PERFORMANCE\nE AUTONOMIA MÁXIMA",
-    subheadline: "Motor de 3.500W, até 80km/h e 85km de autonomia. A scooter elétrica mais completa da linha AIMA.",
+    headline: ["S3K —", "PERFORMANCE", "E AUTONOMIA", "MÁXIMA"],
+    highlightLine: 1,
+    subheadline:
+      "Motor de 3.500W, até 80km/h e 85km de autonomia. A scooter elétrica mais completa da linha AIMA.",
     primaryCta: { text: "Conhecer a S3K", href: "#modelos" },
     secondaryCta: { text: "Ver todos os modelos", href: "#modelos" },
+    stats: [
+      { icon: Zap, value: "3.500W", label: "Motor" },
+      { icon: Gauge, value: "80km/h", label: "Velocidade" },
+      { icon: Battery, value: "85km", label: "Autonomia" },
+    ],
   },
   {
     badge: "MAIS VENDIDO",
-    headline: "MOBILIDADE\n100% ELÉTRICA",
-    subheadline: "Autopropelidos, scooters, bicicletas e triciclos elétricos. Mais de 19 modelos para cada estilo de vida.",
+    headline: ["MOBILIDADE", "100%", "ELÉTRICA"],
+    highlightLine: 1,
+    subheadline:
+      "Autopropelidos, scooters, bicicletas e triciclos elétricos. Mais de 19 modelos para cada estilo de vida.",
     primaryCta: { text: "Explorar catálogo", href: "#modelos" },
     secondaryCta: { text: "Fazer o quiz", href: "#quiz" },
   },
   {
     badge: "NOVIDADE",
-    headline: "TOUR 3K — POTÊNCIA\nPARA SUBIDAS",
-    subheadline: "Motor de 3.000W e velocidade de até 75km/h. Bateria de lítio removível e design esportivo.",
+    headline: ["TOUR 3K —", "POTÊNCIA", "PARA SUBIDAS"],
+    highlightLine: 1,
+    subheadline:
+      "Motor de 3.000W e velocidade de até 75km/h. Bateria de lítio removível e design esportivo.",
     primaryCta: { text: "Conhecer a Tour 3K", href: "#modelos" },
     secondaryCta: { text: "Ver todos os modelos", href: "#modelos" },
+    stats: [
+      { icon: Zap, value: "3.000W", label: "Motor" },
+      { icon: Gauge, value: "75km/h", label: "Velocidade" },
+      { icon: Battery, value: "40km", label: "Autonomia" },
+    ],
   },
 ];
 
@@ -41,7 +59,10 @@ const HeroSlideshow = () => {
   const [progress, setProgress] = useState(0);
 
   const next = useCallback(() => setCurrent((p) => (p + 1) % SLIDES.length), []);
-  const prev = useCallback(() => setCurrent((p) => (p - 1 + SLIDES.length) % SLIDES.length), []);
+  const prev = useCallback(
+    () => setCurrent((p) => (p - 1 + SLIDES.length) % SLIDES.length),
+    []
+  );
 
   useEffect(() => {
     setProgress(0);
@@ -49,9 +70,7 @@ const HeroSlideshow = () => {
     const prog = setInterval(() => {
       setProgress((p) => Math.min(p + (interval / SLIDE_DURATION) * 100, 100));
     }, interval);
-    const timer = setTimeout(() => {
-      next();
-    }, SLIDE_DURATION);
+    const timer = setTimeout(next, SLIDE_DURATION);
     return () => {
       clearInterval(prog);
       clearTimeout(timer);
@@ -61,9 +80,11 @@ const HeroSlideshow = () => {
   const slide = SLIDES[current];
 
   return (
-    <section className="relative min-h-[90vh] flex items-center overflow-hidden">
-      {/* Background placeholder */}
+    <section className="relative min-h-[92vh] flex items-end overflow-hidden">
+      {/* ── Background ── */}
       <div className="absolute inset-0 bg-foreground" />
+
+      {/* Placeholder for hero image/video */}
       <div
         className="absolute inset-0"
         style={{
@@ -73,139 +94,228 @@ const HeroSlideshow = () => {
         }}
       />
 
-      {/* Gradient overlays */}
+      {/* ── Gradient overlays ── */}
       <div className="absolute inset-0 bg-gradient-to-r from-foreground/95 via-foreground/80 to-foreground/30 z-[2]" />
-      <div className="absolute inset-0 bg-gradient-to-t from-foreground/90 via-transparent to-foreground/20 z-[2]" />
+      <div className="absolute inset-0 bg-gradient-to-t from-foreground/95 via-foreground/40 to-foreground/20 z-[2]" />
 
-      {/* Ambient glows */}
+      {/* ── Ambient glow ── */}
       <div className="absolute inset-0 z-[3] pointer-events-none overflow-hidden">
         <motion.div
-          className="absolute w-[500px] h-[500px] md:w-[700px] md:h-[700px] rounded-full"
+          className="absolute w-[600px] h-[600px] md:w-[900px] md:h-[900px] rounded-full"
           style={{
-            background: "radial-gradient(circle, hsl(11 81% 57% / 0.1) 0%, transparent 70%)",
-            filter: "blur(80px)",
-            top: "5%",
+            background:
+              "radial-gradient(circle, hsl(var(--primary) / 0.08) 0%, transparent 60%)",
+            filter: "blur(100px)",
+            top: "-10%",
+            left: "-5%",
           }}
-          animate={{ left: ["-10%", "60%", "-10%"] }}
-          transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
+          animate={{ x: [0, 200, 0], y: [0, 80, 0] }}
+          transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
         />
       </div>
 
-      {/* Content */}
-      <div className="relative z-10 container mx-auto px-4 py-32">
+      {/* ── Content ── */}
+      <div className="relative z-10 container mx-auto px-4 pb-20 md:pb-28">
         <AnimatePresence mode="wait">
           <motion.div
             key={current}
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: 50 }}
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.5, ease: "easeOut" }}
-            className="max-w-3xl"
+            className="max-w-4xl"
           >
             {/* Badge */}
             <motion.span
               className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-[11px] font-bold uppercase tracking-[0.18em] mb-6"
               style={{
-                background: "hsl(11 81% 57% / 0.15)",
-                color: "hsl(11 81% 57%)",
-                border: "1px solid hsl(11 81% 57% / 0.3)",
+                background: "hsl(var(--primary) / 0.12)",
+                color: "hsl(var(--primary))",
+                border: "1px solid hsl(var(--primary) / 0.25)",
               }}
+              initial={{ opacity: 0, x: -16 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.1, duration: 0.4 }}
             >
               {slide.badge}
             </motion.span>
 
             {/* Headline */}
-            <h1 className="font-display font-black text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-primary-foreground leading-[0.95] mb-6 uppercase tracking-tight whitespace-pre-line">
-              {slide.headline.split("\n").map((line, i) => (
-                <span key={i} className="block">
-                  {i === 0 ? (
-                    <span className="gradient-text">{line}</span>
+            <h1 className="font-display font-black text-[clamp(2.5rem,8vw,6rem)] text-primary-foreground leading-[0.92] mb-5 md:mb-6 uppercase tracking-tight">
+              {slide.headline.map((line, i) => (
+                <motion.span
+                  key={i}
+                  className="block"
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.15 + i * 0.08, duration: 0.45 }}
+                >
+                  {i === slide.highlightLine ? (
+                    <span
+                      className="bg-clip-text text-transparent"
+                      style={{
+                        backgroundImage:
+                          "linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)))",
+                        filter:
+                          "drop-shadow(0 0 24px hsl(var(--primary) / 0.35))",
+                      }}
+                    >
+                      {line}
+                    </span>
                   ) : (
                     line
                   )}
-                </span>
+                </motion.span>
               ))}
             </h1>
 
             {/* Subheadline */}
-            <p className="text-base md:text-lg text-primary-foreground/50 mb-8 max-w-xl leading-relaxed">
+            <motion.p
+              className="text-sm md:text-base text-primary-foreground/45 mb-6 md:mb-8 max-w-xl leading-relaxed tracking-wide"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.4, duration: 0.5 }}
+            >
               {slide.subheadline}
-            </p>
+            </motion.p>
+
+            {/* Inline specs */}
+            {slide.stats && (
+              <motion.div
+                className="flex items-center gap-5 md:gap-6 mb-7 md:mb-8"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.45, duration: 0.5 }}
+              >
+                {slide.stats.map((stat, i) => (
+                  <div key={i} className="flex items-center gap-2">
+                    <div
+                      className="w-8 h-8 rounded-lg flex items-center justify-center"
+                      style={{
+                        background: "hsl(var(--primary) / 0.1)",
+                        border: "1px solid hsl(var(--primary) / 0.15)",
+                      }}
+                    >
+                      <stat.icon className="w-3.5 h-3.5 text-primary" />
+                    </div>
+                    <div>
+                      <p className="font-display font-black text-sm text-primary-foreground leading-none">
+                        {stat.value}
+                      </p>
+                      <p className="text-[10px] text-primary-foreground/30 uppercase tracking-wider">
+                        {stat.label}
+                      </p>
+                    </div>
+                    {i < slide.stats!.length - 1 && (
+                      <div
+                        className="w-px h-6 ml-3"
+                        style={{ background: "hsl(0 0% 100% / 0.08)" }}
+                      />
+                    )}
+                  </div>
+                ))}
+              </motion.div>
+            )}
 
             {/* CTAs */}
-            <div className="flex items-center gap-4 flex-wrap">
+            <motion.div
+              className="flex items-center gap-3 flex-wrap"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.55, duration: 0.5 }}
+            >
               <motion.a
                 href={slide.primaryCta.href}
-                className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.12em] px-8 py-4 rounded-2xl text-white"
+                className="group inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.12em] px-7 py-3.5 rounded-xl text-primary-foreground relative overflow-hidden"
                 style={{
-                  background: "linear-gradient(135deg, hsl(11 81% 57%), hsl(11 90% 65%))",
-                  boxShadow: "0 4px 20px hsl(11 81% 57% / 0.3)",
+                  background:
+                    "linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)))",
+                  boxShadow:
+                    "0 8px 32px hsl(var(--primary) / 0.3), 0 1px 0 inset hsl(0 0% 100% / 0.1)",
                 }}
-                whileHover={{ scale: 1.03, boxShadow: "0 0 30px hsl(11 81% 57% / 0.5)" }}
                 whileTap={{ scale: 0.97 }}
               >
-                {slide.primaryCta.text}
-                <ArrowRight className="w-4 h-4" />
+                <span
+                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                  style={{
+                    background:
+                      "linear-gradient(105deg, transparent 40%, hsl(0 0% 100% / 0.12) 50%, transparent 60%)",
+                  }}
+                />
+                <span className="relative z-10">{slide.primaryCta.text}</span>
+                <ArrowRight className="w-4 h-4 relative z-10 transition-transform group-hover:translate-x-0.5" />
               </motion.a>
+
               <a
                 href={slide.secondaryCta.href}
-                className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.12em] px-8 py-4 rounded-2xl text-primary-foreground/70 hover:text-primary-foreground transition-colors"
+                className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.12em] px-7 py-3.5 rounded-xl text-primary-foreground/60 hover:text-primary-foreground transition-colors duration-300"
                 style={{
-                  border: "1px solid hsl(0 0% 100% / 0.15)",
+                  border: "1px solid hsl(0 0% 100% / 0.1)",
+                  background: "hsl(0 0% 100% / 0.03)",
                 }}
               >
                 {slide.secondaryCta.text}
               </a>
-            </div>
+            </motion.div>
           </motion.div>
         </AnimatePresence>
 
-        {/* Navigation arrows */}
-        <div className="absolute right-8 top-1/2 -translate-y-1/2 flex flex-col gap-3 z-20">
-          <button
-            onClick={prev}
-            className="w-12 h-12 rounded-2xl flex items-center justify-center text-primary-foreground/50 hover:text-primary-foreground transition-colors"
-            style={{ background: "hsl(0 0% 100% / 0.06)", border: "1px solid hsl(0 0% 100% / 0.08)" }}
-          >
-            <ChevronLeft className="w-5 h-5" />
-          </button>
-          <button
-            onClick={next}
-            className="w-12 h-12 rounded-2xl flex items-center justify-center text-primary-foreground/50 hover:text-primary-foreground transition-colors"
-            style={{ background: "hsl(0 0% 100% / 0.06)", border: "1px solid hsl(0 0% 100% / 0.08)" }}
-          >
-            <ChevronRight className="w-5 h-5" />
-          </button>
+        {/* ── Navigation arrows ── */}
+        <div className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 flex flex-col gap-2 z-20">
+          {[
+            { action: prev, icon: ChevronLeft },
+            { action: next, icon: ChevronRight },
+          ].map(({ action, icon: Icon }, i) => (
+            <button
+              key={i}
+              onClick={action}
+              className="w-11 h-11 rounded-xl flex items-center justify-center text-primary-foreground/40 hover:text-primary-foreground transition-all duration-300"
+              style={{
+                background: "hsl(0 0% 100% / 0.05)",
+                border: "1px solid hsl(0 0% 100% / 0.08)",
+                backdropFilter: "blur(8px)",
+              }}
+            >
+              <Icon className="w-4 h-4" />
+            </button>
+          ))}
         </div>
       </div>
 
-      {/* Slide indicators */}
+      {/* ── Slide indicators ── */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex gap-2">
         {SLIDES.map((_, i) => (
           <button
             key={i}
             onClick={() => setCurrent(i)}
-            className="relative h-1 rounded-full overflow-hidden transition-all duration-300"
+            className="relative h-[3px] rounded-full overflow-hidden transition-all duration-300"
             style={{
-              width: i === current ? 48 : 24,
-              background: i === current ? "hsl(0 0% 100% / 0.2)" : "hsl(0 0% 100% / 0.15)",
+              width: i === current ? 52 : 20,
+              background:
+                i === current
+                  ? "hsl(0 0% 100% / 0.15)"
+                  : "hsl(0 0% 100% / 0.08)",
             }}
           >
             {i === current && (
               <motion.div
                 className="absolute inset-y-0 left-0 rounded-full"
-                style={{ background: "hsl(11 81% 57%)", width: `${progress}%` }}
+                style={{
+                  background: "hsl(var(--primary))",
+                  width: `${progress}%`,
+                }}
               />
             )}
           </button>
         ))}
       </div>
 
-      {/* Bottom gradient strip */}
+      {/* ── Bottom light strip ── */}
       <div
         className="absolute bottom-0 left-0 right-0 h-[1px] z-10"
         style={{
-          background: "linear-gradient(90deg, transparent, hsl(11 81% 57% / 0.5), hsl(11 90% 65% / 0.5), transparent)",
+          background:
+            "linear-gradient(90deg, transparent, hsl(var(--primary) / 0.4), hsl(var(--primary-glow) / 0.4), transparent)",
         }}
       />
     </section>
