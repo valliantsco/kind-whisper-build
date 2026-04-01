@@ -429,7 +429,7 @@ const Models = () => {
                     }}
                   />
 
-                  <div className="p-6">
+                  <div className="p-6 flex flex-col justify-center h-full">
                     {/* Badge */}
                     <div
                       className="inline-flex items-center gap-2 px-3 py-1 rounded-full mb-4"
