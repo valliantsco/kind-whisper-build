@@ -18,6 +18,12 @@ import modelMotocrossKids from "@/assets/models/model-motocross-kids.webp";
 import modelDriftInfantil from "@/assets/models/model-drift-infantil-350.webp";
 import modelPatinete350 from "@/assets/models/model-patinete-350.webp";
 
+export interface ProductColor {
+  name: string;
+  hex: string;
+  image?: string;
+}
+
 export interface Product {
   name: string;
   slug: string;
@@ -32,6 +38,7 @@ export interface Product {
   highlight?: string;
   badge?: string;
   description: string;
+  colors?: ProductColor[];
 }
 
 export const CATEGORIES = [
