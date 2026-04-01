@@ -200,7 +200,7 @@ const QuizCta = () => {
                 }}
               />
               <Sparkles className="w-4 h-4 relative z-10" />
-              <span className="relative z-10">Fazer o quiz agora</span>
+              <span className="relative z-10">Descobrir meu modelo ideal</span>
               <ArrowRight className="w-4 h-4 relative z-10 transition-transform group-hover:translate-x-0.5" />
             </motion.button>
 
