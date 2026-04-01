@@ -398,58 +398,7 @@ const Models = () => {
           </div>
         </section>
 
-        {/* ── Quiz CTA Section ── */}
-        <section className="py-12 md:py-16">
-          <div className="container mx-auto px-4">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="relative rounded-2xl overflow-hidden p-6 md:p-10"
-              style={{
-                background: "hsl(0 0% 100% / 0.02)",
-                border: "1px solid hsl(0 0% 100% / 0.06)",
-              }}
-            >
-              {/* Glow */}
-              <div
-                className="absolute inset-0 pointer-events-none"
-                style={{
-                  background: "radial-gradient(ellipse at 30% 50%, hsl(var(--primary) / 0.06) 0%, transparent 60%)",
-                }}
-              />
-              <div className="relative z-10 flex flex-col md:flex-row items-center gap-6 md:gap-10">
-                <div className="flex-1">
-                  <div className="flex items-center gap-2 mb-3">
-                    <Sparkles className="w-4 h-4 text-primary" />
-                    <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-primary">
-                      Quiz inteligente
-                    </span>
-                  </div>
-                  <h3 className="font-display font-black text-xl md:text-2xl text-primary-foreground uppercase tracking-tight mb-2">
-                    Não sabe qual{" "}
-                    <span className="text-primary">escolher?</span>
-                  </h3>
-                  <p className="text-[13px] text-primary-foreground/40 leading-relaxed max-w-md">
-                    Responda algumas perguntas rápidas e nossa IA recomenda o modelo ideal para o seu perfil, rotina e orçamento.
-                  </p>
-                </div>
-                <button
-                  onClick={() => setQuizOpen(true)}
-                  className="shrink-0 inline-flex items-center gap-2.5 px-7 py-3.5 rounded-xl text-[11px] font-semibold uppercase tracking-[0.14em] text-primary-foreground cursor-pointer transition-all hover:scale-[1.03] active:scale-[0.97]"
-                  style={{
-                    background: "linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)))",
-                    boxShadow: "0 8px 24px -6px hsl(var(--primary) / 0.35)",
-                  }}
-                >
-                  <Sparkles className="w-4 h-4" />
-                  Fazer o quiz
-                  <ArrowRight className="w-3.5 h-3.5" />
-                </button>
-              </div>
-            </motion.div>
-          </div>
-        </section>
+
 
         <HomeFooter />
       </div>
