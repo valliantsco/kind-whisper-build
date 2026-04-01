@@ -239,30 +239,14 @@ const Models = () => {
                 border: "1px solid hsl(0 0% 100% / 0.06)",
               }}
             >
-              <div className="flex flex-col md:flex-row md:items-center gap-3">
-                {/* Search */}
-                <div className="relative md:w-64 shrink-0">
-                  <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-primary-foreground/25" />
-                  <input
-                    type="text"
-                    placeholder="Buscar modelo..."
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                    className="w-full pl-10 pr-4 py-2 rounded-xl text-sm text-primary-foreground placeholder:text-primary-foreground/20 outline-none transition-all focus:ring-1 focus:ring-primary/30"
-                    style={{
-                      background: "hsl(0 0% 100% / 0.04)",
-                      border: "1px solid hsl(0 0% 100% / 0.06)",
-                    }}
-                  />
-                </div>
-
-                {/* Category pills with scroll indicators */}
-                <CategoryPills
-                  categories={CATEGORIES}
-                  activeCategory={activeCategory}
-                  onSelect={setActiveCategory}
-                  categoryCount={categoryCount}
-                />
+              <SearchableFilterBar
+                searchQuery={searchQuery}
+                setSearchQuery={setSearchQuery}
+                categories={CATEGORIES}
+                activeCategory={activeCategory}
+                setActiveCategory={setActiveCategory}
+                categoryCount={categoryCount}
+              />
 
                 {/* Compare counter (desktop) */}
                 {selectedSlugs.length > 0 && (
