@@ -72,6 +72,7 @@ const NAV_ITEMS: NavItem[] = [
 const categoryImages = [categoryScooter, categoryBike, categoryTricycle, categoryMotocross, categoryAutopropelido];
 
 const Header = ({ onContactClick }: HeaderProps) => {
+  const navigate = useNavigate();
   const isOnline = useBusinessHours();
 
   // Preload category images on mount
