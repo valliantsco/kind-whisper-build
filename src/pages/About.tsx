@@ -95,7 +95,7 @@ export default function About() {
               </motion.h1>
 
               <motion.p variants={fadeUp} custom={2}
-                className="text-primary-foreground/70 text-lg md:text-xl leading-relaxed max-w-3xl mb-6">
+                className="text-primary-foreground/70 text-base md:text-xl leading-relaxed max-w-3xl mb-4 md:mb-6">
                 A MS Eletric nasceu para aproximar a mobilidade elétrica da vida real. Mais do que oferecer veículos, a marca foi construída para entregar uma experiência completa, com atendimento próximo, orientação consultiva e soluções que fazem sentido para diferentes rotinas de uso.
               </motion.p>
 
