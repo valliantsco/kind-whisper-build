@@ -2541,4 +2541,147 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
         "Fale com um especialista da MS Electric e descubra como o Drift Elétrico 350 pode transformar o lazer dos pequenos em momentos de diversão memoráveis.",
     },
   },
+
+  "patinete-350": {
+    headline: "Mobilidade leve e inteligente para a sua rotina",
+    subheadline:
+      "O Patinete 350 é a solução mais compacta e portátil da MS Electric. Leve, dobrável e com 30 km de autonomia, ele resolve deslocamentos curtos com praticidade, agilidade e zero complicação.",
+    supportText:
+      "Se você precisa de uma forma rápida de ir e vir — no campus, no condomínio, na última milha ou em pequenos trajetos urbanos — o Patinete 350 encaixa perfeitamente na sua rotina.",
+    idealFor: [
+      {
+        icon: "footprints",
+        title: "Última milha",
+        desc: "Do metrô ao escritório, do estacionamento à reunião. O Patinete 350 elimina os trajetos que mais tomam tempo.",
+      },
+      {
+        icon: "briefcase",
+        title: "Rotina urbana prática",
+        desc: "Leve, dobrável e fácil de guardar. Leve no carro, no transporte público ou guarde embaixo da mesa.",
+      },
+      {
+        icon: "building",
+        title: "Campus e condomínios",
+        desc: "Perfeito para deslocamentos internos em universidades, condomínios e áreas amplas onde caminhar leva tempo demais.",
+      },
+      {
+        icon: "zap",
+        title: "Deslocamentos rápidos",
+        desc: "Trajetos curtos e frequentes resolvidos com agilidade. Sem trânsito, sem estacionamento, sem complicação.",
+      },
+    ],
+    whyChoose: [
+      {
+        title: "Leve e dobrável — vai com você",
+        desc: "Compacto o suficiente para levar no metrô, guardar no porta-malas ou deixar ao lado da mesa. Mobilidade que cabe em qualquer lugar.",
+      },
+      {
+        title: "30 km de autonomia para o dia a dia",
+        desc: "Autonomia generosa para trajetos curtos e recorrentes. Ida e volta sem preocupação com recarga.",
+      },
+      {
+        title: "Até 30 km/h de velocidade",
+        desc: "Agilidade suficiente para ganhar tempo nos deslocamentos urbanos sem abrir mão da praticidade.",
+      },
+      {
+        title: "O menor investimento do portfólio",
+        desc: "A entrada mais acessível na mobilidade elétrica MS Electric, com funcionalidade que entrega valor real no dia a dia.",
+      },
+      {
+        title: "Suporte MS Electric completo",
+        desc: "Mesmo sendo o modelo mais compacto, conta com todo o respaldo técnico e atendimento consultivo da marca.",
+      },
+    ],
+    dailyBenefits: [
+      {
+        title: "Menos tempo caminhando, mais tempo vivendo",
+        desc: "Aqueles 10-15 minutos de caminhada viram 3-4 minutos de deslocamento prático e sem esforço.",
+      },
+      {
+        title: "Cabe na sua vida — literalmente",
+        desc: "Dobrável e leve, ele vai no carro, no metrô, no elevador ou embaixo da mesa. Não precisa de garagem.",
+      },
+      {
+        title: "Economia real no cotidiano",
+        desc: "Sem combustível, sem estacionamento, sem app de transporte. Centavos por recarga e liberdade total.",
+      },
+      {
+        title: "Agilidade para a rotina dinâmica",
+        desc: "Reuniões, aulas, tarefas rápidas — o Patinete 350 encurta distâncias e otimiza o seu tempo.",
+      },
+      {
+        title: "Mobilidade complementar perfeita",
+        desc: "Não substitui o carro — complementa. Resolve a última milha que nenhum outro veículo resolve tão bem.",
+      },
+    ],
+    urbanContext: {
+      title: "A solução mais prática para trajetos curtos",
+      body: "O Patinete 350 foi criado para quem entende que mobilidade inteligente não é só sobre potência — é sobre resolver o deslocamento certo da forma mais prática possível. Leve, dobrável e com autonomia de 30 km, ele transforma a última milha, os trajetos internos e os deslocamentos curtos em algo rápido, fácil e sem fricção.",
+      highlights: [
+        "Dobrável e fácil de transportar",
+        "30 km de autonomia para o dia a dia",
+        "Até 30 km/h de velocidade urbana",
+        "Motor de 350W silencioso e eficiente",
+        "Capacidade de 120 kg para uso adulto",
+        "Recarga de 5 a 6 horas na tomada",
+      ],
+    },
+    specContexts: {
+      autonomy:
+        "30 km por carga — autonomia pensada para trajetos curtos e recorrentes do dia a dia com sobra de margem.",
+      speed:
+        "Até 30 km/h — agilidade ideal para deslocamentos urbanos leves, com bom ritmo e praticidade.",
+      motor:
+        "Motor de 350W — potência alinhada à proposta compacta e funcional, silencioso e eficiente para uso urbano.",
+      recharge:
+        "5 a 6 horas na tomada convencional. Recarregue à noite ou durante o expediente e tenha o patinete pronto.",
+      load:
+        "Capacidade de 120 kg — suporta uso adulto com tranquilidade, compatível com a proposta de mobilidade urbana.",
+    },
+    differentials: {
+      title: "Onde o Patinete 350 se destaca",
+      body: "O Patinete 350 é o produto mais compacto, mais portátil e mais acessível da linha MS Electric. Ele não compete com scooters ou utilitários — ele complementa. É a solução para quem precisa resolver deslocamentos curtos com praticidade máxima: dobrável para levar em qualquer lugar, leve para carregar e com autonomia suficiente para cobrir a rotina urbana do dia a dia. Se o seu problema é a última milha, o Patinete 350 é a resposta.",
+    },
+    comparisonTip:
+      "O Patinete 350 é a opção mais compacta, portátil e acessível do portfólio — ideal para última milha e deslocamentos curtos. Se você precisa de mais autonomia e velocidade para trajetos maiores, as bikes elétricas oferecem mais alcance. Para uma proposta de mobilidade urbana mais robusta, as scooters da linha atendem outro perfil de necessidade.",
+    faq: [
+      {
+        q: "O Patinete 350 é indicado para qual tipo de uso?",
+        a: "Para deslocamentos curtos e recorrentes: última milha, trajetos internos em campus e condomínios, idas rápidas e mobilidade complementar no dia a dia.",
+      },
+      {
+        q: "Esse modelo faz sentido para deslocamentos diários curtos?",
+        a: "Sim — é exatamente a proposta dele. Com 30 km de autonomia e design dobrável, ele resolve trajetos curtos com praticidade e agilidade.",
+      },
+      {
+        q: "Qual o diferencial dele em relação a outros produtos do portfólio?",
+        a: "É o mais compacto, mais leve e mais portátil. Dobrável para levar no transporte público, no carro ou guardar em espaços pequenos. Nenhum outro modelo oferece essa portabilidade.",
+      },
+      {
+        q: "Ele é uma boa escolha para quem quer mobilidade complementar?",
+        a: "Sim. O Patinete 350 é perfeito como complemento ao carro, ao transporte público ou a qualquer outro meio de deslocamento principal.",
+      },
+      {
+        q: "Como funciona a recarga?",
+        a: "Basta conectar na tomada convencional. A carga completa leva de 5 a 6 horas — ideal para recarregar à noite ou durante o trabalho.",
+      },
+      {
+        q: "Como é a manutenção?",
+        a: "Simples e econômica. Veículos elétricos têm menos peças móveis, reduzindo custos e frequência de manutenção. A MS Electric oferece suporte técnico.",
+      },
+      {
+        q: "Como funciona a garantia?",
+        a: "A MS Electric oferece garantia de fábrica com suporte técnico direto. Consulte um especialista para conhecer os termos completos.",
+      },
+      {
+        q: "Para quem o Patinete 350 é a melhor escolha dentro do portfólio?",
+        a: "Para quem precisa de mobilidade leve, portátil e funcional para trajetos curtos. Se a sua necessidade é última milha e praticidade máxima, o Patinete 350 é o modelo ideal.",
+      },
+    ],
+    finalCta: {
+      title: "Quer resolver a última milha com inteligência?",
+      subtitle:
+        "Fale com um especialista da MS Electric e descubra como o Patinete 350 pode simplificar os seus deslocamentos do dia a dia com praticidade e economia.",
+    },
+  },
 };
