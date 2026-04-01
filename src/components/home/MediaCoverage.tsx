@@ -184,19 +184,6 @@ const MediaCoverage = () => {
                   border: "1px solid hsl(0 0% 100% / 0.06)",
                 }}
               >
-                {/* Image — visible on mobile */}
-                <div className="relative aspect-[16/9] md:aspect-[16/10] overflow-hidden">
-                  <img
-                    src={article.image}
-                    alt={article.headline}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                    loading="lazy"
-                  />
-                  <div
-                    className="absolute inset-0"
-                    style={{ background: "linear-gradient(to top, hsl(0 0% 4% / 0.6) 0%, transparent 60%)" }}
-                  />
-                </div>
 
                 <div className="p-5 flex flex-col flex-1">
                   <span className="text-[10px] text-primary-foreground/25 uppercase tracking-wider">
