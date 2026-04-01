@@ -984,4 +984,143 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
         "Fale com um especialista da MS Electric e receba orientação personalizada sobre o modelo ideal para o seu dia a dia.",
     },
   },
+  "big-sur": {
+    headline: "Presença, conforto e liberdade para ir além do asfalto",
+    subheadline:
+      "A Big Sur é uma fat bike elétrica com pneus largos, motor de 500W e 60 km de autonomia — feita para quem quer mais estabilidade, mais conforto e mais versatilidade em cada trajeto.",
+    supportText:
+      "Com visual marcante e presença que impressiona, a Big Sur vai além da bicicleta elétrica convencional. Seus pneus largos entregam mais aderência e conforto em qualquer superfície, enquanto o motor de 500W garante potência para cidade, trilhas leves e passeios com total liberdade.",
+    idealFor: [
+      {
+        icon: "route",
+        title: "Trajetos variados",
+        desc: "Asfalto, terra, calçamento irregular — os pneus largos oferecem estabilidade e conforto em qualquer superfície.",
+      },
+      {
+        icon: "sparkles",
+        title: "Quem quer mais presença",
+        desc: "Para quem busca uma bicicleta elétrica com visual marcante e personalidade que se destaca por onde passa.",
+      },
+      {
+        icon: "city",
+        title: "Cidade e lazer",
+        desc: "Versátil para o uso urbano diário e perfeita para passeios mais longos e exploratórios no fim de semana.",
+      },
+      {
+        icon: "piggyBank",
+        title: "Conforto como prioridade",
+        desc: "Os pneus fat absorvem irregularidades e entregam uma experiência de pedal mais suave e mais agradável.",
+      },
+    ],
+    whyChoose: [
+      {
+        title: "Pneus fat para mais conforto",
+        desc: "Pneus largos que absorvem imperfeições do terreno e entregam mais estabilidade, mais aderência e mais conforto em qualquer trajeto.",
+      },
+      {
+        title: "Visual que marca presença",
+        desc: "A Big Sur não passa despercebida. Seu design robusto e imponente transforma cada saída em uma experiência com mais personalidade.",
+      },
+      {
+        title: "Versatilidade real",
+        desc: "Asfalto, terra, areia, calçamento — a Big Sur se adapta a diferentes superfícies e diferentes estilos de uso.",
+      },
+      {
+        title: "60 km de autonomia",
+        desc: "Liberdade para cobrir a rotina urbana e ainda explorar trajetos mais longos sem se preocupar com a bateria.",
+      },
+      {
+        title: "Suporte MS Electric",
+        desc: "Garantia de fábrica, assistência técnica e peças de reposição. Segurança na compra e acompanhamento real.",
+      },
+    ],
+    dailyBenefits: [
+      {
+        title: "Mais conforto em qualquer terreno",
+        desc: "Os pneus fat fazem toda a diferença — menos impacto, menos vibração, mais suavidade em cada pedalada.",
+      },
+      {
+        title: "Mais confiança para explorar",
+        desc: "A estabilidade extra permite encarar caminhos que uma bicicleta convencional não enfrentaria com a mesma segurança.",
+      },
+      {
+        title: "Presença que inspira",
+        desc: "Um veículo que chama atenção positiva e transforma o simples ato de pedalar em algo mais especial.",
+      },
+      {
+        title: "Cidade e natureza",
+        desc: "Da ciclovia ao parque, do asfalto à trilha leve. A Big Sur acompanha onde sua vontade quiser ir.",
+      },
+      {
+        title: "Exercício no seu ritmo",
+        desc: "Pedal assistido permite dosar o esforço. Dias de exercício ou dias de conforto total — você escolhe.",
+      },
+      {
+        title: "Recarregue com praticidade",
+        desc: "5 horas na tomada comum para carga completa. Rápida, simples e prática.",
+      },
+    ],
+    urbanContext: {
+      title: "Liberdade sem fronteiras na cidade",
+      body: "A Big Sur foi criada para quem não quer se limitar ao convencional. Se você busca uma bicicleta elétrica que entregue mais conforto, mais estabilidade e mais liberdade para explorar diferentes trajetos e experiências, esse é o modelo que amplia as suas possibilidades.",
+      highlights: [
+        "Pneus fat para conforto extremo em qualquer superfície",
+        "Visual robusto e marcante que se destaca",
+        "60 km de autonomia + motor de 500W",
+        "Versátil para cidade, passeio e trilhas leves",
+      ],
+    },
+    specContexts: {
+      autonomy: "Faixa pensada para acompanhar uma rotina mais versátil e exploratória",
+      speed: "Boa relação para mobilidade elétrica com conforto e confiança",
+      motor: "Entrega alinhada à proposta mais robusta e versátil do modelo",
+      recharge: "Rotina simples — 5 horas na tomada para estar pronta novamente",
+      load: "Compatível com a proposta de estabilidade e versatilidade da bike",
+    },
+    differentials: {
+      title: "Onde a Big Sur se destaca na linha MS Electric",
+      body: "A Big Sur é a escolha certa para quem quer uma bicicleta elétrica com mais presença, mais estabilidade e mais conforto. Dentro do portfólio, ela ocupa o espaço da e-bike robusta e versátil — feita para quem quer ir além do convencional e explorar a cidade e o lazer com mais liberdade e personalidade.",
+    },
+    comparisonTip:
+      "Se você busca uma e-bike mais leve e urbana com visual retrô, a Santa Monica é uma excelente opção. Mas se conforto extremo, pneus fat, mais estabilidade e presença visual marcante são prioridade, a Big Sur é a escolha que mais entrega nessa direção.",
+    faq: [
+      {
+        q: "A Big Sur é indicada para qual tipo de uso?",
+        a: "Para uso urbano, passeios e trajetos variados. Os pneus fat entregam conforto e estabilidade em asfalto, terra, calçamento irregular e até areia compacta.",
+      },
+      {
+        q: "Essa bicicleta elétrica faz sentido para cidade e passeio?",
+        a: "Sim. A Big Sur é versátil — funciona perfeitamente na cidade durante a semana e é ideal para passeios mais exploratórios no fim de semana.",
+      },
+      {
+        q: "Qual o diferencial dela em relação a modelos mais leves?",
+        a: "Pneus fat que entregam mais conforto e estabilidade, visual mais robusto e imponente, e capacidade de rodar com segurança em diferentes tipos de terreno.",
+      },
+      {
+        q: "Ela é uma boa escolha para quem quer mais conforto e estabilidade?",
+        a: "Com certeza. Os pneus largos absorvem irregularidades do terreno e entregam uma experiência de pedal significativamente mais suave e estável.",
+      },
+      {
+        q: "Como funciona a recarga?",
+        a: "Tomada comum (110V ou 220V), em apenas 5 horas para carga completa. Prática e rápida.",
+      },
+      {
+        q: "Como é a manutenção?",
+        a: "Componentes elétricos com manutenção mínima, combinados com a manutenção convencional de bicicleta. Simples e acessível.",
+      },
+      {
+        q: "Como funciona a garantia?",
+        a: "A MS Electric oferece garantia de fábrica com suporte técnico e peças de reposição. Consulte um especialista para conhecer as condições.",
+      },
+      {
+        q: "Para quem a Big Sur é a melhor escolha dentro do portfólio?",
+        a: "Para quem quer mais conforto, mais presença e mais versatilidade. Se estabilidade, visual marcante e liberdade para diferentes terrenos importam, a Big Sur é a resposta.",
+      },
+    ],
+    finalCta: {
+      title: "Descubra se a Big Sur combina com o seu estilo",
+      subtitle:
+        "Fale com um especialista da MS Electric e receba orientação personalizada sobre o modelo ideal para você.",
+    },
+  },
 };
