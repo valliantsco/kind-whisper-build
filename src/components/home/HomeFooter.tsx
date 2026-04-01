@@ -11,7 +11,7 @@ interface HomeFooterProps {
   onSupportClick?: (subject: string) => void;
 }
 
-const HomeFooter = ({ onContactClick }: HomeFooterProps) => {
+const HomeFooter = ({ onContactClick, onSupportClick }: HomeFooterProps) => {
   return (
     <footer id="contato" className="text-primary-foreground relative overflow-hidden">
       {/* Top accent line */}
