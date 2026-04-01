@@ -46,7 +46,7 @@ const CategoryPills = ({
   onSelect: (cat: CategoryFilter) => void;
   categoryCount: (cat: CategoryFilter) => number;
 }) => (
-  <div className="flex items-center gap-1 flex-1 min-w-0">
+  <div className="flex items-center gap-1">
     <SlidersHorizontal className="w-3.5 h-3.5 text-primary-foreground/25 shrink-0 mr-1 hidden md:block" />
     <div
       className="flex items-center gap-1.5 overflow-x-auto scrollbar-hide pb-0.5 flex-1 px-1"
