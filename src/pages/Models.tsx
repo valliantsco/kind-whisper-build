@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import {
   Zap, Gauge, Weight, Battery, Clock, ArrowRight, Search,
-  SlidersHorizontal, X, BarChart3, Eye, Sparkles, ChevronLeft, ChevronRight,
+  SlidersHorizontal, X, BarChart3, Eye, Sparkles, ChevronLeft, ChevronRight, ArrowUpDown,
 } from "lucide-react";
 import Header from "@/components/Header";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
@@ -20,6 +20,16 @@ const SPECS = [
   { icon: Battery, key: "motor" as const, label: "Motor" },
   { icon: Clock, key: "recharge" as const, label: "Recarga" },
   { icon: Weight, key: "load" as const, label: "Carga" },
+];
+
+type SortOption = "relevance" | "price-asc" | "price-desc" | "name-asc" | "autonomy-desc" | "speed-desc";
+const SORT_OPTIONS: { value: SortOption; label: string }[] = [
+  { value: "relevance", label: "Relevância" },
+  { value: "price-asc", label: "Menor preço" },
+  { value: "price-desc", label: "Maior preço" },
+  { value: "name-asc", label: "A → Z" },
+  { value: "autonomy-desc", label: "Maior autonomia" },
+  { value: "speed-desc", label: "Maior velocidade" },
 ];
 
 const MAX_COMPARE = 3;
@@ -69,7 +79,7 @@ const CategoryPills = ({
 
 /* ── Searchable Filter Bar ── */
 const SearchableFilterBar = ({
-  searchQuery, setSearchQuery, categories, activeCategory, setActiveCategory, categoryCount, selectedCount, maxCompare,
+  searchQuery, setSearchQuery, categories, activeCategory, setActiveCategory, categoryCount, selectedCount, maxCompare, sortBy, setSortBy,
 }: {
   searchQuery: string;
   setSearchQuery: (v: string) => void;
@@ -79,6 +89,8 @@ const SearchableFilterBar = ({
   categoryCount: (c: CategoryFilter) => number;
   selectedCount: number;
   maxCompare: number;
+  sortBy: SortOption;
+  setSortBy: (v: SortOption) => void;
 }) => {
   const [searchOpen, setSearchOpen] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -156,6 +168,27 @@ const SearchableFilterBar = ({
         )}
       </AnimatePresence>
 
+      {/* Sort dropdown */}
+      <div className="relative shrink-0">
+        <div
+          className="flex items-center gap-1.5 cursor-pointer"
+        >
+          <ArrowUpDown className="w-3.5 h-3.5 text-primary-foreground/40" />
+          <select
+            value={sortBy}
+            onChange={(e) => setSortBy(e.target.value as SortOption)}
+            className="appearance-none bg-transparent text-[10px] font-semibold uppercase tracking-[0.12em] text-primary-foreground/50 outline-none cursor-pointer pr-1"
+            style={{ WebkitAppearance: "none" }}
+          >
+            {SORT_OPTIONS.map((opt) => (
+              <option key={opt.value} value={opt.value} className="bg-card text-foreground">
+                {opt.label}
+              </option>
+            ))}
+          </select>
+        </div>
+      </div>
+
       {selectedCount > 0 && (
         <div className="hidden md:flex items-center gap-2 shrink-0">
           <div
@@ -183,9 +216,10 @@ const Models = () => {
   const [selectedSlugs, setSelectedSlugs] = useState<string[]>([]);
   const [compareOpen, setCompareOpen] = useState(false);
   const [quizOpen, setQuizOpen] = useState(false);
+  const [sortBy, setSortBy] = useState<SortOption>("relevance");
 
   const filtered = useMemo(() => {
-    let items = PRODUCTS;
+    let items = [...PRODUCTS];
     if (activeCategory !== "Todos") {
       items = items.filter((p) => p.category === activeCategory);
     }
@@ -197,8 +231,27 @@ const Models = () => {
           p.category.toLowerCase().includes(q)
       );
     }
+    const parsePrice = (p: string) => { const n = parseFloat(p.replace(/[^\d]/g, "")); return isNaN(n) ? null : n; };
+    const parseNum = (v: string) => parseFloat(v.replace(/[^\d.]/g, "")) || 0;
+    switch (sortBy) {
+      case "price-asc":
+        items.sort((a, b) => (parsePrice(a.price) ?? Infinity) - (parsePrice(b.price) ?? Infinity));
+        break;
+      case "price-desc":
+        items.sort((a, b) => (parsePrice(b.price) ?? 0) - (parsePrice(a.price) ?? 0));
+        break;
+      case "name-asc":
+        items.sort((a, b) => a.name.localeCompare(b.name));
+        break;
+      case "autonomy-desc":
+        items.sort((a, b) => parseNum(b.autonomy) - parseNum(a.autonomy));
+        break;
+      case "speed-desc":
+        items.sort((a, b) => parseNum(b.speed) - parseNum(a.speed));
+        break;
+    }
     return items;
-  }, [activeCategory, searchQuery]);
+  }, [activeCategory, searchQuery, sortBy]);
 
   const categoryCount = (cat: CategoryFilter) =>
     cat === "Todos"
@@ -357,6 +410,8 @@ const Models = () => {
                 categoryCount={categoryCount}
                 selectedCount={selectedSlugs.length}
                 maxCompare={MAX_COMPARE}
+                sortBy={sortBy}
+                setSortBy={setSortBy}
               />
             </div>
           </div>
