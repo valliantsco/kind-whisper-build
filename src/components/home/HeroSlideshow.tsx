@@ -88,7 +88,7 @@ const HeroSlideshow = () => {
   const slide = SLIDES[current];
 
   return (
-    <section className="relative min-h-[92vh] flex items-end overflow-hidden">
+    <section className="relative min-h-[85vh] md:min-h-[92vh] flex items-end overflow-hidden">
       {/* ── Background ── */}
       <div className="absolute inset-0 bg-foreground" />
 
@@ -103,23 +103,23 @@ const HeroSlideshow = () => {
           title={slide.badge}
           className="absolute top-1/2 left-1/2 pointer-events-none border-0"
           style={{
-            width: "120vw",
-            height: "120vh",
-            minWidth: "120vw",
-            minHeight: "120vh",
+            width: "177.78vh",
+            height: "100vh",
+            minWidth: "100vw",
+            minHeight: "56.25vw",
             transform: "translate(-50%, -50%)",
           }}
         />
       </div>
 
       {/* ── Gradient overlays ── */}
-      <div className="absolute inset-0 bg-gradient-to-r from-foreground/95 via-foreground/80 to-foreground/30 z-[2]" />
-      <div className="absolute inset-0 bg-gradient-to-t from-foreground/95 via-foreground/40 to-foreground/20 z-[2]" />
+      <div className="absolute inset-0 bg-gradient-to-r from-foreground/95 via-foreground/85 to-foreground/40 md:via-foreground/80 md:to-foreground/30 z-[2]" />
+      <div className="absolute inset-0 bg-gradient-to-t from-foreground/95 via-foreground/50 to-foreground/30 md:via-foreground/40 md:to-foreground/20 z-[2]" />
 
       {/* ── Ambient glow ── */}
       <div className="absolute inset-0 z-[3] pointer-events-none overflow-hidden">
         <motion.div
-          className="absolute w-[600px] h-[600px] md:w-[900px] md:h-[900px] rounded-full"
+          className="absolute w-[400px] h-[400px] md:w-[900px] md:h-[900px] rounded-full"
           style={{
             background:
               "radial-gradient(circle, hsl(var(--primary) / 0.08) 0%, transparent 60%)",
@@ -133,7 +133,7 @@ const HeroSlideshow = () => {
       </div>
 
       {/* ── Content ── */}
-      <div className="relative z-10 container mx-auto px-4 pb-12 md:pb-20 mt-auto">
+      <div className="relative z-10 container mx-auto px-4 pb-16 md:pb-20 mt-auto">
         <AnimatePresence mode="wait">
           <motion.div
             key={current}
@@ -145,7 +145,7 @@ const HeroSlideshow = () => {
           >
 
             {/* Headline */}
-            <h1 className="font-display font-black text-[clamp(2rem,6.4vw,4.8rem)] text-primary-foreground leading-[1.05] mb-4 md:mb-5 uppercase tracking-tight">
+            <h1 className="font-display font-black text-[clamp(1.75rem,7vw,4.8rem)] text-primary-foreground leading-[1.08] mb-3 md:mb-5 uppercase tracking-tight">
               {slide.headline.map((line, i) => (
                 <motion.span
                   key={i}
@@ -175,7 +175,7 @@ const HeroSlideshow = () => {
 
             {/* Subheadline */}
             <motion.p
-              className="text-xs md:text-sm text-primary-foreground/45 mb-5 md:mb-6 max-w-lg leading-relaxed tracking-wide"
+              className="text-xs md:text-sm text-primary-foreground/45 mb-4 md:mb-6 max-w-sm md:max-w-lg leading-relaxed tracking-wide"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.4, duration: 0.5 }}
@@ -186,33 +186,33 @@ const HeroSlideshow = () => {
             {/* Inline specs */}
             {slide.stats && (
               <motion.div
-                className="flex items-center gap-5 md:gap-6 mb-7 md:mb-8"
+                className="flex items-center gap-3 md:gap-6 mb-5 md:mb-8"
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.45, duration: 0.5 }}
               >
                 {slide.stats.map((stat, i) => (
-                  <div key={i} className="flex items-center gap-2">
+                  <div key={i} className="flex items-center gap-1.5 md:gap-2">
                     <div
-                      className="w-8 h-8 rounded-lg flex items-center justify-center"
+                      className="w-7 h-7 md:w-8 md:h-8 rounded-lg flex items-center justify-center"
                       style={{
                         background: "hsl(var(--primary) / 0.1)",
                         border: "1px solid hsl(var(--primary) / 0.15)",
                       }}
                     >
-                      <stat.icon className="w-3.5 h-3.5 text-primary" />
+                      <stat.icon className="w-3 h-3 md:w-3.5 md:h-3.5 text-primary" />
                     </div>
                     <div>
-                      <p className="font-display font-black text-sm text-primary-foreground leading-none">
+                      <p className="font-display font-black text-xs md:text-sm text-primary-foreground leading-none">
                         {stat.value}
                       </p>
-                      <p className="text-[10px] text-primary-foreground/30 uppercase tracking-wider">
+                      <p className="text-[8px] md:text-[10px] text-primary-foreground/30 uppercase tracking-wider">
                         {stat.label}
                       </p>
                     </div>
                     {i < slide.stats!.length - 1 && (
                       <div
-                        className="w-px h-6 ml-3"
+                        className="w-px h-5 md:h-6 ml-1.5 md:ml-3"
                         style={{ background: "hsl(0 0% 100% / 0.08)" }}
                       />
                     )}
@@ -223,14 +223,14 @@ const HeroSlideshow = () => {
 
             {/* CTAs */}
             <motion.div
-              className="flex items-center gap-3 flex-wrap"
+              className="flex flex-col sm:flex-row items-start sm:items-center gap-3 flex-wrap"
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.55, duration: 0.5 }}
             >
               <motion.a
                 href={slide.primaryCta.href}
-                className="group inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.12em] px-7 py-3.5 rounded-xl text-primary-foreground relative overflow-hidden"
+                className="group inline-flex items-center gap-2 text-[12px] md:text-sm font-semibold uppercase tracking-[0.12em] px-6 py-3 md:px-7 md:py-3.5 rounded-xl text-primary-foreground relative overflow-hidden"
                 style={{
                   background:
                     "linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)))",
@@ -252,7 +252,7 @@ const HeroSlideshow = () => {
 
               <a
                 href={slide.secondaryCta.href}
-                className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.12em] px-7 py-3.5 rounded-xl text-primary-foreground/60 hover:text-primary-foreground transition-colors duration-300"
+                className="inline-flex items-center gap-2 text-[12px] md:text-sm font-semibold uppercase tracking-[0.12em] px-6 py-3 md:px-7 md:py-3.5 rounded-xl text-primary-foreground/60 hover:text-primary-foreground transition-colors duration-300"
                 style={{
                   border: "1px solid hsl(0 0% 100% / 0.1)",
                   background: "hsl(0 0% 100% / 0.03)",
@@ -264,8 +264,8 @@ const HeroSlideshow = () => {
           </motion.div>
         </AnimatePresence>
 
-        {/* ── Navigation arrows ── */}
-        <div className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 flex flex-col gap-2 z-20">
+        {/* ── Navigation arrows — bottom right on mobile ── */}
+        <div className="absolute right-4 md:right-8 bottom-20 md:top-1/2 md:-translate-y-1/2 md:bottom-auto flex flex-row md:flex-col gap-2 z-20">
           {[
             { action: prev, icon: ChevronLeft },
             { action: next, icon: ChevronRight },
@@ -273,7 +273,7 @@ const HeroSlideshow = () => {
             <button
               key={i}
               onClick={action}
-              className="w-11 h-11 rounded-xl flex items-center justify-center text-primary-foreground/40 hover:text-primary-foreground transition-all duration-300"
+              className="w-10 h-10 md:w-11 md:h-11 rounded-xl flex items-center justify-center text-primary-foreground/40 hover:text-primary-foreground transition-all duration-300"
               style={{
                 background: "hsl(0 0% 100% / 0.05)",
                 border: "1px solid hsl(0 0% 100% / 0.08)",
@@ -287,14 +287,14 @@ const HeroSlideshow = () => {
       </div>
 
       {/* ── Slide indicators ── */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex gap-2">
+      <div className="absolute bottom-6 md:bottom-8 left-1/2 -translate-x-1/2 z-20 flex gap-2">
         {SLIDES.map((_, i) => (
           <button
             key={i}
             onClick={() => setCurrent(i)}
             className="relative h-[3px] rounded-full overflow-hidden transition-all duration-300"
             style={{
-              width: i === current ? 52 : 20,
+              width: i === current ? 44 : 16,
               background:
                 i === current
                   ? "hsl(0 0% 100% / 0.15)"

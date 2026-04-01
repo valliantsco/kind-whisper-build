@@ -29,32 +29,31 @@ export default function ProductHero({ product, content, onContact, selectedColor
   const imageY = useTransform(scrollYProgress, [0, 1], [0, 60]);
   const imageScale = useTransform(scrollYProgress, [0, 1], [1, 0.95]);
 
-  // Use color-specific image if available, otherwise default
   const displayImage = selectedColor?.image ?? product.image;
 
   return (
-    <section ref={heroRef} className="relative pb-16 md:pb-24 overflow-hidden">
+    <section ref={heroRef} className="relative pb-12 md:pb-24 overflow-hidden">
       {/* Hero ambient glow */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[500px] pointer-events-none" style={{ background: "radial-gradient(ellipse at center, hsl(var(--primary) / 0.06) 0%, transparent 60%)", filter: "blur(100px)" }} />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] md:w-[900px] h-[300px] md:h-[500px] pointer-events-none" style={{ background: "radial-gradient(ellipse at center, hsl(var(--primary) / 0.06) 0%, transparent 60%)", filter: "blur(100px)" }} />
 
-      <div className="container mx-auto px-4 pt-28 md:pt-36 relative z-10">
+      <div className="container mx-auto px-4 pt-24 md:pt-36 relative z-10">
         {/* Breadcrumb */}
         <motion.nav
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4 }}
-          className="flex items-center gap-2 text-[11px] text-primary-foreground/30 uppercase tracking-[0.12em] mb-12"
+          className="flex items-center gap-2 text-[10px] md:text-[11px] text-primary-foreground/30 uppercase tracking-[0.12em] mb-8 md:mb-12 overflow-x-auto"
         >
-          <button onClick={() => navigate("/modelos")} className="flex items-center gap-1.5 hover:text-primary transition-colors cursor-pointer group">
+          <button onClick={() => navigate("/modelos")} className="flex items-center gap-1.5 hover:text-primary transition-colors cursor-pointer group shrink-0">
             <ArrowLeft className="w-3 h-3 group-hover:-translate-x-0.5 transition-transform" /> Catálogo
           </button>
-          <ChevronRight className="w-3 h-3 opacity-40" />
-          <span className="text-primary-foreground/50">{product.category}</span>
-          <ChevronRight className="w-3 h-3 opacity-40" />
-          <span className="text-primary-foreground/70 font-semibold">{product.name}</span>
+          <ChevronRight className="w-3 h-3 opacity-40 shrink-0" />
+          <span className="text-primary-foreground/50 shrink-0">{product.category}</span>
+          <ChevronRight className="w-3 h-3 opacity-40 shrink-0" />
+          <span className="text-primary-foreground/70 font-semibold shrink-0">{product.name}</span>
         </motion.nav>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-20 items-start">
           {/* ── Image Column ── */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
@@ -63,7 +62,6 @@ export default function ProductHero({ product, content, onContact, selectedColor
             className="relative lg:sticky lg:top-32"
             style={{ y: imageY, scale: imageScale } as any}
           >
-            {/* Glow behind image */}
             <div className="absolute inset-0 -m-8 rounded-3xl pointer-events-none" style={{ background: "radial-gradient(ellipse at 50% 60%, hsl(var(--primary) / 0.08) 0%, transparent 70%)", filter: "blur(60px)" }} />
 
             <div
@@ -74,15 +72,14 @@ export default function ProductHero({ product, content, onContact, selectedColor
                 boxShadow: "0 40px 100px -25px hsl(0 0% 0% / 0.6), inset 0 1px 0 hsl(0 0% 100% / 0.05)",
               }}
             >
-              <div className="p-10 md:p-16">
+              <div className="p-6 md:p-16">
                 <img
                   src={displayImage}
                   alt={product.name}
-                  className="w-full h-auto object-contain max-h-[400px] mx-auto transition-transform duration-700 group-hover:scale-[1.03]"
+                  className="w-full h-auto object-contain max-h-[280px] md:max-h-[400px] mx-auto transition-transform duration-700 group-hover:scale-[1.03]"
                 />
               </div>
 
-              {/* Shine effect on hover */}
               <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" style={{ background: "linear-gradient(135deg, transparent 40%, rgba(255,255,255,0.08) 50%, transparent 60%)" }} />
 
               {product.badge && (
@@ -90,7 +87,7 @@ export default function ProductHero({ product, content, onContact, selectedColor
                   initial={{ opacity: 0, x: -10 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.4 }}
-                  className="absolute top-5 left-5 px-3.5 py-1.5 rounded-lg text-[9px] font-bold uppercase tracking-[0.14em] text-primary-foreground flex items-center gap-1.5"
+                  className="absolute top-4 left-4 md:top-5 md:left-5 px-3 py-1 md:px-3.5 md:py-1.5 rounded-lg text-[9px] font-bold uppercase tracking-[0.14em] text-primary-foreground flex items-center gap-1.5"
                   style={{
                     background: "linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)))",
                     boxShadow: "0 4px 16px -4px hsl(var(--primary) / 0.4)",
@@ -102,7 +99,6 @@ export default function ProductHero({ product, content, onContact, selectedColor
               )}
             </div>
 
-            {/* Reflection glow */}
             <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 w-2/3 h-16 blur-3xl rounded-full pointer-events-none" style={{ background: "hsl(var(--primary) / 0.08)" }} />
           </motion.div>
 
@@ -112,7 +108,7 @@ export default function ProductHero({ product, content, onContact, selectedColor
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.15 }}
-              className="inline-flex items-center gap-2 self-start text-[10px] font-bold uppercase tracking-[0.2em] px-3.5 py-1.5 rounded-full mb-5"
+              className="inline-flex items-center gap-2 self-start text-[10px] font-bold uppercase tracking-[0.2em] px-3.5 py-1.5 rounded-full mb-4 md:mb-5"
               style={{
                 background: "hsl(var(--primary) / 0.08)",
                 color: "hsl(var(--primary))",
@@ -128,7 +124,7 @@ export default function ProductHero({ product, content, onContact, selectedColor
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-              className="font-display font-black text-4xl md:text-5xl lg:text-[3.8rem] text-primary-foreground uppercase tracking-tight leading-[0.92] mb-4"
+              className="font-display font-black text-3xl md:text-5xl lg:text-[3.8rem] text-primary-foreground uppercase tracking-tight leading-[0.92] mb-3 md:mb-4"
             >
               {product.name}
             </motion.h1>
@@ -137,10 +133,10 @@ export default function ProductHero({ product, content, onContact, selectedColor
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
-              className="mb-6"
+              className="mb-5 md:mb-6"
             >
               <span
-                className="font-display font-black text-3xl md:text-4xl bg-clip-text text-transparent"
+                className="font-display font-black text-2xl md:text-4xl bg-clip-text text-transparent"
                 style={{ backgroundImage: "linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)))" }}
               >
                 {product.price}
@@ -151,15 +147,15 @@ export default function ProductHero({ product, content, onContact, selectedColor
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.35 }}
-              className="space-y-3 mb-8"
+              className="space-y-2 md:space-y-3 mb-6 md:mb-8"
             >
-              <h2 className="text-primary-foreground/90 text-lg md:text-xl font-semibold leading-snug">
+              <h2 className="text-primary-foreground/90 text-base md:text-xl font-semibold leading-snug">
                 {content.headline}
               </h2>
-              <p className="text-primary-foreground/50 text-[14px] leading-relaxed">
+              <p className="text-primary-foreground/50 text-[13px] md:text-[14px] leading-relaxed">
                 {content.subheadline}
               </p>
-              <p className="text-primary-foreground/30 text-[13px] leading-relaxed">
+              <p className="text-primary-foreground/30 text-[12px] md:text-[13px] leading-relaxed">
                 {content.supportText}
               </p>
             </motion.div>
@@ -169,12 +165,12 @@ export default function ProductHero({ product, content, onContact, selectedColor
               <ColorSelector colors={product.colors} onColorChange={onColorChange} />
             )}
 
-            {/* ── Specs Strip ── */}
+            {/* ── Specs Strip — 3 cols on mobile, 5 on md+ ── */}
             <motion.div
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
-              className="grid grid-cols-5 gap-1 mb-8 rounded-xl overflow-hidden"
+              className="grid grid-cols-3 md:grid-cols-5 gap-px mb-6 md:mb-8 rounded-xl overflow-hidden"
               style={{ background: "hsl(0 0% 100% / 0.02)", border: "1px solid hsl(0 0% 100% / 0.06)" }}
             >
               {(["autonomy", "speed", "motor", "recharge", "load"] as const).map((key, i) => {
@@ -187,14 +183,14 @@ export default function ProductHero({ product, content, onContact, selectedColor
                     transition={{ delay: 0.45 + i * 0.05 }}
                     className="relative p-3 md:p-4 text-center group/spec cursor-default"
                     style={{
-                      borderRight: i < 4 ? "1px solid hsl(0 0% 100% / 0.04)" : "none",
+                      borderRight: (i < 2 || (i >= 3 && i < 4)) ? "1px solid hsl(0 0% 100% / 0.04)" : "none",
+                      borderBottom: i < 3 ? "1px solid hsl(0 0% 100% / 0.04)" : "none",
                     }}
                   >
-                    {/* Hover glow */}
                     <div className="absolute inset-0 opacity-0 group-hover/spec:opacity-100 transition-opacity duration-300 pointer-events-none" style={{ background: "radial-gradient(ellipse at center, hsl(var(--primary) / 0.06) 0%, transparent 70%)" }} />
-                    <Icon className="w-4 h-4 text-primary/70 mx-auto mb-1.5 group-hover/spec:text-primary transition-colors" />
-                    <p className="text-[13px] font-bold text-primary-foreground/90 tabular-nums leading-tight">{product[key]}</p>
-                    <p className="text-[8px] text-primary-foreground/30 uppercase tracking-widest mt-1">{SPEC_LABELS[key]}</p>
+                    <Icon className="w-3.5 h-3.5 md:w-4 md:h-4 text-primary/70 mx-auto mb-1 md:mb-1.5 group-hover/spec:text-primary transition-colors" />
+                    <p className="text-[12px] md:text-[13px] font-bold text-primary-foreground/90 tabular-nums leading-tight">{product[key]}</p>
+                    <p className="text-[7px] md:text-[8px] text-primary-foreground/30 uppercase tracking-widest mt-0.5">{SPEC_LABELS[key]}</p>
                   </motion.div>
                 );
               })}
@@ -205,11 +201,11 @@ export default function ProductHero({ product, content, onContact, selectedColor
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5 }}
-              className="mb-10"
+              className="mb-8 md:mb-10"
             >
               <button
                 onClick={onContact}
-                className="relative w-full inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-xl text-[12px] font-semibold uppercase tracking-[0.14em] text-primary-foreground transition-all duration-300 hover:scale-[1.01] active:scale-[0.98] overflow-hidden group/cta cursor-pointer"
+                className="relative w-full inline-flex items-center justify-center gap-2.5 px-6 py-3.5 md:px-8 md:py-4 rounded-xl text-[12px] font-semibold uppercase tracking-[0.14em] text-primary-foreground transition-all duration-300 hover:scale-[1.01] active:scale-[0.98] overflow-hidden group/cta cursor-pointer"
                 style={{
                   background: "linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)))",
                   boxShadow: "0 12px 32px -8px hsl(var(--primary) / 0.4), inset 0 1px 0 hsl(0 0% 100% / 0.1)",
@@ -226,14 +222,14 @@ export default function ProductHero({ product, content, onContact, selectedColor
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.55 }}
-              className="rounded-xl p-6 relative overflow-hidden"
+              className="rounded-xl p-5 md:p-6 relative overflow-hidden"
               style={{
                 background: "linear-gradient(135deg, hsl(0 0% 100% / 0.025) 0%, hsl(0 0% 100% / 0.01) 100%)",
                 border: "1px solid hsl(0 0% 100% / 0.06)",
               }}
             >
               <div className="absolute top-0 right-0 w-32 h-32 pointer-events-none" style={{ background: "radial-gradient(circle at top right, hsl(var(--primary) / 0.04) 0%, transparent 70%)" }} />
-              <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-primary mb-4 flex items-center gap-2">
+              <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-primary mb-3 md:mb-4 flex items-center gap-2">
                 <span className="w-6 h-[1px] bg-primary/40" />
                 Ideal para
               </p>
