@@ -73,7 +73,7 @@ const AnimatedStat = ({ value, label }: { value: string; label: string }) => {
   }, [numericPart]);
 
   return (
-    <div ref={ref} className="flex flex-col items-center gap-1 px-4 md:px-8">
+    <div ref={ref} className="flex flex-col items-center gap-1 px-3 md:px-8">
       <span className="text-2xl md:text-3xl font-black text-primary tabular-nums">
         {count}{suffix}
       </span>
