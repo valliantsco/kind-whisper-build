@@ -6,7 +6,6 @@ import type { ProductContent } from "@/data/product-content";
 interface Props {
   content: ProductContent;
   onContact: () => void;
-  whatsAppLink: string;
 }
 
 export default function ProductFinalCTA({ content, onContact, whatsAppLink }: Props) {
