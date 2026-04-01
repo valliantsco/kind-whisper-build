@@ -8,28 +8,28 @@ const PILLARS = [
     title: "Garantia de Fábrica",
     stat: "2 anos",
     description:
-      "Mais tranquilidade para comprar com confiança. Trabalhamos com garantia de fábrica para reforçar a segurança e a credibilidade de cada escolha.",
+      "Mais segurança para comprar com tranquilidade e contar com respaldo desde o início da sua experiência com a marca.",
   },
   {
     icon: Wrench,
     title: "Assistência Especializada",
     stat: "100%",
     description:
-      "Nosso atendimento vai além da venda. Você conta com suporte especializado para tirar dúvidas, entender melhor os modelos e comprar com mais segurança.",
+      "Nosso time acompanha você antes, durante e depois da compra, com orientação clara e suporte para cada etapa.",
   },
   {
     icon: Clock,
     title: "Em Expansão",
     stat: "PORTFÓLIO",
     description:
-      "A MS Electric acompanha a evolução do mercado para oferecer soluções cada vez mais alinhadas às novas demandas da mobilidade elétrica no Brasil.",
+      "A MS Eletric acompanha a evolução do mercado para oferecer modelos que atendem da rotina urbana ao uso profissional.",
   },
   {
     icon: Award,
     title: "Consultivo de Verdade",
     stat: "ATENDIMENTO",
     description:
-      "Aqui, a escolha do modelo não é genérica. Entendemos seu contexto para indicar a opção mais adequada ao seu perfil, uso e expectativa.",
+      "Aqui a recomendação não é genérica. A gente entende sua necessidade para indicar o modelo mais adequado para a sua rotina.",
   },
 ];
 
