@@ -131,7 +131,7 @@ export default function ABVE() {
               </motion.h1>
 
               <motion.p variants={fadeUp} custom={2}
-                className="text-primary-foreground/70 text-lg md:text-xl leading-relaxed max-w-3xl mb-6">
+                className="text-primary-foreground/70 text-base md:text-xl leading-relaxed max-w-3xl mb-4 md:mb-6">
                 A MS Eletric integra a Associação Brasileira do Veículo Elétrico, uma entidade que reúne empresas, marcas e iniciativas comprometidas com o avanço da mobilidade elétrica no país. Para a marca, essa associação reforça um posicionamento já presente no seu dia a dia: tecnologia aplicada, visão de futuro e compromisso com uma mobilidade mais inteligente.
               </motion.p>
 
