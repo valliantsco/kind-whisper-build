@@ -40,7 +40,7 @@ const HomeFooter = ({ onContactClick, onSupportClick }: HomeFooterProps) => {
       <div className="container mx-auto px-4 py-12 md:py-20">
         <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-5 gap-8 md:gap-10">
           {/* Brand */}
-          <div className="lg:col-span-2">
+          <div className="col-span-2 lg:col-span-2">
             <img src={msLogo} alt="MS Eletric" className="h-[3.2rem] w-auto mb-5" />
             <p className="text-primary-foreground/50 text-sm leading-relaxed max-w-xs mb-6">
               A MS Eletric conecta mobilidade elétrica, atendimento consultivo e suporte especializado para quem busca uma escolha mais prática, moderna e confiável. Do primeiro contato ao pós-venda, a experiência é pensada para dar mais clareza, mais segurança e mais confiança em cada etapa.
