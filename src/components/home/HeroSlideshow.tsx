@@ -12,6 +12,8 @@ interface Slide {
   primaryCta: { text: string; href: string };
   secondaryCta: { text: string; href: string };
   stats?: { icon: typeof Zap; value: string; label: string }[];
+  youtubeId: string;
+  youtubeStart?: number;
 }
 
 const SLIDES: Slide[] = [
