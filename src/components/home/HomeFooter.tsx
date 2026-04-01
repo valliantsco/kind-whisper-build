@@ -63,7 +63,7 @@ const HomeFooter = ({ onContactClick, onSupportClick }: HomeFooterProps) => {
               </button>
               <div className="flex items-center gap-2.5">
                 <Phone className="w-4 h-4 shrink-0" style={{ color: "hsl(11 81% 57%)" }} />
-                <span className="text-sm text-primary-foreground/50">(34) 3222-8899</span>
+                <a href="tel:+553432228899" className="text-sm text-primary-foreground/50 hover:text-primary transition-colors">(34) 3222-8899</a>
               </div>
               <div className="flex items-center gap-2.5">
                 <Clock className="w-4 h-4 shrink-0" style={{ color: "hsl(11 81% 57%)" }} />
