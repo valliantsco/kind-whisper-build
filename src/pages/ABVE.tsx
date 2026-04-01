@@ -140,7 +140,7 @@ export default function ABVE() {
                 Mais do que um reconhecimento institucional, essa conexão fortalece a presença da MS Eletric dentro de um setor em transformação e reforça sua relação com inovação, sustentabilidade e experiência real de mercado.
               </motion.p>
 
-              <motion.div variants={fadeUp} custom={4} className="flex flex-wrap gap-6">
+              <motion.div variants={fadeUp} custom={4} className="grid grid-cols-2 md:flex md:flex-wrap gap-4 md:gap-6">
                 {[
                   { label: "Credibilidade setorial", icon: BadgeCheck },
                   { label: "Visão de futuro", icon: Lightbulb },
