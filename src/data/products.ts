@@ -290,6 +290,11 @@ export const PRODUCTS: Product[] = [
     price: "R$ 19.990",
     highlight: "Performance esportiva",
     description: "A mais rápida do portfólio: 80 km/h, 85 km de autonomia e visual esportivo. Performance máxima.",
+    colors: [
+      { name: "Preto", hex: "#111111" },
+      { name: "Vermelho Racing", hex: "#B91C1C" },
+      { name: "Azul Metálico", hex: "#1E40AF" },
+    ],
   },
 
   // ── Triciclos Elétricos ──
