@@ -374,7 +374,7 @@ const Models = () => {
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.6, delay: 0.5 }}
                 >
-                  Veículos 100% elétricos que unem tecnologia, economia e praticidade — da mobilidade urbana ao uso profissional.
+                  Conheça a linha de veículos 100% elétricos da MS Electric, desenvolvida para unir tecnologia, economia, praticidade e estilo em diferentes rotinas de uso, da mobilidade urbana ao trabalho do dia a dia.
                 </motion.p>
 
                 {/* Stats strip */}
