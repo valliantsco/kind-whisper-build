@@ -301,9 +301,8 @@ export const PRODUCTS: Product[] = [
     price: "R$ 15.990",
     description: "Estabilidade total com três rodas. Ideal para quem busca segurança e praticidade com motor elétrico.",
     colors: [
-      { name: "Preto", hex: "#111111" },
-      { name: "Branco", hex: "#F5F5F5" },
-      { name: "Azul", hex: "#1D4ED8" },
+      { name: "Creme", hex: "#FFFDD0" },
+      { name: "Verde Claro", hex: "#86EFAC" },
     ],
   },
 
