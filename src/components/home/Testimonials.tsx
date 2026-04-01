@@ -324,7 +324,9 @@ const Testimonials = () => {
                   </div>
                 </div>
               </motion.div>
-            ))}
+              );
+            })}
+
           </div>
 
           {/* Progress bar */}
