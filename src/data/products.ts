@@ -390,8 +390,6 @@ export const PRODUCTS: Product[] = [
     recharge: "5–6h",
     price: "R$ 2.800",
     description: "Leve e dobrável, ideal para a última milha. Leve no metrô, no carro ou guarde em qualquer canto.",
-    colors: [
-      { name: "Preto", hex: "#111111" },
-    ],
+    colors: [],
   },
 ];
