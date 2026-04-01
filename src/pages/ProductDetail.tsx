@@ -6,7 +6,7 @@ import PopUpContatoProduto from "@/components/product/PopUpContatoProduto";
 import HomeFooter from "@/components/home/HomeFooter";
 import { PRODUCTS } from "@/data/products";
 import { PRODUCT_CONTENT } from "@/data/product-content";
-import { useState, useMemo, useCallback } from "react";
+import { useState, useMemo, useCallback, useEffect } from "react";
 import type { ProductColor } from "@/data/products";
 
 import ProductHero from "@/components/product/ProductHero";
