@@ -58,35 +58,35 @@ function Divider() {
 
 /* ─── data ─── */
 const IMPORTANCE_CARDS = [
-  { icon: Shield, title: "Seriedade comprovada", text: "A associação à ABVE valida que a MS Eletric opera dentro dos padrões e práticas reconhecidas pelo setor." },
-  { icon: Handshake, title: "Confiança institucional", text: "O cliente sabe que está diante de uma marca integrada ao ecossistema oficial da eletromobilidade." },
-  { icon: TrendingUp, title: "Alinhamento setorial", text: "Participação ativa nas discussões que moldam regulamentações, tendências e o futuro do mercado." },
-  { icon: Lightbulb, title: "Conexão com inovação", text: "Acesso direto às novidades, avanços tecnológicos e melhores práticas da indústria elétrica." },
-  { icon: Leaf, title: "Sustentabilidade real", text: "Compromisso formalizado com a mobilidade de zero emissão e com o impacto positivo no planeta." },
-  { icon: Building2, title: "Posicionamento de mercado", text: "A MS Eletric não está isolada — faz parte de uma rede que movimenta e transforma o setor no Brasil." },
+  { icon: Shield, title: "Seriedade comprovada", text: "A associação reforça a imagem de uma marca conectada a um ecossistema relevante e reconhecido nacionalmente." },
+  { icon: Handshake, title: "Conexão institucional", text: "Estar presente nesse ambiente fortalece o posicionamento da MS Eletric dentro do setor e amplia sua leitura institucional." },
+  { icon: TrendingUp, title: "Alinhamento setorial", text: "A marca se conecta com um mercado em evolução e com uma agenda cada vez mais importante para o país." },
+  { icon: Lightbulb, title: "Conexão com inovação", text: "A associação reforça a proximidade da marca com tecnologia, transformação e novas soluções de mobilidade." },
+  { icon: Leaf, title: "Sustentabilidade real", text: "Esse vínculo também conversa com uma visão mais consciente de futuro e com escolhas mais eficientes para o presente." },
+  { icon: Building2, title: "Posicionamento de mercado", text: "A presença na ABVE ajuda a consolidar a MS Eletric como uma marca que participa ativamente do avanço da eletromobilidade no Brasil." },
 ];
 
 const PILLARS = [
-  { icon: BadgeCheck, title: "Credibilidade Setorial", desc: "Reconhecimento como empresa alinhada às melhores práticas e padrões da indústria de veículos elétricos no Brasil." },
-  { icon: Lightbulb, title: "Alinhamento com Inovação", desc: "Proximidade com as tendências, tecnologias e avanços que definem o futuro da mobilidade elétrica." },
-  { icon: Leaf, title: "Compromisso com Sustentabilidade", desc: "Participação ativa na construção de um mercado de transporte mais limpo, silencioso e eficiente." },
-  { icon: Globe, title: "Ecossistema da Eletromobilidade", desc: "Integração a uma rede de empresas, fabricantes e instituições que movem o setor no país." },
-  { icon: Shield, title: "Fortalecimento Institucional", desc: "Presença em um ambiente de diálogo estratégico, regulatório e técnico junto aos principais agentes do mercado." },
-  { icon: HeartHandshake, title: "Confiança para o Cliente", desc: "Garantia adicional de seriedade, estrutura e comprometimento para quem busca mobilidade elétrica." },
+  { icon: BadgeCheck, title: "Credibilidade setorial", desc: "A associação fortalece a imagem de uma empresa alinhada ao desenvolvimento da mobilidade elétrica no Brasil." },
+  { icon: Lightbulb, title: "Alinhamento com inovação", desc: "A marca se posiciona ao lado de um ecossistema que discute e impulsiona a evolução do setor." },
+  { icon: Leaf, title: "Compromisso com sustentabilidade", desc: "Esse vínculo também comunica uma visão mais consciente de futuro e de mobilidade." },
+  { icon: Globe, title: "Ecossistema da eletromobilidade", desc: "Integrar esse ambiente reforça a presença da marca dentro de um mercado em expansão." },
+  { icon: Shield, title: "Fortalecimento institucional", desc: "A página ajuda a mostrar que a marca participa de uma estrutura mais ampla e mais madura dentro do setor." },
+  { icon: HeartHandshake, title: "Confiança para o cliente", desc: "Quando a marca se conecta a um ecossistema reconhecido, isso também gera mais segurança para quem está escolhendo." },
 ];
 
 const VALUES_CONNECT = [
-  { icon: Zap, label: "Inovação", text: "Fazer parte da ABVE reforça a vocação da MS Eletric por soluções que antecipam o futuro." },
-  { icon: Leaf, label: "Sustentabilidade", text: "A associação formaliza o compromisso com mobilidade zero emissão e impacto positivo." },
-  { icon: Users, label: "Atendimento Consultivo", text: "O conhecimento compartilhado dentro do ecossistema eleva a qualidade da orientação ao cliente." },
-  { icon: TrendingUp, label: "Evolução Contínua", text: "A conexão com a entidade garante acesso contínuo ao que há de mais atual no setor." },
+  { icon: Zap, label: "Inovação", text: "Fazer parte desse ambiente fortalece uma visão de futuro que sempre esteve presente na identidade da marca." },
+  { icon: Leaf, label: "Sustentabilidade", text: "A mobilidade elétrica propõe uma evolução mais consciente e essa associação reforça esse compromisso." },
+  { icon: Users, label: "Atendimento consultivo", text: "A participação nesse setor amplia a responsabilidade da marca em orientar bem e construir uma experiência segura para o cliente." },
+  { icon: TrendingUp, label: "Evolução contínua", text: "O mercado cresce, a tecnologia avança e a marca acompanha esse movimento com visão de longo prazo." },
 ];
 
 const STRUCTURE_ITEMS = [
-  { icon: MapPin, title: "Uberlândia — MG", text: "Sede e showroom principal na Av. João Pinheiro, uma das avenidas mais conhecidas da cidade." },
-  { icon: Building2, title: "Revendas", text: "Pontos de atendimento em Uberlândia e Caldas Novas (GO), ampliando a presença regional." },
-  { icon: Globe, title: "Atendimento Online", text: "Canais digitais de venda e atendimento para todo o território nacional." },
-  { icon: Truck, title: "Entrega Imediata", text: "Estoque disponível para pronta entrega, sem longas esperas ou incertezas." },
+  { icon: MapPin, title: "Base em Uberlândia", text: "A marca conta com operação física em Uberlândia, reforçando proximidade, presença e atendimento real." },
+  { icon: Building2, title: "Revendas", text: "A estrutura também inclui pontos parceiros que ampliam a presença da marca em outros mercados." },
+  { icon: Globe, title: "Atendimento online", text: "Além da presença física, a MS Eletric também atende online com alcance nacional." },
+  { icon: Truck, title: "Entrega imediata", text: "A operação foi estruturada para dar mais agilidade e praticidade ao processo comercial." },
 ];
 
 /* ═══════════════════════════════════════════════════════════════ */
@@ -117,7 +117,7 @@ export default function ABVE() {
           <motion.div style={{ opacity: heroOpacity }} className="container mx-auto px-4 pt-32 pb-20 relative z-10">
             <motion.div initial="hidden" animate="visible" variants={stagger} className="max-w-4xl">
               <motion.div variants={fadeUp}>
-                <SectionLabel>Associada ABVE</SectionLabel>
+                <SectionLabel>Associação ABVE</SectionLabel>
               </motion.div>
 
               <motion.h1 variants={fadeUp} custom={1}
@@ -132,20 +132,20 @@ export default function ABVE() {
 
               <motion.p variants={fadeUp} custom={2}
                 className="text-primary-foreground/70 text-lg md:text-xl leading-relaxed max-w-3xl mb-6">
-                A MS Eletric integra a Associação Brasileira do Veículo Elétrico — a entidade que reúne os principais agentes da eletromobilidade no país. Essa associação reflete nosso compromisso com inovação, credibilidade e o avanço real da mobilidade elétrica.
+                A MS Eletric integra a Associação Brasileira do Veículo Elétrico, uma entidade que reúne empresas, marcas e iniciativas comprometidas com o avanço da mobilidade elétrica no país. Para a marca, essa associação reforça um posicionamento já presente no seu dia a dia: tecnologia aplicada, visão de futuro e compromisso com uma mobilidade mais inteligente.
               </motion.p>
 
               <motion.p variants={fadeUp} custom={3}
                 className="text-primary-foreground/40 text-base leading-relaxed max-w-2xl mb-10">
-                Mais do que um selo, é a formalização de um posicionamento: estar ao lado de quem constrói o futuro do transporte no Brasil.
+                Mais do que um reconhecimento institucional, essa conexão fortalece a presença da MS Eletric dentro de um setor em transformação e reforça sua relação com inovação, sustentabilidade e experiência real de mercado.
               </motion.p>
 
               <motion.div variants={fadeUp} custom={4} className="flex flex-wrap gap-6">
                 {[
                   { label: "Credibilidade setorial", icon: BadgeCheck },
-                  { label: "Inovação contínua", icon: Lightbulb },
+                  { label: "Visão de futuro", icon: Lightbulb },
                   { label: "Sustentabilidade real", icon: Leaf },
-                  { label: "Ecossistema nacional", icon: Globe },
+                  { label: "Crescimento no setor", icon: Globe },
                 ].map(({ label, icon: Icon }) => (
                   <div key={label} className="flex items-center gap-2.5 text-primary-foreground/50 text-sm">
                     <div className="w-8 h-8 rounded-lg flex items-center justify-center"
@@ -185,13 +185,13 @@ export default function ABVE() {
               </motion.h2>
               <motion.div variants={fadeUp} custom={2} className="space-y-5 text-primary-foreground/55 text-[15px] leading-[1.8]">
                 <p>
-                  A ABVE — Associação Brasileira do Veículo Elétrico — é a principal entidade representativa do setor de veículos elétricos no país. Fundada para promover o desenvolvimento, a regulamentação e a disseminação da mobilidade elétrica, a associação reúne fabricantes, distribuidores, prestadores de serviço e empresas comprometidas com a transformação do transporte.
+                  A ABVE é uma entidade que reúne empresas, marcas e iniciativas ligadas ao desenvolvimento da mobilidade elétrica no Brasil. Seu papel é acompanhar o avanço do setor, ampliar o diálogo sobre o tema e fortalecer um ecossistema que conecta tecnologia, inovação e futuro.
                 </p>
                 <p>
-                  Atuar junto à ABVE significa participar de um ambiente de diálogo técnico, regulatório e estratégico que influencia diretamente o futuro da eletromobilidade brasileira. É um espaço onde se discutem políticas públicas, tendências de mercado, infraestrutura de recarga e padrões de qualidade.
+                  Ao fazer parte desse ambiente, a MS Eletric reforça sua conexão com um movimento maior, que acompanha a evolução da eletromobilidade e ajuda a consolidar esse mercado no país.
                 </p>
                 <p>
-                  Ser associada à ABVE não é apenas uma credencial — é um compromisso com a evolução do setor e com a construção de um mercado mais maduro, confiável e acessível para todos.
+                  Essa associação também amplia a percepção de solidez da marca, mostrando que a MS Eletric não atua de forma isolada, mas integrada a um setor que cresce, se organiza e se fortalece a cada ano.
                 </p>
               </motion.div>
             </div>
@@ -215,9 +215,9 @@ export default function ABVE() {
                     <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-3"
                       style={{ background: "hsl(var(--primary) / 0.1)", border: "1px solid hsl(var(--primary) / 0.2)" }}>
                       <Award className="w-4 h-4 text-primary" />
-                      <span className="text-xs uppercase tracking-[0.15em] text-primary font-semibold">Membro Oficial</span>
+                      <span className="text-xs uppercase tracking-[0.15em] text-primary font-semibold">Membro oficial</span>
                     </div>
-                    <p className="text-primary-foreground/40 text-sm">Associação Brasileira do Veículo Elétrico</p>
+                    <p className="text-primary-foreground/40 text-sm">Associada à Associação Brasileira do Veículo Elétrico</p>
                   </div>
                 </div>
               </div>
@@ -247,7 +247,7 @@ export default function ABVE() {
             </motion.h2>
             <motion.p variants={fadeUp} custom={2}
               className="text-primary-foreground/50 text-[15px] leading-relaxed max-w-2xl mx-auto">
-              Em um mercado em construção, estar conectado à entidade que organiza, representa e fortalece o setor não é opcional — é estratégico. Para a MS Eletric, essa associação vai além da representatividade: ela reforça cada promessa que fazemos.
+              Para uma marca que trabalha com mobilidade elétrica de forma prática e próxima do cliente, fazer parte da ABVE reforça credibilidade, conexão com o setor e alinhamento com o futuro da mobilidade no Brasil.
             </motion.p>
           </motion.div>
 
@@ -338,18 +338,21 @@ export default function ABVE() {
 
             <motion.div variants={fadeUp} custom={2} className="space-y-5 text-primary-foreground/55 text-[15px] leading-[1.8]">
               <p>
-                A mobilidade elétrica não é mais uma promessa distante. Ela já faz parte do presente — e a MS Eletric está posicionada exatamente nesse ponto de convergência entre o que já é possível e o que ainda está por vir.
+                A MS Eletric acredita que a mobilidade elétrica já faz parte do presente. E participar de um ecossistema como o da ABVE reforça esse entendimento de forma institucional, aproximando a marca de discussões, movimentos e iniciativas que acompanham a transformação do setor.
               </p>
               <p>
-                Participar da ABVE significa estar no centro das conversas que definem como o Brasil vai se mover nos próximos anos. Significa entender regulamentações antes que elas cheguem ao mercado. Significa antecipar tendências, absorver conhecimento e traduzir tudo isso em uma experiência mais completa para o cliente.
-              </p>
-              <p>
-                A MS Eletric acredita que inovação não é apenas sobre tecnologia — é sobre aplicação prática. É sobre transformar um veículo elétrico em parte natural da rotina de alguém. É sobre tornar a transição para a mobilidade limpa mais simples, acessível e segura.
-              </p>
-              <p>
-                Essa visão não surge isoladamente. Ela se fortalece dentro de um ecossistema. E a ABVE é esse ecossistema.
+                Mais do que acompanhar tendências, a marca busca traduzir inovação em experiência real, aproximando o público de soluções que fazem sentido no dia a dia e tornando a eletromobilidade mais clara, mais próxima e mais acessível.
               </p>
             </motion.div>
+
+            {/* Quote */}
+            <motion.blockquote variants={fadeUp} custom={3}
+              className="mt-10 pl-6 relative"
+              style={{ borderLeft: "3px solid hsl(var(--primary) / 0.5)" }}>
+              <p className="text-primary-foreground/70 text-lg md:text-xl font-medium italic leading-relaxed">
+                "Fazer parte desse setor de forma ativa ajuda a marca a crescer com mais visão, mais consistência e mais conexão com o que realmente importa no futuro da mobilidade."
+              </p>
+            </motion.blockquote>
           </motion.div>
         </Section>
 
@@ -373,13 +376,10 @@ export default function ABVE() {
               </motion.h2>
               <motion.div variants={fadeUp} custom={2} className="space-y-5 text-primary-foreground/55 text-[15px] leading-[1.8]">
                 <p>
-                  A MS Eletric nasceu para apresentar soluções inovadoras de mobilidade, integrando tecnologia e sustentabilidade em cada detalhe — dos modelos oferecidos à experiência de atendimento.
+                  A MS Eletric nasceu com a proposta de aproximar a mobilidade elétrica da vida real, unindo inovação, tecnologia e experiência prática para diferentes perfis de uso.
                 </p>
                 <p>
-                  Nosso portfólio é composto exclusivamente por veículos puramente elétricos: silenciosos, com zero emissão de gás carbônico e pensados para transformar a forma como as pessoas se deslocam. É uma experiência de condução completamente nova — mais limpa, mais inteligente e mais conectada ao futuro.
-                </p>
-                <p>
-                  Mas não nos limitamos ao produto. Acreditamos que a experiência com mobilidade elétrica começa antes da compra e se estende muito além dela. Por isso, oferecemos entrega imediata, garantia real, assistência técnica especializada e personalização — porque cada cliente tem uma necessidade diferente, e cada solução precisa fazer sentido na prática.
+                  Na prática, isso significa trabalhar com soluções que não apenas acompanham uma tendência, mas ajudam a construir uma nova forma de mobilidade, mais eficiente, mais moderna e mais conectada ao que o mercado e o consumidor já começam a buscar.
                 </p>
               </motion.div>
             </div>
@@ -396,13 +396,10 @@ export default function ABVE() {
               </motion.h2>
               <motion.div variants={fadeUp} custom={3} className="space-y-5 text-primary-foreground/55 text-[15px] leading-[1.8]">
                 <p>
-                  Na MS Eletric, qualidade não é apenas um atributo do produto — é um compromisso que permeia cada interação. Do primeiro contato à assistência técnica, cada etapa é pensada para que o cliente se sinta seguro, bem orientado e confiante na sua escolha.
+                  Além dos produtos, a marca também constrói valor por meio da experiência que oferece. Atendimento, suporte, orientação e estrutura fazem parte dessa jornada e ajudam a fortalecer a confiança de quem escolhe a MS Eletric.
                 </p>
                 <p>
-                  Trabalhamos com modelos que aliam design, desempenho e tecnologia de ponta. Cada veículo elétrico do nosso portfólio é selecionado com critério, testado com rigor e apresentado com transparência. Não vendemos apenas mobilidade — entregamos uma experiência completa.
-                </p>
-                <p>
-                  É esse nível de cuidado que nos credencia como associada ABVE e nos posiciona como referência no segmento.
+                  Essa visão combina com o que a associação à ABVE representa: uma marca que não apenas comercializa soluções elétricas, mas participa de um movimento maior, com maturidade institucional e compromisso com a evolução do setor.
                 </p>
               </motion.div>
             </div>
@@ -417,7 +414,7 @@ export default function ABVE() {
         <Section>
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={stagger}
             className="text-center mb-14">
-            <motion.div variants={fadeUp}><SectionLabel>Presença</SectionLabel></motion.div>
+            <motion.div variants={fadeUp}><SectionLabel>Estrutura</SectionLabel></motion.div>
             <motion.h2 variants={fadeUp} custom={1}
               className="font-display font-black text-3xl md:text-5xl text-primary-foreground uppercase tracking-tight leading-[0.95] mb-6">
               Estrutura real,{" "}
@@ -428,7 +425,7 @@ export default function ABVE() {
             </motion.h2>
             <motion.p variants={fadeUp} custom={2}
               className="text-primary-foreground/50 text-[15px] leading-relaxed max-w-2xl mx-auto">
-              A MS Eletric combina presença física com capacidade de atendimento em todo o país, garantindo proximidade e acessibilidade para diferentes perfis de cliente.
+              A presença da MS Eletric vai além do posicionamento institucional. A marca também fortalece sua credibilidade por meio de estrutura real, atendimento próximo e capacidade de atender diferentes perfis de cliente em diferentes contextos.
             </motion.p>
           </motion.div>
 
@@ -476,15 +473,19 @@ export default function ABVE() {
         <Section>
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={stagger}
             className="text-center mb-14">
-            <motion.div variants={fadeUp}><SectionLabel>Pilares</SectionLabel></motion.div>
+            <motion.div variants={fadeUp}><SectionLabel>Marca</SectionLabel></motion.div>
             <motion.h2 variants={fadeUp} custom={1}
-              className="font-display font-black text-3xl md:text-5xl text-primary-foreground uppercase tracking-tight leading-[0.95]">
+              className="font-display font-black text-3xl md:text-5xl text-primary-foreground uppercase tracking-tight leading-[0.95] mb-6">
               O que essa associação reforça sobre a{" "}
               <span className="bg-clip-text text-transparent"
                 style={{ backgroundImage: "linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)))" }}>
                 marca
               </span>
             </motion.h2>
+            <motion.p variants={fadeUp} custom={2}
+              className="text-primary-foreground/50 text-[15px] leading-relaxed max-w-2xl mx-auto">
+              Mais do que um vínculo institucional, a presença da MS Eletric na ABVE reforça atributos que já fazem parte da construção da marca.
+            </motion.p>
           </motion.div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5 max-w-5xl mx-auto">
@@ -547,10 +548,6 @@ export default function ABVE() {
                   MS Eletric
                 </span>
               </motion.h2>
-              <motion.p variants={fadeUp} custom={2}
-                className="text-primary-foreground/50 text-[15px] leading-relaxed max-w-2xl mx-auto">
-                A associação à ABVE não é um adendo — é uma extensão natural dos valores que já guiam a MS Eletric desde o início.
-              </motion.p>
             </div>
 
             <div className="grid sm:grid-cols-2 gap-6">
@@ -591,7 +588,7 @@ export default function ABVE() {
               style={{ background: "radial-gradient(ellipse at center, hsl(var(--primary) / 0.06) 0%, transparent 60%)", filter: "blur(80px)" }} />
 
             <div className="relative z-10">
-              <motion.div variants={fadeUp}><SectionLabel>Próximo passo</SectionLabel></motion.div>
+              <motion.div variants={fadeUp}><SectionLabel>A marca no setor</SectionLabel></motion.div>
               <motion.h2 variants={fadeUp} custom={1}
                 className="font-display font-black text-3xl md:text-5xl text-primary-foreground uppercase tracking-tight leading-[0.95] mb-6">
                 Conheça a marca que faz parte do{" "}
@@ -603,7 +600,7 @@ export default function ABVE() {
 
               <motion.p variants={fadeUp} custom={2}
                 className="text-primary-foreground/50 text-[15px] leading-relaxed max-w-xl mx-auto mb-10">
-                A MS Eletric é mais do que uma empresa de veículos elétricos. É uma marca integrada ao ecossistema que transforma a mobilidade no Brasil. Descubra nossos modelos, visite nosso showroom ou fale com nosso time.
+                A MS Eletric não atua sozinha. Ela participa de um movimento maior, conectado à evolução do setor, à inovação e ao futuro da mobilidade elétrica no Brasil. Essa associação reforça uma marca que cresce com estrutura, visão e presença real.
               </motion.p>
 
               <motion.div variants={fadeUp} custom={3} className="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -617,7 +614,7 @@ export default function ABVE() {
                     }}
                     whileTap={{ scale: 0.98 }}
                   >
-                    Explorar Modelos
+                    Explorar modelos
                     <ChevronRight className="w-4 h-4" />
                   </motion.button>
                 </Link>
@@ -631,7 +628,7 @@ export default function ABVE() {
                   <svg viewBox="0 0 24 24" className="w-4 h-4 fill-current text-primary" xmlns="http://www.w3.org/2000/svg">
                     <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
                   </svg>
-                  Falar com o Time
+                  Falar com o time
                 </motion.button>
               </motion.div>
             </div>
