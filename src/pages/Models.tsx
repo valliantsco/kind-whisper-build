@@ -374,7 +374,7 @@ const Models = () => {
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.6, delay: 0.5 }}
                 >
-                  Veículos 100% elétricos que unem tecnologia, economia e praticidade — da mobilidade urbana ao uso profissional.
+                  Conheça a linha de veículos 100% elétricos da MS Electric, desenvolvida para unir tecnologia, economia, praticidade e estilo em diferentes rotinas de uso, da mobilidade urbana ao trabalho do dia a dia.
                 </motion.p>
 
                 {/* Stats strip */}
@@ -445,12 +445,12 @@ const Models = () => {
                     </div>
 
                     <h3 className="font-display font-black text-[17px] text-primary-foreground uppercase tracking-tight leading-tight mb-2.5">
-                      Não sabe qual{" "}
+                      Não sabe qual modelo{" "}
                       <span className="text-primary">escolher?</span>
                     </h3>
 
                     <p className="text-[12px] text-primary-foreground/35 leading-relaxed mb-5">
-                      Responda algumas perguntas rápidas e nossa IA recomenda o modelo ideal para o seu perfil, rotina e orçamento.
+                      Responda poucas perguntas e descubra qual modelo combina melhor com o seu perfil, sua rotina e o tipo de uso que você procura.
                     </p>
 
                     {/* CTA button */}
