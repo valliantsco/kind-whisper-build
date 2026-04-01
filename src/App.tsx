@@ -8,6 +8,7 @@ import Index from "./pages/Index";
 import Models from "./pages/Models";
 import ProductDetail from "./pages/ProductDetail";
 import About from "./pages/About";
+import ABVE from "./pages/ABVE";
 import NotFound from "./pages/NotFound";
 import ScrollToTop from "./components/ScrollToTop";
 
@@ -25,6 +26,7 @@ const App = () => (
           <Route path="/modelos" element={<Models />} />
           <Route path="/modelos/:slug" element={<ProductDetail />} />
           <Route path="/sobre" element={<About />} />
+          <Route path="/abve" element={<ABVE />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
