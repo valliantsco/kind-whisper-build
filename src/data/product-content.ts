@@ -1540,4 +1540,147 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
         "Fale com um especialista da MS Electric e receba orientação personalizada sobre o modelo ideal para o seu dia a dia.",
     },
   },
+
+  "tour-3k": {
+    headline: "Potência, presença e atitude para quem quer mais",
+    subheadline:
+      "A Tour 3K é a scooter elétrica para quem não se contenta com o básico. Com motor de 3.000W, visual custom chopper e até 75 km/h, ela entrega uma experiência urbana mais intensa, mais marcante e com muito mais personalidade.",
+    supportText:
+      "Se você busca uma mobilidade elétrica que chame atenção, transmita força e ofereça desempenho real na cidade, a Tour 3K é o próximo nível dentro da linha MS Electric.",
+    idealFor: [
+      {
+        icon: "zap",
+        title: "Quem quer mais potência",
+        desc: "Motor de 3.000W para encarar a cidade com mais força, mais confiança e mais presença — inclusive em subidas.",
+      },
+      {
+        icon: "crown",
+        title: "Quem valoriza estilo",
+        desc: "Visual custom chopper que se destaca em qualquer lugar. Uma scooter que expressa personalidade e atitude.",
+      },
+      {
+        icon: "gauge",
+        title: "Quem busca desempenho",
+        desc: "Até 75 km/h para uma experiência urbana que vai além do convencional e entrega mais emoção na pilotagem.",
+      },
+      {
+        icon: "trendingUp",
+        title: "Quem quer evoluir",
+        desc: "A escolha natural para quem já conhece mobilidade elétrica e quer subir de patamar em potência e presença.",
+      },
+    ],
+    whyChoose: [
+      {
+        title: "Motor de 3.000W de verdade",
+        desc: "Potência real que faz diferença na arrancada, nas subidas e na confiança do dia a dia — você sente a força desde o primeiro giro.",
+      },
+      {
+        title: "Visual que não passa despercebido",
+        desc: "Design custom chopper exclusivo dentro da linha. A Tour 3K não é apenas funcional — ela é uma declaração de estilo.",
+      },
+      {
+        title: "Experiência urbana mais intensa",
+        desc: "Com até 75 km/h e estrutura pensada para performance, cada deslocamento vira uma experiência mais marcante e prazerosa.",
+      },
+      {
+        title: "Evolução dentro da linha MS Electric",
+        desc: "Representa um salto claro em potência e presença em relação aos modelos mais básicos. É a escolha de quem exige mais.",
+      },
+      {
+        title: "Suporte e confiança MS Electric",
+        desc: "Todo o respaldo de uma marca especializada em mobilidade elétrica: assistência técnica, peças disponíveis e atendimento consultivo.",
+      },
+    ],
+    dailyBenefits: [
+      {
+        title: "Presença que inspira confiança",
+        desc: "Chegar ao destino com uma scooter que transmite força e personalidade muda a forma como você se sente na cidade.",
+      },
+      {
+        title: "Subidas sem esforço",
+        desc: "O motor de 3.000W entrega torque de sobra para encarar ladeiras e aclives sem perder ritmo ou confiança.",
+      },
+      {
+        title: "Mais emoção na rotina",
+        desc: "Pilotar a Tour 3K transforma deslocamentos em experiências — é mobilidade elétrica com adrenalina na medida certa.",
+      },
+      {
+        title: "Economia com performance",
+        desc: "Toda a potência sem gastar com combustível. Recarga na tomada, sem IPVA e com manutenção simplificada.",
+      },
+      {
+        title: "Escolha que se destaca",
+        desc: "Na garagem, no trânsito ou estacionada, a Tour 3K sempre chama atenção. É um produto que você tem orgulho de ter.",
+      },
+    ],
+    urbanContext: {
+      title: "Feita para quem quer dominar a cidade",
+      body: "A Tour 3K foi projetada para quem vê a mobilidade elétrica como mais do que conveniência. É uma scooter para quem quer potência real, impacto visual e a sensação de pilotar algo que está acima do convencional. Com seu perfil custom chopper e motor de 3.000W, ela transforma qualquer trajeto urbano em uma experiência com mais força, mais estilo e mais personalidade.",
+      highlights: [
+        "Potência para subidas e arrancadas com confiança",
+        "Design custom chopper único na linha",
+        "Velocidade de até 75 km/h para mais dinamismo",
+        "Autonomia de 40 km para a rotina urbana",
+        "Presença visual que se destaca no trânsito",
+        "Experiência de pilotagem mais intensa e marcante",
+      ],
+    },
+    specContexts: {
+      autonomy:
+        "Faixa pensada para acompanhar uma proposta urbana mais forte, cobrindo trajetos do dia a dia com tranquilidade.",
+      speed:
+        "Até 75 km/h — entrega alinhada a uma experiência mais intensa de mobilidade elétrica, com desempenho que se sente de verdade.",
+      motor:
+        "3.000W de potência real — o grande diferencial do modelo, reforçando sua proposta de força, torque e presença.",
+      recharge:
+        "6 a 8 horas na tomada convencional. Carregue durante a noite e tenha a scooter pronta pela manhã.",
+      load:
+        "Capacidade de 120 kg, compatível com a proposta mais robusta e potente da scooter.",
+    },
+    differentials: {
+      title: "Onde a Tour 3K se destaca",
+      body: "A Tour 3K é a escolha certa para quem quer elevar o nível da mobilidade elétrica. Com o motor mais potente entre as scooters urbanas da linha, visual custom chopper exclusivo e velocidade de até 75 km/h, ela ocupa um espaço único no portfólio: é a scooter para quem quer mais potência, mais presença e uma experiência urbana muito mais marcante. Se você busca algo além do funcional — algo que transmita força, atitude e personalidade — a Tour 3K é o modelo que faz isso acontecer dentro da MS Electric.",
+    },
+    comparisonTip:
+      "Se você busca a scooter elétrica mais potente e mais marcante da linha, a Tour 3K é a resposta com seus 3.000W e visual custom chopper. Se prefere mais autonomia e velocidade em um perfil esportivo, confira a S3K. Já se você quer robustez com um perfil mais urbano e equilibrado, a MS 2500 pode ser o caminho. Para uma entrada mais acessível, a Holiday 1000 e a New Holiday oferecem praticidade e economia.",
+    faq: [
+      {
+        q: "A Tour 3K é indicada para qual tipo de uso?",
+        a: "Para uso urbano de quem quer mais potência, mais presença e uma experiência de pilotagem mais intensa. Ideal para trajetos diários com mais confiança, incluindo trechos com subidas.",
+      },
+      {
+        q: "O motor de 3.000W faz diferença real no dia a dia?",
+        a: "Sim. Você sente a diferença na arrancada, nas subidas e na sensação geral de pilotagem. É uma potência que entrega mais segurança e mais prazer ao pilotar.",
+      },
+      {
+        q: "Qual o diferencial dela em relação a modelos mais básicos?",
+        a: "Potência significativamente maior, velocidade de até 75 km/h, visual custom chopper exclusivo e uma experiência de uso muito mais marcante e aspiracional.",
+      },
+      {
+        q: "A Tour 3K é boa para subidas?",
+        a: "Sim. O motor de 3.000W entrega torque suficiente para encarar aclives com tranquilidade, algo que modelos com menor potência não conseguem oferecer com a mesma confiança.",
+      },
+      {
+        q: "Como funciona a recarga?",
+        a: "Basta conectar na tomada convencional. A carga completa leva de 6 a 8 horas — ideal para carregar à noite e ter a scooter pronta pela manhã.",
+      },
+      {
+        q: "Como é a manutenção?",
+        a: "Simples e econômica. Scooters elétricas têm menos peças móveis que veículos a combustão, o que reduz custos e frequência de manutenção. A MS Electric oferece suporte técnico especializado.",
+      },
+      {
+        q: "Como funciona a garantia?",
+        a: "A MS Electric oferece garantia de fábrica com suporte técnico direto. Consulte um especialista para conhecer os termos completos e as condições de cobertura.",
+      },
+      {
+        q: "Para quem a Tour 3K é a melhor escolha no portfólio?",
+        a: "Para quem quer a combinação de mais potência com mais estilo. Se você valoriza força, presença visual e uma experiência de pilotagem acima da média, a Tour 3K é o modelo feito para você.",
+      },
+    ],
+    finalCta: {
+      title: "Pronto para sentir a potência da Tour 3K?",
+      subtitle:
+        "Fale com um especialista da MS Electric e descubra por que a Tour 3K é a escolha de quem quer mais força, mais presença e mais emoção na mobilidade elétrica.",
+    },
+  },
 };
