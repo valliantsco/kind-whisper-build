@@ -86,6 +86,11 @@ export const PRODUCTS: Product[] = [
     recharge: "7–8h",
     price: "R$ 10.990",
     description: "Mais autonomia e potência que a 350, perfeita para quem busca conforto em trajetos médios pela cidade.",
+    colors: [
+      { name: "Preto", hex: "#111111" },
+      { name: "Branco", hex: "#F5F5F5" },
+      { name: "Vermelho", hex: "#DC2626" },
+    ],
   },
   {
     name: "Bike 500",
