@@ -159,6 +159,11 @@ export const PRODUCTS: Product[] = [
     price: "R$ 12.990",
     badge: "Mais vendido",
     description: "Motor de 1.000W com recarga rápida e carga de 150 kg — robustez e desempenho em um só veículo.",
+    colors: [
+      { name: "Preto", hex: "#111111" },
+      { name: "Branco", hex: "#F5F5F5" },
+      { name: "Vermelho", hex: "#DC2626" },
+    ],
   },
 
   // ── Bicicletas Elétricas ──
