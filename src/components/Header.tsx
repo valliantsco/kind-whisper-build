@@ -41,10 +41,10 @@ interface NavItem {
 }
 
 const NAV_ITEMS: NavItem[] = [
-  { label: "Início", href: "#inicio" },
+  { label: "Início", href: "/" },
   {
     label: "Modelos",
-    href: "#modelos",
+    href: "/modelos",
     hasDropdown: true,
     hasCta: true,
     sectionType: "models" as const,
