@@ -19,7 +19,7 @@ interface Props {
   onContact: () => void;
 }
 
-export default function ProductHero({ product, content, onContact, whatsAppLink }: Props) {
+export default function ProductHero({ product, content, onContact }: Props) {
   const navigate = useNavigate();
   const heroRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
