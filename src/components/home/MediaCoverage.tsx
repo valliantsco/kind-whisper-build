@@ -1,42 +1,40 @@
 import { motion } from "framer-motion";
-import mediaFeatured from "@/assets/media-featured.jpg";
 
 const newsItems = [
   {
-    source: "Canal VE",
-    date: "Dez 2023",
-    title: "Autarquia de Uberlândia adota 10 novas motos elétricas da MS Eletric na frota",
+    source: "Veículo 1",
+    date: "Jan 2024",
+    title: "Lorem ipsum dolor sit amet consectetur adipiscing elit",
     excerpt:
-      "O DMAE investiu R$ 240 mil em motos elétricas que devem reduzir 9,8 toneladas de CO2 por ano, equivalente à preservação de 42 árvores.",
-    url: "#",
+      "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis nostrud exercitation.",
+    url: "",
     featured: true,
   },
   {
-    source: "Forbes Brasil",
-    date: "Nov 2023",
-    title: "MS Eletric aposta em mobilidade sustentável e cresce 120% em 2023",
+    source: "Veículo 2",
+    date: "Fev 2024",
+    title: "Ut enim ad minim veniam quis nostrud exercitation ullamco",
     excerpt:
-      "A fabricante mineira de motos elétricas projeta faturamento recorde com expansão da rede de concessionárias pelo país.",
-    url: "#",
+      "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+    url: "",
   },
   {
-    source: "Exame",
-    date: "Out 2023",
-    title: "Como a MS Eletric está transformando a logística urbana no Brasil",
+    source: "Veículo 3",
+    date: "Mar 2024",
+    title: "Duis aute irure dolor in reprehenderit in voluptate velit",
     excerpt:
-      "Empresas de delivery e logística last-mile adotam scooters elétricos para reduzir custos operacionais e emissões.",
-    url: "#",
+      "Excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    url: "",
   },
   {
-    source: "Pequenas Empresas & Grandes Negócios",
-    date: "Set 2023",
-    title: "Franquia de motos elétricas surge como oportunidade de negócio sustentável",
+    source: "Veículo 4",
+    date: "Abr 2024",
+    title: "Excepteur sint occaecat cupidatat non proident sunt in culpa",
     excerpt:
-      "Modelo de concessionária da MS Eletric atrai empreendedores com investimento acessível e mercado em alta.",
-    url: "#",
+      "Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore.",
+    url: "",
   },
 ];
-
 const MediaCoverage = () => {
   const featured = newsItems[0];
   const others = newsItems.slice(1);
@@ -99,27 +97,14 @@ const MediaCoverage = () => {
         {/* ── Cards ── */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {/* Featured card – spans 2 cols on md */}
-          <motion.a
-            href={featured.url}
-            target="_blank"
-            rel="noopener noreferrer"
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="group relative md:col-span-2 md:row-span-2 rounded-2xl overflow-hidden min-h-[360px] md:min-h-[480px] flex flex-col justify-end"
+            className="group relative md:col-span-2 md:row-span-2 rounded-2xl overflow-hidden border border-white/[0.06] bg-white/[0.02] p-6 md:p-8 backdrop-blur-sm flex flex-col justify-between"
           >
-            <img
-              src={mediaFeatured}
-              alt={featured.title}
-              loading="lazy"
-              width={800}
-              height={512}
-              className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent" />
-
-            <div className="relative p-6 md:p-8">
+            <div>
               <div className="flex items-center gap-3 mb-3">
                 <span className="px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest bg-primary text-primary-foreground">
                   {featured.source}
@@ -131,28 +116,24 @@ const MediaCoverage = () => {
               <h3 className="font-display font-bold text-xl md:text-2xl lg:text-3xl text-primary-foreground leading-tight mb-3">
                 {featured.title}
               </h3>
-              <p className="text-sm text-primary-foreground/50 leading-relaxed mb-4 max-w-xl">
+              <p className="text-sm text-primary-foreground/50 leading-relaxed max-w-xl">
                 {featured.excerpt}
               </p>
-              <span className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-primary group-hover:gap-3 transition-all">
-                Ler matéria completa
-                <span aria-hidden>↗</span>
-              </span>
             </div>
-          </motion.a>
+            <span className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-primary/40 mt-4">
+              Em breve
+            </span>
+          </motion.div>
 
           {/* Smaller text cards */}
           {others.map((item, i) => (
-            <motion.a
+            <motion.div
               key={i}
-              href={item.url}
-              target="_blank"
-              rel="noopener noreferrer"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: (i + 1) * 0.1, duration: 0.5 }}
-              className="group relative rounded-2xl border border-white/[0.06] bg-white/[0.02] p-6 backdrop-blur-sm hover:border-primary/20 transition-colors duration-300 flex flex-col justify-between"
+              className="group relative rounded-2xl border border-white/[0.06] bg-white/[0.02] p-6 backdrop-blur-sm flex flex-col justify-between"
             >
               <div>
                 <div className="flex items-center gap-3 mb-4">
@@ -170,11 +151,10 @@ const MediaCoverage = () => {
                   {item.excerpt}
                 </p>
               </div>
-              <span className="inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-widest text-primary mt-4 group-hover:gap-3 transition-all">
-                Ler matéria completa
-                <span aria-hidden>↗</span>
+              <span className="inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-widest text-primary/40 mt-4">
+                Em breve
               </span>
-            </motion.a>
+            </motion.div>
           ))}
         </div>
       </div>
