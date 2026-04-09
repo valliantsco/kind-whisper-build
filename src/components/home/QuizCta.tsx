@@ -8,17 +8,17 @@ const STEPS = [
   {
     icon: MessageCircle,
     title: "Responda perguntas rápidas",
-    detail: "Conte como pretende usar o veículo, qual é sua prioridade na escolha e o que faz mais sentido para o seu dia a dia.",
+    detail: "Conte como pretende usar o veículo e o que é mais importante para você.",
   },
   {
     icon: Brain,
-    title: "Analisamos o seu perfil",
-    detail: "Com base nas suas respostas, cruzamos seu perfil com as categorias e modelos do catálogo para filtrar as opções mais adequadas.",
+    title: "Analisamos seu perfil",
+    detail: "Cruzamos suas respostas com nosso catálogo para filtrar as melhores opções.",
   },
   {
     icon: CheckCircle,
     title: "Receba sua recomendação",
-    detail: "No final, você vê quais modelos combinam mais com o seu caso e já pode seguir para comparar ou falar com o nosso time.",
+    detail: "Veja os modelos que mais combinam com sua rotina e siga para o próximo passo.",
   },
 ];
 
@@ -114,7 +114,7 @@ const QuizCta = () => {
             </h2>
 
             <p className="text-sm md:text-base text-primary-foreground/45 leading-relaxed mt-4 max-w-lg ml-auto">
-              Se você ainda está em dúvida, a gente te ajuda. Em poucos passos, o quiz entende seu perfil, o tipo de uso que você procura e mostra os modelos que fazem mais sentido para a sua rotina.
+              Em poucos passos, o quiz entende seu perfil e mostra os modelos que fazem mais sentido para a sua rotina.
             </p>
           </motion.div>
 

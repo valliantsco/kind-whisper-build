@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Shield, Wrench, Clock, Award, ArrowRight } from "lucide-react";
+import { Shield, Wrench, Clock, Award } from "lucide-react";
 import { useState } from "react";
 
 const PILLARS = [
@@ -99,7 +99,7 @@ const WhyChoose = () => {
           </h2>
 
           <p className="text-sm md:text-base text-primary-foreground/45 leading-relaxed mt-4 max-w-lg ml-auto">
-            Mais do que vender veículos elétricos, a MS Eletric quer facilitar a sua escolha com atendimento próximo, suporte especializado e um portfólio que atende diferentes perfis de uso com mais segurança e clareza.
+            Atendimento próximo, suporte especializado e um portfólio que atende diferentes perfis de uso com segurança e clareza.
           </p>
         </motion.div>
 
@@ -212,22 +212,6 @@ const WhyChoose = () => {
                     <p className="text-primary-foreground/35 text-xs leading-relaxed group-hover:text-primary-foreground/50 transition-colors duration-300 line-clamp-3">
                       {pillar.description}
                     </p>
-
-                    <motion.div
-                      className="flex items-center gap-1 mt-4 text-primary"
-                      initial={{ opacity: 0, x: -8 }}
-                      animate={
-                        isHovered
-                          ? { opacity: 1, x: 0 }
-                          : { opacity: 0, x: -8 }
-                      }
-                      transition={{ duration: 0.3 }}
-                    >
-                      <span className="text-[11px] font-semibold uppercase tracking-wider">
-                        Saiba mais
-                      </span>
-                      <ArrowRight className="w-3.5 h-3.5" />
-                    </motion.div>
                   </div>
                 </div>
               </motion.div>
