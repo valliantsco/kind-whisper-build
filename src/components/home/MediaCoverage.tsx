@@ -97,14 +97,9 @@ const MediaCoverage = () => {
             className="group relative md:col-span-2 md:row-span-2 rounded-2xl overflow-hidden border border-white/[0.06] bg-white/[0.02] p-6 md:p-8 backdrop-blur-sm flex flex-col justify-end"
           >
             <div>
-              <div className="flex items-center gap-3 mb-3">
-                <span className="px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest bg-primary text-primary-foreground">
-                  {featured.source}
-                </span>
-                <span className="text-xs text-primary-foreground/50">
-                  {featured.date}
-                </span>
-              </div>
+              <span className="text-xs text-primary-foreground/50 mb-3 block">
+                {featured.date}
+              </span>
               <h3 className="font-display font-bold text-xl md:text-2xl lg:text-3xl text-primary-foreground leading-tight mb-3">
                 {featured.title}
               </h3>
@@ -128,14 +123,9 @@ const MediaCoverage = () => {
               className="group relative rounded-2xl border border-white/[0.06] bg-white/[0.02] p-6 backdrop-blur-sm flex flex-col justify-between"
             >
               <div>
-                <div className="flex items-center gap-3 mb-4">
-                  <span className="text-xs font-semibold uppercase tracking-widest text-primary">
-                    {item.source}
-                  </span>
-                  <span className="text-xs text-primary-foreground/30">
-                    {item.date}
-                  </span>
-                </div>
+                <span className="text-xs text-primary-foreground/30 mb-4 block">
+                  {item.date}
+                </span>
                 <h3 className="font-display font-bold text-base md:text-lg text-primary-foreground leading-tight mb-3">
                   {item.title}
                 </h3>
