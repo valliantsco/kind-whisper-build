@@ -1642,7 +1642,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
       body: "A Tour 3K é a escolha certa para quem quer elevar o nível da mobilidade elétrica. Com o motor mais potente entre as scooters urbanas da linha, visual custom chopper exclusivo e velocidade de até 75 km/h, ela ocupa um espaço único no portfólio: é a scooter para quem quer mais potência, mais presença e uma experiência urbana muito mais marcante. Se você busca algo além do funcional — algo que transmita força, atitude e personalidade — a Tour 3K é o modelo que faz isso acontecer dentro da MS Eletric.",
     },
     comparisonTip:
-      "Se você busca a scooter elétrica mais potente e mais marcante da linha, a Tour 3K é a resposta com seus 3.000W e visual custom chopper. Se prefere mais autonomia e velocidade em um perfil esportivo, confira a S3K. Já se você quer robustez com um perfil mais urbano e equilibrado, a MS 2500 pode ser o caminho. Para uma entrada mais acessível, a Holiday 1000 e a New Holiday oferecem praticidade e economia.",
+      "Se você busca a scooter elétrica mais potente e mais marcante da linha, a Tour 3K é a resposta com seus 3.000W e visual custom chopper. Já se você quer robustez com um perfil mais urbano e equilibrado, a MS 2500 pode ser o caminho. Para uma entrada mais acessível, a Holiday 1000 e a New Holiday oferecem praticidade e economia.",
     faq: [
       {
         q: "A Tour 3K é indicada para qual tipo de uso?",
@@ -1929,7 +1929,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
       body: "A Rhino Delivery ocupa um espaço estratégico no portfólio da MS Eletric: é o utilitário elétrico pensado para quem precisa de um veículo de trabalho. Com a maior autonomia (120 km), a maior capacidade de carga (250 kg) e motor de 2.000W, ela é a resposta para operações que precisam de eficiência, economia e robustez. Se o seu negócio depende de entregas, logística ou deslocamentos operacionais, a Rhino Delivery é a solução que transforma custo em investimento.",
     },
     comparisonTip:
-      "A Rhino Delivery é o utilitário elétrico profissional da linha, com 120 km de autonomia e 250 kg de capacidade. Se você precisa de entrega e operação comercial, ela é a escolha clara. Se busca um utilitário com perfil de triciclo para carga mais leve, o Triciclo Elétrico pode atender. Para uso pessoal urbano, as scooters da linha — Holiday 1000, MS 2500, Tour 3K ou S3K — oferecem propostas diferentes de mobilidade.",
+      "A Rhino Delivery é o utilitário elétrico profissional da linha, com 120 km de autonomia e 250 kg de capacidade. Se você precisa de entrega e operação comercial, ela é a escolha clara. Se busca um utilitário com perfil de triciclo para carga mais leve, o Triciclo Elétrico pode atender. Para uso pessoal urbano, as scooters da linha — Holiday 1000, MS 2500 ou Tour 3K — oferecem propostas diferentes de mobilidade.",
     faq: [
       {
         q: "A Rhino Delivery é indicada para qual tipo de operação?",
