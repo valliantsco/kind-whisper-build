@@ -139,7 +139,7 @@ RECOMENDAR QUANDO: última milha, condomínios, campus, mobilidade complementar 
 - Entregas profissionais → Rhino Delivery ou Cargo
 - Carga pesada/frete → Cargo (400kg)
 - Estabilidade/idoso/PCD → Triciclo Elétrico ou Big Sur
-- Maior autonomia + potência → S3K
+- Maior autonomia + potência → Tour 3K
 - Melhor custo-benefício entrada → Bike 350
 - Ruas ruins → Big Sur (pneu fat) ou Bliss (pneu largo)`;
 
