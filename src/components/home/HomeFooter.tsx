@@ -1,4 +1,4 @@
-import { Instagram, Facebook, Youtube, MapPin, Clock } from "lucide-react";
+import { Instagram, Facebook, Youtube, MapPin, Phone, Clock } from "lucide-react";
 import { Link } from "react-router-dom";
 import msLogo from "@/assets/ms-eletric-logo-white.png";
 
