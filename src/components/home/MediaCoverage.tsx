@@ -1,9 +1,35 @@
 import { motion } from "framer-motion";
 
+const placeholderNews = [
+  {
+    source: "Lorem Ipsum",
+    date: "00/00/0000",
+    title: "Lorem ipsum dolor sit amet consectetur adipiscing elit",
+    excerpt: "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
+  },
+  {
+    source: "Dolor Sit",
+    date: "00/00/0000",
+    title: "Ut enim ad minim veniam quis nostrud exercitation",
+    excerpt: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla.",
+  },
+  {
+    source: "Amet Consectetur",
+    date: "00/00/0000",
+    title: "Duis aute irure dolor in reprehenderit in voluptate",
+    excerpt: "Excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt mollit anim.",
+  },
+  {
+    source: "Adipiscing Elit",
+    date: "00/00/0000",
+    title: "Excepteur sint occaecat cupidatat non proident sunt",
+    excerpt: "Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt.",
+  },
+];
+
 const MediaCoverage = () => {
   return (
     <section className="relative py-14 md:py-20 overflow-hidden">
-      {/* ── Section-specific effect: newspaper column lines ── */}
       {[20, 40, 60, 80].map((left, i) => (
         <motion.div
           key={i}
@@ -48,6 +74,33 @@ const MediaCoverage = () => {
             A MS Eletric também vem ganhando espaço na imprensa e em canais que acompanham inovação, mobilidade e negócios. É mais um reflexo de uma marca que vem se consolidando com presença, estrutura e credibilidade.
           </p>
         </motion.div>
+
+        {/* ── Cards Grid ── */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {placeholderNews.map((item, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1, duration: 0.5 }}
+              className="group relative rounded-2xl border border-white/[0.06] bg-white/[0.02] p-6 md:p-8 backdrop-blur-sm hover:border-primary/20 transition-colors duration-300"
+            >
+              <div className="flex items-center gap-3 mb-4">
+                <span className="text-xs font-semibold uppercase tracking-widest text-primary">
+                  {item.source}
+                </span>
+                <span className="text-xs text-primary-foreground/30">{item.date}</span>
+              </div>
+              <h3 className="font-display font-bold text-lg md:text-xl text-primary-foreground leading-tight mb-3">
+                {item.title}
+              </h3>
+              <p className="text-sm text-primary-foreground/40 leading-relaxed">
+                {item.excerpt}
+              </p>
+            </motion.div>
+          ))}
+        </div>
       </div>
     </section>
   );
