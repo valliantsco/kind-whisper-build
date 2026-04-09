@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Shield, Wrench, Clock, Award, ArrowRight } from "lucide-react";
+import { Shield, Wrench, Clock, Award } from "lucide-react";
 import { useState } from "react";
 
 const PILLARS = [
