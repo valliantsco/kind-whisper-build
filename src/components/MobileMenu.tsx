@@ -197,7 +197,7 @@ const useMobileMenu = ({ items, isOnline, onContactClick, onQuizOpen }: MobileMe
                                   onQuizOpen={onQuizOpen}
                                 />
                               ) : (
-                                <VisitUsSection onClose={closeMenu} />
+                                <VisitUsSection onClose={closeMenu} onContactClick={onContactClick} />
                               )}
                             </motion.div>
                           )}
