@@ -11,7 +11,7 @@ import modelNewHoliday from "@/assets/models/model-new-holiday.webp";
 import modelHoliday1000 from "@/assets/models/model-holiday-1000.webp";
 import modelTricycle from "@/assets/models/model-tricycle-new.webp";
 import modelTour3k from "@/assets/models/model-tour-3k.webp";
-import modelS3k from "@/assets/models/model-s3k.webp";
+
 import modelRhino from "@/assets/models/model-rhino-new.webp";
 import modelCargo from "@/assets/models/model-cargo.webp";
 import modelMotocrossKids from "@/assets/models/model-motocross-kids.webp";
@@ -266,24 +266,6 @@ export const PRODUCTS: Product[] = [
       { name: "Preto", hex: "#111111" },
       { name: "Azul", hex: "#1D4ED8" },
       { name: "Vermelho", hex: "#DC2626" },
-    ],
-  },
-  {
-    name: "S3K",
-    slug: "s3k",
-    category: "Scooters Elétricas",
-    image: modelS3k,
-    autonomy: "85 km",
-    speed: "80 km/h",
-    load: "120 kg",
-    motor: "3.500W",
-    recharge: "6–8h",
-    price: "R$ 19.990",
-    highlight: "Performance esportiva",
-    description: "A mais rápida do portfólio: 80 km/h, 85 km de autonomia e visual esportivo. Performance máxima.",
-    colors: [
-      { name: "Branco", hex: "#F5F5F5" },
-      { name: "Preto", hex: "#111111" },
     ],
   },
 

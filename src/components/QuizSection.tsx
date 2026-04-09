@@ -94,13 +94,8 @@ EVITAR QUANDO: precisa de autonomia muito alta
 
 12. TOUR 3K
 Motor: 3.000W | Vel. máxima: 75km/h | Autonomia: 40km | Recarga: 6-8h | Bateria: lítio removível | Carga: 120kg | Preço: R$16.990
-RECOMENDAR QUANDO: quer velocidade+agilidade, muitas subidas, bateria removível
-EVITAR QUANDO: precisa rodar muito sem recarga (S3K melhor)
-
-13. S3K
-Motor: 3.500W | Vel. máxima: 80km/h | Autonomia: 85km | Recarga: 6-8h | Bateria: lítio removível | Carga: 120kg | Preço: R$19.990
-RECOMENDAR QUANDO: km/dia 36-75km, prioridade autonomia+desempenho, quer a scooter mais completa
-EVITAR QUANDO: deslocamento curto e econômico
+RECOMENDAR QUANDO: quer velocidade+agilidade, muitas subidas, bateria removível, quer a scooter mais potente
+EVITAR QUANDO: precisa rodar muito sem recarga
 
 --- TRICICLOS ELÉTRICOS ---
 
@@ -144,7 +139,7 @@ RECOMENDAR QUANDO: última milha, condomínios, campus, mobilidade complementar 
 - Entregas profissionais → Rhino Delivery ou Cargo
 - Carga pesada/frete → Cargo (400kg)
 - Estabilidade/idoso/PCD → Triciclo Elétrico ou Big Sur
-- Maior autonomia + potência → S3K
+- Maior autonomia + potência → Tour 3K
 - Melhor custo-benefício entrada → Bike 350
 - Ruas ruins → Big Sur (pneu fat) ou Bliss (pneu largo)`;
 

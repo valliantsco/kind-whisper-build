@@ -13,7 +13,7 @@ import modelSportMoto from "@/assets/models/model-sport-moto.webp";
 import modelHoliday1000 from "@/assets/models/model-holiday-1000.webp";
 import modelLibertyUltra from "@/assets/models/model-liberty-ultra.webp";
 import modelNewHoliday from "@/assets/models/model-new-holiday.webp";
-import modelS3k from "@/assets/models/model-s3k.webp";
+
 import modelCargo from "@/assets/models/model-cargo.webp";
 import modelMotocrossKids from "@/assets/models/model-motocross-kids.webp";
 import modelDriftInfantil from "@/assets/models/model-drift-infantil-350.webp";
@@ -44,7 +44,7 @@ const modelImageMap: Record<string, string> = {
   "triciclo eletrico": modelTricycle,
   // Esportivos
   "tour 3k": modelTour3k,
-  "s3k": modelS3k,
+  
   "ms 3500": modelSportMoto,
   // Utilitários
   "rhino": modelRhino,

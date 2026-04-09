@@ -9,7 +9,7 @@ import {
   Weight,
 } from "lucide-react";
 
-import modelS3k from "@/assets/models/model-s3k.webp";
+
 import modelTour3k from "@/assets/models/model-tour-3k.webp";
 import modelBliss from "@/assets/models/model-bliss-new.webp";
 import modelNewHoliday from "@/assets/models/model-new-holiday.webp";
@@ -32,7 +32,7 @@ interface Product {
 }
 
 const PRODUCTS: Product[] = [
-  { name: "S3K", slug: "s3k", category: "Scooters Elétricas", image: modelS3k, autonomy: "85km", speed: "80km/h", load: "120kg", price: "R$ 19.990" },
+  
   { name: "Tour 3K", slug: "tour-3k", category: "Scooters Elétricas", image: modelTour3k, autonomy: "40km", speed: "75km/h", load: "120kg", price: "R$ 16.990" },
   { name: "New Holiday", slug: "new-holiday", category: "Scooters Elétricas", image: modelNewHoliday, autonomy: "50km", speed: "50km/h", load: "150kg", price: "R$ 15.990" },
   { name: "Bliss", slug: "bliss", category: "Autopropelidos", image: modelBliss, autonomy: "70km", speed: "32km/h", load: "150kg", price: "R$ 15.990" },
