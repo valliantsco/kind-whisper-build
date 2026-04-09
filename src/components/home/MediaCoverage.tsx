@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import mediaFeatured from "@/assets/media-featured.jpg";
 
 const newsItems = [
   {
@@ -98,27 +97,14 @@ const MediaCoverage = () => {
         {/* ── Cards ── */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {/* Featured card – spans 2 cols on md */}
-          <motion.a
-            href={featured.url}
-            target="_blank"
-            rel="noopener noreferrer"
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="group relative md:col-span-2 md:row-span-2 rounded-2xl overflow-hidden min-h-[360px] md:min-h-[480px] flex flex-col justify-end"
+            className="group relative md:col-span-2 md:row-span-2 rounded-2xl overflow-hidden border border-white/[0.06] bg-white/[0.02] p-6 md:p-8 backdrop-blur-sm flex flex-col justify-between"
           >
-            <img
-              src={mediaFeatured}
-              alt={featured.title}
-              loading="lazy"
-              width={800}
-              height={512}
-              className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent" />
-
-            <div className="relative p-6 md:p-8">
+            <div>
               <div className="flex items-center gap-3 mb-3">
                 <span className="px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest bg-primary text-primary-foreground">
                   {featured.source}
@@ -130,28 +116,24 @@ const MediaCoverage = () => {
               <h3 className="font-display font-bold text-xl md:text-2xl lg:text-3xl text-primary-foreground leading-tight mb-3">
                 {featured.title}
               </h3>
-              <p className="text-sm text-primary-foreground/50 leading-relaxed mb-4 max-w-xl">
+              <p className="text-sm text-primary-foreground/50 leading-relaxed max-w-xl">
                 {featured.excerpt}
               </p>
-              <span className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-primary group-hover:gap-3 transition-all">
-                Ler matéria completa
-                <span aria-hidden>↗</span>
-              </span>
             </div>
-          </motion.a>
+            <span className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-primary/40 mt-4">
+              Em breve
+            </span>
+          </motion.div>
 
           {/* Smaller text cards */}
           {others.map((item, i) => (
-            <motion.a
+            <motion.div
               key={i}
-              href={item.url}
-              target="_blank"
-              rel="noopener noreferrer"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: (i + 1) * 0.1, duration: 0.5 }}
-              className="group relative rounded-2xl border border-white/[0.06] bg-white/[0.02] p-6 backdrop-blur-sm hover:border-primary/20 transition-colors duration-300 flex flex-col justify-between"
+              className="group relative rounded-2xl border border-white/[0.06] bg-white/[0.02] p-6 backdrop-blur-sm flex flex-col justify-between"
             >
               <div>
                 <div className="flex items-center gap-3 mb-4">
@@ -169,11 +151,10 @@ const MediaCoverage = () => {
                   {item.excerpt}
                 </p>
               </div>
-              <span className="inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-widest text-primary mt-4 group-hover:gap-3 transition-all">
-                Ler matéria completa
-                <span aria-hidden>↗</span>
+              <span className="inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-widest text-primary/40 mt-4">
+                Em breve
               </span>
-            </motion.a>
+            </motion.div>
           ))}
         </div>
       </div>
