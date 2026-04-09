@@ -94,7 +94,7 @@ const WhyChoose = () => {
                   "linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)))",
               }}
             >
-              MS Electric
+              MS Eletric
             </span>
           </h2>
 

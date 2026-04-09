@@ -92,7 +92,7 @@ const MediaCoverage = () => {
               className="bg-clip-text text-transparent"
               style={{ backgroundImage: "linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)))" }}
             >
-              MS Electric
+              MS Eletric
             </span>
           </h2>
           <p className="text-sm md:text-base text-primary-foreground/45 leading-relaxed mt-4 max-w-lg ml-auto">
