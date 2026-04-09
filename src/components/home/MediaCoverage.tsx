@@ -1,36 +1,7 @@
 import { motion } from "framer-motion";
+import { Clock } from "lucide-react";
 
-const newsItems = [
-  {
-    source: "Veículo 1",
-    date: "Jan 2024",
-    title: "Lorem ipsum dolor sit amet consectetur adipiscing elit",
-    excerpt:
-      "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis nostrud exercitation.",
-    url: "",
-    featured: true,
-  },
-  {
-    source: "Veículo 2",
-    date: "Fev 2024",
-    title: "Ut enim ad minim veniam quis nostrud exercitation ullamco",
-    excerpt:
-      "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-    url: "",
-  },
-  {
-    source: "Veículo 3",
-    date: "Mar 2024",
-    title: "Duis aute irure dolor in reprehenderit in voluptate velit",
-    excerpt:
-      "Excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    url: "",
-  },
-];
 const MediaCoverage = () => {
-  const featured = newsItems[0];
-  const others = newsItems.slice(1);
-
   return (
     <section className="relative py-14 md:py-20 overflow-hidden">
       {/* ── Newspaper column lines ── */}
@@ -86,59 +57,30 @@ const MediaCoverage = () => {
           </p>
         </motion.div>
 
-        {/* ── Cards ── */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {/* Featured card – spans 2 cols on md */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="group relative md:col-span-2 md:row-span-2 rounded-2xl overflow-hidden border border-white/[0.06] bg-white/[0.02] p-6 md:p-8 backdrop-blur-sm flex flex-col justify-end"
+        {/* ── Placeholder — awaiting real press coverage ── */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="rounded-2xl overflow-hidden border border-white/[0.06] bg-white/[0.02] p-8 md:p-12 backdrop-blur-sm text-center max-w-2xl mx-auto"
+        >
+          <div
+            className="w-12 h-12 rounded-xl flex items-center justify-center mx-auto mb-5"
+            style={{
+              background: "hsl(var(--primary) / 0.1)",
+              border: "1px solid hsl(var(--primary) / 0.15)",
+            }}
           >
-            <div>
-              <span className="text-xs text-primary-foreground/50 mb-3 block">
-                {featured.date}
-              </span>
-              <h3 className="font-display font-bold text-xl md:text-2xl lg:text-3xl text-primary-foreground leading-tight mb-3">
-                {featured.title}
-              </h3>
-              <p className="text-sm text-primary-foreground/50 leading-relaxed max-w-xl">
-                {featured.excerpt}
-              </p>
-            </div>
-            <span className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-primary/40 mt-4">
-              Em breve
-            </span>
-          </motion.div>
-
-          {/* Smaller text cards */}
-          {others.map((item, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: (i + 1) * 0.1, duration: 0.5 }}
-              className="group relative rounded-2xl border border-white/[0.06] bg-white/[0.02] p-6 backdrop-blur-sm flex flex-col justify-between"
-            >
-              <div>
-                <span className="text-xs text-primary-foreground/30 mb-4 block">
-                  {item.date}
-                </span>
-                <h3 className="font-display font-bold text-base md:text-lg text-primary-foreground leading-tight mb-3">
-                  {item.title}
-                </h3>
-                <p className="text-sm text-primary-foreground/40 leading-relaxed">
-                  {item.excerpt}
-                </p>
-              </div>
-              <span className="inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-widest text-primary/40 mt-4">
-                Em breve
-              </span>
-            </motion.div>
-          ))}
-        </div>
+            <Clock className="w-5 h-5 text-primary" />
+          </div>
+          <h3 className="font-display font-bold text-lg md:text-xl text-primary-foreground mb-3">
+            Em breve por aqui
+          </h3>
+          <p className="text-sm text-primary-foreground/40 leading-relaxed max-w-md mx-auto">
+            Estamos reunindo as principais matérias, reportagens e aparições da MS Eletric na mídia. Em breve, esse espaço será atualizado com as coberturas mais relevantes.
+          </p>
+        </motion.div>
       </div>
     </section>
   );

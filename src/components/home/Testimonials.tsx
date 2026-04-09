@@ -35,7 +35,7 @@ const INFLUENCERS: Influencer[] = [
 
 const STATS = [
   { value: "29M+", label: "Alcance acumulado" },
-  { value: "4+", label: "Colaborações e parcerias" },
+  { value: "8+", label: "Colaborações e parcerias" },
   { value: "52M+", label: "Visualizações geradas" },
 ];
 
