@@ -3,40 +3,39 @@ import mediaFeatured from "@/assets/media-featured.jpg";
 
 const newsItems = [
   {
-    source: "Canal VE",
-    date: "Dez 2023",
-    title: "Autarquia de Uberlândia adota 10 novas motos elétricas da MS Eletric na frota",
+    source: "Veículo 1",
+    date: "Jan 2024",
+    title: "Lorem ipsum dolor sit amet consectetur adipiscing elit",
     excerpt:
-      "O DMAE investiu R$ 240 mil em motos elétricas que devem reduzir 9,8 toneladas de CO2 por ano, equivalente à preservação de 42 árvores.",
-    url: "#",
+      "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis nostrud exercitation.",
+    url: "",
     featured: true,
   },
   {
-    source: "Forbes Brasil",
-    date: "Nov 2023",
-    title: "MS Eletric aposta em mobilidade sustentável e cresce 120% em 2023",
+    source: "Veículo 2",
+    date: "Fev 2024",
+    title: "Ut enim ad minim veniam quis nostrud exercitation ullamco",
     excerpt:
-      "A fabricante mineira de motos elétricas projeta faturamento recorde com expansão da rede de concessionárias pelo país.",
-    url: "#",
+      "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+    url: "",
   },
   {
-    source: "Exame",
-    date: "Out 2023",
-    title: "Como a MS Eletric está transformando a logística urbana no Brasil",
+    source: "Veículo 3",
+    date: "Mar 2024",
+    title: "Duis aute irure dolor in reprehenderit in voluptate velit",
     excerpt:
-      "Empresas de delivery e logística last-mile adotam scooters elétricos para reduzir custos operacionais e emissões.",
-    url: "#",
+      "Excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    url: "",
   },
   {
-    source: "Pequenas Empresas & Grandes Negócios",
-    date: "Set 2023",
-    title: "Franquia de motos elétricas surge como oportunidade de negócio sustentável",
+    source: "Veículo 4",
+    date: "Abr 2024",
+    title: "Excepteur sint occaecat cupidatat non proident sunt in culpa",
     excerpt:
-      "Modelo de concessionária da MS Eletric atrai empreendedores com investimento acessível e mercado em alta.",
-    url: "#",
+      "Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore.",
+    url: "",
   },
 ];
-
 const MediaCoverage = () => {
   const featured = newsItems[0];
   const others = newsItems.slice(1);
