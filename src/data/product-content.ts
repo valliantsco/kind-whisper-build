@@ -50,7 +50,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
     whyChoose: [
       {
         title: "Entrada inteligente",
-        desc: "O menor investimento da linha MS Electric, sem abrir mão de qualidade, suporte e garantia da marca.",
+        desc: "O menor investimento da linha MS Eletric, sem abrir mão de qualidade, suporte e garantia da marca.",
       },
       {
         title: "Praticidade real",
@@ -65,7 +65,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
         desc: "Sem troca de óleo, sem velas, sem correia. A manutenção é simples, barata e espaçada.",
       },
       {
-        title: "Suporte MS Electric",
+        title: "Suporte MS Eletric",
         desc: "Garantia, assistência técnica e peças de reposição. Você não fica sozinho após a compra.",
       },
     ],
@@ -113,8 +113,8 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
       load: "Compatível com a proposta cotidiana do produto",
     },
     differentials: {
-      title: "Onde a Bike 350 se destaca na linha MS Electric",
-      body: "A Bike 350 é a escolha certa para quem quer entrar no universo da mobilidade elétrica com mais praticidade, menor investimento e uma proposta funcional para o dia a dia urbano. Dentro do portfólio MS Electric, ela cumpre o papel de modelo de entrada — acessível, direto e sem excessos. Se o que você precisa é de um veículo prático para trajetos curtos, a Bike 350 entrega exatamente isso.",
+      title: "Onde a Bike 350 se destaca na linha MS Eletric",
+      body: "A Bike 350 é a escolha certa para quem quer entrar no universo da mobilidade elétrica com mais praticidade, menor investimento e uma proposta funcional para o dia a dia urbano. Dentro do portfólio MS Eletric, ela cumpre o papel de modelo de entrada — acessível, direto e sem excessos. Se o que você precisa é de um veículo prático para trajetos curtos, a Bike 350 entrega exatamente isso.",
     },
     comparisonTip:
       "Se você busca mais autonomia ou potência, considere subir para a Bike 400+ ou Bike 500. Mas se praticidade e economia são a prioridade, a Bike 350 continua sendo a opção mais direta e acessível da linha.",
@@ -133,11 +133,11 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
       },
       {
         q: "É indicada para quem está começando na mobilidade elétrica?",
-        a: "Com certeza. A Bike 350 é o modelo de entrada da MS Electric: mais acessível, mais simples de operar e perfeita para quem quer experimentar a mobilidade elétrica sem grande investimento.",
+        a: "Com certeza. A Bike 350 é o modelo de entrada da MS Eletric: mais acessível, mais simples de operar e perfeita para quem quer experimentar a mobilidade elétrica sem grande investimento.",
       },
       {
         q: "Como funciona a garantia?",
-        a: "A MS Electric oferece garantia de fábrica com suporte técnico e peças de reposição. Consulte um especialista para conhecer as condições completas.",
+        a: "A MS Eletric oferece garantia de fábrica com suporte técnico e peças de reposição. Consulte um especialista para conhecer as condições completas.",
       },
       {
         q: "A manutenção é cara?",
@@ -151,7 +151,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
     finalCta: {
       title: "Descubra se a Bike 350 combina com a sua rotina",
       subtitle:
-        "Fale com um especialista da MS Electric e receba orientação personalizada sobre o modelo ideal para o seu dia a dia.",
+        "Fale com um especialista da MS Eletric e receba orientação personalizada sobre o modelo ideal para o seu dia a dia.",
     },
   },
   "bike-400": {
@@ -200,7 +200,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
         desc: "Sem combustível, sem IPVA, manutenção simples. A economia aparece todo mês e se acumula rápido.",
       },
       {
-        title: "Suporte MS Electric",
+        title: "Suporte MS Eletric",
         desc: "Garantia, assistência técnica e peças de reposição. Você compra com segurança e conta com suporte real após a compra.",
       },
     ],
@@ -248,8 +248,8 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
       load: "Compatível com uma proposta urbana funcional",
     },
     differentials: {
-      title: "Onde a Bike 400+ se destaca na linha MS Electric",
-      body: "A Bike 400+ é uma escolha inteligente para quem quer mais equilíbrio, mais presença e uma experiência urbana mais completa — sem sair da proposta prática da mobilidade elétrica. Dentro do portfólio MS Electric, ela ocupa o espaço entre a entrada acessível e os modelos de maior robustez, entregando um conjunto mais refinado para quem usa com frequência e valoriza a qualidade do deslocamento diário.",
+      title: "Onde a Bike 400+ se destaca na linha MS Eletric",
+      body: "A Bike 400+ é uma escolha inteligente para quem quer mais equilíbrio, mais presença e uma experiência urbana mais completa — sem sair da proposta prática da mobilidade elétrica. Dentro do portfólio MS Eletric, ela ocupa o espaço entre a entrada acessível e os modelos de maior robustez, entregando um conjunto mais refinado para quem usa com frequência e valoriza a qualidade do deslocamento diário.",
     },
     comparisonTip:
       "Se o que você busca é o menor investimento possível, a Bike 350 pode ser a porta de entrada ideal. Mas se você quer mais autonomia, mais potência e uma experiência mais completa para o uso frequente, a Bike 400+ é o passo natural. Para quem precisa de ainda mais robustez, a Bike 500 e a Bike MS 600 ampliam as possibilidades.",
@@ -276,7 +276,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
       },
       {
         q: "Como funciona a garantia?",
-        a: "A MS Electric oferece garantia de fábrica com suporte técnico e peças de reposição. Consulte um especialista para conhecer as condições completas.",
+        a: "A MS Eletric oferece garantia de fábrica com suporte técnico e peças de reposição. Consulte um especialista para conhecer as condições completas.",
       },
       {
         q: "Para quem a Bike 400+ é a melhor escolha dentro da linha?",
@@ -286,7 +286,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
     finalCta: {
       title: "Descubra se a Bike 400+ combina com a sua rotina",
       subtitle:
-        "Fale com um especialista da MS Electric e receba orientação personalizada sobre o modelo ideal para o seu dia a dia.",
+        "Fale com um especialista da MS Eletric e receba orientação personalizada sobre o modelo ideal para o seu dia a dia.",
     },
   },
   "bike-500": {
@@ -335,7 +335,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
         desc: "100% elétrica, sem troca de óleo, sem velas, sem embreagem. A manutenção é mínima e o custo de uso é drasticamente menor.",
       },
       {
-        title: "Suporte MS Electric",
+        title: "Suporte MS Eletric",
         desc: "Garantia, assistência técnica e peças de reposição. Segurança na compra e acompanhamento real após a aquisição.",
       },
     ],
@@ -383,7 +383,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
       load: "Um dos pontos que reforçam a proposta mais forte do produto",
     },
     differentials: {
-      title: "Onde a Bike 500 se destaca na linha MS Electric",
+      title: "Onde a Bike 500 se destaca na linha MS Eletric",
       body: "A Bike 500 é a escolha ideal para quem quer subir de nível dentro da mobilidade elétrica urbana, com mais força, mais sensação de robustez e mais confiança para o uso recorrente. Ela oferece o mesmo preço da Bike 400+, mas com motor mais potente e maior capacidade de carga — um custo-benefício difícil de ignorar para quem valoriza entrega real.",
     },
     comparisonTip:
@@ -415,7 +415,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
       },
       {
         q: "Como funciona a garantia?",
-        a: "A MS Electric oferece garantia de fábrica com suporte técnico e peças de reposição. Consulte um especialista para conhecer as condições completas.",
+        a: "A MS Eletric oferece garantia de fábrica com suporte técnico e peças de reposição. Consulte um especialista para conhecer as condições completas.",
       },
       {
         q: "Para quem a Bike 500 é a melhor escolha dentro da linha?",
@@ -425,7 +425,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
     finalCta: {
       title: "Descubra se a Bike 500 combina com a sua rotina",
       subtitle:
-        "Fale com um especialista da MS Electric e receba orientação personalizada sobre o modelo ideal para o seu dia a dia.",
+        "Fale com um especialista da MS Eletric e receba orientação personalizada sobre o modelo ideal para o seu dia a dia.",
     },
   },
   "bike-ms-600": {
@@ -474,7 +474,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
         desc: "Quanto mais você usa, mais economiza. Para quem roda todos os dias, a diferença em relação a um veículo a combustão é enorme.",
       },
       {
-        title: "Suporte MS Electric",
+        title: "Suporte MS Eletric",
         desc: "Garantia de fábrica, assistência técnica e peças de reposição. Segurança na compra e acompanhamento real.",
       },
     ],
@@ -522,7 +522,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
       load: "Compatível com a proposta funcional e completa do modelo",
     },
     differentials: {
-      title: "Onde a Bike MS 600 se destaca na linha MS Electric",
+      title: "Onde a Bike MS 600 se destaca na linha MS Eletric",
       body: "A Bike MS 600 é a escolha certa para quem quer uma mobilidade elétrica mais consistente no dia a dia, com mais sensação de autonomia, mais liberdade de uso e uma proposta urbana mais completa. É o topo da família Bike — o modelo que mais entrega para quem realmente usa a mobilidade elétrica como parte da rotina.",
     },
     comparisonTip:
@@ -554,7 +554,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
       },
       {
         q: "Como funciona a garantia?",
-        a: "A MS Electric oferece garantia de fábrica com suporte técnico e peças de reposição. Consulte um especialista para conhecer as condições completas.",
+        a: "A MS Eletric oferece garantia de fábrica com suporte técnico e peças de reposição. Consulte um especialista para conhecer as condições completas.",
       },
       {
         q: "Para quem a Bike MS 600 é a melhor escolha dentro do portfólio?",
@@ -564,13 +564,13 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
     finalCta: {
       title: "Descubra se a Bike MS 600 combina com a sua rotina",
       subtitle:
-        "Fale com um especialista da MS Electric e receba orientação personalizada sobre o modelo ideal para o seu dia a dia.",
+        "Fale com um especialista da MS Eletric e receba orientação personalizada sobre o modelo ideal para o seu dia a dia.",
     },
   },
   "bliss": {
     headline: "Mobilidade urbana com design que marca presença",
     subheadline:
-      "A Bliss é o modelo mais vendido da MS Electric por um motivo: ela une praticidade urbana, motor potente de 800W e um design moderno que transforma cada deslocamento em uma experiência com mais estilo.",
+      "A Bliss é o modelo mais vendido da MS Eletric por um motivo: ela une praticidade urbana, motor potente de 800W e um design moderno que transforma cada deslocamento em uma experiência com mais estilo.",
     supportText:
       "Se você quer mais do que apenas ir do ponto A ao ponto B, a Bliss entrega personalidade, conforto e presença visual. Uma escolha para quem vê a mobilidade elétrica também como expressão de estilo de vida.",
     idealFor: [
@@ -601,7 +601,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
         desc: "A Bliss tem um visual moderno e marcante que se destaca em qualquer cenário urbano. Não é apenas um veículo — é uma escolha de estilo.",
       },
       {
-        title: "O mais vendido da MS Electric",
+        title: "O mais vendido da MS Eletric",
         desc: "Não é por acaso. A Bliss combina o melhor equilíbrio entre design, potência, autonomia e preço dentro do portfólio.",
       },
       {
@@ -613,7 +613,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
         desc: "Liberdade para rodar sem contar quilômetros. A Bliss acompanha rotinas intensas com folga.",
       },
       {
-        title: "Suporte MS Electric",
+        title: "Suporte MS Eletric",
         desc: "Garantia de fábrica, assistência técnica e peças de reposição. A segurança de comprar de uma marca que acompanha você.",
       },
     ],
@@ -648,7 +648,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
       body: "A Bliss foi criada para quem entende que mobilidade também é expressão. Ela não é apenas um meio de transporte — é uma extensão do seu estilo, da sua personalidade e da forma como você escolhe viver a cidade.",
       highlights: [
         "Design moderno que se destaca no cenário urbano",
-        "O modelo mais vendido da MS Electric",
+        "O modelo mais vendido da MS Eletric",
         "70 km de autonomia + motor de 800W",
         "Praticidade com personalidade e presença",
       ],
@@ -661,7 +661,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
       load: "Compatível com a proposta funcional e elegante do produto",
     },
     differentials: {
-      title: "Onde a Bliss se destaca na linha MS Electric",
+      title: "Onde a Bliss se destaca na linha MS Eletric",
       body: "A Bliss é a escolha certa para quem quer mais do que mobilidade elétrica funcional. Ela combina praticidade urbana com design marcante, mais personalidade e uma experiência visualmente mais premium. É o modelo mais vendido da marca — e isso reflete a capacidade dela de unir desejo e razão em uma única escolha.",
     },
     comparisonTip:
@@ -673,7 +673,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
       },
       {
         q: "Esse modelo faz sentido para quem usa no dia a dia?",
-        a: "Sim. A Bliss é o modelo mais vendido da MS Electric justamente porque combina praticidade para o uso diário com um design que valoriza quem usa.",
+        a: "Sim. A Bliss é o modelo mais vendido da MS Eletric justamente porque combina praticidade para o uso diário com um design que valoriza quem usa.",
       },
       {
         q: "Qual o diferencial dela em relação a modelos mais básicos?",
@@ -693,7 +693,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
       },
       {
         q: "Como funciona a garantia?",
-        a: "A MS Electric oferece garantia de fábrica com suporte técnico e peças de reposição. Consulte um especialista para conhecer as condições.",
+        a: "A MS Eletric oferece garantia de fábrica com suporte técnico e peças de reposição. Consulte um especialista para conhecer as condições.",
       },
       {
         q: "Para quem a Bliss é a melhor escolha dentro do portfólio?",
@@ -703,7 +703,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
     finalCta: {
       title: "Descubra se a Bliss combina com o seu estilo e a sua rotina",
       subtitle:
-        "Fale com um especialista da MS Electric e receba orientação personalizada sobre o modelo ideal para você.",
+        "Fale com um especialista da MS Eletric e receba orientação personalizada sobre o modelo ideal para você.",
     },
   },
   "liberty-ultra": {
@@ -752,7 +752,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
         desc: "Um modelo pensado para quem valoriza conveniência e estabilidade, não apenas velocidade ou potência bruta.",
       },
       {
-        title: "Suporte MS Electric",
+        title: "Suporte MS Eletric",
         desc: "Garantia de fábrica, assistência técnica e peças de reposição. Segurança na compra e acompanhamento real.",
       },
     ],
@@ -800,7 +800,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
       load: "A maior capacidade de carga da linha, pensada para uso real",
     },
     differentials: {
-      title: "Onde a Liberty Ultra se destaca na linha MS Electric",
+      title: "Onde a Liberty Ultra se destaca na linha MS Eletric",
       body: "A Liberty Ultra é a escolha certa para quem quer mobilidade elétrica urbana com mais conforto, mais praticidade e uma experiência de uso mais completa para a rotina do dia a dia. Com o motor mais potente, a recarga mais rápida e a maior capacidade de carga entre os autopropelidos, ela ocupa o topo da linha em entrega funcional — sem perder a simplicidade de uso.",
     },
     comparisonTip:
@@ -832,7 +832,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
       },
       {
         q: "Como funciona a garantia?",
-        a: "A MS Electric oferece garantia de fábrica com suporte técnico e peças de reposição. Consulte um especialista para conhecer as condições.",
+        a: "A MS Eletric oferece garantia de fábrica com suporte técnico e peças de reposição. Consulte um especialista para conhecer as condições.",
       },
       {
         q: "Para quem a Liberty Ultra é a melhor escolha dentro do portfólio?",
@@ -842,7 +842,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
     finalCta: {
       title: "Descubra se a Liberty Ultra combina com a sua rotina",
       subtitle:
-        "Fale com um especialista da MS Electric e receba orientação personalizada sobre o modelo ideal para o seu dia a dia.",
+        "Fale com um especialista da MS Eletric e receba orientação personalizada sobre o modelo ideal para o seu dia a dia.",
     },
   },
   "santa-monica": {
@@ -891,7 +891,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
         desc: "A recarga mais rápida entre as e-bikes. Menos tempo parada, mais tempo disponível para uso.",
       },
       {
-        title: "Suporte MS Electric",
+        title: "Suporte MS Eletric",
         desc: "Garantia, assistência técnica e peças de reposição. Compra segura com acompanhamento real.",
       },
     ],
@@ -939,7 +939,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
       load: "Compatível com a proposta funcional e versátil da bicicleta elétrica",
     },
     differentials: {
-      title: "Onde a Santa Monica se destaca na linha MS Electric",
+      title: "Onde a Santa Monica se destaca na linha MS Eletric",
       body: "A Santa Monica é a escolha certa para quem quer uma mobilidade elétrica mais leve, mais livre e mais conectada ao ritmo da cidade. Dentro do portfólio, ela ocupa o espaço da e-bike urbana com personalidade — unindo praticidade, estilo de vida e uso inteligente em um design que marca presença.",
     },
     comparisonTip:
@@ -971,7 +971,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
       },
       {
         q: "Como funciona a garantia?",
-        a: "A MS Electric oferece garantia de fábrica com suporte técnico e peças de reposição. Consulte um especialista para conhecer as condições.",
+        a: "A MS Eletric oferece garantia de fábrica com suporte técnico e peças de reposição. Consulte um especialista para conhecer as condições.",
       },
       {
         q: "Para quem a Santa Monica é a melhor escolha dentro do portfólio?",
@@ -981,7 +981,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
     finalCta: {
       title: "Descubra se a Santa Monica combina com a sua rotina",
       subtitle:
-        "Fale com um especialista da MS Electric e receba orientação personalizada sobre o modelo ideal para o seu dia a dia.",
+        "Fale com um especialista da MS Eletric e receba orientação personalizada sobre o modelo ideal para o seu dia a dia.",
     },
   },
   "big-sur": {
@@ -1030,7 +1030,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
         desc: "Liberdade para cobrir a rotina urbana e ainda explorar trajetos mais longos sem se preocupar com a bateria.",
       },
       {
-        title: "Suporte MS Electric",
+        title: "Suporte MS Eletric",
         desc: "Garantia de fábrica, assistência técnica e peças de reposição. Segurança na compra e acompanhamento real.",
       },
     ],
@@ -1078,7 +1078,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
       load: "Compatível com a proposta de estabilidade e versatilidade da bike",
     },
     differentials: {
-      title: "Onde a Big Sur se destaca na linha MS Electric",
+      title: "Onde a Big Sur se destaca na linha MS Eletric",
       body: "A Big Sur é a escolha certa para quem quer uma bicicleta elétrica com mais presença, mais estabilidade e mais conforto. Dentro do portfólio, ela ocupa o espaço da e-bike robusta e versátil — feita para quem quer ir além do convencional e explorar a cidade e o lazer com mais liberdade e personalidade.",
     },
     comparisonTip:
@@ -1110,7 +1110,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
       },
       {
         q: "Como funciona a garantia?",
-        a: "A MS Electric oferece garantia de fábrica com suporte técnico e peças de reposição. Consulte um especialista para conhecer as condições.",
+        a: "A MS Eletric oferece garantia de fábrica com suporte técnico e peças de reposição. Consulte um especialista para conhecer as condições.",
       },
       {
         q: "Para quem a Big Sur é a melhor escolha dentro do portfólio?",
@@ -1120,7 +1120,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
     finalCta: {
       title: "Descubra se a Big Sur combina com o seu estilo",
       subtitle:
-        "Fale com um especialista da MS Electric e receba orientação personalizada sobre o modelo ideal para você.",
+        "Fale com um especialista da MS Eletric e receba orientação personalizada sobre o modelo ideal para você.",
     },
   },
   "ms-2500": {
@@ -1169,7 +1169,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
         desc: "Estrutura sólida e preparada para o uso real — com espaço para você e para a sua rotina.",
       },
       {
-        title: "Suporte MS Electric",
+        title: "Suporte MS Eletric",
         desc: "Garantia de fábrica, assistência técnica e peças de reposição. Segurança na compra e acompanhamento real.",
       },
     ],
@@ -1217,7 +1217,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
       load: "Compatível com a proposta urbana mais completa e mais sólida do produto",
     },
     differentials: {
-      title: "Onde a MS 2500 se destaca na linha MS Electric",
+      title: "Onde a MS 2500 se destaca na linha MS Eletric",
       body: "A MS 2500 é a escolha certa para quem quer uma scooter elétrica com mais presença, mais potência e uma proposta urbana mais completa. Com 2.500W e 52 km/h, ela se posiciona como a opção para quem quer velocidade real no trânsito urbano sem abrir mão da economia e praticidade da mobilidade elétrica.",
     },
     comparisonTip:
@@ -1249,7 +1249,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
       },
       {
         q: "Como funciona a garantia?",
-        a: "A MS Electric oferece garantia de fábrica com suporte técnico e peças de reposição. Consulte um especialista para conhecer as condições.",
+        a: "A MS Eletric oferece garantia de fábrica com suporte técnico e peças de reposição. Consulte um especialista para conhecer as condições.",
       },
       {
         q: "Para quem a MS 2500 é a melhor escolha dentro do portfólio?",
@@ -1259,7 +1259,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
     finalCta: {
       title: "Descubra se a MS 2500 combina com a sua rotina",
       subtitle:
-        "Fale com um especialista da MS Electric e receba orientação personalizada sobre o modelo ideal para o seu dia a dia.",
+        "Fale com um especialista da MS Eletric e receba orientação personalizada sobre o modelo ideal para o seu dia a dia.",
     },
   },
   "new-holiday": {
@@ -1308,7 +1308,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
         desc: "Centavos de energia por dia. Sem IPVA, sem combustível, sem troca de óleo. A economia é significativa e constante.",
       },
       {
-        title: "Suporte MS Electric",
+        title: "Suporte MS Eletric",
         desc: "Garantia de fábrica, assistência técnica e peças de reposição. Compra segura com acompanhamento real.",
       },
     ],
@@ -1356,7 +1356,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
       load: "Compatível com a proposta urbana e cotidiana da scooter",
     },
     differentials: {
-      title: "Onde a New Holiday se destaca na linha MS Electric",
+      title: "Onde a New Holiday se destaca na linha MS Eletric",
       body: "A New Holiday é a scooter elétrica mais equilibrada do portfólio — combina design clássico, potência suficiente para o trânsito e autonomia para a rotina em um único modelo. Ela ocupa o espaço da scooter urbana completa: não é a mais potente, mas é a mais bem resolvida para quem quer substituir a moto a combustão no dia a dia.",
     },
     comparisonTip:
@@ -1388,7 +1388,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
       },
       {
         q: "Como funciona a garantia?",
-        a: "A MS Electric oferece garantia de fábrica com suporte técnico e peças de reposição. Consulte um especialista para conhecer as condições.",
+        a: "A MS Eletric oferece garantia de fábrica com suporte técnico e peças de reposição. Consulte um especialista para conhecer as condições.",
       },
       {
         q: "Para quem a New Holiday é a melhor escolha dentro do portfólio?",
@@ -1398,7 +1398,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
     finalCta: {
       title: "Descubra se a New Holiday combina com a sua rotina",
       subtitle:
-        "Fale com um especialista da MS Electric e receba orientação personalizada sobre o modelo ideal para o seu dia a dia.",
+        "Fale com um especialista da MS Eletric e receba orientação personalizada sobre o modelo ideal para o seu dia a dia.",
     },
   },
   "holiday-1000": {
@@ -1432,7 +1432,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
     whyChoose: [
       {
         title: "O melhor preço entre as scooters",
-        desc: "R$ 10.490 — o menor investimento para ter uma scooter elétrica completa da MS Electric com motor de 1.000W.",
+        desc: "R$ 10.490 — o menor investimento para ter uma scooter elétrica completa da MS Eletric com motor de 1.000W.",
       },
       {
         title: "Simplicidade de uso",
@@ -1447,7 +1447,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
         desc: "Estrutura sólida que suporta até 150 kg — espaço de sobra para você e suas coisas do dia a dia.",
       },
       {
-        title: "Suporte MS Electric",
+        title: "Suporte MS Eletric",
         desc: "Garantia de fábrica, assistência técnica e peças de reposição. Segurança na compra e suporte real.",
       },
     ],
@@ -1481,7 +1481,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
       title: "Mobilidade elétrica acessível para a cidade",
       body: "A Holiday 1000 foi pensada para quem quer entrar no mundo das scooters elétricas sem grande investimento. Se você busca praticidade, economia e uma forma mais inteligente de se deslocar pela cidade, esse é o modelo que abre essa porta.",
       highlights: [
-        "O menor investimento entre as scooters MS Electric",
+        "O menor investimento entre as scooters MS Eletric",
         "Motor de 1.000W para deslocamentos urbanos práticos",
         "45 km de autonomia para cobrir a rotina",
         "Capacidade para 150 kg — estrutura sólida",
@@ -1495,8 +1495,8 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
       load: "Capacidade compatível com uso real e cotidiano",
     },
     differentials: {
-      title: "Onde a Holiday 1000 se destaca na linha MS Electric",
-      body: "A Holiday 1000 é a porta de entrada mais acessível no universo das scooters elétricas MS Electric. Ela cumpre o papel de modelo inicial — funcional, econômico e descomplicado. Para quem quer mobilidade elétrica em formato scooter sem grande investimento, ela entrega exatamente o necessário para começar.",
+      title: "Onde a Holiday 1000 se destaca na linha MS Eletric",
+      body: "A Holiday 1000 é a porta de entrada mais acessível no universo das scooters elétricas MS Eletric. Ela cumpre o papel de modelo inicial — funcional, econômico e descomplicado. Para quem quer mobilidade elétrica em formato scooter sem grande investimento, ela entrega exatamente o necessário para começar.",
     },
     comparisonTip:
       "Se você quer mais potência e velocidade para o trânsito, a New Holiday e a MS 2500 sobem de nível. Mas se praticidade, economia e o menor investimento possível em uma scooter são prioridade, a Holiday 1000 é a escolha mais direta e mais acessível da linha.",
@@ -1527,7 +1527,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
       },
       {
         q: "Como funciona a garantia?",
-        a: "A MS Electric oferece garantia de fábrica com suporte técnico e peças de reposição. Consulte um especialista para conhecer as condições.",
+        a: "A MS Eletric oferece garantia de fábrica com suporte técnico e peças de reposição. Consulte um especialista para conhecer as condições.",
       },
       {
         q: "Para quem a Holiday 1000 é a melhor escolha dentro do portfólio?",
@@ -1537,7 +1537,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
     finalCta: {
       title: "Descubra se a Holiday 1000 combina com a sua rotina",
       subtitle:
-        "Fale com um especialista da MS Electric e receba orientação personalizada sobre o modelo ideal para o seu dia a dia.",
+        "Fale com um especialista da MS Eletric e receba orientação personalizada sobre o modelo ideal para o seu dia a dia.",
     },
   },
 
@@ -1546,7 +1546,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
     subheadline:
       "A Tour 3K é a scooter elétrica para quem não se contenta com o básico. Com motor de 3.000W, visual custom chopper e até 75 km/h, ela entrega uma experiência urbana mais intensa, mais marcante e com muito mais personalidade.",
     supportText:
-      "Se você busca uma mobilidade elétrica que chame atenção, transmita força e ofereça desempenho real na cidade, a Tour 3K é o próximo nível dentro da linha MS Electric.",
+      "Se você busca uma mobilidade elétrica que chame atenção, transmita força e ofereça desempenho real na cidade, a Tour 3K é o próximo nível dentro da linha MS Eletric.",
     idealFor: [
       {
         icon: "zap",
@@ -1583,11 +1583,11 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
         desc: "Com até 75 km/h e estrutura pensada para performance, cada deslocamento vira uma experiência mais marcante e prazerosa.",
       },
       {
-        title: "Evolução dentro da linha MS Electric",
+        title: "Evolução dentro da linha MS Eletric",
         desc: "Representa um salto claro em potência e presença em relação aos modelos mais básicos. É a escolha de quem exige mais.",
       },
       {
-        title: "Suporte e confiança MS Electric",
+        title: "Suporte e confiança MS Eletric",
         desc: "Todo o respaldo de uma marca especializada em mobilidade elétrica: assistência técnica, peças disponíveis e atendimento consultivo.",
       },
     ],
@@ -1639,7 +1639,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
     },
     differentials: {
       title: "Onde a Tour 3K se destaca",
-      body: "A Tour 3K é a escolha certa para quem quer elevar o nível da mobilidade elétrica. Com o motor mais potente entre as scooters urbanas da linha, visual custom chopper exclusivo e velocidade de até 75 km/h, ela ocupa um espaço único no portfólio: é a scooter para quem quer mais potência, mais presença e uma experiência urbana muito mais marcante. Se você busca algo além do funcional — algo que transmita força, atitude e personalidade — a Tour 3K é o modelo que faz isso acontecer dentro da MS Electric.",
+      body: "A Tour 3K é a escolha certa para quem quer elevar o nível da mobilidade elétrica. Com o motor mais potente entre as scooters urbanas da linha, visual custom chopper exclusivo e velocidade de até 75 km/h, ela ocupa um espaço único no portfólio: é a scooter para quem quer mais potência, mais presença e uma experiência urbana muito mais marcante. Se você busca algo além do funcional — algo que transmita força, atitude e personalidade — a Tour 3K é o modelo que faz isso acontecer dentro da MS Eletric.",
     },
     comparisonTip:
       "Se você busca a scooter elétrica mais potente e mais marcante da linha, a Tour 3K é a resposta com seus 3.000W e visual custom chopper. Se prefere mais autonomia e velocidade em um perfil esportivo, confira a S3K. Já se você quer robustez com um perfil mais urbano e equilibrado, a MS 2500 pode ser o caminho. Para uma entrada mais acessível, a Holiday 1000 e a New Holiday oferecem praticidade e economia.",
@@ -1666,11 +1666,11 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
       },
       {
         q: "Como é a manutenção?",
-        a: "Simples e econômica. Scooters elétricas têm menos peças móveis que veículos a combustão, o que reduz custos e frequência de manutenção. A MS Electric oferece suporte técnico especializado.",
+        a: "Simples e econômica. Scooters elétricas têm menos peças móveis que veículos a combustão, o que reduz custos e frequência de manutenção. A MS Eletric oferece suporte técnico especializado.",
       },
       {
         q: "Como funciona a garantia?",
-        a: "A MS Electric oferece garantia de fábrica com suporte técnico direto. Consulte um especialista para conhecer os termos completos e as condições de cobertura.",
+        a: "A MS Eletric oferece garantia de fábrica com suporte técnico direto. Consulte um especialista para conhecer os termos completos e as condições de cobertura.",
       },
       {
         q: "Para quem a Tour 3K é a melhor escolha no portfólio?",
@@ -1680,14 +1680,14 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
     finalCta: {
       title: "Pronto para sentir a potência da Tour 3K?",
       subtitle:
-        "Fale com um especialista da MS Electric e descubra por que a Tour 3K é a escolha de quem quer mais força, mais presença e mais emoção na mobilidade elétrica.",
+        "Fale com um especialista da MS Eletric e descubra por que a Tour 3K é a escolha de quem quer mais força, mais presença e mais emoção na mobilidade elétrica.",
     },
   },
 
   "s3k": {
     headline: "O topo da experiência elétrica urbana",
     subheadline:
-      "A S3K é a scooter elétrica mais completa da linha MS Electric. Com motor de 3.500W, até 85 km de autonomia e velocidade de até 80 km/h, ela entrega potência, liberdade e uma experiência premium que nenhum outro modelo alcança.",
+      "A S3K é a scooter elétrica mais completa da linha MS Eletric. Com motor de 3.500W, até 85 km de autonomia e velocidade de até 80 km/h, ela entrega potência, liberdade e uma experiência premium que nenhum outro modelo alcança.",
     supportText:
       "Se você quer o máximo em desempenho, autonomia e presença dentro da mobilidade elétrica urbana, a S3K é a escolha que coloca você no topo da linha.",
     idealFor: [
@@ -1730,7 +1730,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
         desc: "Design que transmite performance e sofisticação. A S3K não passa despercebida — ela impõe presença.",
       },
       {
-        title: "Respaldo total MS Electric",
+        title: "Respaldo total MS Eletric",
         desc: "Assistência técnica especializada, peças disponíveis e atendimento consultivo. Comprar o topo da linha vem com suporte à altura.",
       },
     ],
@@ -1774,7 +1774,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
       speed:
         "Até 80 km/h — a maior velocidade do portfólio, entregando uma experiência de pilotagem mais dinâmica e mais confiante.",
       motor:
-        "3.500W de potência — o motor mais forte da linha MS Electric. Torque, arrancada e desempenho em subidas de nível superior.",
+        "3.500W de potência — o motor mais forte da linha MS Eletric. Torque, arrancada e desempenho em subidas de nível superior.",
       recharge:
         "6 a 8 horas na tomada convencional. Carregue durante a noite e tenha a scooter no topo da performance pela manhã.",
       load:
@@ -1782,7 +1782,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
     },
     differentials: {
       title: "Onde a S3K se destaca",
-      body: "A S3K é a escolha certa para quem quer o máximo dentro da proposta urbana da linha MS Electric. Ela reúne o motor mais potente (3.500W), a maior autonomia (85 km) e a maior velocidade (80 km/h) — um conjunto que nenhum outro modelo oferece. Com visual esportivo e presença premium, ela ocupa o topo do portfólio como a scooter elétrica mais completa, mais aspiracional e mais evoluída. Se você quer potência, liberdade e sofisticação em um único produto, a S3K é o modelo definitivo.",
+      body: "A S3K é a escolha certa para quem quer o máximo dentro da proposta urbana da linha MS Eletric. Ela reúne o motor mais potente (3.500W), a maior autonomia (85 km) e a maior velocidade (80 km/h) — um conjunto que nenhum outro modelo oferece. Com visual esportivo e presença premium, ela ocupa o topo do portfólio como a scooter elétrica mais completa, mais aspiracional e mais evoluída. Se você quer potência, liberdade e sofisticação em um único produto, a S3K é o modelo definitivo.",
     },
     comparisonTip:
       "A S3K é o topo da linha em potência, autonomia e velocidade. Se você busca o máximo em performance esportiva e liberdade, ela é a escolha definitiva. Se prefere mais estilo custom com boa potência, a Tour 3K oferece 3.000W com visual chopper. Para uma proposta mais urbana e equilibrada, a MS 2500 é uma opção robusta. E se você quer praticidade e economia, a Holiday 1000 e a New Holiday são entradas inteligentes.",
@@ -1793,7 +1793,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
       },
       {
         q: "Esse modelo faz sentido para quem quer mais potência e mais autonomia?",
-        a: "Sim — a S3K é exatamente isso. Com 3.500W e 85 km de autonomia, ela é a scooter mais potente e com maior alcance da linha MS Electric.",
+        a: "Sim — a S3K é exatamente isso. Com 3.500W e 85 km de autonomia, ela é a scooter mais potente e com maior alcance da linha MS Eletric.",
       },
       {
         q: "Qual o diferencial dela em relação a outras scooters da linha?",
@@ -1809,11 +1809,11 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
       },
       {
         q: "Como é a manutenção?",
-        a: "Simples e econômica. Scooters elétricas têm menos peças móveis que veículos a combustão, reduzindo custos e frequência de manutenção. A MS Electric oferece suporte técnico especializado.",
+        a: "Simples e econômica. Scooters elétricas têm menos peças móveis que veículos a combustão, reduzindo custos e frequência de manutenção. A MS Eletric oferece suporte técnico especializado.",
       },
       {
         q: "Como funciona a garantia?",
-        a: "A MS Electric oferece garantia de fábrica com suporte técnico direto. Consulte um especialista para conhecer os termos completos e as condições de cobertura.",
+        a: "A MS Eletric oferece garantia de fábrica com suporte técnico direto. Consulte um especialista para conhecer os termos completos e as condições de cobertura.",
       },
       {
         q: "Para quem a S3K é a melhor escolha dentro do portfólio?",
@@ -1823,14 +1823,14 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
     finalCta: {
       title: "Pronto para experimentar o topo da linha?",
       subtitle:
-        "Fale com um especialista da MS Electric e descubra por que a S3K é a escolha definitiva para quem quer potência, autonomia e uma experiência premium de mobilidade elétrica.",
+        "Fale com um especialista da MS Eletric e descubra por que a S3K é a escolha definitiva para quem quer potência, autonomia e uma experiência premium de mobilidade elétrica.",
     },
   },
 
   "triciclo-eletrico": {
     headline: "Estabilidade, conforto e confiança para o seu dia a dia",
     subheadline:
-      "O Triciclo Elétrico da MS Electric é a escolha inteligente para quem quer mobilidade com mais equilíbrio, mais segurança percebida e mais tranquilidade na condução — sem abrir mão da praticidade elétrica.",
+      "O Triciclo Elétrico da MS Eletric é a escolha inteligente para quem quer mobilidade com mais equilíbrio, mais segurança percebida e mais tranquilidade na condução — sem abrir mão da praticidade elétrica.",
     supportText:
       "Com três rodas, motor elétrico de 1.000W e até 60 km de autonomia, ele entrega uma experiência de condução mais estável e confortável, ideal para quem prioriza confiança e facilidade no dia a dia.",
     idealFor: [
@@ -1873,7 +1873,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
         desc: "Recarga na tomada, sem combustível, sem IPVA e com manutenção simplificada. Economia real no dia a dia.",
       },
       {
-        title: "Suporte MS Electric de confiança",
+        title: "Suporte MS Eletric de confiança",
         desc: "Todo o respaldo de uma marca especializada: assistência técnica, peças disponíveis e atendimento consultivo e acolhedor.",
       },
     ],
@@ -1925,7 +1925,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
     },
     differentials: {
       title: "Onde o Triciclo Elétrico se destaca",
-      body: "O Triciclo Elétrico ocupa um espaço único no portfólio da MS Electric: é a opção para quem quer mobilidade elétrica com mais estabilidade, mais conforto e mais confiança na condução. Enquanto as scooters oferecem agilidade e performance, o triciclo entrega tranquilidade, equilíbrio e uma experiência de uso mais acessível. É a escolha certa para quem prioriza segurança percebida, facilidade e uma rotina de deslocamentos mais serena — sem abrir mão da economia e da praticidade elétrica.",
+      body: "O Triciclo Elétrico ocupa um espaço único no portfólio da MS Eletric: é a opção para quem quer mobilidade elétrica com mais estabilidade, mais conforto e mais confiança na condução. Enquanto as scooters oferecem agilidade e performance, o triciclo entrega tranquilidade, equilíbrio e uma experiência de uso mais acessível. É a escolha certa para quem prioriza segurança percebida, facilidade e uma rotina de deslocamentos mais serena — sem abrir mão da economia e da praticidade elétrica.",
     },
     comparisonTip:
       "Se você prioriza estabilidade, conforto e uma condução mais segura, o Triciclo Elétrico é a escolha ideal com suas três rodas e proposta tranquila. Se prefere mais agilidade e velocidade em duas rodas, as scooters da linha — como a Holiday 1000 para entrada prática ou a MS 2500 para mais presença — podem ser mais adequadas. O triciclo é para quem quer equilíbrio e confiança acima de tudo.",
@@ -1952,11 +1952,11 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
       },
       {
         q: "Como é a manutenção?",
-        a: "Simples e econômica. Veículos elétricos têm menos peças móveis, o que reduz custos e frequência de manutenção. A MS Electric oferece suporte técnico especializado.",
+        a: "Simples e econômica. Veículos elétricos têm menos peças móveis, o que reduz custos e frequência de manutenção. A MS Eletric oferece suporte técnico especializado.",
       },
       {
         q: "Como funciona a garantia?",
-        a: "A MS Electric oferece garantia de fábrica com suporte técnico direto. Consulte um especialista para conhecer os termos completos e as condições de cobertura.",
+        a: "A MS Eletric oferece garantia de fábrica com suporte técnico direto. Consulte um especialista para conhecer os termos completos e as condições de cobertura.",
       },
       {
         q: "Para quem o Triciclo Elétrico é a melhor escolha dentro do portfólio?",
@@ -1966,14 +1966,14 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
     finalCta: {
       title: "Quer mobilidade com mais equilíbrio e confiança?",
       subtitle:
-        "Fale com um especialista da MS Electric e descubra por que o Triciclo Elétrico é a escolha certa para quem prioriza estabilidade, conforto e praticidade no dia a dia.",
+        "Fale com um especialista da MS Eletric e descubra por que o Triciclo Elétrico é a escolha certa para quem prioriza estabilidade, conforto e praticidade no dia a dia.",
     },
   },
 
   "rhino-delivery": {
     headline: "O utilitário elétrico que a sua operação precisa",
     subheadline:
-      "A Rhino Delivery é a solução profissional da MS Electric para entregas, deslocamentos operacionais e rotinas comerciais. Com motor de 2.000W, 120 km de autonomia e capacidade para até 250 kg, ela entrega produtividade real com economia elétrica.",
+      "A Rhino Delivery é a solução profissional da MS Eletric para entregas, deslocamentos operacionais e rotinas comerciais. Com motor de 2.000W, 120 km de autonomia e capacidade para até 250 kg, ela entrega produtividade real com economia elétrica.",
     supportText:
       "Se você precisa de um veículo que trabalhe junto com o seu negócio — com eficiência, robustez e custo operacional muito menor — a Rhino Delivery foi feita para isso.",
     idealFor: [
@@ -2016,7 +2016,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
         desc: "Centavos por recarga contra reais por litro de gasolina. No final do mês, a diferença é significativa para qualquer operação.",
       },
       {
-        title: "Suporte profissional MS Electric",
+        title: "Suporte profissional MS Eletric",
         desc: "Assistência técnica especializada, peças disponíveis e atendimento consultivo pensado para quem usa o veículo como ferramenta de trabalho.",
       },
     ],
@@ -2068,7 +2068,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
     },
     differentials: {
       title: "Onde a Rhino Delivery se destaca",
-      body: "A Rhino Delivery ocupa um espaço estratégico no portfólio da MS Electric: é o utilitário elétrico pensado para quem precisa de um veículo de trabalho. Com a maior autonomia (120 km), a maior capacidade de carga (250 kg) e motor de 2.000W, ela é a resposta para operações que precisam de eficiência, economia e robustez. Se o seu negócio depende de entregas, logística ou deslocamentos operacionais, a Rhino Delivery é a solução que transforma custo em investimento.",
+      body: "A Rhino Delivery ocupa um espaço estratégico no portfólio da MS Eletric: é o utilitário elétrico pensado para quem precisa de um veículo de trabalho. Com a maior autonomia (120 km), a maior capacidade de carga (250 kg) e motor de 2.000W, ela é a resposta para operações que precisam de eficiência, economia e robustez. Se o seu negócio depende de entregas, logística ou deslocamentos operacionais, a Rhino Delivery é a solução que transforma custo em investimento.",
     },
     comparisonTip:
       "A Rhino Delivery é o utilitário elétrico profissional da linha, com 120 km de autonomia e 250 kg de capacidade. Se você precisa de entrega e operação comercial, ela é a escolha clara. Se busca um utilitário com perfil de triciclo para carga mais leve, o Triciclo Elétrico pode atender. Para uso pessoal urbano, as scooters da linha — Holiday 1000, MS 2500, Tour 3K ou S3K — oferecem propostas diferentes de mobilidade.",
@@ -2095,11 +2095,11 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
       },
       {
         q: "Como é a manutenção?",
-        a: "Simples e econômica. Veículos elétricos têm menos peças móveis, o que reduz custos e frequência de manutenção. A MS Electric oferece suporte técnico especializado para uso profissional.",
+        a: "Simples e econômica. Veículos elétricos têm menos peças móveis, o que reduz custos e frequência de manutenção. A MS Eletric oferece suporte técnico especializado para uso profissional.",
       },
       {
         q: "Como funciona a garantia?",
-        a: "A MS Electric oferece garantia de fábrica com suporte técnico direto. Consulte um especialista para conhecer os termos completos e as condições de cobertura para uso comercial.",
+        a: "A MS Eletric oferece garantia de fábrica com suporte técnico direto. Consulte um especialista para conhecer os termos completos e as condições de cobertura para uso comercial.",
       },
       {
         q: "Para quem a Rhino Delivery é a melhor escolha dentro do portfólio?",
@@ -2109,14 +2109,14 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
     finalCta: {
       title: "Pronto para eletrificar a sua operação?",
       subtitle:
-        "Fale com um especialista da MS Electric e descubra como a Rhino Delivery pode transformar a eficiência e a economia da sua rotina de entregas e operação.",
+        "Fale com um especialista da MS Eletric e descubra como a Rhino Delivery pode transformar a eficiência e a economia da sua rotina de entregas e operação.",
     },
   },
 
   "cargo": {
     headline: "Capacidade de carga e eficiência elétrica para operações reais",
     subheadline:
-      "O Cargo é o utilitário elétrico de maior capacidade da MS Electric. Com até 500 kg de carga, motor de 1.500W e 60 km de autonomia, ele resolve demandas profissionais de transporte com economia, robustez e aplicação prática.",
+      "O Cargo é o utilitário elétrico de maior capacidade da MS Eletric. Com até 500 kg de carga, motor de 1.500W e 60 km de autonomia, ele resolve demandas profissionais de transporte com economia, robustez e aplicação prática.",
     supportText:
       "Se a sua operação precisa mover carga de verdade — com eficiência, baixo custo e sem complicação — o Cargo foi projetado exatamente para isso.",
     idealFor: [
@@ -2144,7 +2144,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
     whyChoose: [
       {
         title: "Até 500 kg de capacidade — o maior da linha",
-        desc: "A maior capacidade de carga do portfólio MS Electric. Projetado para demandas que exigem transporte real e robusto.",
+        desc: "A maior capacidade de carga do portfólio MS Eletric. Projetado para demandas que exigem transporte real e robusto.",
       },
       {
         title: "60 km de autonomia operacional",
@@ -2159,7 +2159,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
         desc: "Recarga na tomada por centavos. Sem combustível, sem IPVA e com manutenção simplificada. Economia que se acumula.",
       },
       {
-        title: "Suporte profissional MS Electric",
+        title: "Suporte profissional MS Eletric",
         desc: "Assistência técnica especializada e atendimento consultivo para quem usa o veículo como ferramenta de trabalho diária.",
       },
     ],
@@ -2187,7 +2187,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
     ],
     urbanContext: {
       title: "Feito para mover carga de verdade",
-      body: "O Cargo foi desenvolvido para operações que precisam de capacidade real de transporte. Com até 500 kg de carga útil, ele atende demandas de logística interna, manutenção predial, apoio operacional e transporte de materiais com a economia e a praticidade que só a mobilidade elétrica oferece. É o veículo de trabalho mais robusto da linha MS Electric.",
+      body: "O Cargo foi desenvolvido para operações que precisam de capacidade real de transporte. Com até 500 kg de carga útil, ele atende demandas de logística interna, manutenção predial, apoio operacional e transporte de materiais com a economia e a praticidade que só a mobilidade elétrica oferece. É o veículo de trabalho mais robusto da linha MS Eletric.",
       highlights: [
         "Até 500 kg de capacidade de carga útil",
         "60 km de autonomia para rotinas completas",
@@ -2211,7 +2211,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
     },
     differentials: {
       title: "Onde o Cargo se destaca",
-      body: "O Cargo é o utilitário elétrico de maior capacidade da linha MS Electric. Com até 500 kg de carga, ele ocupa um espaço único no portfólio: é o veículo para quem precisa transportar peso de verdade com economia elétrica. Enquanto a Rhino Delivery foca em entregas com agilidade, o Cargo foca em volume e capacidade. Se a sua operação exige mover materiais, equipamentos ou mercadorias pesadas, o Cargo é a solução mais funcional e robusta da linha.",
+      body: "O Cargo é o utilitário elétrico de maior capacidade da linha MS Eletric. Com até 500 kg de carga, ele ocupa um espaço único no portfólio: é o veículo para quem precisa transportar peso de verdade com economia elétrica. Enquanto a Rhino Delivery foca em entregas com agilidade, o Cargo foca em volume e capacidade. Se a sua operação exige mover materiais, equipamentos ou mercadorias pesadas, o Cargo é a solução mais funcional e robusta da linha.",
     },
     comparisonTip:
       "O Cargo é o utilitário de maior capacidade da linha, com até 500 kg de carga — ideal para transporte pesado e operações internas. Se você precisa de mais agilidade para entregas urbanas, a Rhino Delivery oferece 120 km de autonomia com 250 kg de capacidade. Para mobilidade pessoal, as scooters e triciclos da linha atendem outros perfis de uso.",
@@ -2238,11 +2238,11 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
       },
       {
         q: "Como é a manutenção?",
-        a: "Simples e econômica. Veículos elétricos têm menos peças móveis, reduzindo custos e frequência de manutenção. A MS Electric oferece suporte técnico especializado.",
+        a: "Simples e econômica. Veículos elétricos têm menos peças móveis, reduzindo custos e frequência de manutenção. A MS Eletric oferece suporte técnico especializado.",
       },
       {
         q: "Como funciona a garantia?",
-        a: "A MS Electric oferece garantia de fábrica com suporte técnico direto. Consulte um especialista para conhecer os termos e condições de cobertura.",
+        a: "A MS Eletric oferece garantia de fábrica com suporte técnico direto. Consulte um especialista para conhecer os termos e condições de cobertura.",
       },
       {
         q: "Para quem o Cargo é a melhor escolha dentro do portfólio?",
@@ -2252,14 +2252,14 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
     finalCta: {
       title: "Precisa de capacidade real para a sua operação?",
       subtitle:
-        "Fale com um especialista da MS Electric e descubra como o Cargo pode transformar a eficiência e a economia do transporte de carga na sua rotina profissional.",
+        "Fale com um especialista da MS Eletric e descubra como o Cargo pode transformar a eficiência e a economia do transporte de carga na sua rotina profissional.",
     },
   },
 
   "motocross-infantil": {
     headline: "A diversão que toda criança merece — com estilo de verdade",
     subheadline:
-      "A Moto Cross Infantil da MS Electric é o presente que transforma o lazer. Com visual esportivo, motor de 800W e 35 km de autonomia, ela oferece uma experiência recreativa marcante para uso supervisionado em ambientes adequados.",
+      "A Moto Cross Infantil da MS Eletric é o presente que transforma o lazer. Com visual esportivo, motor de 800W e 35 km de autonomia, ela oferece uma experiência recreativa marcante para uso supervisionado em ambientes adequados.",
     supportText:
       "Pensada para proporcionar diversão com responsabilidade, ela é ideal para chácaras, condomínios, quintais amplos e áreas de recreação — sempre com acompanhamento de um adulto.",
     idealFor: [
@@ -2302,7 +2302,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
         desc: "Não é um brinquedo qualquer. É uma experiência que marca a infância e cria memórias especiais em família.",
       },
       {
-        title: "Respaldo MS Electric",
+        title: "Respaldo MS Eletric",
         desc: "Todo o suporte de uma marca especializada em mobilidade elétrica: assistência técnica, peças e atendimento consultivo.",
       },
     ],
@@ -2354,7 +2354,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
     },
     differentials: {
       title: "Onde a Moto Cross Infantil se destaca",
-      body: "A Moto Cross Infantil ocupa um espaço único na linha MS Electric: é o produto recreativo infantil com maior apelo visual e experiência mais envolvente. Com design de motocross autêntico, motor de 800W e 35 km de autonomia, ela vai muito além de um brinquedo convencional. É a escolha para quem quer proporcionar uma experiência marcante, divertida e memorável — com a responsabilidade do uso supervisionado em ambientes adequados.",
+      body: "A Moto Cross Infantil ocupa um espaço único na linha MS Eletric: é o produto recreativo infantil com maior apelo visual e experiência mais envolvente. Com design de motocross autêntico, motor de 800W e 35 km de autonomia, ela vai muito além de um brinquedo convencional. É a escolha para quem quer proporcionar uma experiência marcante, divertida e memorável — com a responsabilidade do uso supervisionado em ambientes adequados.",
     },
     comparisonTip:
       "A Moto Cross Infantil é o modelo recreativo com mais potência (800W) e visual esportivo mais marcante da categoria infantil. Se você busca uma opção de lazer com perfil diferente, como o Drift Elétrico 350, ele oferece uma experiência de drift mais lúdica e com velocidade mais baixa. Para patinetes elétricos, o Patinete 350 é a opção mais urbana e leve.",
@@ -2381,11 +2381,11 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
       },
       {
         q: "Como é a manutenção?",
-        a: "Simples e econômica. Veículos elétricos têm menos peças móveis, o que reduz custos e frequência de manutenção. A MS Electric oferece suporte técnico.",
+        a: "Simples e econômica. Veículos elétricos têm menos peças móveis, o que reduz custos e frequência de manutenção. A MS Eletric oferece suporte técnico.",
       },
       {
         q: "Como funciona a garantia?",
-        a: "A MS Electric oferece garantia de fábrica com suporte técnico direto. Consulte um especialista para conhecer os termos completos.",
+        a: "A MS Eletric oferece garantia de fábrica com suporte técnico direto. Consulte um especialista para conhecer os termos completos.",
       },
       {
         q: "Para quem a Moto Cross Infantil é a melhor escolha?",
@@ -2395,14 +2395,14 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
     finalCta: {
       title: "Quer proporcionar uma experiência inesquecível?",
       subtitle:
-        "Fale com um especialista da MS Electric e descubra como a Moto Cross Infantil pode transformar o lazer da criança em momentos de diversão memoráveis.",
+        "Fale com um especialista da MS Eletric e descubra como a Moto Cross Infantil pode transformar o lazer da criança em momentos de diversão memoráveis.",
     },
   },
 
   "drift-eletrico-350": {
     headline: "Diversão garantida com estilo e segurança para os pequenos",
     subheadline:
-      "O Drift Elétrico 350 é o veículo recreativo infantil mais acessível da MS Electric. Com motor de 350W, velocidade controlada de até 12 km/h e visual chamativo, ele proporciona uma experiência de lazer divertida e supervisionada.",
+      "O Drift Elétrico 350 é o veículo recreativo infantil mais acessível da MS Eletric. Com motor de 350W, velocidade controlada de até 12 km/h e visual chamativo, ele proporciona uma experiência de lazer divertida e supervisionada.",
     supportText:
       "Pensado para momentos de diversão em ambientes controlados, ele é ideal para quintais, condomínios, chácaras e áreas recreativas — sempre com acompanhamento de um adulto responsável.",
     idealFor: [
@@ -2414,7 +2414,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
       {
         icon: "gift",
         title: "Presente acessível e marcante",
-        desc: "Um presente que encanta pelo visual e pela diversão — com o melhor preço da categoria infantil MS Electric.",
+        desc: "Um presente que encanta pelo visual e pela diversão — com o melhor preço da categoria infantil MS Eletric.",
       },
       {
         icon: "home",
@@ -2430,7 +2430,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
     whyChoose: [
       {
         title: "O mais acessível da linha infantil",
-        desc: "Entrada inteligente na categoria recreativa da MS Electric, com preço que cabe no bolso e diversão que não decepciona.",
+        desc: "Entrada inteligente na categoria recreativa da MS Eletric, com preço que cabe no bolso e diversão que não decepciona.",
       },
       {
         title: "Velocidade segura de até 12 km/h",
@@ -2445,7 +2445,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
         desc: "A recarga mais rápida da categoria infantil. Menos espera, mais tempo de diversão.",
       },
       {
-        title: "Respaldo MS Electric",
+        title: "Respaldo MS Eletric",
         desc: "Mesmo sendo o modelo mais acessível, conta com todo o suporte técnico e atendimento consultivo da marca.",
       },
     ],
@@ -2468,7 +2468,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
       },
       {
         title: "Investimento acessível em diversão",
-        desc: "O menor investimento da categoria infantil MS Electric com uma experiência recreativa que vale cada centavo.",
+        desc: "O menor investimento da categoria infantil MS Eletric com uma experiência recreativa que vale cada centavo.",
       },
     ],
     urbanContext: {
@@ -2497,7 +2497,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
     },
     differentials: {
       title: "Onde o Drift Elétrico 350 se destaca",
-      body: "O Drift Elétrico 350 é a porta de entrada na categoria infantil da MS Electric. Com o menor preço, a recarga mais rápida e velocidade controlada de até 12 km/h, ele oferece uma experiência recreativa divertida com mais acessibilidade e tranquilidade para os pais. Enquanto a Moto Cross Infantil entrega mais potência e visual esportivo, o Drift Elétrico 350 foca em diversão lúdica com velocidade mais adequada para faixas etárias menores ou uso mais controlado.",
+      body: "O Drift Elétrico 350 é a porta de entrada na categoria infantil da MS Eletric. Com o menor preço, a recarga mais rápida e velocidade controlada de até 12 km/h, ele oferece uma experiência recreativa divertida com mais acessibilidade e tranquilidade para os pais. Enquanto a Moto Cross Infantil entrega mais potência e visual esportivo, o Drift Elétrico 350 foca em diversão lúdica com velocidade mais adequada para faixas etárias menores ou uso mais controlado.",
     },
     comparisonTip:
       "O Drift Elétrico 350 é a opção mais acessível e com velocidade mais controlada da categoria infantil — ideal para crianças menores ou pais que preferem mais tranquilidade. Se você busca mais potência e visual de motocross, a Moto Cross Infantil oferece 800W e 35 km de autonomia. Para mobilidade urbana leve, o Patinete 350 atende outro perfil de uso.",
@@ -2516,7 +2516,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
       },
       {
         q: "Ele é uma boa escolha para presentear?",
-        a: "Sim. É o presente recreativo mais acessível da linha MS Electric, com visual chamativo e diversão garantida para a criança.",
+        a: "Sim. É o presente recreativo mais acessível da linha MS Eletric, com visual chamativo e diversão garantida para a criança.",
       },
       {
         q: "Como funciona a recarga?",
@@ -2524,11 +2524,11 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
       },
       {
         q: "Como é a manutenção?",
-        a: "Simples e econômica. Veículos elétricos têm menos peças móveis, reduzindo custos e frequência de manutenção. A MS Electric oferece suporte técnico.",
+        a: "Simples e econômica. Veículos elétricos têm menos peças móveis, reduzindo custos e frequência de manutenção. A MS Eletric oferece suporte técnico.",
       },
       {
         q: "Como funciona a garantia?",
-        a: "A MS Electric oferece garantia de fábrica com suporte técnico direto. Consulte um especialista para conhecer os termos completos.",
+        a: "A MS Eletric oferece garantia de fábrica com suporte técnico direto. Consulte um especialista para conhecer os termos completos.",
       },
       {
         q: "Para quem o Drift Elétrico 350 é a melhor escolha?",
@@ -2538,14 +2538,14 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
     finalCta: {
       title: "Quer diversão acessível e segura para a criança?",
       subtitle:
-        "Fale com um especialista da MS Electric e descubra como o Drift Elétrico 350 pode transformar o lazer dos pequenos em momentos de diversão memoráveis.",
+        "Fale com um especialista da MS Eletric e descubra como o Drift Elétrico 350 pode transformar o lazer dos pequenos em momentos de diversão memoráveis.",
     },
   },
 
   "patinete-350": {
     headline: "Mobilidade leve e inteligente para a sua rotina",
     subheadline:
-      "O Patinete 350 é a solução mais compacta e portátil da MS Electric. Leve, dobrável e com 30 km de autonomia, ele resolve deslocamentos curtos com praticidade, agilidade e zero complicação.",
+      "O Patinete 350 é a solução mais compacta e portátil da MS Eletric. Leve, dobrável e com 30 km de autonomia, ele resolve deslocamentos curtos com praticidade, agilidade e zero complicação.",
     supportText:
       "Se você precisa de uma forma rápida de ir e vir — no campus, no condomínio, na última milha ou em pequenos trajetos urbanos — o Patinete 350 encaixa perfeitamente na sua rotina.",
     idealFor: [
@@ -2585,10 +2585,10 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
       },
       {
         title: "O menor investimento do portfólio",
-        desc: "A entrada mais acessível na mobilidade elétrica MS Electric, com funcionalidade que entrega valor real no dia a dia.",
+        desc: "A entrada mais acessível na mobilidade elétrica MS Eletric, com funcionalidade que entrega valor real no dia a dia.",
       },
       {
-        title: "Suporte MS Electric completo",
+        title: "Suporte MS Eletric completo",
         desc: "Mesmo sendo o modelo mais compacto, conta com todo o respaldo técnico e atendimento consultivo da marca.",
       },
     ],
@@ -2640,7 +2640,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
     },
     differentials: {
       title: "Onde o Patinete 350 se destaca",
-      body: "O Patinete 350 é o produto mais compacto, mais portátil e mais acessível da linha MS Electric. Ele não compete com scooters ou utilitários — ele complementa. É a solução para quem precisa resolver deslocamentos curtos com praticidade máxima: dobrável para levar em qualquer lugar, leve para carregar e com autonomia suficiente para cobrir a rotina urbana do dia a dia. Se o seu problema é a última milha, o Patinete 350 é a resposta.",
+      body: "O Patinete 350 é o produto mais compacto, mais portátil e mais acessível da linha MS Eletric. Ele não compete com scooters ou utilitários — ele complementa. É a solução para quem precisa resolver deslocamentos curtos com praticidade máxima: dobrável para levar em qualquer lugar, leve para carregar e com autonomia suficiente para cobrir a rotina urbana do dia a dia. Se o seu problema é a última milha, o Patinete 350 é a resposta.",
     },
     comparisonTip:
       "O Patinete 350 é a opção mais compacta, portátil e acessível do portfólio — ideal para última milha e deslocamentos curtos. Se você precisa de mais autonomia e velocidade para trajetos maiores, as bikes elétricas oferecem mais alcance. Para uma proposta de mobilidade urbana mais robusta, as scooters da linha atendem outro perfil de necessidade.",
@@ -2667,11 +2667,11 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
       },
       {
         q: "Como é a manutenção?",
-        a: "Simples e econômica. Veículos elétricos têm menos peças móveis, reduzindo custos e frequência de manutenção. A MS Electric oferece suporte técnico.",
+        a: "Simples e econômica. Veículos elétricos têm menos peças móveis, reduzindo custos e frequência de manutenção. A MS Eletric oferece suporte técnico.",
       },
       {
         q: "Como funciona a garantia?",
-        a: "A MS Electric oferece garantia de fábrica com suporte técnico direto. Consulte um especialista para conhecer os termos completos.",
+        a: "A MS Eletric oferece garantia de fábrica com suporte técnico direto. Consulte um especialista para conhecer os termos completos.",
       },
       {
         q: "Para quem o Patinete 350 é a melhor escolha dentro do portfólio?",
@@ -2681,7 +2681,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
     finalCta: {
       title: "Quer resolver a última milha com inteligência?",
       subtitle:
-        "Fale com um especialista da MS Electric e descubra como o Patinete 350 pode simplificar os seus deslocamentos do dia a dia com praticidade e economia.",
+        "Fale com um especialista da MS Eletric e descubra como o Patinete 350 pode simplificar os seus deslocamentos do dia a dia com praticidade e economia.",
     },
   },
 };
