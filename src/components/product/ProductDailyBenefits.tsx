@@ -18,9 +18,9 @@ export default function ProductDailyBenefits({ content }: { content: ProductCont
             No dia a dia
           </span>
           <h2 className="font-display font-black text-3xl md:text-4xl text-primary-foreground uppercase tracking-tight">
-            Como ela muda{" "}
+            Na prática,{" "}
             <span className="bg-clip-text text-transparent" style={{ backgroundImage: "linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)))" }}>
-              sua rotina
+              o que muda
             </span>
           </h2>
         </motion.div>

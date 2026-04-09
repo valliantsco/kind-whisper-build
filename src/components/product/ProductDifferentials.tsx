@@ -42,7 +42,7 @@ export default function ProductDifferentials({ content }: { content: ProductCont
 
             <div className="w-20 h-[2px] rounded-full mx-auto mb-8" style={{ background: "linear-gradient(90deg, transparent, hsl(var(--primary) / 0.4), transparent)" }} />
 
-            <p className="text-[15px] text-primary-foreground/50 leading-relaxed max-w-2xl mx-auto">
+            <p className="text-[14px] md:text-[15px] text-primary-foreground/50 leading-relaxed max-w-2xl mx-auto">
               {content.differentials.body}
             </p>
           </motion.div>
