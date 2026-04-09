@@ -5,9 +5,10 @@ import Header from "@/components/Header";
 import PopUpContato01 from "@/components/PopUpContato01";
 
 import HeroSlideshow from "@/components/home/HeroSlideshow";
-import QuizCta from "@/components/home/QuizCta";
 import ProductCarousel from "@/components/home/ProductCarousel";
 import WhyChoose from "@/components/home/WhyChoose";
+import PaymentBanner from "@/components/home/PaymentBanner";
+import QuizCta from "@/components/home/QuizCta";
 import Testimonials from "@/components/home/Testimonials";
 import MediaCoverage from "@/components/home/MediaCoverage";
 import HomeFooter from "@/components/home/HomeFooter";
@@ -79,9 +80,10 @@ const Index = () => {
       <div className="relative z-10">
         <Header onContactClick={() => setContactOpen(true)} />
         <HeroSlideshow />
-        <QuizCta />
         <ProductCarousel />
         <WhyChoose />
+        <PaymentBanner onContactClick={() => setContactOpen(true)} />
+        <QuizCta />
         <Testimonials />
         <MediaCoverage />
         <HomeFooter onContactClick={() => setContactOpen(true)} onSupportClick={handleSupportClick} />
