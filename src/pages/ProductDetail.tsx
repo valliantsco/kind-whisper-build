@@ -15,6 +15,7 @@ import ProductDailyBenefits from "@/components/product/ProductDailyBenefits";
 import ProductUrbanContext from "@/components/product/ProductUrbanContext";
 import ProductSpecs from "@/components/product/ProductSpecs";
 import ProductDifferentials from "@/components/product/ProductDifferentials";
+import ProductSocialProof from "@/components/product/ProductSocialProof";
 import ProductComparison from "@/components/product/ProductComparison";
 import ProductFAQ from "@/components/product/ProductFAQ";
 import ProductFinalCTA from "@/components/product/ProductFinalCTA";
@@ -65,10 +66,11 @@ const ProductDetail = () => {
           <Header onContactClick={() => setContactOpen(true)} />
           <ProductHero product={product} content={content} onContact={() => setProductContactOpen(true)} selectedColor={selectedColor} onColorChange={handleColorChange} />
           <ProductWhyChoose content={content} />
+          <ProductSpecs product={product} content={content} />
           <ProductDailyBenefits content={content} />
           <ProductUrbanContext content={content} />
-          <ProductSpecs product={product} content={content} />
           <ProductDifferentials content={content} />
+          <ProductSocialProof productName={product.name} />
           <ProductComparison related={related} content={content} />
           <ProductFAQ content={content} />
           <ProductFinalCTA content={content} onContact={() => setProductContactOpen(true)} />
