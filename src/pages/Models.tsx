@@ -408,7 +408,7 @@ const Models = () => {
                 >
                   {[
                     { value: "19+", label: "modelos" },
-                    { value: "8", label: "categorias" },
+                    { value: "7", label: "categorias" },
                     { value: "100%", label: "elétricos" },
                   ].map((stat) => (
                     <div key={stat.label} className="flex items-baseline gap-1.5">
