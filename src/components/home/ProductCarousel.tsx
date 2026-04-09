@@ -142,7 +142,7 @@ const ProductCarousel = () => {
             </h2>
 
             <p className="text-sm md:text-base text-primary-foreground/45 leading-relaxed mt-4 max-w-lg">
-              Um portfólio pensado para diferentes rotinas, estilos de vida e objetivos. Da mobilidade urbana ao uso profissional, a MS Eletric reúne soluções elétricas que combinam praticidade, economia e tecnologia no dia a dia.
+              Da mobilidade urbana ao uso profissional — soluções elétricas que combinam praticidade, economia e tecnologia.
             </p>
           </motion.div>
 
