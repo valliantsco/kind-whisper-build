@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import mediaFeatured from "@/assets/media-featured.jpg";
 
 const placeholderNews = [
   {
@@ -77,13 +78,55 @@ const MediaCoverage = () => {
 
         {/* ── Cards Grid ── */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {placeholderNews.map((item, i) => (
+          {/* ── Featured first card ── */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="group relative md:col-span-2 rounded-2xl border border-primary/20 bg-white/[0.03] overflow-hidden backdrop-blur-sm hover:border-primary/40 transition-colors duration-300"
+          >
+            <div className="flex flex-col md:flex-row">
+              <div className="relative md:w-1/2 h-56 md:h-auto overflow-hidden">
+                <img
+                  src={mediaFeatured}
+                  alt="Notícia destaque"
+                  loading="lazy"
+                  width={800}
+                  height={512}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent to-background/80 hidden md:block" />
+                <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent md:hidden" />
+                <span className="absolute top-4 left-4 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest bg-primary text-primary-foreground">
+                  Destaque
+                </span>
+              </div>
+              <div className="p-6 md:p-10 flex flex-col justify-center md:w-1/2">
+                <div className="flex items-center gap-3 mb-4">
+                  <span className="text-xs font-semibold uppercase tracking-widest text-primary">
+                    {placeholderNews[0].source}
+                  </span>
+                  <span className="text-xs text-primary-foreground/30">{placeholderNews[0].date}</span>
+                </div>
+                <h3 className="font-display font-bold text-xl md:text-2xl lg:text-3xl text-primary-foreground leading-tight mb-4">
+                  {placeholderNews[0].title}
+                </h3>
+                <p className="text-sm md:text-base text-primary-foreground/40 leading-relaxed">
+                  {placeholderNews[0].excerpt}
+                </p>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* ── Remaining cards ── */}
+          {placeholderNews.slice(1).map((item, i) => (
             <motion.div
               key={i}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.1, duration: 0.5 }}
+              transition={{ delay: (i + 1) * 0.1, duration: 0.5 }}
               className="group relative rounded-2xl border border-white/[0.06] bg-white/[0.02] p-6 md:p-8 backdrop-blur-sm hover:border-primary/20 transition-colors duration-300"
             >
               <div className="flex items-center gap-3 mb-4">
