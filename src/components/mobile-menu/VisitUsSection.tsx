@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { MapPin, Phone, Clock, ExternalLink, Zap } from "lucide-react";
+import { MapPin, Clock, ExternalLink, Zap } from "lucide-react";
 import msShieldLogo from "@/assets/ms-shield-logo.png";
 
 interface VisitUsSectionProps {
