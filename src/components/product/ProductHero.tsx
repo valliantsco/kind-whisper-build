@@ -79,6 +79,10 @@ export default function ProductHero({ product, content, onContact, selectedColor
                   className="w-full h-auto object-contain max-h-[280px] md:max-h-[400px] mx-auto transition-transform duration-700 group-hover:scale-[1.03]"
                 />
               </div>
+              {/* Illustrative disclaimer */}
+              <span className="absolute bottom-3 right-4 text-[9px] text-foreground/30 tracking-wide">
+                Imagem meramente ilustrativa
+              </span>
 
               <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" style={{ background: "linear-gradient(135deg, transparent 40%, rgba(255,255,255,0.08) 50%, transparent 60%)" }} />
 
@@ -147,16 +151,13 @@ export default function ProductHero({ product, content, onContact, selectedColor
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.35 }}
-              className="space-y-2 md:space-y-3 mb-6 md:mb-8"
+              className="space-y-2 mb-6 md:mb-8"
             >
-              <h2 className="text-primary-foreground/90 text-base md:text-xl font-semibold leading-snug">
+              <h2 className="text-primary-foreground/90 text-lg md:text-xl font-semibold leading-snug">
                 {content.headline}
               </h2>
-              <p className="text-primary-foreground/50 text-[13px] md:text-[14px] leading-relaxed">
+              <p className="text-primary-foreground/45 text-[13px] md:text-[15px] leading-relaxed">
                 {content.subheadline}
-              </p>
-              <p className="text-primary-foreground/30 text-[12px] md:text-[13px] leading-relaxed">
-                {content.supportText}
               </p>
             </motion.div>
 

@@ -73,6 +73,7 @@ export default function ProductComparison({ related, content }: Props) {
                     className="max-h-full max-w-full object-contain transition-transform duration-700 group-hover:scale-110"
                     loading="lazy"
                   />
+                  <span className="absolute bottom-2 right-3 text-[8px] text-foreground/25 tracking-wide">Ilustrativa</span>
                 </div>
                 <div className="p-5 flex items-center justify-between">
                   <div>
