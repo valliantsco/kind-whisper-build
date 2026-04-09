@@ -94,7 +94,7 @@ const MediaCoverage = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="group relative md:col-span-2 md:row-span-2 rounded-2xl overflow-hidden border border-white/[0.06] bg-white/[0.02] p-6 md:p-8 backdrop-blur-sm flex flex-col justify-between"
+            className="group relative md:col-span-2 md:row-span-2 rounded-2xl overflow-hidden border border-white/[0.06] bg-white/[0.02] p-6 md:p-8 backdrop-blur-sm flex flex-col justify-end"
           >
             <div>
               <div className="flex items-center gap-3 mb-3">
