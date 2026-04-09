@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import mediaFeatured from "@/assets/media-featured.jpg";
 
 const placeholderNews = [
   {
