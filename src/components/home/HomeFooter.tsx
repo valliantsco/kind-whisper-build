@@ -15,6 +15,7 @@ const institutionalLinks = [
   { label: "Sobre a MS Eletric", href: "/sobre" },
   { label: "Associada ABVE", href: "/abve" },
   { label: "Certificados e Conformidade", href: "/certificados" },
+  { label: "Novidades", href: "/novidades" },
   { label: "Perguntas Frequentes", href: "/faq" },
   { label: "Test-Ride", href: "/test-ride" },
 ];
