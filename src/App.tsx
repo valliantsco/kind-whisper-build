@@ -17,6 +17,7 @@ const TermsOfUse = lazy(() => import("./pages/TermsOfUse"));
 const Certificates = lazy(() => import("./pages/Certificates"));
 const FAQ = lazy(() => import("./pages/FAQ"));
 const TestRide = lazy(() => import("./pages/TestRide"));
+const News = lazy(() => import("./pages/News"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient();
@@ -40,6 +41,7 @@ const App = () => (
             <Route path="/certificados" element={<Certificates />} />
             <Route path="/faq" element={<FAQ />} />
             <Route path="/test-ride" element={<TestRide />} />
+            <Route path="/novidades" element={<News />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>
