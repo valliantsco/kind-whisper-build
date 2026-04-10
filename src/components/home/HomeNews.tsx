@@ -100,7 +100,7 @@ const HomeNews = () => {
                       />
                       <Newspaper className="w-8 h-8 text-primary/20" />
                     </div>
-
+                  )}
                   {/* Category badge */}
                   <span
                     className="absolute top-3 left-3 px-2.5 py-1 rounded-md text-[9px] font-bold uppercase tracking-[0.12em] text-primary-foreground/80"
