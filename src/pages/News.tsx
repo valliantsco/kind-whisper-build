@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Calendar, Newspaper, ArrowRight, ArrowLeft } from "lucide-react";
+import { Calendar, Newspaper, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import Header from "@/components/Header";
 import HomeFooter from "@/components/home/HomeFooter";
@@ -90,70 +90,53 @@ const News = () => {
             {/* News grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 max-w-6xl mx-auto">
               {filtered.map((item, i) => (
-                <motion.div
-                  key={item.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: i * 0.06 }}
-                  className="group rounded-2xl overflow-hidden transition-all duration-500 hover:-translate-y-1"
-                  style={{
-                    background: "linear-gradient(145deg, hsl(0 0% 100% / 0.03) 0%, hsl(0 0% 100% / 0.01) 100%)",
-                    border: "1px solid hsl(0 0% 100% / 0.06)",
-                  }}
-                >
-                  {/* Image */}
-                  <div
-                    className="h-44 flex items-center justify-center relative overflow-hidden"
-                    style={{ background: "linear-gradient(135deg, hsl(var(--primary) / 0.06) 0%, hsl(0 0% 100% / 0.02) 100%)" }}
+                <Link to={`/novidades/${item.slug}`} key={item.id}>
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: i * 0.06 }}
+                    className="group rounded-2xl overflow-hidden transition-all duration-500 hover:-translate-y-1 h-full"
+                    style={{
+                      background: "linear-gradient(145deg, hsl(0 0% 100% / 0.03) 0%, hsl(0 0% 100% / 0.01) 100%)",
+                      border: "1px solid hsl(0 0% 100% / 0.06)",
+                    }}
                   >
-                    {item.image ? (
-                      <img
-                        src={item.image}
-                        alt={item.title}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                        loading="lazy"
-                      />
-                    ) : (
-                      <Newspaper className="w-10 h-10 text-primary/12" />
-                    )}
-                    <span
-                      className="absolute top-3 left-3 px-2.5 py-1 rounded-md text-[9px] font-bold uppercase tracking-[0.12em] text-primary-foreground/80"
-                      style={{
-                        background: "hsl(0 0% 0% / 0.5)",
-                        backdropFilter: "blur(8px)",
-                        border: "1px solid hsl(0 0% 100% / 0.08)",
-                      }}
+                    <div
+                      className="h-44 flex items-center justify-center relative overflow-hidden"
+                      style={{ background: "linear-gradient(135deg, hsl(var(--primary) / 0.06) 0%, hsl(0 0% 100% / 0.02) 100%)" }}
                     >
-                      {NEWS_CATEGORIES[item.category]}
-                    </span>
-                  </div>
-
-                  {/* Content */}
-                  <div className="p-5">
-                    <div className="flex items-center gap-1.5 mb-2.5">
-                      <Calendar className="w-3 h-3 text-primary/40" />
-                      <time className="text-[10px] text-primary-foreground/30 uppercase tracking-wider">
-                        {new Date(item.date).toLocaleDateString("pt-BR", {
-                          day: "2-digit",
-                          month: "short",
-                          year: "numeric",
-                        })}
-                      </time>
+                      {item.image ? (
+                        <img src={item.image} alt={item.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy" />
+                      ) : (
+                        <Newspaper className="w-10 h-10 text-primary/12" />
+                      )}
+                      <span
+                        className="absolute top-3 left-3 px-2.5 py-1 rounded-md text-[9px] font-bold uppercase tracking-[0.12em] text-primary-foreground/80"
+                        style={{ background: "hsl(0 0% 0% / 0.5)", backdropFilter: "blur(8px)", border: "1px solid hsl(0 0% 100% / 0.08)" }}
+                      >
+                        {NEWS_CATEGORIES[item.category]}
+                      </span>
                     </div>
-
-                    <h2 className="font-display font-bold text-sm text-primary-foreground/90 uppercase tracking-wide mb-2 group-hover:text-primary transition-colors leading-snug">
-                      {item.title}
-                    </h2>
-                    <p className="text-[12px] text-primary-foreground/40 leading-relaxed line-clamp-3 mb-4">
-                      {item.summary}
-                    </p>
-
-                    <span className="inline-flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-[0.12em] text-primary/60 group-hover:text-primary transition-colors">
-                      Saiba mais
-                      <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
-                    </span>
-                  </div>
-                </motion.div>
+                    <div className="p-5">
+                      <div className="flex items-center gap-1.5 mb-2.5">
+                        <Calendar className="w-3 h-3 text-primary/40" />
+                        <time className="text-[10px] text-primary-foreground/30 uppercase tracking-wider">
+                          {new Date(item.date).toLocaleDateString("pt-BR", { day: "2-digit", month: "short", year: "numeric" })}
+                        </time>
+                      </div>
+                      <h2 className="font-display font-bold text-sm text-primary-foreground/90 uppercase tracking-wide mb-2 group-hover:text-primary transition-colors leading-snug">
+                        {item.title}
+                      </h2>
+                      <p className="text-[12px] text-primary-foreground/40 leading-relaxed line-clamp-3 mb-4">
+                        {item.summary}
+                      </p>
+                      <span className="inline-flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-[0.12em] text-primary/60 group-hover:text-primary transition-colors">
+                        Saiba mais
+                        <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
+                      </span>
+                    </div>
+                  </motion.div>
+                </Link>
               ))}
             </div>
 
