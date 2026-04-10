@@ -76,7 +76,7 @@ const WhyChoose = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
-          className="mb-12 md:mb-16 text-right"
+          className="mb-12 md:mb-16 text-center md:text-right"
         >
           <div className="flex items-center gap-3 mb-6 justify-end">
             <span className="text-[13px] font-bold uppercase tracking-[0.2em] text-primary">
