@@ -5,10 +5,10 @@ import { useState } from "react";
 const PILLARS = [
   {
     icon: Shield,
-    title: "Garantia de Fábrica",
-    stat: "2 anos",
+    title: "Respaldo de Fábrica",
+    stat: "GARANTIA",
     description:
-      "Compre com tranquilidade sabendo que seu veículo tem respaldo direto de fábrica.",
+      "Todos os veículos contam com garantia de fábrica. Consulte as condições com nosso time.",
   },
   {
     icon: Wrench,
