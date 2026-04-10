@@ -63,14 +63,14 @@ const PaymentBanner = ({ onContactClick }: PaymentBannerProps) => {
               </div>
 
               {/* Center — benefits */}
-              <div className="flex items-center gap-3 md:gap-8 overflow-x-auto scrollbar-hide">
+              <div className="grid grid-cols-3 gap-2 md:flex md:items-center md:gap-8 w-full md:w-auto">
                 {BENEFITS.map((b, i) => (
-                  <div key={b.title} className="flex items-center gap-2 md:gap-3 shrink-0">
+                  <div key={b.title} className="flex flex-col md:flex-row items-center gap-1.5 md:gap-3 shrink-0">
                     {i > 0 && (
-                      <div className="w-px h-10 mr-1 md:mr-4" style={{ background: "hsl(0 0% 100% / 0.08)" }} />
+                      <div className="hidden md:block w-px h-10 mr-1 md:mr-4" style={{ background: "hsl(0 0% 100% / 0.08)" }} />
                     )}
                     <div
-                      className="w-10 h-10 rounded-lg flex items-center justify-center shrink-0"
+                      className="w-9 h-9 md:w-10 md:h-10 rounded-lg flex items-center justify-center shrink-0"
                       style={{
                         background: "hsl(var(--primary) / 0.1)",
                         border: "1px solid hsl(var(--primary) / 0.15)",
@@ -78,11 +78,11 @@ const PaymentBanner = ({ onContactClick }: PaymentBannerProps) => {
                     >
                       <b.icon className="w-4 h-4 text-primary" />
                     </div>
-                    <div className="min-w-0">
-                      <p className="text-xs md:text-sm font-bold text-primary-foreground/80 whitespace-nowrap">
+                    <div className="min-w-0 text-center md:text-left">
+                      <p className="text-[10px] md:text-sm font-bold text-primary-foreground/80 leading-tight">
                         {b.title}
                       </p>
-                      <p className="text-[10px] md:text-xs text-primary-foreground/35 whitespace-nowrap">
+                      <p className="text-[8px] md:text-xs text-primary-foreground/35 leading-tight hidden md:block">
                         {b.detail}
                       </p>
                     </div>
