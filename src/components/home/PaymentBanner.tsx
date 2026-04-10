@@ -65,7 +65,7 @@ const PaymentBanner = ({ onContactClick }: PaymentBannerProps) => {
               {/* Center — benefits */}
               <div className="flex items-center gap-3 md:gap-8 overflow-x-auto scrollbar-hide">
                 {BENEFITS.map((b, i) => (
-                  <div key={b.title} className="flex items-center gap-3">
+                  <div key={b.title} className="flex items-center gap-2 md:gap-3 shrink-0">
                     {i > 0 && (
                       <div className="w-px h-10 mr-1 md:mr-4" style={{ background: "hsl(0 0% 100% / 0.08)" }} />
                     )}

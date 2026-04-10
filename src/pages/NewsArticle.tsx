@@ -318,7 +318,10 @@ const NewsArticle = () => {
                               loading="lazy"
                             />
                           ) : (
-                            <Newspaper className="w-7 h-7 text-primary/12" />
+                            <div className="w-full h-full flex items-center justify-center relative">
+                              <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: "radial-gradient(circle, hsl(0 0% 100%) 1px, transparent 1px)", backgroundSize: "14px 14px" }} />
+                              <Newspaper className="w-7 h-7 text-primary/20" />
+                            </div>
                           )}
                           <span
                             className="absolute top-3 left-3 px-2 py-0.5 rounded text-[8px] font-bold uppercase tracking-wider text-primary-foreground/70"
