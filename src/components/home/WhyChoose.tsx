@@ -8,28 +8,28 @@ const PILLARS = [
     title: "Garantia de Fábrica",
     stat: "2 anos",
     description:
-      "Mais segurança para comprar com tranquilidade e contar com respaldo desde o início da sua experiência com a marca.",
+      "Compre com tranquilidade sabendo que seu veículo tem respaldo direto de fábrica.",
   },
   {
     icon: Wrench,
     title: "Assistência Especializada",
     stat: "100%",
     description:
-      "Nosso time acompanha você antes, durante e depois da compra, com orientação clara e suporte para cada etapa.",
+      "Suporte real antes, durante e depois da compra. Sem script, sem demora.",
   },
   {
     icon: Clock,
     title: "Em Expansão",
-    stat: "PORTFÓLIO",
+    stat: "19+",
     description:
-      "A MS Eletric acompanha a evolução do mercado para oferecer modelos que atendem da rotina urbana ao uso profissional.",
+      "Portfólio completo com modelos para uso urbano, profissional e recreativo.",
   },
   {
     icon: Award,
     title: "Consultivo de Verdade",
     stat: "ATENDIMENTO",
     description:
-      "Aqui a recomendação não é genérica. A gente entende sua necessidade para indicar o modelo mais adequado para a sua rotina.",
+      "A gente entende sua rotina para indicar o modelo certo — sem recomendação genérica.",
   },
 ];
 
@@ -99,7 +99,7 @@ const WhyChoose = () => {
           </h2>
 
           <p className="text-sm md:text-base text-primary-foreground/45 leading-relaxed mt-4 max-w-lg ml-auto">
-            Atendimento próximo, suporte especializado e um portfólio que atende diferentes perfis de uso com segurança e clareza.
+            Garantia, suporte e atendimento consultivo para você escolher com segurança.
           </p>
         </motion.div>
 
