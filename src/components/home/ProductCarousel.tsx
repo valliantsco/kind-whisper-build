@@ -142,7 +142,7 @@ const ProductCarousel = () => {
             </h2>
 
             <p className="text-sm md:text-base text-primary-foreground/45 leading-relaxed mt-4 max-w-lg">
-              Da mobilidade urbana ao uso profissional — soluções elétricas que combinam praticidade, economia e tecnologia.
+              Soluções elétricas para mobilidade urbana, uso profissional e lazer.
             </p>
           </motion.div>
 

@@ -114,7 +114,7 @@ const QuizCta = () => {
             </h2>
 
             <p className="text-sm md:text-base text-primary-foreground/45 leading-relaxed mt-4 max-w-lg ml-auto">
-              Em poucos passos, o quiz entende seu perfil e mostra os modelos que fazem mais sentido para a sua rotina.
+              Responda algumas perguntas e descubra o modelo ideal para a sua rotina.
             </p>
           </motion.div>
 

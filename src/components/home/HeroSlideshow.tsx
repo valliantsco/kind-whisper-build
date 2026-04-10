@@ -22,7 +22,7 @@ const SLIDES: Slide[] = [
     headline: ["MOBILIDADE", "100%", "ELÉTRICA"],
     highlightLine: 1,
     subheadline:
-      "Autopropelidos, scooters, bicicletas e triciclos elétricos. Mais de 19 modelos para cada estilo de vida.",
+      "Mais de 19 modelos elétricos para cada estilo de vida. Zero emissão, economia real.",
     primaryCta: { text: "Explorar catálogo", href: "/modelos" },
     secondaryCta: { text: "Fazer o quiz", href: "#quiz" },
     youtubeId: "aogNFr_-56w",
@@ -159,7 +159,7 @@ const HeroSlideshow = () => {
 
             {/* Subheadline */}
             <motion.p
-              className="text-xs md:text-sm text-primary-foreground/45 mb-4 md:mb-6 max-w-sm md:max-w-lg leading-relaxed tracking-wide"
+              className="text-sm md:text-base text-primary-foreground/50 mb-5 md:mb-7 max-w-sm md:max-w-lg leading-relaxed tracking-wide"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.4, duration: 0.5 }}
