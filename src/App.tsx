@@ -18,6 +18,7 @@ const Certificates = lazy(() => import("./pages/Certificates"));
 const FAQ = lazy(() => import("./pages/FAQ"));
 const TestRide = lazy(() => import("./pages/TestRide"));
 const News = lazy(() => import("./pages/News"));
+const NewsArticle = lazy(() => import("./pages/NewsArticle"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient();
@@ -42,6 +43,7 @@ const App = () => (
             <Route path="/faq" element={<FAQ />} />
             <Route path="/test-ride" element={<TestRide />} />
             <Route path="/novidades" element={<News />} />
+            <Route path="/novidades/:slug" element={<NewsArticle />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>
