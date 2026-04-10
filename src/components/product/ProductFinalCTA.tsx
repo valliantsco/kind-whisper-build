@@ -26,10 +26,10 @@ export default function ProductFinalCTA({ content, onContact }: Props) {
         >
           <div className="w-16 h-[2px] rounded-full mx-auto mb-8" style={{ background: "linear-gradient(90deg, transparent, hsl(var(--primary) / 0.5), transparent)" }} />
 
-          <h2 className="font-display font-black text-3xl md:text-4xl lg:text-5xl text-primary-foreground uppercase tracking-tight mb-4 leading-tight">
+          <h2 className="font-display font-black text-3xl md:text-5xl lg:text-6xl text-primary-foreground uppercase tracking-tight mb-4 leading-tight">
             {content.finalCta.title}
           </h2>
-          <p className="text-[14px] text-primary-foreground/45 leading-relaxed mb-10 max-w-lg mx-auto">
+          <p className="text-base text-primary-foreground/45 leading-relaxed mb-10 max-w-lg mx-auto">
             {content.finalCta.subtitle}
           </p>
 

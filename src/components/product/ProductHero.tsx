@@ -128,7 +128,7 @@ export default function ProductHero({ product, content, onContact, selectedColor
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-              className="font-display font-black text-3xl md:text-5xl lg:text-[3.8rem] text-primary-foreground uppercase tracking-tight leading-[0.92] mb-3 md:mb-4"
+              className="font-display font-black text-4xl md:text-6xl lg:text-[4.5rem] text-primary-foreground uppercase tracking-tight leading-[0.90] mb-3 md:mb-4"
             >
               {product.name}
             </motion.h1>
@@ -153,10 +153,10 @@ export default function ProductHero({ product, content, onContact, selectedColor
               transition={{ delay: 0.35 }}
               className="space-y-2 mb-6 md:mb-8"
             >
-              <h2 className="text-primary-foreground/90 text-lg md:text-xl font-semibold leading-snug">
+              <h2 className="text-primary-foreground/90 text-xl md:text-2xl font-semibold leading-snug">
                 {content.headline}
               </h2>
-              <p className="text-primary-foreground/45 text-[13px] md:text-[15px] leading-relaxed">
+              <p className="text-primary-foreground/45 text-sm md:text-base leading-relaxed line-clamp-3">
                 {content.subheadline}
               </p>
             </motion.div>

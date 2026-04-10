@@ -18,7 +18,7 @@ export default function ProductSocialProof({ productName }: { productName: strin
               <Star className="w-3 h-3" />
               Confiança
             </span>
-            <h2 className="font-display font-black text-2xl md:text-3xl text-primary-foreground uppercase tracking-tight">
+            <h2 className="font-display font-black text-2xl md:text-4xl text-primary-foreground uppercase tracking-tight">
               Quem escolheu,{" "}
               <span className="bg-clip-text text-transparent" style={{ backgroundImage: "linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)))" }}>
                 aprova
