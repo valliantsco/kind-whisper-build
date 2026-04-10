@@ -108,7 +108,10 @@ const News = () => {
                       {item.image ? (
                         <img src={item.image} alt={item.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy" />
                       ) : (
-                        <Newspaper className="w-10 h-10 text-primary/12" />
+                        <div className="w-full h-full flex items-center justify-center relative">
+                          <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: "radial-gradient(circle, hsl(0 0% 100%) 1px, transparent 1px)", backgroundSize: "16px 16px" }} />
+                          <Newspaper className="w-10 h-10 text-primary/20" />
+                        </div>
                       )}
                       <span
                         className="absolute top-3 left-3 px-2.5 py-1 rounded-md text-[9px] font-bold uppercase tracking-[0.12em] text-primary-foreground/80"

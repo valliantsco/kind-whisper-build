@@ -85,9 +85,22 @@ const HomeNews = () => {
                       loading="lazy"
                     />
                   ) : (
-                    <Newspaper className="w-8 h-8 text-primary/15" />
+                    <div className="w-full h-full flex items-center justify-center relative">
+                      {/* Decorative grid pattern */}
+                      <div
+                        className="absolute inset-0 opacity-[0.04]"
+                        style={{
+                          backgroundImage: "radial-gradient(circle, hsl(0 0% 100%) 1px, transparent 1px)",
+                          backgroundSize: "16px 16px",
+                        }}
+                      />
+                      <div
+                        className="absolute bottom-0 left-0 right-0 h-1/2"
+                        style={{ background: "linear-gradient(to top, hsl(0 0% 4% / 0.6), transparent)" }}
+                      />
+                      <Newspaper className="w-8 h-8 text-primary/20" />
+                    </div>
                   )}
-
                   {/* Category badge */}
                   <span
                     className="absolute top-3 left-3 px-2.5 py-1 rounded-md text-[9px] font-bold uppercase tracking-[0.12em] text-primary-foreground/80"
