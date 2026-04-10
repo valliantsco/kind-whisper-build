@@ -3,6 +3,12 @@
  * Keyed by product slug.
  */
 
+export interface ProductTestimonial {
+  quote: string;
+  author: string;
+  context: string; // e.g. "Uso urbano · São Paulo" or "Entregas · Belo Horizonte"
+}
+
 export interface ProductContent {
   headline: string;
   subheadline: string;
@@ -16,6 +22,10 @@ export interface ProductContent {
   comparisonTip: string;
   faq: { q: string; a: string }[];
   finalCta: { title: string; subtitle: string };
+  socialProof?: {
+    testimonials?: ProductTestimonial[];
+    trustBadge?: string; // e.g. "Modelo mais vendido da categoria"
+  };
 }
 
 export const PRODUCT_CONTENT: Record<string, ProductContent> = {
