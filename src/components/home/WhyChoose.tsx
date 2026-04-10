@@ -37,7 +37,7 @@ const WhyChoose = () => {
   const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
 
   return (
-    <section id="por-que" className="relative py-14 md:py-20 overflow-hidden">
+    <section id="por-que" className="relative py-14 md:py-20 overflow-x-clip">
       {/* ── Section-specific effect: concentric shield rings ── */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none">
         {[280, 420, 560].map((size, i) => (
@@ -76,7 +76,7 @@ const WhyChoose = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
-          className="mb-12 md:mb-16 text-right"
+          className="mb-12 md:mb-16 text-center md:text-right"
         >
           <div className="flex items-center gap-3 mb-6 justify-end">
             <span className="text-[13px] font-bold uppercase tracking-[0.2em] text-primary">
