@@ -4,7 +4,7 @@ export interface NewsItem {
   title: string;
   summary: string;
   category: "evento" | "institucional" | "campanha" | "novidade";
-  date: string; // ISO date
+  date: string;
   image?: string;
   featured?: boolean;
 }
@@ -17,62 +17,62 @@ export const NEWS_CATEGORIES = {
 } as const;
 
 /**
- * Placeholder news items — replace with real content when available.
- * Images are optional; cards render gracefully without them.
+ * Placeholder news items with lorem ipsum content.
+ * Replace each entry with real content when available.
  */
 export const NEWS_ITEMS: NewsItem[] = [
   {
     id: "1",
-    slug: "femec-2026",
-    title: "MS Eletric na FEMEC 2026",
+    slug: "placeholder-1",
+    title: "Lorem ipsum dolor sit amet",
     summary:
-      "A MS Eletric marca presença na Feira de Mecânica e Inovação Industrial, apresentando a linha completa de veículos elétricos para o público de Uberlândia e região.",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
     category: "evento",
     date: "2026-04-05",
     featured: true,
   },
   {
     id: "2",
-    slug: "parceria-cdl-uberlandia",
-    title: "Parceria com a CDL Uberlândia",
+    slug: "placeholder-2",
+    title: "Consectetur adipiscing elit",
     summary:
-      "Ação conjunta com a Câmara de Dirigentes Lojistas para incentivar a mobilidade elétrica no comércio local, com condições especiais para associados.",
+      "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat.",
     category: "institucional",
     date: "2026-03-18",
   },
   {
     id: "3",
-    slug: "novos-modelos-linha-2026",
-    title: "Linha 2026: novos modelos disponíveis",
+    slug: "placeholder-3",
+    title: "Sed do eiusmod tempor incididunt",
     summary:
-      "Portfólio ampliado com novos modelos para uso urbano, profissional e recreativo. Conheça as novidades que chegaram ao catálogo.",
+      "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor.",
     category: "novidade",
     date: "2026-03-01",
   },
   {
     id: "4",
-    slug: "campanha-primeiro-eletrico",
-    title: "Campanha: seu primeiro elétrico",
+    slug: "placeholder-4",
+    title: "Ut labore et dolore magna aliqua",
     summary:
-      "Condições facilitadas para quem quer migrar para a mobilidade elétrica. Fale com nosso time e descubra as opções disponíveis.",
+      "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis.",
     category: "campanha",
     date: "2026-02-15",
   },
   {
     id: "5",
-    slug: "ms-eletric-certificacoes-internacionais",
-    title: "Certificações internacionais da linha AIMA",
+    slug: "placeholder-5",
+    title: "Quis nostrud exercitation ullamco",
     summary:
-      "Reconhecimentos como TITAN Awards e NY Product Design Awards reforçam a qualidade e o design dos veículos comercializados pela MS Eletric.",
+      "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione.",
     category: "institucional",
     date: "2026-01-20",
   },
   {
     id: "6",
-    slug: "acao-sustentabilidade-uberlandia",
-    title: "Ação de sustentabilidade em Uberlândia",
+    slug: "placeholder-6",
+    title: "Duis aute irure dolor reprehenderit",
     summary:
-      "Participação em evento local voltado à mobilidade limpa e responsabilidade ambiental, com test-rides abertos ao público.",
+      "Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora.",
     category: "evento",
     date: "2025-12-10",
   },
