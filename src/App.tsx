@@ -14,6 +14,7 @@ const About = lazy(() => import("./pages/About"));
 const ABVE = lazy(() => import("./pages/ABVE"));
 const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
 const TermsOfUse = lazy(() => import("./pages/TermsOfUse"));
+const Certificates = lazy(() => import("./pages/Certificates"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient();
@@ -34,6 +35,7 @@ const App = () => (
             <Route path="/abve" element={<ABVE />} />
             <Route path="/politica-de-privacidade" element={<PrivacyPolicy />} />
             <Route path="/termos-de-uso" element={<TermsOfUse />} />
+            <Route path="/certificados" element={<Certificates />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>
