@@ -104,7 +104,7 @@ const WhyChoose = () => {
         </motion.div>
 
         {/* ── Cards grid ── */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-5">
           {PILLARS.map((pillar, i) => {
             const isHovered = hoveredIdx === i;
             return (
@@ -119,7 +119,7 @@ const WhyChoose = () => {
                 className="group block"
               >
                 <div
-                  className="h-full rounded-xl overflow-hidden transition-all duration-300 p-5 relative"
+                  className="h-full rounded-xl overflow-hidden transition-all duration-300 p-4 md:p-5 relative"
                   style={{
                     background: "hsl(0 0% 100% / 0.025)",
                     border: `1px solid ${
@@ -155,7 +155,7 @@ const WhyChoose = () => {
 
                   <div className="relative">
                     <motion.div
-                      className="w-11 h-11 rounded-lg flex items-center justify-center mb-5 relative"
+                      className="w-9 h-9 md:w-11 md:h-11 rounded-lg flex items-center justify-center mb-3 md:mb-5 relative"
                       style={{
                         background: "hsl(var(--primary) / 0.1)",
                         border: "1px solid hsl(var(--primary) / 0.12)",
@@ -180,7 +180,7 @@ const WhyChoose = () => {
                     </motion.div>
 
                     <motion.p
-                      className="font-display font-black text-3xl md:text-4xl mb-1 bg-clip-text text-transparent"
+                      className="font-display font-black text-2xl md:text-4xl mb-1 bg-clip-text text-transparent"
                       style={{
                         backgroundImage:
                           "linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)))",
