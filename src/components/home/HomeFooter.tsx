@@ -14,6 +14,7 @@ const modelLinks = [
 const institutionalLinks = [
   { label: "Sobre a MS Eletric", href: "/sobre" },
   { label: "Associada ABVE", href: "/abve" },
+  { label: "Certificados e Conformidade", href: "/certificados" },
 ];
 const supportLinks = ["Assistência técnica", "Garantia de fábrica", "Peças de reposição", "Condições de pagamento"];
 const policyLinks = [

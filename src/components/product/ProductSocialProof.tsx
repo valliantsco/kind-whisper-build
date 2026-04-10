@@ -34,7 +34,7 @@ export default function ProductSocialProof({ productName }: { productName: strin
             className="grid grid-cols-1 md:grid-cols-3 gap-4"
           >
             {[
-              { stat: "2 anos", label: "de garantia de fábrica" },
+              { stat: "GARANTIA", label: "respaldo de fábrica" },
               { stat: "100%", label: "suporte pós-venda" },
               { stat: "19+", label: "modelos no portfólio" },
             ].map((item, i) => (
