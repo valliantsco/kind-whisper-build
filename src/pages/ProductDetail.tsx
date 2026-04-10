@@ -1,6 +1,5 @@
 import { useParams, Link } from "react-router-dom";
 import Header from "@/components/Header";
-
 import PopUpContato01 from "@/components/PopUpContato01";
 import PopUpContatoProduto from "@/components/product/PopUpContatoProduto";
 import HomeFooter from "@/components/home/HomeFooter";
@@ -10,11 +9,8 @@ import { useState, useMemo, useCallback, useEffect } from "react";
 import type { ProductColor } from "@/data/products";
 
 import ProductHero from "@/components/product/ProductHero";
+import ProductSpecsHighlight from "@/components/product/ProductSpecsHighlight";
 import ProductWhyChoose from "@/components/product/ProductWhyChoose";
-import ProductDailyBenefits from "@/components/product/ProductDailyBenefits";
-import ProductUrbanContext from "@/components/product/ProductUrbanContext";
-import ProductSpecs from "@/components/product/ProductSpecs";
-import ProductDifferentials from "@/components/product/ProductDifferentials";
 import ProductSocialProof from "@/components/product/ProductSocialProof";
 import ProductComparison from "@/components/product/ProductComparison";
 import ProductFAQ from "@/components/product/ProductFAQ";
@@ -65,11 +61,8 @@ const ProductDetail = () => {
         <div className="relative z-10">
           <Header onContactClick={() => setContactOpen(true)} />
           <ProductHero product={product} content={content} onContact={() => setProductContactOpen(true)} selectedColor={selectedColor} onColorChange={handleColorChange} />
+          <ProductSpecsHighlight product={product} content={content} />
           <ProductWhyChoose content={content} />
-          <ProductSpecs product={product} content={content} />
-          <ProductDailyBenefits content={content} />
-          <ProductUrbanContext content={content} />
-          <ProductDifferentials content={content} />
           <ProductSocialProof productName={product.name} />
           <ProductComparison related={related} content={content} />
           <ProductFAQ content={content} />
@@ -82,7 +75,7 @@ const ProductDetail = () => {
     );
   }
 
-  // Fallback
+  // Fallback for products without rich content
   return (
     <div className="min-h-screen relative" style={{ background: "hsl(0 0% 4%)" }}>
       <AnimatedBackground />
@@ -102,7 +95,7 @@ const ProductDetail = () => {
           selectedColor={selectedColor}
           onColorChange={handleColorChange}
         />
-        <ProductSpecs
+        <ProductSpecsHighlight
           product={product}
           content={{ headline: "", subheadline: "", supportText: "", idealFor: [], whyChoose: [], dailyBenefits: [], urbanContext: { title: "", body: "", highlights: [] }, specContexts: {}, differentials: { title: "", body: "" }, comparisonTip: "", faq: [], finalCta: { title: "", subtitle: "" } }}
         />
