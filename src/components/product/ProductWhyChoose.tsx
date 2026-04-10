@@ -25,7 +25,7 @@ export default function ProductWhyChoose({ content }: { content: ProductContent 
             <Sparkles className="w-3 h-3" />
             Vantagens
           </motion.span>
-          <h2 className="font-display font-black text-3xl md:text-4xl text-primary-foreground uppercase tracking-tight">
+          <h2 className="font-display font-black text-3xl md:text-4xl lg:text-5xl text-primary-foreground uppercase tracking-tight">
             Por que escolher{" "}
             <span className="bg-clip-text text-transparent" style={{ backgroundImage: "linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)))" }}>
               este modelo
