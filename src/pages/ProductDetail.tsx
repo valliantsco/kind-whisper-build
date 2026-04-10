@@ -63,7 +63,7 @@ const ProductDetail = () => {
           <ProductHero product={product} content={content} onContact={() => setProductContactOpen(true)} selectedColor={selectedColor} onColorChange={handleColorChange} />
           <ProductSpecsHighlight product={product} content={content} />
           <ProductWhyChoose content={content} />
-          <ProductSocialProof productName={product.name} />
+          <ProductSocialProof productName={product.name} content={content} />
           <ProductComparison related={related} content={content} />
           <ProductFAQ content={content} />
           <ProductFinalCTA content={content} onContact={() => setProductContactOpen(true)} />
