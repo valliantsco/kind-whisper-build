@@ -10,6 +10,7 @@ import WhyChoose from "@/components/home/WhyChoose";
 import PaymentBanner from "@/components/home/PaymentBanner";
 import QuizCta from "@/components/home/QuizCta";
 import Testimonials from "@/components/home/Testimonials";
+import HomeNews from "@/components/home/HomeNews";
 import HomeFooter from "@/components/home/HomeFooter";
 
 const Index = () => {
@@ -82,6 +83,7 @@ const Index = () => {
         <ProductCarousel />
         <WhyChoose />
         <Testimonials />
+        <HomeNews />
         <PaymentBanner onContactClick={() => setContactOpen(true)} />
         <QuizCta />
         <HomeFooter onContactClick={() => setContactOpen(true)} onSupportClick={handleSupportClick} />
