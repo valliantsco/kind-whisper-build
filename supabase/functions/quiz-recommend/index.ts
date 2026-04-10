@@ -158,8 +158,6 @@ CATEGORIAS VÁLIDAS: Autopropelidos, Bicicletas Elétricas, Scooters Elétricas,
 13. Tour 3K | R$ 16.990 | Motor: 3.000W | Vel. máxima: 75km/h | Autonomia: 40km | Recarga: 6-8h | Bateria: lítio removível | Carga: 120kg
     Perfil: identidade estética forte (custom/chopper), deslocamento urbano com performance, uso recreativo premium. Categoria: Scooters Elétricas.
 
-14. S3K | R$ 19.990 | Motor: 3.500W | Vel. máxima: 80km/h | Autonomia: 85km | Recarga: 6-8h | Bateria: lítio removível | Carga: 120kg
-    Perfil: maior performance, visual esportivo, substituto parcial de motos a combustão. Categoria: Scooters Elétricas.
 
 ── UTILITÁRIOS ──
 
