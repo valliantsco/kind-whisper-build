@@ -228,6 +228,44 @@ const HeroSlideshow = () => {
               </motion.div>
             )}
 
+            {/* Payment highlights */}
+            {slide.payments && (
+              <motion.div
+                className="flex flex-wrap items-center gap-3 md:gap-5 mb-5 md:mb-8"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.45, duration: 0.5 }}
+              >
+                {slide.payments.map((p, i) => (
+                  <div key={i} className="flex items-center gap-2 md:gap-2.5">
+                    <div
+                      className="w-8 h-8 md:w-9 md:h-9 rounded-lg flex items-center justify-center shrink-0"
+                      style={{
+                        background: "hsl(var(--primary) / 0.1)",
+                        border: "1px solid hsl(var(--primary) / 0.15)",
+                      }}
+                    >
+                      <p.icon className="w-3.5 h-3.5 md:w-4 md:h-4 text-primary" />
+                    </div>
+                    <div className="min-w-0">
+                      <p className="font-display font-bold text-[11px] md:text-sm text-primary-foreground leading-tight">
+                        {p.title}
+                      </p>
+                      <p className="text-[9px] md:text-[10px] text-primary-foreground/35 uppercase tracking-wider hidden md:block">
+                        {p.detail}
+                      </p>
+                    </div>
+                    {i < slide.payments!.length - 1 && (
+                      <div
+                        className="w-px h-7 md:h-8 ml-1 md:ml-2"
+                        style={{ background: "hsl(0 0% 100% / 0.08)" }}
+                      />
+                    )}
+                  </div>
+                ))}
+              </motion.div>
+            )}
+
             {/* CTAs */}
             <motion.div
               className="flex flex-col sm:flex-row items-start sm:items-center gap-3 flex-wrap"
