@@ -1,8 +1,14 @@
 import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight, ChevronLeft, ChevronRight, Zap, Battery, Gauge } from "lucide-react";
+import { ArrowRight, ChevronLeft, ChevronRight, Zap, Battery, Gauge, CreditCard, Wallet, Banknote } from "lucide-react";
 
 const SLIDE_DURATION = 20000;
+
+interface PaymentHighlight {
+  icon: typeof Zap;
+  title: string;
+  detail: string;
+}
 
 interface Slide {
   badge: string;
@@ -12,6 +18,7 @@ interface Slide {
   primaryCta: { text: string; href: string };
   secondaryCta: { text: string; href: string };
   stats?: { icon: typeof Zap; value: string; label: string }[];
+  payments?: PaymentHighlight[];
   youtubeId: string;
   youtubeStart?: number;
 }
@@ -42,6 +49,22 @@ const SLIDES: Slide[] = [
       { icon: Zap, value: "3.000W", label: "Motor" },
       { icon: Gauge, value: "75km/h", label: "Velocidade" },
       { icon: Battery, value: "40km", label: "Autonomia" },
+    ],
+  },
+  {
+    badge: "CONDIÇÕES ESPECIAIS",
+    headline: ["FACILIDADE", "PARA SAIR", "PILOTANDO"],
+    highlightLine: 1,
+    subheadline:
+      "Condições flexíveis para você escolher a melhor forma de pagamento na MS Eletric.",
+    primaryCta: { text: "Consultar condições", href: "#contato" },
+    secondaryCta: { text: "Ver todos os modelos", href: "/modelos" },
+    youtubeId: "aogNFr_-56w",
+    youtubeStart: 8,
+    payments: [
+      { icon: CreditCard, title: "Até 12x sem juros", detail: "No cartão de crédito" },
+      { icon: Wallet, title: "Pix com desconto", detail: "Condição especial à vista" },
+      { icon: Banknote, title: "Financiamento", detail: "Sob consulta" },
     ],
   },
 ];
@@ -205,6 +228,44 @@ const HeroSlideshow = () => {
               </motion.div>
             )}
 
+            {/* Payment highlights */}
+            {slide.payments && (
+              <motion.div
+                className="flex flex-wrap items-center gap-3 md:gap-5 mb-5 md:mb-8"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.45, duration: 0.5 }}
+              >
+                {slide.payments.map((p, i) => (
+                  <div key={i} className="flex items-center gap-2 md:gap-2.5">
+                    <div
+                      className="w-8 h-8 md:w-9 md:h-9 rounded-lg flex items-center justify-center shrink-0"
+                      style={{
+                        background: "hsl(var(--primary) / 0.1)",
+                        border: "1px solid hsl(var(--primary) / 0.15)",
+                      }}
+                    >
+                      <p.icon className="w-3.5 h-3.5 md:w-4 md:h-4 text-primary" />
+                    </div>
+                    <div className="min-w-0">
+                      <p className="font-display font-bold text-[11px] md:text-sm text-primary-foreground leading-tight">
+                        {p.title}
+                      </p>
+                      <p className="text-[9px] md:text-[10px] text-primary-foreground/35 uppercase tracking-wider hidden md:block">
+                        {p.detail}
+                      </p>
+                    </div>
+                    {i < slide.payments!.length - 1 && (
+                      <div
+                        className="w-px h-7 md:h-8 ml-1 md:ml-2"
+                        style={{ background: "hsl(0 0% 100% / 0.08)" }}
+                      />
+                    )}
+                  </div>
+                ))}
+              </motion.div>
+            )}
+
             {/* CTAs */}
             <motion.div
               className="flex flex-col sm:flex-row items-start sm:items-center gap-3 flex-wrap"
@@ -214,6 +275,12 @@ const HeroSlideshow = () => {
             >
               <motion.a
                 href={slide.primaryCta.href}
+                onClick={(e) => {
+                  if (slide.primaryCta.href === "#contato") {
+                    e.preventDefault();
+                    window.dispatchEvent(new CustomEvent("open-contact"));
+                  }
+                }}
                 className="group inline-flex items-center gap-2 text-[12px] md:text-sm font-semibold uppercase tracking-[0.12em] px-6 py-3 md:px-7 md:py-3.5 rounded-xl text-primary-foreground relative overflow-hidden"
                 style={{
                   background:
