@@ -67,7 +67,7 @@ export const PRODUCTS: Product[] = [
     motor: "350W",
     recharge: "7–8h",
     price: "R$ 7.990",
-    description: "Compacta e acessível, ideal para deslocamentos urbanos curtos com praticidade e economia no dia a dia.",
+    description: "Compacta e leve, atende bem quem roda trajetos curtos e quer gastar pouco no dia a dia.",
     colors: [
       { name: "Cinza Claro", hex: "#C0C0C0" },
       { name: "Bege", hex: "#D4C5A9" },
@@ -86,7 +86,7 @@ export const PRODUCTS: Product[] = [
     motor: "400W",
     recharge: "7–8h",
     price: "R$ 10.990",
-    description: "Mais autonomia e potência que a 350, perfeita para quem busca conforto em trajetos médios pela cidade.",
+    description: "Mais autonomia e potência que a 350. Boa pedida pra quem usa todo dia em trajetos médios.",
     colors: [
       { name: "Verde Claro", hex: "#86EFAC" },
       { name: "Vermelho", hex: "#DC2626" },
@@ -106,7 +106,7 @@ export const PRODUCTS: Product[] = [
     motor: "500W",
     recharge: "7–8h",
     price: "R$ 10.990",
-    description: "Motor de 500W e maior capacidade de carga — excelente custo-benefício para uso diário intenso.",
+    description: "Motor de 500W e mais capacidade de carga. Bom custo-benefício pra uso intenso.",
     colors: [
       { name: "Vermelho", hex: "#DC2626" },
       { name: "Preto", hex: "#111111" },
@@ -125,7 +125,7 @@ export const PRODUCTS: Product[] = [
     motor: "600W",
     recharge: "7–8h",
     price: "R$ 11.990",
-    description: "Top de linha da família Bike com 70 km de autonomia, ideal para quem roda longas distâncias diariamente.",
+    description: "Top da linha Bike, com 70 km de autonomia. Pra quem roda bastante todo dia.",
     colors: [
       { name: "Branco", hex: "#F5F5F5" },
       { name: "Preto", hex: "#111111" },
@@ -144,7 +144,7 @@ export const PRODUCTS: Product[] = [
     recharge: "6–7h",
     price: "R$ 15.990",
     badge: "Mais vendido",
-    description: "O mais vendido da MS. Design moderno, motor potente de 800W e alta capacidade para uso versátil.",
+    description: "O modelo mais procurado da loja. Visual moderno, motor de 800W e bastante versátil.",
     colors: [
       { name: "Creme", hex: "#FFFDD0" },
       { name: "Verde Claro", hex: "#86EFAC" },
@@ -162,7 +162,7 @@ export const PRODUCTS: Product[] = [
     recharge: "5–6h",
     price: "R$ 12.990",
     badge: "Mais vendido",
-    description: "Motor de 1.000W com recarga rápida e carga de 150 kg — robustez e desempenho em um só veículo.",
+    description: "Motor de 1.000W, recarga rápida e carga de 150 kg. Robusta e pronta pro uso pesado.",
     colors: [],
   },
 
@@ -179,7 +179,7 @@ export const PRODUCTS: Product[] = [
     recharge: "5h",
     price: "Consulte",
     badge: "Novidade",
-    description: "E-bike estilosa com visual retrô e performance moderna. Pedala com assistência ou acelera sem esforço.",
+    description: "E-bike com visual retrô e motor moderno. Você pedala com assistência ou só acelera.",
     colors: [
       { name: "Azul Acinzentado", hex: "#6B7F99" },
     ],
@@ -196,7 +196,7 @@ export const PRODUCTS: Product[] = [
     recharge: "5h",
     price: "Consulte",
     badge: "Novidade",
-    description: "Pneus largos fat bike com motor elétrico de 500W. Conforto extremo e presença marcante em qualquer terreno.",
+    description: "Pneus fat bike e motor de 500W. Confortável e com presença em qualquer terreno.",
     colors: [
       { name: "Branco", hex: "#F5F5F5" },
     ],
@@ -214,7 +214,7 @@ export const PRODUCTS: Product[] = [
     motor: "2.500W",
     recharge: "6–7h",
     price: "R$ 14.990",
-    description: "Moto potente de 2.500W para quem precisa de velocidade real no trânsito urbano com zero emissão.",
+    description: "Moto de 2.500W pra quem precisa de velocidade real no trânsito, sem emitir poluente.",
     colors: [
       { name: "Preto", hex: "#111111" },
       { name: "Azul", hex: "#1D4ED8" },
@@ -232,7 +232,7 @@ export const PRODUCTS: Product[] = [
     motor: "2.000W",
     recharge: "6–8h",
     price: "R$ 15.990",
-    description: "Design clássico com tecnologia moderna. Uma moto completa para substituir a moto no dia a dia.",
+    description: "Visual clássico com tecnologia atual. Faz o papel da moto a combustão no dia a dia.",
     colors: [],
   },
   {
@@ -246,7 +246,7 @@ export const PRODUCTS: Product[] = [
     motor: "1.000W",
     recharge: "8–10h",
     price: "R$ 10.490",
-    description: "Entrada acessível no mundo das motos elétricas com conforto, economia e manutenção simples.",
+    description: "Porta de entrada nas motos elétricas. Conforto, economia e manutenção simples.",
     colors: [],
   },
   {
@@ -261,7 +261,7 @@ export const PRODUCTS: Product[] = [
     recharge: "6–8h",
     price: "R$ 16.990",
     highlight: "Custom / Chopper",
-    description: "Visual custom chopper com motor de 3.000W e 75 km/h. Para quem quer estilo e potência elétrica.",
+    description: "Visual chopper, motor de 3.000W e 75 km/h. Pra quem quer estilo sem abrir mão de potência.",
     colors: [
       { name: "Preto", hex: "#111111" },
       { name: "Azul", hex: "#1D4ED8" },
@@ -281,7 +281,7 @@ export const PRODUCTS: Product[] = [
     motor: "650W",
     recharge: "6–7h",
     price: "R$ 15.990",
-    description: "Estabilidade total com três rodas. Ideal para quem busca segurança e praticidade com motor elétrico.",
+    description: "Três rodas garantem estabilidade. Boa opção pra quem quer mais segurança no trajeto.",
     colors: [
       { name: "Creme", hex: "#FFFDD0" },
       { name: "Verde Claro", hex: "#86EFAC" },
@@ -300,7 +300,7 @@ export const PRODUCTS: Product[] = [
     motor: "2.000W",
     recharge: "6–8h",
     price: "R$ 18.990",
-    description: "Feita para entregas profissionais. Motor potente, alta autonomia e velocidade para otimizar suas rotas.",
+    description: "Feita pra delivery. Motor potente, autonomia alta e velocidade pra render mais rotas no dia.",
     colors: [
       { name: "Amarelo", hex: "#FACC15" },
       { name: "Branco", hex: "#F5F5F5" },
@@ -317,7 +317,7 @@ export const PRODUCTS: Product[] = [
     motor: "1.000W",
     recharge: "6–7h",
     price: "R$ 28.990",
-    description: "Capacidade bruta de 400 kg para transporte pesado. A solução elétrica para logística e comércio.",
+    description: "Carrega até 400 kg. Resolve transporte pesado pra logística e comércio.",
     colors: [
       { name: "Verde Menta", hex: "#98D8C8" },
       { name: "Bege", hex: "#D4C5A9" },
@@ -336,7 +336,7 @@ export const PRODUCTS: Product[] = [
     motor: "800W",
     recharge: "6h",
     price: "R$ 5.990",
-    description: "Diversão off-road para os pequenos com motor de 800W, autonomia de 35 km e muita adrenalina elétrica.",
+    description: "Off-road pros pequenos. Motor de 800W, 35 km de autonomia e diversão garantida.",
     colors: [
       { name: "Verde Claro", hex: "#86EFAC" },
       { name: "Vermelho", hex: "#DC2626" },
@@ -355,7 +355,7 @@ export const PRODUCTS: Product[] = [
     motor: "350W",
     recharge: "3–5h",
     price: "R$ 1.999",
-    description: "Drift kart elétrico para crianças. Seguro, divertido e perfeito para brincar em áreas planas.",
+    description: "Drift kart elétrico pras crianças. Seguro e divertido em áreas planas.",
     colors: [],
   },
 
@@ -371,7 +371,7 @@ export const PRODUCTS: Product[] = [
     motor: "350W",
     recharge: "5–6h",
     price: "R$ 2.800",
-    description: "Leve e dobrável, ideal para a última milha. Leve no metrô, no carro ou guarde em qualquer canto.",
+    description: "Leve e dobrável, resolve a última milha. Cabe no metrô, no carro ou em qualquer canto.",
     colors: [],
   },
 ];
