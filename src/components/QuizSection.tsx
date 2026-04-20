@@ -94,7 +94,7 @@ EVITAR QUANDO: precisa de autonomia muito alta
 
 12. TOUR 3K
 Motor: 3.000W | Vel. máxima: 75km/h | Autonomia: 40km | Recarga: 6-8h | Bateria: lítio removível | Carga: 120kg | Preço: R$16.990
-RECOMENDAR QUANDO: quer velocidade+agilidade, muitas subidas, bateria removível, quer a scooter mais potente
+RECOMENDAR QUANDO: quer velocidade+agilidade, muitas subidas, bateria removível, quer a moto mais potente
 EVITAR QUANDO: precisa rodar muito sem recarga
 
 --- TRICICLOS ELÉTRICOS ---

@@ -214,7 +214,7 @@ export const PRODUCTS: Product[] = [
     motor: "2.500W",
     recharge: "6–7h",
     price: "R$ 14.990",
-    description: "Scooter potente de 2.500W para quem precisa de velocidade real no trânsito urbano com zero emissão.",
+    description: "Moto potente de 2.500W para quem precisa de velocidade real no trânsito urbano com zero emissão.",
     colors: [
       { name: "Preto", hex: "#111111" },
       { name: "Azul", hex: "#1D4ED8" },
@@ -232,7 +232,7 @@ export const PRODUCTS: Product[] = [
     motor: "2.000W",
     recharge: "6–8h",
     price: "R$ 15.990",
-    description: "Design clássico com tecnologia moderna. Uma scooter completa para substituir a moto no dia a dia.",
+    description: "Design clássico com tecnologia moderna. Uma moto completa para substituir a moto no dia a dia.",
     colors: [],
   },
   {
