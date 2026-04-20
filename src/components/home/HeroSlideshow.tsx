@@ -4,6 +4,12 @@ import { ArrowRight, ChevronLeft, ChevronRight, Zap, Battery, Gauge, CreditCard,
 
 const SLIDE_DURATION = 20000;
 
+interface PaymentHighlight {
+  icon: typeof Zap;
+  title: string;
+  detail: string;
+}
+
 interface Slide {
   badge: string;
   headline: string[];
@@ -12,6 +18,7 @@ interface Slide {
   primaryCta: { text: string; href: string };
   secondaryCta: { text: string; href: string };
   stats?: { icon: typeof Zap; value: string; label: string }[];
+  payments?: PaymentHighlight[];
   youtubeId: string;
   youtubeStart?: number;
 }
