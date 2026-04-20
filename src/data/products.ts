@@ -67,7 +67,7 @@ export const PRODUCTS: Product[] = [
     motor: "350W",
     recharge: "7–8h",
     price: "R$ 7.990",
-    description: "Compacta e acessível, ideal para deslocamentos urbanos curtos com praticidade e economia no dia a dia.",
+    description: "Compacta e leve, atende bem quem roda trajetos curtos e quer gastar pouco no dia a dia.",
     colors: [
       { name: "Cinza Claro", hex: "#C0C0C0" },
       { name: "Bege", hex: "#D4C5A9" },
