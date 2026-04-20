@@ -107,7 +107,7 @@ ${businessContext || "Não fornecido"}
 
 ═══ CATÁLOGO OFICIAL MS ELETRIC (use APENAS estes produtos) ═══
 
-CATEGORIAS VÁLIDAS: Autopropelidos, Bicicletas Elétricas, Scooters Elétricas, Triciclos Elétricos, Utilitários, Infantil, Patinetes
+CATEGORIAS VÁLIDAS: Autopropelidos, Bicicletas Elétricas, Motos Elétricas, Triciclos Elétricos, Utilitários, Infantil, Patinetes
 
 ── AUTOPROPELIDOS ──
 
@@ -137,7 +137,7 @@ CATEGORIAS VÁLIDAS: Autopropelidos, Bicicletas Elétricas, Scooters Elétricas,
 8. Big Sur | Preço: consulte | Motor: 500W | Vel. máxima: 32km/h | Autonomia: 60km | Recarga: 5h | Bateria: lítio | Carga: 120-150kg
    Perfil: pneus largos (fat tire), visual premium, lazer, pisos variados, mais estabilidade.
 
-── SCOOTERS ELÉTRICAS ──
+── MOTOS ELÉTRICAS ──
 
 9. MS 2500 | R$ 14.990 | Motor: 2.500W | Vel. máxima: 52km/h | Autonomia: 50km | Recarga: 6-7h | Bateria: chumbo não removível | Carga: 150kg
    Perfil: mais desempenho que autopropelido, deslocamentos diários urbanos, proposta prática.
@@ -153,10 +153,10 @@ CATEGORIAS VÁLIDAS: Autopropelidos, Bicicletas Elétricas, Scooters Elétricas,
 12. Triciclo Elétrico | R$ 15.990 | Motor: 650W | Vel. máxima: 32km/h | Autonomia: 60km | Recarga: 6-7h | Bateria: chumbo não removível | Carga: 120-150kg
     Perfil: estabilidade, conforto, público maduro, mobilidade assistida, uso interno/urbano.
 
-── SCOOTERS ELÉTRICAS (ESPORTIVAS) ──
+── MOTOS ELÉTRICAS (ESPORTIVAS) ──
 
 13. Tour 3K | R$ 16.990 | Motor: 3.000W | Vel. máxima: 75km/h | Autonomia: 40km | Recarga: 6-8h | Bateria: lítio removível | Carga: 120kg
-    Perfil: identidade estética forte (custom/chopper), deslocamento urbano com performance, uso recreativo premium. Categoria: Scooters Elétricas.
+    Perfil: identidade estética forte (custom/chopper), deslocamento urbano com performance, uso recreativo premium. Categoria: Motos Elétricas.
 
 
 ── UTILITÁRIOS ──

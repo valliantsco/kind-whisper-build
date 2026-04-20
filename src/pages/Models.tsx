@@ -173,7 +173,7 @@ const SearchableFilterBar = ({
 const SLUG_TO_CATEGORY: Record<string, CategoryFilter> = {
   "autopropelidos": "Autopropelidos",
   "bicicletas-eletricas": "Bicicletas Elétricas",
-  "scooters-eletricas": "Scooters Elétricas",
+  "scooters-eletricas": "Motos Elétricas",
   "triciclos-eletricos": "Triciclos Elétricos",
   "utilitarios": "Utilitários",
   "infantil": "Infantil",

@@ -138,7 +138,7 @@ const VoiceRecorderField = ({ details, setDetails, error, setError }: VoiceRecor
             e.target.style.height = "auto";
             e.target.style.height = e.target.scrollHeight + "px";
           }}
-          placeholder={isTranscribing ? "Processando áudio..." : "Ex: Quero saber mais sobre a scooter elétrica..."}
+          placeholder={isTranscribing ? "Processando áudio..." : "Ex: Quero saber mais sobre a moto elétrica..."}
           rows={3}
           maxLength={500}
           disabled={isTranscribing}
