@@ -7,7 +7,7 @@ const HomeNews = () => {
   const displayItems = NEWS_ITEMS.slice(0, 4);
 
   return (
-    <section className="py-14 md:py-20 relative overflow-x-clip">
+    <section className="py-10 md:py-14 relative overflow-x-clip">
       {/* top divider removed */}
 
       <div className="container mx-auto px-4">

@@ -83,7 +83,7 @@ const ProductCarousel = () => {
   };
 
   return (
-    <section id="modelos" className="relative py-14 md:py-20 overflow-hidden">
+    <section id="modelos" className="relative py-10 md:py-14 overflow-hidden">
       {/* ── Section-specific effect: speed lines / motion trails ── */}
       {[15, 35, 55, 75, 90].map((top, i) => (
         <motion.div

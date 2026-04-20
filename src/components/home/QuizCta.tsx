@@ -33,7 +33,7 @@ const QuizCta = () => {
 
   return (
     <>
-      <section className="relative py-14 md:py-20 overflow-hidden">
+      <section className="relative py-10 md:py-14 overflow-hidden">
         {/* ── Section-specific effect: neural network / AI nodes ── */}
         <svg
           className="absolute inset-0 w-full h-full pointer-events-none opacity-[0.04]"
