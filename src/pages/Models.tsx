@@ -173,7 +173,8 @@ const SearchableFilterBar = ({
 const SLUG_TO_CATEGORY: Record<string, CategoryFilter> = {
   "autopropelidos": "Autopropelidos",
   "bicicletas-eletricas": "Bicicletas Elétricas",
-  "scooters-eletricas": "Motos Elétricas",
+  "motos-eletricas": "Motos Elétricas",
+  "scooters-eletricas": "Motos Elétricas", // legacy slug — mantém links antigos funcionando
   "triciclos-eletricos": "Triciclos Elétricos",
   "utilitarios": "Utilitários",
   "infantil": "Infantil",
