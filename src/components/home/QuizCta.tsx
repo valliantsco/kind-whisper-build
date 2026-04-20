@@ -96,13 +96,13 @@ const QuizCta = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
-            className="mb-12 md:mb-16 text-right"
+            className="mb-12 md:mb-16 text-left"
           >
-            <div className="flex items-center gap-3 mb-6 justify-end">
+            <div className="flex items-center gap-3 mb-6 justify-start">
+              <div className="w-8 h-px bg-primary" />
               <span className="text-[13px] font-bold uppercase tracking-[0.2em] text-primary">
                 Recomendação Inteligente
               </span>
-              <div className="w-8 h-px bg-primary" />
             </div>
 
             <h2 className="font-display font-black text-3xl md:text-5xl lg:text-6xl text-primary-foreground uppercase tracking-tight leading-[0.95]">
@@ -119,7 +119,7 @@ const QuizCta = () => {
               ?
             </h2>
 
-            <p className="text-sm md:text-base text-primary-foreground/45 leading-relaxed mt-4 max-w-lg ml-auto">
+            <p className="text-sm md:text-base text-primary-foreground/45 leading-relaxed mt-4 max-w-lg">
               Responda algumas perguntas e descubra o modelo ideal para a sua rotina.
             </p>
           </motion.div>
