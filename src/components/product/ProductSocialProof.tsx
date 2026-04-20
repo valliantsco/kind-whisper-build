@@ -10,7 +10,7 @@ interface Props {
 const PLACEHOLDER_TESTIMONIALS: ProductTestimonial[] = [
   {
     quote: "Depoimento de cliente em breve.",
-    author: "—",
+    author: ". ",
     context: "Aguardando validação",
   },
 ];
@@ -55,7 +55,7 @@ export default function ProductSocialProof({ productName, content }: Props) {
             </h2>
           </motion.div>
 
-          {/* Trust badge — model-specific highlight */}
+          {/* Trust badge. model-specific highlight */}
           {trustBadge && (
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
@@ -70,7 +70,7 @@ export default function ProductSocialProof({ productName, content }: Props) {
             </motion.div>
           )}
 
-          {/* Trust signals — compact strip */}
+          {/* Trust signals. compact strip */}
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -139,7 +139,7 @@ export default function ProductSocialProof({ productName, content }: Props) {
                       border: "1px solid hsl(var(--primary) / 0.15)",
                     }}
                   >
-                    {t.author.charAt(0) === "—" ? "?" : t.author.charAt(0)}
+                    {t.author.charAt(0) === ". " ? "?" : t.author.charAt(0)}
                   </div>
                   <div>
                     <p className="text-[12px] font-semibold text-primary-foreground/70">

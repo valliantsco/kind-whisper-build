@@ -248,7 +248,7 @@ const HeroSlideshow = () => {
           </motion.div>
         </AnimatePresence>
 
-        {/* ── Navigation arrows — bottom right on mobile ── */}
+        {/* ── Navigation arrows. bottom right on mobile ── */}
         <div className="absolute right-4 md:right-8 bottom-20 md:top-1/2 md:-translate-y-1/2 md:bottom-auto flex flex-row md:flex-col gap-2 z-20">
           {[
             { action: prev, icon: ChevronLeft },

@@ -61,8 +61,7 @@ function ArticleBlockRenderer({ block }: { block: ArticleBlock }) {
             "{block.text}"
           </p>
           {block.author && (
-            <cite className="block text-[12px] text-primary-foreground/30 mt-3 not-italic font-semibold uppercase tracking-wider">
-              — {block.author}
+            <cite className="block text-[12px] text-primary-foreground/30 mt-3 not-italic font-semibold uppercase tracking-wider">. {block.author}
             </cite>
           )}
         </blockquote>

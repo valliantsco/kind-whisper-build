@@ -67,7 +67,7 @@ const HomeFooter = ({ onContactClick, onSupportClick }: HomeFooterProps) => {
               </button>
               <div className="flex items-center gap-2.5">
                 <Clock className="w-4 h-4 shrink-0" style={{ color: "hsl(11 81% 57%)" }} />
-                <span className="text-sm text-primary-foreground/50">Seg–Sex: 9h às 18h | Sáb: 9h às 12h</span>
+                <span className="text-sm text-primary-foreground/50">Seg, Sex: 9h às 18h | Sáb: 9h às 12h</span>
               </div>
             </div>
 

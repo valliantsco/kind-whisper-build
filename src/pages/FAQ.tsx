@@ -43,7 +43,7 @@ const FAQ_CATEGORIES = [
     label: "Geral",
     questions: [
       { q: "A MS Eletric é revendedora autorizada?", a: "Sim. A MS Eletric é revendedora autorizada AIMA no Brasil, com produtos certificados e suporte oficial." },
-      { q: "Onde fica a loja física?", a: "Nossa loja fica na Av. João Pinheiro, 3747 — Brasil, Uberlândia/MG. Funcionamos de segunda a sexta das 9h às 18h e sábados das 9h às 12h." },
+      { q: "Onde fica a loja física?", a: "Nossa loja fica na Av. João Pinheiro, 3747. Brasil, Uberlândia/MG. Funcionamos de segunda a sexta das 9h às 18h e sábados das 9h às 12h." },
       { q: "Vocês atuam em outras cidades?", a: "Atualmente nossa loja física está em Uberlândia, mas atendemos clientes de diversas regiões. Consulte as condições de envio para sua localidade." },
     ],
   },
@@ -202,7 +202,7 @@ const FAQ = () => {
               )}
             </div>
 
-            {/* CTA — didn't find your answer */}
+            {/* CTA. didn't find your answer */}
             <motion.div
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}

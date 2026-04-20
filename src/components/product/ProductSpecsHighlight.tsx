@@ -50,7 +50,7 @@ export default function ProductSpecsHighlight({ product, content }: Props) {
           </h2>
         </motion.div>
 
-        {/* Specs grid — large visual cards */}
+        {/* Specs grid. large visual cards */}
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-4 max-w-6xl mx-auto">
           {HIGHLIGHT_SPECS.map((spec, i) => {
             const Icon = spec.icon;
@@ -88,7 +88,7 @@ export default function ProductSpecsHighlight({ product, content }: Props) {
                     <Icon className="w-4 h-4 md:w-5 md:h-5 text-primary" />
                   </div>
 
-                  {/* Value — large and prominent */}
+                  {/* Value. large and prominent */}
                   <p
                     className="font-display font-black text-xl md:text-2xl lg:text-3xl bg-clip-text text-transparent mb-1"
                     style={{ backgroundImage: "linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)))" }}
@@ -101,7 +101,7 @@ export default function ProductSpecsHighlight({ product, content }: Props) {
                     {spec.label}
                   </p>
 
-                  {/* Context — optional micro-copy */}
+                  {/* Context. optional micro-copy */}
                   {context && (
                     <p className="text-[10px] text-primary-foreground/25 leading-snug mt-2 line-clamp-2">
                       {context}

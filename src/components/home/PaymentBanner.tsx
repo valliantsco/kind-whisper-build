@@ -44,7 +44,7 @@ const PaymentBanner = ({ onContactClick }: PaymentBannerProps) => {
 
           <div className="relative px-6 py-8 md:px-10 md:py-10">
             <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
-              {/* Left — copy */}
+              {/* Left. copy */}
               <div className="flex-1 text-center lg:text-left">
                 <h3 className="font-display font-black text-xl md:text-2xl text-primary-foreground uppercase tracking-tight leading-tight mb-2">
                   Facilidade para{" "}
@@ -62,7 +62,7 @@ const PaymentBanner = ({ onContactClick }: PaymentBannerProps) => {
                 </p>
               </div>
 
-              {/* Center — benefits */}
+              {/* Center. benefits */}
               <div className="grid grid-cols-3 gap-2 md:flex md:items-center md:gap-8 w-full md:w-auto">
                 {BENEFITS.map((b, i) => (
                   <div key={b.title} className="flex flex-col md:flex-row items-center gap-1.5 md:gap-3 shrink-0">
@@ -90,7 +90,7 @@ const PaymentBanner = ({ onContactClick }: PaymentBannerProps) => {
                 ))}
               </div>
 
-              {/* Right — CTA */}
+              {/* Right. CTA */}
               <motion.button
                 onClick={onContactClick}
                 className="shrink-0 inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.12em] px-7 py-3.5 rounded-xl text-primary-foreground cursor-pointer relative overflow-hidden group"

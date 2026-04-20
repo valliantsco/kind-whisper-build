@@ -87,7 +87,7 @@ const InfluencerVideoModal = ({ open, onOpenChange, videos, name }: InfluencerVi
           </div>
         )}
 
-        {/* Player — only mounted when open to guarantee autoplay & cleanup */}
+        {/* Player. only mounted when open to guarantee autoplay & cleanup */}
         {open && (
           <>
             {video.type === "vimeo" ? (

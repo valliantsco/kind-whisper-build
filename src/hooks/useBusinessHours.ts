@@ -29,7 +29,7 @@ function getStatus(): BusinessStatus {
     return { isOnline: true, offlineMessage: "" };
   }
 
-  // Offline — compute next opening
+  // Offline. compute next opening
   // If today still has hours ahead (before opening), return today
   if (hours && h < hours[0]) {
     return { isOnline: false, offlineMessage: `Retornamos hoje às ${String(hours[0]).padStart(2, "0")}h` };

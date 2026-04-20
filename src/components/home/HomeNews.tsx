@@ -51,7 +51,7 @@ const HomeNews = () => {
           </Link>
         </motion.div>
 
-        {/* Cards grid — uniform layout */}
+        {/* Cards grid. uniform layout */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {displayItems.map((item, i) => (
             <Link to={`/novidades/${item.slug}`} key={item.id} className="block">
@@ -72,7 +72,7 @@ const HomeNews = () => {
                   style={{ background: "radial-gradient(ellipse at 50% 0%, hsl(var(--primary) / 0.05) 0%, transparent 70%)" }}
                 />
 
-                {/* Image area — fixed height for all cards */}
+                {/* Image area. fixed height for all cards */}
                 <div
                   className="relative overflow-hidden flex items-center justify-center h-44"
                   style={{ background: "linear-gradient(135deg, hsl(var(--primary) / 0.06) 0%, hsl(0 0% 100% / 0.02) 100%)" }}
@@ -114,7 +114,7 @@ const HomeNews = () => {
                   </span>
                 </div>
 
-                {/* Content — flex-grow to push CTA to bottom */}
+                {/* Content. flex-grow to push CTA to bottom */}
                 <div className="p-5 flex flex-col flex-1">
                   <div className="flex items-center gap-1.5 mb-2.5">
                     <Calendar className="w-3 h-3 text-primary/40" />

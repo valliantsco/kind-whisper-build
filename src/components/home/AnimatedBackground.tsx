@@ -13,7 +13,7 @@ import { useMemo } from "react";
 /* ── Helpers ── */
 const randomBetween = (min: number, max: number) => min + Math.random() * (max - min);
 
-/* ── Circuit Trace — animated SVG paths that look like PCB traces ── */
+/* ── Circuit Trace. animated SVG paths that look like PCB traces ── */
 const CircuitTraces = () => {
   const traces = useMemo(
     () => [
@@ -71,7 +71,7 @@ const CircuitTraces = () => {
             overflow: "visible",
           }}
         >
-          {/* Base trace — dim */}
+          {/* Base trace. dim */}
           <path
             d={trace.d}
             fill="none"
@@ -133,7 +133,7 @@ const CircuitTraces = () => {
   );
 };
 
-/* ── Lightning Bolts — small stylized bolts that flash periodically ── */
+/* ── Lightning Bolts. small stylized bolts that flash periodically ── */
 const LightningBolts = () => {
   const bolts = useMemo(
     () =>
@@ -185,7 +185,7 @@ const LightningBolts = () => {
   );
 };
 
-/* ── Energy Particles — floating dots that drift upward like charging sparks ── */
+/* ── Energy Particles. floating dots that drift upward like charging sparks ── */
 const EnergyParticles = () => {
   const particles = useMemo(
     () =>
@@ -231,7 +231,7 @@ const EnergyParticles = () => {
   );
 };
 
-/* ── Rotating Gear/Wheel — stylized cog silhouettes that rotate slowly ── */
+/* ── Rotating Gear/Wheel. stylized cog silhouettes that rotate slowly ── */
 const RotatingGears = () => {
   const gears = useMemo(
     () => [
@@ -307,7 +307,7 @@ const RotatingGears = () => {
   );
 };
 
-/* ── Electric Pulse Waves — concentric rings that expand outward ── */
+/* ── Electric Pulse Waves. concentric rings that expand outward ── */
 const PulseWaves = () => {
   const sources = useMemo(
     () => [
@@ -352,7 +352,7 @@ const PulseWaves = () => {
   );
 };
 
-/* ── Battery Charge Icon — fills up periodically ── */
+/* ── Battery Charge Icon. fills up periodically ── */
 const ChargingBatteries = () => {
   const batteries = useMemo(
     () => [

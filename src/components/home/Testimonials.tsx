@@ -217,7 +217,7 @@ const Testimonials = () => {
       ))}
 
       <div className="container mx-auto px-4 relative">
-        {/* ── HEADER — Editorial asymmetric layout ── */}
+        {/* ── HEADER. Editorial asymmetric layout ── */}
         <div className="mb-12 md:mb-20">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
@@ -278,7 +278,7 @@ const Testimonials = () => {
 
         {/* ── CAROUSEL ── */}
         <div className="relative">
-          {/* Mobile arrows — glassmorphism orange */}
+          {/* Mobile arrows. glassmorphism orange */}
           <button
             onClick={() => scroll("left")}
             className={`absolute left-1 top-1/2 -translate-y-1/2 z-20 md:hidden w-9 h-9 rounded-full flex items-center justify-center transition-opacity ${canScrollLeft ? "opacity-100" : "opacity-0 pointer-events-none"}`}

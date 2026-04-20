@@ -32,7 +32,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
   "bike-350": {
     headline: "Sua entrada inteligente na mobilidade elétrica",
     subheadline:
-      "A Bike 350 é a escolha certa para quem quer praticidade, economia e um jeito mais leve de se deslocar pela cidade — sem complicação.",
+      "A Bike 350 é a escolha certa para quem quer praticidade, economia e um jeito mais leve de se deslocar pela cidade. sem complicação.",
     supportText:
       "Compacta, funcional e pensada para o dia a dia urbano. Se você busca uma alternativa prática ao carro, ao ônibus ou à bicicleta convencional, a Bike 350 entrega exatamente o que você precisa.",
     idealFor: [
@@ -64,7 +64,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
       },
       {
         title: "Praticidade real",
-        desc: "Leve, compacta e simples de operar. Você liga e sai — sem embreagem, sem marcha, sem complicação.",
+        desc: "Leve, compacta e simples de operar. Você liga e sai. sem embreagem, sem marcha, sem complicação.",
       },
       {
         title: "Economia que você sente",
@@ -94,7 +94,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
       },
       {
         title: "Sem esforço físico",
-        desc: "Diferente de uma bicicleta convencional, você chega ao destino sem suar — mesmo em subidas leves.",
+        desc: "Diferente de uma bicicleta convencional, você chega ao destino sem suar. mesmo em subidas leves.",
       },
       {
         title: "Silenciosa e limpa",
@@ -124,7 +124,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
     },
     differentials: {
       title: "Onde a Bike 350 se destaca na linha MS Eletric",
-      body: "A Bike 350 é a escolha certa para quem quer entrar no universo da mobilidade elétrica com mais praticidade, menor investimento e uma proposta funcional para o dia a dia urbano. Dentro do portfólio MS Eletric, ela cumpre o papel de modelo de entrada — acessível, direto e sem excessos. Se o que você precisa é de um veículo prático para trajetos curtos, a Bike 350 entrega exatamente isso.",
+      body: "A Bike 350 é a escolha certa para quem quer entrar no universo da mobilidade elétrica com mais praticidade, menor investimento e uma proposta funcional para o dia a dia urbano. Dentro do portfólio MS Eletric, ela cumpre o papel de modelo de entrada. acessível, direto e sem excessos. Se o que você precisa é de um veículo prático para trajetos curtos, a Bike 350 entrega exatamente isso.",
     },
     comparisonTip:
       "Se você busca mais autonomia ou potência, considere subir para a Bike 400+ ou Bike 500. Mas se praticidade e economia são a prioridade, a Bike 350 continua sendo a opção mais direta e acessível da linha.",
@@ -135,11 +135,11 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
       },
       {
         q: "Esse modelo é bom para deslocamentos diários?",
-        a: "Sim. A Bike 350 foi pensada exatamente para a rotina urbana — trajetos curtos, frequentes e práticos. Com 40 km de autonomia, ela cobre a maioria dos deslocamentos diários com folga.",
+        a: "Sim. A Bike 350 foi pensada exatamente para a rotina urbana. trajetos curtos, frequentes e práticos. Com 40 km de autonomia, ela cobre a maioria dos deslocamentos diários com folga.",
       },
       {
         q: "Como funciona a recarga?",
-        a: "Basta conectar na tomada comum (110V ou 220V). A carga completa leva de 7 a 8 horas — ideal para carregar durante a noite e usar durante o dia.",
+        a: "Basta conectar na tomada comum (110V ou 220V). A carga completa leva de 7 a 8 horas. ideal para carregar durante a noite e usar durante o dia.",
       },
       {
         q: "É indicada para quem está começando na mobilidade elétrica?",
@@ -167,14 +167,14 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
   "bike-400": {
     headline: "Equilíbrio urbano para quem quer mais do dia a dia",
     subheadline:
-      "A Bike 400+ combina praticidade, visual e desempenho em um modelo pensado para quem usa a mobilidade elétrica com frequência — e quer uma experiência mais completa na cidade.",
+      "A Bike 400+ combina praticidade, visual e desempenho em um modelo pensado para quem usa a mobilidade elétrica com frequência. e quer uma experiência mais completa na cidade.",
     supportText:
       "Mais autonomia e mais potência do que a entrada da linha, sem perder a praticidade que faz da mobilidade elétrica uma escolha inteligente. Se você quer subir de nível no seu deslocamento urbano, a Bike 400+ é o passo certo.",
     idealFor: [
       {
         icon: "route",
         title: "Uso urbano frequente",
-        desc: "Trajetos recorrentes de até 50 km — trabalho, estudo, compromissos e tarefas espalhadas pela cidade.",
+        desc: "Trajetos recorrentes de até 50 km. trabalho, estudo, compromissos e tarefas espalhadas pela cidade.",
       },
       {
         icon: "sparkles",
@@ -189,7 +189,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
       {
         icon: "city",
         title: "Rotina dinâmica na cidade",
-        desc: "Ágil, prática e com presença visual — combina com quem leva uma vida urbana moderna e funcional.",
+        desc: "Ágil, prática e com presença visual. combina com quem leva uma vida urbana moderna e funcional.",
       },
     ],
     whyChoose: [
@@ -203,7 +203,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
       },
       {
         title: "Visual que valoriza",
-        desc: "Design urbano e contemporâneo. A Bike 400+ tem presença sem exagero — combina com quem valoriza forma e função.",
+        desc: "Design urbano e contemporâneo. A Bike 400+ tem presença sem exagero. combina com quem valoriza forma e função.",
       },
       {
         title: "Economia real",
@@ -217,7 +217,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
     dailyBenefits: [
       {
         title: "Mais autonomia para a rotina",
-        desc: "50 km por carga significam ir e voltar do trabalho, resolver tarefas e ainda sobrar bateria — sem ansiedade.",
+        desc: "50 km por carga significam ir e voltar do trabalho, resolver tarefas e ainda sobrar bateria. sem ansiedade.",
       },
       {
         title: "Condução mais fluida",
@@ -229,7 +229,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
       },
       {
         title: "Estacione onde quiser",
-        desc: "Compacta e ágil o suficiente para se encaixar em qualquer vaga — ou simplesmente guardar dentro de casa.",
+        desc: "Compacta e ágil o suficiente para se encaixar em qualquer vaga. ou simplesmente guardar dentro de casa.",
       },
       {
         title: "Recarregue na tomada",
@@ -242,7 +242,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
     ],
     urbanContext: {
       title: "Mobilidade que acompanha o seu ritmo",
-      body: "A Bike 400+ foi pensada para quem vive a cidade de verdade — com compromissos, horários e a necessidade de se deslocar com praticidade e estilo. Ela entrega o equilíbrio certo entre desempenho, visual e funcionalidade para quem quer mais do que apenas um meio de transporte.",
+      body: "A Bike 400+ foi pensada para quem vive a cidade de verdade. com compromissos, horários e a necessidade de se deslocar com praticidade e estilo. Ela entrega o equilíbrio certo entre desempenho, visual e funcionalidade para quem quer mais do que apenas um meio de transporte.",
       highlights: [
         "50 km de autonomia para cobrir a rotina com folga",
         "Ágil no trânsito e fácil de estacionar",
@@ -254,19 +254,19 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
       autonomy: "Faixa pensada para acompanhar deslocamentos urbanos com praticidade",
       speed: "Boa relação para uso urbano eficiente e seguro",
       motor: "Entrega equilibrada para a proposta do modelo",
-      recharge: "Rotina simples — conecte à noite e use pela manhã",
+      recharge: "Rotina simples. conecte à noite e use pela manhã",
       load: "Compatível com uma proposta urbana funcional",
     },
     differentials: {
       title: "Onde a Bike 400+ se destaca na linha MS Eletric",
-      body: "A Bike 400+ é uma escolha inteligente para quem quer mais equilíbrio, mais presença e uma experiência urbana mais completa — sem sair da proposta prática da mobilidade elétrica. Dentro do portfólio MS Eletric, ela ocupa o espaço entre a entrada acessível e os modelos de maior robustez, entregando um conjunto mais refinado para quem usa com frequência e valoriza a qualidade do deslocamento diário.",
+      body: "A Bike 400+ é uma escolha inteligente para quem quer mais equilíbrio, mais presença e uma experiência urbana mais completa. sem sair da proposta prática da mobilidade elétrica. Dentro do portfólio MS Eletric, ela ocupa o espaço entre a entrada acessível e os modelos de maior robustez, entregando um conjunto mais refinado para quem usa com frequência e valoriza a qualidade do deslocamento diário.",
     },
     comparisonTip:
       "Se o que você busca é o menor investimento possível, a Bike 350 pode ser a porta de entrada ideal. Mas se você quer mais autonomia, mais potência e uma experiência mais completa para o uso frequente, a Bike 400+ é o passo natural. Para quem precisa de ainda mais robustez, a Bike 500 e a Bike MS 600 ampliam as possibilidades.",
     faq: [
       {
         q: "A Bike 400+ é indicada para qual tipo de uso?",
-        a: "Para uso urbano frequente — deslocamentos diários de até 50 km, como ir ao trabalho, faculdade, compromissos e tarefas pela cidade. Ela entrega mais autonomia e potência do que a entrada da linha, sem perder a praticidade.",
+        a: "Para uso urbano frequente. deslocamentos diários de até 50 km, como ir ao trabalho, faculdade, compromissos e tarefas pela cidade. Ela entrega mais autonomia e potência do que a entrada da linha, sem perder a praticidade.",
       },
       {
         q: "Esse modelo faz sentido para quem usa todos os dias?",
@@ -278,7 +278,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
       },
       {
         q: "Como funciona a recarga?",
-        a: "Basta conectar na tomada comum (110V ou 220V). A carga completa leva de 7 a 8 horas — ideal para carregar durante a noite e usar durante o dia.",
+        a: "Basta conectar na tomada comum (110V ou 220V). A carga completa leva de 7 a 8 horas. ideal para carregar durante a noite e usar durante o dia.",
       },
       {
         q: "A manutenção é complicada?",
@@ -314,7 +314,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
       {
         icon: "sparkles",
         title: "Mais robustez no dia a dia",
-        desc: "Para quem quer um veículo elétrico que transmita mais força e mais presença — sem ser excessivo.",
+        desc: "Para quem quer um veículo elétrico que transmita mais força e mais presença. sem ser excessivo.",
       },
       {
         icon: "piggyBank",
@@ -330,7 +330,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
     whyChoose: [
       {
         title: "Proposta mais robusta",
-        desc: "Motor de 500W e capacidade para até 120 kg. A Bike 500 entrega mais força e mais estrutura do que os modelos de entrada — sem complicar o uso.",
+        desc: "Motor de 500W e capacidade para até 120 kg. A Bike 500 entrega mais força e mais estrutura do que os modelos de entrada. sem complicar o uso.",
       },
       {
         title: "Melhor custo-benefício da faixa",
@@ -356,7 +356,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
       },
       {
         title: "Mais capacidade de carga",
-        desc: "Suporta até 120 kg — mais espaço para você, suas coisas e a realidade do uso urbano diário.",
+        desc: "Suporta até 120 kg. mais espaço para você, suas coisas e a realidade do uso urbano diário.",
       },
       {
         title: "Motor que responde melhor",
@@ -372,7 +372,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
       },
       {
         title: "Recarregue sem sair de casa",
-        desc: "Tomada comum, de 7 a 8 horas. Conecte à noite, use pela manhã — sem filas, sem postos.",
+        desc: "Tomada comum, de 7 a 8 horas. Conecte à noite, use pela manhã. sem filas, sem postos.",
       },
     ],
     urbanContext: {
@@ -389,19 +389,19 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
       autonomy: "Faixa alinhada ao uso urbano com praticidade e folga para a rotina",
       speed: "Boa leitura para deslocamentos frequentes na cidade",
       motor: "Entrega coerente com a proposta mais robusta do modelo",
-      recharge: "Pensada para encaixar bem na rotina — conecte à noite, use pela manhã",
+      recharge: "Pensada para encaixar bem na rotina. conecte à noite, use pela manhã",
       load: "Um dos pontos que reforçam a proposta mais forte do produto",
     },
     differentials: {
       title: "Onde a Bike 500 se destaca na linha MS Eletric",
-      body: "A Bike 500 é a escolha ideal para quem quer subir de nível dentro da mobilidade elétrica urbana, com mais força, mais sensação de robustez e mais confiança para o uso recorrente. Ela oferece o mesmo preço da Bike 400+, mas com motor mais potente e maior capacidade de carga — um custo-benefício difícil de ignorar para quem valoriza entrega real.",
+      body: "A Bike 500 é a escolha ideal para quem quer subir de nível dentro da mobilidade elétrica urbana, com mais força, mais sensação de robustez e mais confiança para o uso recorrente. Ela oferece o mesmo preço da Bike 400+, mas com motor mais potente e maior capacidade de carga. um custo-benefício difícil de ignorar para quem valoriza entrega real.",
     },
     comparisonTip:
       "Se você busca o menor investimento, a Bike 350 é a porta de entrada. Se quer equilíbrio e refinamento, a Bike 400+ é uma opção. Mas se a prioridade é mais força, mais capacidade e melhor custo-benefício nessa faixa, a Bike 500 é a escolha mais racional. Para quem precisa de ainda mais autonomia, a Bike MS 600 leva a proposta ainda mais longe.",
     faq: [
       {
         q: "A Bike 500 é indicada para qual tipo de uso?",
-        a: "Para uso urbano frequente e mais exigente — trajetos diários de até 50 km, com mais confiança, mais capacidade de carga e uma proposta mais robusta do que os modelos de entrada.",
+        a: "Para uso urbano frequente e mais exigente. trajetos diários de até 50 km, com mais confiança, mais capacidade de carga e uma proposta mais robusta do que os modelos de entrada.",
       },
       {
         q: "Qual a principal diferença dela em relação aos modelos mais básicos?",
@@ -421,7 +421,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
       },
       {
         q: "Ela é indicada para quem busca mais robustez?",
-        a: "Sim. Dentro da linha de autopropelidos, a Bike 500 é o modelo que melhor combina força, capacidade e proposta urbana sólida — sem ser excessiva.",
+        a: "Sim. Dentro da linha de autopropelidos, a Bike 500 é o modelo que melhor combina força, capacidade e proposta urbana sólida. sem ser excessiva.",
       },
       {
         q: "Como funciona a garantia?",
@@ -448,7 +448,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
       {
         icon: "route",
         title: "Deslocamentos urbanos frequentes",
-        desc: "70 km de autonomia para cobrir ida, volta e imprevistos — sem precisar se preocupar com a bateria no meio do caminho.",
+        desc: "70 km de autonomia para cobrir ida, volta e imprevistos. sem precisar se preocupar com a bateria no meio do caminho.",
       },
       {
         icon: "sparkles",
@@ -469,7 +469,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
     whyChoose: [
       {
         title: "Maior autonomia da linha Bike",
-        desc: "70 km por carga — quase o dobro da entrada. A Bike MS 600 é o modelo que mais entrega para quem roda com frequência.",
+        desc: "70 km por carga. quase o dobro da entrada. A Bike MS 600 é o modelo que mais entrega para quem roda com frequência.",
       },
       {
         title: "Motor de 600W",
@@ -499,7 +499,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
       },
       {
         title: "Condução firme e estável",
-        desc: "O motor de 600W entrega respostas mais consistentes — subidas, arrancadas e trânsito urbano com mais segurança.",
+        desc: "O motor de 600W entrega respostas mais consistentes. subidas, arrancadas e trânsito urbano com mais segurança.",
       },
       {
         title: "Praticidade sem concessão",
@@ -511,14 +511,14 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
       },
       {
         title: "Recarregue com tranquilidade",
-        desc: "7 a 8 horas na tomada comum. Conecte à noite e tenha o veículo pronto pela manhã — sempre.",
+        desc: "7 a 8 horas na tomada comum. Conecte à noite e tenha o veículo pronto pela manhã. sempre.",
       },
     ],
     urbanContext: {
       title: "Liberdade de verdade para quem vive a cidade",
       body: "A Bike MS 600 nasceu para quem não quer contar quilômetros. Se a sua rotina exige deslocamentos frequentes, compromissos espalhados e a necessidade de ter um veículo sempre pronto, esse é o modelo que entrega mais liberdade dentro da família Bike.",
       highlights: [
-        "70 km de autonomia — a maior da linha Bike",
+        "70 km de autonomia. a maior da linha Bike",
         "Motor de 600W para mais firmeza e estabilidade",
         "Ideal para quem usa diariamente sem restrição",
         "Proposta completa para mobilidade urbana constante",
@@ -533,14 +533,14 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
     },
     differentials: {
       title: "Onde a Bike MS 600 se destaca na linha MS Eletric",
-      body: "A Bike MS 600 é a escolha certa para quem quer uma mobilidade elétrica mais consistente no dia a dia, com mais sensação de autonomia, mais liberdade de uso e uma proposta urbana mais completa. É o topo da família Bike — o modelo que mais entrega para quem realmente usa a mobilidade elétrica como parte da rotina.",
+      body: "A Bike MS 600 é a escolha certa para quem quer uma mobilidade elétrica mais consistente no dia a dia, com mais sensação de autonomia, mais liberdade de uso e uma proposta urbana mais completa. É o topo da família Bike. o modelo que mais entrega para quem realmente usa a mobilidade elétrica como parte da rotina.",
     },
     comparisonTip:
-      "Se você busca o menor investimento, a Bike 350 é a porta de entrada. Se quer equilíbrio, a Bike 400+ atende bem. Se precisa de mais robustez, a Bike 500 é forte. Mas se autonomia e liberdade de uso são a prioridade, a Bike MS 600 é a escolha mais completa da família — e a que mais entrega para quem usa com frequência.",
+      "Se você busca o menor investimento, a Bike 350 é a porta de entrada. Se quer equilíbrio, a Bike 400+ atende bem. Se precisa de mais robustez, a Bike 500 é forte. Mas se autonomia e liberdade de uso são a prioridade, a Bike MS 600 é a escolha mais completa da família. e a que mais entrega para quem usa com frequência.",
     faq: [
       {
         q: "A Bike MS 600 é indicada para qual tipo de uso?",
-        a: "Para uso urbano frequente e constante — deslocamentos diários, rotas mais longas e rotinas que exigem mais autonomia. Com 70 km por carga, ela acompanha os dias mais intensos sem limitações.",
+        a: "Para uso urbano frequente e constante. deslocamentos diários, rotas mais longas e rotinas que exigem mais autonomia. Com 70 km por carga, ela acompanha os dias mais intensos sem limitações.",
       },
       {
         q: "Esse modelo faz sentido para quem utiliza todos os dias?",
@@ -548,7 +548,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
       },
       {
         q: "Qual o diferencial dela dentro da linha Bike?",
-        a: "Autonomia de 70 km e motor de 600W — a maior entrega da família. É o modelo para quem quer o máximo de liberdade e consistência dentro da proposta compacta da linha Bike.",
+        a: "Autonomia de 70 km e motor de 600W. a maior entrega da família. É o modelo para quem quer o máximo de liberdade e consistência dentro da proposta compacta da linha Bike.",
       },
       {
         q: "A autonomia dela favorece uma rotina mais recorrente?",
@@ -608,7 +608,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
     whyChoose: [
       {
         title: "Design que diferencia",
-        desc: "A Bliss tem um visual moderno e marcante que se destaca em qualquer cenário urbano. Não é apenas um veículo — é uma escolha de estilo.",
+        desc: "A Bliss tem um visual moderno e marcante que se destaca em qualquer cenário urbano. Não é apenas um veículo. é uma escolha de estilo.",
       },
       {
         title: "O mais vendido da MS Eletric",
@@ -616,7 +616,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
       },
       {
         title: "Motor de 800W",
-        desc: "Mais potência para uma condução mais firme, mais confortável e mais confiável — em qualquer situação urbana.",
+        desc: "Mais potência para uma condução mais firme, mais confortável e mais confiável. em qualquer situação urbana.",
       },
       {
         title: "70 km de autonomia",
@@ -638,11 +638,11 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
       },
       {
         title: "Potência para o dia a dia",
-        desc: "800W entregam uma condução fluida, segura e consistente — subidas, arrancadas e trânsito sem esforço.",
+        desc: "800W entregam uma condução fluida, segura e consistente. subidas, arrancadas e trânsito sem esforço.",
       },
       {
         title: "Autonomia de verdade",
-        desc: "70 km por carga significam ir e voltar, resolver tarefas e ainda ter bateria — sem ansiedade.",
+        desc: "70 km por carga significam ir e voltar, resolver tarefas e ainda ter bateria. sem ansiedade.",
       },
       {
         title: "Economia invisível",
@@ -655,7 +655,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
     ],
     urbanContext: {
       title: "Sua identidade, em movimento",
-      body: "A Bliss foi criada para quem entende que mobilidade também é expressão. Ela não é apenas um meio de transporte — é uma extensão do seu estilo, da sua personalidade e da forma como você escolhe viver a cidade.",
+      body: "A Bliss foi criada para quem entende que mobilidade também é expressão. Ela não é apenas um meio de transporte. é uma extensão do seu estilo, da sua personalidade e da forma como você escolhe viver a cidade.",
       highlights: [
         "Design moderno que se destaca no cenário urbano",
         "O modelo mais vendido da MS Eletric",
@@ -672,14 +672,14 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
     },
     differentials: {
       title: "Onde a Bliss se destaca na linha MS Eletric",
-      body: "A Bliss é a escolha certa para quem quer mais do que mobilidade elétrica funcional. Ela combina praticidade urbana com design marcante, mais personalidade e uma experiência visualmente mais premium. É o modelo mais vendido da marca — e isso reflete a capacidade dela de unir desejo e razão em uma única escolha.",
+      body: "A Bliss é a escolha certa para quem quer mais do que mobilidade elétrica funcional. Ela combina praticidade urbana com design marcante, mais personalidade e uma experiência visualmente mais premium. É o modelo mais vendido da marca. e isso reflete a capacidade dela de unir desejo e razão em uma única escolha.",
     },
     comparisonTip:
-      "Se você busca uma opção mais acessível e funcional, os modelos da família Bike atendem bem. Se quer mais robustez pura, a Liberty Ultra pode ser o caminho. Mas se design, presença visual e uma experiência mais premium são prioridade, a Bliss é a escolha que mais entrega nessa direção — e não é à toa que é a mais vendida.",
+      "Se você busca uma opção mais acessível e funcional, os modelos da família Bike atendem bem. Se quer mais robustez pura, a Liberty Ultra pode ser o caminho. Mas se design, presença visual e uma experiência mais premium são prioridade, a Bliss é a escolha que mais entrega nessa direção. e não é à toa que é a mais vendida.",
     faq: [
       {
         q: "A Bliss é indicada para qual tipo de uso?",
-        a: "Para uso urbano diário com mais estilo e presença. Com 70 km de autonomia e motor de 800W, ela acompanha rotinas intensas sem limitações — e com muito mais personalidade.",
+        a: "Para uso urbano diário com mais estilo e presença. Com 70 km de autonomia e motor de 800W, ela acompanha rotinas intensas sem limitações. e com muito mais personalidade.",
       },
       {
         q: "Esse modelo faz sentido para quem usa no dia a dia?",
@@ -741,7 +741,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
       {
         icon: "city",
         title: "Rotina sem concessões",
-        desc: "Para quem precisa de um veículo elétrico que funcione de verdade no dia a dia — com conforto, praticidade e confiança.",
+        desc: "Para quem precisa de um veículo elétrico que funcione de verdade no dia a dia. com conforto, praticidade e confiança.",
       },
     ],
     whyChoose: [
@@ -751,7 +751,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
       },
       {
         title: "Recarga mais rápida",
-        desc: "5 a 6 horas para carga completa — a mais rápida da categoria. Menos tempo parado, mais tempo rodando.",
+        desc: "5 a 6 horas para carga completa. a mais rápida da categoria. Menos tempo parado, mais tempo rodando.",
       },
       {
         title: "Capacidade para 150 kg",
@@ -769,15 +769,15 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
     dailyBenefits: [
       {
         title: "Mais conforto em cada trajeto",
-        desc: "A Liberty Ultra foi projetada para tornar o uso diário mais agradável — menos vibração, mais estabilidade, mais prazer.",
+        desc: "A Liberty Ultra foi projetada para tornar o uso diário mais agradável. menos vibração, mais estabilidade, mais prazer.",
       },
       {
         title: "Recarga que encaixa na rotina",
-        desc: "5 a 6 horas é tempo de uma noite de sono curta. Conecte ao chegar, use pela manhã — sem ajustes na rotina.",
+        desc: "5 a 6 horas é tempo de uma noite de sono curta. Conecte ao chegar, use pela manhã. sem ajustes na rotina.",
       },
       {
         title: "Potência quando você precisa",
-        desc: "1.000W entregam respostas firmes em qualquer situação — subidas, arrancadas e mudanças de ritmo no trânsito.",
+        desc: "1.000W entregam respostas firmes em qualquer situação. subidas, arrancadas e mudanças de ritmo no trânsito.",
       },
       {
         title: "Capacidade para o uso real",
@@ -796,9 +796,9 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
       title: "Praticidade que você sente no dia a dia",
       body: "A Liberty Ultra foi pensada para quem não quer concessões. Se a sua rotina exige um veículo confortável, potente e prático para usar todos os dias, esse é o modelo que entrega a experiência mais completa dentro da linha de autopropelidos.",
       highlights: [
-        "Motor de 1.000W — o mais potente da categoria",
-        "Recarga em 5–6h — a mais rápida da linha",
-        "Capacidade para 150 kg — uso real sem restrição",
+        "Motor de 1.000W. o mais potente da categoria",
+        "Recarga em 5–6h. a mais rápida da linha",
+        "Capacidade para 150 kg. uso real sem restrição",
         "70 km de autonomia para cobrir a rotina com folga",
       ],
     },
@@ -806,19 +806,19 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
       autonomy: "Faixa pensada para acompanhar uma rotina urbana com praticidade e folga",
       speed: "Boa relação para deslocamentos frequentes na cidade com conforto",
       motor: "A maior entrega de potência entre os autopropelidos da linha",
-      recharge: "A recarga mais rápida da categoria — encaixa facilmente na rotina",
+      recharge: "A recarga mais rápida da categoria. encaixa facilmente na rotina",
       load: "A maior capacidade de carga da linha, pensada para uso real",
     },
     differentials: {
       title: "Onde a Liberty Ultra se destaca na linha MS Eletric",
-      body: "A Liberty Ultra é a escolha certa para quem quer mobilidade elétrica urbana com mais conforto, mais praticidade e uma experiência de uso mais completa para a rotina do dia a dia. Com o motor mais potente, a recarga mais rápida e a maior capacidade de carga entre os autopropelidos, ela ocupa o topo da linha em entrega funcional — sem perder a simplicidade de uso.",
+      body: "A Liberty Ultra é a escolha certa para quem quer mobilidade elétrica urbana com mais conforto, mais praticidade e uma experiência de uso mais completa para a rotina do dia a dia. Com o motor mais potente, a recarga mais rápida e a maior capacidade de carga entre os autopropelidos, ela ocupa o topo da linha em entrega funcional. sem perder a simplicidade de uso.",
     },
     comparisonTip:
-      "Se você busca uma opção mais acessível, a família Bike oferece modelos a partir de R$ 7.990. Se design e presença visual são prioridade, a Bliss pode ser a escolha. Mas se conforto, potência, capacidade de carga e recarga rápida são o que importa, a Liberty Ultra é a mais completa da linha — e a que mais entrega para quem usa com frequência.",
+      "Se você busca uma opção mais acessível, a família Bike oferece modelos a partir de R$ 7.990. Se design e presença visual são prioridade, a Bliss pode ser a escolha. Mas se conforto, potência, capacidade de carga e recarga rápida são o que importa, a Liberty Ultra é a mais completa da linha. e a que mais entrega para quem usa com frequência.",
     faq: [
       {
         q: "A Liberty Ultra é indicada para qual tipo de uso?",
-        a: "Para uso urbano frequente e confortável — deslocamentos diários com mais potência, mais estabilidade e mais capacidade. É o modelo mais completo entre os autopropelidos.",
+        a: "Para uso urbano frequente e confortável. deslocamentos diários com mais potência, mais estabilidade e mais capacidade. É o modelo mais completo entre os autopropelidos.",
       },
       {
         q: "Esse modelo faz sentido para quem usa no dia a dia?",
@@ -830,11 +830,11 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
       },
       {
         q: "A Liberty Ultra é uma boa escolha para quem busca mais conforto?",
-        a: "Sim. Ela foi pensada para quem valoriza conforto e conveniência como critérios de decisão — não apenas potência ou preço.",
+        a: "Sim. Ela foi pensada para quem valoriza conforto e conveniência como critérios de decisão. não apenas potência ou preço.",
       },
       {
         q: "Como funciona a recarga?",
-        a: "Tomada comum (110V ou 220V), de 5 a 6 horas para carga completa — a mais rápida entre os autopropelidos. Conecte ao chegar em casa e use pela manhã.",
+        a: "Tomada comum (110V ou 220V), de 5 a 6 horas para carga completa. a mais rápida entre os autopropelidos. Conecte ao chegar em casa e use pela manhã.",
       },
       {
         q: "Como é a manutenção?",
@@ -858,14 +858,14 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
   "santa-monica": {
     headline: "Liberdade sobre duas rodas, com assistência elétrica",
     subheadline:
-      "A Santa Monica é uma e-bike urbana com visual retrô, motor de 500W e 60 km de autonomia — pensada para quem quer pedalar com mais liberdade, menos esforço e mais estilo na cidade.",
+      "A Santa Monica é uma e-bike urbana com visual retrô, motor de 500W e 60 km de autonomia. pensada para quem quer pedalar com mais liberdade, menos esforço e mais estilo na cidade.",
     supportText:
       "Pedal assistido ou acelerador direto: você escolhe como quer se mover. A Santa Monica combina a experiência natural da bicicleta com a conveniência da assistência elétrica, em um design que chama atenção por onde passa.",
     idealFor: [
       {
         icon: "route",
         title: "Deslocamentos urbanos leves",
-        desc: "Trajetos de até 60 km com assistência elétrica — trabalho, estudo, lazer e tarefas do dia a dia sem esforço.",
+        desc: "Trajetos de até 60 km com assistência elétrica. trabalho, estudo, lazer e tarefas do dia a dia sem esforço.",
       },
       {
         icon: "sparkles",
@@ -875,7 +875,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
       {
         icon: "piggyBank",
         title: "Economia e bem-estar",
-        desc: "Custo operacional quase zero e a possibilidade de se exercitar no caminho — saúde e economia juntas.",
+        desc: "Custo operacional quase zero e a possibilidade de se exercitar no caminho. saúde e economia juntas.",
       },
       {
         icon: "city",
@@ -945,23 +945,23 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
       autonomy: "Faixa pensada para acompanhar deslocamentos urbanos com mais liberdade",
       speed: "Boa relação para uma mobilidade leve e eficiente na cidade",
       motor: "Entrega coerente com a proposta prática e fluida do modelo",
-      recharge: "A recarga mais rápida entre as e-bikes — encaixa fácil na rotina",
+      recharge: "A recarga mais rápida entre as e-bikes. encaixa fácil na rotina",
       load: "Compatível com a proposta funcional e versátil da bicicleta elétrica",
     },
     differentials: {
       title: "Onde a Santa Monica se destaca na linha MS Eletric",
-      body: "A Santa Monica é a escolha certa para quem quer uma mobilidade elétrica mais leve, mais livre e mais conectada ao ritmo da cidade. Dentro do portfólio, ela ocupa o espaço da e-bike urbana com personalidade — unindo praticidade, estilo de vida e uso inteligente em um design que marca presença.",
+      body: "A Santa Monica é a escolha certa para quem quer uma mobilidade elétrica mais leve, mais livre e mais conectada ao ritmo da cidade. Dentro do portfólio, ela ocupa o espaço da e-bike urbana com personalidade. unindo praticidade, estilo de vida e uso inteligente em um design que marca presença.",
     },
     comparisonTip:
       "Se você busca uma proposta mais robusta com pneus largos e presença off-road, a Big Sur pode ser o caminho. Mas se leveza, versatilidade e um visual retrô moderno são o que importa, a Santa Monica é a e-bike que mais entrega nessa direção.",
     faq: [
       {
         q: "A Santa Monica é indicada para qual tipo de uso?",
-        a: "Para deslocamentos urbanos leves e práticos — trabalho, estudo, lazer e tarefas do dia a dia. Com pedal assistido e acelerador, ela se adapta a diferentes situações e níveis de esforço.",
+        a: "Para deslocamentos urbanos leves e práticos. trabalho, estudo, lazer e tarefas do dia a dia. Com pedal assistido e acelerador, ela se adapta a diferentes situações e níveis de esforço.",
       },
       {
         q: "Essa bicicleta elétrica faz sentido para deslocamentos urbanos?",
-        a: "Sim. A Santa Monica foi pensada exatamente para isso — 60 km de autonomia, motor de 500W e design compacto para circular com agilidade pela cidade.",
+        a: "Sim. A Santa Monica foi pensada exatamente para isso. 60 km de autonomia, motor de 500W e design compacto para circular com agilidade pela cidade.",
       },
       {
         q: "Qual o diferencial dela em relação a outros modelos da linha?",
@@ -969,11 +969,11 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
       },
       {
         q: "Ela é uma boa escolha para quem quer mais leveza e praticidade?",
-        a: "Com certeza. A Santa Monica combina a experiência natural da bicicleta com a conveniência da assistência elétrica — mais leve e mais versátil do que um autopropelido.",
+        a: "Com certeza. A Santa Monica combina a experiência natural da bicicleta com a conveniência da assistência elétrica. mais leve e mais versátil do que um autopropelido.",
       },
       {
         q: "Como funciona a recarga?",
-        a: "Tomada comum (110V ou 220V), em apenas 5 horas para carga completa — a mais rápida da categoria e-bikes. Conecte e use.",
+        a: "Tomada comum (110V ou 220V), em apenas 5 horas para carga completa. a mais rápida da categoria e-bikes. Conecte e use.",
       },
       {
         q: "Como é a manutenção?",
@@ -997,14 +997,14 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
   "big-sur": {
     headline: "Presença, conforto e liberdade para ir além do asfalto",
     subheadline:
-      "A Big Sur é uma fat bike elétrica com pneus largos, motor de 500W e 60 km de autonomia — feita para quem quer mais estabilidade, mais conforto e mais versatilidade em cada trajeto.",
+      "A Big Sur é uma fat bike elétrica com pneus largos, motor de 500W e 60 km de autonomia. feita para quem quer mais estabilidade, mais conforto e mais versatilidade em cada trajeto.",
     supportText:
       "Com visual marcante e presença que impressiona, a Big Sur vai além da bicicleta elétrica convencional. Seus pneus largos entregam mais aderência e conforto em qualquer superfície, enquanto o motor de 500W garante potência para cidade, trilhas leves e passeios com total liberdade.",
     idealFor: [
       {
         icon: "route",
         title: "Trajetos variados",
-        desc: "Asfalto, terra, calçamento irregular — os pneus largos oferecem estabilidade e conforto em qualquer superfície.",
+        desc: "Asfalto, terra, calçamento irregular. os pneus largos oferecem estabilidade e conforto em qualquer superfície.",
       },
       {
         icon: "sparkles",
@@ -1033,7 +1033,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
       },
       {
         title: "Versatilidade real",
-        desc: "Asfalto, terra, areia, calçamento — a Big Sur se adapta a diferentes superfícies e diferentes estilos de uso.",
+        desc: "Asfalto, terra, areia, calçamento. a Big Sur se adapta a diferentes superfícies e diferentes estilos de uso.",
       },
       {
         title: "60 km de autonomia",
@@ -1047,7 +1047,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
     dailyBenefits: [
       {
         title: "Mais conforto em qualquer terreno",
-        desc: "Os pneus fat fazem toda a diferença — menos impacto, menos vibração, mais suavidade em cada pedalada.",
+        desc: "Os pneus fat fazem toda a diferença. menos impacto, menos vibração, mais suavidade em cada pedalada.",
       },
       {
         title: "Mais confiança para explorar",
@@ -1063,7 +1063,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
       },
       {
         title: "Exercício no seu ritmo",
-        desc: "Pedal assistido permite dosar o esforço. Dias de exercício ou dias de conforto total — você escolhe.",
+        desc: "Pedal assistido permite dosar o esforço. Dias de exercício ou dias de conforto total. você escolhe.",
       },
       {
         title: "Recarregue com praticidade",
@@ -1084,12 +1084,12 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
       autonomy: "Faixa pensada para acompanhar uma rotina mais versátil e exploratória",
       speed: "Boa relação para mobilidade elétrica com conforto e confiança",
       motor: "Entrega alinhada à proposta mais robusta e versátil do modelo",
-      recharge: "Rotina simples — 5 horas na tomada para estar pronta novamente",
+      recharge: "Rotina simples. 5 horas na tomada para estar pronta novamente",
       load: "Compatível com a proposta de estabilidade e versatilidade da bike",
     },
     differentials: {
       title: "Onde a Big Sur se destaca na linha MS Eletric",
-      body: "A Big Sur é a escolha certa para quem quer uma bicicleta elétrica com mais presença, mais estabilidade e mais conforto. Dentro do portfólio, ela ocupa o espaço da e-bike robusta e versátil — feita para quem quer ir além do convencional e explorar a cidade e o lazer com mais liberdade e personalidade.",
+      body: "A Big Sur é a escolha certa para quem quer uma bicicleta elétrica com mais presença, mais estabilidade e mais conforto. Dentro do portfólio, ela ocupa o espaço da e-bike robusta e versátil. feita para quem quer ir além do convencional e explorar a cidade e o lazer com mais liberdade e personalidade.",
     },
     comparisonTip:
       "Se você busca uma e-bike mais leve e urbana com visual retrô, a Santa Monica é uma excelente opção. Mas se conforto extremo, pneus fat, mais estabilidade e presença visual marcante são prioridade, a Big Sur é a escolha que mais entrega nessa direção.",
@@ -1100,7 +1100,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
       },
       {
         q: "Essa bicicleta elétrica faz sentido para cidade e passeio?",
-        a: "Sim. A Big Sur é versátil — funciona perfeitamente na cidade durante a semana e é ideal para passeios mais exploratórios no fim de semana.",
+        a: "Sim. A Big Sur é versátil. funciona perfeitamente na cidade durante a semana e é ideal para passeios mais exploratórios no fim de semana.",
       },
       {
         q: "Qual o diferencial dela em relação a modelos mais leves?",
@@ -1136,9 +1136,9 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
   "ms-2500": {
     headline: "Mais força e mais presença para a sua mobilidade urbana",
     subheadline:
-      "A MS 2500 é uma moto elétrica de 2.500W com 52 km/h de velocidade máxima e 50 km de autonomia — pensada para quem quer se deslocar pela cidade com mais potência, mais confiança e mais impacto.",
+      "A MS 2500 é uma moto elétrica de 2.500W com 52 km/h de velocidade máxima e 50 km de autonomia. pensada para quem quer se deslocar pela cidade com mais potência, mais confiança e mais impacto.",
     supportText:
-      "Se você quer uma moto que acompanhe o ritmo real do trânsito urbano, a MS 2500 entrega velocidade, robustez e presença visual em um modelo pensado para uso frequente. Mais do que um meio de transporte — uma evolução na forma como você se move pela cidade.",
+      "Se você quer uma moto que acompanhe o ritmo real do trânsito urbano, a MS 2500 entrega velocidade, robustez e presença visual em um modelo pensado para uso frequente. Mais do que um meio de transporte. uma evolução na forma como você se move pela cidade.",
     idealFor: [
       {
         icon: "route",
@@ -1158,7 +1158,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
       {
         icon: "piggyBank",
         title: "Economia com desempenho",
-        desc: "Zero combustível, zero IPVA, manutenção mínima — com a potência de quem não abre mão de performance urbana.",
+        desc: "Zero combustível, zero IPVA, manutenção mínima. com a potência de quem não abre mão de performance urbana.",
       },
     ],
     whyChoose: [
@@ -1176,7 +1176,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
       },
       {
         title: "Capacidade para 150 kg",
-        desc: "Estrutura sólida e preparada para o uso real — com espaço para você e para a sua rotina.",
+        desc: "Estrutura sólida e preparada para o uso real. com espaço para você e para a sua rotina.",
       },
       {
         title: "Suporte MS Eletric",
@@ -1190,7 +1190,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
       },
       {
         title: "Arrancadas com confiança",
-        desc: "2.500W entregam respostas imediatas — semáforos, ultrapassagens e mudanças de ritmo sem hesitação.",
+        desc: "2.500W entregam respostas imediatas. semáforos, ultrapassagens e mudanças de ritmo sem hesitação.",
       },
       {
         title: "Presença que impõe respeito",
@@ -1206,7 +1206,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
       },
       {
         title: "Recarregue na tomada",
-        desc: "6 a 7 horas na tomada comum. Conecte à noite, use pela manhã — sem filas, sem postos.",
+        desc: "6 a 7 horas na tomada comum. Conecte à noite, use pela manhã. sem filas, sem postos.",
       },
     ],
     urbanContext: {
@@ -1216,7 +1216,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
         "2.500W de potência para o trânsito urbano real",
         "52 km/h para acompanhar o fluxo da cidade",
         "50 km de autonomia para cobrir a rotina",
-        "Capacidade para 150 kg — estrutura sólida",
+        "Capacidade para 150 kg. estrutura sólida",
       ],
     },
     specContexts: {
@@ -1247,7 +1247,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
       },
       {
         q: "Ela é uma boa escolha para quem quer mais robustez e mais presença?",
-        a: "Com certeza. A MS 2500 tem design encorpado, motor potente e estrutura para 150 kg — transmite força e confiança no trânsito.",
+        a: "Com certeza. A MS 2500 tem design encorpado, motor potente e estrutura para 150 kg. transmite força e confiança no trânsito.",
       },
       {
         q: "Como funciona a recarga?",
@@ -1275,14 +1275,14 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
   "new-holiday": {
     headline: "Mobilidade elétrica completa para substituir a moto no dia a dia",
     subheadline:
-      "A New Holiday é uma moto elétrica de 2.000W com design clássico, 50 km de autonomia e 50 km/h — pensada para quem quer praticidade real na cidade sem abrir mão de conforto e presença.",
+      "A New Holiday é uma moto elétrica de 2.000W com design clássico, 50 km de autonomia e 50 km/h. pensada para quem quer praticidade real na cidade sem abrir mão de conforto e presença.",
     supportText:
       "Se você busca uma alternativa elétrica para a moto convencional, a New Holiday entrega tudo o que você precisa: velocidade para o trânsito, autonomia para a rotina e economia brutal no uso diário. Uma moto completa, funcional e bonita.",
     idealFor: [
       {
         icon: "route",
         title: "Substituir a moto a combustão",
-        desc: "50 km/h e 50 km de autonomia para cobrir a rotina urbana com a mesma praticidade — e sem gasolina.",
+        desc: "50 km/h e 50 km de autonomia para cobrir a rotina urbana com a mesma praticidade. e sem gasolina.",
       },
       {
         icon: "sparkles",
@@ -1297,13 +1297,13 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
       {
         icon: "city",
         title: "Deslocamentos urbanos completos",
-        desc: "Trabalho, estudo, compromissos e lazer — a New Holiday acompanha a rotina inteira com praticidade.",
+        desc: "Trabalho, estudo, compromissos e lazer. a New Holiday acompanha a rotina inteira com praticidade.",
       },
     ],
     whyChoose: [
       {
         title: "Proposta completa",
-        desc: "2.000W, 50 km/h e 50 km de autonomia. A New Holiday entrega tudo o que uma moto urbana precisa — sem concessões.",
+        desc: "2.000W, 50 km/h e 50 km de autonomia. A New Holiday entrega tudo o que uma moto urbana precisa. sem concessões.",
       },
       {
         title: "Design clássico atemporal",
@@ -1367,7 +1367,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
     },
     differentials: {
       title: "Onde a New Holiday se destaca na linha MS Eletric",
-      body: "A New Holiday é a moto elétrica mais equilibrada do portfólio — combina design clássico, potência suficiente para o trânsito e autonomia para a rotina em um único modelo. Ela ocupa o espaço da moto urbana completa: não é a mais potente, mas é a mais bem resolvida para quem quer substituir a moto a combustão no dia a dia.",
+      body: "A New Holiday é a moto elétrica mais equilibrada do portfólio. combina design clássico, potência suficiente para o trânsito e autonomia para a rotina em um único modelo. Ela ocupa o espaço da moto urbana completa: não é a mais potente, mas é a mais bem resolvida para quem quer substituir a moto a combustão no dia a dia.",
     },
     comparisonTip:
       "Se você busca uma entrada mais acessível nas motos, a Holiday 1000 oferece um investimento menor. Se quer mais potência e velocidade, a MS 2500 sobe de nível. Mas se o objetivo é uma moto completa, equilibrada e com design clássico para substituir a moto no dia a dia, a New Holiday é a escolha mais bem resolvida.",
@@ -1378,7 +1378,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
       },
       {
         q: "Essa moto elétrica faz sentido para deslocamentos diários?",
-        a: "Sim. A New Holiday foi pensada exatamente para isso — velocidade para o trânsito, autonomia para a rotina e economia brutal no uso frequente.",
+        a: "Sim. A New Holiday foi pensada exatamente para isso. velocidade para o trânsito, autonomia para a rotina e economia brutal no uso frequente.",
       },
       {
         q: "Qual o diferencial dela em relação a outros modelos da linha?",
@@ -1386,7 +1386,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
       },
       {
         q: "Ela é uma boa escolha para quem quer praticidade e simplicidade?",
-        a: "Com certeza. A New Holiday é a moto mais equilibrada da linha — funcional, bonita e fácil de incorporar na rotina sem complicação.",
+        a: "Com certeza. A New Holiday é a moto mais equilibrada da linha. funcional, bonita e fácil de incorporar na rotina sem complicação.",
       },
       {
         q: "Como funciona a recarga?",
@@ -1414,14 +1414,14 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
   "holiday-1000": {
     headline: "Sua porta de entrada no mundo das motos elétricas",
     subheadline:
-      "A Holiday 1000 é uma moto elétrica acessível com motor de 1.000W, 45 km de autonomia e 32 km/h — pensada para quem quer mobilidade urbana prática, econômica e descomplicada.",
+      "A Holiday 1000 é uma moto elétrica acessível com motor de 1.000W, 45 km de autonomia e 32 km/h. pensada para quem quer mobilidade urbana prática, econômica e descomplicada.",
     supportText:
       "Compacta, funcional e fácil de usar. A Holiday 1000 é a moto ideal para quem quer começar na mobilidade elétrica com investimento mais acessível, sem abrir mão de conforto, economia e praticidade real no dia a dia.",
     idealFor: [
       {
         icon: "route",
         title: "Deslocamentos urbanos leves",
-        desc: "Trajetos de até 45 km na cidade — trabalho, estudo, compras e tarefas do dia a dia com praticidade.",
+        desc: "Trajetos de até 45 km na cidade. trabalho, estudo, compras e tarefas do dia a dia com praticidade.",
       },
       {
         icon: "sparkles",
@@ -1442,7 +1442,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
     whyChoose: [
       {
         title: "O melhor preço entre as motos",
-        desc: "R$ 10.490 — o menor investimento para ter uma moto elétrica completa da MS Eletric com motor de 1.000W.",
+        desc: "R$ 10.490. o menor investimento para ter uma moto elétrica completa da MS Eletric com motor de 1.000W.",
       },
       {
         title: "Simplicidade de uso",
@@ -1454,7 +1454,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
       },
       {
         title: "Capacidade para 150 kg",
-        desc: "Estrutura sólida que suporta até 150 kg — espaço de sobra para você e suas coisas do dia a dia.",
+        desc: "Estrutura sólida que suporta até 150 kg. espaço de sobra para você e suas coisas do dia a dia.",
       },
       {
         title: "Suporte MS Eletric",
@@ -1494,7 +1494,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
         "O menor investimento entre as motos MS Eletric",
         "Motor de 1.000W para deslocamentos urbanos práticos",
         "45 km de autonomia para cobrir a rotina",
-        "Capacidade para 150 kg — estrutura sólida",
+        "Capacidade para 150 kg. estrutura sólida",
       ],
     },
     specContexts: {
@@ -1506,14 +1506,14 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
     },
     differentials: {
       title: "Onde a Holiday 1000 se destaca na linha MS Eletric",
-      body: "A Holiday 1000 é a porta de entrada mais acessível no universo das motos elétricas MS Eletric. Ela cumpre o papel de modelo inicial — funcional, econômico e descomplicado. Para quem quer mobilidade elétrica em formato moto sem grande investimento, ela entrega exatamente o necessário para começar.",
+      body: "A Holiday 1000 é a porta de entrada mais acessível no universo das motos elétricas MS Eletric. Ela cumpre o papel de modelo inicial. funcional, econômico e descomplicado. Para quem quer mobilidade elétrica em formato moto sem grande investimento, ela entrega exatamente o necessário para começar.",
     },
     comparisonTip:
       "Se você quer mais potência e velocidade para o trânsito, a New Holiday e a MS 2500 sobem de nível. Mas se praticidade, economia e o menor investimento possível em uma moto são prioridade, a Holiday 1000 é a escolha mais direta e mais acessível da linha.",
     faq: [
       {
         q: "A Holiday 1000 é indicada para qual tipo de uso?",
-        a: "Para deslocamentos urbanos leves e frequentes — trajetos curtos e médios na cidade, como ir ao trabalho, faculdade, mercado ou resolver tarefas do dia a dia.",
+        a: "Para deslocamentos urbanos leves e frequentes. trajetos curtos e médios na cidade, como ir ao trabalho, faculdade, mercado ou resolver tarefas do dia a dia.",
       },
       {
         q: "Essa moto elétrica faz sentido para deslocamentos diários?",
@@ -1521,7 +1521,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
       },
       {
         q: "Qual o diferencial dela em relação a outros modelos da linha?",
-        a: "É a moto mais acessível do portfólio — R$ 10.490 com motor de 1.000W e 150 kg de capacidade. A entrada mais econômica no formato moto.",
+        a: "É a moto mais acessível do portfólio. R$ 10.490 com motor de 1.000W e 150 kg de capacidade. A entrada mais econômica no formato moto.",
       },
       {
         q: "Ela é uma boa escolha para quem quer uma proposta mais compacta e prática?",
@@ -1561,7 +1561,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
       {
         icon: "zap",
         title: "Quem quer mais potência",
-        desc: "Motor de 3.000W para encarar a cidade com mais força, mais confiança e mais presença — inclusive em subidas.",
+        desc: "Motor de 3.000W para encarar a cidade com mais força, mais confiança e mais presença. inclusive em subidas.",
       },
       {
         icon: "crown",
@@ -1582,11 +1582,11 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
     whyChoose: [
       {
         title: "Motor de 3.000W de verdade",
-        desc: "Potência real que faz diferença na arrancada, nas subidas e na confiança do dia a dia — você sente a força desde o primeiro giro.",
+        desc: "Potência real que faz diferença na arrancada, nas subidas e na confiança do dia a dia. você sente a força desde o primeiro giro.",
       },
       {
         title: "Visual que não passa despercebido",
-        desc: "Design custom chopper exclusivo dentro da linha. A Tour 3K não é apenas funcional — ela é uma declaração de estilo.",
+        desc: "Design custom chopper exclusivo dentro da linha. A Tour 3K não é apenas funcional. ela é uma declaração de estilo.",
       },
       {
         title: "Experiência urbana mais intensa",
@@ -1612,7 +1612,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
       },
       {
         title: "Mais emoção na rotina",
-        desc: "Pilotar a Tour 3K transforma deslocamentos em experiências — é mobilidade elétrica com adrenalina na medida certa.",
+        desc: "Pilotar a Tour 3K transforma deslocamentos em experiências. é mobilidade elétrica com adrenalina na medida certa.",
       },
       {
         title: "Economia com performance",
@@ -1639,9 +1639,9 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
       autonomy:
         "Faixa pensada para acompanhar uma proposta urbana mais forte, cobrindo trajetos do dia a dia com tranquilidade.",
       speed:
-        "Até 75 km/h — entrega alinhada a uma experiência mais intensa de mobilidade elétrica, com desempenho que se sente de verdade.",
+        "Até 75 km/h. entrega alinhada a uma experiência mais intensa de mobilidade elétrica, com desempenho que se sente de verdade.",
       motor:
-        "3.000W de potência real — o grande diferencial do modelo, reforçando sua proposta de força, torque e presença.",
+        "3.000W de potência real. o grande diferencial do modelo, reforçando sua proposta de força, torque e presença.",
       recharge:
         "6 a 8 horas na tomada convencional. Carregue durante a noite e tenha a moto pronta pela manhã.",
       load:
@@ -1649,7 +1649,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
     },
     differentials: {
       title: "Onde a Tour 3K se destaca",
-      body: "A Tour 3K é a escolha certa para quem quer elevar o nível da mobilidade elétrica. Com o motor mais potente entre as motos urbanas da linha, visual custom chopper exclusivo e velocidade de até 75 km/h, ela ocupa um espaço único no portfólio: é a moto para quem quer mais potência, mais presença e uma experiência urbana muito mais marcante. Se você busca algo além do funcional — algo que transmita força, atitude e personalidade — a Tour 3K é o modelo que faz isso acontecer dentro da MS Eletric.",
+      body: "A Tour 3K é a escolha certa para quem quer elevar o nível da mobilidade elétrica. Com o motor mais potente entre as motos urbanas da linha, visual custom chopper exclusivo e velocidade de até 75 km/h, ela ocupa um espaço único no portfólio: é a moto para quem quer mais potência, mais presença e uma experiência urbana muito mais marcante. Se você busca algo além do funcional. algo que transmita força, atitude e personalidade. a Tour 3K é o modelo que faz isso acontecer dentro da MS Eletric.",
     },
     comparisonTip:
       "Se você busca a moto elétrica mais potente e mais marcante da linha, a Tour 3K é a resposta com seus 3.000W e visual custom chopper. Já se você quer robustez com um perfil mais urbano e equilibrado, a MS 2500 pode ser o caminho. Para uma entrada mais acessível, a Holiday 1000 e a New Holiday oferecem praticidade e economia.",
@@ -1672,7 +1672,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
       },
       {
         q: "Como funciona a recarga?",
-        a: "Basta conectar na tomada convencional. A carga completa leva de 6 a 8 horas — ideal para carregar à noite e ter a moto pronta pela manhã.",
+        a: "Basta conectar na tomada convencional. A carga completa leva de 6 a 8 horas. ideal para carregar à noite e ter a moto pronta pela manhã.",
       },
       {
         q: "Como é a manutenção?",
@@ -1698,7 +1698,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
   "triciclo-eletrico": {
     headline: "Estabilidade, conforto e confiança para o seu dia a dia",
     subheadline:
-      "O Triciclo Elétrico da MS Eletric é a escolha inteligente para quem quer mobilidade com mais equilíbrio, mais segurança percebida e mais tranquilidade na condução — sem abrir mão da praticidade elétrica.",
+      "O Triciclo Elétrico da MS Eletric é a escolha inteligente para quem quer mobilidade com mais equilíbrio, mais segurança percebida e mais tranquilidade na condução. sem abrir mão da praticidade elétrica.",
     supportText:
       "Com três rodas, motor elétrico de 1.000W e até 60 km de autonomia, ele entrega uma experiência de condução mais estável e confortável, ideal para quem prioriza confiança e facilidade no dia a dia.",
     idealFor: [
@@ -1726,7 +1726,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
     whyChoose: [
       {
         title: "Três rodas, mais equilíbrio",
-        desc: "A configuração de três rodas oferece estabilidade natural que transmite confiança desde o primeiro momento — especialmente em paradas e baixas velocidades.",
+        desc: "A configuração de três rodas oferece estabilidade natural que transmite confiança desde o primeiro momento. especialmente em paradas e baixas velocidades.",
       },
       {
         title: "Condução mais tranquila e segura",
@@ -1769,7 +1769,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
     ],
     urbanContext: {
       title: "Mobilidade com equilíbrio para a sua rotina",
-      body: "O Triciclo Elétrico foi projetado para quem enxerga a mobilidade como parte essencial do dia a dia — e quer viver isso com mais calma, mais segurança e mais conforto. Com sua base de três rodas e motor elétrico silencioso, ele transforma deslocamentos cotidianos em experiências mais tranquilas e acessíveis, sem abrir mão da praticidade e da economia que só a mobilidade elétrica oferece.",
+      body: "O Triciclo Elétrico foi projetado para quem enxerga a mobilidade como parte essencial do dia a dia. e quer viver isso com mais calma, mais segurança e mais conforto. Com sua base de três rodas e motor elétrico silencioso, ele transforma deslocamentos cotidianos em experiências mais tranquilas e acessíveis, sem abrir mão da praticidade e da economia que só a mobilidade elétrica oferece.",
       highlights: [
         "Três rodas para mais estabilidade natural",
         "Motor elétrico silencioso e suave",
@@ -1781,22 +1781,22 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
     },
     specContexts: {
       autonomy:
-        "60 km por carga — faixa pensada para deslocamentos cotidianos com praticidade e sem preocupação com recarga frequente.",
+        "60 km por carga. faixa pensada para deslocamentos cotidianos com praticidade e sem preocupação com recarga frequente.",
       speed:
-        "Até 32 km/h — velocidade adequada para uma experiência de condução mais tranquila, segura e confortável.",
+        "Até 32 km/h. velocidade adequada para uma experiência de condução mais tranquila, segura e confortável.",
       motor:
-        "Motor de 1.000W — entrega alinhada à proposta funcional e estável do modelo, com torque suficiente para o dia a dia.",
+        "Motor de 1.000W. entrega alinhada à proposta funcional e estável do modelo, com torque suficiente para o dia a dia.",
       recharge:
         "6 a 8 horas na tomada convencional. Carregue durante a noite e tenha o triciclo pronto pela manhã.",
       load:
-        "Capacidade de 120 a 150 kg — compatível com a proposta cotidiana e confortável do veículo, com margem para o uso real.",
+        "Capacidade de 120 a 150 kg. compatível com a proposta cotidiana e confortável do veículo, com margem para o uso real.",
     },
     differentials: {
       title: "Onde o Triciclo Elétrico se destaca",
-      body: "O Triciclo Elétrico ocupa um espaço único no portfólio da MS Eletric: é a opção para quem quer mobilidade elétrica com mais estabilidade, mais conforto e mais confiança na condução. Enquanto as motos oferecem agilidade e performance, o triciclo entrega tranquilidade, equilíbrio e uma experiência de uso mais acessível. É a escolha certa para quem prioriza segurança percebida, facilidade e uma rotina de deslocamentos mais serena — sem abrir mão da economia e da praticidade elétrica.",
+      body: "O Triciclo Elétrico ocupa um espaço único no portfólio da MS Eletric: é a opção para quem quer mobilidade elétrica com mais estabilidade, mais conforto e mais confiança na condução. Enquanto as motos oferecem agilidade e performance, o triciclo entrega tranquilidade, equilíbrio e uma experiência de uso mais acessível. É a escolha certa para quem prioriza segurança percebida, facilidade e uma rotina de deslocamentos mais serena. sem abrir mão da economia e da praticidade elétrica.",
     },
     comparisonTip:
-      "Se você prioriza estabilidade, conforto e uma condução mais segura, o Triciclo Elétrico é a escolha ideal com suas três rodas e proposta tranquila. Se prefere mais agilidade e velocidade em duas rodas, as motos da linha — como a Holiday 1000 para entrada prática ou a MS 2500 para mais presença — podem ser mais adequadas. O triciclo é para quem quer equilíbrio e confiança acima de tudo.",
+      "Se você prioriza estabilidade, conforto e uma condução mais segura, o Triciclo Elétrico é a escolha ideal com suas três rodas e proposta tranquila. Se prefere mais agilidade e velocidade em duas rodas, as motos da linha. como a Holiday 1000 para entrada prática ou a MS 2500 para mais presença. podem ser mais adequadas. O triciclo é para quem quer equilíbrio e confiança acima de tudo.",
     faq: [
       {
         q: "O Triciclo Elétrico é indicado para qual tipo de uso?",
@@ -1804,7 +1804,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
       },
       {
         q: "Esse modelo faz sentido para quem prioriza estabilidade?",
-        a: "Sim — é exatamente a proposta dele. As três rodas oferecem equilíbrio natural, eliminando a preocupação de manter o balanço em duas rodas.",
+        a: "Sim. é exatamente a proposta dele. As três rodas oferecem equilíbrio natural, eliminando a preocupação de manter o balanço em duas rodas.",
       },
       {
         q: "Qual o diferencial dele em relação às motos da linha?",
@@ -1816,7 +1816,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
       },
       {
         q: "Como funciona a recarga?",
-        a: "Basta conectar na tomada convencional. A carga completa leva de 6 a 8 horas — ideal para carregar à noite e ter o triciclo pronto pela manhã.",
+        a: "Basta conectar na tomada convencional. A carga completa leva de 6 a 8 horas. ideal para carregar à noite e ter o triciclo pronto pela manhã.",
       },
       {
         q: "Como é a manutenção?",
@@ -1843,7 +1843,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
     subheadline:
       "A Rhino Delivery é a solução profissional da MS Eletric para entregas, deslocamentos operacionais e rotinas comerciais. Com motor de 2.000W, 120 km de autonomia e capacidade para até 250 kg, ela entrega produtividade real com economia elétrica.",
     supportText:
-      "Se você precisa de um veículo que trabalhe junto com o seu negócio — com eficiência, robustez e custo operacional muito menor — a Rhino Delivery foi feita para isso.",
+      "Se você precisa de um veículo que trabalhe junto com o seu negócio. com eficiência, robustez e custo operacional muito menor. a Rhino Delivery foi feita para isso.",
     idealFor: [
       {
         icon: "package",
@@ -1895,7 +1895,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
       },
       {
         title: "Operação silenciosa e eficiente",
-        desc: "Motor elétrico silencioso que funciona sem incomodar — ideal para entregas em horários variados e áreas residenciais.",
+        desc: "Motor elétrico silencioso que funciona sem incomodar. ideal para entregas em horários variados e áreas residenciais.",
       },
       {
         title: "Produtividade que se paga",
@@ -1912,7 +1912,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
     ],
     urbanContext: {
       title: "Pensada para quem trabalha com entregas",
-      body: "A Rhino Delivery foi desenvolvida para ser uma ferramenta de trabalho — não um brinquedo tecnológico. Com 120 km de autonomia, capacidade para 250 kg e motor de 2.000W, ela atende operações reais de delivery, logística interna e deslocamentos comerciais com eficiência, economia e a confiabilidade que uma rotina profissional exige.",
+      body: "A Rhino Delivery foi desenvolvida para ser uma ferramenta de trabalho. não um brinquedo tecnológico. Com 120 km de autonomia, capacidade para 250 kg e motor de 2.000W, ela atende operações reais de delivery, logística interna e deslocamentos comerciais com eficiência, economia e a confiabilidade que uma rotina profissional exige.",
       highlights: [
         "120 km de autonomia para rotas longas",
         "250 kg de capacidade de carga útil",
@@ -1924,22 +1924,22 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
     },
     specContexts: {
       autonomy:
-        "120 km por carga — autonomia pensada para acompanhar rotinas completas de entrega e deslocamentos profissionais sem interrupção.",
+        "120 km por carga. autonomia pensada para acompanhar rotinas completas de entrega e deslocamentos profissionais sem interrupção.",
       speed:
-        "Até 50 km/h — velocidade adequada para operação urbana eficiente, com segurança e bom ritmo de entrega.",
+        "Até 50 km/h. velocidade adequada para operação urbana eficiente, com segurança e bom ritmo de entrega.",
       motor:
-        "Motor de 2.000W — potência alinhada à proposta utilitária, com torque para operar carregado e encarar subidas com carga.",
+        "Motor de 2.000W. potência alinhada à proposta utilitária, com torque para operar carregado e encarar subidas com carga.",
       recharge:
         "6 a 8 horas na tomada convencional. Recarregue à noite e tenha o veículo pronto para a operação do dia seguinte.",
       load:
-        "Capacidade de até 250 kg — um dos grandes diferenciais do modelo, reforçando sua aplicação real para entregas e trabalho.",
+        "Capacidade de até 250 kg. um dos grandes diferenciais do modelo, reforçando sua aplicação real para entregas e trabalho.",
     },
     differentials: {
       title: "Onde a Rhino Delivery se destaca",
       body: "A Rhino Delivery ocupa um espaço estratégico no portfólio da MS Eletric: é o utilitário elétrico pensado para quem precisa de um veículo de trabalho. Com a maior autonomia (120 km), a maior capacidade de carga (250 kg) e motor de 2.000W, ela é a resposta para operações que precisam de eficiência, economia e robustez. Se o seu negócio depende de entregas, logística ou deslocamentos operacionais, a Rhino Delivery é a solução que transforma custo em investimento.",
     },
     comparisonTip:
-      "A Rhino Delivery é o utilitário elétrico profissional da linha, com 120 km de autonomia e 250 kg de capacidade. Se você precisa de entrega e operação comercial, ela é a escolha clara. Se busca um utilitário com perfil de triciclo para carga mais leve, o Triciclo Elétrico pode atender. Para uso pessoal urbano, as motos da linha — Holiday 1000, MS 2500 ou Tour 3K — oferecem propostas diferentes de mobilidade.",
+      "A Rhino Delivery é o utilitário elétrico profissional da linha, com 120 km de autonomia e 250 kg de capacidade. Se você precisa de entrega e operação comercial, ela é a escolha clara. Se busca um utilitário com perfil de triciclo para carga mais leve, o Triciclo Elétrico pode atender. Para uso pessoal urbano, as motos da linha. Holiday 1000, MS 2500 ou Tour 3K. oferecem propostas diferentes de mobilidade.",
     faq: [
       {
         q: "A Rhino Delivery é indicada para qual tipo de operação?",
@@ -1947,7 +1947,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
       },
       {
         q: "Esse modelo faz sentido para entregas profissionais?",
-        a: "Sim — é exatamente a proposta dela. Com 120 km de autonomia, 250 kg de carga e motor de 2.000W, ela foi projetada para operações reais de delivery.",
+        a: "Sim. é exatamente a proposta dela. Com 120 km de autonomia, 250 kg de carga e motor de 2.000W, ela foi projetada para operações reais de delivery.",
       },
       {
         q: "Qual o diferencial dela em relação a outros veículos da linha?",
@@ -1959,7 +1959,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
       },
       {
         q: "Como funciona a recarga?",
-        a: "Basta conectar na tomada convencional. A carga completa leva de 6 a 8 horas — ideal para recarregar à noite e ter o veículo pronto para a operação do dia seguinte.",
+        a: "Basta conectar na tomada convencional. A carga completa leva de 6 a 8 horas. ideal para recarregar à noite e ter o veículo pronto para a operação do dia seguinte.",
       },
       {
         q: "Como é a manutenção?",
@@ -1986,7 +1986,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
     subheadline:
       "O Cargo é o utilitário elétrico de maior capacidade da MS Eletric. Com até 500 kg de carga, motor de 1.500W e 60 km de autonomia, ele resolve demandas profissionais de transporte com economia, robustez e aplicação prática.",
     supportText:
-      "Se a sua operação precisa mover carga de verdade — com eficiência, baixo custo e sem complicação — o Cargo foi projetado exatamente para isso.",
+      "Se a sua operação precisa mover carga de verdade. com eficiência, baixo custo e sem complicação. o Cargo foi projetado exatamente para isso.",
     idealFor: [
       {
         icon: "weight",
@@ -2011,7 +2011,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
     ],
     whyChoose: [
       {
-        title: "Até 500 kg de capacidade — o maior da linha",
+        title: "Até 500 kg de capacidade. o maior da linha",
         desc: "A maior capacidade de carga do portfólio MS Eletric. Projetado para demandas que exigem transporte real e robusto.",
       },
       {
@@ -2042,7 +2042,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
       },
       {
         title: "Silêncio que faz diferença",
-        desc: "Motor elétrico silencioso permite operação em qualquer horário e ambiente — hospitais, condomínios, áreas residenciais.",
+        desc: "Motor elétrico silencioso permite operação em qualquer horário e ambiente. hospitais, condomínios, áreas residenciais.",
       },
       {
         title: "Robustez para uso profissional diário",
@@ -2067,22 +2067,22 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
     },
     specContexts: {
       autonomy:
-        "60 km por carga — autonomia pensada para acompanhar rotinas de trabalho e deslocamentos operacionais com carga.",
+        "60 km por carga. autonomia pensada para acompanhar rotinas de trabalho e deslocamentos operacionais com carga.",
       speed:
-        "Até 25 km/h — velocidade adequada para operação segura com carga pesada em ambientes internos e urbanos.",
+        "Até 25 km/h. velocidade adequada para operação segura com carga pesada em ambientes internos e urbanos.",
       motor:
-        "Motor de 1.500W — potência dimensionada para operar carregado com eficiência e constância no dia a dia.",
+        "Motor de 1.500W. potência dimensionada para operar carregado com eficiência e constância no dia a dia.",
       recharge:
         "6 a 8 horas na tomada convencional. Recarregue à noite e tenha o veículo pronto para a operação seguinte.",
       load:
-        "300 a 500 kg de capacidade — o pilar central do Cargo, reforçando sua aplicação real para transporte pesado e trabalho.",
+        "300 a 500 kg de capacidade. o pilar central do Cargo, reforçando sua aplicação real para transporte pesado e trabalho.",
     },
     differentials: {
       title: "Onde o Cargo se destaca",
       body: "O Cargo é o utilitário elétrico de maior capacidade da linha MS Eletric. Com até 500 kg de carga, ele ocupa um espaço único no portfólio: é o veículo para quem precisa transportar peso de verdade com economia elétrica. Enquanto a Rhino Delivery foca em entregas com agilidade, o Cargo foca em volume e capacidade. Se a sua operação exige mover materiais, equipamentos ou mercadorias pesadas, o Cargo é a solução mais funcional e robusta da linha.",
     },
     comparisonTip:
-      "O Cargo é o utilitário de maior capacidade da linha, com até 500 kg de carga — ideal para transporte pesado e operações internas. Se você precisa de mais agilidade para entregas urbanas, a Rhino Delivery oferece 120 km de autonomia com 250 kg de capacidade. Para mobilidade pessoal, as motos e triciclos da linha atendem outros perfis de uso.",
+      "O Cargo é o utilitário de maior capacidade da linha, com até 500 kg de carga. ideal para transporte pesado e operações internas. Se você precisa de mais agilidade para entregas urbanas, a Rhino Delivery oferece 120 km de autonomia com 250 kg de capacidade. Para mobilidade pessoal, as motos e triciclos da linha atendem outros perfis de uso.",
     faq: [
       {
         q: "O Cargo é indicado para qual tipo de operação?",
@@ -2090,7 +2090,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
       },
       {
         q: "Esse modelo faz sentido para transporte de carga no dia a dia?",
-        a: "Sim — é exatamente a proposta dele. Com até 500 kg de capacidade, ele foi projetado para demandas reais de transporte profissional.",
+        a: "Sim. é exatamente a proposta dele. Com até 500 kg de capacidade, ele foi projetado para demandas reais de transporte profissional.",
       },
       {
         q: "Qual o diferencial dele em relação à Rhino Delivery?",
@@ -2102,7 +2102,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
       },
       {
         q: "Como funciona a recarga?",
-        a: "Basta conectar na tomada convencional. A carga completa leva de 6 a 8 horas — ideal para recarregar à noite e ter o veículo pronto para o trabalho.",
+        a: "Basta conectar na tomada convencional. A carga completa leva de 6 a 8 horas. ideal para recarregar à noite e ter o veículo pronto para o trabalho.",
       },
       {
         q: "Como é a manutenção?",
@@ -2125,11 +2125,11 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
   },
 
   "motocross-infantil": {
-    headline: "A diversão que toda criança merece — com estilo de verdade",
+    headline: "A diversão que toda criança merece. com estilo de verdade",
     subheadline:
       "A Moto Cross Infantil da MS Eletric é o presente que transforma o lazer. Com visual esportivo, motor de 800W e 35 km de autonomia, ela oferece uma experiência recreativa marcante para uso supervisionado em ambientes adequados.",
     supportText:
-      "Pensada para proporcionar diversão com responsabilidade, ela é ideal para chácaras, condomínios, quintais amplos e áreas de recreação — sempre com acompanhamento de um adulto.",
+      "Pensada para proporcionar diversão com responsabilidade, ela é ideal para chácaras, condomínios, quintais amplos e áreas de recreação. sempre com acompanhamento de um adulto.",
     idealFor: [
       {
         icon: "smile",
@@ -2139,7 +2139,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
       {
         icon: "gift",
         title: "Presente marcante",
-        desc: "Um presente que encanta pelo visual esportivo e pela experiência — muito além de um brinquedo comum.",
+        desc: "Um presente que encanta pelo visual esportivo e pela experiência. muito além de um brinquedo comum.",
       },
       {
         icon: "home",
@@ -2163,7 +2163,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
       },
       {
         title: "35 km de autonomia para brincar bastante",
-        desc: "Autonomia generosa para longas sessões de diversão sem interrupção — horas de lazer com uma única carga.",
+        desc: "Autonomia generosa para longas sessões de diversão sem interrupção. horas de lazer com uma única carga.",
       },
       {
         title: "Experiência recreativa memorável",
@@ -2198,7 +2198,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
     ],
     urbanContext: {
       title: "Diversão de verdade para os pequenos",
-      body: "A Moto Cross Infantil foi criada para oferecer uma experiência recreativa com estilo e emoção. Com motor elétrico silencioso e visual esportivo autêntico, ela transforma momentos de lazer em aventuras memoráveis — sempre com supervisão de um adulto e em ambientes adequados. É o tipo de produto que une encantamento visual, diversão real e momentos especiais em família.",
+      body: "A Moto Cross Infantil foi criada para oferecer uma experiência recreativa com estilo e emoção. Com motor elétrico silencioso e visual esportivo autêntico, ela transforma momentos de lazer em aventuras memoráveis. sempre com supervisão de um adulto e em ambientes adequados. É o tipo de produto que une encantamento visual, diversão real e momentos especiais em família.",
       highlights: [
         "Visual de motocross autêntico e marcante",
         "Motor de 800W para diversão envolvente",
@@ -2210,19 +2210,19 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
     },
     specContexts: {
       autonomy:
-        "35 km por carga — autonomia pensada para longas sessões de lazer supervisionado sem interrupção.",
+        "35 km por carga. autonomia pensada para longas sessões de lazer supervisionado sem interrupção.",
       speed:
-        "Até 32 km/h — velocidade que entrega diversão com a supervisão adequada de um adulto responsável.",
+        "Até 32 km/h. velocidade que entrega diversão com a supervisão adequada de um adulto responsável.",
       motor:
-        "Motor de 800W — potência dimensionada para oferecer uma experiência recreativa envolvente e divertida.",
+        "Motor de 800W. potência dimensionada para oferecer uma experiência recreativa envolvente e divertida.",
       recharge:
         "6 horas na tomada convencional. Recarregue à noite e tenha a moto pronta para a próxima sessão de diversão.",
       load:
-        "Capacidade de até 55 kg — compatível com a faixa de uso infantil prevista para o produto.",
+        "Capacidade de até 55 kg. compatível com a faixa de uso infantil prevista para o produto.",
     },
     differentials: {
       title: "Onde a Moto Cross Infantil se destaca",
-      body: "A Moto Cross Infantil ocupa um espaço único na linha MS Eletric: é o produto recreativo infantil com maior apelo visual e experiência mais envolvente. Com design de motocross autêntico, motor de 800W e 35 km de autonomia, ela vai muito além de um brinquedo convencional. É a escolha para quem quer proporcionar uma experiência marcante, divertida e memorável — com a responsabilidade do uso supervisionado em ambientes adequados.",
+      body: "A Moto Cross Infantil ocupa um espaço único na linha MS Eletric: é o produto recreativo infantil com maior apelo visual e experiência mais envolvente. Com design de motocross autêntico, motor de 800W e 35 km de autonomia, ela vai muito além de um brinquedo convencional. É a escolha para quem quer proporcionar uma experiência marcante, divertida e memorável. com a responsabilidade do uso supervisionado em ambientes adequados.",
     },
     comparisonTip:
       "A Moto Cross Infantil é o modelo recreativo com mais potência (800W) e visual esportivo mais marcante da categoria infantil. Se você busca uma opção de lazer com perfil diferente, como o Drift Elétrico 350, ele oferece uma experiência de drift mais lúdica e com velocidade mais baixa. Para patinetes elétricos, o Patinete 350 é a opção mais urbana e leve.",
@@ -2241,11 +2241,11 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
       },
       {
         q: "Ela é uma boa escolha para presentear?",
-        a: "Sim. É o tipo de presente que encanta pelo visual e pela experiência. Muito além de um brinquedo convencional — é algo que a criança lembra para sempre.",
+        a: "Sim. É o tipo de presente que encanta pelo visual e pela experiência. Muito além de um brinquedo convencional. é algo que a criança lembra para sempre.",
       },
       {
         q: "Como funciona a recarga?",
-        a: "Basta conectar na tomada convencional. A carga completa leva cerca de 6 horas — ideal para recarregar à noite ou entre sessões de diversão.",
+        a: "Basta conectar na tomada convencional. A carga completa leva cerca de 6 horas. ideal para recarregar à noite ou entre sessões de diversão.",
       },
       {
         q: "Como é a manutenção?",
@@ -2257,7 +2257,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
       },
       {
         q: "Para quem a Moto Cross Infantil é a melhor escolha?",
-        a: "Para pais e responsáveis que querem proporcionar uma experiência recreativa marcante, divertida e com forte apelo visual — sempre com supervisão e em ambientes adequados.",
+        a: "Para pais e responsáveis que querem proporcionar uma experiência recreativa marcante, divertida e com forte apelo visual. sempre com supervisão e em ambientes adequados.",
       },
     ],
     finalCta: {
@@ -2272,7 +2272,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
     subheadline:
       "O Drift Elétrico 350 é o veículo recreativo infantil mais acessível da MS Eletric. Com motor de 350W, velocidade controlada de até 12 km/h e visual chamativo, ele proporciona uma experiência de lazer divertida e supervisionada.",
     supportText:
-      "Pensado para momentos de diversão em ambientes controlados, ele é ideal para quintais, condomínios, chácaras e áreas recreativas — sempre com acompanhamento de um adulto responsável.",
+      "Pensado para momentos de diversão em ambientes controlados, ele é ideal para quintais, condomínios, chácaras e áreas recreativas. sempre com acompanhamento de um adulto responsável.",
     idealFor: [
       {
         icon: "smile",
@@ -2282,7 +2282,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
       {
         icon: "gift",
         title: "Presente acessível e marcante",
-        desc: "Um presente que encanta pelo visual e pela diversão — com o melhor preço da categoria infantil MS Eletric.",
+        desc: "Um presente que encanta pelo visual e pela diversão. com o melhor preço da categoria infantil MS Eletric.",
       },
       {
         icon: "home",
@@ -2292,7 +2292,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
       {
         icon: "shield",
         title: "Velocidade controlada",
-        desc: "Até 12 km/h — velocidade pensada para oferecer diversão com mais tranquilidade para pais e responsáveis.",
+        desc: "Até 12 km/h. velocidade pensada para oferecer diversão com mais tranquilidade para pais e responsáveis.",
       },
     ],
     whyChoose: [
@@ -2341,7 +2341,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
     ],
     urbanContext: {
       title: "Entretenimento lúdico para momentos especiais",
-      body: "O Drift Elétrico 350 foi criado para transformar momentos de lazer em experiências divertidas e memoráveis. Com motor elétrico silencioso, velocidade controlada e visual que encanta, ele oferece diversão supervisionada em ambientes adequados — quintais, chácaras, condomínios e áreas recreativas. É o produto que une acessibilidade, entretenimento e momentos especiais em família.",
+      body: "O Drift Elétrico 350 foi criado para transformar momentos de lazer em experiências divertidas e memoráveis. Com motor elétrico silencioso, velocidade controlada e visual que encanta, ele oferece diversão supervisionada em ambientes adequados. quintais, chácaras, condomínios e áreas recreativas. É o produto que une acessibilidade, entretenimento e momentos especiais em família.",
       highlights: [
         "Visual divertido e chamativo",
         "Motor de 350W para diversão lúdica",
@@ -2355,20 +2355,20 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
       autonomy:
         "Autonomia pensada para sessões de lazer supervisionado com diversão prolongada.",
       speed:
-        "Até 12 km/h — velocidade controlada e adequada para a proposta recreativa infantil do modelo.",
+        "Até 12 km/h. velocidade controlada e adequada para a proposta recreativa infantil do modelo.",
       motor:
-        "Motor de 350W — potência dimensionada para oferecer uma experiência lúdica divertida e segura.",
+        "Motor de 350W. potência dimensionada para oferecer uma experiência lúdica divertida e segura.",
       recharge:
-        "3 a 5 horas na tomada convencional — a recarga mais rápida da categoria infantil. Menos espera, mais diversão.",
+        "3 a 5 horas na tomada convencional. a recarga mais rápida da categoria infantil. Menos espera, mais diversão.",
       load:
-        "Capacidade de até 80 kg — compatível com a faixa de uso recreativo prevista para o produto.",
+        "Capacidade de até 80 kg. compatível com a faixa de uso recreativo prevista para o produto.",
     },
     differentials: {
       title: "Onde o Drift Elétrico 350 se destaca",
       body: "O Drift Elétrico 350 é a porta de entrada na categoria infantil da MS Eletric. Com o menor preço, a recarga mais rápida e velocidade controlada de até 12 km/h, ele oferece uma experiência recreativa divertida com mais acessibilidade e tranquilidade para os pais. Enquanto a Moto Cross Infantil entrega mais potência e visual esportivo, o Drift Elétrico 350 foca em diversão lúdica com velocidade mais adequada para faixas etárias menores ou uso mais controlado.",
     },
     comparisonTip:
-      "O Drift Elétrico 350 é a opção mais acessível e com velocidade mais controlada da categoria infantil — ideal para crianças menores ou pais que preferem mais tranquilidade. Se você busca mais potência e visual de motocross, a Moto Cross Infantil oferece 800W e 35 km de autonomia. Para mobilidade urbana leve, o Patinete 350 atende outro perfil de uso.",
+      "O Drift Elétrico 350 é a opção mais acessível e com velocidade mais controlada da categoria infantil. ideal para crianças menores ou pais que preferem mais tranquilidade. Se você busca mais potência e visual de motocross, a Moto Cross Infantil oferece 800W e 35 km de autonomia. Para mobilidade urbana leve, o Patinete 350 atende outro perfil de uso.",
     faq: [
       {
         q: "O Drift Elétrico 350 é indicado para qual tipo de uso?",
@@ -2388,7 +2388,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
       },
       {
         q: "Como funciona a recarga?",
-        a: "Basta conectar na tomada convencional. A carga completa leva de 3 a 5 horas — a mais rápida da categoria infantil.",
+        a: "Basta conectar na tomada convencional. A carga completa leva de 3 a 5 horas. a mais rápida da categoria infantil.",
       },
       {
         q: "Como é a manutenção?",
@@ -2400,7 +2400,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
       },
       {
         q: "Para quem o Drift Elétrico 350 é a melhor escolha?",
-        a: "Para pais e responsáveis que querem uma opção recreativa acessível, divertida e com velocidade controlada — ideal para crianças menores ou para quem prefere mais tranquilidade no uso supervisionado.",
+        a: "Para pais e responsáveis que querem uma opção recreativa acessível, divertida e com velocidade controlada. ideal para crianças menores ou para quem prefere mais tranquilidade no uso supervisionado.",
       },
     ],
     finalCta: {
@@ -2415,7 +2415,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
     subheadline:
       "O Patinete 350 é a solução mais compacta e portátil da MS Eletric. Leve, dobrável e com 30 km de autonomia, ele resolve deslocamentos curtos com praticidade, agilidade e zero complicação.",
     supportText:
-      "Se você precisa de uma forma rápida de ir e vir — no campus, no condomínio, na última milha ou em pequenos trajetos urbanos — o Patinete 350 encaixa perfeitamente na sua rotina.",
+      "Se você precisa de uma forma rápida de ir e vir. no campus, no condomínio, na última milha ou em pequenos trajetos urbanos. o Patinete 350 encaixa perfeitamente na sua rotina.",
     idealFor: [
       {
         icon: "footprints",
@@ -2440,7 +2440,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
     ],
     whyChoose: [
       {
-        title: "Leve e dobrável — vai com você",
+        title: "Leve e dobrável. vai com você",
         desc: "Compacto o suficiente para levar no metrô, guardar no porta-malas ou deixar ao lado da mesa. Mobilidade que cabe em qualquer lugar.",
       },
       {
@@ -2466,7 +2466,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
         desc: "Aqueles 10-15 minutos de caminhada viram 3-4 minutos de deslocamento prático e sem esforço.",
       },
       {
-        title: "Cabe na sua vida — literalmente",
+        title: "Cabe na sua vida. literalmente",
         desc: "Dobrável e leve, ele vai no carro, no metrô, no elevador ou embaixo da mesa. Não precisa de garagem.",
       },
       {
@@ -2475,16 +2475,16 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
       },
       {
         title: "Agilidade para a rotina dinâmica",
-        desc: "Reuniões, aulas, tarefas rápidas — o Patinete 350 encurta distâncias e otimiza o seu tempo.",
+        desc: "Reuniões, aulas, tarefas rápidas. o Patinete 350 encurta distâncias e otimiza o seu tempo.",
       },
       {
         title: "Mobilidade complementar perfeita",
-        desc: "Não substitui o carro — complementa. Resolve a última milha que nenhum outro veículo resolve tão bem.",
+        desc: "Não substitui o carro. complementa. Resolve a última milha que nenhum outro veículo resolve tão bem.",
       },
     ],
     urbanContext: {
       title: "A solução mais prática para trajetos curtos",
-      body: "O Patinete 350 foi criado para quem entende que mobilidade inteligente não é só sobre potência — é sobre resolver o deslocamento certo da forma mais prática possível. Leve, dobrável e com autonomia de 30 km, ele transforma a última milha, os trajetos internos e os deslocamentos curtos em algo rápido, fácil e sem fricção.",
+      body: "O Patinete 350 foi criado para quem entende que mobilidade inteligente não é só sobre potência. é sobre resolver o deslocamento certo da forma mais prática possível. Leve, dobrável e com autonomia de 30 km, ele transforma a última milha, os trajetos internos e os deslocamentos curtos em algo rápido, fácil e sem fricção.",
       highlights: [
         "Dobrável e fácil de transportar",
         "30 km de autonomia para o dia a dia",
@@ -2496,22 +2496,22 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
     },
     specContexts: {
       autonomy:
-        "30 km por carga — autonomia pensada para trajetos curtos e recorrentes do dia a dia com sobra de margem.",
+        "30 km por carga. autonomia pensada para trajetos curtos e recorrentes do dia a dia com sobra de margem.",
       speed:
-        "Até 30 km/h — agilidade ideal para deslocamentos urbanos leves, com bom ritmo e praticidade.",
+        "Até 30 km/h. agilidade ideal para deslocamentos urbanos leves, com bom ritmo e praticidade.",
       motor:
-        "Motor de 350W — potência alinhada à proposta compacta e funcional, silencioso e eficiente para uso urbano.",
+        "Motor de 350W. potência alinhada à proposta compacta e funcional, silencioso e eficiente para uso urbano.",
       recharge:
         "5 a 6 horas na tomada convencional. Recarregue à noite ou durante o expediente e tenha o patinete pronto.",
       load:
-        "Capacidade de 120 kg — suporta uso adulto com tranquilidade, compatível com a proposta de mobilidade urbana.",
+        "Capacidade de 120 kg. suporta uso adulto com tranquilidade, compatível com a proposta de mobilidade urbana.",
     },
     differentials: {
       title: "Onde o Patinete 350 se destaca",
-      body: "O Patinete 350 é o produto mais compacto, mais portátil e mais acessível da linha MS Eletric. Ele não compete com motos ou utilitários — ele complementa. É a solução para quem precisa resolver deslocamentos curtos com praticidade máxima: dobrável para levar em qualquer lugar, leve para carregar e com autonomia suficiente para cobrir a rotina urbana do dia a dia. Se o seu problema é a última milha, o Patinete 350 é a resposta.",
+      body: "O Patinete 350 é o produto mais compacto, mais portátil e mais acessível da linha MS Eletric. Ele não compete com motos ou utilitários. ele complementa. É a solução para quem precisa resolver deslocamentos curtos com praticidade máxima: dobrável para levar em qualquer lugar, leve para carregar e com autonomia suficiente para cobrir a rotina urbana do dia a dia. Se o seu problema é a última milha, o Patinete 350 é a resposta.",
     },
     comparisonTip:
-      "O Patinete 350 é a opção mais compacta, portátil e acessível do portfólio — ideal para última milha e deslocamentos curtos. Se você precisa de mais autonomia e velocidade para trajetos maiores, as bikes elétricas oferecem mais alcance. Para uma proposta de mobilidade urbana mais robusta, as motos da linha atendem outro perfil de necessidade.",
+      "O Patinete 350 é a opção mais compacta, portátil e acessível do portfólio. ideal para última milha e deslocamentos curtos. Se você precisa de mais autonomia e velocidade para trajetos maiores, as bikes elétricas oferecem mais alcance. Para uma proposta de mobilidade urbana mais robusta, as motos da linha atendem outro perfil de necessidade.",
     faq: [
       {
         q: "O Patinete 350 é indicado para qual tipo de uso?",
@@ -2519,7 +2519,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
       },
       {
         q: "Esse modelo faz sentido para deslocamentos diários curtos?",
-        a: "Sim — é exatamente a proposta dele. Com 30 km de autonomia e design dobrável, ele resolve trajetos curtos com praticidade e agilidade.",
+        a: "Sim. é exatamente a proposta dele. Com 30 km de autonomia e design dobrável, ele resolve trajetos curtos com praticidade e agilidade.",
       },
       {
         q: "Qual o diferencial dele em relação a outros produtos do portfólio?",
@@ -2531,7 +2531,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
       },
       {
         q: "Como funciona a recarga?",
-        a: "Basta conectar na tomada convencional. A carga completa leva de 5 a 6 horas — ideal para recarregar à noite ou durante o trabalho.",
+        a: "Basta conectar na tomada convencional. A carga completa leva de 5 a 6 horas. ideal para recarregar à noite ou durante o trabalho.",
       },
       {
         q: "Como é a manutenção?",

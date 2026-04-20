@@ -174,7 +174,7 @@ const SLUG_TO_CATEGORY: Record<string, CategoryFilter> = {
   "autopropelidos": "Autopropelidos",
   "bicicletas-eletricas": "Bicicletas Elétricas",
   "motos-eletricas": "Motos Elétricas",
-  "scooters-eletricas": "Motos Elétricas", // legacy slug — mantém links antigos funcionando
+  "scooters-eletricas": "Motos Elétricas", // legacy slug. mantém links antigos funcionando
   "triciclos-eletricos": "Triciclos Elétricos",
   "utilitarios": "Utilitários",
   "infantil": "Infantil",
@@ -278,7 +278,7 @@ const Models = () => {
         }}
       />
 
-      {/* Primary glow — top right (animated) */}
+      {/* Primary glow. top right (animated) */}
       <motion.div
         className="fixed top-[-200px] right-[-200px] w-[1400px] h-[900px] pointer-events-none z-0"
         style={{
@@ -289,7 +289,7 @@ const Models = () => {
         transition={{ duration: 35, repeat: Infinity, ease: "easeInOut" }}
       />
 
-      {/* Secondary glow — bottom left (animated) */}
+      {/* Secondary glow. bottom left (animated) */}
       <motion.div
         className="fixed bottom-[-150px] left-[-200px] w-[1100px] h-[750px] pointer-events-none z-0"
         style={{
@@ -300,7 +300,7 @@ const Models = () => {
         transition={{ duration: 28, repeat: Infinity, ease: "easeInOut" }}
       />
 
-      {/* Center accent glow — mid-page (subtle) */}
+      {/* Center accent glow. mid-page (subtle) */}
       <motion.div
         className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[600px] pointer-events-none z-0"
         style={{
@@ -319,7 +319,7 @@ const Models = () => {
         }}
       />
 
-      {/* Vertical depth gradient (non-fixed — scrolls with content) */}
+      {/* Vertical depth gradient (non-fixed. scrolls with content) */}
       <div
         className="absolute inset-0 pointer-events-none z-0"
         style={{
@@ -346,7 +346,7 @@ const Models = () => {
 
           <div className="container mx-auto px-4">
             <div className="grid grid-cols-1 lg:grid-cols-[1fr_340px] gap-10 lg:gap-14 items-start">
-              {/* Left – Hero copy */}
+              {/* Left, Hero copy */}
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -420,7 +420,7 @@ const Models = () => {
                 </motion.div>
               </motion.div>
 
-              {/* Right – Quiz panel (integrated) */}
+              {/* Right, Quiz panel (integrated) */}
               <motion.div
                 initial={{ opacity: 0, y: 24 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -792,7 +792,7 @@ const ProductCard = ({ product, index, isSelected, canSelect, onToggleSelect }: 
               Ver detalhes
             </Link>
 
-            {/* Compare button — EXPLICIT */}
+            {/* Compare button. EXPLICIT */}
             <button
               onClick={(e) => {
                 e.stopPropagation();

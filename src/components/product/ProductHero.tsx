@@ -166,7 +166,7 @@ export default function ProductHero({ product, content, onContact, selectedColor
               <ColorSelector colors={product.colors} onColorChange={onColorChange} />
             )}
 
-            {/* ── Specs Strip — 3 cols on mobile, 5 on md+ ── */}
+            {/* ── Specs Strip. 3 cols on mobile, 5 on md+ ── */}
             <motion.div
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}

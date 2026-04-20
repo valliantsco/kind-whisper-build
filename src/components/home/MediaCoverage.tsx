@@ -57,7 +57,7 @@ const MediaCoverage = () => {
           </p>
         </motion.div>
 
-        {/* ── Placeholder — awaiting real press coverage ── */}
+        {/* ── Placeholder. awaiting real press coverage ── */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

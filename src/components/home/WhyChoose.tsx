@@ -29,7 +29,7 @@ const PILLARS = [
     title: "Consultivo de Verdade",
     stat: "ATENDIMENTO",
     description:
-      "A gente entende sua rotina para indicar o modelo certo — sem recomendação genérica.",
+      "A gente entende sua rotina para indicar o modelo certo. sem recomendação genérica.",
   },
 ];
 
@@ -59,7 +59,7 @@ const WhyChoose = () => {
         ))}
       </div>
 
-      {/* Vertical accent line — left side, suggests stability */}
+      {/* Vertical accent line. left side, suggests stability */}
       <motion.div
         className="absolute left-[8%] top-[10%] w-[1px] pointer-events-none"
         style={{ background: "linear-gradient(to bottom, transparent, hsl(var(--primary) / 0.12), transparent)" }}

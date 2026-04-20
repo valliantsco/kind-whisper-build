@@ -65,7 +65,7 @@ function getBarPercent(products: Product[], key: keyof Product, index: number, h
 }
 
 /* ═══════════════════════════════════════════
-   Intelligent labels — derived from product data
+   Intelligent labels. derived from product data
    ═══════════════════════════════════════════ */
 
 interface ProductInsight {
@@ -170,7 +170,7 @@ function deriveInsights(products: Product[]): ProductInsight[] {
     }
     // Check if there's a clear value anomaly (high specs for low price)
     if (priceRank === 0 && scoreRank <= 1) {
-      costBenefit = `Excelente relação custo-benefício — entrega mais do que a faixa de preço sugere.`;
+      costBenefit = `Excelente relação custo-benefício. entrega mais do que a faixa de preço sugere.`;
       positionLabel = "Melhor custo-benefício";
     }
 
@@ -378,7 +378,7 @@ const CompareModal = ({ open, onClose, products }: CompareModalProps) => {
                   ))}
                 </div>
 
-                {/* ═══ 3. PROFILE MATCH — "Qual modelo combina com você" ═══ */}
+                {/* ═══ 3. PROFILE MATCH. "Qual modelo combina com você" ═══ */}
                 <div className="mb-8">
                   <SectionHeader icon={User} label="Qual modelo combina com você" />
 
@@ -403,7 +403,7 @@ const CompareModal = ({ open, onClose, products }: CompareModalProps) => {
                   </div>
                 </div>
 
-                {/* ═══ 4. SPEC TABLE — enriched with bars ═══ */}
+                {/* ═══ 4. SPEC TABLE. enriched with bars ═══ */}
                 <div className="mb-8">
                   <SectionHeader icon={Trophy} label="Comparativo de atributos" />
 

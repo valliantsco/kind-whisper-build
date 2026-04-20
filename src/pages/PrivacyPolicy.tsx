@@ -111,7 +111,7 @@ export default function PrivacyPolicy() {
               </motion.h1>
               <motion.p variants={fadeUp} custom={2}
                 className="text-primary-foreground/50 text-lg leading-relaxed max-w-2xl mb-4">
-                Sua confiança é parte essencial da nossa marca. Aqui você encontra, com total transparência, como a MS Eletric trata, protege e respeita seus dados pessoais — em conformidade com a Lei Geral de Proteção de Dados (LGPD — Lei nº 13.709/2018).
+                Sua confiança é parte essencial da nossa marca. Aqui você encontra, com total transparência, como a MS Eletric trata, protege e respeita seus dados pessoais. em conformidade com a Lei Geral de Proteção de Dados (LGPD. Lei nº 13.709/2018).
               </motion.p>
               <motion.p variants={fadeUp} custom={3}
                 className="text-primary-foreground/30 text-sm">
@@ -132,7 +132,7 @@ export default function PrivacyPolicy() {
 
             <PolicyBlock icon={Eye} title="1. Quem somos" index={0}>
               <p>
-                A MS Eletric, inscrita sob o CNPJ nº XX.XXX.XXX/0001-XX, com sede na Av. João Pinheiro, 3747, Bairro Brasil, Uberlândia — MG, CEP 38400-714, é a controladora dos dados pessoais coletados por meio deste site, do showroom físico e de seus canais digitais de atendimento.
+                A MS Eletric, inscrita sob o CNPJ nº XX.XXX.XXX/0001-XX, com sede na Av. João Pinheiro, 3747, Bairro Brasil, Uberlândia. MG, CEP 38400-714, é a controladora dos dados pessoais coletados por meio deste site, do showroom físico e de seus canais digitais de atendimento.
               </p>
               <p>
                 Estamos comprometidos com a segurança, a privacidade e a transparência no tratamento de dados pessoais, respeitando integralmente a legislação brasileira vigente.
@@ -143,12 +143,12 @@ export default function PrivacyPolicy() {
               <p>Durante sua interação com a MS Eletric, podemos coletar os seguintes dados:</p>
               <ul className="list-none space-y-2.5 mt-3">
                 {[
-                  "Nome completo — para identificação e personalização do atendimento",
-                  "Número de WhatsApp/telefone — para comunicação direta e suporte consultivo",
-                  "Cidade e estado — para adequar ofertas, logística e recomendação de modelos",
-                  "Mensagens e áudios enviados — para compreender sua necessidade e direcionar o atendimento",
-                  "Dados de navegação — cookies, endereço IP, páginas visitadas e tempo de permanência para melhorar a experiência do site",
-                  "Informações do quiz — respostas às perguntas de recomendação de modelos para personalizar sugestões",
+                  "Nome completo. para identificação e personalização do atendimento",
+                  "Número de WhatsApp/telefone. para comunicação direta e suporte consultivo",
+                  "Cidade e estado. para adequar ofertas, logística e recomendação de modelos",
+                  "Mensagens e áudios enviados. para compreender sua necessidade e direcionar o atendimento",
+                  "Dados de navegação. cookies, endereço IP, páginas visitadas e tempo de permanência para melhorar a experiência do site",
+                  "Informações do quiz. respostas às perguntas de recomendação de modelos para personalizar sugestões",
                 ].map((item, i) => (
                   <li key={i} className="flex items-start gap-2.5">
                     <span className="w-1.5 h-1.5 rounded-full mt-2 shrink-0" style={{ background: "hsl(var(--primary) / 0.5)" }} />
@@ -162,11 +162,11 @@ export default function PrivacyPolicy() {
               <p>Seus dados são utilizados exclusivamente para:</p>
               <ul className="list-none space-y-2.5 mt-3">
                 {[
-                  "Atendimento consultivo — orientar sobre modelos, categorias e soluções de mobilidade elétrica",
-                  "Comunicação — responder dúvidas, dar suporte técnico e acompanhar sua jornada de compra",
-                  "Personalização — adaptar recomendações, conteúdo e ofertas ao seu perfil de uso",
-                  "Melhoria do site — analisar padrões de navegação para otimizar a experiência digital",
-                  "Obrigações legais — cumprir exigências fiscais, contratuais e regulatórias aplicáveis",
+                  "Atendimento consultivo. orientar sobre modelos, categorias e soluções de mobilidade elétrica",
+                  "Comunicação. responder dúvidas, dar suporte técnico e acompanhar sua jornada de compra",
+                  "Personalização. adaptar recomendações, conteúdo e ofertas ao seu perfil de uso",
+                  "Melhoria do site. analisar padrões de navegação para otimizar a experiência digital",
+                  "Obrigações legais. cumprir exigências fiscais, contratuais e regulatórias aplicáveis",
                 ].map((item, i) => (
                   <li key={i} className="flex items-start gap-2.5">
                     <span className="w-1.5 h-1.5 rounded-full mt-2 shrink-0" style={{ background: "hsl(var(--primary) / 0.5)" }} />
@@ -185,9 +185,9 @@ export default function PrivacyPolicy() {
               </p>
               <ul className="list-none space-y-2.5 mt-3">
                 {[
-                  "Prestadores de serviço — plataformas de comunicação (WhatsApp), hospedagem, analytics e processamento, sob contrato de confidencialidade",
-                  "Obrigação legal — quando exigido por lei, decisão judicial ou requisição de autoridade competente",
-                  "Proteção de direitos — para resguardar os direitos da MS Eletric em processos administrativos ou judiciais",
+                  "Prestadores de serviço. plataformas de comunicação (WhatsApp), hospedagem, analytics e processamento, sob contrato de confidencialidade",
+                  "Obrigação legal. quando exigido por lei, decisão judicial ou requisição de autoridade competente",
+                  "Proteção de direitos. para resguardar os direitos da MS Eletric em processos administrativos ou judiciais",
                 ].map((item, i) => (
                   <li key={i} className="flex items-start gap-2.5">
                     <span className="w-1.5 h-1.5 rounded-full mt-2 shrink-0" style={{ background: "hsl(var(--primary) / 0.5)" }} />
@@ -222,9 +222,9 @@ export default function PrivacyPolicy() {
               </p>
               <ul className="list-none space-y-2.5 mt-3">
                 {[
-                  "Essenciais — necessários para o funcionamento básico do site",
-                  "Analíticos — coletam dados anônimos sobre uso e performance",
-                  "Funcionais — lembram preferências e configurações do usuário",
+                  "Essenciais. necessários para o funcionamento básico do site",
+                  "Analíticos. coletam dados anônimos sobre uso e performance",
+                  "Funcionais. lembram preferências e configurações do usuário",
                 ].map((item, i) => (
                   <li key={i} className="flex items-start gap-2.5">
                     <span className="w-1.5 h-1.5 rounded-full mt-2 shrink-0" style={{ background: "hsl(var(--primary) / 0.5)" }} />
@@ -243,13 +243,13 @@ export default function PrivacyPolicy() {
               </p>
               <ul className="list-none space-y-2.5 mt-3">
                 {[
-                  "Confirmação e acesso — saber se tratamos seus dados e ter acesso a eles",
-                  "Correção — solicitar a atualização de dados incompletos, inexatos ou desatualizados",
-                  "Anonimização ou bloqueio — de dados desnecessários ou tratados em desconformidade",
-                  "Eliminação — solicitar a exclusão de dados pessoais tratados com base no consentimento",
-                  "Portabilidade — receber seus dados em formato estruturado",
-                  "Revogação do consentimento — a qualquer momento, sem prejuízo ao tratamento já realizado",
-                  "Oposição — a tratamento que viole a LGPD",
+                  "Confirmação e acesso. saber se tratamos seus dados e ter acesso a eles",
+                  "Correção. solicitar a atualização de dados incompletos, inexatos ou desatualizados",
+                  "Anonimização ou bloqueio. de dados desnecessários ou tratados em desconformidade",
+                  "Eliminação. solicitar a exclusão de dados pessoais tratados com base no consentimento",
+                  "Portabilidade. receber seus dados em formato estruturado",
+                  "Revogação do consentimento. a qualquer momento, sem prejuízo ao tratamento já realizado",
+                  "Oposição. a tratamento que viole a LGPD",
                 ].map((item, i) => (
                   <li key={i} className="flex items-start gap-2.5">
                     <span className="w-1.5 h-1.5 rounded-full mt-2 shrink-0" style={{ background: "hsl(var(--primary) / 0.5)" }} />
@@ -277,10 +277,10 @@ export default function PrivacyPolicy() {
               </p>
               <div className="mt-4 rounded-lg p-5"
                 style={{ background: "hsl(0 0% 100% / 0.03)", border: "1px solid hsl(0 0% 100% / 0.06)" }}>
-                <p className="font-semibold text-primary-foreground/70 mb-2">MS Eletric — Encarregado de Proteção de Dados</p>
+                <p className="font-semibold text-primary-foreground/70 mb-2">MS Eletric. Encarregado de Proteção de Dados</p>
                 <p>E-mail: contato@mseletric.com</p>
                 <p>Telefone: (34) 99284-9900</p>
-                <p>Endereço: Av. João Pinheiro, 3747 — Brasil, Uberlândia — MG, 38400-714</p>
+                <p>Endereço: Av. João Pinheiro, 3747. Brasil, Uberlândia. MG, 38400-714</p>
               </div>
               <p className="mt-4">
                 A MS Eletric se reserva o direito de atualizar esta política a qualquer momento, sempre comunicando eventuais alterações relevantes por meio de seus canais oficiais.

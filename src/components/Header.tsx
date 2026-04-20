@@ -168,7 +168,7 @@ const Header = ({ onContactClick }: HeaderProps) => {
     <>
     <header className="fixed top-0 left-0 right-0 z-50 px-4 pt-3">
       <div ref={headerRef} className="mx-auto max-w-7xl relative">
-        {/* Main container — wraps bar + mobile dropdown seamlessly */}
+        {/* Main container. wraps bar + mobile dropdown seamlessly */}
         <div
           className="relative overflow-hidden transition-[border-radius] duration-300"
           style={{
@@ -235,7 +235,7 @@ const Header = ({ onContactClick }: HeaderProps) => {
               ))}
             </nav>
 
-            {/* CTA — desktop only */}
+            {/* CTA. desktop only */}
             <div className="relative group hidden lg:block">
               <span
                 className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-700 ease-out pointer-events-none"
@@ -279,7 +279,7 @@ const Header = ({ onContactClick }: HeaderProps) => {
             {mobileMenuTrigger}
           </div>
 
-          {/* Mobile dropdown — renders inside same container */}
+          {/* Mobile dropdown. renders inside same container */}
           {mobileDropdown}
         </div>
 
@@ -665,7 +665,7 @@ const Header = ({ onContactClick }: HeaderProps) => {
                     </div>
                   </>
                 ) : activeItem.label === "Visite-nos" ? (
-                  /* Enhanced Sobre Nós layout — full width */
+                  /* Enhanced Sobre Nós layout. full width */
                   <div className="flex gap-3" style={{ minHeight: "340px" }}>
 
                       {/* Left panel: Info card */}
@@ -722,7 +722,7 @@ const Header = ({ onContactClick }: HeaderProps) => {
                                 Av. João Pinheiro, 3747
                               </p>
                               <p className="text-white/40 text-[10.5px] tracking-wide">
-                                Uberlândia — MG, 38408-168
+                                Uberlândia. MG, 38408-168
                               </p>
                             </div>
                           </div>
@@ -765,7 +765,7 @@ const Header = ({ onContactClick }: HeaderProps) => {
                             </div>
                             <div className="space-y-1.5">
                               {[
-                                { day: "Seg – Sex", hours: "08h – 18h", active: true },
+                                { day: "Seg, Sex", hours: "08h – 18h", active: true },
                                 { day: "Sábado", hours: "08h – 12h", active: true },
                                 { day: "Domingo", hours: "Fechado", active: false },
                               ].map((row) => (
@@ -816,7 +816,7 @@ const Header = ({ onContactClick }: HeaderProps) => {
                           window.open("https://maps.app.goo.gl/7iwuPGQuN4rAhqRf8", "_blank");
                         }}
                       >
-                        {/* Google Maps iframe — dark styled */}
+                        {/* Google Maps iframe. dark styled */}
                         <div className="absolute inset-0 overflow-hidden rounded-xl">
                           <iframe
                             src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d2250!2d-48.26122457146234!3d-18.892441917718067!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1spt-BR!2sbr!4v1700000000000!5m2!1spt-BR!2sbr"
@@ -898,7 +898,7 @@ const Header = ({ onContactClick }: HeaderProps) => {
                       </motion.div>
                     </div>
                 ) : (
-                  /* Icon-based list — compact horizontal cards */
+                  /* Icon-based list. compact horizontal cards */
                   <>
                     <div className="mb-4">
                       <h3 className="text-white/90 text-base font-semibold tracking-wide">Como podemos ajudar?</h3>

@@ -138,12 +138,12 @@ const TestRide = () => {
                 <div className="space-y-3">
                   <p className="text-sm text-primary-foreground/60">
                     Av. João Pinheiro, 3747<br />
-                    Brasil — Uberlândia, MG<br />
+                    Brasil. Uberlândia, MG<br />
                     CEP 38400-714
                   </p>
                   <div className="flex items-center gap-2 text-sm text-primary-foreground/40">
                     <Clock className="w-3.5 h-3.5 text-primary/60" />
-                    Seg–Sex: 9h às 18h | Sáb: 9h às 12h
+                    Seg, Sex: 9h às 18h | Sáb: 9h às 12h
                   </div>
                 </div>
               </motion.div>
