@@ -23,7 +23,7 @@ const FAQ_CATEGORIES = [
     label: "Produtos e Modelos",
     questions: [
       { q: "Qual modelo é ideal para mim?", a: "Depende do seu perfil de uso. Nosso quiz de recomendação ajuda a identificar o modelo certo, ou você pode falar com um consultor para uma indicação personalizada." },
-      { q: "Preciso de habilitação para pilotar?", a: "Depende do modelo. Autopropelidos e bicicletas elétricas não exigem habilitação. Scooters e motos elétricas podem exigir CNH categoria A. Consulte as especificações de cada modelo." },
+      { q: "Preciso de habilitação para pilotar?", a: "Depende do modelo. Autopropelidos e bicicletas elétricas não exigem habilitação. Motos elétricas podem exigir CNH categoria A. Consulte as especificações de cada modelo." },
       { q: "Qual a autonomia dos veículos?", a: "A autonomia varia conforme o modelo, condições de uso, peso do piloto e terreno. Cada página de produto apresenta a autonomia estimada em condições normais de uso." },
       { q: "Posso fazer um test-ride?", a: "Sim! Oferecemos a possibilidade de test-ride em nossa loja de Uberlândia. Entre em contato para agendar o seu." },
     ],
