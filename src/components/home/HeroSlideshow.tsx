@@ -50,6 +50,21 @@ const SLIDES: Slide[] = [
       { icon: Gauge, value: "75km/h", label: "Velocidade" },
       { icon: Battery, value: "40km", label: "Autonomia" },
     ],
+  {
+    badge: "CONDIÇÕES ESPECIAIS",
+    headline: ["FACILIDADE", "PARA SAIR", "PILOTANDO"],
+    highlightLine: 1,
+    subheadline:
+      "Condições flexíveis para você escolher a melhor forma de pagamento na MS Eletric.",
+    primaryCta: { text: "Consultar condições", href: "#contato" },
+    secondaryCta: { text: "Ver todos os modelos", href: "/modelos" },
+    youtubeId: "aogNFr_-56w",
+    youtubeStart: 8,
+    payments: [
+      { icon: CreditCard, title: "Até 12x sem juros", detail: "No cartão de crédito" },
+      { icon: Wallet, title: "Pix com desconto", detail: "Condição especial à vista" },
+      { icon: Banknote, title: "Financiamento", detail: "Sob consulta" },
+    ],
   },
 ];
 
