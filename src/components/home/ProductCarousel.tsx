@@ -33,8 +33,8 @@ interface Product {
 
 const PRODUCTS: Product[] = [
   
-  { name: "Tour 3K", slug: "tour-3k", category: "Scooters Elétricas", image: modelTour3k, autonomy: "40km", speed: "75km/h", load: "120kg", price: "R$ 16.990" },
-  { name: "New Holiday", slug: "new-holiday", category: "Scooters Elétricas", image: modelNewHoliday, autonomy: "50km", speed: "50km/h", load: "150kg", price: "R$ 15.990" },
+  { name: "Tour 3K", slug: "tour-3k", category: "Motos Elétricas", image: modelTour3k, autonomy: "40km", speed: "75km/h", load: "120kg", price: "R$ 16.990" },
+  { name: "New Holiday", slug: "new-holiday", category: "Motos Elétricas", image: modelNewHoliday, autonomy: "50km", speed: "50km/h", load: "150kg", price: "R$ 15.990" },
   { name: "Bliss", slug: "bliss", category: "Autopropelidos", image: modelBliss, autonomy: "70km", speed: "32km/h", load: "150kg", price: "R$ 15.990" },
   { name: "Rhino Delivery", slug: "rhino-delivery", category: "Utilitários", image: modelRhino, autonomy: "75km", speed: "65km/h", load: "150kg", price: "R$ 18.990" },
   { name: "Liberty Ultra", slug: "liberty-ultra", category: "Autopropelidos", image: modelLibertyUltra, autonomy: "70km", speed: "32km/h", load: "150kg", price: "R$ 12.990" },

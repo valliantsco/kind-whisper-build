@@ -1136,9 +1136,9 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
   "ms-2500": {
     headline: "Mais força e mais presença para a sua mobilidade urbana",
     subheadline:
-      "A MS 2500 é uma scooter elétrica de 2.500W com 52 km/h de velocidade máxima e 50 km de autonomia — pensada para quem quer se deslocar pela cidade com mais potência, mais confiança e mais impacto.",
+      "A MS 2500 é uma moto elétrica de 2.500W com 52 km/h de velocidade máxima e 50 km de autonomia — pensada para quem quer se deslocar pela cidade com mais potência, mais confiança e mais impacto.",
     supportText:
-      "Se você quer uma scooter que acompanhe o ritmo real do trânsito urbano, a MS 2500 entrega velocidade, robustez e presença visual em um modelo pensado para uso frequente. Mais do que um meio de transporte — uma evolução na forma como você se move pela cidade.",
+      "Se você quer uma moto que acompanhe o ritmo real do trânsito urbano, a MS 2500 entrega velocidade, robustez e presença visual em um modelo pensado para uso frequente. Mais do que um meio de transporte — uma evolução na forma como você se move pela cidade.",
     idealFor: [
       {
         icon: "route",
@@ -1153,7 +1153,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
       {
         icon: "city",
         title: "Uso urbano frequente",
-        desc: "Para quem depende do veículo diariamente e quer uma scooter com mais estrutura e mais presença.",
+        desc: "Para quem depende do veículo diariamente e quer uma moto com mais estrutura e mais presença.",
       },
       {
         icon: "piggyBank",
@@ -1172,7 +1172,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
       },
       {
         title: "Presença visual marcante",
-        desc: "Design robusto e encorpado que transmite força e personalidade. Uma scooter que se destaca por onde passa.",
+        desc: "Design robusto e encorpado que transmite força e personalidade. Uma moto que se destaca por onde passa.",
       },
       {
         title: "Capacidade para 150 kg",
@@ -1211,7 +1211,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
     ],
     urbanContext: {
       title: "Potência elétrica para quem vive o trânsito",
-      body: "A MS 2500 foi projetada para quem precisa de mais do que uma mobilidade elétrica básica. Se a sua rotina exige velocidade real, potência nas arrancadas e presença no trânsito, essa é a scooter que entrega tudo isso com zero emissão e custo operacional mínimo.",
+      body: "A MS 2500 foi projetada para quem precisa de mais do que uma mobilidade elétrica básica. Se a sua rotina exige velocidade real, potência nas arrancadas e presença no trânsito, essa é a moto que entrega tudo isso com zero emissão e custo operacional mínimo.",
       highlights: [
         "2.500W de potência para o trânsito urbano real",
         "52 km/h para acompanhar o fluxo da cidade",
@@ -1228,17 +1228,17 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
     },
     differentials: {
       title: "Onde a MS 2500 se destaca na linha MS Eletric",
-      body: "A MS 2500 é a escolha certa para quem quer uma scooter elétrica com mais presença, mais potência e uma proposta urbana mais completa. Com 2.500W e 52 km/h, ela se posiciona como a opção para quem quer velocidade real no trânsito urbano sem abrir mão da economia e praticidade da mobilidade elétrica.",
+      body: "A MS 2500 é a escolha certa para quem quer uma moto elétrica com mais presença, mais potência e uma proposta urbana mais completa. Com 2.500W e 52 km/h, ela se posiciona como a opção para quem quer velocidade real no trânsito urbano sem abrir mão da economia e praticidade da mobilidade elétrica.",
     },
     comparisonTip:
-      "Se você busca uma scooter mais acessível para começar, a Holiday 1000 é uma boa porta de entrada. Se quer um visual clássico com boa potência, a New Holiday atende bem. Mas se velocidade real no trânsito, mais potência e mais presença são prioridade, a MS 2500 é a scooter que mais entrega nessa faixa.",
+      "Se você busca uma moto mais acessível para começar, a Holiday 1000 é uma boa porta de entrada. Se quer um visual clássico com boa potência, a New Holiday atende bem. Mas se velocidade real no trânsito, mais potência e mais presença são prioridade, a MS 2500 é a moto que mais entrega nessa faixa.",
     faq: [
       {
         q: "A MS 2500 é indicada para qual tipo de uso?",
         a: "Para uso urbano frequente com mais potência e velocidade. Com 2.500W e 52 km/h, ela acompanha o fluxo real do trânsito e entrega uma experiência de condução mais forte e mais confiante.",
       },
       {
-        q: "Essa scooter elétrica faz sentido para uso diário?",
+        q: "Essa moto elétrica faz sentido para uso diário?",
         a: "Sim. A MS 2500 foi pensada para quem depende do veículo no dia a dia. 50 km de autonomia cobrem a maioria das rotinas urbanas com folga.",
       },
       {
@@ -1251,7 +1251,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
       },
       {
         q: "Como funciona a recarga?",
-        a: "Tomada comum (110V ou 220V), de 6 a 7 horas para carga completa. Conecte à noite e tenha a scooter pronta pela manhã.",
+        a: "Tomada comum (110V ou 220V), de 6 a 7 horas para carga completa. Conecte à noite e tenha a moto pronta pela manhã.",
       },
       {
         q: "Como é a manutenção?",
@@ -1275,9 +1275,9 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
   "new-holiday": {
     headline: "Mobilidade elétrica completa para substituir a moto no dia a dia",
     subheadline:
-      "A New Holiday é uma scooter elétrica de 2.000W com design clássico, 50 km de autonomia e 50 km/h — pensada para quem quer praticidade real na cidade sem abrir mão de conforto e presença.",
+      "A New Holiday é uma moto elétrica de 2.000W com design clássico, 50 km de autonomia e 50 km/h — pensada para quem quer praticidade real na cidade sem abrir mão de conforto e presença.",
     supportText:
-      "Se você busca uma alternativa elétrica para a moto convencional, a New Holiday entrega tudo o que você precisa: velocidade para o trânsito, autonomia para a rotina e economia brutal no uso diário. Uma scooter completa, funcional e bonita.",
+      "Se você busca uma alternativa elétrica para a moto convencional, a New Holiday entrega tudo o que você precisa: velocidade para o trânsito, autonomia para a rotina e economia brutal no uso diário. Uma moto completa, funcional e bonita.",
     idealFor: [
       {
         icon: "route",
@@ -1303,7 +1303,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
     whyChoose: [
       {
         title: "Proposta completa",
-        desc: "2.000W, 50 km/h e 50 km de autonomia. A New Holiday entrega tudo o que uma scooter urbana precisa — sem concessões.",
+        desc: "2.000W, 50 km/h e 50 km de autonomia. A New Holiday entrega tudo o que uma moto urbana precisa — sem concessões.",
       },
       {
         title: "Design clássico atemporal",
@@ -1345,7 +1345,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
       },
       {
         title: "Recarregue com simplicidade",
-        desc: "6 a 8 horas na tomada comum. Conecte à noite e tenha a scooter pronta pela manhã.",
+        desc: "6 a 8 horas na tomada comum. Conecte à noite e tenha a moto pronta pela manhã.",
       },
     ],
     urbanContext: {
@@ -1363,21 +1363,21 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
       speed: "Velocidade adequada para acompanhar o fluxo real do trânsito da cidade",
       motor: "Entrega alinhada à proposta funcional e completa do modelo",
       recharge: "Rotina simples para encaixar o uso no dia a dia",
-      load: "Compatível com a proposta urbana e cotidiana da scooter",
+      load: "Compatível com a proposta urbana e cotidiana da moto",
     },
     differentials: {
       title: "Onde a New Holiday se destaca na linha MS Eletric",
-      body: "A New Holiday é a scooter elétrica mais equilibrada do portfólio — combina design clássico, potência suficiente para o trânsito e autonomia para a rotina em um único modelo. Ela ocupa o espaço da scooter urbana completa: não é a mais potente, mas é a mais bem resolvida para quem quer substituir a moto a combustão no dia a dia.",
+      body: "A New Holiday é a moto elétrica mais equilibrada do portfólio — combina design clássico, potência suficiente para o trânsito e autonomia para a rotina em um único modelo. Ela ocupa o espaço da moto urbana completa: não é a mais potente, mas é a mais bem resolvida para quem quer substituir a moto a combustão no dia a dia.",
     },
     comparisonTip:
-      "Se você busca uma entrada mais acessível nas scooters, a Holiday 1000 oferece um investimento menor. Se quer mais potência e velocidade, a MS 2500 sobe de nível. Mas se o objetivo é uma scooter completa, equilibrada e com design clássico para substituir a moto no dia a dia, a New Holiday é a escolha mais bem resolvida.",
+      "Se você busca uma entrada mais acessível nas motos, a Holiday 1000 oferece um investimento menor. Se quer mais potência e velocidade, a MS 2500 sobe de nível. Mas se o objetivo é uma moto completa, equilibrada e com design clássico para substituir a moto no dia a dia, a New Holiday é a escolha mais bem resolvida.",
     faq: [
       {
         q: "A New Holiday é indicada para qual tipo de uso?",
         a: "Para uso urbano diário como alternativa à moto a combustão. Com 2.000W, 50 km/h e 50 km de autonomia, ela cobre a maioria das rotinas urbanas com praticidade.",
       },
       {
-        q: "Essa scooter elétrica faz sentido para deslocamentos diários?",
+        q: "Essa moto elétrica faz sentido para deslocamentos diários?",
         a: "Sim. A New Holiday foi pensada exatamente para isso — velocidade para o trânsito, autonomia para a rotina e economia brutal no uso frequente.",
       },
       {
@@ -1386,7 +1386,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
       },
       {
         q: "Ela é uma boa escolha para quem quer praticidade e simplicidade?",
-        a: "Com certeza. A New Holiday é a scooter mais equilibrada da linha — funcional, bonita e fácil de incorporar na rotina sem complicação.",
+        a: "Com certeza. A New Holiday é a moto mais equilibrada da linha — funcional, bonita e fácil de incorporar na rotina sem complicação.",
       },
       {
         q: "Como funciona a recarga?",
@@ -1402,7 +1402,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
       },
       {
         q: "Para quem a New Holiday é a melhor escolha dentro do portfólio?",
-        a: "Para quem quer uma scooter elétrica completa e equilibrada para substituir a moto no dia a dia. Se praticidade, design e economia importam, a New Holiday é a resposta.",
+        a: "Para quem quer uma moto elétrica completa e equilibrada para substituir a moto no dia a dia. Se praticidade, design e economia importam, a New Holiday é a resposta.",
       },
     ],
     finalCta: {
@@ -1412,11 +1412,11 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
     },
   },
   "holiday-1000": {
-    headline: "Sua porta de entrada no mundo das scooters elétricas",
+    headline: "Sua porta de entrada no mundo das motos elétricas",
     subheadline:
-      "A Holiday 1000 é uma scooter elétrica acessível com motor de 1.000W, 45 km de autonomia e 32 km/h — pensada para quem quer mobilidade urbana prática, econômica e descomplicada.",
+      "A Holiday 1000 é uma moto elétrica acessível com motor de 1.000W, 45 km de autonomia e 32 km/h — pensada para quem quer mobilidade urbana prática, econômica e descomplicada.",
     supportText:
-      "Compacta, funcional e fácil de usar. A Holiday 1000 é a scooter ideal para quem quer começar na mobilidade elétrica com investimento mais acessível, sem abrir mão de conforto, economia e praticidade real no dia a dia.",
+      "Compacta, funcional e fácil de usar. A Holiday 1000 é a moto ideal para quem quer começar na mobilidade elétrica com investimento mais acessível, sem abrir mão de conforto, economia e praticidade real no dia a dia.",
     idealFor: [
       {
         icon: "route",
@@ -1425,13 +1425,13 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
       },
       {
         icon: "sparkles",
-        title: "Primeira scooter elétrica",
-        desc: "Entrada acessível e descomplicada para quem quer experimentar a mobilidade elétrica em formato scooter.",
+        title: "Primeira moto elétrica",
+        desc: "Entrada acessível e descomplicada para quem quer experimentar a mobilidade elétrica em formato moto.",
       },
       {
         icon: "piggyBank",
         title: "Economia no dia a dia",
-        desc: "Sem combustível, sem IPVA, manutenção mínima. O menor custo de uso entre as scooters da linha.",
+        desc: "Sem combustível, sem IPVA, manutenção mínima. O menor custo de uso entre as motos da linha.",
       },
       {
         icon: "city",
@@ -1441,8 +1441,8 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
     ],
     whyChoose: [
       {
-        title: "O melhor preço entre as scooters",
-        desc: "R$ 10.490 — o menor investimento para ter uma scooter elétrica completa da MS Eletric com motor de 1.000W.",
+        title: "O melhor preço entre as motos",
+        desc: "R$ 10.490 — o menor investimento para ter uma moto elétrica completa da MS Eletric com motor de 1.000W.",
       },
       {
         title: "Simplicidade de uso",
@@ -1464,7 +1464,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
     dailyBenefits: [
       {
         title: "Mobilidade sem complicação",
-        desc: "A Holiday 1000 é tão simples quanto uma bicicleta, mas com o conforto e a praticidade de uma scooter.",
+        desc: "A Holiday 1000 é tão simples quanto uma bicicleta, mas com o conforto e a praticidade de uma moto.",
       },
       {
         title: "Economia que você sente",
@@ -1484,14 +1484,14 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
       },
       {
         title: "Recarregue na tomada",
-        desc: "8 a 10 horas na tomada comum. Conecte à noite e tenha a scooter pronta pela manhã.",
+        desc: "8 a 10 horas na tomada comum. Conecte à noite e tenha a moto pronta pela manhã.",
       },
     ],
     urbanContext: {
       title: "Mobilidade elétrica acessível para a cidade",
-      body: "A Holiday 1000 foi pensada para quem quer entrar no mundo das scooters elétricas sem grande investimento. Se você busca praticidade, economia e uma forma mais inteligente de se deslocar pela cidade, esse é o modelo que abre essa porta.",
+      body: "A Holiday 1000 foi pensada para quem quer entrar no mundo das motos elétricas sem grande investimento. Se você busca praticidade, economia e uma forma mais inteligente de se deslocar pela cidade, esse é o modelo que abre essa porta.",
       highlights: [
-        "O menor investimento entre as scooters MS Eletric",
+        "O menor investimento entre as motos MS Eletric",
         "Motor de 1.000W para deslocamentos urbanos práticos",
         "45 km de autonomia para cobrir a rotina",
         "Capacidade para 150 kg — estrutura sólida",
@@ -1506,22 +1506,22 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
     },
     differentials: {
       title: "Onde a Holiday 1000 se destaca na linha MS Eletric",
-      body: "A Holiday 1000 é a porta de entrada mais acessível no universo das scooters elétricas MS Eletric. Ela cumpre o papel de modelo inicial — funcional, econômico e descomplicado. Para quem quer mobilidade elétrica em formato scooter sem grande investimento, ela entrega exatamente o necessário para começar.",
+      body: "A Holiday 1000 é a porta de entrada mais acessível no universo das motos elétricas MS Eletric. Ela cumpre o papel de modelo inicial — funcional, econômico e descomplicado. Para quem quer mobilidade elétrica em formato moto sem grande investimento, ela entrega exatamente o necessário para começar.",
     },
     comparisonTip:
-      "Se você quer mais potência e velocidade para o trânsito, a New Holiday e a MS 2500 sobem de nível. Mas se praticidade, economia e o menor investimento possível em uma scooter são prioridade, a Holiday 1000 é a escolha mais direta e mais acessível da linha.",
+      "Se você quer mais potência e velocidade para o trânsito, a New Holiday e a MS 2500 sobem de nível. Mas se praticidade, economia e o menor investimento possível em uma moto são prioridade, a Holiday 1000 é a escolha mais direta e mais acessível da linha.",
     faq: [
       {
         q: "A Holiday 1000 é indicada para qual tipo de uso?",
         a: "Para deslocamentos urbanos leves e frequentes — trajetos curtos e médios na cidade, como ir ao trabalho, faculdade, mercado ou resolver tarefas do dia a dia.",
       },
       {
-        q: "Essa scooter elétrica faz sentido para deslocamentos diários?",
+        q: "Essa moto elétrica faz sentido para deslocamentos diários?",
         a: "Sim. Com 45 km de autonomia, a Holiday 1000 cobre a maioria das rotinas urbanas leves com praticidade e economia.",
       },
       {
         q: "Qual o diferencial dela em relação a outros modelos da linha?",
-        a: "É a scooter mais acessível do portfólio — R$ 10.490 com motor de 1.000W e 150 kg de capacidade. A entrada mais econômica no formato scooter.",
+        a: "É a moto mais acessível do portfólio — R$ 10.490 com motor de 1.000W e 150 kg de capacidade. A entrada mais econômica no formato moto.",
       },
       {
         q: "Ela é uma boa escolha para quem quer uma proposta mais compacta e prática?",
@@ -1541,7 +1541,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
       },
       {
         q: "Para quem a Holiday 1000 é a melhor escolha dentro do portfólio?",
-        a: "Para quem quer a entrada mais acessível em scooters elétricas. Se economia, simplicidade e praticidade são prioridade, a Holiday 1000 é a resposta.",
+        a: "Para quem quer a entrada mais acessível em motos elétricas. Se economia, simplicidade e praticidade são prioridade, a Holiday 1000 é a resposta.",
       },
     ],
     finalCta: {
@@ -1554,7 +1554,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
   "tour-3k": {
     headline: "Potência, presença e atitude para quem quer mais",
     subheadline:
-      "A Tour 3K é a scooter elétrica para quem não se contenta com o básico. Com motor de 3.000W, visual custom chopper e até 75 km/h, ela entrega uma experiência urbana mais intensa, mais marcante e com muito mais personalidade.",
+      "A Tour 3K é a moto elétrica para quem não se contenta com o básico. Com motor de 3.000W, visual custom chopper e até 75 km/h, ela entrega uma experiência urbana mais intensa, mais marcante e com muito mais personalidade.",
     supportText:
       "Se você busca uma mobilidade elétrica que chame atenção, transmita força e ofereça desempenho real na cidade, a Tour 3K é o próximo nível dentro da linha MS Eletric.",
     idealFor: [
@@ -1566,7 +1566,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
       {
         icon: "crown",
         title: "Quem valoriza estilo",
-        desc: "Visual custom chopper que se destaca em qualquer lugar. Uma scooter que expressa personalidade e atitude.",
+        desc: "Visual custom chopper que se destaca em qualquer lugar. Uma moto que expressa personalidade e atitude.",
       },
       {
         icon: "gauge",
@@ -1604,7 +1604,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
     dailyBenefits: [
       {
         title: "Presença que inspira confiança",
-        desc: "Chegar ao destino com uma scooter que transmite força e personalidade muda a forma como você se sente na cidade.",
+        desc: "Chegar ao destino com uma moto que transmite força e personalidade muda a forma como você se sente na cidade.",
       },
       {
         title: "Subidas sem esforço",
@@ -1625,7 +1625,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
     ],
     urbanContext: {
       title: "Feita para quem quer dominar a cidade",
-      body: "A Tour 3K foi projetada para quem vê a mobilidade elétrica como mais do que conveniência. É uma scooter para quem quer potência real, impacto visual e a sensação de pilotar algo que está acima do convencional. Com seu perfil custom chopper e motor de 3.000W, ela transforma qualquer trajeto urbano em uma experiência com mais força, mais estilo e mais personalidade.",
+      body: "A Tour 3K foi projetada para quem vê a mobilidade elétrica como mais do que conveniência. É uma moto para quem quer potência real, impacto visual e a sensação de pilotar algo que está acima do convencional. Com seu perfil custom chopper e motor de 3.000W, ela transforma qualquer trajeto urbano em uma experiência com mais força, mais estilo e mais personalidade.",
       highlights: [
         "Potência para subidas e arrancadas com confiança",
         "Design custom chopper único na linha",
@@ -1643,16 +1643,16 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
       motor:
         "3.000W de potência real — o grande diferencial do modelo, reforçando sua proposta de força, torque e presença.",
       recharge:
-        "6 a 8 horas na tomada convencional. Carregue durante a noite e tenha a scooter pronta pela manhã.",
+        "6 a 8 horas na tomada convencional. Carregue durante a noite e tenha a moto pronta pela manhã.",
       load:
-        "Capacidade de 120 kg, compatível com a proposta mais robusta e potente da scooter.",
+        "Capacidade de 120 kg, compatível com a proposta mais robusta e potente da moto.",
     },
     differentials: {
       title: "Onde a Tour 3K se destaca",
-      body: "A Tour 3K é a escolha certa para quem quer elevar o nível da mobilidade elétrica. Com o motor mais potente entre as scooters urbanas da linha, visual custom chopper exclusivo e velocidade de até 75 km/h, ela ocupa um espaço único no portfólio: é a scooter para quem quer mais potência, mais presença e uma experiência urbana muito mais marcante. Se você busca algo além do funcional — algo que transmita força, atitude e personalidade — a Tour 3K é o modelo que faz isso acontecer dentro da MS Eletric.",
+      body: "A Tour 3K é a escolha certa para quem quer elevar o nível da mobilidade elétrica. Com o motor mais potente entre as motos urbanas da linha, visual custom chopper exclusivo e velocidade de até 75 km/h, ela ocupa um espaço único no portfólio: é a moto para quem quer mais potência, mais presença e uma experiência urbana muito mais marcante. Se você busca algo além do funcional — algo que transmita força, atitude e personalidade — a Tour 3K é o modelo que faz isso acontecer dentro da MS Eletric.",
     },
     comparisonTip:
-      "Se você busca a scooter elétrica mais potente e mais marcante da linha, a Tour 3K é a resposta com seus 3.000W e visual custom chopper. Já se você quer robustez com um perfil mais urbano e equilibrado, a MS 2500 pode ser o caminho. Para uma entrada mais acessível, a Holiday 1000 e a New Holiday oferecem praticidade e economia.",
+      "Se você busca a moto elétrica mais potente e mais marcante da linha, a Tour 3K é a resposta com seus 3.000W e visual custom chopper. Já se você quer robustez com um perfil mais urbano e equilibrado, a MS 2500 pode ser o caminho. Para uma entrada mais acessível, a Holiday 1000 e a New Holiday oferecem praticidade e economia.",
     faq: [
       {
         q: "A Tour 3K é indicada para qual tipo de uso?",
@@ -1672,11 +1672,11 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
       },
       {
         q: "Como funciona a recarga?",
-        a: "Basta conectar na tomada convencional. A carga completa leva de 6 a 8 horas — ideal para carregar à noite e ter a scooter pronta pela manhã.",
+        a: "Basta conectar na tomada convencional. A carga completa leva de 6 a 8 horas — ideal para carregar à noite e ter a moto pronta pela manhã.",
       },
       {
         q: "Como é a manutenção?",
-        a: "Simples e econômica. Scooters elétricas têm menos peças móveis que veículos a combustão, o que reduz custos e frequência de manutenção. A MS Eletric oferece suporte técnico especializado.",
+        a: "Simples e econômica. Motos elétricas têm menos peças móveis que veículos a combustão, o que reduz custos e frequência de manutenção. A MS Eletric oferece suporte técnico especializado.",
       },
       {
         q: "Como funciona a garantia?",
@@ -1793,10 +1793,10 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
     },
     differentials: {
       title: "Onde o Triciclo Elétrico se destaca",
-      body: "O Triciclo Elétrico ocupa um espaço único no portfólio da MS Eletric: é a opção para quem quer mobilidade elétrica com mais estabilidade, mais conforto e mais confiança na condução. Enquanto as scooters oferecem agilidade e performance, o triciclo entrega tranquilidade, equilíbrio e uma experiência de uso mais acessível. É a escolha certa para quem prioriza segurança percebida, facilidade e uma rotina de deslocamentos mais serena — sem abrir mão da economia e da praticidade elétrica.",
+      body: "O Triciclo Elétrico ocupa um espaço único no portfólio da MS Eletric: é a opção para quem quer mobilidade elétrica com mais estabilidade, mais conforto e mais confiança na condução. Enquanto as motos oferecem agilidade e performance, o triciclo entrega tranquilidade, equilíbrio e uma experiência de uso mais acessível. É a escolha certa para quem prioriza segurança percebida, facilidade e uma rotina de deslocamentos mais serena — sem abrir mão da economia e da praticidade elétrica.",
     },
     comparisonTip:
-      "Se você prioriza estabilidade, conforto e uma condução mais segura, o Triciclo Elétrico é a escolha ideal com suas três rodas e proposta tranquila. Se prefere mais agilidade e velocidade em duas rodas, as scooters da linha — como a Holiday 1000 para entrada prática ou a MS 2500 para mais presença — podem ser mais adequadas. O triciclo é para quem quer equilíbrio e confiança acima de tudo.",
+      "Se você prioriza estabilidade, conforto e uma condução mais segura, o Triciclo Elétrico é a escolha ideal com suas três rodas e proposta tranquila. Se prefere mais agilidade e velocidade em duas rodas, as motos da linha — como a Holiday 1000 para entrada prática ou a MS 2500 para mais presença — podem ser mais adequadas. O triciclo é para quem quer equilíbrio e confiança acima de tudo.",
     faq: [
       {
         q: "O Triciclo Elétrico é indicado para qual tipo de uso?",
@@ -1807,8 +1807,8 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
         a: "Sim — é exatamente a proposta dele. As três rodas oferecem equilíbrio natural, eliminando a preocupação de manter o balanço em duas rodas.",
       },
       {
-        q: "Qual o diferencial dele em relação às scooters da linha?",
-        a: "A principal diferença é a estabilidade. Enquanto as scooters oferecem mais agilidade e velocidade, o triciclo entrega mais equilíbrio, mais conforto e uma condução mais acessível.",
+        q: "Qual o diferencial dele em relação às motos da linha?",
+        a: "A principal diferença é a estabilidade. Enquanto as motos oferecem mais agilidade e velocidade, o triciclo entrega mais equilíbrio, mais conforto e uma condução mais acessível.",
       },
       {
         q: "Ele é uma boa escolha para quem busca mais conforto e segurança?",
@@ -1939,7 +1939,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
       body: "A Rhino Delivery ocupa um espaço estratégico no portfólio da MS Eletric: é o utilitário elétrico pensado para quem precisa de um veículo de trabalho. Com a maior autonomia (120 km), a maior capacidade de carga (250 kg) e motor de 2.000W, ela é a resposta para operações que precisam de eficiência, economia e robustez. Se o seu negócio depende de entregas, logística ou deslocamentos operacionais, a Rhino Delivery é a solução que transforma custo em investimento.",
     },
     comparisonTip:
-      "A Rhino Delivery é o utilitário elétrico profissional da linha, com 120 km de autonomia e 250 kg de capacidade. Se você precisa de entrega e operação comercial, ela é a escolha clara. Se busca um utilitário com perfil de triciclo para carga mais leve, o Triciclo Elétrico pode atender. Para uso pessoal urbano, as scooters da linha — Holiday 1000, MS 2500 ou Tour 3K — oferecem propostas diferentes de mobilidade.",
+      "A Rhino Delivery é o utilitário elétrico profissional da linha, com 120 km de autonomia e 250 kg de capacidade. Se você precisa de entrega e operação comercial, ela é a escolha clara. Se busca um utilitário com perfil de triciclo para carga mais leve, o Triciclo Elétrico pode atender. Para uso pessoal urbano, as motos da linha — Holiday 1000, MS 2500 ou Tour 3K — oferecem propostas diferentes de mobilidade.",
     faq: [
       {
         q: "A Rhino Delivery é indicada para qual tipo de operação?",
@@ -2082,7 +2082,7 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
       body: "O Cargo é o utilitário elétrico de maior capacidade da linha MS Eletric. Com até 500 kg de carga, ele ocupa um espaço único no portfólio: é o veículo para quem precisa transportar peso de verdade com economia elétrica. Enquanto a Rhino Delivery foca em entregas com agilidade, o Cargo foca em volume e capacidade. Se a sua operação exige mover materiais, equipamentos ou mercadorias pesadas, o Cargo é a solução mais funcional e robusta da linha.",
     },
     comparisonTip:
-      "O Cargo é o utilitário de maior capacidade da linha, com até 500 kg de carga — ideal para transporte pesado e operações internas. Se você precisa de mais agilidade para entregas urbanas, a Rhino Delivery oferece 120 km de autonomia com 250 kg de capacidade. Para mobilidade pessoal, as scooters e triciclos da linha atendem outros perfis de uso.",
+      "O Cargo é o utilitário de maior capacidade da linha, com até 500 kg de carga — ideal para transporte pesado e operações internas. Se você precisa de mais agilidade para entregas urbanas, a Rhino Delivery oferece 120 km de autonomia com 250 kg de capacidade. Para mobilidade pessoal, as motos e triciclos da linha atendem outros perfis de uso.",
     faq: [
       {
         q: "O Cargo é indicado para qual tipo de operação?",
@@ -2508,10 +2508,10 @@ export const PRODUCT_CONTENT: Record<string, ProductContent> = {
     },
     differentials: {
       title: "Onde o Patinete 350 se destaca",
-      body: "O Patinete 350 é o produto mais compacto, mais portátil e mais acessível da linha MS Eletric. Ele não compete com scooters ou utilitários — ele complementa. É a solução para quem precisa resolver deslocamentos curtos com praticidade máxima: dobrável para levar em qualquer lugar, leve para carregar e com autonomia suficiente para cobrir a rotina urbana do dia a dia. Se o seu problema é a última milha, o Patinete 350 é a resposta.",
+      body: "O Patinete 350 é o produto mais compacto, mais portátil e mais acessível da linha MS Eletric. Ele não compete com motos ou utilitários — ele complementa. É a solução para quem precisa resolver deslocamentos curtos com praticidade máxima: dobrável para levar em qualquer lugar, leve para carregar e com autonomia suficiente para cobrir a rotina urbana do dia a dia. Se o seu problema é a última milha, o Patinete 350 é a resposta.",
     },
     comparisonTip:
-      "O Patinete 350 é a opção mais compacta, portátil e acessível do portfólio — ideal para última milha e deslocamentos curtos. Se você precisa de mais autonomia e velocidade para trajetos maiores, as bikes elétricas oferecem mais alcance. Para uma proposta de mobilidade urbana mais robusta, as scooters da linha atendem outro perfil de necessidade.",
+      "O Patinete 350 é a opção mais compacta, portátil e acessível do portfólio — ideal para última milha e deslocamentos curtos. Se você precisa de mais autonomia e velocidade para trajetos maiores, as bikes elétricas oferecem mais alcance. Para uma proposta de mobilidade urbana mais robusta, as motos da linha atendem outro perfil de necessidade.",
     faq: [
       {
         q: "O Patinete 350 é indicado para qual tipo de uso?",

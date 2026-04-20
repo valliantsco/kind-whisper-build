@@ -75,7 +75,7 @@ Motor: 500W | Vel. máxima: 32km/h | Autonomia: 60km | Recarga: 5h | Bateria: l�
 RECOMENDAR QUANDO: ruas ruins/paralelepípedo/terra leve, prioridade estabilidade, pouca confiança em 2 rodas
 EVITAR QUANDO: desempenho de moto, carga pesada
 
---- SCOOTERS ELÉTRICAS ---
+--- MOTOS ELÉTRICAS ---
 
 9. HOLIDAY 1000
 Motor: 1.000W | Vel. máxima: 32km/h | Autonomia: 45km | Recarga: 8-10h | Bateria: lítio removível | Carga: 150kg | Preço: R$10.490
@@ -94,7 +94,7 @@ EVITAR QUANDO: precisa de autonomia muito alta
 
 12. TOUR 3K
 Motor: 3.000W | Vel. máxima: 75km/h | Autonomia: 40km | Recarga: 6-8h | Bateria: lítio removível | Carga: 120kg | Preço: R$16.990
-RECOMENDAR QUANDO: quer velocidade+agilidade, muitas subidas, bateria removível, quer a scooter mais potente
+RECOMENDAR QUANDO: quer velocidade+agilidade, muitas subidas, bateria removível, quer a moto mais potente
 EVITAR QUANDO: precisa rodar muito sem recarga
 
 --- TRICICLOS ELÉTRICOS ---
@@ -134,7 +134,7 @@ RECOMENDAR QUANDO: última milha, condomínios, campus, mobilidade complementar 
 
 === REGRAS GERAIS ===
 - Sem habilitação → apenas Autopropelidos, Bicicletas Elétricas, Triciclos Elétricos ou Patinetes
-- Com habilitação (CNH A/AB) → pode recomendar Scooters Elétricas e Utilitários também
+- Com habilitação (CNH A/AB) → pode recomendar Motos Elétricas e Utilitários também
 - Bateria removível necessária → NÃO recomendar MS 600, Triciclo, MS 2500 (baterias fixas)
 - Entregas profissionais → Rhino Delivery ou Cargo
 - Carga pesada/frete → Cargo (400kg)

@@ -45,7 +45,7 @@ export const CATEGORIES = [
   "Todos",
   "Autopropelidos",
   "Bicicletas Elétricas",
-  "Scooters Elétricas",
+  "Motos Elétricas",
   "Triciclos Elétricos",
   "Utilitários",
   "Infantil",
@@ -202,11 +202,11 @@ export const PRODUCTS: Product[] = [
     ],
   },
 
-  // ── Scooters Elétricas ──
+  // ── Motos Elétricas ──
   {
     name: "MS 2500",
     slug: "ms-2500",
-    category: "Scooters Elétricas",
+    category: "Motos Elétricas",
     image: modelMs2500,
     autonomy: "50 km",
     speed: "52 km/h",
@@ -214,7 +214,7 @@ export const PRODUCTS: Product[] = [
     motor: "2.500W",
     recharge: "6–7h",
     price: "R$ 14.990",
-    description: "Scooter potente de 2.500W para quem precisa de velocidade real no trânsito urbano com zero emissão.",
+    description: "Moto potente de 2.500W para quem precisa de velocidade real no trânsito urbano com zero emissão.",
     colors: [
       { name: "Preto", hex: "#111111" },
       { name: "Azul", hex: "#1D4ED8" },
@@ -224,7 +224,7 @@ export const PRODUCTS: Product[] = [
   {
     name: "New Holiday",
     slug: "new-holiday",
-    category: "Scooters Elétricas",
+    category: "Motos Elétricas",
     image: modelNewHoliday,
     autonomy: "50 km",
     speed: "50 km/h",
@@ -232,13 +232,13 @@ export const PRODUCTS: Product[] = [
     motor: "2.000W",
     recharge: "6–8h",
     price: "R$ 15.990",
-    description: "Design clássico com tecnologia moderna. Uma scooter completa para substituir a moto no dia a dia.",
+    description: "Design clássico com tecnologia moderna. Uma moto completa para substituir a moto no dia a dia.",
     colors: [],
   },
   {
     name: "Holiday 1000",
     slug: "holiday-1000",
-    category: "Scooters Elétricas",
+    category: "Motos Elétricas",
     image: modelHoliday1000,
     autonomy: "45 km",
     speed: "32 km/h",
@@ -246,13 +246,13 @@ export const PRODUCTS: Product[] = [
     motor: "1.000W",
     recharge: "8–10h",
     price: "R$ 10.490",
-    description: "Entrada acessível no mundo das scooters elétricas com conforto, economia e manutenção simples.",
+    description: "Entrada acessível no mundo das motos elétricas com conforto, economia e manutenção simples.",
     colors: [],
   },
   {
     name: "Tour 3K",
     slug: "tour-3k",
-    category: "Scooters Elétricas",
+    category: "Motos Elétricas",
     image: modelTour3k,
     autonomy: "40 km",
     speed: "75 km/h",
