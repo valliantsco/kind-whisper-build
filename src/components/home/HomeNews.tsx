@@ -23,12 +23,12 @@ const HomeNews = () => {
         >
           <div>
             <div className="flex items-center gap-3 mb-4">
-              <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-primary">
+              <span className="text-[13px] font-bold uppercase tracking-[0.2em] text-primary">
                 Atualizações
               </span>
               <div className="w-8 h-px bg-primary/40" />
             </div>
-            <h2 className="font-display font-black text-3xl md:text-4xl lg:text-5xl text-primary-foreground uppercase tracking-tight leading-[0.95]">
+            <h2 className="font-display font-black text-3xl md:text-5xl lg:text-6xl text-primary-foreground uppercase tracking-tight leading-[0.95]">
               MS Eletric{" "}
               <span
                 className="bg-clip-text text-transparent"
@@ -37,7 +37,7 @@ const HomeNews = () => {
                 em movimento
               </span>
             </h2>
-            <p className="text-sm text-primary-foreground/40 mt-3 max-w-md">
+            <p className="text-sm md:text-base text-primary-foreground/50 leading-relaxed mt-4 md:mt-5 max-w-lg">
               Eventos, novidades e ações que mostram a presença da marca no mercado.
             </p>
           </div>
