@@ -26,11 +26,7 @@ const PaymentBanner = ({ onContactClick }: PaymentBannerProps) => {
             border: "1px solid hsl(0 0% 100% / 0.08)",
           }}
         >
-          {/* Top accent */}
-          <div
-            className="absolute top-0 left-0 right-0 h-[2px]"
-            style={{
-              background: "linear-gradient(90deg, transparent, hsl(var(--primary) / 0.6), transparent)",
+          {/* Top accent removed */}
             }}
           />
 

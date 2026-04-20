@@ -8,10 +8,7 @@ const HomeNews = () => {
 
   return (
     <section className="py-14 md:py-20 relative overflow-x-clip">
-      <div
-        className="absolute top-0 left-0 right-0 h-px"
-        style={{ background: "linear-gradient(90deg, transparent 0%, hsl(var(--primary) / 0.12) 50%, transparent 100%)" }}
-      />
+      {/* top divider removed */}
 
       <div className="container mx-auto px-4">
         {/* Header */}
