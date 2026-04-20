@@ -363,12 +363,7 @@ const ProductCarousel = () => {
                 background: "radial-gradient(ellipse at 60% 50%, hsl(var(--primary) / 0.06) 0%, transparent 70%)",
               }}
             />
-            <div
-              className="absolute top-0 left-0 right-0 h-[2px]"
-              style={{
-                background: "linear-gradient(90deg, transparent, hsl(var(--primary) / 0.5), transparent)",
-              }}
-            />
+            {/* top accent removed */}
 
             <div className="relative text-center md:text-left">
               <h3 className="font-display font-bold text-lg md:text-xl text-primary-foreground uppercase tracking-wide mb-1">

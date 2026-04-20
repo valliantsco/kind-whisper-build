@@ -348,14 +348,7 @@ const HeroSlideshow = () => {
         ))}
       </div>
 
-      {/* ── Bottom light strip ── */}
-      <div
-        className="absolute bottom-0 left-0 right-0 h-[1px] z-10"
-        style={{
-          background:
-            "linear-gradient(90deg, transparent, hsl(var(--primary) / 0.4), hsl(var(--primary-glow) / 0.4), transparent)",
-        }}
-      />
+      {/* ── Bottom light strip removed ── */}
     </section>
   );
 };
