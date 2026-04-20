@@ -188,7 +188,7 @@ const Testimonials = () => {
   };
 
   return (
-    <section className="relative py-14 md:py-16 overflow-hidden">
+    <section className="relative py-10 md:py-14 overflow-hidden">
       {/* ── Section-specific effect: floating stars / social proof ── */}
       {[
         { top: "8%", left: "5%", size: 18, delay: 0, opacity: 0.2 },
