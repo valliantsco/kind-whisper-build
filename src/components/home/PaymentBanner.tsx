@@ -27,8 +27,6 @@ const PaymentBanner = ({ onContactClick }: PaymentBannerProps) => {
           }}
         >
           {/* Top accent removed */}
-            }}
-          />
 
           {/* Glow */}
           <div
