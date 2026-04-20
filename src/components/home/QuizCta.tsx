@@ -25,6 +25,12 @@ const STEPS = [
 const QuizCta = () => {
   const [quizOpen, setQuizOpen] = useState(false);
 
+  useEffect(() => {
+    const handler = () => setQuizOpen(true);
+    window.addEventListener("open-quiz", handler);
+    return () => window.removeEventListener("open-quiz", handler);
+  }, []);
+
   return (
     <>
       <section className="relative py-14 md:py-20 overflow-hidden">
