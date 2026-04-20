@@ -280,6 +280,12 @@ const HeroSlideshow = () => {
 
               <a
                 href={slide.secondaryCta.href}
+                onClick={(e) => {
+                  if (slide.secondaryCta.href === "#quiz") {
+                    e.preventDefault();
+                    window.dispatchEvent(new CustomEvent("open-quiz"));
+                  }
+                }}
                 className="inline-flex items-center gap-2 text-[12px] md:text-sm font-semibold uppercase tracking-[0.12em] px-6 py-3 md:px-7 md:py-3.5 rounded-xl text-primary-foreground/60 hover:text-primary-foreground transition-colors duration-300"
                 style={{
                   border: "1px solid hsl(0 0% 100% / 0.1)",
