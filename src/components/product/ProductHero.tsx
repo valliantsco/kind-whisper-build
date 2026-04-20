@@ -8,6 +8,7 @@ import { useRef } from "react";
 import type { Product, ProductColor } from "@/data/products";
 import type { ProductContent } from "@/data/product-content";
 import ColorSelector from "@/components/product/ColorSelector";
+import ProductGallery from "@/components/product/ProductGallery";
 
 const SPEC_ICONS = { autonomy: Zap, speed: Gauge, motor: Battery, recharge: Clock, load: Weight } as const;
 const SPEC_LABELS: Record<string, string> = {
@@ -29,7 +30,9 @@ export default function ProductHero({ product, content, onContact, selectedColor
   const imageY = useTransform(scrollYProgress, [0, 1], [0, 60]);
   const imageScale = useTransform(scrollYProgress, [0, 1], [1, 0.95]);
 
-  const displayImage = selectedColor?.image ?? product.image;
+  const baseImages = product.gallery && product.gallery.length > 0 ? product.gallery : [product.image];
+  const colorImage = selectedColor?.image;
+  const galleryImages = colorImage ? [colorImage, ...baseImages.filter((i) => i !== colorImage)] : baseImages;
 
   return (
     <section ref={heroRef} className="relative pb-12 md:pb-24 overflow-hidden">
@@ -64,34 +67,15 @@ export default function ProductHero({ product, content, onContact, selectedColor
           >
             <div className="absolute inset-0 -m-8 rounded-3xl pointer-events-none" style={{ background: "radial-gradient(ellipse at 50% 60%, hsl(var(--primary) / 0.08) 0%, transparent 70%)", filter: "blur(60px)" }} />
 
-            <div
-              className="relative rounded-2xl overflow-hidden group"
-              style={{
-                background: "linear-gradient(145deg, rgba(255,255,255,0.98) 0%, rgba(245,245,245,0.95) 100%)",
-                border: "1px solid hsl(0 0% 100% / 0.08)",
-                boxShadow: "0 40px 100px -25px hsl(0 0% 0% / 0.6), inset 0 1px 0 hsl(0 0% 100% / 0.05)",
-              }}
-            >
-              <div className="p-6 md:p-16">
-                <img
-                  src={displayImage}
-                  alt={product.name}
-                  className="w-full h-auto object-contain max-h-[280px] md:max-h-[400px] mx-auto transition-transform duration-700 group-hover:scale-[1.03]"
-                />
-              </div>
-              {/* Illustrative disclaimer */}
-              <span className="absolute bottom-3 right-4 text-[9px] text-foreground/30 tracking-wide">
-                Imagem meramente ilustrativa
-              </span>
-
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" style={{ background: "linear-gradient(135deg, transparent 40%, rgba(255,255,255,0.08) 50%, transparent 60%)" }} />
+            <div className="relative group">
+              <ProductGallery images={galleryImages} alt={product.name} />
 
               {product.badge && (
                 <motion.span
                   initial={{ opacity: 0, x: -10 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.4 }}
-                  className="absolute top-4 left-4 md:top-5 md:left-5 px-3 py-1 md:px-3.5 md:py-1.5 rounded-lg text-[9px] font-bold uppercase tracking-[0.14em] text-primary-foreground flex items-center gap-1.5"
+                  className="absolute top-4 left-4 md:top-5 md:left-5 z-10 px-3 py-1 md:px-3.5 md:py-1.5 rounded-lg text-[9px] font-bold uppercase tracking-[0.14em] text-primary-foreground flex items-center gap-1.5"
                   style={{
                     background: "linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)))",
                     boxShadow: "0 4px 16px -4px hsl(var(--primary) / 0.4)",
