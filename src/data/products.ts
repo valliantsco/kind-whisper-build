@@ -29,6 +29,7 @@ export interface Product {
   slug: string;
   category: string;
   image: string;
+  gallery?: string[];
   autonomy: string;
   speed: string;
   load: string;
