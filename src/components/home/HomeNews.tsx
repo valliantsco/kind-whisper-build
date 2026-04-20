@@ -23,10 +23,10 @@ const HomeNews = () => {
         >
           <div>
             <div className="flex items-center gap-3 mb-4">
+              <div className="w-8 h-px bg-primary" />
               <span className="text-[13px] font-bold uppercase tracking-[0.2em] text-primary">
                 Atualizações
               </span>
-              <div className="w-8 h-px bg-primary/40" />
             </div>
             <h2 className="font-display font-black text-3xl md:text-5xl lg:text-6xl text-primary-foreground uppercase tracking-tight leading-[0.95]">
               MS Eletric{" "}
