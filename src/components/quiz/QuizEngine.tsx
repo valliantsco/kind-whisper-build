@@ -194,7 +194,7 @@ const QuizEngine = ({ config, open, onOpenChange }: QuizEngineProps) => {
     : loading
       ? "Estamos cruzando suas respostas com nosso catálogo"
       : showDetailsStep
-        ? "Última etapa — algum detalhe a mais?"
+        ? "Última etapa. algum detalhe a mais?"
         : config.subtitle || "Responda e descubra o veículo ideal para você";
 
   return (
@@ -210,7 +210,7 @@ const QuizEngine = ({ config, open, onOpenChange }: QuizEngineProps) => {
           {/* Backdrop */}
           <motion.div className="absolute inset-0 bg-foreground/60" onClick={handleClose} />
 
-          {/* Panel — full-width bottom sheet on mobile, centered card on desktop */}
+          {/* Panel. full-width bottom sheet on mobile, centered card on desktop */}
           <motion.div
             variants={panelVariants}
             role="dialog"

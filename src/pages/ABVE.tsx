@@ -208,7 +208,7 @@ export default function ABVE() {
                   <div className="text-center relative z-10">
                     <img
                       src="https://abve.org.br/wp-content/uploads/2024/03/Ms-eletric.png"
-                      alt="MS Eletric — Associada ABVE"
+                      alt="MS Eletric. Associada ABVE"
                       className="w-40 md:w-56 mx-auto mb-8 drop-shadow-lg"
                       loading="lazy"
                     />

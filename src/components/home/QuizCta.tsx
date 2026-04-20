@@ -71,7 +71,7 @@ const QuizCta = () => {
           ))}
         </svg>
 
-        {/* Pulsing AI brain glow — center */}
+        {/* Pulsing AI brain glow. center */}
         <motion.div
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] pointer-events-none"
           style={{

@@ -143,7 +143,7 @@ export default function TermsOfUse() {
                 O site da MS Eletric tem como objetivo apresentar a marca, seus modelos de veículos elétricos, serviços e canais de atendimento. O conteúdo aqui disponibilizado é de caráter informativo e institucional.
               </p>
               <p>
-                As informações sobre produtos — incluindo especificações técnicas, preços, cores e disponibilidade — são apresentadas com a maior precisão possível, mas podem sofrer alterações sem aviso prévio, de acordo com atualizações de fabricantes, variações cambiais ou decisões estratégicas da empresa.
+                As informações sobre produtos. incluindo especificações técnicas, preços, cores e disponibilidade. são apresentadas com a maior precisão possível, mas podem sofrer alterações sem aviso prévio, de acordo com atualizações de fabricantes, variações cambiais ou decisões estratégicas da empresa.
               </p>
               <p>
                 O site não constitui oferta comercial vinculante. A efetivação de qualquer compra depende de confirmação direta com a equipe de atendimento da MS Eletric.
@@ -152,7 +152,7 @@ export default function TermsOfUse() {
 
             <PolicyBlock icon={ShieldCheck} title="3. Propriedade intelectual" index={2}>
               <p>
-                Todo o conteúdo presente no site — incluindo, mas não se limitando a textos, imagens, logotipos, ícones, vídeos, layouts, gráficos, design e código-fonte — é de propriedade da MS Eletric ou de seus licenciadores e está protegido pela legislação brasileira de direitos autorais e propriedade intelectual.
+                Todo o conteúdo presente no site. incluindo, mas não se limitando a textos, imagens, logotipos, ícones, vídeos, layouts, gráficos, design e código-fonte. é de propriedade da MS Eletric ou de seus licenciadores e está protegido pela legislação brasileira de direitos autorais e propriedade intelectual.
               </p>
               <p>
                 É expressamente proibido:
@@ -201,9 +201,9 @@ export default function TermsOfUse() {
               </p>
               <ul className="list-none space-y-2.5 mt-3">
                 {[
-                  "Disponibilidade ininterrupta — o site pode passar por manutenções ou instabilidades temporárias",
-                  "Precisão absoluta — informações podem conter imprecisões técnicas ou tipográficas",
-                  "Resultados específicos — o quiz de recomendação oferece sugestões baseadas em algoritmos, não substituindo a consulta com um especialista",
+                  "Disponibilidade ininterrupta. o site pode passar por manutenções ou instabilidades temporárias",
+                  "Precisão absoluta. informações podem conter imprecisões técnicas ou tipográficas",
+                  "Resultados específicos. o quiz de recomendação oferece sugestões baseadas em algoritmos, não substituindo a consulta com um especialista",
                 ].map((item, i) => (
                   <li key={i} className="flex items-start gap-2.5">
                     <span className="w-1.5 h-1.5 rounded-full mt-2 shrink-0" style={{ background: "hsl(var(--primary) / 0.5)" }} />
@@ -236,7 +236,7 @@ export default function TermsOfUse() {
 
             <PolicyBlock icon={Gavel} title="8. Legislação e foro" index={7}>
               <p>
-                Estes Termos de Uso são regidos pelas leis da República Federativa do Brasil. Para dirimir quaisquer questões decorrentes destes termos, fica eleito o foro da Comarca de Uberlândia — MG, com exclusão de qualquer outro, por mais privilegiado que seja.
+                Estes Termos de Uso são regidos pelas leis da República Federativa do Brasil. Para dirimir quaisquer questões decorrentes destes termos, fica eleito o foro da Comarca de Uberlândia. MG, com exclusão de qualquer outro, por mais privilegiado que seja.
               </p>
             </PolicyBlock>
 
@@ -249,7 +249,7 @@ export default function TermsOfUse() {
                 <p className="font-semibold text-primary-foreground/70 mb-2">MS Eletric</p>
                 <p>E-mail: contato@mseletric.com</p>
                 <p>Telefone: (34) 99284-9900</p>
-                <p>Endereço: Av. João Pinheiro, 3747 — Brasil, Uberlândia — MG, 38400-714</p>
+                <p>Endereço: Av. João Pinheiro, 3747. Brasil, Uberlândia. MG, 38400-714</p>
               </div>
             </PolicyBlock>
 

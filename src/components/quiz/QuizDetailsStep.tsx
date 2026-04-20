@@ -127,7 +127,7 @@ const QuizDetailsStep = ({ details, onDetailsChange }: QuizDetailsStepProps) => 
           Quer contar mais sobre sua necessidade?
         </h3>
         <p className="text-xs text-primary-foreground/40 leading-relaxed">
-          Opcional — quanto mais detalhes, melhor será a recomendação.
+          Opcional. quanto mais detalhes, melhor será a recomendação.
         </p>
       </div>
 

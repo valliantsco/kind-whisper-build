@@ -180,7 +180,7 @@ export default function About() {
                 </div>
                 <div className="p-5">
                   <p className="text-[11px] text-primary-foreground/40 uppercase tracking-wider font-semibold">
-                    Conheça nosso showroom em Uberlândia – MG
+                    Conheça nosso showroom em Uberlândia, MG
                   </p>
                 </div>
               </div>

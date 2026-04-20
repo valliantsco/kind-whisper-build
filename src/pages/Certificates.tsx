@@ -9,7 +9,7 @@ import { useState } from "react";
 /* ── Certification cards data ── */
 const certifications = [
   {
-    title: "Frost & Sullivan — Market Position Certification",
+    title: "Frost & Sullivan. Market Position Certification",
     issuer: "AIMA",
     description:
       "Certificação que reconhece o posicionamento de mercado da AIMA como líder global no segmento de veículos elétricos de duas e três rodas.",
@@ -26,7 +26,7 @@ const certifications = [
     title: "UL 2849",
     issuer: "Underwriters Laboratories",
     description:
-      "Norma de segurança para sistemas elétricos em bicicletas elétricas. Aplicável a modelos específicos do portfólio — consulte a ficha técnica de cada produto.",
+      "Norma de segurança para sistemas elétricos em bicicletas elétricas. Aplicável a modelos específicos do portfólio. consulte a ficha técnica de cada produto.",
     icon: ShieldCheck,
     note: "Aplicável a modelos específicos",
   },
@@ -144,7 +144,7 @@ export default function Certificates() {
           </div>
         </section>
 
-        {/* ═══ Section 1 — Certificados e Conformidade ═══ */}
+        {/* ═══ Section 1. Certificados e Conformidade ═══ */}
         <section className="py-14 md:py-20">
           <div className="container mx-auto px-4">
             <SectionHeader
@@ -190,7 +190,7 @@ export default function Certificates() {
           <div className="h-px" style={{ background: "linear-gradient(90deg, transparent, hsl(var(--primary) / 0.12), transparent)" }} />
         </div>
 
-        {/* ═══ Section 2 — ESG e Sustentabilidade ═══ */}
+        {/* ═══ Section 2. ESG e Sustentabilidade ═══ */}
         <section className="py-14 md:py-20">
           <div className="container mx-auto px-4">
             <SectionHeader
@@ -223,7 +223,7 @@ export default function Certificates() {
           <div className="h-px" style={{ background: "linear-gradient(90deg, transparent, hsl(var(--primary) / 0.12), transparent)" }} />
         </div>
 
-        {/* ═══ Section 3 — Prêmios e Reconhecimentos ═══ */}
+        {/* ═══ Section 3. Prêmios e Reconhecimentos ═══ */}
         <section className="py-14 md:py-20">
           <div className="container mx-auto px-4">
             <SectionHeader

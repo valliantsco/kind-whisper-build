@@ -7,7 +7,7 @@ export interface NewsItem {
   date: string;
   image?: string;
   featured?: boolean;
-  /** Full article content — array of content blocks */
+  /** Full article content. array of content blocks */
   article?: ArticleBlock[];
   subtitle?: string;
 }
@@ -30,7 +30,7 @@ const LOREM_BODY: ArticleBlock[] = [
   { type: "paragraph", text: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." },
   { type: "heading", text: "Sed ut perspiciatis unde omnis" },
   { type: "paragraph", text: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet." },
-  { type: "image", alt: "Imagem placeholder — substituir pelo conteúdo final" },
+  { type: "image", alt: "Imagem placeholder. substituir pelo conteúdo final" },
   { type: "paragraph", text: "Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur." },
   { type: "quote", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore." },
   { type: "paragraph", text: "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident." },

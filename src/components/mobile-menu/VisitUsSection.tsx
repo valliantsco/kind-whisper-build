@@ -7,7 +7,7 @@ interface VisitUsSectionProps {
   onContactClick?: () => void;
 }
 
-/** Lazy-loaded Google Maps embed — only renders iframe after first interaction */
+/** Lazy-loaded Google Maps embed. only renders iframe after first interaction */
 const LazyMap: React.FC = () => {
   const [loaded, setLoaded] = useState(false);
 
@@ -227,7 +227,7 @@ const VisitUsSection: React.FC<VisitUsSectionProps> = ({ onClose, onContactClick
               className="text-[10.5px] mt-0.5"
               style={{ color: "hsl(var(--mm-text-muted))" }}
             >
-              Uberlândia — MG, 38408-168
+              Uberlândia. MG, 38408-168
             </p>
           </div>
         </div>
@@ -292,7 +292,7 @@ const VisitUsSection: React.FC<VisitUsSectionProps> = ({ onClose, onContactClick
             <div className="space-y-0.5">
               <div className="flex justify-between">
                 <p className="text-[10.5px]" style={{ color: "hsl(0 0% 100% / 0.5)" }}>
-                  Seg – Sex
+                  Seg, Sex
                 </p>
                 <p
                   className="text-[10.5px] font-medium"

@@ -30,7 +30,7 @@ const Index = () => {
     <div className="min-h-screen relative" style={{ background: "hsl(0 0% 4%)" }}>
       {/* ── Unified page background ── */}
 
-      {/* Dot grid — full page */}
+      {/* Dot grid. full page */}
       <div
         className="fixed inset-0 pointer-events-none opacity-[0.02] z-0"
         style={{
@@ -40,7 +40,7 @@ const Index = () => {
         }}
       />
 
-      {/* Slow-moving ambient glow — top */}
+      {/* Slow-moving ambient glow. top */}
       <motion.div
         className="fixed top-0 right-0 w-[600px] h-[400px] md:w-[1200px] md:h-[800px] pointer-events-none z-0"
         style={{
@@ -52,7 +52,7 @@ const Index = () => {
         transition={{ duration: 30, repeat: Infinity, ease: "easeInOut" }}
       />
 
-      {/* Slow-moving ambient glow — bottom */}
+      {/* Slow-moving ambient glow. bottom */}
       <motion.div
         className="fixed bottom-0 left-0 w-[500px] h-[350px] md:w-[1000px] md:h-[700px] pointer-events-none z-0"
         style={{
@@ -64,7 +64,7 @@ const Index = () => {
         transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
       />
 
-      {/* Diagonal gradient overlay — full page */}
+      {/* Diagonal gradient overlay. full page */}
       <div
         className="fixed inset-0 pointer-events-none z-0"
         style={{
@@ -76,7 +76,7 @@ const Index = () => {
       {/* Animated thematic elements */}
       <AnimatedBackground />
 
-      {/* Content — above background */}
+      {/* Content. above background */}
       <div className="relative z-10">
         <Header onContactClick={() => setContactOpen(true)} />
         <HeroSlideshow />
