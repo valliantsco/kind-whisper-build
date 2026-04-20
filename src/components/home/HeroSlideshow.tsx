@@ -19,8 +19,6 @@ interface Slide {
   secondaryCta: { text: string; href: string };
   stats?: { icon: typeof Zap; value: string; label: string }[];
   payments?: PaymentHighlight[];
-  youtubeId: string;
-  youtubeStart?: number;
 }
 
 const SLIDES: Slide[] = [
@@ -32,8 +30,6 @@ const SLIDES: Slide[] = [
       "Mais de 19 modelos elétricos para cada estilo de vida. Zero emissão, economia real.",
     primaryCta: { text: "Explorar catálogo", href: "/modelos" },
     secondaryCta: { text: "Fazer o quiz", href: "#quiz" },
-    youtubeId: "aogNFr_-56w",
-    youtubeStart: 3,
   },
   {
     badge: "NOVIDADE",
@@ -43,8 +39,6 @@ const SLIDES: Slide[] = [
       "Motor de 3.000W e velocidade de até 75km/h. Bateria de lítio removível e design esportivo.",
     primaryCta: { text: "Conhecer a Tour 3K", href: "/modelos/tour-3k" },
     secondaryCta: { text: "Ver todos os modelos", href: "/modelos" },
-    youtubeId: "j9UspI7_KAg",
-    youtubeStart: 4,
     stats: [
       { icon: Zap, value: "3.000W", label: "Motor" },
       { icon: Gauge, value: "75km/h", label: "Velocidade" },
@@ -59,8 +53,6 @@ const SLIDES: Slide[] = [
       "Condições flexíveis para você escolher a melhor forma de pagamento na MS Eletric.",
     primaryCta: { text: "Consultar condições", href: "#contato" },
     secondaryCta: { text: "Ver todos os modelos", href: "/modelos" },
-    youtubeId: "aogNFr_-56w",
-    youtubeStart: 8,
     payments: [
       { icon: CreditCard, title: "Até 12x sem juros", detail: "No cartão de crédito" },
       { icon: Wallet, title: "Pix com desconto", detail: "Condição especial à vista" },
@@ -99,25 +91,7 @@ const HeroSlideshow = () => {
       {/* ── Background ── */}
       <div className="absolute inset-0 bg-foreground" />
 
-      {/* YouTube background video */}
-      <div className="absolute inset-0 overflow-hidden">
-        <iframe
-          key={slide.youtubeId}
-          src={`https://www.youtube.com/embed/${slide.youtubeId}?autoplay=1&mute=1&loop=1&playlist=${slide.youtubeId}&controls=0&showinfo=0&modestbranding=1&rel=0&start=${slide.youtubeStart ?? 0}&playsinline=1&enablejsapi=1&iv_load_policy=3&disablekb=1`}
-          allow="autoplay; encrypted-media"
-          allowFullScreen
-          referrerPolicy="strict-origin-when-cross-origin"
-          title={slide.badge}
-          className="absolute top-1/2 left-1/2 pointer-events-none border-0"
-          style={{
-            width: "177.78vh",
-            height: "100vh",
-            minWidth: "100vw",
-            minHeight: "56.25vw",
-            transform: "translate(-50%, -50%)",
-          }}
-        />
-      </div>
+      {/* (background video removed) */}
 
       {/* ── Gradient overlays ── */}
       <div className="absolute inset-0 bg-gradient-to-r from-foreground/95 via-foreground/85 to-foreground/40 md:via-foreground/80 md:to-foreground/30 z-[2]" />
