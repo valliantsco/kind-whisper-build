@@ -224,10 +224,10 @@ const Testimonials = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
-            className=""
+            className="md:text-right md:flex md:flex-col md:items-end"
           >
             {/* Accent line + label */}
-            <div className="flex items-center gap-3 mb-6">
+            <div className="flex items-center gap-3 mb-6 md:flex-row-reverse">
               <div className="w-8 h-px bg-primary" />
               <span className="text-[13px] font-bold uppercase tracking-[0.2em] text-primary">
                 Credibilidade de Marca
