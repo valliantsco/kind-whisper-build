@@ -37,7 +37,7 @@ const WhyChoose = () => {
   const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
 
   return (
-    <section id="por-que" className="relative py-14 md:py-20 overflow-x-clip">
+    <section id="por-que" className="relative py-10 md:py-14 overflow-x-clip">
       {/* ── Section-specific effect: concentric shield rings ── */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none">
         {[280, 420, 560].map((size, i) => (
