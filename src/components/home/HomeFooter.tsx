@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import msLogo from "@/assets/ms-eletric-logo-white.png";
 
 const modelLinks = [
-  { label: "Motos Elétricas", href: "/modelos?categoria=scooters-eletricas" },
+  { label: "Motos Elétricas", href: "/modelos?categoria=motos-eletricas" },
   { label: "Autopropelidos", href: "/modelos?categoria=autopropelidos" },
   { label: "Bicicletas Elétricas", href: "/modelos?categoria=bicicletas-eletricas" },
   { label: "Triciclos Elétricos", href: "/modelos?categoria=triciclos-eletricos" },
