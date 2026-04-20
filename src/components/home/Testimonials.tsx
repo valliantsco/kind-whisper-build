@@ -255,7 +255,7 @@ const Testimonials = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="mt-10 flex items-center justify-center md:justify-start"
+            className="mt-10 flex items-center justify-center md:justify-end"
           >
             <div
               className="inline-flex items-center rounded-xl py-4 px-2 md:px-4"
