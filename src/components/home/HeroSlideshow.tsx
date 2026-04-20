@@ -50,6 +50,7 @@ const SLIDES: Slide[] = [
       { icon: Gauge, value: "75km/h", label: "Velocidade" },
       { icon: Battery, value: "40km", label: "Autonomia" },
     ],
+  },
   {
     badge: "CONDIÇÕES ESPECIAIS",
     headline: ["FACILIDADE", "PARA SAIR", "PILOTANDO"],
