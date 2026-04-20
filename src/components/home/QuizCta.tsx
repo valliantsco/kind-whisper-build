@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Sparkles, ArrowRight, Brain, MessageCircle, CheckCircle } from "lucide-react";
 import QuizEngine from "@/components/quiz/QuizEngine";
@@ -24,6 +24,12 @@ const STEPS = [
 
 const QuizCta = () => {
   const [quizOpen, setQuizOpen] = useState(false);
+
+  useEffect(() => {
+    const handler = () => setQuizOpen(true);
+    window.addEventListener("open-quiz", handler);
+    return () => window.removeEventListener("open-quiz", handler);
+  }, []);
 
   return (
     <>
