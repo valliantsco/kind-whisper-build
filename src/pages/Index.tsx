@@ -26,6 +26,12 @@ const Index = () => {
     setContactOpen(false);
     setContactSubject(undefined);
   };
+
+  useEffect(() => {
+    const handler = () => setContactOpen(true);
+    window.addEventListener("open-contact", handler);
+    return () => window.removeEventListener("open-contact", handler);
+  }, []);
   return (
     <div className="min-h-screen relative" style={{ background: "hsl(0 0% 4%)" }}>
       {/* ── Unified page background ── */}
