@@ -87,11 +87,11 @@ const Index = () => {
         <Header onContactClick={() => setContactOpen(true)} />
         <HeroSlideshow />
         <ProductCarousel />
-        <WhyChoose />
-        <Testimonials />
-        <HomeNews />
         <PaymentBanner onContactClick={() => setContactOpen(true)} />
+        <Testimonials />
         <QuizCta />
+        <WhyChoose />
+        <HomeNews />
         <HomeFooter onContactClick={() => setContactOpen(true)} onSupportClick={handleSupportClick} />
       </div>
 
