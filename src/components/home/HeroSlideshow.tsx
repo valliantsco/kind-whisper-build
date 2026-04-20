@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight, ChevronLeft, ChevronRight, Zap, Battery, Gauge } from "lucide-react";
+import { ArrowRight, ChevronLeft, ChevronRight, Zap, Battery, Gauge, CreditCard, Wallet, Banknote } from "lucide-react";
 
 const SLIDE_DURATION = 20000;
 
