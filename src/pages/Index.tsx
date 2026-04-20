@@ -86,8 +86,8 @@ const Index = () => {
       <div className="relative z-10">
         <Header onContactClick={() => setContactOpen(true)} />
         <HeroSlideshow />
-        <ProductCarousel />
         <PaymentBanner onContactClick={() => setContactOpen(true)} />
+        <ProductCarousel />
         <Testimonials />
         <QuizCta />
         <WhyChoose />
