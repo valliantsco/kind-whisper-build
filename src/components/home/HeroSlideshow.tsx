@@ -275,6 +275,12 @@ const HeroSlideshow = () => {
             >
               <motion.a
                 href={slide.primaryCta.href}
+                onClick={(e) => {
+                  if (slide.primaryCta.href === "#contato") {
+                    e.preventDefault();
+                    window.dispatchEvent(new CustomEvent("open-contact"));
+                  }
+                }}
                 className="group inline-flex items-center gap-2 text-[12px] md:text-sm font-semibold uppercase tracking-[0.12em] px-6 py-3 md:px-7 md:py-3.5 rounded-xl text-primary-foreground relative overflow-hidden"
                 style={{
                   background:
